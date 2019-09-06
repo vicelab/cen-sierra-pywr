@@ -1,0 +1,5057 @@
+{
+    "metadata": {
+        "title": "San Joaquin River",
+        "description": "Imported from WEAP Area",
+        "minimum_version": "1.0.0"
+    },
+    "timestepper": {
+        "start": "1981-10-01",
+        "end": "1986-09-30",
+        "timestep": 1
+    },
+    "solver": {
+        "name": "glpk"
+    },
+    "nodes": [
+        {
+            "name": "Bear Diversion Tunnel [link]",
+            "type": "Link",
+            "max_flow": 1.1007359975343514
+        },
+        {
+            "name": "Below Balsam Diversion Tunnel Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 6.11711998629765
+        },
+        {
+            "name": "Below Balsam Meadows Tunnel Outflow [link]",
+            "type": "Link",
+            "max_flow": 5.967647986632468
+        },
+        {
+            "name": "Below Bear Diversion Tunnel Inflow [link]",
+            "type": "Link",
+            "max_flow": 1.5906239964370021
+        },
+        {
+            "name": "Below Big Creek 1 PH [link]",
+            "type": "Link",
+            "max_flow": 1.7124479961641164
+        },
+        {
+            "name": "Below Big Creek 2 PH [link]",
+            "type": "Link",
+            "max_flow": 1.5171839966015077
+        },
+        {
+            "name": "Below Big Creek 2 Tunnel Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 1.5171839966015077
+        },
+        {
+            "name": "Below Big Creek 2A PH [link]",
+            "type": "Link",
+            "max_flow": 1.5292799965744126
+        },
+        {
+            "name": "Below Big Creek 3 Aqueduct Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 7.952255982186947
+        },
+        {
+            "name": "Below Big Creek 3 PH [link]",
+            "type": "Link",
+            "max_flow": 7.952255982186947
+        },
+        {
+            "name": "Below Big Creek 4 Aqueduct Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 9.053855979719362
+        },
+        {
+            "name": "Below Big Creek 4 PH [link]",
+            "type": "Link",
+            "max_flow": 9.053855979719362
+        },
+        {
+            "name": "Below Big Creek 8 Penstock Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 2.870207993570734
+        },
+        {
+            "name": "Below Big Creek 8 PH [link]",
+            "type": "Link",
+            "max_flow": 2.870207993570734
+        },
+        {
+            "name": "Below Bolsillo Cr. Div. Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 4.306175990354165
+        },
+        {
+            "name": "Below Bolsillo Cr. Div. Inflow [link]",
+            "type": "Link",
+            "max_flow": 4.306175990354165
+        },
+        {
+            "name": "Below Camp 62 Cr. Div. Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 4.306175990354165
+        },
+        {
+            "name": "Below Camp 62 Cr. Div. Inflow [link]",
+            "type": "Link",
+            "max_flow": 4.306175990354165
+        },
+        {
+            "name": "Below Chinquapin Cr. Div. Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 4.306175990354165
+        },
+        {
+            "name": "Below Chinquapin Cr. Div. Inflow [link]",
+            "type": "Link",
+            "max_flow": 4.306175990354165
+        },
+        {
+            "name": "Below Eastwood PH [link]",
+            "type": "Link",
+            "max_flow": 6.11711998629765
+        },
+        {
+            "name": "Below Eastwood Tunnel Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 6.11711998629765
+        },
+        {
+            "name": "Below Kerckhoff 1 PH [link]",
+            "type": "Link",
+            "max_flow": 15.904511964373894
+        },
+        {
+            "name": "Below Kerckhoff 1 Tunnel Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 15.904511964373894
+        },
+        {
+            "name": "Below Kerckhoff 2 PH [link]",
+            "type": "Link",
+            "max_flow": 12.479615972045659
+        },
+        {
+            "name": "Below Kerckhoff 2 Tunnel Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 12.479615972045659
+        },
+        {
+            "name": "Below Mammoth Pool PH [link]",
+            "type": "Link",
+            "max_flow": 6.11711998629765
+        },
+        {
+            "name": "Below Mammoth Pool Tunnel Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 6.11711998629765
+        },
+        {
+            "name": "Below No. 1 Conduit Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 0.5140799988484608
+        },
+        {
+            "name": "Below No. 2 Conduit Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 0.39139199912328193
+        },
+        {
+            "name": "Below No. 2 Conduit Inflow [link]",
+            "type": "Link",
+            "max_flow": 0.5140799988484608
+        },
+        {
+            "name": "Below No. 3 Conduit Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 0.39139199912328193
+        },
+        {
+            "name": "Below PH 2A Aqueduct Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 1.5292799965744126
+        },
+        {
+            "name": "Below Pitman Cr Div Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 5.967647986632468
+        },
+        {
+            "name": "Below Pitman Cr Div Inflow [link]",
+            "type": "Link",
+            "max_flow": 5.967647986632468
+        },
+        {
+            "name": "Below Portal Aqueduct Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 1.5906239964370021
+        },
+        {
+            "name": "Below Portal Aqueduct Inflow [link]",
+            "type": "Link",
+            "max_flow": 4.306175990354165
+        },
+        {
+            "name": "Below Portal Penstock Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 3.6702719917785904
+        },
+        {
+            "name": "Below Portal PH [link]",
+            "type": "Link",
+            "max_flow": 3.6702719917785904
+        },
+        {
+            "name": "Below San Joaquin 1 PH [link]",
+            "type": "Link",
+            "max_flow": 0.5140799988484608
+        },
+        {
+            "name": "Below San Joaquin 1A Div Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 0.40867199908457474
+        },
+        {
+            "name": "Below San Joaquin 1A Div Inflow [link]",
+            "type": "Link",
+            "max_flow": 0.5140799988484608
+        },
+        {
+            "name": "Below San Joaquin 1A Div Outflow [link]",
+            "type": "Link",
+            "max_flow": 0.5140799988484608
+        },
+        {
+            "name": "Below San Joaquin 1A PH [link]",
+            "type": "Link",
+            "max_flow": 0.40867199908457474
+        },
+        {
+            "name": "Below San Joaquin 2 PH [link]",
+            "type": "Link",
+            "max_flow": 0.39139199912328193
+        },
+        {
+            "name": "Below San Joaquin 3 PH [link]",
+            "type": "Link",
+            "max_flow": 0.39139199912328193
+        },
+        {
+            "name": "Below SD Big Creek 1 PH [link]",
+            "type": "Link",
+            "max_flow": 1.7124479961641164
+        },
+        {
+            "name": "Below SD Big Creek 2 [link]",
+            "type": "Link",
+            "max_flow": 1.5171839966015077
+        },
+        {
+            "name": "Below SD Big Creek 2A [link]",
+            "type": "Link",
+            "max_flow": 1.5292799965744126
+        },
+        {
+            "name": "Below SD Big Creek 3 PH [link]",
+            "type": "Link",
+            "max_flow": 7.952255982186947
+        },
+        {
+            "name": "Below SD Big Creek 4 PH [link]",
+            "type": "Link",
+            "max_flow": 9.053855979719362
+        },
+        {
+            "name": "Below SD Big Creek 8 [link]",
+            "type": "Link",
+            "max_flow": 2.870207993570734
+        },
+        {
+            "name": "Below SD Eastwood PH [link]",
+            "type": "Link",
+            "max_flow": 6.11711998629765
+        },
+        {
+            "name": "Below SD Kerckhoff 1 PH [link]",
+            "type": "Link",
+            "max_flow": 15.904511964373894
+        },
+        {
+            "name": "Below SD Kerckhoff 2 PH [link]",
+            "type": "Link",
+            "max_flow": 12.479615972045659
+        },
+        {
+            "name": "Below SD Mammoth Pool PH [link]",
+            "type": "Link",
+            "max_flow": 6.11711998629765
+        },
+        {
+            "name": "Below SD Portal PH [link]",
+            "type": "Link",
+            "max_flow": 3.6702719917785904
+        },
+        {
+            "name": "Below SD San Joaquin 1 PH [link]",
+            "type": "Link",
+            "max_flow": 0.5140799988484608
+        },
+        {
+            "name": "Below SD San Joaquin 1A PH [link]",
+            "type": "Link",
+            "max_flow": 0.40867199908457474
+        },
+        {
+            "name": "Below SD San Joaquin 2 PH [link]",
+            "type": "Link",
+            "max_flow": 0.39139199912328193
+        },
+        {
+            "name": "Below SD San Joaquin 3 PH [link]",
+            "type": "Link",
+            "max_flow": 0.39139199912328193
+        },
+        {
+            "name": "Below Tunnel No. 1 Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 1.7124479961641164
+        },
+        {
+            "name": "Below Tunnel No. 7 Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 5.967647986632468
+        },
+        {
+            "name": "Below Ward Tunnel Diverted Inflow [link]",
+            "type": "Link",
+            "max_flow": 4.306175990354165
+        },
+        {
+            "name": "Below Ward Tunnel Inflow [link]",
+            "type": "Link",
+            "max_flow": 3.6702719917785904
+        },
+        {
+            "name": "Big Creek 2 Tunnel [link]",
+            "type": "Link",
+            "max_flow": 1.5171839966015077
+        },
+        {
+            "name": "Big Creek 3 Aqueduct [link]",
+            "type": "Link",
+            "max_flow": 7.952255982186947
+        },
+        {
+            "name": "Big Creek 4 Aqueduct [link]",
+            "type": "Link",
+            "max_flow": 9.053855979719362
+        },
+        {
+            "name": "Big Creek 8 Penstock [link]",
+            "type": "Link",
+            "max_flow": 2.870207993570734
+        },
+        {
+            "name": "Browns Creek Ditch [link]",
+            "type": "Link",
+            "max_flow": 0.19612799956067328
+        },
+        {
+            "name": "Eastwood Tunnel [link]",
+            "type": "Link",
+            "max_flow": 6.11711998629765
+        },
+        {
+            "name": "Kerckhoff 1 Tunnel [link]",
+            "type": "Link",
+            "max_flow": 15.904511964373894
+        },
+        {
+            "name": "Kerckhoff 2 Tunnel [link]",
+            "type": "Link",
+            "max_flow": 12.479615972045659
+        },
+        {
+            "name": "Mammoth Pool Tunnel [link]",
+            "type": "Link",
+            "max_flow": 6.11711998629765
+        },
+        {
+            "name": "Mono Tunnel [link]",
+            "type": "Link",
+            "max_flow": 1.5906239964370021
+        },
+        {
+            "name": "No. 1 Conduit [link]",
+            "type": "Link",
+            "max_flow": 0.5140799988484608
+        },
+        {
+            "name": "No. 2 Conduit [link]",
+            "type": "Link",
+            "max_flow": 0.39139199912328193
+        },
+        {
+            "name": "No. 3 Conduit [link]",
+            "type": "Link",
+            "max_flow": 0.39139199912328193
+        },
+        {
+            "name": "No. 3 Conduit (1) [link]",
+            "type": "Link",
+            "max_flow": 0.39139199912328193
+        },
+        {
+            "name": "PH 2A Aqueduct [link]",
+            "type": "Link",
+            "max_flow": 1.5906239964370021
+        },
+        {
+            "name": "Portal Penstock [link]",
+            "type": "Link",
+            "max_flow": 3.6702719917785904
+        },
+        {
+            "name": "San Joaquin 1A Div [link]",
+            "type": "Link",
+            "max_flow": 0.40867199908457474
+        },
+        {
+            "name": "Tunnel No. 1 [link]",
+            "type": "Link",
+            "max_flow": 1.7124479961641164
+        },
+        {
+            "name": "Ward Tunnel [link]",
+            "type": "Link",
+            "max_flow": 4.306175990354165
+        },
+        {
+            "name": "Balsam Creek Headflow [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "Balsam Creek Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Balsam Diversion Tunnel Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Balsam Meadows Tunnel Outflow [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "Bass Lake [node]",
+            "type": "Storage",
+            "initial_volume": 27.0,
+            "max_volume": 55.61,
+            "min_volume": 27.0,
+            "cost": "storage_cost"
+        },
+        {
+            "name": "Bear Creek Headflow [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "Bear Creek Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Bear Creek NR TA Edison_11230500 [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "Bear Diversion Tunnel Outflow [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "Big Creek 1 PH [node]",
+            "type": "Hydropower",
+            "excess_cost": "hydropower_excess_cost",
+            "base_cost": "hydropower_base_cost",
+            "base_flow": "node/Big Creek 1 PH/Water Demand"
+        },
+        {
+            "name": "Big Creek 2 PH [node]",
+            "type": "Hydropower",
+            "excess_cost": "hydropower_excess_cost",
+            "base_cost": "hydropower_base_cost",
+            "base_flow": "node/Big Creek 2 PH/Water Demand"
+        },
+        {
+            "name": "Big Creek 2 Tunnel Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Big Creek 2 Tunnel Outflow [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "Big Creek 2A PH [node]",
+            "type": "Hydropower",
+            "excess_cost": "hydropower_excess_cost",
+            "base_cost": "hydropower_base_cost",
+            "base_flow": "node/Big Creek 2A PH/Water Demand"
+        },
+        {
+            "name": "Big Creek 3 Aqueduct Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Big Creek 3 Conduit Outflow [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "Big Creek 3 PH [node]",
+            "type": "Hydropower",
+            "excess_cost": "hydropower_excess_cost",
+            "base_cost": "hydropower_base_cost",
+            "base_flow": "node/Big Creek 3 PH/Water Demand"
+        },
+        {
+            "name": "Big Creek 4 Aqueduct Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Big Creek 4 PH [node]",
+            "type": "Hydropower",
+            "excess_cost": "hydropower_excess_cost",
+            "base_cost": "hydropower_base_cost",
+            "base_flow": "node/Big Creek 4 PH/Water Demand"
+        },
+        {
+            "name": "Big Creek 8 Penstock Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Big Creek 8 Penstock Outflow [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "Big Creek 8 PH [node]",
+            "type": "Hydropower",
+            "excess_cost": "hydropower_excess_cost",
+            "base_cost": "hydropower_base_cost",
+            "base_flow": "node/Big Creek 8 PH/Water Demand"
+        },
+        {
+            "name": "Big Creek Headflow [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "Big Creek Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Bolsillo Cr. Div. Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Bolsillo Cr. Div. Outflow [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "Bolsillo Creek Headflow [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "Bolsillo Creek Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Browns Creek Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Browns Creek Outflow [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "Camp 61 Creek Headflow [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "Camp 61 Creek Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Camp 62 Cr. Div. Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Camp 62 Cr. Div. Outflow [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "Camp 62 Creek Headflow [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "Camp 62 Creek Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Chinquapin Cr. Div. Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Chinquapin Cr. Div. Outflow [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "Chinquapin Creek Headflow [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "Chinquapin Creek Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Demand Below Friant Dam [node]",
+            "type": "Output"
+        },
+        {
+            "name": "Eastwood PH [node]",
+            "type": "Hydropower",
+            "excess_cost": "hydropower_excess_cost",
+            "base_cost": "hydropower_base_cost",
+            "base_flow": "node/Eastwood PH/Water Demand"
+        },
+        {
+            "name": "Eastwood Tunnel Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Eastwood Tunnel Outflow [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "Florence Lake [node]",
+            "type": "Storage",
+            "initial_volume": 50.0,
+            "max_volume": 79.41,
+            "min_volume": 1.25,
+            "cost": "storage_cost"
+        },
+        {
+            "name": "Friant Dam Flood Release [node]",
+            "type": "InstreamFlowRequirement"
+        },
+        {
+            "name": "Friant PH [node]",
+            "type": "Hydropower"
+        },
+        {
+            "name": "Gauge Portal PH [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "Granite Creek Headflow [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "Granite Creek Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Huntington Lake [node]",
+            "type": "Storage",
+            "initial_volume": 108.49,
+            "max_volume": 109.94,
+            "min_volume": 37.0,
+            "cost": "storage_cost"
+        },
+        {
+            "name": "IFR bl Bass Lake [node]",
+            "type": "InstreamFlowRequirement",
+            "mrf_cost": "ifr_cost",
+            "unconstrained_cost": "spill_cost",
+            "mrf": 0.004893177589039282
+        },
+        {
+            "name": "IFR bl Bear Div [node]",
+            "type": "InstreamFlowRequirement",
+            "mrf_cost": "ifr_cost",
+            "unconstrained_cost": "spill_cost",
+            "mrf": "node/IFR bl Bear Div/Requirement"
+        },
+        {
+            "name": "IFR bl Big Creek 5 Div [node]",
+            "type": "InstreamFlowRequirement",
+            "unconstrained_cost": "spill_cost",
+            "mrf_cost": "ifr_cost",
+            "mrf": "node/IFR bl Big Creek 5 Div/Requirement"
+        },
+        {
+            "name": "IFR bl Big Creek 6 Div [node]",
+            "type": "InstreamFlowRequirement",
+            "unconstrained_cost": "spill_cost",
+            "mrf_cost": "ifr_cost",
+            "mrf": "node/IFR bl Big Creek 6 Div/Requirement"
+        },
+        {
+            "name": "IFR bl Bolsillo Creek Div [node]",
+            "type": "InstreamFlowRequirement",
+            "unconstrained_cost": "spill_cost",
+            "mrf_cost": "ifr_cost",
+            "mrf": "node/IFR bl Bolsillo Creek Div/Requirement"
+        },
+        {
+            "name": "IFR bl Browns Creek Ditch [node]",
+            "type": "InstreamFlowRequirement",
+            "unconstrained_cost": "spill_cost",
+            "mrf_cost": "ifr_cost",
+            "mrf": "node/IFR bl Browns Creek Ditch/Requirement"
+        },
+        {
+            "name": "IFR bl Camp 62 Creek Div [node]",
+            "type": "InstreamFlowRequirement",
+            "unconstrained_cost": "spill_cost",
+            "mrf_cost": "ifr_cost",
+            "mrf": "node/IFR bl Camp 62 Creek Div/Requirement"
+        },
+        {
+            "name": "IFR bl Chinquapin Creek Div [node]",
+            "type": "InstreamFlowRequirement",
+            "unconstrained_cost": "spill_cost",
+            "mrf_cost": "ifr_cost",
+            "mrf": "node/IFR bl Chinquapin Creek Div/Requirement"
+        },
+        {
+            "name": "IFR bl Florence Lake [node]",
+            "type": "InstreamFlowRequirement",
+            "unconstrained_cost": "spill_cost",
+            "mrf_cost": "ifr_cost",
+            "mrf": "node/IFR bl Florence Lake/Requirement"
+        },
+        {
+            "name": "IFR bl Huntington Lake [node]",
+            "type": "InstreamFlowRequirement",
+            "unconstrained_cost": "spill_cost",
+            "mrf_cost": "ifr_cost",
+            "mrf": "node/IFR bl Huntington Lake/Requirement"
+        },
+        {
+            "name": "IFR bl Kerckhoff Lake [node]",
+            "type": "InstreamFlowRequirement",
+            "unconstrained_cost": "spill_cost",
+            "mrf_cost": "ifr_cost",
+            "mrf": "node/IFR bl Kerckhoff Lake/Requirement"
+        },
+        {
+            "name": "IFR bl Mammoth Pool Reservoir [node]",
+            "type": "InstreamFlowRequirement",
+            "unconstrained_cost": "spill_cost",
+            "mrf_cost": "ifr_cost",
+            "mrf": "node/IFR bl Mammoth Pool Reservoir/Requirement"
+        },
+        {
+            "name": "IFR bl Manzanita Div [node]",
+            "type": "InstreamFlowRequirement",
+            "unconstrained_cost": "spill_cost",
+            "mrf_cost": "ifr_cost",
+            "mrf": "node/IFR bl Manzanita Div/Requirement"
+        },
+        {
+            "name": "IFR bl Mono Creek Div [node]",
+            "type": "InstreamFlowRequirement",
+            "unconstrained_cost": "spill_cost",
+            "mrf_cost": "ifr_cost",
+            "mrf": "node/IFR bl Mono Creek Div/Requirement"
+        },
+        {
+            "name": "IFR bl Pitman Creek Div [node]",
+            "type": "InstreamFlowRequirement",
+            "unconstrained_cost": "spill_cost",
+            "mrf_cost": "ifr_cost",
+            "mrf": "node/IFR bl Pitman Creek Div/Requirement"
+        },
+        {
+            "name": "IFR bl Redinger Lake [node]",
+            "type": "InstreamFlowRequirement",
+            "unconstrained_cost": "spill_cost",
+            "mrf_cost": "ifr_cost",
+            "mrf": "node/IFR bl Redinger Lake/Requirement"
+        },
+        {
+            "name": "IFR bl San Joaquin 1 Div [node]",
+            "type": "InstreamFlowRequirement",
+            "unconstrained_cost": "spill_cost",
+            "mrf_cost": "ifr_cost",
+            "mrf": "node/IFR bl San Joaquin 1 Div/Requirement"
+        },
+        {
+            "name": "IFR bl Shaver Lake [node]",
+            "type": "InstreamFlowRequirement",
+            "unconstrained_cost": "spill_cost",
+            "mrf_cost": "ifr_cost",
+            "mrf": "node/IFR bl Shaver Lake/Requirement"
+        },
+        {
+            "name": "IFR bl Tunnel 7 Div [node]",
+            "type": "InstreamFlowRequirement",
+            "unconstrained_cost": "spill_cost",
+            "mrf_cost": "ifr_cost",
+            "mrf": "node/IFR bl Tunnel 7 Div/Requirement"
+        },
+        {
+            "name": "Inflow_below_FriantDam [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "Jose Cr Headflow [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "Jose Cr Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Kerckhoff 1 PH [node]",
+            "type": "Hydropower",
+            "excess_cost": "hydropower_excess_cost",
+            "base_cost": "hydropower_base_cost",
+            "base_flow": "node/Kerckhoff 1 PH/Water Demand"
+        },
+        {
+            "name": "Kerckhoff 1 Tunnel Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Kerckhoff 2 PH [node]",
+            "type": "Hydropower",
+            "excess_cost": "hydropower_excess_cost",
+            "base_cost": "hydropower_base_cost",
+            "base_flow": "node/Kerckhoff 2 PH/Water Demand"
+        },
+        {
+            "name": "Kerckhoff 2 Tunnel Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Kerckhoff Lake [node]",
+            "type": "Storage",
+            "initial_volume": 4.55,
+            "max_volume": 4.6,
+            "min_volume": 4.1,
+            "cost": "storage_cost"
+        },
+        {
+            "name": "Lake Thomas A Edison [node]",
+            "type": "Storage",
+            "initial_volume": 153.26,
+            "max_volume": 154.17,
+            "min_volume": 8.0,
+            "cost": -100
+        },
+        {
+            "name": "Mammoth Pool PH [node]",
+            "type": "Hydropower",
+            "excess_cost": "hydropower_excess_cost",
+            "base_cost": "hydropower_base_cost",
+            "base_flow": "node/Mammoth Pool PH/Water Demand"
+        },
+        {
+            "name": "Mammoth Pool Reservoir [node]",
+            "type": "Storage",
+            "initial_volume": 44.54,
+            "max_volume": 147.89,
+            "min_volume": 5.0,
+            "cost": "storage_cost"
+        },
+        {
+            "name": "Mammoth Pool Tunnel Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Millerton Lake [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "Mono Creek Bl Thomas A Edison Lk_11231500 [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "Mono Creek Headflow [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "Mono Creek Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Mono Tunnel Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Mono Tunnel Outflow [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "N Fk Stevenson Creek Headflow [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "N Fk Stevenson Creek Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "N Fk Willow Creek Headflow [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "N Fk Willow Creek Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "N Fk Willow Creek Nr Bass Lake_11244000 [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "N Fk Willow Creek Nr Sugar Pine_11242400 [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "No. 2 Conduit Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "No. 2 Conduit Outflow [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "No. 3 Conduit Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "No. 3 Conduit Outflow [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "No.1A Conduit Outflow [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "PH 2A Aqueduct Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Pitman Cr Div Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Pitman Cr Div Outflow [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "Pitman Creek BL Tamarack Creek_11237500 [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "Pitman Creek Headflow [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "Pitman Creek Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Portal Aqueduct Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Portal Penstock Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Portal Penstock Outflow [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "Portal PH [node]",
+            "type": "Hydropower",
+            "excess_cost": "hydropower_excess_cost",
+            "base_cost": "hydropower_base_cost",
+            "base_flow": "node/Portal PH/Water Demand"
+        },
+        {
+            "name": "Redinger Lake [node]",
+            "type": "Storage",
+            "initial_volume": 31.15,
+            "max_volume": 32.21,
+            "min_volume": 5.28,
+            "cost": "storage_cost"
+        },
+        {
+            "name": "S Fk San Joaquin Headflow [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "S Fk San Joaquin Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "S Joaquin A Miller Crossing_11226500 [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "S Joaquin R Ab Shakeflat C_11234760 [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "S Joaquin R Ab Willow Creek_11242000 [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "S Millerton Lake Cr Headflow [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "SAN J-N-JUN1 [node]",
+            "type": "Link"
+        },
+        {
+            "name": "SAN J-N-JUN3 [node]",
+            "type": "River"
+        },
+        {
+            "name": "SAN J-N-JUN4 [node]",
+            "type": "River"
+        },
+        {
+            "name": "SAN J-N-JUN5 [node]",
+            "type": "Link"
+        },
+        {
+            "name": "SAN J-N-JUN6 [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "SAN J-N-JUN7 [node]",
+            "type": "River"
+        },
+        {
+            "name": "San Joaquin 1 PH [node]",
+            "type": "Hydropower",
+            "excess_cost": "hydropower_excess_cost",
+            "base_cost": "hydropower_base_cost",
+            "base_flow": "node/San Joaquin 1 PH/Water Demand"
+        },
+        {
+            "name": "San Joaquin 1A Div Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "San Joaquin 1A Div Outflow [node]",
+            "type": "Storage",
+            "initial_volume": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "San Joaquin 1A PH [node]",
+            "type": "Hydropower",
+            "excess_cost": "hydropower_excess_cost",
+            "base_cost": "hydropower_base_cost",
+            "base_flow": "node/San Joaquin 1A PH/Water Demand"
+        },
+        {
+            "name": "San Joaquin 2 PH [node]",
+            "type": "Hydropower",
+            "excess_cost": "hydropower_excess_cost",
+            "base_cost": "hydropower_base_cost",
+            "base_flow": "node/San Joaquin 2 PH/Water Demand"
+        },
+        {
+            "name": "San Joaquin 3 PH [node]",
+            "type": "Hydropower",
+            "excess_cost": "hydropower_excess_cost",
+            "base_cost": "hydropower_base_cost",
+            "base_flow": "node/San Joaquin 3 PH/Water Demand"
+        },
+        {
+            "name": "San Joaquin River Headflow [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "San Joaquin River Outflow [node]",
+            "type": "Output"
+        },
+        {
+            "name": "SAN-N-FLO1 [node]",
+            "type": "InstreamFlowRequirement"
+        },
+        {
+            "name": "SAN-N-INF1 [node]",
+            "type": "Link"
+        },
+        {
+            "name": "SAN-N-INF2 [node]",
+            "type": "Link"
+        },
+        {
+            "name": "SAN-N-OUT1 [node]",
+            "type": "Link"
+        },
+        {
+            "name": "SAN-N-OUT2 [node]",
+            "type": "Link"
+        },
+        {
+            "name": "SD Big Creek 1 PH [node]",
+            "type": "InstreamFlowRequirement",
+            "mrf": "node/SD Big Creek 1 PH/Requirement"
+        },
+        {
+            "name": "SD Big Creek 2 [node]",
+            "type": "InstreamFlowRequirement",
+            "mrf": "node/SD Big Creek 2/Requirement"
+        },
+        {
+            "name": "SD Big Creek 2A [node]",
+            "type": "InstreamFlowRequirement",
+            "mrf": "node/SD Big Creek 2A/Requirement"
+        },
+        {
+            "name": "SD Big Creek 3 PH [node]",
+            "type": "InstreamFlowRequirement",
+            "mrf": "node/SD Big Creek 3 PH/Requirement"
+        },
+        {
+            "name": "SD Big Creek 4 PH [node]",
+            "type": "InstreamFlowRequirement",
+            "mrf": "node/SD Big Creek 4 PH/Requirement"
+        },
+        {
+            "name": "SD Big Creek 8 [node]",
+            "type": "InstreamFlowRequirement",
+            "mrf": "node/SD Big Creek 8/Requirement"
+        },
+        {
+            "name": "SD Eastwood PH [node]",
+            "type": "InstreamFlowRequirement",
+            "mrf": "node/SD Eastwood PH/Requirement"
+        },
+        {
+            "name": "SD Mammoth Pool PH [node]",
+            "type": "InstreamFlowRequirement",
+            "mrf": "node/SD Mammoth Pool PH/Requirement"
+        },
+        {
+            "name": "SD Portal PH [node]",
+            "type": "InstreamFlowRequirement",
+            "mrf": "node/SD Portal PH/Requirement"
+        },
+        {
+            "name": "SD San Joaquin 1 PH [node]",
+            "type": "InstreamFlowRequirement",
+            "mrf": "node/SD San Joaquin 1 PH/Requirement"
+        },
+        {
+            "name": "SD San Joaquin 1A PH [node]",
+            "type": "InstreamFlowRequirement",
+            "mrf": "node/SD San Joaquin 1A PH/Requirement"
+        },
+        {
+            "name": "SD San Joaquin 2 PH [node]",
+            "type": "InstreamFlowRequirement",
+            "mrf": "node/SD San Joaquin 2 PH/Requirement"
+        },
+        {
+            "name": "SD San Joaquin 3 PH [node]",
+            "type": "InstreamFlowRequirement",
+            "mrf": "node/SD San Joaquin 3 PH/Requirement"
+        },
+        {
+            "name": "Shaver Lake [node]",
+            "type": "Storage",
+            "initial_volume": 91.45,
+            "max_volume": 167.16,
+            "min_volume": 0.47,
+            "cost": "storage_cost"
+        },
+        {
+            "name": "SJN_01 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_01 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_02 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_02 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_02 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_03 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_03 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_03 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_04 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_04 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_04 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_05 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_05 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_05 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_06 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_06 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_06 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_07 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_07 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_07 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_08 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_08 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_08 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_09 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_09 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_09 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_10 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_10 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_10 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_11 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_11 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_11 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_12 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_12 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_12 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_13 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_13 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_13 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_14 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_14 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_14 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_15 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_15 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_15 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_16 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_16 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_16 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_17 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_17 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_17 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_18 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_18 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_18 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_19 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_19 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_19 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_20 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_20 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_20 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_21 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_21 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_21 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_22 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_22 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_22 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_23 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_23 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_23 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_24 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_24 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_24 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_25 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_25 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_25 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_26 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_26 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_26 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_27 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_27 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_27 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_28 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_28 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_28 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_29 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_29 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_29 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_30 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_30 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_30 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_31 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_31 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_31 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_32 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_32 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_32 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_33 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_33 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_33 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_34 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_34 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_34 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_35 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_35 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_35 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_36 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_36 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_36 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_37 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_37 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_37 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "SJN_38 Headflow [node]",
+            "type": "Catchment",
+            "flow": "node/SJN_38 Headflow/Runoff"
+        },
+        {
+            "name": "SJN_38 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Stevenson Creek Headflow [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "Stevenson Creek Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Tunnel No. 1 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Tunnel No. 7 Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "USGS_1122950_Ward Tunnel at intake [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS_11230520_BEAR C COND [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS_11231550_MONO C COND [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS_11235100_MAMMOTH POOL PP [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS_11238100_BIG C PH NO1 [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS_11238250_EASTWOOD PP [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS_11238380_BIG C PH NO 2 [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS_11238400_BIG C PH NO2A [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS_11238550_BIG C PH NO8 [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS_11241800_BIG CR PH NO3 [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS_11243300_BROWNS C CN [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS_11243500_PGE NO 3 COND [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS_11244100_SAN JOAQUIN PH NO3 [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS_11246530_BIG C PH NO4 [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS_11246570_SAN JOAQUIN PH NO2 [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS_11246590_SAN JOAQUIN PH NO1A [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS_11246610_SAN JOAQUIN PH NO1 WISHON [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS_11246950_KERCKHOFF PH [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS_11247050_KERCKHOFF PH NO2 [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "Ward Tunnel Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Willow C A Mouth_11246500 [node]",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "Willow Creek Headflow [node]",
+            "type": "Catchment"
+        },
+        {
+            "name": "Willow Creek Inflow [node]",
+            "type": "River"
+        },
+        {
+            "name": "Wishon Penstock Inflow [node]",
+            "type": "River"
+        }
+    ],
+    "edges": [
+        [
+            "Bear Diversion Tunnel Outflow [node]",
+            "USGS_11230520_BEAR C COND [node]"
+        ],
+        [
+            "Mono Tunnel Outflow [node]",
+            "USGS_11231550_MONO C COND [node]"
+        ],
+        [
+            "Browns Creek Outflow [node]",
+            "USGS_11243300_BROWNS C CN [node]"
+        ],
+        [
+            "IFR bl Bear Div [node]",
+            "Bear Creek Inflow [node]"
+        ],
+        [
+            "USGS_11230520_BEAR C COND [node]",
+            "Bear Diversion Tunnel [link]"
+        ],
+        [
+            "Balsam Creek Headflow [node]",
+            "Balsam Diversion Tunnel Inflow [node]"
+        ],
+        [
+            "Balsam Creek Inflow [node]",
+            "SJN_25 Inflow [node]"
+        ],
+        [
+            "Balsam Meadows Tunnel Outflow [node]",
+            "Below Balsam Diversion Tunnel Diverted Inflow [link]"
+        ],
+        [
+            "Below Balsam Diversion Tunnel Diverted Inflow [link]",
+            "Balsam Diversion Tunnel Inflow [node]"
+        ],
+        [
+            "Balsam Diversion Tunnel Inflow [node]",
+            "Eastwood Tunnel Outflow [node]"
+        ],
+        [
+            "Balsam Meadows Tunnel Outflow [node]",
+            "Below Balsam Meadows Tunnel Outflow [link]"
+        ],
+        [
+            "Below Balsam Meadows Tunnel Outflow [link]",
+            "Tunnel No. 7 Inflow [node]"
+        ],
+        [
+            "Browns Creek Inflow [node]",
+            "Bass Lake [node]"
+        ],
+        [
+            "Bear Creek Headflow [node]",
+            "SJN_36 Inflow [node]"
+        ],
+        [
+            "Bear Creek Inflow [node]",
+            "Chinquapin Creek Inflow [node]"
+        ],
+        [
+            "Mono Tunnel Inflow [node]",
+            "Below Bear Diversion Tunnel Inflow [link]"
+        ],
+        [
+            "Below Bear Diversion Tunnel Inflow [link]",
+            "Portal Aqueduct Inflow [node]"
+        ],
+        [
+            "Bear Creek NR TA Edison_11230500 [node]",
+            "Bear Diversion Tunnel Outflow [node]"
+        ],
+        [
+            "Big Creek 1 PH [node]",
+            "Below Big Creek 1 PH [link]"
+        ],
+        [
+            "Below Big Creek 1 PH [link]",
+            "USGS_11238100_BIG C PH NO1 [node]"
+        ],
+        [
+            "Big Creek 2 PH [node]",
+            "Below Big Creek 2 PH [link]"
+        ],
+        [
+            "Below Big Creek 2 PH [link]",
+            "USGS_11238380_BIG C PH NO 2 [node]"
+        ],
+        [
+            "Big Creek 2 Tunnel Outflow [node]",
+            "Below Big Creek 2 Tunnel Diverted Inflow [link]"
+        ],
+        [
+            "Below Big Creek 2 Tunnel Diverted Inflow [link]",
+            "SD Big Creek 2 [node]"
+        ],
+        [
+            "Big Creek 2 Tunnel Inflow [node]",
+            "Big Creek 8 Penstock Outflow [node]"
+        ],
+        [
+            "Big Creek 2 Tunnel Outflow [node]",
+            "Balsam Creek Inflow [node]"
+        ],
+        [
+            "Big Creek 2A PH [node]",
+            "Below Big Creek 2A PH [link]"
+        ],
+        [
+            "Below Big Creek 2A PH [link]",
+            "USGS_11238400_BIG C PH NO2A [node]"
+        ],
+        [
+            "Big Creek 3 Conduit Outflow [node]",
+            "Below Big Creek 3 Aqueduct Diverted Inflow [link]"
+        ],
+        [
+            "Below Big Creek 3 Aqueduct Diverted Inflow [link]",
+            "SD Big Creek 3 PH [node]"
+        ],
+        [
+            "Big Creek 3 Aqueduct Inflow [node]",
+            "Jose Cr Inflow [node]"
+        ],
+        [
+            "Big Creek Inflow [node]",
+            "SJN_18 Inflow [node]"
+        ],
+        [
+            "Big Creek 3 PH [node]",
+            "Below Big Creek 3 PH [link]"
+        ],
+        [
+            "Below Big Creek 3 PH [link]",
+            "USGS_11241800_BIG CR PH NO3 [node]"
+        ],
+        [
+            "Redinger Lake [node]",
+            "Below Big Creek 4 Aqueduct Diverted Inflow [link]"
+        ],
+        [
+            "Below Big Creek 4 Aqueduct Diverted Inflow [link]",
+            "SD Big Creek 4 PH [node]"
+        ],
+        [
+            "S Joaquin R Ab Willow Creek_11242000 [node]",
+            "Willow Creek Inflow [node]"
+        ],
+        [
+            "Big Creek 4 PH [node]",
+            "Below Big Creek 4 PH [link]"
+        ],
+        [
+            "Below Big Creek 4 PH [link]",
+            "USGS_11246530_BIG C PH NO4 [node]"
+        ],
+        [
+            "Big Creek 8 Penstock Outflow [node]",
+            "Below Big Creek 8 Penstock Diverted Inflow [link]"
+        ],
+        [
+            "Below Big Creek 8 Penstock Diverted Inflow [link]",
+            "SD Big Creek 8 [node]"
+        ],
+        [
+            "Big Creek 8 Penstock Inflow [node]",
+            "Big Creek Inflow [node]"
+        ],
+        [
+            "Big Creek 8 Penstock Outflow [node]",
+            "IFR bl Big Creek 5 Div [node]"
+        ],
+        [
+            "Big Creek 8 PH [node]",
+            "Below Big Creek 8 PH [link]"
+        ],
+        [
+            "Below Big Creek 8 PH [link]",
+            "USGS_11238550_BIG C PH NO8 [node]"
+        ],
+        [
+            "Big Creek Headflow [node]",
+            "SJN_30 Inflow [node]"
+        ],
+        [
+            "SJN_19 Inflow [node]",
+            "Mammoth Pool Tunnel Inflow [node]"
+        ],
+        [
+            "Bolsillo Cr. Div. Outflow [node]",
+            "Below Bolsillo Cr. Div. Diverted Inflow [link]"
+        ],
+        [
+            "Below Bolsillo Cr. Div. Diverted Inflow [link]",
+            "Bolsillo Cr. Div. Inflow [node]"
+        ],
+        [
+            "Camp 62 Cr. Div. Inflow [node]",
+            "Below Bolsillo Cr. Div. Inflow [link]"
+        ],
+        [
+            "Below Bolsillo Cr. Div. Inflow [link]",
+            "Bolsillo Cr. Div. Inflow [node]"
+        ],
+        [
+            "Bolsillo Cr. Div. Outflow [node]",
+            "IFR bl Bolsillo Creek Div [node]"
+        ],
+        [
+            "Bolsillo Creek Headflow [node]",
+            "SJN_33 Inflow [node]"
+        ],
+        [
+            "Bolsillo Creek Inflow [node]",
+            "Camp 61 Creek Inflow [node]"
+        ],
+        [
+            "SJN_11 Inflow [node]",
+            "Browns Creek Inflow [node]"
+        ],
+        [
+            "Browns Creek Outflow [node]",
+            "IFR bl Browns Creek Ditch [node]"
+        ],
+        [
+            "Camp 61 Creek Headflow [node]",
+            "SJN_32 Inflow [node]"
+        ],
+        [
+            "Camp 61 Creek Inflow [node]",
+            "Mono Creek Inflow [node]"
+        ],
+        [
+            "Camp 62 Cr. Div. Outflow [node]",
+            "Below Camp 62 Cr. Div. Diverted Inflow [link]"
+        ],
+        [
+            "Below Camp 62 Cr. Div. Diverted Inflow [link]",
+            "Camp 62 Cr. Div. Inflow [node]"
+        ],
+        [
+            "Portal Aqueduct Inflow [node]",
+            "Below Camp 62 Cr. Div. Inflow [link]"
+        ],
+        [
+            "Below Camp 62 Cr. Div. Inflow [link]",
+            "Camp 62 Cr. Div. Inflow [node]"
+        ],
+        [
+            "Camp 62 Cr. Div. Outflow [node]",
+            "IFR bl Camp 62 Creek Div [node]"
+        ],
+        [
+            "Camp 62 Creek Headflow [node]",
+            "SJN_34 Inflow [node]"
+        ],
+        [
+            "Camp 62 Creek Inflow [node]",
+            "Chinquapin Creek Inflow [node]"
+        ],
+        [
+            "Chinquapin Cr. Div. Outflow [node]",
+            "Below Chinquapin Cr. Div. Diverted Inflow [link]"
+        ],
+        [
+            "Below Chinquapin Cr. Div. Diverted Inflow [link]",
+            "Chinquapin Cr. Div. Inflow [node]"
+        ],
+        [
+            "USGS_1122950_Ward Tunnel at intake [node]",
+            "Below Chinquapin Cr. Div. Inflow [link]"
+        ],
+        [
+            "Below Chinquapin Cr. Div. Inflow [link]",
+            "Chinquapin Cr. Div. Inflow [node]"
+        ],
+        [
+            "Chinquapin Cr. Div. Outflow [node]",
+            "IFR bl Chinquapin Creek Div [node]"
+        ],
+        [
+            "Chinquapin Creek Headflow [node]",
+            "SJN_35 Inflow [node]"
+        ],
+        [
+            "Chinquapin Creek Inflow [node]",
+            "Bolsillo Creek Inflow [node]"
+        ],
+        [
+            "Eastwood PH [node]",
+            "Below Eastwood PH [link]"
+        ],
+        [
+            "Below Eastwood PH [link]",
+            "USGS_11238250_EASTWOOD PP [node]"
+        ],
+        [
+            "Eastwood Tunnel Outflow [node]",
+            "Below Eastwood Tunnel Diverted Inflow [link]"
+        ],
+        [
+            "Below Eastwood Tunnel Diverted Inflow [link]",
+            "SD Eastwood PH [node]"
+        ],
+        [
+            "Eastwood Tunnel Inflow [node]",
+            "N Fk Stevenson Creek Inflow [node]"
+        ],
+        [
+            "Eastwood Tunnel Outflow [node]",
+            "Balsam Creek Inflow [node]"
+        ],
+        [
+            "Florence Lake [node]",
+            "IFR bl Florence Lake [node]"
+        ],
+        [
+            "Granite Creek Headflow [node]",
+            "SJN_22 Inflow [node]"
+        ],
+        [
+            "S Joaquin A Miller Crossing_11226500 [node]",
+            "Granite Creek Inflow [node]"
+        ],
+        [
+            "Huntington Lake [node]",
+            "IFR bl Huntington Lake [node]"
+        ],
+        [
+            "No. 3 Conduit Outflow [node]",
+            "IFR bl Bass Lake [node]"
+        ],
+        [
+            "Bear Diversion Tunnel Outflow [node]",
+            "IFR bl Bear Div [node]"
+        ],
+        [
+            "IFR bl Big Creek 5 Div [node]",
+            "SJN_24 Inflow [node]"
+        ],
+        [
+            "SJN_18 Inflow [node]",
+            "Big Creek 3 Conduit Outflow [node]"
+        ],
+        [
+            "IFR bl Bolsillo Creek Div [node]",
+            "Bolsillo Creek Inflow [node]"
+        ],
+        [
+            "IFR bl Browns Creek Ditch [node]",
+            "No.1A Conduit Outflow [node]"
+        ],
+        [
+            "IFR bl Camp 62 Creek Div [node]",
+            "Camp 62 Creek Inflow [node]"
+        ],
+        [
+            "IFR bl Chinquapin Creek Div [node]",
+            "Camp 62 Creek Inflow [node]"
+        ],
+        [
+            "IFR bl Florence Lake [node]",
+            "SJN_37 Inflow [node]"
+        ],
+        [
+            "IFR bl Huntington Lake [node]",
+            "SJN_28 Inflow [node]"
+        ],
+        [
+            "Wishon Penstock Inflow [node]",
+            "SJN_06 Inflow [node]"
+        ],
+        [
+            "Mammoth Pool Reservoir [node]",
+            "IFR bl Mammoth Pool Reservoir [node]"
+        ],
+        [
+            "No. 3 Conduit Inflow [node]",
+            "No. 2 Conduit Outflow [node]"
+        ],
+        [
+            "Mono Tunnel Outflow [node]",
+            "IFR bl Mono Creek Div [node]"
+        ],
+        [
+            "Pitman Cr Div Outflow [node]",
+            "IFR bl Pitman Creek Div [node]"
+        ],
+        [
+            "SJN_13 Inflow [node]",
+            "Redinger Lake [node]"
+        ],
+        [
+            "IFR bl San Joaquin 1 Div [node]",
+            "SJN_08 Inflow [node]"
+        ],
+        [
+            "IFR bl Shaver Lake [node]",
+            "Stevenson Creek Inflow [node]"
+        ],
+        [
+            "IFR bl Tunnel 7 Div [node]",
+            "SJN_16 Inflow [node]"
+        ],
+        [
+            "Jose Cr Headflow [node]",
+            "SJN_14 Inflow [node]"
+        ],
+        [
+            "IFR bl Big Creek 6 Div [node]",
+            "Stevenson Creek Inflow [node]"
+        ],
+        [
+            "Kerckhoff 1 PH [node]",
+            "Below Kerckhoff 1 PH [link]"
+        ],
+        [
+            "Below Kerckhoff 1 PH [link]",
+            "USGS_11246950_KERCKHOFF PH [node]"
+        ],
+        [
+            "Kerckhoff Lake [node]",
+            "Below Kerckhoff 1 Tunnel Diverted Inflow [link]"
+        ],
+        [
+            "Kerckhoff Lake [node]",
+            "IFR bl Kerckhoff Lake [node]"
+        ],
+        [
+            "Kerckhoff 2 PH [node]",
+            "Below Kerckhoff 2 PH [link]"
+        ],
+        [
+            "Below Kerckhoff 2 PH [link]",
+            "USGS_11247050_KERCKHOFF PH NO2 [node]"
+        ],
+        [
+            "Kerckhoff Lake [node]",
+            "Below Kerckhoff 2 Tunnel Diverted Inflow [link]"
+        ],
+        [
+            "SJN_05 Inflow [node]",
+            "Kerckhoff 1 Tunnel Inflow [node]"
+        ],
+        [
+            "Big Creek 4 Aqueduct Inflow [node]",
+            "Wishon Penstock Inflow [node]"
+        ],
+        [
+            "Lake Thomas A Edison [node]",
+            "Mono Creek Bl Thomas A Edison Lk_11231500 [node]"
+        ],
+        [
+            "Mammoth Pool PH [node]",
+            "Below Mammoth Pool PH [link]"
+        ],
+        [
+            "Below Mammoth Pool PH [link]",
+            "USGS_11235100_MAMMOTH POOL PP [node]"
+        ],
+        [
+            "SJN_21 Inflow [node]",
+            "Mammoth Pool Reservoir [node]"
+        ],
+        [
+            "Mammoth Pool Reservoir [node]",
+            "Below Mammoth Pool Tunnel Diverted Inflow [link]"
+        ],
+        [
+            "Below Mammoth Pool Tunnel Diverted Inflow [link]",
+            "SD Mammoth Pool PH [node]"
+        ],
+        [
+            "S Joaquin R Ab Shakeflat C_11234760 [node]",
+            "SJN_19 Inflow [node]"
+        ],
+        [
+            "Mono Creek Headflow [node]",
+            "SJN_31 Inflow [node]"
+        ],
+        [
+            "Mono Creek Inflow [node]",
+            "SAN-N-OUT1 [node]"
+        ],
+        [
+            "SAN-N-INF1 [node]",
+            "S Fk San Joaquin Inflow [node]"
+        ],
+        [
+            "Mono Creek Bl Thomas A Edison Lk_11231500 [node]",
+            "Mono Tunnel Outflow [node]"
+        ],
+        [
+            "N Fk Stevenson Creek Headflow [node]",
+            "SJN_17 Inflow [node]"
+        ],
+        [
+            "N Fk Stevenson Creek Inflow [node]",
+            "SJN_15 Inflow [node]"
+        ],
+        [
+            "N Fk Willow Creek Headflow [node]",
+            "SJN_12 Inflow [node]"
+        ],
+        [
+            "N Fk Willow Creek Inflow [node]",
+            "IFR bl San Joaquin 1 Div [node]"
+        ],
+        [
+            "No.1A Conduit Outflow [node]",
+            "Below No. 1 Conduit Diverted Inflow [link]"
+        ],
+        [
+            "Below No. 1 Conduit Diverted Inflow [link]",
+            "No. 2 Conduit Inflow [node]"
+        ],
+        [
+            "No. 2 Conduit Outflow [node]",
+            "Below No. 2 Conduit Diverted Inflow [link]"
+        ],
+        [
+            "Below No. 2 Conduit Diverted Inflow [link]",
+            "SD San Joaquin 2 PH [node]"
+        ],
+        [
+            "No. 2 Conduit Inflow [node]",
+            "Below No. 2 Conduit Inflow [link]"
+        ],
+        [
+            "Below No. 2 Conduit Inflow [link]",
+            "San Joaquin 1A Div Outflow [node]"
+        ],
+        [
+            "SJN_10 Inflow [node]",
+            "No. 3 Conduit Inflow [node]"
+        ],
+        [
+            "No. 3 Conduit Outflow [node]",
+            "Below No. 3 Conduit Diverted Inflow [link]"
+        ],
+        [
+            "Below No. 3 Conduit Diverted Inflow [link]",
+            "USGS_11243500_PGE NO 3 COND [node]"
+        ],
+        [
+            "N Fk Willow Creek Nr Bass Lake_11244000 [node]",
+            "SJN_10 Inflow [node]"
+        ],
+        [
+            "Bass Lake [node]",
+            "No. 3 Conduit Outflow [node]"
+        ],
+        [
+            "No.1A Conduit Outflow [node]",
+            "N Fk Willow Creek Inflow [node]"
+        ],
+        [
+            "Shaver Lake [node]",
+            "Below PH 2A Aqueduct Diverted Inflow [link]"
+        ],
+        [
+            "Below PH 2A Aqueduct Diverted Inflow [link]",
+            "SD Big Creek 2A [node]"
+        ],
+        [
+            "PH 2A Aqueduct Inflow [node]",
+            "Big Creek 2 Tunnel Inflow [node]"
+        ],
+        [
+            "Pitman Cr Div Outflow [node]",
+            "Below Pitman Cr Div Diverted Inflow [link]"
+        ],
+        [
+            "Below Pitman Cr Div Diverted Inflow [link]",
+            "Pitman Cr Div Inflow [node]"
+        ],
+        [
+            "Pitman Cr Div Inflow [node]",
+            "Below Pitman Cr Div Inflow [link]"
+        ],
+        [
+            "Below Pitman Cr Div Inflow [link]",
+            "Balsam Meadows Tunnel Outflow [node]"
+        ],
+        [
+            "Pitman Creek BL Tamarack Creek_11237500 [node]",
+            "Pitman Cr Div Outflow [node]"
+        ],
+        [
+            "Pitman Creek Headflow [node]",
+            "SJN_27 Inflow [node]"
+        ],
+        [
+            "Pitman Creek Inflow [node]",
+            "SJN_26 Inflow [node]"
+        ],
+        [
+            "Bear Diversion Tunnel [link]",
+            "Below Portal Aqueduct Diverted Inflow [link]"
+        ],
+        [
+            "Below Portal Aqueduct Diverted Inflow [link]",
+            "Mono Tunnel Inflow [node]"
+        ],
+        [
+            "Chinquapin Cr. Div. Inflow [node]",
+            "Below Portal Aqueduct Inflow [link]"
+        ],
+        [
+            "Below Portal Aqueduct Inflow [link]",
+            "Portal Aqueduct Inflow [node]"
+        ],
+        [
+            "Portal Penstock Outflow [node]",
+            "Below Portal Penstock Diverted Inflow [link]"
+        ],
+        [
+            "Below Portal Penstock Diverted Inflow [link]",
+            "Ward Tunnel Inflow [node]"
+        ],
+        [
+            "Portal Penstock Inflow [node]",
+            "SAN-N-OUT2 [node]"
+        ],
+        [
+            "SAN-N-INF2 [node]",
+            "SJN_29 Inflow [node]"
+        ],
+        [
+            "Portal Penstock Outflow [node]",
+            "Camp 61 Creek Inflow [node]"
+        ],
+        [
+            "Portal PH [node]",
+            "Below Portal PH [link]"
+        ],
+        [
+            "Below Portal PH [link]",
+            "Gauge Portal PH [node]"
+        ],
+        [
+            "Jose Cr Inflow [node]",
+            "SJN_13 Inflow [node]"
+        ],
+        [
+            "S Fk San Joaquin Headflow [node]",
+            "SJN_38 Inflow [node]"
+        ],
+        [
+            "Granite Creek Inflow [node]",
+            "S Fk San Joaquin Inflow [node]"
+        ],
+        [
+            "S Millerton Lake Cr Headflow [node]",
+            "SJN_03 Inflow [node]"
+        ],
+        [
+            "SJN_04 Inflow [node]",
+            "Kerckhoff 2 Tunnel Inflow [node]"
+        ],
+        [
+            "San Joaquin 1 PH [node]",
+            "Below San Joaquin 1 PH [link]"
+        ],
+        [
+            "Below San Joaquin 1 PH [link]",
+            "USGS_11246610_SAN JOAQUIN PH NO1 WISHON [node]"
+        ],
+        [
+            "San Joaquin 1A Div Outflow [node]",
+            "Below San Joaquin 1A Div Diverted Inflow [link]"
+        ],
+        [
+            "Below San Joaquin 1A Div Diverted Inflow [link]",
+            "SD San Joaquin 1A PH [node]"
+        ],
+        [
+            "San Joaquin 1A Div Inflow [node]",
+            "Below San Joaquin 1A Div Inflow [link]"
+        ],
+        [
+            "Below San Joaquin 1A Div Inflow [link]",
+            "SD San Joaquin 1 PH [node]"
+        ],
+        [
+            "San Joaquin 1A Div Outflow [node]",
+            "Below San Joaquin 1A Div Outflow [link]"
+        ],
+        [
+            "Below San Joaquin 1A Div Outflow [link]",
+            "San Joaquin 1A Div Inflow [node]"
+        ],
+        [
+            "San Joaquin 1A PH [node]",
+            "Below San Joaquin 1A PH [link]"
+        ],
+        [
+            "Below San Joaquin 1A PH [link]",
+            "USGS_11246590_SAN JOAQUIN PH NO1A [node]"
+        ],
+        [
+            "San Joaquin 2 PH [node]",
+            "Below San Joaquin 2 PH [link]"
+        ],
+        [
+            "Below San Joaquin 2 PH [link]",
+            "USGS_11246570_SAN JOAQUIN PH NO2 [node]"
+        ],
+        [
+            "SD San Joaquin 3 PH [node]",
+            "Below San Joaquin 3 PH [link]"
+        ],
+        [
+            "Below San Joaquin 3 PH [link]",
+            "San Joaquin 3 PH [node]"
+        ],
+        [
+            "San Joaquin River Headflow [node]",
+            "SJN_23 Inflow [node]"
+        ],
+        [
+            "SD Big Creek 1 PH [node]",
+            "Below SD Big Creek 1 PH [link]"
+        ],
+        [
+            "Below SD Big Creek 1 PH [link]",
+            "Big Creek 1 PH [node]"
+        ],
+        [
+            "SD Big Creek 2 [node]",
+            "Below SD Big Creek 2 [link]"
+        ],
+        [
+            "Below SD Big Creek 2 [link]",
+            "Big Creek 2 PH [node]"
+        ],
+        [
+            "SD Big Creek 2A [node]",
+            "Below SD Big Creek 2A [link]"
+        ],
+        [
+            "Below SD Big Creek 2A [link]",
+            "Big Creek 2A PH [node]"
+        ],
+        [
+            "SD Big Creek 3 PH [node]",
+            "Below SD Big Creek 3 PH [link]"
+        ],
+        [
+            "Below SD Big Creek 3 PH [link]",
+            "Big Creek 3 PH [node]"
+        ],
+        [
+            "SD Big Creek 4 PH [node]",
+            "Below SD Big Creek 4 PH [link]"
+        ],
+        [
+            "Below SD Big Creek 4 PH [link]",
+            "Big Creek 4 PH [node]"
+        ],
+        [
+            "SD Big Creek 8 [node]",
+            "Below SD Big Creek 8 [link]"
+        ],
+        [
+            "Below SD Big Creek 8 [link]",
+            "Big Creek 8 PH [node]"
+        ],
+        [
+            "SD Eastwood PH [node]",
+            "Below SD Eastwood PH [link]"
+        ],
+        [
+            "Below SD Eastwood PH [link]",
+            "Eastwood PH [node]"
+        ],
+        [
+            "Below Kerckhoff 1 Tunnel Diverted Inflow [link]",
+            "Below SD Kerckhoff 1 PH [link]"
+        ],
+        [
+            "Below SD Kerckhoff 1 PH [link]",
+            "Kerckhoff 1 PH [node]"
+        ],
+        [
+            "Below Kerckhoff 2 Tunnel Diverted Inflow [link]",
+            "Below SD Kerckhoff 2 PH [link]"
+        ],
+        [
+            "Below SD Kerckhoff 2 PH [link]",
+            "Kerckhoff 2 PH [node]"
+        ],
+        [
+            "SD Mammoth Pool PH [node]",
+            "Below SD Mammoth Pool PH [link]"
+        ],
+        [
+            "Below SD Mammoth Pool PH [link]",
+            "Mammoth Pool PH [node]"
+        ],
+        [
+            "SD Portal PH [node]",
+            "Below SD Portal PH [link]"
+        ],
+        [
+            "Below SD Portal PH [link]",
+            "Portal PH [node]"
+        ],
+        [
+            "SD San Joaquin 1 PH [node]",
+            "Below SD San Joaquin 1 PH [link]"
+        ],
+        [
+            "Below SD San Joaquin 1 PH [link]",
+            "San Joaquin 1 PH [node]"
+        ],
+        [
+            "SD San Joaquin 1A PH [node]",
+            "Below SD San Joaquin 1A PH [link]"
+        ],
+        [
+            "Below SD San Joaquin 1A PH [link]",
+            "San Joaquin 1A PH [node]"
+        ],
+        [
+            "SD San Joaquin 2 PH [node]",
+            "Below SD San Joaquin 2 PH [link]"
+        ],
+        [
+            "Below SD San Joaquin 2 PH [link]",
+            "San Joaquin 2 PH [node]"
+        ],
+        [
+            "USGS_11243500_PGE NO 3 COND [node]",
+            "Below SD San Joaquin 3 PH [link]"
+        ],
+        [
+            "Below SD San Joaquin 3 PH [link]",
+            "SD San Joaquin 3 PH [node]"
+        ],
+        [
+            "Shaver Lake [node]",
+            "IFR bl Shaver Lake [node]"
+        ],
+        [
+            "SJN_01 Headflow [node]",
+            "SAN J-N-JUN1 [node]"
+        ],
+        [
+            "Kerckhoff 2 Tunnel Inflow [node]",
+            "SJN_02 Inflow [node]"
+        ],
+        [
+            "SJN_02 Headflow [node]",
+            "SJN_02 Inflow [node]"
+        ],
+        [
+            "Kerckhoff 1 Tunnel Inflow [node]",
+            "SJN_04 Inflow [node]"
+        ],
+        [
+            "SJN_03 Headflow [node]",
+            "SJN_03 Inflow [node]"
+        ],
+        [
+            "SJN_03 Inflow [node]",
+            "Millerton Lake [node]"
+        ],
+        [
+            "SJN_04 Headflow [node]",
+            "SJN_04 Inflow [node]"
+        ],
+        [
+            "IFR bl Kerckhoff Lake [node]",
+            "SJN_05 Inflow [node]"
+        ],
+        [
+            "SJN_05 Headflow [node]",
+            "SJN_05 Inflow [node]"
+        ],
+        [
+            "SJN_06 Inflow [node]",
+            "Kerckhoff Lake [node]"
+        ],
+        [
+            "SJN_06 Headflow [node]",
+            "SJN_06 Inflow [node]"
+        ],
+        [
+            "SJN_07 Inflow [node]",
+            "Big Creek 4 Aqueduct Inflow [node]"
+        ],
+        [
+            "SJN_07 Headflow [node]",
+            "SJN_07 Inflow [node]"
+        ],
+        [
+            "IFR bl Redinger Lake [node]",
+            "S Joaquin R Ab Willow Creek_11242000 [node]"
+        ],
+        [
+            "SJN_08 Headflow [node]",
+            "SJN_08 Inflow [node]"
+        ],
+        [
+            "SJN_08 Inflow [node]",
+            "Willow C A Mouth_11246500 [node]"
+        ],
+        [
+            "SJN_09 Headflow [node]",
+            "SJN_09 Inflow [node]"
+        ],
+        [
+            "SJN_09 Inflow [node]",
+            "Browns Creek Outflow [node]"
+        ],
+        [
+            "SJN_10 Headflow [node]",
+            "SJN_10 Inflow [node]"
+        ],
+        [
+            "IFR bl Bass Lake [node]",
+            "N Fk Willow Creek Nr Bass Lake_11244000 [node]"
+        ],
+        [
+            "SJN_11 Headflow [node]",
+            "SJN_11 Inflow [node]"
+        ],
+        [
+            "N Fk Willow Creek Nr Sugar Pine_11242400 [node]",
+            "SJN_11 Inflow [node]"
+        ],
+        [
+            "SJN_12 Headflow [node]",
+            "SJN_12 Inflow [node]"
+        ],
+        [
+            "SJN_12 Inflow [node]",
+            "N Fk Willow Creek Nr Sugar Pine_11242400 [node]"
+        ],
+        [
+            "SJN_13 Headflow [node]",
+            "SJN_13 Inflow [node]"
+        ],
+        [
+            "Stevenson Creek Inflow [node]",
+            "Jose Cr Inflow [node]"
+        ],
+        [
+            "SJN_14 Headflow [node]",
+            "SJN_14 Inflow [node]"
+        ],
+        [
+            "SJN_14 Inflow [node]",
+            "Big Creek 3 Aqueduct Inflow [node]"
+        ],
+        [
+            "SJN_15 Headflow [node]",
+            "SJN_15 Inflow [node]"
+        ],
+        [
+            "SJN_15 Inflow [node]",
+            "Shaver Lake [node]"
+        ],
+        [
+            "SJN_16 Headflow [node]",
+            "SJN_16 Inflow [node]"
+        ],
+        [
+            "SJN_16 Inflow [node]",
+            "Eastwood Tunnel Inflow [node]"
+        ],
+        [
+            "SJN_17 Headflow [node]",
+            "SJN_17 Inflow [node]"
+        ],
+        [
+            "SJN_17 Inflow [node]",
+            "Tunnel No. 7 Inflow [node]"
+        ],
+        [
+            "SJN_18 Headflow [node]",
+            "SJN_18 Inflow [node]"
+        ],
+        [
+            "Mammoth Pool Tunnel Inflow [node]",
+            "Big Creek Inflow [node]"
+        ],
+        [
+            "SJN_19 Headflow [node]",
+            "SJN_19 Inflow [node]"
+        ],
+        [
+            "SJN_20 Inflow [node]",
+            "S Joaquin R Ab Shakeflat C_11234760 [node]"
+        ],
+        [
+            "SJN_20 Headflow [node]",
+            "SJN_20 Inflow [node]"
+        ],
+        [
+            "IFR bl Mammoth Pool Reservoir [node]",
+            "SJN_20 Inflow [node]"
+        ],
+        [
+            "SJN_21 Headflow [node]",
+            "SJN_21 Inflow [node]"
+        ],
+        [
+            "S Fk San Joaquin Inflow [node]",
+            "SJN_21 Inflow [node]"
+        ],
+        [
+            "SJN_22 Headflow [node]",
+            "SJN_22 Inflow [node]"
+        ],
+        [
+            "SJN_22 Inflow [node]",
+            "Granite Creek Inflow [node]"
+        ],
+        [
+            "SJN_23 Headflow [node]",
+            "SJN_23 Inflow [node]"
+        ],
+        [
+            "SJN_23 Inflow [node]",
+            "S Joaquin A Miller Crossing_11226500 [node]"
+        ],
+        [
+            "SJN_24 Headflow [node]",
+            "SJN_24 Inflow [node]"
+        ],
+        [
+            "SJN_24 Inflow [node]",
+            "Big Creek 8 Penstock Inflow [node]"
+        ],
+        [
+            "SJN_25 Headflow [node]",
+            "SJN_25 Inflow [node]"
+        ],
+        [
+            "SJN_25 Inflow [node]",
+            "PH 2A Aqueduct Inflow [node]"
+        ],
+        [
+            "SJN_26 Headflow [node]",
+            "SJN_26 Inflow [node]"
+        ],
+        [
+            "SJN_26 Inflow [node]",
+            "Tunnel No. 1 Inflow [node]"
+        ],
+        [
+            "SJN_27 Headflow [node]",
+            "SJN_27 Inflow [node]"
+        ],
+        [
+            "SJN_27 Inflow [node]",
+            "Pitman Creek BL Tamarack Creek_11237500 [node]"
+        ],
+        [
+            "SJN_28 Headflow [node]",
+            "SJN_28 Inflow [node]"
+        ],
+        [
+            "SJN_28 Inflow [node]",
+            "Pitman Creek Inflow [node]"
+        ],
+        [
+            "SJN_29 Headflow [node]",
+            "SJN_29 Inflow [node]"
+        ],
+        [
+            "SJN_29 Inflow [node]",
+            "Huntington Lake [node]"
+        ],
+        [
+            "SJN_30 Headflow [node]",
+            "SJN_30 Inflow [node]"
+        ],
+        [
+            "SJN_30 Inflow [node]",
+            "Portal Penstock Inflow [node]"
+        ],
+        [
+            "SJN_31 Headflow [node]",
+            "SJN_31 Inflow [node]"
+        ],
+        [
+            "SJN_31 Inflow [node]",
+            "Lake Thomas A Edison [node]"
+        ],
+        [
+            "SJN_32 Headflow [node]",
+            "SJN_32 Inflow [node]"
+        ],
+        [
+            "SJN_32 Inflow [node]",
+            "Portal Penstock Outflow [node]"
+        ],
+        [
+            "SJN_33 Headflow [node]",
+            "SJN_33 Inflow [node]"
+        ],
+        [
+            "SJN_33 Inflow [node]",
+            "Bolsillo Cr. Div. Outflow [node]"
+        ],
+        [
+            "SJN_34 Headflow [node]",
+            "SJN_34 Inflow [node]"
+        ],
+        [
+            "SJN_34 Inflow [node]",
+            "Camp 62 Cr. Div. Outflow [node]"
+        ],
+        [
+            "SJN_35 Headflow [node]",
+            "SJN_35 Inflow [node]"
+        ],
+        [
+            "SJN_35 Inflow [node]",
+            "Chinquapin Cr. Div. Outflow [node]"
+        ],
+        [
+            "SJN_36 Headflow [node]",
+            "SJN_36 Inflow [node]"
+        ],
+        [
+            "SJN_36 Inflow [node]",
+            "Bear Creek NR TA Edison_11230500 [node]"
+        ],
+        [
+            "SJN_37 Headflow [node]",
+            "SJN_37 Inflow [node]"
+        ],
+        [
+            "SJN_37 Inflow [node]",
+            "Bear Creek Inflow [node]"
+        ],
+        [
+            "SJN_38 Headflow [node]",
+            "SJN_38 Inflow [node]"
+        ],
+        [
+            "SJN_38 Inflow [node]",
+            "Florence Lake [node]"
+        ],
+        [
+            "Stevenson Creek Headflow [node]",
+            "N Fk Stevenson Creek Inflow [node]"
+        ],
+        [
+            "Big Creek 3 Conduit Outflow [node]",
+            "IFR bl Big Creek 6 Div [node]"
+        ],
+        [
+            "Huntington Lake [node]",
+            "Below Tunnel No. 1 Diverted Inflow [link]"
+        ],
+        [
+            "Below Tunnel No. 1 Diverted Inflow [link]",
+            "SD Big Creek 1 PH [node]"
+        ],
+        [
+            "Tunnel No. 1 Inflow [node]",
+            "Big Creek 2 Tunnel Outflow [node]"
+        ],
+        [
+            "Huntington Lake [node]",
+            "Below Tunnel No. 7 Diverted Inflow [link]"
+        ],
+        [
+            "Below Tunnel No. 7 Diverted Inflow [link]",
+            "Pitman Cr Div Inflow [node]"
+        ],
+        [
+            "Tunnel No. 7 Inflow [node]",
+            "IFR bl Tunnel 7 Div [node]"
+        ],
+        [
+            "Florence Lake [node]",
+            "Below Ward Tunnel Diverted Inflow [link]"
+        ],
+        [
+            "Below Ward Tunnel Diverted Inflow [link]",
+            "USGS_1122950_Ward Tunnel at intake [node]"
+        ],
+        [
+            "Ward Tunnel Inflow [node]",
+            "Below Ward Tunnel Inflow [link]"
+        ],
+        [
+            "Below Ward Tunnel Inflow [link]",
+            "SD Portal PH [node]"
+        ],
+        [
+            "Willow Creek Headflow [node]",
+            "SJN_09 Inflow [node]"
+        ],
+        [
+            "Redinger Lake [node]",
+            "IFR bl Redinger Lake [node]"
+        ],
+        [
+            "Willow Creek Inflow [node]",
+            "SJN_07 Inflow [node]"
+        ],
+        [
+            "USGS_11238380_BIG C PH NO 2 [node]",
+            "Big Creek 2 Tunnel [link]"
+        ],
+        [
+            "Big Creek 2 Tunnel [link]",
+            "Big Creek 2 Tunnel Inflow [node]"
+        ],
+        [
+            "USGS_11241800_BIG CR PH NO3 [node]",
+            "Big Creek 3 Aqueduct [link]"
+        ],
+        [
+            "Big Creek 3 Aqueduct [link]",
+            "Big Creek 3 Aqueduct Inflow [node]"
+        ],
+        [
+            "USGS_11246530_BIG C PH NO4 [node]",
+            "Big Creek 4 Aqueduct [link]"
+        ],
+        [
+            "Big Creek 4 Aqueduct [link]",
+            "Big Creek 4 Aqueduct Inflow [node]"
+        ],
+        [
+            "USGS_11238550_BIG C PH NO8 [node]",
+            "Big Creek 8 Penstock [link]"
+        ],
+        [
+            "Big Creek 8 Penstock [link]",
+            "Big Creek 8 Penstock Inflow [node]"
+        ],
+        [
+            "USGS_11243300_BROWNS C CN [node]",
+            "Browns Creek Ditch [link]"
+        ],
+        [
+            "Browns Creek Ditch [link]",
+            "Browns Creek Inflow [node]"
+        ],
+        [
+            "SAN J-N-JUN6 [node]",
+            "Demand Below Friant Dam [node]"
+        ],
+        [
+            "USGS_11238250_EASTWOOD PP [node]",
+            "Eastwood Tunnel [link]"
+        ],
+        [
+            "Eastwood Tunnel [link]",
+            "Eastwood Tunnel Inflow [node]"
+        ],
+        [
+            "USGS_11246950_KERCKHOFF PH [node]",
+            "Kerckhoff 1 Tunnel [link]"
+        ],
+        [
+            "Kerckhoff 1 Tunnel [link]",
+            "Kerckhoff 1 Tunnel Inflow [node]"
+        ],
+        [
+            "USGS_11247050_KERCKHOFF PH NO2 [node]",
+            "Kerckhoff 2 Tunnel [link]"
+        ],
+        [
+            "Kerckhoff 2 Tunnel [link]",
+            "Kerckhoff 2 Tunnel Inflow [node]"
+        ],
+        [
+            "USGS_11235100_MAMMOTH POOL PP [node]",
+            "Mammoth Pool Tunnel [link]"
+        ],
+        [
+            "Mammoth Pool Tunnel [link]",
+            "Mammoth Pool Tunnel Inflow [node]"
+        ],
+        [
+            "IFR bl Mono Creek Div [node]",
+            "Mono Creek Inflow [node]"
+        ],
+        [
+            "USGS_11231550_MONO C COND [node]",
+            "Mono Tunnel [link]"
+        ],
+        [
+            "Mono Tunnel [link]",
+            "Mono Tunnel Inflow [node]"
+        ],
+        [
+            "No. 2 Conduit Outflow [node]",
+            "IFR bl Manzanita Div [node]"
+        ],
+        [
+            "IFR bl Manzanita Div [node]",
+            "N Fk Willow Creek Inflow [node]"
+        ],
+        [
+            "USGS_11246610_SAN JOAQUIN PH NO1 WISHON [node]",
+            "No. 1 Conduit [link]"
+        ],
+        [
+            "No. 1 Conduit [link]",
+            "Wishon Penstock Inflow [node]"
+        ],
+        [
+            "USGS_11246570_SAN JOAQUIN PH NO2 [node]",
+            "No. 2 Conduit [link]"
+        ],
+        [
+            "No. 2 Conduit [link]",
+            "No. 2 Conduit Inflow [node]"
+        ],
+        [
+            "San Joaquin 3 PH [node]",
+            "No. 3 Conduit [link]"
+        ],
+        [
+            "No. 3 Conduit [link]",
+            "USGS_11244100_SAN JOAQUIN PH NO3 [node]"
+        ],
+        [
+            "USGS_11244100_SAN JOAQUIN PH NO3 [node]",
+            "No. 3 Conduit (1) [link]"
+        ],
+        [
+            "No. 3 Conduit (1) [link]",
+            "No. 3 Conduit Inflow [node]"
+        ],
+        [
+            "USGS_11238400_BIG C PH NO2A [node]",
+            "PH 2A Aqueduct [link]"
+        ],
+        [
+            "PH 2A Aqueduct [link]",
+            "PH 2A Aqueduct Inflow [node]"
+        ],
+        [
+            "IFR bl Pitman Creek Div [node]",
+            "Pitman Creek Inflow [node]"
+        ],
+        [
+            "Gauge Portal PH [node]",
+            "Portal Penstock [link]"
+        ],
+        [
+            "Portal Penstock [link]",
+            "Portal Penstock Inflow [node]"
+        ],
+        [
+            "Inflow_below_FriantDam [node]",
+            "SAN J-N-JUN4 [node]"
+        ],
+        [
+            "USGS_11246590_SAN JOAQUIN PH NO1A [node]",
+            "San Joaquin 1A Div [link]"
+        ],
+        [
+            "San Joaquin 1A Div [link]",
+            "San Joaquin 1A Div Inflow [node]"
+        ],
+        [
+            "SAN-N-FLO1 [node]",
+            "SAN J-N-JUN6 [node]"
+        ],
+        [
+            "SAN J-N-JUN6 [node]",
+            "SAN J-N-JUN5 [node]"
+        ],
+        [
+            "SAN J-N-JUN5 [node]",
+            "SAN J-N-JUN4 [node]"
+        ],
+        [
+            "SAN J-N-JUN4 [node]",
+            "San Joaquin River Outflow [node]"
+        ],
+        [
+            "Millerton Lake [node]",
+            "Friant PH [node]"
+        ],
+        [
+            "Friant PH [node]",
+            "SAN J-N-JUN7 [node]"
+        ],
+        [
+            "Millerton Lake [node]",
+            "Friant Dam Flood Release [node]"
+        ],
+        [
+            "Friant Dam Flood Release [node]",
+            "SAN J-N-JUN7 [node]"
+        ],
+        [
+            "SAN-N-OUT2 [node]",
+            "SAN-N-INF2 [node]"
+        ],
+        [
+            "SAN-N-OUT1 [node]",
+            "SAN-N-INF1 [node]"
+        ],
+        [
+            "SAN J-N-JUN3 [node]",
+            "Millerton Lake [node]"
+        ],
+        [
+            "SJN_02 Inflow [node]",
+            "SAN J-N-JUN3 [node]"
+        ],
+        [
+            "Millerton Lake [node]",
+            "SAN J-N-JUN7 [node]"
+        ],
+        [
+            "SAN J-N-JUN7 [node]",
+            "SAN-N-FLO1 [node]"
+        ],
+        [
+            "SAN J-N-JUN1 [node]",
+            "SAN J-N-JUN3 [node]"
+        ],
+        [
+            "USGS_11238100_BIG C PH NO1 [node]",
+            "Tunnel No. 1 [link]"
+        ],
+        [
+            "Tunnel No. 1 [link]",
+            "Tunnel No. 1 Inflow [node]"
+        ],
+        [
+            "Bolsillo Cr. Div. Inflow [node]",
+            "Ward Tunnel [link]"
+        ],
+        [
+            "Ward Tunnel [link]",
+            "Ward Tunnel Inflow [node]"
+        ],
+        [
+            "Willow C A Mouth_11246500 [node]",
+            "Willow Creek Inflow [node]"
+        ]
+    ],
+    "parameters": {
+        "hydropower_base_cost": {
+            "type": "constant",
+            "value": -900
+        },
+        "hydropower_excess_cost": {
+            "type": "constant",
+            "value": -1
+        },
+        "ifr_cost": {
+            "type": "constant",
+            "value": -1000
+        },
+        "spill_cost": {
+            "type": "constant",
+            "value": 10000
+        },
+        "storage_cost": {
+            "type": "constant",
+            "value": -5
+        },
+        "node/Bass Lake/Observed Storage": {
+            "type": "node_Bass_Lake_Observed_Storage"
+        },
+        "node/Bass Lake/Buffer coefficient": {
+            "type": "constant",
+            "value": 1
+        },
+        "node/Bass Lake/Storage Demand": {
+            "type": "node_Bass_Lake_Storage_Demand"
+        },
+        "node/Bass Lake/Turbine Capacity": {
+            "type": "node_Bass_Lake_Turbine_Capacity"
+        },
+        "node/Bass Lake/Cloudiness Fraction": {
+            "type": "constant",
+            "value": 0.5
+        },
+        "node/Bass Lake/Refill Priority": {
+            "type": "constant",
+            "value": 1
+        },
+        "node/Bass Lake/Drawdown Priority": {
+            "type": "constant",
+            "value": 1
+        },
+        "node/Bass Lake/Drawdown": {
+            "type": "node_Bass_Lake_Drawdown"
+        },
+        "node/Bear Creek NR TA Edison_11230500/Observed Flow": {
+            "type": "node_Bear_Creek_NR_TA_Edison_11230500_Observed_Flow"
+        },
+        "node/Big Creek 1 PH/Fixed Head": {
+            "type": "constant",
+            "value": 586.0
+        },
+        "node/Big Creek 1 PH/Turbine Capacity": {
+            "type": "node_Big_Creek_1_PH_Turbine_Capacity"
+        },
+        "node/Big Creek 1 PH/Water Demand": {
+            "type": "node_Big_Creek_1_PH_Water_Demand"
+        },
+        "node/Big Creek 2 PH/Fixed Head": {
+            "type": "constant",
+            "value": 499.4
+        },
+        "node/Big Creek 2 PH/Turbine Capacity": {
+            "type": "node_Big_Creek_2_PH_Turbine_Capacity"
+        },
+        "node/Big Creek 2 PH/Water Demand": {
+            "type": "node_Big_Creek_2_PH_Water_Demand"
+        },
+        "node/Big Creek 2A PH/Fixed Head": {
+            "type": "constant",
+            "value": 670.6
+        },
+        "node/Big Creek 2A PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 17.700368167657885
+        },
+        "node/Big Creek 2A PH/Water Demand": {
+            "type": "node_Big_Creek_2A_PH_Water_Demand"
+        },
+        "node/Big Creek 3 PH/Fixed Head": {
+            "type": "constant",
+            "value": 232.9
+        },
+        "node/Big Creek 3 PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 90.62588501840838
+        },
+        "node/Big Creek 3 PH/Water Demand": {
+            "type": "node_Big_Creek_3_PH_Water_Demand"
+        },
+        "node/Big Creek 4 PH/Fixed Head": {
+            "type": "constant",
+            "value": 118.2
+        },
+        "node/Big Creek 4 PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 104.78617955253469
+        },
+        "node/Big Creek 4 PH/Water Demand": {
+            "type": "node_Big_Creek_4_PH_Water_Demand"
+        },
+        "node/Big Creek 8 PH/Fixed Head": {
+            "type": "constant",
+            "value": 208.8
+        },
+        "node/Big Creek 8 PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 37.723024638912484
+        },
+        "node/Big Creek 8 PH/Water Demand": {
+            "type": "node_Big_Creek_8_PH_Water_Demand"
+        },
+        "node/Eastwood PH/Fixed Head": {
+            "type": "constant",
+            "value": 400.0
+        },
+        "node/Eastwood PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 65.02407250070802
+        },
+        "node/Eastwood PH/Water Demand": {
+            "type": "node_Eastwood_PH_Water_Demand"
+        },
+        "node/Florence Lake/Maximum Outflow": {
+            "type": "constant",
+            "value": 1
+        },
+        "node/Florence Lake/Observed Storage": {
+            "type": "node_Florence_Lake_Observed_Storage"
+        },
+        "node/Florence Lake/Buffer coefficient": {
+            "type": "constant",
+            "value": 1
+        },
+        "node/Florence Lake/Storage Demand": {
+            "type": "node_Florence_Lake_Storage_Demand"
+        },
+        "node/Florence Lake/Turbine Capacity": {
+            "type": "constant",
+            "value": 0
+        },
+        "node/Florence Lake/Cloudiness Fraction": {
+            "type": "constant",
+            "value": 0.5
+        },
+        "node/Florence Lake/Refill Priority": {
+            "type": "constant",
+            "value": 15
+        },
+        "node/Florence Lake/Drawdown Priority": {
+            "type": "constant",
+            "value": 99
+        },
+        "node/Florence Lake/Drawdown": {
+            "type": "node_Florence_Lake_Drawdown"
+        },
+        "node/Gauge Portal PH/Observed Flow": {
+            "type": "node_Gauge_Portal_PH_Observed_Flow"
+        },
+        "node/Huntington Lake/Observed Storage": {
+            "type": "node_Huntington_Lake_Observed_Storage"
+        },
+        "node/Huntington Lake/Buffer coefficient": {
+            "type": "constant",
+            "value": 1
+        },
+        "node/Huntington Lake/Storage Demand": {
+            "type": "node_Huntington_Lake_Storage_Demand"
+        },
+        "node/Huntington Lake/Turbine Capacity": {
+            "type": "constant",
+            "value": 0
+        },
+        "node/Huntington Lake/Cloudiness Fraction": {
+            "type": "constant",
+            "value": 0.5
+        },
+        "node/Huntington Lake/Refill Priority": {
+            "type": "constant",
+            "value": 85
+        },
+        "node/Huntington Lake/Drawdown Priority": {
+            "type": "constant",
+            "value": 85
+        },
+        "node/Huntington Lake/Drawdown": {
+            "type": "node_Huntington_Lake_Drawdown"
+        },
+        "node/IFR bl Bear Div/Requirement": {
+            "type": "node_IFR_bl_Bear_Div_Requirement"
+        },
+        "node/IFR bl Big Creek 5 Div/Requirement": {
+            "type": "node_IFR_bl_Big_Creek_5_Div_Requirement"
+        },
+        "node/IFR bl Big Creek 6 Div/Requirement": {
+            "type": "node_IFR_bl_Big_Creek_6_Div_Requirement"
+        },
+        "node/IFR bl Bolsillo Creek Div/Requirement": {
+            "type": "node_IFR_bl_Bolsillo_Creek_Div_Requirement"
+        },
+        "node/IFR bl Browns Creek Ditch/Requirement": {
+            "type": "node_IFR_bl_Browns_Creek_Ditch_Requirement"
+        },
+        "node/IFR bl Camp 62 Creek Div/Requirement": {
+            "type": "node_IFR_bl_Camp_62_Creek_Div_Requirement"
+        },
+        "node/IFR bl Chinquapin Creek Div/Requirement": {
+            "type": "node_IFR_bl_Chinquapin_Creek_Div_Requirement"
+        },
+        "node/IFR bl Florence Lake/Requirement": {
+            "type": "node_IFR_bl_Florence_Lake_Requirement"
+        },
+        "node/IFR bl Huntington Lake/Requirement": {
+            "type": "node_IFR_bl_Huntington_Lake_Requirement"
+        },
+        "node/IFR bl Kerckhoff Lake/Observed Delivery": {
+            "type": "node_IFR_bl_Kerckhoff_Lake_Observed_Delivery"
+        },
+        "node/IFR bl Kerckhoff Lake/Requirement": {
+            "type": "node_IFR_bl_Kerckhoff_Lake_Requirement"
+        },
+        "node/IFR bl Mammoth Pool Reservoir/Requirement": {
+            "type": "node_IFR_bl_Mammoth_Pool_Reservoir_Requirement"
+        },
+        "node/IFR bl Manzanita Div/Requirement": {
+            "type": "node_IFR_bl_Manzanita_Div_Requirement"
+        },
+        "node/IFR bl Mono Creek Div/Requirement": {
+            "type": "node_IFR_bl_Mono_Creek_Div_Requirement"
+        },
+        "node/IFR bl Pitman Creek Div/Requirement": {
+            "type": "node_IFR_bl_Pitman_Creek_Div_Requirement"
+        },
+        "node/IFR bl Redinger Lake/Requirement": {
+            "type": "node_IFR_bl_Redinger_Lake_Requirement"
+        },
+        "node/IFR bl San Joaquin 1 Div/Requirement": {
+            "type": "node_IFR_bl_San_Joaquin_1_Div_Requirement"
+        },
+        "node/IFR bl Shaver Lake/Requirement": {
+            "type": "node_IFR_bl_Shaver_Lake_Requirement"
+        },
+        "node/IFR bl Tunnel 7 Div/Requirement": {
+            "type": "node_IFR_bl_Tunnel_7_Div_Requirement"
+        },
+        "node/Kerckhoff 1 PH/Fixed Head": {
+            "type": "constant",
+            "value": 106.7
+        },
+        "node/Kerckhoff 1 PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 49.13622203341829
+        },
+        "node/Kerckhoff 1 PH/Water Demand": {
+            "type": "node_Kerckhoff_1_PH_Water_Demand"
+        },
+        "node/Kerckhoff 2 PH/Fixed Head": {
+            "type": "constant",
+            "value": 128.3
+        },
+        "node/Kerckhoff 2 PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 144.43500424808835
+        },
+        "node/Kerckhoff 2 PH/Water Demand": {
+            "type": "node_Kerckhoff_2_PH_Water_Demand"
+        },
+        "node/Kerckhoff Lake/Observed Storage": {
+            "type": "node_Kerckhoff_Lake_Observed_Storage"
+        },
+        "node/Kerckhoff Lake/Buffer coefficient": {
+            "type": "constant",
+            "value": 1
+        },
+        "node/Kerckhoff Lake/Storage Demand": {
+            "type": "node_Kerckhoff_Lake_Storage_Demand"
+        },
+        "node/Kerckhoff Lake/Cloudiness Fraction": {
+            "type": "constant",
+            "value": 0.5
+        },
+        "node/Kerckhoff Lake/Refill Priority": {
+            "type": "constant",
+            "value": 1
+        },
+        "node/Kerckhoff Lake/Drawdown Priority": {
+            "type": "constant",
+            "value": 1
+        },
+        "node/Kerckhoff Lake/Drawdown": {
+            "type": "node_Kerckhoff_Lake_Drawdown"
+        },
+        "node/Lake Thomas A Edison/Observed Storage": {
+            "type": "node_Lake_Thomas_A_Edison_Observed_Storage"
+        },
+        "node/Lake Thomas A Edison/Buffer coefficient": {
+            "type": "constant",
+            "value": 1
+        },
+        "node/Lake Thomas A Edison/Storage Demand": {
+            "type": "node_Lake_Thomas_A_Edison_Storage_Demand"
+        },
+        "node/Lake Thomas A Edison/Cloudiness Fraction": {
+            "type": "constant",
+            "value": 0.5
+        },
+        "node/Lake Thomas A Edison/Refill Priority": {
+            "type": "constant",
+            "value": 15
+        },
+        "node/Lake Thomas A Edison/Drawdown Priority": {
+            "type": "constant",
+            "value": 16
+        },
+        "node/Lake Thomas A Edison/Drawdown": {
+            "type": "node_Lake_Thomas_A_Edison_Drawdown"
+        },
+        "node/Mammoth Pool PH/Fixed Head": {
+            "type": "constant",
+            "value": 306.0
+        },
+        "node/Mammoth Pool PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 70.80147267063154
+        },
+        "node/Mammoth Pool PH/Water Demand": {
+            "type": "node_Mammoth_Pool_PH_Water_Demand"
+        },
+        "node/Mammoth Pool Reservoir/Observed Storage": {
+            "type": "node_Mammoth_Pool_Reservoir_Observed_Storage"
+        },
+        "node/Mammoth Pool Reservoir/Buffer coefficient": {
+            "type": "constant",
+            "value": 1
+        },
+        "node/Mammoth Pool Reservoir/Storage Demand": {
+            "type": "node_Mammoth_Pool_Reservoir_Storage_Demand"
+        },
+        "node/Mammoth Pool Reservoir/Cloudiness Fraction": {
+            "type": "constant",
+            "value": 0.5
+        },
+        "node/Mammoth Pool Reservoir/Refill Priority": {
+            "type": "constant",
+            "value": 1
+        },
+        "node/Mammoth Pool Reservoir/Drawdown Priority": {
+            "type": "constant",
+            "value": 1
+        },
+        "node/Mammoth Pool Reservoir/Drawdown": {
+            "type": "node_Mammoth_Pool_Reservoir_Drawdown"
+        },
+        "node/Mono Creek Bl Thomas A Edison Lk_11231500/Observed Flow": {
+            "type": "node_Mono_Creek_Bl_Thomas_A_Edison_Lk_11231500_Observed_Flow"
+        },
+        "node/N Fk Willow Creek Nr Bass Lake_11244000/Observed Flow": {
+            "type": "node_N_Fk_Willow_Creek_Nr_Bass_Lake_11244000_Observed_Flow"
+        },
+        "node/N Fk Willow Creek Nr Sugar Pine_11242400/Observed Flow": {
+            "type": "node_N_Fk_Willow_Creek_Nr_Sugar_Pine_11242400_Observed_Flow"
+        },
+        "node/Pitman Creek BL Tamarack Creek_11237500/Observed Flow": {
+            "type": "node_Pitman_Creek_BL_Tamarack_Creek_11237500_Observed_Flow"
+        },
+        "node/Portal PH/Fixed Head": {
+            "type": "constant",
+            "value": 54.864000000000004
+        },
+        "node/Portal PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 20.504106485414894
+        },
+        "node/Portal PH/Water Demand": {
+            "type": "node_Portal_PH_Water_Demand"
+        },
+        "node/Redinger Lake/Observed Storage": {
+            "type": "node_Redinger_Lake_Observed_Storage"
+        },
+        "node/Redinger Lake/Buffer coefficient": {
+            "type": "constant",
+            "value": 1
+        },
+        "node/Redinger Lake/Storage Demand": {
+            "type": "node_Redinger_Lake_Storage_Demand"
+        },
+        "node/Redinger Lake/Cloudiness Fraction": {
+            "type": "constant",
+            "value": 0.5
+        },
+        "node/Redinger Lake/Refill Priority": {
+            "type": "constant",
+            "value": 1
+        },
+        "node/Redinger Lake/Drawdown Priority": {
+            "type": "constant",
+            "value": 1
+        },
+        "node/Redinger Lake/Drawdown": {
+            "type": "node_Redinger_Lake_Drawdown"
+        },
+        "node/S Joaquin A Miller Crossing_11226500/Observed Flow": {
+            "type": "node_S_Joaquin_A_Miller_Crossing_11226500_Observed_Flow"
+        },
+        "node/S Joaquin R Ab Shakeflat C_11234760/Observed Flow": {
+            "type": "node_S_Joaquin_R_Ab_Shakeflat_C_11234760_Observed_Flow"
+        },
+        "node/S Joaquin R Ab Willow Creek_11242000/Observed Flow": {
+            "type": "node_S_Joaquin_R_Ab_Willow_Creek_11242000_Observed_Flow"
+        },
+        "node/San Joaquin 1 PH/Fixed Head": {
+            "type": "constant",
+            "value": 397.8
+        },
+        "node/San Joaquin 1 PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 6.6553384310393655
+        },
+        "node/San Joaquin 1 PH/Water Demand": {
+            "type": "node_San_Joaquin_1_PH_Water_Demand"
+        },
+        "node/San Joaquin 1A PH/Fixed Head": {
+            "type": "constant",
+            "value": 12.2
+        },
+        "node/San Joaquin 1A PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 4.729538374398187
+        },
+        "node/San Joaquin 1A PH/Water Demand": {
+            "type": "node_San_Joaquin_1A_PH_Water_Demand"
+        },
+        "node/San Joaquin 2 PH/Fixed Head": {
+            "type": "constant",
+            "value": 89.0
+        },
+        "node/San Joaquin 2 PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 0.118946474086661
+        },
+        "node/San Joaquin 2 PH/Water Demand": {
+            "type": "node_San_Joaquin_2_PH_Water_Demand"
+        },
+        "node/San Joaquin 3 PH/Fixed Head": {
+            "type": "constant",
+            "value": 115.2
+        },
+        "node/San Joaquin 3 PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 4.248088360237893
+        },
+        "node/San Joaquin 3 PH/Water Demand": {
+            "type": "node_San_Joaquin_3_PH_Water_Demand"
+        },
+        "node/SD Big Creek 1 PH/Requirement": {
+            "type": "node_SD_Big_Creek_1_PH_Requirement"
+        },
+        "node/SD Big Creek 2/Requirement": {
+            "type": "node_SD_Big_Creek_2_Requirement"
+        },
+        "node/SD Big Creek 2A/Requirement": {
+            "type": "node_SD_Big_Creek_2A_Requirement"
+        },
+        "node/SD Big Creek 3 PH/Requirement": {
+            "type": "node_SD_Big_Creek_3_PH_Requirement"
+        },
+        "node/SD Big Creek 4 PH/Requirement": {
+            "type": "node_SD_Big_Creek_4_PH_Requirement"
+        },
+        "node/SD Big Creek 8/Requirement": {
+            "type": "node_SD_Big_Creek_8_Requirement"
+        },
+        "node/SD Eastwood PH/Requirement": {
+            "type": "node_SD_Eastwood_PH_Requirement"
+        },
+        "node/SD Mammoth Pool PH/Requirement": {
+            "type": "node_SD_Mammoth_Pool_PH_Requirement"
+        },
+        "node/SD Portal PH/Requirement": {
+            "type": "node_SD_Portal_PH_Requirement"
+        },
+        "node/SD San Joaquin 1 PH/Requirement": {
+            "type": "node_SD_San_Joaquin_1_PH_Requirement"
+        },
+        "node/SD San Joaquin 1A PH/Requirement": {
+            "type": "node_SD_San_Joaquin_1A_PH_Requirement"
+        },
+        "node/SD San Joaquin 2 PH/Requirement": {
+            "type": "node_SD_San_Joaquin_2_PH_Requirement"
+        },
+        "node/SD San Joaquin 3 PH/Requirement": {
+            "type": "node_SD_San_Joaquin_3_PH_Requirement"
+        },
+        "node/Shaver Lake/Observed Storage": {
+            "type": "node_Shaver_Lake_Observed_Storage"
+        },
+        "node/Shaver Lake/Buffer coefficient": {
+            "type": "constant",
+            "value": 1
+        },
+        "node/Shaver Lake/Storage Demand": {
+            "type": "node_Shaver_Lake_Storage_Demand"
+        },
+        "node/Shaver Lake/Cloudiness Fraction": {
+            "type": "constant",
+            "value": 0.5
+        },
+        "node/Shaver Lake/Refill Priority": {
+            "type": "constant",
+            "value": 75
+        },
+        "node/Shaver Lake/Drawdown Priority": {
+            "type": "constant",
+            "value": 75
+        },
+        "node/Shaver Lake/Drawdown": {
+            "type": "node_Shaver_Lake_Drawdown"
+        },
+        "node/SJN_01 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb01.csv",
+            "column": "tot_runoff_sb01",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_02 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb02.csv",
+            "column": "tot_runoff_sb02",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_03 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb03.csv",
+            "column": "tot_runoff_sb03",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_04 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb04.csv",
+            "column": "tot_runoff_sb04",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_05 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb05.csv",
+            "column": "tot_runoff_sb05",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_06 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb06.csv",
+            "column": "tot_runoff_sb06",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_07 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb07.csv",
+            "column": "tot_runoff_sb07",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_08 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb08.csv",
+            "column": "tot_runoff_sb08",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_09 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb09.csv",
+            "column": "tot_runoff_sb09",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_10 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb10.csv",
+            "column": "tot_runoff_sb10",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_11 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb11.csv",
+            "column": "tot_runoff_sb11",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_12 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb12.csv",
+            "column": "tot_runoff_sb12",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_13 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb13.csv",
+            "column": "tot_runoff_sb13",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_14 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb14.csv",
+            "column": "tot_runoff_sb14",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_15 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb15.csv",
+            "column": "tot_runoff_sb15",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_16 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb16.csv",
+            "column": "tot_runoff_sb16",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_17 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb17.csv",
+            "column": "tot_runoff_sb17",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_18 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb18.csv",
+            "column": "tot_runoff_sb18",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_19 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb19.csv",
+            "column": "tot_runoff_sb19",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_20 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb20.csv",
+            "column": "tot_runoff_sb20",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_21 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb21.csv",
+            "column": "tot_runoff_sb21",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_22 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb22.csv",
+            "column": "tot_runoff_sb22",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_23 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb23.csv",
+            "column": "tot_runoff_sb23",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_24 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb24.csv",
+            "column": "tot_runoff_sb24",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_25 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb25.csv",
+            "column": "tot_runoff_sb25",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_26 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb26.csv",
+            "column": "tot_runoff_sb26",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_27 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb27.csv",
+            "column": "tot_runoff_sb27",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_28 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb28.csv",
+            "column": "tot_runoff_sb28",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_29 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb29.csv",
+            "column": "tot_runoff_sb29",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_30 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb30.csv",
+            "column": "tot_runoff_sb30",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_31 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb31.csv",
+            "column": "tot_runoff_sb31",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_32 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb32.csv",
+            "column": "tot_runoff_sb32",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_33 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb33.csv",
+            "column": "tot_runoff_sb33",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_34 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb34.csv",
+            "column": "tot_runoff_sb34",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_35 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb35.csv",
+            "column": "tot_runoff_sb35",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_36 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb36.csv",
+            "column": "tot_runoff_sb36",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_37 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb37.csv",
+            "column": "tot_runoff_sb37",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/SJN_38 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/runoff/tot_runoff_sb38.csv",
+            "column": "tot_runoff_sb38",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "node/USGS_1122950_Ward Tunnel at intake/Observed Flow": {
+            "type": "node_USGS_1122950_Ward_Tunnel_at_intake_Observed_Flow"
+        },
+        "node/USGS_11230520_BEAR C COND/Observed Flow": {
+            "type": "node_USGS_11230520_BEAR_C_COND_Observed_Flow"
+        },
+        "node/USGS_11231550_MONO C COND/Observed Flow": {
+            "type": "node_USGS_11231550_MONO_C_COND_Observed_Flow"
+        },
+        "node/USGS_11235100_MAMMOTH POOL PP/Observed Flow": {
+            "type": "node_USGS_11235100_MAMMOTH_POOL_PP_Observed_Flow"
+        },
+        "node/USGS_11238100_BIG C PH NO1/Observed Flow": {
+            "type": "node_USGS_11238100_BIG_C_PH_NO1_Observed_Flow"
+        },
+        "node/USGS_11238250_EASTWOOD PP/Observed Flow": {
+            "type": "node_USGS_11238250_EASTWOOD_PP_Observed_Flow"
+        },
+        "node/USGS_11238380_BIG C PH NO 2/Observed Flow": {
+            "type": "node_USGS_11238380_BIG_C_PH_NO_2_Observed_Flow"
+        },
+        "node/USGS_11238400_BIG C PH NO2A/Observed Flow": {
+            "type": "node_USGS_11238400_BIG_C_PH_NO2A_Observed_Flow"
+        },
+        "node/USGS_11238550_BIG C PH NO8/Observed Flow": {
+            "type": "node_USGS_11238550_BIG_C_PH_NO8_Observed_Flow"
+        },
+        "node/USGS_11241800_BIG CR PH NO3/Observed Flow": {
+            "type": "node_USGS_11241800_BIG_CR_PH_NO3_Observed_Flow"
+        },
+        "node/USGS_11243300_BROWNS C CN/Observed Flow": {
+            "type": "node_USGS_11243300_BROWNS_C_CN_Observed_Flow"
+        },
+        "node/USGS_11243500_PGE NO 3 COND/Observed Flow": {
+            "type": "node_USGS_11243500_PGE_NO_3_COND_Observed_Flow"
+        },
+        "node/USGS_11244100_SAN JOAQUIN PH NO3/Observed Flow": {
+            "type": "node_USGS_11244100_SAN_JOAQUIN_PH_NO3_Observed_Flow"
+        },
+        "node/USGS_11246530_BIG C PH NO4/Observed Flow": {
+            "type": "node_USGS_11246530_BIG_C_PH_NO4_Observed_Flow"
+        },
+        "node/USGS_11246570_SAN JOAQUIN PH NO2/Observed Flow": {
+            "type": "node_USGS_11246570_SAN_JOAQUIN_PH_NO2_Observed_Flow"
+        },
+        "node/USGS_11246590_SAN JOAQUIN PH NO1A/Observed Flow": {
+            "type": "node_USGS_11246590_SAN_JOAQUIN_PH_NO1A_Observed_Flow"
+        },
+        "node/USGS_11246610_SAN JOAQUIN PH NO1 WISHON/Observed Flow": {
+            "type": "node_USGS_11246610_SAN_JOAQUIN_PH_NO1_WISHON_Observed_Flow"
+        },
+        "node/USGS_11246950_KERCKHOFF PH/Observed Flow": {
+            "type": "node_USGS_11246950_KERCKHOFF_PH_Observed_Flow"
+        },
+        "node/USGS_11247050_KERCKHOFF PH NO2/Observed Flow": {
+            "type": "node_USGS_11247050_KERCKHOFF_PH_NO2_Observed_Flow"
+        },
+        "node/Willow C A Mouth_11246500/Observed Flow": {
+            "type": "node_Willow_C_A_Mouth_11246500_Observed_Flow"
+        },
+        "cfs2cms": {
+            "type": "constant",
+            "value": 0.028317
+        },
+        "AF2cm": {
+            "type": "constant",
+            "value": 1233.5
+        },
+        "ToFlow": {
+            "type": "constant",
+            "value": 604800.0
+        },
+        "Af2cms": {
+            "type": "constant",
+            "value": 0.0020395171957671957
+        },
+        "WYT_SJValley": {
+            "type": "WYT_SJValley"
+        },
+        "IsSolar": {
+            "type": "constant",
+            "value": 1.0
+        },
+        "PrecipFactor": {
+            "type": "constant",
+            "value": 1.0
+        },
+        "WYI_SJValley": {
+            "type": "dataframe",
+            "url": "./data/San Joaquin River/Scenarios/Livneh/WYT/SJVI_daily.csv",
+            "column": "SJVI",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "RCP": {
+            "type": "constant",
+            "value": 0.0
+        }
+    },
+    "recorders": {
+        "node/Bass Lake/storage": {
+            "type": "NumpyArrayStorageRecorder",
+            "node": "Bass Lake [node]"
+        },
+        "node/Bass Lake/observed storage": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Bass Lake/Observed Storage"
+        },
+        "node/Bear Creek NR TA Edison_11230500/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Bear Creek NR TA Edison_11230500/Observed Flow"
+        },
+        "node/Bear Creek NR TA Edison_11230500/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Bear Creek NR TA Edison_11230500 [node]"
+        },
+        "node/Big Creek 1 PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Big Creek 1 PH/Water Demand"
+        },
+        "node/Big Creek 1 PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Big Creek 1 PH [node]"
+        },
+        "node/Big Creek 2 PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Big Creek 2 PH/Water Demand"
+        },
+        "node/Big Creek 2 PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Big Creek 2 PH [node]"
+        },
+        "node/Big Creek 2A PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Big Creek 2A PH/Water Demand"
+        },
+        "node/Big Creek 2A PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Big Creek 2A PH [node]"
+        },
+        "node/Big Creek 3 PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Big Creek 3 PH/Water Demand"
+        },
+        "node/Big Creek 3 PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Big Creek 3 PH [node]"
+        },
+        "node/Big Creek 4 PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Big Creek 4 PH/Water Demand"
+        },
+        "node/Big Creek 4 PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Big Creek 4 PH [node]"
+        },
+        "node/Big Creek 8 PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Big Creek 8 PH/Water Demand"
+        },
+        "node/Big Creek 8 PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Big Creek 8 PH [node]"
+        },
+        "node/Eastwood PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Eastwood PH/Water Demand"
+        },
+        "node/Eastwood PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Eastwood PH [node]"
+        },
+        "node/Florence Lake/storage": {
+            "type": "NumpyArrayStorageRecorder",
+            "node": "Florence Lake [node]"
+        },
+        "node/Florence Lake/observed storage": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Florence Lake/Observed Storage"
+        },
+        "node/Friant Dam Flood Release/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Friant Dam Flood Release [node]"
+        },
+        "node/Friant PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Friant PH [node]"
+        },
+        "node/Gauge Portal PH/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Gauge Portal PH/Observed Flow"
+        },
+        "node/Gauge Portal PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Gauge Portal PH [node]"
+        },
+        "node/Huntington Lake/storage": {
+            "type": "NumpyArrayStorageRecorder",
+            "node": "Huntington Lake [node]"
+        },
+        "node/Huntington Lake/observed storage": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Huntington Lake/Observed Storage"
+        },
+        "node/IFR bl Bass Lake/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Bass Lake [node]"
+        },
+        "node/IFR bl Bear Div/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/IFR bl Bear Div/Requirement"
+        },
+        "node/IFR bl Bear Div/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Bear Div [node]"
+        },
+        "node/IFR bl Big Creek 5 Div/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/IFR bl Big Creek 5 Div/Requirement"
+        },
+        "node/IFR bl Big Creek 5 Div/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Big Creek 5 Div [node]"
+        },
+        "node/IFR bl Big Creek 6 Div/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/IFR bl Big Creek 6 Div/Requirement"
+        },
+        "node/IFR bl Big Creek 6 Div/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Big Creek 6 Div [node]"
+        },
+        "node/IFR bl Bolsillo Creek Div/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/IFR bl Bolsillo Creek Div/Requirement"
+        },
+        "node/IFR bl Bolsillo Creek Div/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Bolsillo Creek Div [node]"
+        },
+        "node/IFR bl Browns Creek Ditch/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/IFR bl Browns Creek Ditch/Requirement"
+        },
+        "node/IFR bl Browns Creek Ditch/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Browns Creek Ditch [node]"
+        },
+        "node/IFR bl Camp 62 Creek Div/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/IFR bl Camp 62 Creek Div/Requirement"
+        },
+        "node/IFR bl Camp 62 Creek Div/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Camp 62 Creek Div [node]"
+        },
+        "node/IFR bl Chinquapin Creek Div/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/IFR bl Chinquapin Creek Div/Requirement"
+        },
+        "node/IFR bl Chinquapin Creek Div/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Chinquapin Creek Div [node]"
+        },
+        "node/IFR bl Florence Lake/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/IFR bl Florence Lake/Requirement"
+        },
+        "node/IFR bl Florence Lake/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Florence Lake [node]"
+        },
+        "node/IFR bl Huntington Lake/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/IFR bl Huntington Lake/Requirement"
+        },
+        "node/IFR bl Huntington Lake/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Huntington Lake [node]"
+        },
+        "node/IFR bl Kerckhoff Lake/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/IFR bl Kerckhoff Lake/Requirement"
+        },
+        "node/IFR bl Kerckhoff Lake/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Kerckhoff Lake [node]"
+        },
+        "node/IFR bl Mammoth Pool Reservoir/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/IFR bl Mammoth Pool Reservoir/Requirement"
+        },
+        "node/IFR bl Mammoth Pool Reservoir/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Mammoth Pool Reservoir [node]"
+        },
+        "node/IFR bl Manzanita Div/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/IFR bl Manzanita Div/Requirement"
+        },
+        "node/IFR bl Manzanita Div/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Manzanita Div [node]"
+        },
+        "node/IFR bl Mono Creek Div/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/IFR bl Mono Creek Div/Requirement"
+        },
+        "node/IFR bl Mono Creek Div/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Mono Creek Div [node]"
+        },
+        "node/IFR bl Pitman Creek Div/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/IFR bl Pitman Creek Div/Requirement"
+        },
+        "node/IFR bl Pitman Creek Div/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Pitman Creek Div [node]"
+        },
+        "node/IFR bl Redinger Lake/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/IFR bl Redinger Lake/Requirement"
+        },
+        "node/IFR bl Redinger Lake/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Redinger Lake [node]"
+        },
+        "node/IFR bl San Joaquin 1 Div/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/IFR bl San Joaquin 1 Div/Requirement"
+        },
+        "node/IFR bl San Joaquin 1 Div/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl San Joaquin 1 Div [node]"
+        },
+        "node/IFR bl Shaver Lake/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/IFR bl Shaver Lake/Requirement"
+        },
+        "node/IFR bl Shaver Lake/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Shaver Lake [node]"
+        },
+        "node/IFR bl Tunnel 7 Div/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/IFR bl Tunnel 7 Div/Requirement"
+        },
+        "node/IFR bl Tunnel 7 Div/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Tunnel 7 Div [node]"
+        },
+        "node/Kerckhoff 1 PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Kerckhoff 1 PH/Water Demand"
+        },
+        "node/Kerckhoff 1 PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Kerckhoff 1 PH [node]"
+        },
+        "node/Kerckhoff 2 PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Kerckhoff 2 PH/Water Demand"
+        },
+        "node/Kerckhoff 2 PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Kerckhoff 2 PH [node]"
+        },
+        "node/Kerckhoff Lake/storage": {
+            "type": "NumpyArrayStorageRecorder",
+            "node": "Kerckhoff Lake [node]"
+        },
+        "node/Kerckhoff Lake/observed storage": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Kerckhoff Lake/Observed Storage"
+        },
+        "node/Lake Thomas A Edison/storage": {
+            "type": "NumpyArrayStorageRecorder",
+            "node": "Lake Thomas A Edison [node]"
+        },
+        "node/Lake Thomas A Edison/observed storage": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Lake Thomas A Edison/Observed Storage"
+        },
+        "node/Mammoth Pool PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Mammoth Pool PH/Water Demand"
+        },
+        "node/Mammoth Pool PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Mammoth Pool PH [node]"
+        },
+        "node/Mammoth Pool Reservoir/storage": {
+            "type": "NumpyArrayStorageRecorder",
+            "node": "Mammoth Pool Reservoir [node]"
+        },
+        "node/Mammoth Pool Reservoir/observed storage": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Mammoth Pool Reservoir/Observed Storage"
+        },
+        "node/Millerton Lake/storage": {
+            "type": "NumpyArrayStorageRecorder",
+            "node": "Millerton Lake [node]"
+        },
+        "node/Mono Creek Bl Thomas A Edison Lk_11231500/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Mono Creek Bl Thomas A Edison Lk_11231500/Observed Flow"
+        },
+        "node/Mono Creek Bl Thomas A Edison Lk_11231500/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Mono Creek Bl Thomas A Edison Lk_11231500 [node]"
+        },
+        "node/N Fk Willow Creek Nr Bass Lake_11244000/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/N Fk Willow Creek Nr Bass Lake_11244000/Observed Flow"
+        },
+        "node/N Fk Willow Creek Nr Bass Lake_11244000/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "N Fk Willow Creek Nr Bass Lake_11244000 [node]"
+        },
+        "node/N Fk Willow Creek Nr Sugar Pine_11242400/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/N Fk Willow Creek Nr Sugar Pine_11242400/Observed Flow"
+        },
+        "node/N Fk Willow Creek Nr Sugar Pine_11242400/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "N Fk Willow Creek Nr Sugar Pine_11242400 [node]"
+        },
+        "node/Pitman Creek BL Tamarack Creek_11237500/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Pitman Creek BL Tamarack Creek_11237500/Observed Flow"
+        },
+        "node/Pitman Creek BL Tamarack Creek_11237500/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Pitman Creek BL Tamarack Creek_11237500 [node]"
+        },
+        "node/Portal PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Portal PH/Water Demand"
+        },
+        "node/Portal PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Portal PH [node]"
+        },
+        "node/Redinger Lake/storage": {
+            "type": "NumpyArrayStorageRecorder",
+            "node": "Redinger Lake [node]"
+        },
+        "node/Redinger Lake/observed storage": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Redinger Lake/Observed Storage"
+        },
+        "node/S Joaquin A Miller Crossing_11226500/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/S Joaquin A Miller Crossing_11226500/Observed Flow"
+        },
+        "node/S Joaquin A Miller Crossing_11226500/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "S Joaquin A Miller Crossing_11226500 [node]"
+        },
+        "node/S Joaquin R Ab Shakeflat C_11234760/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/S Joaquin R Ab Shakeflat C_11234760/Observed Flow"
+        },
+        "node/S Joaquin R Ab Shakeflat C_11234760/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "S Joaquin R Ab Shakeflat C_11234760 [node]"
+        },
+        "node/S Joaquin R Ab Willow Creek_11242000/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/S Joaquin R Ab Willow Creek_11242000/Observed Flow"
+        },
+        "node/S Joaquin R Ab Willow Creek_11242000/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "S Joaquin R Ab Willow Creek_11242000 [node]"
+        },
+        "node/San Joaquin 1 PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/San Joaquin 1 PH/Water Demand"
+        },
+        "node/San Joaquin 1 PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "San Joaquin 1 PH [node]"
+        },
+        "node/San Joaquin 1A PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/San Joaquin 1A PH/Water Demand"
+        },
+        "node/San Joaquin 1A PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "San Joaquin 1A PH [node]"
+        },
+        "node/San Joaquin 2 PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/San Joaquin 2 PH/Water Demand"
+        },
+        "node/San Joaquin 2 PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "San Joaquin 2 PH [node]"
+        },
+        "node/San Joaquin 3 PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/San Joaquin 3 PH/Water Demand"
+        },
+        "node/San Joaquin 3 PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "San Joaquin 3 PH [node]"
+        },
+        "node/San Joaquin River Outflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "San Joaquin River Outflow [node]"
+        },
+        "node/SAN-N-FLO1/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SAN-N-FLO1 [node]"
+        },
+        "node/SD Big Creek 1 PH/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/SD Big Creek 1 PH/Requirement"
+        },
+        "node/SD Big Creek 1 PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SD Big Creek 1 PH [node]"
+        },
+        "node/SD Big Creek 2/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/SD Big Creek 2/Requirement"
+        },
+        "node/SD Big Creek 2/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SD Big Creek 2 [node]"
+        },
+        "node/SD Big Creek 2A/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/SD Big Creek 2A/Requirement"
+        },
+        "node/SD Big Creek 2A/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SD Big Creek 2A [node]"
+        },
+        "node/SD Big Creek 3 PH/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/SD Big Creek 3 PH/Requirement"
+        },
+        "node/SD Big Creek 3 PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SD Big Creek 3 PH [node]"
+        },
+        "node/SD Big Creek 4 PH/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/SD Big Creek 4 PH/Requirement"
+        },
+        "node/SD Big Creek 4 PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SD Big Creek 4 PH [node]"
+        },
+        "node/SD Big Creek 8/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/SD Big Creek 8/Requirement"
+        },
+        "node/SD Big Creek 8/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SD Big Creek 8 [node]"
+        },
+        "node/SD Eastwood PH/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/SD Eastwood PH/Requirement"
+        },
+        "node/SD Eastwood PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SD Eastwood PH [node]"
+        },
+        "node/SD Mammoth Pool PH/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/SD Mammoth Pool PH/Requirement"
+        },
+        "node/SD Mammoth Pool PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SD Mammoth Pool PH [node]"
+        },
+        "node/SD Portal PH/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/SD Portal PH/Requirement"
+        },
+        "node/SD Portal PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SD Portal PH [node]"
+        },
+        "node/SD San Joaquin 1 PH/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/SD San Joaquin 1 PH/Requirement"
+        },
+        "node/SD San Joaquin 1 PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SD San Joaquin 1 PH [node]"
+        },
+        "node/SD San Joaquin 1A PH/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/SD San Joaquin 1A PH/Requirement"
+        },
+        "node/SD San Joaquin 1A PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SD San Joaquin 1A PH [node]"
+        },
+        "node/SD San Joaquin 2 PH/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/SD San Joaquin 2 PH/Requirement"
+        },
+        "node/SD San Joaquin 2 PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SD San Joaquin 2 PH [node]"
+        },
+        "node/SD San Joaquin 3 PH/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/SD San Joaquin 3 PH/Requirement"
+        },
+        "node/SD San Joaquin 3 PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SD San Joaquin 3 PH [node]"
+        },
+        "node/Shaver Lake/storage": {
+            "type": "NumpyArrayStorageRecorder",
+            "node": "Shaver Lake [node]"
+        },
+        "node/Shaver Lake/observed storage": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Shaver Lake/Observed Storage"
+        },
+        "node/SJN_01 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_01 Headflow [node]"
+        },
+        "node/SJN_01 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_01 Headflow [node]"
+        },
+        "node/SJN_02 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_02 Headflow [node]"
+        },
+        "node/SJN_02 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_02 Headflow [node]"
+        },
+        "node/SJN_03 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_03 Headflow [node]"
+        },
+        "node/SJN_03 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_03 Headflow [node]"
+        },
+        "node/SJN_04 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_04 Headflow [node]"
+        },
+        "node/SJN_04 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_04 Headflow [node]"
+        },
+        "node/SJN_05 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_05 Headflow [node]"
+        },
+        "node/SJN_05 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_05 Headflow [node]"
+        },
+        "node/SJN_06 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_06 Headflow [node]"
+        },
+        "node/SJN_06 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_06 Headflow [node]"
+        },
+        "node/SJN_07 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_07 Headflow [node]"
+        },
+        "node/SJN_07 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_07 Headflow [node]"
+        },
+        "node/SJN_08 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_08 Headflow [node]"
+        },
+        "node/SJN_08 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_08 Headflow [node]"
+        },
+        "node/SJN_09 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_09 Headflow [node]"
+        },
+        "node/SJN_09 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_09 Headflow [node]"
+        },
+        "node/SJN_10 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_10 Headflow [node]"
+        },
+        "node/SJN_10 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_10 Headflow [node]"
+        },
+        "node/SJN_11 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_11 Headflow [node]"
+        },
+        "node/SJN_11 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_11 Headflow [node]"
+        },
+        "node/SJN_12 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_12 Headflow [node]"
+        },
+        "node/SJN_12 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_12 Headflow [node]"
+        },
+        "node/SJN_13 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_13 Headflow [node]"
+        },
+        "node/SJN_13 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_13 Headflow [node]"
+        },
+        "node/SJN_14 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_14 Headflow [node]"
+        },
+        "node/SJN_14 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_14 Headflow [node]"
+        },
+        "node/SJN_15 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_15 Headflow [node]"
+        },
+        "node/SJN_15 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_15 Headflow [node]"
+        },
+        "node/SJN_16 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_16 Headflow [node]"
+        },
+        "node/SJN_16 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_16 Headflow [node]"
+        },
+        "node/SJN_17 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_17 Headflow [node]"
+        },
+        "node/SJN_17 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_17 Headflow [node]"
+        },
+        "node/SJN_18 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_18 Headflow [node]"
+        },
+        "node/SJN_18 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_18 Headflow [node]"
+        },
+        "node/SJN_19 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_19 Headflow [node]"
+        },
+        "node/SJN_19 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_19 Headflow [node]"
+        },
+        "node/SJN_20 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_20 Headflow [node]"
+        },
+        "node/SJN_20 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_20 Headflow [node]"
+        },
+        "node/SJN_21 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_21 Headflow [node]"
+        },
+        "node/SJN_21 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_21 Headflow [node]"
+        },
+        "node/SJN_22 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_22 Headflow [node]"
+        },
+        "node/SJN_22 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_22 Headflow [node]"
+        },
+        "node/SJN_23 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_23 Headflow [node]"
+        },
+        "node/SJN_23 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_23 Headflow [node]"
+        },
+        "node/SJN_24 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_24 Headflow [node]"
+        },
+        "node/SJN_24 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_24 Headflow [node]"
+        },
+        "node/SJN_25 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_25 Headflow [node]"
+        },
+        "node/SJN_25 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_25 Headflow [node]"
+        },
+        "node/SJN_26 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_26 Headflow [node]"
+        },
+        "node/SJN_26 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_26 Headflow [node]"
+        },
+        "node/SJN_27 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_27 Headflow [node]"
+        },
+        "node/SJN_27 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_27 Headflow [node]"
+        },
+        "node/SJN_28 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_28 Headflow [node]"
+        },
+        "node/SJN_28 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_28 Headflow [node]"
+        },
+        "node/SJN_29 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_29 Headflow [node]"
+        },
+        "node/SJN_29 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_29 Headflow [node]"
+        },
+        "node/SJN_30 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_30 Headflow [node]"
+        },
+        "node/SJN_30 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_30 Headflow [node]"
+        },
+        "node/SJN_31 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_31 Headflow [node]"
+        },
+        "node/SJN_31 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_31 Headflow [node]"
+        },
+        "node/SJN_32 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_32 Headflow [node]"
+        },
+        "node/SJN_32 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_32 Headflow [node]"
+        },
+        "node/SJN_33 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_33 Headflow [node]"
+        },
+        "node/SJN_33 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_33 Headflow [node]"
+        },
+        "node/SJN_34 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_34 Headflow [node]"
+        },
+        "node/SJN_34 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_34 Headflow [node]"
+        },
+        "node/SJN_35 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_35 Headflow [node]"
+        },
+        "node/SJN_35 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_35 Headflow [node]"
+        },
+        "node/SJN_36 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_36 Headflow [node]"
+        },
+        "node/SJN_36 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_36 Headflow [node]"
+        },
+        "node/SJN_37 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_37 Headflow [node]"
+        },
+        "node/SJN_37 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_37 Headflow [node]"
+        },
+        "node/SJN_38 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_38 Headflow [node]"
+        },
+        "node/SJN_38 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SJN_38 Headflow [node]"
+        },
+        "node/USGS_1122950_Ward Tunnel at intake/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_1122950_Ward Tunnel at intake/Observed Flow"
+        },
+        "node/USGS_1122950_Ward Tunnel at intake/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_1122950_Ward Tunnel at intake [node]"
+        },
+        "node/USGS_11230520_BEAR C COND/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_11230520_BEAR C COND/Observed Flow"
+        },
+        "node/USGS_11230520_BEAR C COND/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11230520_BEAR C COND [node]"
+        },
+        "node/USGS_11231550_MONO C COND/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_11231550_MONO C COND/Observed Flow"
+        },
+        "node/USGS_11231550_MONO C COND/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11231550_MONO C COND [node]"
+        },
+        "node/USGS_11235100_MAMMOTH POOL PP/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_11235100_MAMMOTH POOL PP/Observed Flow"
+        },
+        "node/USGS_11235100_MAMMOTH POOL PP/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11235100_MAMMOTH POOL PP [node]"
+        },
+        "node/USGS_11238100_BIG C PH NO1/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_11238100_BIG C PH NO1/Observed Flow"
+        },
+        "node/USGS_11238100_BIG C PH NO1/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11238100_BIG C PH NO1 [node]"
+        },
+        "node/USGS_11238250_EASTWOOD PP/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_11238250_EASTWOOD PP/Observed Flow"
+        },
+        "node/USGS_11238250_EASTWOOD PP/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11238250_EASTWOOD PP [node]"
+        },
+        "node/USGS_11238380_BIG C PH NO 2/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_11238380_BIG C PH NO 2/Observed Flow"
+        },
+        "node/USGS_11238380_BIG C PH NO 2/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11238380_BIG C PH NO 2 [node]"
+        },
+        "node/USGS_11238400_BIG C PH NO2A/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_11238400_BIG C PH NO2A/Observed Flow"
+        },
+        "node/USGS_11238400_BIG C PH NO2A/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11238400_BIG C PH NO2A [node]"
+        },
+        "node/USGS_11238550_BIG C PH NO8/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_11238550_BIG C PH NO8/Observed Flow"
+        },
+        "node/USGS_11238550_BIG C PH NO8/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11238550_BIG C PH NO8 [node]"
+        },
+        "node/USGS_11241800_BIG CR PH NO3/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_11241800_BIG CR PH NO3/Observed Flow"
+        },
+        "node/USGS_11241800_BIG CR PH NO3/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11241800_BIG CR PH NO3 [node]"
+        },
+        "node/USGS_11243300_BROWNS C CN/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_11243300_BROWNS C CN/Observed Flow"
+        },
+        "node/USGS_11243300_BROWNS C CN/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11243300_BROWNS C CN [node]"
+        },
+        "node/USGS_11243500_PGE NO 3 COND/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_11243500_PGE NO 3 COND/Observed Flow"
+        },
+        "node/USGS_11243500_PGE NO 3 COND/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11243500_PGE NO 3 COND [node]"
+        },
+        "node/USGS_11244100_SAN JOAQUIN PH NO3/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_11244100_SAN JOAQUIN PH NO3/Observed Flow"
+        },
+        "node/USGS_11244100_SAN JOAQUIN PH NO3/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11244100_SAN JOAQUIN PH NO3 [node]"
+        },
+        "node/USGS_11246530_BIG C PH NO4/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_11246530_BIG C PH NO4/Observed Flow"
+        },
+        "node/USGS_11246530_BIG C PH NO4/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11246530_BIG C PH NO4 [node]"
+        },
+        "node/USGS_11246570_SAN JOAQUIN PH NO2/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_11246570_SAN JOAQUIN PH NO2/Observed Flow"
+        },
+        "node/USGS_11246570_SAN JOAQUIN PH NO2/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11246570_SAN JOAQUIN PH NO2 [node]"
+        },
+        "node/USGS_11246590_SAN JOAQUIN PH NO1A/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_11246590_SAN JOAQUIN PH NO1A/Observed Flow"
+        },
+        "node/USGS_11246590_SAN JOAQUIN PH NO1A/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11246590_SAN JOAQUIN PH NO1A [node]"
+        },
+        "node/USGS_11246610_SAN JOAQUIN PH NO1 WISHON/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_11246610_SAN JOAQUIN PH NO1 WISHON/Observed Flow"
+        },
+        "node/USGS_11246610_SAN JOAQUIN PH NO1 WISHON/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11246610_SAN JOAQUIN PH NO1 WISHON [node]"
+        },
+        "node/USGS_11246950_KERCKHOFF PH/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_11246950_KERCKHOFF PH/Observed Flow"
+        },
+        "node/USGS_11246950_KERCKHOFF PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11246950_KERCKHOFF PH [node]"
+        },
+        "node/USGS_11247050_KERCKHOFF PH NO2/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/USGS_11247050_KERCKHOFF PH NO2/Observed Flow"
+        },
+        "node/USGS_11247050_KERCKHOFF PH NO2/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11247050_KERCKHOFF PH NO2 [node]"
+        },
+        "node/Willow C A Mouth_11246500/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "node/Willow C A Mouth_11246500/Observed Flow"
+        },
+        "node/Willow C A Mouth_11246500/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Willow C A Mouth_11246500 [node]"
+        }
+    }
+}
