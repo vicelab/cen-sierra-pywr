@@ -1,0 +1,19 @@
+Parameters, Min, High, StepSize
+node/Beardsley Reservoir/Storage Value, -100, 100, 10
+node/Donnells Reservoir/Storage Value, -100, 100, 10
+node/Lyons Reservoir/Storage Value, -100, 100, 10
+node/New Melones Lake/Storage Value, -100, 100, 10
+node/New Spicer Meadow Reservoir/Storage Value, -100, 100, 10
+node/Pinecrest Reservoir/Storage Value, -100, 100, 10
+node/Relief Reservoir/Storage Value, -100, 100, 10
+node/Tulloch Lake/Storage Value, -100, 100, 10
+node/Tulloch Lake/Storage Value, -100, 100, 10
+node/Angels PH/Demand Constant, 10, 1000, 100
+node/Collierville PH/Demand Constant, 10, 1000, 100
+node/Donnells PH/Demand Constant, 10, 1000, 100
+node/Murphys PH/Demand Constant, 10, 1000, 100
+node/New Melones PH/Demand Constant, 10, 1000, 100
+node/Phoenix PH/Demand Constant, 10, 1000, 100
+node/Sand Bar PH/Demand Constant, 10, 1000, 100
+node/Spring Gap PH/Demand Constant, 10, 1000, 100
+node/Stanislaus PH/Demand Constant, 10, 1000, 100
