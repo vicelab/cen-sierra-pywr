@@ -1,8 +1,6 @@
 import pandas as pd
 from parameters import WaterLPParameter
 
-from utilities.converter import convert
-
 class WYI_SJValley(WaterLPParameter):
     """"""
 
