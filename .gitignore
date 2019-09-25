@@ -1,4 +1,5 @@
 instance/
+data/
 .idea/
 .ipynb_checkpoints/
 *.env
