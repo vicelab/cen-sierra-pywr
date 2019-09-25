@@ -7,8 +7,8 @@ class WYI_SJValley(WaterLPParameter):
     """"""
 
     def value(self, timestep, scenario_index):
-        return pd.read_csv("s3_imports/SJVI.csv", index_col=0, header=0, parse_dates=False,
-                           squeeze=True).loc[timestep.year]
+        sjvi = self.read_csv("s3_imports/SJVI.csv", index_col=0, header=0, parse_dates=False, squeeze=True)
+        return sjvi[timestep.year]
 
     @classmethod
     def load(cls, model, data):
