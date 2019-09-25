@@ -1,3 +1,4 @@
+instance/
 .idea/
 .ipynb_checkpoints/
 *.env
