@@ -9,7 +9,7 @@ class node_Angels_PH_Cost_1(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         path = "s3_imports/energy_netDemand.csv"
-        data = pd.read_csv(path, header=None, index_col=0,names=['day', 'TotDemand', 'MaxDemand', 'MinDemand'])
+        data = self.read_csv(path, header=None, index_col=0,names=['day', 'TotDemand', 'MaxDemand', 'MinDemand'])
         totDemand = float(data['TotDemand'][str(timestep.month) + "/" + str(timestep.day) + "/" + str(timestep.year)])
         maxDemand = float(data['MaxDemand'][str(timestep.month) + "/" + str(timestep.day) + "/" + str(timestep.year)])
         minDemand = float(data['MinDemand'][str(timestep.month) + "/" + str(timestep.day) + "/" + str(timestep.year)])
@@ -32,7 +32,7 @@ class node_Angels_PH_Cost_2(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         path = "s3_imports/energy_netDemand.csv"
-        data = pd.read_csv(path, header=None, index_col=0,names=['day', 'TotDemand', 'MaxDemand', 'MinDemand'])
+        data = self.read_csv(path, header=None, index_col=0,names=['day', 'TotDemand', 'MaxDemand', 'MinDemand'])
         totDemand = float(data['TotDemand'][str(timestep.month) + "/" + str(timestep.day) + "/" + str(timestep.year)])
         maxDemand = float(data['MaxDemand'][str(timestep.month) + "/" + str(timestep.day) + "/" + str(timestep.year)])
         minDemand = float(data['MinDemand'][str(timestep.month) + "/" + str(timestep.day) + "/" + str(timestep.year)])
@@ -55,7 +55,7 @@ class node_Angels_PH_Cost_3(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         path = "s3_imports/energy_netDemand.csv"
-        data = pd.read_csv(path, header=None, index_col=0,names=['day', 'TotDemand', 'MaxDemand', 'MinDemand'])
+        data = self.read_csv(path, header=None, index_col=0,names=['day', 'TotDemand', 'MaxDemand', 'MinDemand'])
         totDemand = float(data['TotDemand'][str(timestep.month) + "/" + str(timestep.day) + "/" + str(timestep.year)])
         maxDemand = float(data['MaxDemand'][str(timestep.month) + "/" + str(timestep.day) + "/" + str(timestep.year)])
         minDemand = float(data['MinDemand'][str(timestep.month) + "/" + str(timestep.day) + "/" + str(timestep.year)])
@@ -78,7 +78,7 @@ class node_Angels_PH_Cost_4(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         path = "s3_imports/energy_netDemand.csv"
-        data = pd.read_csv(path, header=None, index_col=0,names=['day', 'TotDemand', 'MaxDemand', 'MinDemand'])
+        data = self.read_csv(path, header=None, index_col=0,names=['day', 'TotDemand', 'MaxDemand', 'MinDemand'])
         totDemand = float(data['TotDemand'][str(timestep.month) + "/" + str(timestep.day) + "/" + str(timestep.year)])
         maxDemand = float(data['MaxDemand'][str(timestep.month) + "/" + str(timestep.day) + "/" + str(timestep.year)])
         minDemand = float(data['MinDemand'][str(timestep.month) + "/" + str(timestep.day) + "/" + str(timestep.year)])

@@ -62,17 +62,17 @@
     {
       "name": "Angels PH [node]",
       "type": "PiecewiseLink",
-      "max_flows": [
+      "max_flow": [
         "node/Angels PH/Water Demand",
         "node/Angels PH/Water Demand",
         "node/Angels PH/Water Demand",
         "node/Angels PH/Water Demand"
       ],
-      "costs": [
-        "node/Angels PH/Cost_1",
-        "node/Angels PH/Cost_2",
-        "node/Angels PH/Cost_3",
-        "node/Angels PH/Cost_4"
+      "cost": [
+        "node/Angels PH/Cost/1",
+        "node/Angels PH/Cost/2",
+        "node/Angels PH/Cost/3",
+        "node/Angels PH/Cost/4"
       ]
     },
     {
@@ -150,17 +150,17 @@
     {
       "name": "Collierville PH [node]",
       "type": "PiecewiseLink",
-      "max_flows": [
+      "max_flow": [
         "node/Collierville PH/Water Demand",
         "node/Collierville PH/Water Demand",
         "node/Collierville PH/Water Demand",
         "node/Collierville PH/Water Demand"
       ],
-      "costs": [
-        "node/Collierville PH/Cost_1",
-        "node/Collierville PH/Cost_2",
-        "node/Collierville PH/Cost_3",
-        "node/Collierville PH/Cost_4"
+      "cost": [
+        "node/Collierville PH/Cost/1",
+        "node/Collierville PH/Cost/2",
+        "node/Collierville PH/Cost/3",
+        "node/Collierville PH/Cost/4"
       ]
     },
     {
@@ -178,17 +178,17 @@
     {
       "name": "Donnells PH [node]",
       "type": "PiecewiseLink",
-      "max_flows": [
+      "max_flow": [
         "node/Donnells PH/Water Demand",
         "node/Donnells PH/Water Demand",
         "node/Donnells PH/Water Demand",
         "node/Donnells PH/Water Demand"
       ],
-      "costs": [
-        "node/Donnells PH/Cost_1",
-        "node/Donnells PH/Cost_2",
-        "node/Donnells PH/Cost_3",
-        "node/Donnells PH/Cost_4"
+      "cost": [
+        "node/Donnells PH/Cost/1",
+        "node/Donnells PH/Cost/2",
+        "node/Donnells PH/Cost/3",
+        "node/Donnells PH/Cost/4"
       ]
     },
     {
@@ -362,17 +362,17 @@
     {
       "name": "Murphys PH [node]",
       "type": "PiecewiseLink",
-      "max_flows": [
+      "max_flow": [
         "node/Murphys PH/Water Demand",
         "node/Murphys PH/Water Demand",
         "node/Murphys PH/Water Demand",
         "node/Murphys PH/Water Demand"
       ],
-      "costs": [
-        "node/Murphys PH/Cost_1",
-        "node/Murphys PH/Cost_2",
-        "node/Murphys PH/Cost_3",
-        "node/Murphys PH/Cost_4"
+      "cost": [
+        "node/Murphys PH/Cost/1",
+        "node/Murphys PH/Cost/2",
+        "node/Murphys PH/Cost/3",
+        "node/Murphys PH/Cost/4"
       ]
     },
     {
@@ -385,17 +385,17 @@
     {
       "name": "New Melones PH [node]",
       "type": "PiecewiseLink",
-      "max_flows": [
+      "max_flow": [
         "node/New Melones PH/Water Demand",
         "node/New Melones PH/Water Demand",
         "node/New Melones PH/Water Demand",
         "node/New Melones PH/Water Demand"
       ],
-      "costs": [
-        "node/New Melones PH/Cost_1",
-        "node/New Melones PH/Cost_2",
-        "node/New Melones PH/Cost_3",
-        "node/New Melones PH/Cost_4"
+      "cost": [
+        "node/New Melones PH/Cost/1",
+        "node/New Melones PH/Cost/2",
+        "node/New Melones PH/Cost/3",
+        "node/New Melones PH/Cost/4"
       ]
     },
     {
@@ -451,17 +451,17 @@
     {
       "name": "Phoenix PH [node]",
       "type": "PiecewiseLink",
-      "max_flows": [
+      "max_flow": [
         "node/Phoenix PH/Water Demand",
         "node/Phoenix PH/Water Demand",
         "node/Phoenix PH/Water Demand",
         "node/Phoenix PH/Water Demand"
       ],
-      "costs": [
-        "node/Phoenix PH/Cost_1",
-        "node/Phoenix PH/Cost_2",
-        "node/Phoenix PH/Cost_3",
-        "node/Phoenix PH/Cost_4"
+      "cost": [
+        "node/Phoenix PH/Cost/1",
+        "node/Phoenix PH/Cost/2",
+        "node/Phoenix PH/Cost/3",
+        "node/Phoenix PH/Cost/4"
       ]
     },
     {
@@ -483,17 +483,17 @@
     {
       "name": "Sand Bar PH [node]",
       "type": "PiecewiseLink",
-      "max_flows": [
+      "max_flow": [
         "node/Sand Bar PH/Water Demand",
         "node/Sand Bar PH/Water Demand",
         "node/Sand Bar PH/Water Demand",
         "node/Sand Bar PH/Water Demand"
       ],
-      "costs": [
-        "node/Sand Bar PH/Cost_1",
-        "node/Sand Bar PH/Cost_2",
-        "node/Sand Bar PH/Cost_3",
-        "node/Sand Bar PH/Cost_4"
+      "cost": [
+        "node/Sand Bar PH/Cost/1",
+        "node/Sand Bar PH/Cost/2",
+        "node/Sand Bar PH/Cost/3",
+        "node/Sand Bar PH/Cost/4"
       ]
     },
     {
@@ -535,17 +535,17 @@
     {
       "name": "Spring Gap PH [node]",
       "type": "PiecewiseLink",
-      "max_flows": [
+      "max_flow": [
         "node/Spring Gap PH/Water Demand",
         "node/Spring Gap PH/Water Demand",
         "node/Spring Gap PH/Water Demand",
         "node/Spring Gap PH/Water Demand"
       ],
-      "costs": [
-        "node/Spring Gap PH/Cost_1",
-        "node/Spring Gap PH/Cost_2",
-        "node/Spring Gap PH/Cost_3",
-        "node/Spring Gap PH/Cost_4"
+      "cost": [
+        "node/Spring Gap PH/Cost/1",
+        "node/Spring Gap PH/Cost/2",
+        "node/Spring Gap PH/Cost/3",
+        "node/Spring Gap PH/Cost/4"
       ]
     },
     {
@@ -569,17 +569,17 @@
     {
       "name": "Stanislaus PH [node]",
       "type": "PiecewiseLink",
-      "max_flows": [
+      "max_flow": [
         "node/Stanislaus PH/Water Demand",
         "node/Stanislaus PH/Water Demand",
         "node/Stanislaus PH/Water Demand",
         "node/Stanislaus PH/Water Demand"
       ],
-      "costs": [
-        "node/Stanislaus PH/Cost_1",
-        "node/Stanislaus PH/Cost_2",
-        "node/Stanislaus PH/Cost_3",
-        "node/Stanislaus PH/Cost_4"
+      "cost": [
+        "node/Stanislaus PH/Cost/1",
+        "node/Stanislaus PH/Cost/2",
+        "node/Stanislaus PH/Cost/3",
+        "node/Stanislaus PH/Cost/4"
       ]
     },
     {
@@ -1800,6 +1800,27 @@
     ]
   ],
   "parameters": {
+    "Total Net Energy Demand": {
+      "type": "dataframe",
+      "url": "./s3_imports/energy_netDemand.csv",
+      "column": "Tot Demand(GWh)",
+      "index_col": "Date",
+      "parse_dates": true
+    },
+    "Max Net Energy Demand": {
+      "type": "dataframe",
+      "url": "./s3_imports/energy_netDemand.csv",
+      "column": "Max Hr Demand (GW)",
+      "index_col": "Date",
+      "parse_dates": true
+    },
+    "Min Net Energy Demand": {
+      "type": "dataframe",
+      "url": "./s3_imports/energy_netDemand.csv",
+      "column": "Min Hr Demand (GW)",
+      "index_col": "Date",
+      "parse_dates": true
+    },
     "node/New Melones Flood Control [node]/Violation Cost": {
       "type": "controlcurveinterpolated",
       "storage_node": "New Melones Lake [node]",
@@ -1859,23 +1880,31 @@
     "node/Angels PH/Water Demand": {
       "type": "node_Angels_PH_Water_Demand"
     },
-    "node/Angels PH/Cost_1": {
-      "type": "node_Angels_PH_Cost_1"
+    "node/Angels PH/Cost/1": {
+      "type": "network_PH_Cost"
     },
-    "node/Angels PH/Cost_2": {
-      "type": "node_Angels_PH_Cost_2"
+    "node/Angels PH/Cost/2": {
+      "type": "network_PH_Cost"
     },
-    "node/Angels PH/Cost_3": {
-      "type": "node_Angels_PH_Cost_3"
+    "node/Angels PH/Cost/3": {
+      "type": "network_PH_Cost"
     },
-    "node/Angels PH/Cost_4": {
-      "type": "node_Angels_PH_Cost_4"
+    "node/Angels PH/Cost/4": {
+      "type": "network_PH_Cost"
     },
     "node/AVERY_11294500/Observed Flow": {
-      "type": "node_AVERY_11294500_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11294500",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/BEARDSLEY PH NR STRAWBERRY CA_11292820/Observed Flow": {
-      "type": "node_BEARDSLEY_PH_NR_STRAWBERRY_CA_11292820_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11292820",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/Beardsley Reservoir/Storage Capacity": {
       "type": "constant",
@@ -1886,7 +1915,11 @@
       "value": 25
     },
     "node/Beardsley Reservoir/Observed Storage": {
-      "type": "node_Beardsley_Reservoir_Observed_Storage"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/storage.csv",
+      "column": "Beardsley Reservoir",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/Beardsley Reservoir/Turbine Capacity": {
       "type": "constant",
@@ -1935,16 +1968,32 @@
       "kind": "cubic"
     },
     "node/BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210/Observed Flow": {
-      "type": "node_BEAVER_C_DIV_TO_MCKAYS_POINT_RES_NR_ARNO_11295210_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11295210",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230/Observed Flow": {
-      "type": "node_BEAVER_CR_BEL_DIV_DAM_NR_ARNOLD_CA_11295230_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11295230",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/BL MCKAYS POINT DAM_11295270/Observed Flow": {
-      "type": "node_BL_MCKAYS_POINT_DAM_11295270_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11295270",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500/Observed Flow": {
-      "type": "node_CLARK_FORK_STANISLAUS_R_NR_DARDANELLE_CA_11292500_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11292500",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/Collierville PH/Fixed Head": {
       "type": "constant",
@@ -1957,17 +2006,17 @@
     "node/Collierville PH/Water Demand": {
       "type": "node_Collierville_PH_Water_Demand"
     },
-    "node/Collierville PH/Cost_1": {
-      "type": "node_Collierville_PH_Cost_1"
+    "node/Collierville PH/Cost/1": {
+      "type": "network_PH_Cost"
     },
-    "node/Collierville PH/Cost_2": {
-      "type": "node_Collierville_PH_Cost_2"
+    "node/Collierville PH/Cost/2": {
+      "type": "network_PH_Cost"
     },
-    "node/Collierville PH/Cost_3": {
-      "type": "node_Collierville_PH_Cost_3"
+    "node/Collierville PH/Cost/3": {
+      "type": "network_PH_Cost"
     },
-    "node/Collierville PH/Cost_4": {
-      "type": "node_Collierville_PH_Cost_4"
+    "node/Collierville PH/Cost/4": {
+      "type": "network_PH_Cost"
     },
     "node/Donnells PH/Fixed Head": {
       "type": "constant",
@@ -1980,17 +2029,17 @@
     "node/Donnells PH/Water Demand": {
       "type": "node_Donnells_PH_Water_Demand"
     },
-    "node/Donnells PH/Cost_1": {
-      "type": "node_Donnells_PH_Cost_1"
+    "node/Donnells PH/Cost/1": {
+      "type": "network_PH_Cost"
     },
-    "node/Donnells PH/Cost_2": {
-      "type": "node_Donnells_PH_Cost_2"
+    "node/Donnells PH/Cost/2": {
+      "type": "network_PH_Cost"
     },
-    "node/Donnells PH/Cost_3": {
-      "type": "node_Donnells_PH_Cost_3"
+    "node/Donnells PH/Cost/3": {
+      "type": "network_PH_Cost"
     },
-    "node/Donnells PH/Cost_4": {
-      "type": "node_Donnells_PH_Cost_4"
+    "node/Donnells PH/Cost/4": {
+      "type": "network_PH_Cost"
     },
     "node/Donnells Reservoir/Storage Capacity": {
       "type": "constant",
@@ -2001,7 +2050,11 @@
       "value": 6.2
     },
     "node/Donnells Reservoir/Observed Storage": {
-      "type": "node_Donnells_Reservoir_Observed_Storage"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/storage.csv",
+      "column": "Donnells Reservoir",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/Donnells Reservoir/Storage Value": {
       "type": "node_Donnells_Reservoir_Storage_Value"
@@ -2048,10 +2101,18 @@
       "kind": "cubic"
     },
     "node/HIGHLAND CREEK BELOW NEW SPICER_11294000/Observed Flow": {
-      "type": "node_HIGHLAND_CREEK_BELOW_NEW_SPICER_11294000_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11294000",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700/Observed Flow": {
-      "type": "node_HOBART_C_AT_NF_DIV_TUNNL_OUTLT_NR_SPICER_11293700_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11293700",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/IFR bl Angels Div/Violation Cost": {
       "type": "constant",
@@ -2129,7 +2190,11 @@
       "value": 0.142
     },
     "node/JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/Observed Flow": {
-      "type": "node_JW_SOUTHERN_PP_A_SND_BAR_DIV_DAM_NR_LNG_BRN_CA_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11292860",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/Lyons Reservoir/Storage Capacity": {
       "type": "constant",
@@ -2140,7 +2205,11 @@
       "value": 1.25
     },
     "node/Lyons Reservoir/Observed Storage": {
-      "type": "node_Lyons_Reservoir_Observed_Storage"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/storage.csv",
+      "column": "Lyons Reservoir",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/Lyons Reservoir/Storage Value": {
       "type": "node_Lyons_Reservoir_Storage_Value"
@@ -2175,16 +2244,32 @@
       "kind": "cubic"
     },
     "node/MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700/Observed Flow": {
-      "type": "node_MF_STANISLAUS_R_A_HELLS_HALF_ACRE_BRIDGE_11292700_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11292700",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000/Observed Flow": {
-      "type": "node_MF_STANISLAUS_R_AT_KENNEDY_MDWS_NR_DARD_11292000_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11292000",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/MF STANISLAUS R BL BEARDSLEY DAM CA_11292900/Observed Flow": {
-      "type": "node_MF_STANISLAUS_R_BL_BEARDSLEY_DAM_CA_11292900_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11292900",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200/Observed Flow": {
-      "type": "node_MF_STANISLAUS_R_BL_SND_BAR_DIV_DAM_NR_AV_11293200_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11293200",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/Murphys PH/Fixed Head": {
       "type": "constant",
@@ -2197,20 +2282,24 @@
     "node/Murphys PH/Water Demand": {
       "type": "node_Murphys_PH_Water_Demand"
     },
-    "node/Murphys PH/Cost_1": {
-      "type": "node_Murphys_PH_Cost_1"
+    "node/Murphys PH/Cost/1": {
+      "type": "network_PH_Cost"
     },
-    "node/Murphys PH/Cost_2": {
-      "type": "node_Murphys_PH_Cost_2"
+    "node/Murphys PH/Cost/2": {
+      "type": "network_PH_Cost"
     },
-    "node/Murphys PH/Cost_3": {
-      "type": "node_Murphys_PH_Cost_3"
+    "node/Murphys PH/Cost/3": {
+      "type": "network_PH_Cost"
     },
-    "node/Murphys PH/Cost_4": {
-      "type": "node_Murphys_PH_Cost_4"
+    "node/Murphys PH/Cost/4": {
+      "type": "network_PH_Cost"
     },
     "node/New Melones Lake/Observed Storage": {
-      "type": "node_New_Melones_Lake_Observed_Storage"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/storage.csv",
+      "column": "New Melones Lake",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/New Melones/Storage Demand": {
       "type": "node_New_Melones_Storage_Demand"
@@ -2225,17 +2314,17 @@
     "node/New Melones PH/Water Demand": {
       "type": "node_New_Melones_PH_Water_Demand"
     },
-    "node/New Melones PH/Cost_1": {
-      "type": "node_New_Melones_PH_Cost_1"
+    "node/New Melones PH/Cost/1": {
+      "type": "network_PH_Cost"
     },
-    "node/New Melones PH/Cost_2": {
-      "type": "node_New_Melones_PH_Cost_2"
+    "node/New Melones PH/Cost/2": {
+      "type": "network_PH_Cost"
     },
-    "node/New Melones PH/Cost_3": {
-      "type": "node_New_Melones_PH_Cost_3"
+    "node/New Melones PH/Cost/3": {
+      "type": "network_PH_Cost"
     },
-    "node/New Melones PH/Cost_4": {
-      "type": "node_New_Melones_PH_Cost_4"
+    "node/New Melones PH/Cost/4": {
+      "type": "network_PH_Cost"
     },
     "node/Release from New Melones/Release": {
       "type": "New_Melones_Release_Policy"
@@ -2249,7 +2338,11 @@
       "value": 50
     },
     "node/New Spicer Meadow Reservoir/Observed Storage": {
-      "type": "node_New_Spicer_Meadow_Reservoir_Observed_Storage"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/storage.csv",
+      "column": "New Spicer Meadow Reservoir",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/New Spicer Meadow Reservoir/Turbine Capacity": {
       "type": "constant",
@@ -2292,16 +2385,32 @@
       "kind": "cubic"
     },
     "node/NF STANISLAUS DIV TU OL BL HOBART C_11293710/Observed Flow": {
-      "type": "node_NF_STANISLAUS_DIV_TU_OL_BL_HOBART_C_11293710_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11293710",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300/Observed Flow": {
-      "type": "node_NF_STANISLAUS_R_BL_BEAVER_C_NR_HATHAWAY_11295300_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11295300",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600/Observed Flow": {
-      "type": "node_NF_STANISLAUS_R_BL_DIV_DAM_NR_BIG_MDW_CA_11293600_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11293600",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/NF STANISLAUS R BL SILVER C CA_11293500/Observed Flow": {
-      "type": "node_NF_STANISLAUS_R_BL_SILVER_C_CA_11293500_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11293500",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/Phoenix PH/Fixed Head": {
       "type": "constant",
@@ -2314,17 +2423,17 @@
     "node/Phoenix PH/Water Demand": {
       "type": "node_Phoenix_PH_Water_Demand"
     },
-    "node/Phoenix PH/Cost_1": {
-      "type": "node_Phoenix_PH_Cost_1"
+    "node/Phoenix PH/Cost/1": {
+      "type": "network_PH_Cost"
     },
-    "node/Phoenix PH/Cost_2": {
-      "type": "node_Phoenix_PH_Cost_2"
+    "node/Phoenix PH/Cost/2": {
+      "type": "network_PH_Cost"
     },
-    "node/Phoenix PH/Cost_3": {
-      "type": "node_Phoenix_PH_Cost_3"
+    "node/Phoenix PH/Cost/3": {
+      "type": "network_PH_Cost"
     },
-    "node/Phoenix PH/Cost_4": {
-      "type": "node_Phoenix_PH_Cost_4"
+    "node/Phoenix PH/Cost/4": {
+      "type": "network_PH_Cost"
     },
     "node/Pinecrest Reservoir/Storage Capacity": {
       "type": "constant",
@@ -2335,7 +2444,11 @@
       "value": 4
     },
     "node/Pinecrest Reservoir/Observed Storage": {
-      "type": "node_Pinecrest_Reservoir_Observed_Storage"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/storage.csv",
+      "column": "Pinecrest Reservoir",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/Pinecrest Reservoir/Storage Value": {
       "type": "node_Pinecrest_Reservoir_Storage_Value"
@@ -2378,7 +2491,11 @@
       "value": 1.2
     },
     "node/Relief Reservoir/Observed Storage": {
-      "type": "node_Relief_Reservoir_Observed_Storage"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/storage.csv",
+      "column": "Relief Reservoir",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/Relief Reservoir/Storage Value": {
       "type": "node_Relief_Reservoir_Storage_Value"
@@ -2429,26 +2546,38 @@
     "node/Sand Bar PH/Water Demand": {
       "type": "node_Sand_Bar_PH_Water_Demand"
     },
-    "node/Sand Bar PH/Cost_1": {
-      "type": "node_Sand_Bar_PH_Cost_1"
+    "node/Sand Bar PH/Cost/1": {
+      "type": "network_PH_Cost"
     },
-    "node/Sand Bar PH/Cost_2": {
-      "type": "node_Sand_Bar_PH_Cost_2"
+    "node/Sand Bar PH/Cost/2": {
+      "type": "network_PH_Cost"
     },
-    "node/Sand Bar PH/Cost_3": {
-      "type": "node_Sand_Bar_PH_Cost_3"
+    "node/Sand Bar PH/Cost/3": {
+      "type": "network_PH_Cost"
     },
-    "node/Sand Bar PH/Cost_4": {
-      "type": "node_Sand_Bar_PH_Cost_4"
+    "node/Sand Bar PH/Cost/4": {
+      "type": "network_PH_Cost"
     },
     "node/SF STANISLAUS R A STRAWBERRY CA_11296500/Observed Flow": {
-      "type": "node_SF_STANISLAUS_R_A_STRAWBERRY_CA_11296500_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11296500",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/SF STANISLAUS R NR LONG BARN CA_11298000/Observed Flow": {
-      "type": "node_SF_STANISLAUS_R_NR_LONG_BARN_CA_11298000_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11298000",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/SF STANISLAUS R NR STRAWBERRY CA_11297200/Observed Flow": {
-      "type": "node_SF_STANISLAUS_R_NR_STRAWBERRY_CA_11297200_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11292610",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/Spring Gap PH/Fixed Head": {
       "type": "constant",
@@ -2461,17 +2590,17 @@
     "node/Spring Gap PH/Water Demand": {
       "type": "node_Spring_Gap_PH_Water_Demand"
     },
-    "node/Spring Gap PH/Cost_1": {
-      "type": "node_Spring_Gap_PH_Cost_1"
+    "node/Spring Gap PH/Cost/1": {
+      "type": "network_PH_Cost"
     },
-    "node/Spring Gap PH/Cost_2": {
-      "type": "node_Spring_Gap_PH_Cost_2"
+    "node/Spring Gap PH/Cost/2": {
+      "type": "network_PH_Cost"
     },
-    "node/Spring Gap PH/Cost_3": {
-      "type": "node_Spring_Gap_PH_Cost_3"
+    "node/Spring Gap PH/Cost/3": {
+      "type": "network_PH_Cost"
     },
-    "node/Spring Gap PH/Cost_4": {
-      "type": "node_Spring_Gap_PH_Cost_4"
+    "node/Spring Gap PH/Cost/4": {
+      "type": "network_PH_Cost"
     },
     "node/Stanislaus PH/Fixed Head": {
       "type": "constant",
@@ -2484,95 +2613,199 @@
     "node/Stanislaus PH/Water Demand": {
       "type": "node_Stanislaus_PH_Water_Demand"
     },
-    "node/Stanislaus PH/Cost_1": {
-      "type": "node_Stanislaus_PH_Cost_1"
+    "node/Stanislaus PH/Cost/1": {
+      "type": "network_PH_Cost"
     },
-    "node/Stanislaus PH/Cost_2": {
-      "type": "node_Stanislaus_PH_Cost_2"
+    "node/Stanislaus PH/Cost/2": {
+      "type": "network_PH_Cost"
     },
-    "node/Stanislaus PH/Cost_3": {
-      "type": "node_Stanislaus_PH_Cost_3"
+    "node/Stanislaus PH/Cost/3": {
+      "type": "network_PH_Cost"
     },
-    "node/Stanislaus PH/Cost_4": {
-      "type": "node_Stanislaus_PH_Cost_4"
+    "node/Stanislaus PH/Cost/4": {
+      "type": "network_PH_Cost"
     },
     "node/STN_01 Headflow/Runoff": {
-      "type": "node_STN_01_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb01.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_02 Headflow/Runoff": {
-      "type": "node_STN_02_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb02.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_03 Headflow/Runoff": {
-      "type": "node_STN_03_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb03.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_04 Headflow/Runoff": {
-      "type": "node_STN_04_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb04.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_05 Headflow/Runoff": {
-      "type": "node_STN_05_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb05.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_06 Headflow/Runoff": {
-      "type": "node_STN_06_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb06.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_07 Headflow/Runoff": {
-      "type": "node_STN_07_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb07.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_08 Headflow/Runoff": {
-      "type": "node_STN_08_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb08.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_09 Headflow/Runoff": {
-      "type": "node_STN_09_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb09.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_10 Headflow/Runoff": {
-      "type": "node_STN_10_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb10.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_11 Headflow/Runoff": {
-      "type": "node_STN_11_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb11.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_12 Headflow/Runoff": {
-      "type": "node_STN_12_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb12.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_13 Headflow/Runoff": {
-      "type": "node_STN_13_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb13.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_14 Headflow/Runoff": {
-      "type": "node_STN_14_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb14.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_15 Headflow/Runoff": {
-      "type": "node_STN_15_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb15.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_16 Headflow/Runoff": {
-      "type": "node_STN_16_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb16.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_17 Headflow/Runoff": {
-      "type": "node_STN_17_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb17.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_18 Headflow/Runoff": {
-      "type": "node_STN_18_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb18.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_19 Headflow/Runoff": {
-      "type": "node_STN_19_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb19.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_20 Headflow/Runoff": {
-      "type": "node_STN_20_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb20.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_21 Headflow/Runoff": {
-      "type": "node_STN_21_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb21.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_22 Headflow/Runoff": {
-      "type": "node_STN_22_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb22.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_23 Headflow/Runoff": {
-      "type": "node_STN_23_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb23.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_24 Headflow/Runoff": {
-      "type": "node_STN_24_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb24.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/STN_25 Headflow/Runoff": {
-      "type": "node_STN_25_Headflow_Runoff"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb25.csv",
+      "column": "flw",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/Tulloch Lake/Observed Storage": {
-      "type": "node_Tulloch_Lake_Observed_Storage"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/storage.csv",
+      "column": "Tulloch Lake",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/Tulloch Lake/Storage Value": {
       "type": "constant",
@@ -2588,22 +2821,46 @@
       "type": "node_Release_From_Tulloch_Lake"
     },
     "node/USGS_11292610 DONNELLS PH/Observed Flow": {
-      "type": "node_USGS_11292610_DONNELLS_PH_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11292610",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/USGS_11293580_NF STAN R DIV TUNNEL/Observed Flow": {
-      "type": "node_USGS_11293580_NF_STAN_R_DIV_TUNNEL_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11293580",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/USGS_11295250_COLLIERVILLE PP/Observed Flow": {
-      "type": "node_USGS_11295250_COLLIERVILLE_PP_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11295250",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/USGS_11295505_STANISLAUS PP/Observed Flow": {
-      "type": "node_USGS_11295505_STANISLAUS_PP_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11295505",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/USGS_11297000_PHILADELPHIA CN/Observed Flow": {
-      "type": "node_USGS_11297000_PHILADELPHIA_CN_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11297000",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "node/USGS_11297500_TUOLUMNE CN/Observed Flow": {
-      "type": "node_USGS_11297500_TUOLUMNE_CN_Observed_Flow"
+      "type": "dataframe",
+      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "column": "11297500",
+      "index_col": "Date",
+      "parse_dates": true
     },
     "WYT_SJValley": {
       "type": "WYT_SJValley"
