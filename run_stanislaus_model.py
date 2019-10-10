@@ -72,7 +72,7 @@ results.columns = results.columns.droplevel(1)
 results_path = './results'
 if not os.path.exists(results_path):
     os.makedirs(results_path)
-results.to_csv(os.path.join(results_path, 'system'))
+results.to_csv(os.path.join(results_path, 'system.csv'))
 attributes = {}
 for c in results.columns:
     attribute = c.split('/')[-1]
@@ -84,4 +84,10 @@ for attribute in attributes:
     path = os.path.join(results_path, '{}.csv'.format(attribute))
     df = results[attributes[attribute]]
     df.columns = [c.split('/')[-2] for c in df.columns]
+    print(attribute)
+    if attribute == 'flow':
+        df2 = df[[c for c in df.columns if c[-3:] == ' PH']]
+        path2 = os.path.join(results_path, 'powerhouse flow.csv')
+        df2.to_csv(path2)
+
     df.to_csv(path)

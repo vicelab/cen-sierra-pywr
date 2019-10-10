@@ -1,5 +1,8 @@
 import os
 import pandas as pd
+from calendar import monthlen
+from datetime import timedelta
+from dateutil.relativedelta import relativedelta
 from hashlib import md5
 
 from pywr.parameters import Parameter
@@ -12,11 +15,28 @@ class WaterLPParameter(Parameter):
 
     # h5store = 'store.h5'
 
+    def setup(self):
+        super(WaterLPParameter, self).setup()
+        self.mode = getattr(self.model, 'mode', 'scheduling')
+
     def GET(self, *args, **kwargs):
         return self.get(*args, **kwargs)
 
     def get(self, param, timestep=None, scenario_index=None):
         return self.model.parameters[param].value(timestep or self.model.timestep, scenario_index)
+
+    def planning_date(self, timestep, month_offset=0):
+        try:
+            # month_offset = int(self.mode == 'planning' and self.name.split('/')[-1])
+            future_date = timestep.datetime + relativedelta(months=+month_offset)
+            return future_date
+        except Exception:
+            # print(Exception)
+            return timestep.datetime
+
+    def days_in_planning_month(self, timestep, month_offset=0):
+        date = self.planning_date(timestep, month_offset)
+        return monthlen(date.year, date.month)
 
     def read_csv(self, *args, **kwargs):
 

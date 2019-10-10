@@ -205,38 +205,15 @@ class PiecewiseHydropower(RiverDomainMixin, PiecewiseLink):
         Parameters
         ----------
         """
-        kwargs['max_flow'] = kwargs.pop('max_flow', [None])
+        kwargs['max_flow'] = kwargs.pop('max_flow', [0.0])
         kwargs['cost'] = kwargs.pop('cost', [0.0])
         super(PiecewiseHydropower, self).__init__(*args, **kwargs)
 
-    def max_flow():
-        def fget(self):
-            return [self.sublinks[i].max_flow for i in self.sublinks]
-
-        def fset(self, value):
-            for i, v in enumerate(value):
-                self.sublinks[i].max_flow = v
-
-        return locals()
-
-    max_flow = property(**max_flow())
-
-    def cost():
-        def fget(self):
-            return [self.sublinks[i].cost for i in self.sublinks]
-
-        def fset(self, value):
-            for i, v in enumerate(value):
-                self.sublinks[i].cost = v
-
-        return locals()
-
-    cost = property(**cost())
 
     @classmethod
     def load(cls, data, model):
-        max_flow = load_parameter(model, data.pop("max_flow", [None]))
-        cost = load_parameter(model, data.pop("cost", [0.0]))
+        max_flow = [load_parameter(model, c) for c in data.pop('max_flow', [0.0])]
+        cost = [load_parameter(model, c) for c in data.pop('cost', [0.0])]
         del (data["type"])
         node = cls(model, max_flow=max_flow, cost=cost, **data)
         return node

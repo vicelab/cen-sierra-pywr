@@ -61,7 +61,7 @@
     },
     {
       "name": "Angels PH [node]",
-      "type": "PiecewiseLink",
+      "type": "PiecewiseHydropower",
       "max_flow": [
         "node/Angels PH/Water Demand",
         "node/Angels PH/Water Demand",
@@ -149,7 +149,7 @@
     },
     {
       "name": "Collierville PH [node]",
-      "type": "PiecewiseLink",
+      "type": "PiecewiseHydropower",
       "max_flow": [
         "node/Collierville PH/Water Demand",
         "node/Collierville PH/Water Demand",
@@ -177,7 +177,7 @@
     },
     {
       "name": "Donnells PH [node]",
-      "type": "PiecewiseLink",
+      "type": "PiecewiseHydropower",
       "max_flow": [
         "node/Donnells PH/Water Demand",
         "node/Donnells PH/Water Demand",
@@ -361,7 +361,7 @@
     },
     {
       "name": "Murphys PH [node]",
-      "type": "PiecewiseLink",
+      "type": "PiecewiseHydropower",
       "max_flow": [
         "node/Murphys PH/Water Demand",
         "node/Murphys PH/Water Demand",
@@ -384,7 +384,7 @@
     },
     {
       "name": "New Melones PH [node]",
-      "type": "PiecewiseLink",
+      "type": "PiecewiseHydropower",
       "max_flow": [
         "node/New Melones PH/Water Demand",
         "node/New Melones PH/Water Demand",
@@ -450,7 +450,7 @@
     },
     {
       "name": "Phoenix PH [node]",
-      "type": "PiecewiseLink",
+      "type": "PiecewiseHydropower",
       "max_flow": [
         "node/Phoenix PH/Water Demand",
         "node/Phoenix PH/Water Demand",
@@ -482,7 +482,7 @@
     },
     {
       "name": "Sand Bar PH [node]",
-      "type": "PiecewiseLink",
+      "type": "PiecewiseHydropower",
       "max_flow": [
         "node/Sand Bar PH/Water Demand",
         "node/Sand Bar PH/Water Demand",
@@ -534,7 +534,7 @@
     },
     {
       "name": "Spring Gap PH [node]",
-      "type": "PiecewiseLink",
+      "type": "PiecewiseHydropower",
       "max_flow": [
         "node/Spring Gap PH/Water Demand",
         "node/Spring Gap PH/Water Demand",
@@ -568,7 +568,7 @@
     },
     {
       "name": "Stanislaus PH [node]",
-      "type": "PiecewiseLink",
+      "type": "PiecewiseHydropower",
       "max_flow": [
         "node/Stanislaus PH/Water Demand",
         "node/Stanislaus PH/Water Demand",
@@ -1802,21 +1802,21 @@
   "parameters": {
     "Total Net Energy Demand": {
       "type": "dataframe",
-      "url": "./s3_imports/energy_netDemand.csv",
-      "column": "Tot Demand(GWh)",
+      "url": "../data/energy_netDemand.csv",
+      "column": "Tot Demand (GWh)",
       "index_col": "Date",
       "parse_dates": true
     },
     "Max Net Energy Demand": {
       "type": "dataframe",
-      "url": "./s3_imports/energy_netDemand.csv",
+      "url": "../data/energy_netDemand.csv",
       "column": "Max Hr Demand (GW)",
       "index_col": "Date",
       "parse_dates": true
     },
     "Min Net Energy Demand": {
       "type": "dataframe",
-      "url": "./s3_imports/energy_netDemand.csv",
+      "url": "../data/energy_netDemand.csv",
       "column": "Min Hr Demand (GW)",
       "index_col": "Date",
       "parse_dates": true
@@ -1878,7 +1878,7 @@
       "value": 3.8313
     },
     "node/Angels PH/Water Demand": {
-      "type": "node_Angels_PH_Water_Demand"
+      "type": "network_PH_Water_Demand"
     },
     "node/Angels PH/Cost/1": {
       "type": "network_PH_Cost"
@@ -2004,7 +2004,7 @@
       "value": 19.5923
     },
     "node/Collierville PH/Water Demand": {
-      "type": "node_Collierville_PH_Water_Demand"
+      "type": "network_PH_Water_Demand"
     },
     "node/Collierville PH/Cost/1": {
       "type": "network_PH_Cost"
@@ -2027,7 +2027,7 @@
       "value": 9.9335
     },
     "node/Donnells PH/Water Demand": {
-      "type": "node_Donnells_PH_Water_Demand"
+      "type": "network_PH_Water_Demand"
     },
     "node/Donnells PH/Cost/1": {
       "type": "network_PH_Cost"
@@ -2280,7 +2280,7 @@
       "value": 5.9041
     },
     "node/Murphys PH/Water Demand": {
-      "type": "node_Murphys_PH_Water_Demand"
+      "type": "network_PH_Water_Demand"
     },
     "node/Murphys PH/Cost/1": {
       "type": "network_PH_Cost"
@@ -2312,7 +2312,7 @@
       "value": 203.0
     },
     "node/New Melones PH/Water Demand": {
-      "type": "node_New_Melones_PH_Water_Demand"
+      "type": "network_PH_Water_Demand"
     },
     "node/New Melones PH/Cost/1": {
       "type": "network_PH_Cost"
@@ -2421,7 +2421,7 @@
       "value": 10.245
     },
     "node/Phoenix PH/Water Demand": {
-      "type": "node_Phoenix_PH_Water_Demand"
+      "type": "network_PH_Water_Demand"
     },
     "node/Phoenix PH/Cost/1": {
       "type": "network_PH_Cost"
@@ -2544,7 +2544,7 @@
       "value": 3.6812
     },
     "node/Sand Bar PH/Water Demand": {
-      "type": "node_Sand_Bar_PH_Water_Demand"
+      "type": "network_PH_Water_Demand"
     },
     "node/Sand Bar PH/Cost/1": {
       "type": "network_PH_Cost"
@@ -2588,7 +2588,7 @@
       "value": 16.0968
     },
     "node/Spring Gap PH/Water Demand": {
-      "type": "node_Spring_Gap_PH_Water_Demand"
+      "type": "network_PH_Water_Demand"
     },
     "node/Spring Gap PH/Cost/1": {
       "type": "network_PH_Cost"
@@ -2611,7 +2611,7 @@
       "value": 13.1191
     },
     "node/Stanislaus PH/Water Demand": {
-      "type": "node_Stanislaus_PH_Water_Demand"
+      "type": "network_PH_Water_Demand"
     },
     "node/Stanislaus PH/Cost/1": {
       "type": "network_PH_Cost"
