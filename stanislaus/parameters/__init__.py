@@ -15,9 +15,33 @@ class WaterLPParameter(Parameter):
 
     # h5store = 'store.h5'
 
+    mode = 'scheduling'
+    res_class = 'network'
+    res_name = None
+    attr_name = None
+    block = None
+    month_offset = 0
+
     def setup(self):
         super(WaterLPParameter, self).setup()
-        self.mode = getattr(self.model, 'mode', 'scheduling')
+
+        self.mode = getattr(self.model, 'mode', self.mode)
+
+        name_parts = self.name.split('/')
+
+        if name_parts[0] in ['link', 'node']:
+            self.res_class = name_parts[0]
+            self.res_name = name_parts[1]
+            self.attr_name = name_parts[2]
+
+            if len(name_parts) == 4:
+                if self.mode == 'scheduling':
+                    self.block = int(name_parts[3])
+                else:
+                    self.month_offset = int(name_parts[3]) - 1
+            elif len(name_parts) == 5:
+                self.month_offset = int(name_parts[4]) - 1
+                self.block = int(name_parts[5])
 
     def GET(self, *args, **kwargs):
         return self.get(*args, **kwargs)

@@ -1800,6 +1800,10 @@
     ]
   ],
   "parameters": {
+    "Blocks": {
+      "type": "constant",
+      "value": 4
+    },
     "Total Net Energy Demand": {
       "type": "dataframe",
       "url": "../data/energy_netDemand.csv",

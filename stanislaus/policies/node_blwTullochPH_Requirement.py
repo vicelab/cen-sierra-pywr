@@ -8,7 +8,7 @@ class node_blwTullochPH_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        year_type = getSJVI_WYT(timestep)
+        year_type = self.model.parameters['WYT_SJValley'].value(timestep, scenario_index)
         timestep_date = timestep.datetime
         current_date = datetime.datetime(2000, timestep_date.month, timestep_date.day)
         if datetime.datetime(2000, 10, 1) < current_date < datetime.datetime(2000, 12, 31):
