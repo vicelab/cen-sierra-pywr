@@ -51,6 +51,8 @@ class WaterLPParameter(Parameter):
                 elif len(name_parts) == 5:
                     self.month = int(name_parts[3])
                     self.block = int(name_parts[4])
+                if self.month:
+                    self.month_offset = self.month - 1
 
             if self.month:
                 self.month_suffix = '/{}'.format(self.month)

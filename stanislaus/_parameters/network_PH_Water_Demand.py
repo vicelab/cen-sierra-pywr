@@ -14,7 +14,7 @@ class network_PH_Water_Demand(WaterLPParameter):
                        .value(timestep, scenario_index) * 3600 * 24 / nblocks
 
         if mode == 'planning':
-            q_demand *= self.days_in_planning_month(timestep, month_offset=self.month_offset)
+            q_demand *= self.days_in_planning_month(timestep, self.month_offset)
 
         return q_demand
 
