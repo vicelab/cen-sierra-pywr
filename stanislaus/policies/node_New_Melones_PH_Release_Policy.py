@@ -1,6 +1,7 @@
 from parameters import WaterLPParameter
 
 
+flow_threshold = 19.572
 class New_Melones_Release_Policy(WaterLPParameter):
     million_m3day_to_m3sec = 11.5740740741
     year_names = ["Critical", "Dry", "Below", "Above", "Wet"]
@@ -35,7 +36,7 @@ class New_Melones_Release_Policy(WaterLPParameter):
         elif (8, 1) < month_day < (9, 14):
             return net_demand
         else:
-            return max(net_demand, min(out_flow, 226.535))
+            return max(net_demand, min(out_flow, flow_threshold))
 
     def value(self, timestep, scenario_index):
         return self._value(timestep, scenario_index)
