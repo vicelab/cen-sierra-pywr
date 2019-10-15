@@ -149,16 +149,3 @@ class WaterLPParameter(Parameter):
 
         return data
 
-
-class CostParameter(WaterLPParameter):
-    path = "energy_netDemand.csv"
-
-    def get_cost(self, timestep, scenario_index, piece, demand_param):
-        data = self.read_csv(self.path, index_col=0, parse_dates=True)
-
-        totDemand, maxDemand, minDemand = data.loc[timestep.datetime]
-        minVal = self.model.parameters[demand_param].value(timestep, scenario_index) * (
-                totDemand / 768)  # 768 GWh is median daily energy demand for 2009
-        maxVal = minVal * (maxDemand / minDemand)
-        d = maxVal - minVal
-        return -(maxVal - (piece * 2 - 1) * d / 8)
