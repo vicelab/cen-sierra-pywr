@@ -36,7 +36,7 @@ class New_Melones_Release_Policy(WaterLPParameter):
         elif (8, 1) < month_day < (9, 14):
             return net_demand
         else:
-            return max(net_demand, min(out_flow, flow_threshold))
+            return max(net_demand, min(outflow, flow_threshold))
 
     def value(self, timestep, scenario_index):
         return self._value(timestep, scenario_index)
