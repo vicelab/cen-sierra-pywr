@@ -250,39 +250,34 @@ def run_model(basin, network_key):
     # ==================
     # Create daily model
     # ==================
-    debug_monthly = True
-    if not debug_monthly:
-        daily_model = Model.load(model_path, path=model_path)
-        daily_model.setup()
-    print('Daily model setup complete')
+    include_monthly = False
+    daily_model = Model.load(model_path, path=model_path)
+    print('Daily model loaded')
+    daily_model.setup()
+    print('Daily model setup completed')
     # =====================
     # Create planning model
     # =====================
 
     # create and initialize monthly model
-    monthly_model = create_planning_model(model_path)
+    if include_monthly:
+        monthly_model = create_planning_model(model_path)
 
-    if debug_monthly:
-        timesteps = range(12)
-    else:
-        timesteps = range(len(daily_model.timestepper))
-    step = None
+    timesteps = range(len(daily_model.timestepper))
 
     # run model
     # note that tqdm + step adds a little bit of overhead.
     # use model.run() instead if seeing progress is not important
 
-    for step in tqdm(timesteps, ncols=80, disable=debug_monthly):
-        if debug_monthly:
-            today = monthly_model.timestepper.current if step else monthly_model.timestepper.start
-        else:
-            today = daily_model.timestepper.current if step else daily_model.timestepper.start
+    for step in tqdm(timesteps, ncols=80):
+
+        today = daily_model.timestepper.current if step else daily_model.timestepper.start
 
         try:
 
             # Step 1: run planning model & update daily model
 
-            if today.day == 1:
+            if include_monthly and today.day == 1:
 
                 # Step 1a: update planning model
 
@@ -315,12 +310,8 @@ def run_model(basin, network_key):
 
     # save results to CSV
 
-    if debug_monthly:
-        results = monthly_model.to_dataframe()
-        results_path = './results_planning_debug'
-    else:
-        results = daily_model.to_dataframe()
-        results_path = './results'
+    results = daily_model.to_dataframe()
+    results_path = './results'
     results.columns = results.columns.droplevel(1)
     if not os.path.exists(results_path):
         os.makedirs(results_path)

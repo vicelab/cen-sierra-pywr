@@ -116,7 +116,7 @@ class WaterLPParameter(Parameter):
 
             args = list(args)
             file_path = args[0]
-            print(file_path)
+
             if '://' in file_path:
                 pass
             elif self.root_path:
