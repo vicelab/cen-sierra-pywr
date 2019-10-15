@@ -8,10 +8,13 @@ from datetime import datetime, timedelta
 class node_New_Spicer_Meadow_Reservoir_Storage_Value(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
-        multiplier = self.model.parameters['storageValueConstant'].value(timestep, scenario_index)
-        storage_value_numerator = self.model.parameters['storage_value_numerator'].value(timestep, scenario_index)
-        leading_multiplier = self.model.parameters['storage_value_leading'].value(timestep, scenario_index)
-        return leading_multiplier * math.exp(multiplier * (storage_value_numerator / self.model.parameters["node/New Spicer Meadow Reservoir/Elevation"].value(timestep, scenario_index)))
+        x = self.model.parameters['storageValueConstant'].value(timestep, scenario_index)
+        beta = self.model.parameters['storage_value_numerator'].value(timestep, scenario_index)
+        alpha = self.model.parameters['storage_value_leading'].value(timestep, scenario_index)
+
+        elev = self.model.parameters[self.elevation_param].value(timestep, scenario_index)
+        val = alpha * math.exp(x * (beta / elev))
+        return val
 
     def value(self, timestep, scenario_index):
         return self._value(timestep, scenario_index)

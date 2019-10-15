@@ -11,16 +11,21 @@ from pywr.parameters import Parameter
 class WaterLPParameter(Parameter):
     store = {}  # TODO: create h5 store on disk (or redis?) to share between class instances
 
-    root_path = os.environ.get('ROOT_S3_PATH', '')
+    root_path = os.environ.get('ROOT_S3_PATH')
 
     # h5store = 'store.h5'
 
     mode = 'scheduling'
     res_class = 'network'
     res_name = None
+    res_name_full = None
     attr_name = None
     block = None
+    month = 0
     month_offset = 0
+    month_suffix = ''
+    demand_constant_param = ''
+    elevation_param = ''
 
     def setup(self):
         super(WaterLPParameter, self).setup()
@@ -28,20 +33,45 @@ class WaterLPParameter(Parameter):
         self.mode = getattr(self.model, 'mode', self.mode)
 
         name_parts = self.name.split('/')
+        res_class = name_parts[0]
 
-        if name_parts[0] in ['link', 'node']:
+        if res_class in ['link', 'node']:
             self.res_class = name_parts[0]
             self.res_name = name_parts[1]
             self.attr_name = name_parts[2]
+            self.res_name_full = '{} [{}]'.format(self.res_name, res_class)
 
-            if len(name_parts) == 4:
-                if self.mode == 'scheduling':
+            if self.mode == 'scheduling':
+                if len(name_parts) == 4:
                     self.block = int(name_parts[3])
-                else:
-                    self.month_offset = int(name_parts[3]) - 1
-            elif len(name_parts) == 5:
-                self.month_offset = int(name_parts[4]) - 1
-                self.block = int(name_parts[5])
+
+            elif self.mode == 'planning':
+                if len(name_parts) == 4:
+                    self.month = int(name_parts[3])
+                elif len(name_parts) == 5:
+                    self.month = int(name_parts[3])
+                    self.block = int(name_parts[4])
+
+            if self.month:
+                self.month_suffix = '/{}'.format(self.month)
+
+            self.res_name_full += self.month_suffix
+
+            node = None
+            try:
+                node = self.model.nodes[self.res_name_full]
+            except:
+                pass
+
+            if node:
+
+                if ' PH' in node.name:
+                    self.demand_constant_param = "node/{}/Demand Constant".format(self.res_name)
+
+                if 'level' in node.component_attrs:
+                    self.elevation_param = 'node/{}/Elevation'.format(self.res_name)
+                    if self.month:
+                        self.elevation_param += self.month_suffix
 
     def GET(self, *args, **kwargs):
         return self.get(*args, **kwargs)
@@ -55,12 +85,18 @@ class WaterLPParameter(Parameter):
             future_date = timestep.datetime + relativedelta(months=+month_offset)
             return future_date
         except Exception:
-            # print(Exception)
+            print(Exception)
             return timestep.datetime
 
     def days_in_planning_month(self, timestep, month_offset=0):
         date = self.planning_date(timestep, month_offset)
         return monthlen(date.year, date.month)
+
+    def dates_in_planning_month(self, timestep, month_offset=0):
+        today = self.planning_date(timestep, month_offset)
+        ndays = monthlen(today.year, today.month)
+        dates = pd.date_range(today, periods=ndays).tolist()
+        return dates
 
     def read_csv(self, *args, **kwargs):
 
@@ -78,10 +114,14 @@ class WaterLPParameter(Parameter):
 
             args = list(args)
             file_path = args[0]
+            print(file_path)
             if '://' in file_path:
                 pass
             elif self.root_path:
-                args[0] = self.root_path + file_path
+                if '://' in self.root_path:
+                    args[0] = os.path.join(self.root_path, file_path)
+                else:
+                    args[0] = os.path.join(self.root_path, self.model.metadata['title'], file_path)
 
             # modify kwargs with sensible defaults
             # TODO: modify these depending on data type (timeseries, array, etc.)
@@ -90,10 +130,15 @@ class WaterLPParameter(Parameter):
             kwargs['index_col'] = kwargs.get('index_col', 0)
 
             # Import data from local files
-            data = pd.read_csv("s3_imports/" + args[0].split('/').pop(), **kwargs)
+            # data = pd.read_csv("s3_imports/" + args[0].split('/').pop(), **kwargs)
 
-            # Import files from the S3 Bucket
-            # data = pd.read_csv(*args, **kwargs)
+            # Import data
+            # print(args)
+            try:
+                data = pd.read_csv(*args, **kwargs)
+            except:
+                print(args)
+                raise
 
             # Saving Data from S3 to a local directory
             # data.to_csv("s3_imports/" + args[0].split('/').pop(), header=True)
@@ -104,7 +149,7 @@ class WaterLPParameter(Parameter):
 
 
 class CostParameter(WaterLPParameter):
-    path = "s3_imports/energy_netDemand.csv"
+    path = "energy_netDemand.csv"
 
     def get_cost(self, timestep, scenario_index, piece, demand_param):
         data = self.read_csv(self.path, index_col=0, parse_dates=True)

@@ -6,18 +6,30 @@ class network_PH_Cost(WaterLPParameter):
 
     # path = "s3_imports/energy_netDemand.csv"
 
-    def _value(self, timestep, scenario_index):
+    baseline_median_daily_energy_demand = 768  # 768 GWh is median daily energy demand for 2009
 
-        demand_param = "node/" + self.res_name + "/Demand Constant"
+    def _value(self, timestep, scenario_index, mode='scheduling'):
 
-        totDemand = self.model.parameters["Total Net Energy Demand"].value(timestep, scenario_index)
-        maxDemand = self.model.parameters["Max Net Energy Demand"].value(timestep, scenario_index)
-        minDemand = self.model.parameters["Min Net Energy Demand"].value(timestep, scenario_index)
+        totDemandP = self.model.parameters["Total Net Energy Demand"]
+        maxDemandP = self.model.parameters["Max Net Energy Demand"]
+        minDemandP = self.model.parameters["Min Net Energy Demand"]
 
-        # data = self.read_csv(self.path, index_col=0, parse_dates=True)
-        # totDemand, maxDemand, minDemand = data.loc[timestep.datetime]
-        minVal = self.model.parameters[demand_param].value(timestep, scenario_index) * (
-                totDemand / 768)  # 768 GWh is median daily energy demand for 2009
+        days_in_period = 1
+
+        if self.mode == 'scheduling':
+            totDemand = totDemandP.value(timestep, scenario_index)
+            minDemand = maxDemandP.value(timestep, scenario_index)
+            maxDemand = maxDemandP.value(timestep, scenario_index)
+
+        else:
+            planning_dates = self.dates_in_planning_month(timestep, month_offset=self.month_offset)
+            days_in_period = len(planning_dates)
+            totDemand = totDemandP.dataframe[planning_dates].sum()
+            minDemand = minDemandP.dataframe[planning_dates].min()
+            maxDemand = maxDemandP.dataframe[planning_dates].max()
+
+        minVal = self.model.parameters[self.demand_constant_param].value(timestep, scenario_index) \
+                 * (totDemand / (self.baseline_median_daily_energy_demand * days_in_period))
         maxVal = minVal * (maxDemand / minDemand)
         d = maxVal - minVal
 
@@ -25,11 +37,12 @@ class network_PH_Cost(WaterLPParameter):
         return -(maxVal - ((self.block * 2 - 1) * d / 2) / nblocks)
 
     def value(self, timestep, scenario_index):
-        return self._value(timestep, scenario_index)
+        return self._value(timestep, scenario_index, mode=self.mode)
 
     @classmethod
     def load(cls, model, data):
         return cls(model, **data)
+
 
 network_PH_Cost.register()
 

@@ -854,8 +854,8 @@
     {
       "name": "Tulloch Lake Flood Control [node]",
       "type": "InstreamFlowRequirement",
-      "mrf": "node/Tulloch Lake Flood Control [node]/Requirement",
-      "mrf_cost": "node/Tulloch Lake Flood Control [node]/Violation Cost"
+      "mrf": "node/Tulloch Lake Flood Control/Requirement",
+      "mrf_cost": "node/Tulloch Lake Flood Control/Violation Cost"
     },
     {
       "name": "Tulloch Lake PH [node]",
@@ -933,8 +933,8 @@
     {
       "name": "New Melones Flood Control [node]",
       "type": "InstreamFlowRequirement",
-      "mrf": "node/New Melones Flood Control [node]/Requirement",
-      "mrf_cost": "node/New Melones Flood Control [node]/Violation Cost"
+      "mrf": "node/New Melones Flood Control/Requirement",
+      "mrf_cost": "node/New Melones Flood Control/Violation Cost"
     },
     {
       "name": "STAN-L-CON 1",
@@ -1825,11 +1825,11 @@
       "index_col": "Date",
       "parse_dates": true
     },
-    "node/New Melones Flood Control [node]/Violation Cost": {
+    "node/New Melones Flood Control/Violation Cost": {
       "type": "controlcurveinterpolated",
       "storage_node": "New Melones Lake [node]",
       "control_curves": [
-        "node/New Melones/Storage Demand"
+        "node/New Melones Lake/Storage Demand"
       ],
       "values": [
         -5000.0,
@@ -1837,11 +1837,11 @@
         0.0
       ]
     },
-    "node/New Melones Flood Control [node]/Requirement": {
+    "node/New Melones Flood Control/Requirement": {
       "type": "controlcurveinterpolated",
       "storage_node": "New Melones Lake [node]",
       "control_curves": [
-        "node/New Melones/Storage Demand"
+        "node/New Melones Lake/Storage Demand"
       ],
       "values": [
         10000,
@@ -1849,7 +1849,7 @@
         0.0
       ]
     },
-    "node/Tulloch Lake Flood Control [node]/Violation Cost": {
+    "node/Tulloch Lake Flood Control/Violation Cost": {
       "type": "controlcurveinterpolated",
       "storage_node": "Tulloch Lake [node]",
       "control_curves": [
@@ -1861,7 +1861,7 @@
         0.0
       ]
     },
-    "node/Tulloch Lake Flood Control [node]/Requirement": {
+    "node/Tulloch Lake Flood Control/Requirement": {
       "type": "controlcurveinterpolated",
       "storage_node": "Tulloch Lake [node]",
       "control_curves": [
@@ -1898,14 +1898,14 @@
     },
     "node/AVERY_11294500/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11294500",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/BEARDSLEY PH NR STRAWBERRY CA_11292820/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11292820",
       "index_col": "Date",
       "parse_dates": true
@@ -1920,7 +1920,7 @@
     },
     "node/Beardsley Reservoir/Observed Storage": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/storage.csv",
+      "url": "../data/Stanislaus River/gauges/storage.csv",
       "column": "Beardsley Reservoir",
       "index_col": "Date",
       "parse_dates": true
@@ -1973,28 +1973,28 @@
     },
     "node/BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11295210",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11295230",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/BL MCKAYS POINT DAM_11295270/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11295270",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11292500",
       "index_col": "Date",
       "parse_dates": true
@@ -2055,7 +2055,7 @@
     },
     "node/Donnells Reservoir/Observed Storage": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/storage.csv",
+      "url": "../data/Stanislaus River/gauges/storage.csv",
       "column": "Donnells Reservoir",
       "index_col": "Date",
       "parse_dates": true
@@ -2106,14 +2106,14 @@
     },
     "node/HIGHLAND CREEK BELOW NEW SPICER_11294000/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11294000",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11293700",
       "index_col": "Date",
       "parse_dates": true
@@ -2195,7 +2195,7 @@
     },
     "node/JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11292860",
       "index_col": "Date",
       "parse_dates": true
@@ -2210,7 +2210,7 @@
     },
     "node/Lyons Reservoir/Observed Storage": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/storage.csv",
+      "url": "../data/Stanislaus River/gauges/storage.csv",
       "column": "Lyons Reservoir",
       "index_col": "Date",
       "parse_dates": true
@@ -2249,28 +2249,28 @@
     },
     "node/MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11292700",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11292000",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/MF STANISLAUS R BL BEARDSLEY DAM CA_11292900/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11292900",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11293200",
       "index_col": "Date",
       "parse_dates": true
@@ -2300,12 +2300,12 @@
     },
     "node/New Melones Lake/Observed Storage": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/storage.csv",
+      "url": "../data/Stanislaus River/gauges/storage.csv",
       "column": "New Melones Lake",
       "index_col": "Date",
       "parse_dates": true
     },
-    "node/New Melones/Storage Demand": {
+    "node/New Melones Lake/Storage Demand": {
       "type": "node_New_Melones_Storage_Demand"
     },
     "node/New Melones Lake/Storage Value": {
@@ -2343,7 +2343,7 @@
     },
     "node/New Spicer Meadow Reservoir/Observed Storage": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/storage.csv",
+      "url": "../data/Stanislaus River/gauges/storage.csv",
       "column": "New Spicer Meadow Reservoir",
       "index_col": "Date",
       "parse_dates": true
@@ -2390,28 +2390,28 @@
     },
     "node/NF STANISLAUS DIV TU OL BL HOBART C_11293710/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11293710",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11295300",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11293600",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/NF STANISLAUS R BL SILVER C CA_11293500/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11293500",
       "index_col": "Date",
       "parse_dates": true
@@ -2449,7 +2449,7 @@
     },
     "node/Pinecrest Reservoir/Observed Storage": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/storage.csv",
+      "url": "../data/Stanislaus River/gauges/storage.csv",
       "column": "Pinecrest Reservoir",
       "index_col": "Date",
       "parse_dates": true
@@ -2496,7 +2496,7 @@
     },
     "node/Relief Reservoir/Observed Storage": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/storage.csv",
+      "url": "../data/Stanislaus River/gauges/storage.csv",
       "column": "Relief Reservoir",
       "index_col": "Date",
       "parse_dates": true
@@ -2564,21 +2564,21 @@
     },
     "node/SF STANISLAUS R A STRAWBERRY CA_11296500/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11296500",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/SF STANISLAUS R NR LONG BARN CA_11298000/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11298000",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/SF STANISLAUS R NR STRAWBERRY CA_11297200/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11292610",
       "index_col": "Date",
       "parse_dates": true
@@ -2631,182 +2631,182 @@
     },
     "node/STN_01 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb01.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb01.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_02 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb02.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb02.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_03 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb03.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb03.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_04 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb04.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb04.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_05 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb05.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb05.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_06 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb06.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb06.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_07 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb07.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb07.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_08 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb08.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb08.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_09 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb09.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb09.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_10 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb10.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb10.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_11 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb11.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb11.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_12 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb12.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb12.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_13 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb13.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb13.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_14 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb14.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb14.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_15 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb15.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb15.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_16 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb16.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb16.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_17 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb17.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb17.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_18 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb18.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb18.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_19 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb19.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb19.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_20 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb20.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb20.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_21 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb21.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb21.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_22 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb22.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb22.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_23 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb23.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb23.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_24 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb24.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb24.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/STN_25 Headflow/Runoff": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/Scenarios/Livneh/runoff/tot_runoff_sb25.csv",
+      "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb25.csv",
       "column": "flw",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/Tulloch Lake/Observed Storage": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/storage.csv",
+      "url": "../data/Stanislaus River/gauges/storage.csv",
       "column": "Tulloch Lake",
       "index_col": "Date",
       "parse_dates": true
@@ -2826,42 +2826,42 @@
     },
     "node/USGS_11292610 DONNELLS PH/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11292610",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/USGS_11293580_NF STAN R DIV TUNNEL/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11293580",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/USGS_11295250_COLLIERVILLE PP/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11295250",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/USGS_11295505_STANISLAUS PP/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11295505",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/USGS_11297000_PHILADELPHIA CN/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11297000",
       "index_col": "Date",
       "parse_dates": true
     },
     "node/USGS_11297500_TUOLUMNE CN/Observed Flow": {
       "type": "dataframe",
-      "url": "../data/Stanislaus/gauges/streamflow.csv",
+      "url": "../data/Stanislaus River/gauges/streamflow.csv",
       "column": "11297500",
       "index_col": "Date",
       "parse_dates": true

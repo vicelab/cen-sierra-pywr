@@ -10,7 +10,8 @@ def setup_model(root_dir, model_path, bucket=None, network_key=None, check_graph
     os.chdir(root_dir)
 
     # needed when loading JSON file
-    root_path = 's3://{}/{}/'.format(bucket, network_key)
+    # root_path = 's3://{}/{}/'.format(bucket, network_key)
+    root_path = '../data'
     os.environ['ROOT_S3_PATH'] = root_path
 
     # Step 1: Load and register policies for daily model
@@ -25,7 +26,7 @@ def setup_model(root_dir, model_path, bucket=None, network_key=None, check_graph
         import_module(policy_module, policy_folder)
 
     modules = [
-        ('.IFRS', 'policies'),
+        # ('.IFRS', 'policies'),
         ('.domains', 'domains')
     ]
     for name, package in modules:
@@ -45,6 +46,8 @@ def prepare_planning_model(path, outpath, steps=12):
 
     # update time step
     # m['timestepper']['end'] = m['timestepper']['start']
+    # m['timestepper']['timestep'] = 'M'
+    # m['metadata']['title'] += ' - planning'
 
     all_steps = range(steps)
 
@@ -56,6 +59,7 @@ def prepare_planning_model(path, outpath, steps=12):
     gauges = {}
 
     parameters_to_expand = []
+    black_list = ['min_volume', 'max_volume']
 
     for node in m['nodes']:
         old_name = node['name']
@@ -64,9 +68,12 @@ def prepare_planning_model(path, outpath, steps=12):
             gauges[old_name] = [0, 0]
             continue
 
-        for value in node.values():
-            if type(value) == str and value in m['parameters'] and value not in parameters_to_expand:
-                parameters_to_expand.append(value)
+        for key, value in node.items():
+            if key in black_list:
+                continue
+            if type(value) == str and value in m['parameters']:
+                if value not in parameters_to_expand:
+                    parameters_to_expand.append(value)
 
         res_class = 'network'
         res_name = 'network'
@@ -85,12 +92,15 @@ def prepare_planning_model(path, outpath, steps=12):
 
             for key, value in node.items():
                 if type(value) == str and value in m['parameters']:
-                    new_node[key] += month
+                    if key not in black_list:
+                        new_node[key] += month
 
                 elif type(value) == list:
                     new_values = []
                     for v in value:
                         if type(v) == str:
+                            if v not in parameters_to_expand:
+                                parameters_to_expand.append(v)
                             parts = v.split('/')
                             if len(parts) == 3:
                                 new_values.append(v + month)
@@ -103,7 +113,7 @@ def prepare_planning_model(path, outpath, steps=12):
                                 new_values.append(v)
                         else:
                             new_values.append(v)
-                    new_node[key] = value
+                    new_node[key] = new_values
 
             new_nodes.append(new_node)
 
@@ -150,7 +160,7 @@ def prepare_planning_model(path, outpath, steps=12):
                     new_param_name += '/{}'.format(block)
                 new_param = param.copy()
                 if attribute == 'Runoff':
-                    new_param['column'] = str(t)
+                    new_param['column'] = '{:02}'.format(t)
                     new_param['url'] = new_param['url'].replace('/runoff/', '/runoff_monthly_forecasts/')
                 if 'node' in param:
                     new_param['node'] += '/{}'.format(t)
@@ -207,7 +217,8 @@ def run_model(basin, network_key):
     os.chdir(root_dir)
 
     # needed when loading JSON file
-    root_path = 's3://{}/{}/'.format(bucket, network_key)
+    # root_path = 's3://{}/{}/'.format(bucket, network_key)
+    root_path = '../data'
     os.environ['ROOT_S3_PATH'] = root_path
 
     # =========================================
@@ -239,11 +250,11 @@ def run_model(basin, network_key):
     # ==================
     # Create daily model
     # ==================
-
-    daily_model = Model.load(model_path, path=model_path)
-    # daily_model.setup()
+    debug_monthly = True
+    if not debug_monthly:
+        daily_model = Model.load(model_path, path=model_path)
+        daily_model.setup()
     print('Daily model setup complete')
-
     # =====================
     # Create planning model
     # =====================
@@ -251,54 +262,66 @@ def run_model(basin, network_key):
     # create and initialize monthly model
     monthly_model = create_planning_model(model_path)
 
-    timesteps = range(len(daily_model.timestepper))
+    if debug_monthly:
+        timesteps = range(12)
+    else:
+        timesteps = range(len(daily_model.timestepper))
     step = None
 
     # run model
     # note that tqdm + step adds a little bit of overhead.
     # use model.run() instead if seeing progress is not important
 
-    for step in tqdm(timesteps, ncols=80):
-        try:
+    for step in tqdm(timesteps, ncols=80, disable=debug_monthly):
+        if debug_monthly:
+            today = monthly_model.timestepper.current if step else monthly_model.timestepper.start
+        else:
+            today = daily_model.timestepper.current if step else daily_model.timestepper.start
 
-            today = daily_model.timestepper.current
+        try:
 
             # Step 1: run planning model & update daily model
 
             if today.day == 1:
 
                 # Step 1a: update planning model
+
+                # ...update time steps
+                monthly_model.timestepper.start = today
+                monthly_model.timestepper.end = today
+
+                # ...update initial conditions (not needed for the first step)
                 if step > 0:
-                    # ...update time steps
-                    monthly_model.timestepper.start = today
-                    monthly_model.timestepper.end = today
+                    for node in monthly_model.nodes:
+                        if node['type'] != 'Storage':
+                            continue
 
-                    # ...update initial conditions (not needed for the first step)
-                    if step > 0:
-                        for node in monthly_model.nodes:
-                            if node['type'] != 'Storage':
-                                continue
-
-                            node['initial_volume'] = daily_model.node[node['name']].volume
+                        node['initial_volume'] = daily_model.node[node['name']].volume
 
                 # Step 1b: run planning model
+                print('Running planning model')
                 monthly_model.step()  # redundant with run, since only one timestep
 
                 # Step 1c: update daily model with planning model results
+                print('Updating daily model')
 
             # Step 3: run daily model
             daily_model.step()
         except Exception as err:
-            print('\nFailed at step {}'.format(daily_model.timestepper.current))
+            print('\nFailed at step {}'.format(today))
             print(err)
             # continue
             break
 
     # save results to CSV
 
-    results = daily_model.to_dataframe()
+    if debug_monthly:
+        results = monthly_model.to_dataframe()
+        results_path = './results_planning_debug'
+    else:
+        results = daily_model.to_dataframe()
+        results_path = './results'
     results.columns = results.columns.droplevel(1)
-    results_path = './results'
     if not os.path.exists(results_path):
         os.makedirs(results_path)
     results.to_csv(os.path.join(results_path, 'system.csv'))

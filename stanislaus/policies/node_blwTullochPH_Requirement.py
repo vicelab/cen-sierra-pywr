@@ -2,7 +2,6 @@ import datetime
 from parameters import WaterLPParameter
 
 from utilities.converter import convert
-from utilities.get_year_type import getSJVI_WYT
 
 class node_blwTullochPH_Requirement(WaterLPParameter):
     """"""
