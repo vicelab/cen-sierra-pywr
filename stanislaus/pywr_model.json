@@ -102,6 +102,22 @@
       "cost": "node/Beardsley Reservoir/Storage Value"
     },
     {
+      "name": "Beardsley PH [node]",
+      "type": "PiecewiseHydropower",
+      "max_flow": [
+        "node/Beardsley PH/Water Demand",
+        "node/Beardsley PH/Water Demand",
+        "node/Beardsley PH/Water Demand",
+        "node/Beardsley PH/Water Demand"
+      ],
+      "cost": [
+        "node/Beardsley PH/Cost/1",
+        "node/Beardsley PH/Cost/2",
+        "node/Beardsley PH/Cost/3",
+        "node/Beardsley PH/Cost/4"
+      ]
+    },
+    {
       "name": "BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210 [node]",
       "type": "RiverGauge",
       "mrf": 0.0,
@@ -405,6 +421,22 @@
       "max_volume": "node/New Spicer Meadow Reservoir/Storage Capacity",
       "min_volume": "node/New Spicer Meadow Reservoir/Inactive Pool",
       "cost": "node/New Spicer Meadow Reservoir/Storage Value"
+    },
+    {
+      "name": "New Spicer Meadow PH [node]",
+      "type": "PiecewiseHydropower",
+      "max_flow": [
+        "node/New Spicer Meadow PH/Water Demand",
+        "node/New Spicer Meadow PH/Water Demand",
+        "node/New Spicer Meadow PH/Water Demand",
+        "node/New Spicer Meadow PH/Water Demand"
+      ],
+      "cost": [
+        "node/New Spicer Meadow PH/Cost/1",
+        "node/New Spicer Meadow PH/Cost/2",
+        "node/New Spicer Meadow PH/Cost/3",
+        "node/New Spicer Meadow PH/Cost/4"
+      ]
     },
     {
       "name": "NF STANISLAUS DIV TU OL BL HOBART C_11293710 [node]",
@@ -870,6 +902,12 @@
       "mrf_cost": 0
     },
     {
+      "name": "Utica Reservoir [node]",
+      "type": "Storage",
+      "initial_volume": 65,
+      "max_volume": 82.64
+    },
+    {
       "name": "UPA Tunnel Tap Inflow [node]",
       "type": "River"
     },
@@ -1212,6 +1250,10 @@
     ],
     [
       "New Spicer Meadow Reservoir [node]",
+      "New Spicer Meadow PH [node]"
+    ],
+    [
+      "New Spicer Meadow PH [node]",
       "IFR bl New Spicer Meadow Reservoir [node]"
     ],
     [
@@ -1256,6 +1298,10 @@
     ],
     [
       "BEARDSLEY PH NR STRAWBERRY CA_11292820 [node]",
+      "Beardsley PH [node]"
+    ],
+    [
+      "Beardsley PH [node]",
       "STN_15 Inflow [node]"
     ],
     [
@@ -1368,6 +1414,10 @@
     ],
     [
       "STN_10 Inflow [node]",
+      "Utica Reservoir [node]"
+    ],
+    [
+      "Utica Reservoir [node]",
       "STN_09 Inflow [node]"
     ],
     [
@@ -1971,6 +2021,30 @@
       ],
       "kind": "cubic"
     },
+    "node/Beardsley PH/Water Demand": {
+      "type": "constant",
+      "value": 10
+    },
+    "node/Beardsley PH/Cost/1": {
+      "type": "network_PH_Cost"
+    },
+    "node/Beardsley PH/Cost/2": {
+      "type": "network_PH_Cost"
+    },
+    "node/Beardsley PH/Cost/3": {
+      "type": "network_PH_Cost"
+    },
+    "node/Beardsley PH/Cost/4": {
+      "type": "network_PH_Cost"
+    },
+    "node/Beardsley PH/Turbine Capacity": {
+      "type": "constant",
+      "value": 10
+    },
+    "node/Beardsley PH/Demand Constant": {
+      "type": "constant",
+      "value": 10
+    },
     "node/BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210/Observed Flow": {
       "type": "dataframe",
       "url": "../data/Stanislaus River/gauges/streamflow_cleaned.csv",
@@ -2123,8 +2197,7 @@
       "value": 10
     },
     "node/IFR bl Angels Div/Requirement": {
-      "type": "constant",
-      "value": 0.142
+      "type": "node_IFR_bl_Angels_Div_Requirement"
     },
     "node/IFR bl Donnells Reservoir/Violation Cost": {
       "type": "constant",
@@ -2145,24 +2218,21 @@
       "value": 10
     },
     "node/IFR bl Lyons Res/Requirement": {
-      "type": "constant",
-      "value": 0.142
+      "type": "node_IFR_bl_Lyons_Res_Requirement"
     },
     "node/IFR bl McKays Point Div/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR bl McKays Point Div/Requirement": {
-      "type": "constant",
-      "value": 0.4672
+      "type": "node_IFR_bl_McKays_Point_Div_Requirement"
     },
     "node/IFR bl New Spicer Meadow Reservoir/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR bl New Spicer Meadow Reservoir/Requirement": {
-      "type": "constant",
-      "value": 0.4672
+      "type": "node_IFR_bl_New_Spicer_Meadow_Reservoir_Requirement"
     },
     "node/IFR bl Philadelphia Div/Violation Cost": {
       "type": "constant",
@@ -2190,8 +2260,7 @@
       "value": 10
     },
     "node/IFR bl Utica Div/Requirement": {
-      "type": "constant",
-      "value": 0.142
+      "type": "node_IFR_bl_Utica_Div_Requirement"
     },
     "node/JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/Observed Flow": {
       "type": "dataframe",
@@ -2609,6 +2678,29 @@
     "node/Stanislaus PH/Fixed Head": {
       "type": "constant",
       "value": 463.296
+    },
+    "node/New Spicer Meadow PH/Water Demand": {
+      "type": "network_PH_Water_Demand"
+    },
+    "node/New Spicer Meadow PH/Cost/1": {
+      "type": "network_PH_Cost"
+    },
+    "node/New Spicer Meadow PH/Cost/2": {
+      "type": "network_PH_Cost"
+    },
+    "node/New Spicer Meadow PH/Cost/3": {
+      "type": "network_PH_Cost"
+    },
+    "node/New Spicer Meadow PH/Cost/4": {
+      "type": "network_PH_Cost"
+    },
+    "node/New Spicer Meadow PH/Turbine Capacity": {
+      "type": "constant",
+      "value": 6
+    },
+    "node/New Spicer Meadow PH/Demand Constant": {
+      "type": "constant",
+      "value": 10
     },
     "node/Stanislaus PH/Turbine Capacity": {
       "type": "constant",
