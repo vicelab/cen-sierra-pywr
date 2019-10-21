@@ -6,7 +6,14 @@ class node_IFR_below_Beardsley_Afterbay_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        return 0
+        WYT = int(self.get("WYI_SJValley"))
+        if (WYT == 1|WYT ==2):
+            ifr_val = 50
+        else:
+            ifr_val = 135
+        if self.mode == 'planning':
+            ifr_val *= self.days_in_planning_month(timestep, self.month_offset)
+        return ifr_val/35.314666
 
 
     def value(self, timestep, scenario_index):

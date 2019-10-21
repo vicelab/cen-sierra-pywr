@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from calendar import monthlen
+from calendar import monthrange
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 from hashlib import md5
@@ -92,11 +92,11 @@ class WaterLPParameter(Parameter):
 
     def days_in_planning_month(self, timestep, month_offset=0):
         date = self.planning_date(timestep, month_offset)
-        return monthlen(date.year, date.month)
+        return monthrange(date.year, date.month)[1]
 
     def dates_in_planning_month(self, timestep, month_offset=0):
         today = self.planning_date(timestep, month_offset)
-        ndays = monthlen(today.year, today.month)
+        ndays = monthrange(today.year, today.month)[1]
         dates = pd.date_range(today, periods=ndays).tolist()
         return dates
 

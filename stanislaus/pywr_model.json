@@ -1997,7 +1997,7 @@
     },
     "node/Angels PH/Turbine Capacity": {
       "type": "constant",
-      "value": 3.8313
+      "value": 1.13
     },
     "node/Angels PH/Water Demand": {
       "type": "network_PH_Water_Demand"
@@ -2147,7 +2147,7 @@
     },
     "node/Collierville PH/Turbine Capacity": {
       "type": "constant",
-      "value": 19.5923
+      "value": 39.64
     },
     "node/Collierville PH/Water Demand": {
       "type": "network_PH_Water_Demand"
@@ -2170,7 +2170,7 @@
     },
     "node/Donnells PH/Turbine Capacity": {
       "type": "constant",
-      "value": 9.9335
+      "value": 19.82
     },
     "node/Donnells PH/Water Demand": {
       "type": "network_PH_Water_Demand"
@@ -2335,35 +2335,35 @@
       "value": 10
     },
     "node/Below Beaver Creek Diversion Dam/Requirement": {
-      "type": "node_Below_Beaver_Creek_Diversion_Dam_Requirement"
+      "type": "node_IFR_bl_BeaverCreekDivDam_Requirement"
     },
     "node/IFR Confluence of NF and Beaver Creek/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR Confluence of NF and Beaver Creek/Requirement": {
-      "type": "node_IFR_Confluence_of_NF_and_Beaver_Creek_Requirement"
+      "type": "node_IFR_confluence_NF_BeaverCreek_Requirement"
     },
     "node/IFR Below New Melones Res/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR Below New Melones Res/Requirement": {
-      "type": "node_IFR_Below_New_Melones_Res_Requirement"
+      "type": "node_IFR_bl_New_Melones_Requirement"
     },
     "node/IFR Below Pinecrest Lake/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR Below Pinecrest Lake/Requirement": {
-      "type": "node_IFR_Below_Pinecrest_Lake_Requirement"
+      "type": "node_IFR_bl_Pinecrest_Lake_Requirement"
     },
     "node/IFR Below Utica Res/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR Below Utica Res/Requirement": {
-      "type": "node_IFR_Below_Utica_Res_Requirement"
+      "type": "node_IFR_bl_Utica_Res_Requirement"
     },
     "node/IFR below Beardsley Afterbay/Violation Cost": {
       "type": "constant",
@@ -2460,7 +2460,7 @@
     },
     "node/Murphys PH/Turbine Capacity": {
       "type": "constant",
-      "value": 5.9041
+      "value": 2.78
     },
     "node/Murphys PH/Water Demand": {
       "type": "network_PH_Water_Demand"
@@ -2601,7 +2601,7 @@
     },
     "node/Phoenix PH/Turbine Capacity": {
       "type": "constant",
-      "value": 10.245
+      "value": 0.708
     },
     "node/Phoenix PH/Water Demand": {
       "type": "network_PH_Water_Demand"
@@ -2724,7 +2724,7 @@
     },
     "node/Sand Bar PH/Turbine Capacity": {
       "type": "constant",
-      "value": 3.6812
+      "value": 16.99
     },
     "node/Sand Bar PH/Water Demand": {
       "type": "network_PH_Water_Demand"
@@ -2768,7 +2768,7 @@
     },
     "node/Spring Gap PH/Turbine Capacity": {
       "type": "constant",
-      "value": 16.0968
+      "value": 1.67
     },
     "node/Spring Gap PH/Water Demand": {
       "type": "network_PH_Water_Demand"
@@ -2806,7 +2806,7 @@
     },
     "node/New Spicer Meadow PH/Turbine Capacity": {
       "type": "constant",
-      "value": 6
+      "value": 23.5
     },
     "node/New Spicer Meadow PH/Demand Constant": {
       "type": "constant",
@@ -2814,7 +2814,7 @@
     },
     "node/Stanislaus PH/Turbine Capacity": {
       "type": "constant",
-      "value": 13.1191
+      "value": 23.5
     },
     "node/Stanislaus PH/Water Demand": {
       "type": "network_PH_Water_Demand"
