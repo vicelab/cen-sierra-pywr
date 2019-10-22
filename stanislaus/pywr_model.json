@@ -5,8 +5,8 @@
     "minimum_version": "1.0.0"
   },
   "timestepper": {
-    "start": "2009-10-01",
-    "end": "2010-09-30",
+    "start": "2000-10-01",
+    "end": "2002-09-30",
     "timestep": 1
   },
   "solver": {
@@ -1806,22 +1806,22 @@
     },
     "Total Net Energy Demand": {
       "type": "dataframe",
-      "url": "../data/energy_netDemand.csv",
+      "url": "../data/energy_net_demand.csv",
       "column": "Tot Demand (GWh)",
       "index_col": "Date",
       "parse_dates": true
     },
     "Max Net Energy Demand": {
       "type": "dataframe",
-      "url": "../data/energy_netDemand.csv",
-      "column": "Max Hr Demand (GW)",
+      "url": "../data/energy_net_demand.csv",
+      "column": "Max Hr Demand (GWh)",
       "index_col": "Date",
       "parse_dates": true
     },
     "Min Net Energy Demand": {
       "type": "dataframe",
-      "url": "../data/energy_netDemand.csv",
-      "column": "Min Hr Demand (GW)",
+      "url": "../data/energy_net_demand.csv",
+      "column": "Min Hr Demand (GWh)",
       "index_col": "Date",
       "parse_dates": true
     },
