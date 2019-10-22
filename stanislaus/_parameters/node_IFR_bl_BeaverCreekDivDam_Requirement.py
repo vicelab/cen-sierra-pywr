@@ -1,14 +1,17 @@
 import datetime
+import calendar
 from parameters import WaterLPParameter
 
 from utilities.converter import convert
 
 
-class node_IFR_bl_Utica_Div_Requirement(WaterLPParameter):
+class node_IFR_bl_BeaverCreekDivDam_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        ifr_val = 0.14158  # cms (5 cfs)
+        flw_catchment13 = self.read_csv("Scenarios/Livneh/Runoff/tot_runoff_sb13.csv", squeeze=True)[
+            timestep.datetime]  # cms
+        ifr_val = min(0.4672, flw_catchment13)#cms 16.5 cfs
         if self.mode == 'planning':
             ifr_val *= self.days_in_planning_month(timestep, self.month_offset)
         return ifr_val
@@ -21,5 +24,5 @@ class node_IFR_bl_Utica_Div_Requirement(WaterLPParameter):
         return cls(model, **data)
 
 
-node_IFR_bl_Utica_Div_Requirement.register()
-print(" [*] node_IFR_bl_Utica_Div_Requirement successfully registered")
+node_IFR_bl_BeaverCreekDivDam_Requirement.register()
+print(" [*] node_IFR_bl_BeaverCreekDivDam_Requirement successfully registered")

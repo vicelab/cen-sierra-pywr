@@ -310,6 +310,42 @@
       "mrf": "node/IFR bl Utica Div/Requirement"
     },
     {
+      "name": "Below Beaver Creek Diversion Dam [node]",
+      "type": "InstreamFlowRequirement",
+      "mrf_cost": "node/Below Beaver Creek Diversion Dam/Violation Cost",
+      "mrf": "node/Below Beaver Creek Diversion Dam/Requirement"
+    },
+    {
+      "name": "IFR Confluence of NF and Beaver Creek [node]",
+      "type": "InstreamFlowRequirement",
+      "mrf_cost": "node/IFR Confluence of NF and Beaver Creek/Violation Cost",
+      "mrf": "node/IFR Confluence of NF and Beaver Creek/Requirement"
+    },
+    {
+      "name": "IFR Below New Melones Res [node]",
+      "type": "InstreamFlowRequirement",
+      "mrf_cost": "node/IFR Below New Melones Res/Violation Cost",
+      "mrf": "node/IFR Below New Melones Res/Requirement"
+    },
+    {
+      "name": "IFR Below Pinecrest Lake [node]",
+      "type": "InstreamFlowRequirement",
+      "mrf_cost": "node/IFR Below Pinecrest Lake/Violation Cost",
+      "mrf": "node/IFR Below Pinecrest Lake/Requirement"
+    },
+    {
+      "name": "IFR Below Utica Res [node]",
+      "type": "InstreamFlowRequirement",
+      "mrf_cost": "node/IFR Below Utica Res/Violation Cost",
+      "mrf": "node/IFR Below Utica Res/Requirement"
+    },
+    {
+      "name": "IFR below Beardsley Afterbay [node]",
+      "type": "InstreamFlowRequirement",
+      "mrf_cost": "node/IFR below Beardsley Afterbay/Violation Cost",
+      "mrf": "node/IFR below Beardsley Afterbay/Requirement"
+    },
+    {
       "name": "JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA [node]",
       "type": "RiverGauge",
       "mrf": 0.0,
@@ -533,7 +569,7 @@
       "type": "River"
     },
     {
-      "name": "sand bar power tunnel Outflow [node]",
+      "name": "Beardsley Afterbay [node]",
       "type": "Storage",
       "initial_volume": 0.0,
       "max_volume": 0.0
@@ -1031,6 +1067,10 @@
       "type": "River"
     },
     {
+      "name": "STN_below_Melons.2.2.2",
+      "type": "River"
+    },
+    {
       "name": "STN-L-RIV2.1.2.1",
       "type": "River"
     },
@@ -1270,7 +1310,7 @@
     ],
     [
       "STN_15 Inflow [node]",
-      "sand bar power tunnel Outflow [node]"
+      "Beardsley Afterbay [node]"
     ],
     [
       "Lyons Reservoir [node]",
@@ -1278,6 +1318,10 @@
     ],
     [
       "Pinecrest Reservoir [node]",
+      "IFR Below Pinecrest Lake [node]"
+    ],
+    [
+      "IFR Below Pinecrest Lake [node]",
       "STN_24 Inflow [node]"
     ],
     [
@@ -1289,7 +1333,7 @@
       "JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA [node]"
     ],
     [
-      "sand bar power tunnel Outflow [node]",
+      "Beardsley Afterbay [node]",
       "Sand Bar PH [node]"
     ],
     [
@@ -1418,6 +1462,10 @@
     ],
     [
       "Utica Reservoir [node]",
+      "IFR Below Utica Res [node]"
+    ],
+    [
+      "IFR Below Utica Res [node]",
       "STN_09 Inflow [node]"
     ],
     [
@@ -1449,7 +1497,11 @@
       "STN_14 Inflow [node]"
     ],
     [
-      "sand bar power tunnel Outflow [node]",
+      "Beardsley Afterbay [node]",
+      "IFR below Beardsley Afterbay [node]"
+    ],
+    [
+      "IFR below Beardsley Afterbay [node]",
       "MF STANISLAUS R BL BEARDSLEY DAM CA_11292900 [node]"
     ],
     [
@@ -1626,6 +1678,10 @@
     ],
     [
       "Beaver Ck Inflow [node]",
+      "IFR Confluence of NF and Beaver Creek [node]"
+    ],
+    [
+      "IFR Confluence of NF and Beaver Creek [node]",
       "STN_05 Inflow [node]"
     ],
     [
@@ -1678,6 +1734,10 @@
     ],
     [
       "BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230 [node]",
+      "Below Beaver Creek Diversion Dam [node]"
+    ],
+    [
+      "Below Beaver Creek Diversion Dam [node]",
       "STANI-N-JUN2 [node]"
     ],
     [
@@ -1766,6 +1826,14 @@
     ],
     [
       "STN_below_Melons.2.2",
+      "IFR Below New Melones Res [node]"
+    ],
+    [
+      "IFR Below New Melones Res [node]",
+      "STN_below_Melons.2.2.2"
+    ],
+    [
+      "STN_below_Melons.2.2.2",
       "Tulloch Lake [node]"
     ],
     [
@@ -1929,7 +1997,7 @@
     },
     "node/Angels PH/Turbine Capacity": {
       "type": "constant",
-      "value": 3.8313
+      "value": 1.13
     },
     "node/Angels PH/Water Demand": {
       "type": "network_PH_Water_Demand"
@@ -2079,7 +2147,7 @@
     },
     "node/Collierville PH/Turbine Capacity": {
       "type": "constant",
-      "value": 19.5923
+      "value": 39.64
     },
     "node/Collierville PH/Water Demand": {
       "type": "network_PH_Water_Demand"
@@ -2102,7 +2170,7 @@
     },
     "node/Donnells PH/Turbine Capacity": {
       "type": "constant",
-      "value": 9.9335
+      "value": 19.82
     },
     "node/Donnells PH/Water Demand": {
       "type": "network_PH_Water_Demand"
@@ -2262,6 +2330,48 @@
     "node/IFR bl Utica Div/Requirement": {
       "type": "node_IFR_bl_Utica_Div_Requirement"
     },
+    "node/Below Beaver Creek Diversion Dam/Violation Cost": {
+      "type": "constant",
+      "value": 10
+    },
+    "node/Below Beaver Creek Diversion Dam/Requirement": {
+      "type": "node_IFR_bl_BeaverCreekDivDam_Requirement"
+    },
+    "node/IFR Confluence of NF and Beaver Creek/Violation Cost": {
+      "type": "constant",
+      "value": 10
+    },
+    "node/IFR Confluence of NF and Beaver Creek/Requirement": {
+      "type": "node_IFR_confluence_NF_BeaverCreek_Requirement"
+    },
+    "node/IFR Below New Melones Res/Violation Cost": {
+      "type": "constant",
+      "value": 10
+    },
+    "node/IFR Below New Melones Res/Requirement": {
+      "type": "node_IFR_bl_New_Melones_Requirement"
+    },
+    "node/IFR Below Pinecrest Lake/Violation Cost": {
+      "type": "constant",
+      "value": 10
+    },
+    "node/IFR Below Pinecrest Lake/Requirement": {
+      "type": "node_IFR_bl_Pinecrest_Lake_Requirement"
+    },
+    "node/IFR Below Utica Res/Violation Cost": {
+      "type": "constant",
+      "value": 10
+    },
+    "node/IFR Below Utica Res/Requirement": {
+      "type": "node_IFR_bl_Utica_Res_Requirement"
+    },
+    "node/IFR below Beardsley Afterbay/Violation Cost": {
+      "type": "constant",
+      "value": 10
+    },
+    "node/IFR below Beardsley Afterbay/Requirement": {
+      "type": "node_IFR_below_Beardsley_Afterbay_Requirement"
+    },
     "node/JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/Observed Flow": {
       "type": "dataframe",
       "url": "../data/Stanislaus River/gauges/streamflow_cleaned.csv",
@@ -2350,7 +2460,7 @@
     },
     "node/Murphys PH/Turbine Capacity": {
       "type": "constant",
-      "value": 5.9041
+      "value": 2.78
     },
     "node/Murphys PH/Water Demand": {
       "type": "network_PH_Water_Demand"
@@ -2491,7 +2601,7 @@
     },
     "node/Phoenix PH/Turbine Capacity": {
       "type": "constant",
-      "value": 10.245
+      "value": 0.708
     },
     "node/Phoenix PH/Water Demand": {
       "type": "network_PH_Water_Demand"
@@ -2614,7 +2724,7 @@
     },
     "node/Sand Bar PH/Turbine Capacity": {
       "type": "constant",
-      "value": 3.6812
+      "value": 16.99
     },
     "node/Sand Bar PH/Water Demand": {
       "type": "network_PH_Water_Demand"
@@ -2658,7 +2768,7 @@
     },
     "node/Spring Gap PH/Turbine Capacity": {
       "type": "constant",
-      "value": 16.0968
+      "value": 1.67
     },
     "node/Spring Gap PH/Water Demand": {
       "type": "network_PH_Water_Demand"
@@ -2696,7 +2806,7 @@
     },
     "node/New Spicer Meadow PH/Turbine Capacity": {
       "type": "constant",
-      "value": 6
+      "value": 23.5
     },
     "node/New Spicer Meadow PH/Demand Constant": {
       "type": "constant",
@@ -2704,7 +2814,7 @@
     },
     "node/Stanislaus PH/Turbine Capacity": {
       "type": "constant",
-      "value": 13.1191
+      "value": 23.5
     },
     "node/Stanislaus PH/Water Demand": {
       "type": "network_PH_Water_Demand"
