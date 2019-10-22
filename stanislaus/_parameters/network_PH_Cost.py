@@ -37,9 +37,6 @@ class network_PH_Cost(WaterLPParameter):
         return -(maxVal - ((self.block * 2 - 1) * d / 2) / nblocks)
 
     def value(self, timestep, scenario_index):
-        if self.mode == 'planning':
-            print(timestep.month, self.timestep.month)
-            timestep = self.timestep
         return self._value(timestep, scenario_index, mode=self.mode)
 
     @classmethod

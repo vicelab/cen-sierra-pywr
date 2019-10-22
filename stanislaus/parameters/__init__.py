@@ -30,7 +30,8 @@ class WaterLPParameter(Parameter):
     res_name_full = None
     attr_name = None
     block = None
-    month = 0
+    month = None
+    year = None
     month_offset = 0
     month_suffix = ''
     demand_constant_param = ''
@@ -58,15 +59,13 @@ class WaterLPParameter(Parameter):
 
             elif self.mode == 'planning':
                 if len(name_parts) == 4:
-                    self.month = int(name_parts[3])
+                    self.month_offset = int(name_parts[3]) - 1
                 elif len(name_parts) == 5:
-                    self.month = int(name_parts[3])
+                    self.month_offset = int(name_parts[3]) - 1
                     self.block = int(name_parts[4])
-                if self.month:
-                    self.month_offset = self.month - 1
 
-            if self.month:
-                self.month_suffix = '/{}'.format(self.month)
+            if self.month_offset is not None:
+                self.month_suffix = '/{}'.format(self.month_offset + 1)
 
             self.res_name_full += self.month_suffix
 
@@ -83,8 +82,7 @@ class WaterLPParameter(Parameter):
 
                 if 'level' in node.component_attrs:
                     self.elevation_param = 'node/{}/Elevation'.format(self.res_name)
-                    if self.month:
-                        self.elevation_param += self.month_suffix
+                    self.elevation_param += self.month_suffix
 
     def before(self):
         super(WaterLPParameter, self).before()
@@ -93,9 +91,9 @@ class WaterLPParameter(Parameter):
         else:
             datetime = self.model.timestepper.current.datetime
 
-        self.timestep.datetime = datetime
-        self.timestep.year = datetime.year
-        self.timestep.month = datetime.month
+        self.datetime = datetime
+        self.year = datetime.year
+        self.month = datetime.month
 
     def GET(self, *args, **kwargs):
         return self.get(*args, **kwargs)
@@ -103,12 +101,16 @@ class WaterLPParameter(Parameter):
     def get(self, param, timestep=None, scenario_index=None):
         return self.model.parameters[param].value(timestep or self.model.timestep, scenario_index)
 
-    def days_in_month(self, year, month):
-        return monthlen(year, month)
+    def days_in_month(self, year=None, month=None):
+        if year is None:
+            year = self.year
+        if month is None:
+            month = self.month
+        return monthrange(year, month)[1]
 
     def dates_in_month(self, year, month):
         start = pd.datetime(year, month, 1)
-        ndays = monthlen(year, month)
+        ndays = monthrange(year, month)[1]
         dates = pd.date_range(start, periods=ndays).tolist()
         return dates
 
