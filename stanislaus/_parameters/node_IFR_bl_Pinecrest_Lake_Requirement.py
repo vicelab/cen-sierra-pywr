@@ -3,7 +3,8 @@ from parameters import WaterLPParameter
 
 from utilities.converter import convert
 
-class node_IFR_bl_Relief_Reservoir_Requirement(WaterLPParameter):
+
+class node_IFR_bl_Pinecrest_Lake_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
@@ -12,9 +13,9 @@ class node_IFR_bl_Relief_Reservoir_Requirement(WaterLPParameter):
         management = "BAU"
         path = "Management/{mgt}/IFRs/".format(mgt=management)
         if self.mode == 'scheduling':
-            fName = 'IFR_Below Relief Reservoir (MIF)_cfs_daily.csv'
+            fName = 'IFR_Below Pinecrest Lake_cfs_daily.csv'
         else:
-            fName = 'IFR_Below Relief Reservoir (MIF)_cfs_monthly.csv'
+            fName = 'IFR_Below Pinecrest Lake_cfs_monthly.csv'
         if timestep.datetime.month >= 10:
             dt = datetime.date(1999, timestep.month, timestep.day)
         else:
@@ -25,13 +26,14 @@ class node_IFR_bl_Relief_Reservoir_Requirement(WaterLPParameter):
         # Critically Dry: 1,Dry: 2,Normal-Dry: 3,Normal-Wet: 4,Wet: 5
         ifr_val = (data[(data['start_date'] <= dt) & (data['end_date'] >= dt)][str(WYT)]) / 35.314666
         return ifr_val
-        
+
     def value(self, timestep, scenario_index):
         return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
 
     @classmethod
     def load(cls, model, data):
         return cls(model, **data)
-        
-node_IFR_bl_Relief_Reservoir_Requirement.register()
-print(" [*] node_IFR_bl_Relief_Reservoir_Requirement successfully registered")
+
+
+node_IFR_bl_Pinecrest_Lake_Requirement.register()
+print(" [*] node_IFR_bl_Pinecrest_Lake_Requirement successfully registered")
