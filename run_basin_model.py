@@ -48,6 +48,34 @@ def prepare_planning_model(path, outpath, steps=12, debug=False):
     with open(path) as f:
         m = json.load(f)
 
+    # simplify the network
+    up_nodes = []
+    down_nodes = []
+    up_edges = {}
+    down_edges = {}
+    for a, b in m['edges']:
+        up_nodes.append(a)
+        down_nodes.append(b)
+        down_edges[a] = [a, b]
+        up_edges[b] = [a, b]
+
+    obsolete_nodes = []
+    obsolete_edges = []
+    new_edges = []
+    for node in m['nodes']:
+        # is the node a simple link? if so, we might be able to remove it
+        node_name = node['name']
+        if node['type'] in ['Link', 'River'] and set(node.keys()) == {'name', 'type'}:
+            if up_nodes.count(node_name) == down_nodes.count(node_name) == 1:
+                obsolete_nodes.append(node_name)
+                up_edge = up_edges[node_name]
+                down_edge = down_edges[node_name]
+                obsolete_edges.extend([up_edge, down_edge])
+                new_edges.append([up_edge[0], down_edge[1]])
+
+    m['nodes'] = [node for node in m['nodes'] if node['name'] not in obsolete_nodes]
+    m['edges'] = [edge for edge in m['edges'] if edge not in obsolete_edges] + new_edges
+
     # update time step
     # m['timestepper']['end'] = m['timestepper']['start']
     # m['timestepper']['timestep'] = 'M'
@@ -264,6 +292,7 @@ def prepare_planning_model(path, outpath, steps=12, debug=False):
                     new_recorder['node'] += '/{}'.format(t)
                     new_recorders['{}/{}'.format(recorder_name, t)] = new_recorder
 
+    # update the model
     m['nodes'] = new_nodes
     m['edges'] = new_edges
     m['parameters'] = new_parameters
@@ -272,19 +301,6 @@ def prepare_planning_model(path, outpath, steps=12, debug=False):
     with open(outpath, 'w') as f:
         json.dump(m, f, indent=4)
     return
-
-
-def create_planning_model(model_path, debug=False):
-    root, filename = os.path.split(model_path)
-    base, ext = os.path.splitext(filename)
-    new_filename = '{}_monthly'.format(base) + ext
-    monthly_model_path = os.path.join(root, new_filename)
-    prepare_planning_model(model_path, monthly_model_path, debug=debug)
-    # monthly_model = load_model(root_dir, monthly_model_path, bucket=bucket, network_key=network_key, mode='planning')
-    monthly_model = Model.load(monthly_model_path, path=monthly_model_path)
-    setattr(monthly_model, 'mode', 'planning')
-    monthly_model.setup()
-    return monthly_model
 
 
 def run_model(basin, network_key, debug=False):
@@ -331,66 +347,83 @@ def run_model(basin, network_key, debug=False):
             print(err)
 
     # Area for testing monthly model
-    if debug == 'm':
-        fn_tpl = 'monthly_{v}_S{level}.csv'
-        print('Creating monthly model...')
-        monthly_model = create_planning_model(model_path, debug=debug=='m')
-        print('...done')
-        print('Setting up monthly model...')
-        monthly_model.setup()
-        print('...done')
-        print('Running monthly model...')
+    include_monthly = True
+
+    if include_monthly:
+
+        # create filenames, etc.
+        root, filename = os.path.split(model_path)
+        base, ext = os.path.splitext(filename)
+        new_filename = '{}_monthly'.format(base) + ext
+        monthly_model_path = os.path.join(root, new_filename)
+
+        # prepare the model files
+        prepare_planning_model(model_path, monthly_model_path, debug=debug=='m')
+
+        # create pywr model
+        monthly_model = Model.load(monthly_model_path, path=monthly_model_path)
+
+        # set model mode to planning
+        setattr(monthly_model, 'mode', 'planning')
+
+        # set time steps
         monthly_model.timestepper.end -= relativedelta(months=12)
         start = monthly_model.timestepper.start
         end = monthly_model.timestepper.end
-        dates = pd.date_range(start=start, end=end, freq='MS') # MS = month start
 
-        nodes_of_type = {}
-        # for node in monthly_model.nodes:
-        #     nodes_of_type[node.type] = node.name
+        # setup the planning model
+        monthly_model.setup()
 
-        for date in tqdm(dates, ncols=80, disable=False):
-            print(date)
-            monthly_model.timestepper.start = date
-            # monthly_model.timestepper.end = date
-            monthly_model.step()
-            if date == dates[0]:
-                monthly_dir = './results'
-                # xl_path = os.path.join(monthly_dir, 'monthly_results.xlsx')
-                # with ExcelWriter(xl_path) as xlwriter:
-                df = monthly_model.to_dataframe()
-                df.columns = df.columns.droplevel(1)
-                variables = set([c.split('/')[2] for c in df.columns])
-                for v in variables:
-                    node_names = []
-                    month_numbers = []
-                    col_names = []
-                    for c in df.columns:
-                        res_class, res_name, variable, month_str = c.split('/')
-                        if variable == v:
-                            col_names.append(c)
-                            node_names.append(res_name)
-                            month_numbers.append(int(month_str))
-                    df_filtered = df[col_names]
-                    df_filtered.columns = pd.MultiIndex.from_arrays([node_names, month_numbers])
-                    df0 = df_filtered.stack(level=0)
-                    # df1 = df_filtered.stack(level=1)
-                    path0 = os.path.join(monthly_dir, fn_tpl.format(v=v, level=0))
-                    # path1 = os.path.join(monthly_dir, fn_tpl.format(v=v, level=1))
-                    df0.index.names = ['Start month', 'Resource']
-                    df0.to_csv(path0)
-                    # df1.index.names = ['Start month', 'Planning month']
-                    # df1.to_csv(path1)
+        if debug == 'm':
 
-                    # df0.to_excel(xlwriter, sheet_name=v)
+            dates = pd.date_range(start=start, end=end, freq='MS') # MS = month start
 
-        print('...done')
-        return
+            nodes_of_type = {}
+            # for node in monthly_model.nodes:
+            #     nodes_of_type[node.type] = node.name
+            fn_tpl = 'monthly_{v}_S{level}.csv'
+
+            for date in tqdm(dates, ncols=80, disable=False):
+                # print(date)
+                monthly_model.timestepper.start = date
+                # monthly_model.timestepper.end = date
+                monthly_model.step()
+                if date == dates[0]:
+                    monthly_dir = './results'
+                    # xl_path = os.path.join(monthly_dir, 'monthly_results.xlsx')
+                    # with ExcelWriter(xl_path) as xlwriter:
+                    df = monthly_model.to_dataframe()
+                    df.columns = df.columns.droplevel(1)
+                    variables = set([c.split('/')[2] for c in df.columns])
+                    for v in variables:
+                        node_names = []
+                        month_numbers = []
+                        col_names = []
+                        for c in df.columns:
+                            res_class, res_name, variable, month_str = c.split('/')
+                            if variable == v:
+                                col_names.append(c)
+                                node_names.append(res_name)
+                                month_numbers.append(int(month_str))
+                        df_filtered = df[col_names]
+                        df_filtered.columns = pd.MultiIndex.from_arrays([node_names, month_numbers])
+                        df0 = df_filtered.stack(level=0)
+                        # df1 = df_filtered.stack(level=1)
+                        path0 = os.path.join(monthly_dir, fn_tpl.format(v=v, level=0))
+                        # path1 = os.path.join(monthly_dir, fn_tpl.format(v=v, level=1))
+                        df0.index.names = ['Start month', 'Resource']
+                        df0.to_csv(path0)
+                        # df1.index.names = ['Start month', 'Planning month']
+                        # df1.to_csv(path1)
+
+                        # df0.to_excel(xlwriter, sheet_name=v)
+
+            print('...done')
+            return
 
     # ==================
     # Create daily model
     # ==================
-    include_monthly = True
     daily_model = Model.load(model_path, path=model_path)
     print('Daily model loaded')
     daily_model.setup()
@@ -398,10 +431,6 @@ def run_model(basin, network_key, debug=False):
     # =====================
     # Create planning model
     # =====================
-
-    # create and initialize monthly model
-    if include_monthly:
-        monthly_model = create_planning_model(model_path)
 
     timesteps = range(len(daily_model.timestepper))
 

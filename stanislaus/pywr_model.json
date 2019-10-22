@@ -6,7 +6,7 @@
   },
   "timestepper": {
     "start": "2000-10-01",
-    "end": "2002-09-30",
+    "end": "2001-12-31",
     "timestep": 1
   },
   "solver": {
@@ -990,6 +990,7 @@
     },
     {
       "name": "STN_below_Melons.2.2",
+      "comment": "keep",
       "type": "River"
     },
     {

@@ -6,349 +6,13 @@
     },
     "timestepper": {
         "start": "2000-10-01",
-        "end": "2002-09-30",
+        "end": "2001-12-31",
         "timestep": 1
     },
     "solver": {
         "name": "glpk"
     },
     "nodes": [
-        {
-            "name": "Donnells Diversion [link]/1",
-            "type": "Link"
-        },
-        {
-            "name": "Donnells Diversion [link]/2",
-            "type": "Link"
-        },
-        {
-            "name": "Donnells Diversion [link]/3",
-            "type": "Link"
-        },
-        {
-            "name": "Donnells Diversion [link]/4",
-            "type": "Link"
-        },
-        {
-            "name": "Donnells Diversion [link]/5",
-            "type": "Link"
-        },
-        {
-            "name": "Donnells Diversion [link]/6",
-            "type": "Link"
-        },
-        {
-            "name": "Donnells Diversion [link]/7",
-            "type": "Link"
-        },
-        {
-            "name": "Donnells Diversion [link]/8",
-            "type": "Link"
-        },
-        {
-            "name": "Donnells Diversion [link]/9",
-            "type": "Link"
-        },
-        {
-            "name": "Donnells Diversion [link]/10",
-            "type": "Link"
-        },
-        {
-            "name": "Donnells Diversion [link]/11",
-            "type": "Link"
-        },
-        {
-            "name": "Donnells Diversion [link]/12",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 1 [link]/1",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 1 [link]/2",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 1 [link]/3",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 1 [link]/4",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 1 [link]/5",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 1 [link]/6",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 1 [link]/7",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 1 [link]/8",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 1 [link]/9",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 1 [link]/10",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 1 [link]/11",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 1 [link]/12",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 2 [link]/1",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 2 [link]/2",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 2 [link]/3",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 2 [link]/4",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 2 [link]/5",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 2 [link]/6",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 2 [link]/7",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 2 [link]/8",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 2 [link]/9",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 2 [link]/10",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 2 [link]/11",
-            "type": "Link"
-        },
-        {
-            "name": "Lower Collierville Tunnel 2 [link]/12",
-            "type": "Link"
-        },
-        {
-            "name": "Philadelphia Aqueduct [link]/1",
-            "type": "Link"
-        },
-        {
-            "name": "Philadelphia Aqueduct [link]/2",
-            "type": "Link"
-        },
-        {
-            "name": "Philadelphia Aqueduct [link]/3",
-            "type": "Link"
-        },
-        {
-            "name": "Philadelphia Aqueduct [link]/4",
-            "type": "Link"
-        },
-        {
-            "name": "Philadelphia Aqueduct [link]/5",
-            "type": "Link"
-        },
-        {
-            "name": "Philadelphia Aqueduct [link]/6",
-            "type": "Link"
-        },
-        {
-            "name": "Philadelphia Aqueduct [link]/7",
-            "type": "Link"
-        },
-        {
-            "name": "Philadelphia Aqueduct [link]/8",
-            "type": "Link"
-        },
-        {
-            "name": "Philadelphia Aqueduct [link]/9",
-            "type": "Link"
-        },
-        {
-            "name": "Philadelphia Aqueduct [link]/10",
-            "type": "Link"
-        },
-        {
-            "name": "Philadelphia Aqueduct [link]/11",
-            "type": "Link"
-        },
-        {
-            "name": "Philadelphia Aqueduct [link]/12",
-            "type": "Link"
-        },
-        {
-            "name": "Sand Bar Power Tunnel [link]/1",
-            "type": "Link"
-        },
-        {
-            "name": "Sand Bar Power Tunnel [link]/2",
-            "type": "Link"
-        },
-        {
-            "name": "Sand Bar Power Tunnel [link]/3",
-            "type": "Link"
-        },
-        {
-            "name": "Sand Bar Power Tunnel [link]/4",
-            "type": "Link"
-        },
-        {
-            "name": "Sand Bar Power Tunnel [link]/5",
-            "type": "Link"
-        },
-        {
-            "name": "Sand Bar Power Tunnel [link]/6",
-            "type": "Link"
-        },
-        {
-            "name": "Sand Bar Power Tunnel [link]/7",
-            "type": "Link"
-        },
-        {
-            "name": "Sand Bar Power Tunnel [link]/8",
-            "type": "Link"
-        },
-        {
-            "name": "Sand Bar Power Tunnel [link]/9",
-            "type": "Link"
-        },
-        {
-            "name": "Sand Bar Power Tunnel [link]/10",
-            "type": "Link"
-        },
-        {
-            "name": "Sand Bar Power Tunnel [link]/11",
-            "type": "Link"
-        },
-        {
-            "name": "Sand Bar Power Tunnel [link]/12",
-            "type": "Link"
-        },
-        {
-            "name": "Stanislaus Tunnel [link]/1",
-            "type": "Link"
-        },
-        {
-            "name": "Stanislaus Tunnel [link]/2",
-            "type": "Link"
-        },
-        {
-            "name": "Stanislaus Tunnel [link]/3",
-            "type": "Link"
-        },
-        {
-            "name": "Stanislaus Tunnel [link]/4",
-            "type": "Link"
-        },
-        {
-            "name": "Stanislaus Tunnel [link]/5",
-            "type": "Link"
-        },
-        {
-            "name": "Stanislaus Tunnel [link]/6",
-            "type": "Link"
-        },
-        {
-            "name": "Stanislaus Tunnel [link]/7",
-            "type": "Link"
-        },
-        {
-            "name": "Stanislaus Tunnel [link]/8",
-            "type": "Link"
-        },
-        {
-            "name": "Stanislaus Tunnel [link]/9",
-            "type": "Link"
-        },
-        {
-            "name": "Stanislaus Tunnel [link]/10",
-            "type": "Link"
-        },
-        {
-            "name": "Stanislaus Tunnel [link]/11",
-            "type": "Link"
-        },
-        {
-            "name": "Stanislaus Tunnel [link]/12",
-            "type": "Link"
-        },
-        {
-            "name": "USGS_11293580_NF STAN R DIV TUNNEL [link]/1",
-            "type": "Link"
-        },
-        {
-            "name": "USGS_11293580_NF STAN R DIV TUNNEL [link]/2",
-            "type": "Link"
-        },
-        {
-            "name": "USGS_11293580_NF STAN R DIV TUNNEL [link]/3",
-            "type": "Link"
-        },
-        {
-            "name": "USGS_11293580_NF STAN R DIV TUNNEL [link]/4",
-            "type": "Link"
-        },
-        {
-            "name": "USGS_11293580_NF STAN R DIV TUNNEL [link]/5",
-            "type": "Link"
-        },
-        {
-            "name": "USGS_11293580_NF STAN R DIV TUNNEL [link]/6",
-            "type": "Link"
-        },
-        {
-            "name": "USGS_11293580_NF STAN R DIV TUNNEL [link]/7",
-            "type": "Link"
-        },
-        {
-            "name": "USGS_11293580_NF STAN R DIV TUNNEL [link]/8",
-            "type": "Link"
-        },
-        {
-            "name": "USGS_11293580_NF STAN R DIV TUNNEL [link]/9",
-            "type": "Link"
-        },
-        {
-            "name": "USGS_11293580_NF STAN R DIV TUNNEL [link]/10",
-            "type": "Link"
-        },
-        {
-            "name": "USGS_11293580_NF STAN R DIV TUNNEL [link]/11",
-            "type": "Link"
-        },
-        {
-            "name": "USGS_11293580_NF STAN R DIV TUNNEL [link]/12",
-            "type": "Link"
-        },
         {
             "name": "Angels Canal Inflow [node]/1",
             "type": "River"
@@ -5369,54 +5033,6 @@
             "max_volume": 0.0
         },
         {
-            "name": "STANI-N-JUN2 [node]/1",
-            "type": "Link"
-        },
-        {
-            "name": "STANI-N-JUN2 [node]/2",
-            "type": "Link"
-        },
-        {
-            "name": "STANI-N-JUN2 [node]/3",
-            "type": "Link"
-        },
-        {
-            "name": "STANI-N-JUN2 [node]/4",
-            "type": "Link"
-        },
-        {
-            "name": "STANI-N-JUN2 [node]/5",
-            "type": "Link"
-        },
-        {
-            "name": "STANI-N-JUN2 [node]/6",
-            "type": "Link"
-        },
-        {
-            "name": "STANI-N-JUN2 [node]/7",
-            "type": "Link"
-        },
-        {
-            "name": "STANI-N-JUN2 [node]/8",
-            "type": "Link"
-        },
-        {
-            "name": "STANI-N-JUN2 [node]/9",
-            "type": "Link"
-        },
-        {
-            "name": "STANI-N-JUN2 [node]/10",
-            "type": "Link"
-        },
-        {
-            "name": "STANI-N-JUN2 [node]/11",
-            "type": "Link"
-        },
-        {
-            "name": "STANI-N-JUN2 [node]/12",
-            "type": "Link"
-        },
-        {
             "name": "STANI-N-JUN3 [node]/1",
             "type": "River"
         },
@@ -9458,675 +9074,63 @@
             "mrf_cost": "node/New Melones Flood Control/Violation Cost/12"
         },
         {
-            "name": "STAN-L-CON 1/1",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 1/2",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 1/3",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 1/4",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 1/5",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 1/6",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 1/7",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 1/8",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 1/9",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 1/10",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 1/11",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 1/12",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 2/1",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 2/2",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 2/3",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 2/4",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 2/5",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 2/6",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 2/7",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 2/8",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 2/9",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 2/10",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 2/11",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 2/12",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 3/1",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 3/2",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 3/3",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 3/4",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 3/5",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 3/6",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 3/7",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 3/8",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 3/9",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 3/10",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 3/11",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 3/12",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 4/1",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 4/2",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 4/3",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 4/4",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 4/5",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 4/6",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 4/7",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 4/8",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 4/9",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 4/10",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 4/11",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 4/12",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 5/1",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 5/2",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 5/3",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 5/4",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 5/5",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 5/6",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 5/7",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 5/8",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 5/9",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 5/10",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 5/11",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 5/12",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 6/1",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 6/2",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 6/3",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 6/4",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 6/5",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 6/6",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 6/7",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 6/8",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 6/9",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 6/10",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 6/11",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 6/12",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 7/1",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 7/2",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 7/3",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 7/4",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 7/5",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 7/6",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 7/7",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 7/8",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 7/9",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 7/10",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 7/11",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 7/12",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 8/1",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 8/2",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 8/3",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 8/4",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 8/5",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 8/6",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 8/7",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 8/8",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 8/9",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 8/10",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 8/11",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 8/12",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 9/1",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 9/2",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 9/3",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 9/4",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 9/5",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 9/6",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 9/7",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 9/8",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 9/9",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 9/10",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 9/11",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 9/12",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 10/1",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 10/2",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 10/3",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 10/4",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 10/5",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 10/6",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 10/7",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 10/8",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 10/9",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 10/10",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 10/11",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 10/12",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 11/1",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 11/2",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 11/3",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 11/4",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 11/5",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 11/6",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 11/7",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 11/8",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 11/9",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 11/10",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 11/11",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 11/12",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 12/1",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 12/2",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 12/3",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 12/4",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 12/5",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 12/6",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 12/7",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 12/8",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 12/9",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 12/10",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 12/11",
-            "type": "Link"
-        },
-        {
-            "name": "STAN-L-CON 12/12",
-            "type": "Link"
-        },
-        {
-            "name": "STN_below_Melons.2.1/1",
-            "type": "River"
-        },
-        {
-            "name": "STN_below_Melons.2.1/2",
-            "type": "River"
-        },
-        {
-            "name": "STN_below_Melons.2.1/3",
-            "type": "River"
-        },
-        {
-            "name": "STN_below_Melons.2.1/4",
-            "type": "River"
-        },
-        {
-            "name": "STN_below_Melons.2.1/5",
-            "type": "River"
-        },
-        {
-            "name": "STN_below_Melons.2.1/6",
-            "type": "River"
-        },
-        {
-            "name": "STN_below_Melons.2.1/7",
-            "type": "River"
-        },
-        {
-            "name": "STN_below_Melons.2.1/8",
-            "type": "River"
-        },
-        {
-            "name": "STN_below_Melons.2.1/9",
-            "type": "River"
-        },
-        {
-            "name": "STN_below_Melons.2.1/10",
-            "type": "River"
-        },
-        {
-            "name": "STN_below_Melons.2.1/11",
-            "type": "River"
-        },
-        {
-            "name": "STN_below_Melons.2.1/12",
-            "type": "River"
-        },
-        {
             "name": "STN_below_Melons.2.2/1",
+            "comment": "keep",
             "type": "River"
         },
         {
             "name": "STN_below_Melons.2.2/2",
+            "comment": "keep",
             "type": "River"
         },
         {
             "name": "STN_below_Melons.2.2/3",
+            "comment": "keep",
             "type": "River"
         },
         {
             "name": "STN_below_Melons.2.2/4",
+            "comment": "keep",
             "type": "River"
         },
         {
             "name": "STN_below_Melons.2.2/5",
+            "comment": "keep",
             "type": "River"
         },
         {
             "name": "STN_below_Melons.2.2/6",
+            "comment": "keep",
             "type": "River"
         },
         {
             "name": "STN_below_Melons.2.2/7",
+            "comment": "keep",
             "type": "River"
         },
         {
             "name": "STN_below_Melons.2.2/8",
+            "comment": "keep",
             "type": "River"
         },
         {
             "name": "STN_below_Melons.2.2/9",
+            "comment": "keep",
             "type": "River"
         },
         {
             "name": "STN_below_Melons.2.2/10",
+            "comment": "keep",
             "type": "River"
         },
         {
             "name": "STN_below_Melons.2.2/11",
+            "comment": "keep",
             "type": "River"
         },
         {
             "name": "STN_below_Melons.2.2/12",
+            "comment": "keep",
             "type": "River"
         },
         {
@@ -11314,54 +10318,6 @@
         [
             "Angels Canal Inflow [node]/12",
             "Angels Ck Inflow [node]/12"
-        ],
-        [
-            "STANI-N-JUN2 [node]/1",
-            "Beaver Ck Inflow [node]/1"
-        ],
-        [
-            "STANI-N-JUN2 [node]/2",
-            "Beaver Ck Inflow [node]/2"
-        ],
-        [
-            "STANI-N-JUN2 [node]/3",
-            "Beaver Ck Inflow [node]/3"
-        ],
-        [
-            "STANI-N-JUN2 [node]/4",
-            "Beaver Ck Inflow [node]/4"
-        ],
-        [
-            "STANI-N-JUN2 [node]/5",
-            "Beaver Ck Inflow [node]/5"
-        ],
-        [
-            "STANI-N-JUN2 [node]/6",
-            "Beaver Ck Inflow [node]/6"
-        ],
-        [
-            "STANI-N-JUN2 [node]/7",
-            "Beaver Ck Inflow [node]/7"
-        ],
-        [
-            "STANI-N-JUN2 [node]/8",
-            "Beaver Ck Inflow [node]/8"
-        ],
-        [
-            "STANI-N-JUN2 [node]/9",
-            "Beaver Ck Inflow [node]/9"
-        ],
-        [
-            "STANI-N-JUN2 [node]/10",
-            "Beaver Ck Inflow [node]/10"
-        ],
-        [
-            "STANI-N-JUN2 [node]/11",
-            "Beaver Ck Inflow [node]/11"
-        ],
-        [
-            "STANI-N-JUN2 [node]/12",
-            "Beaver Ck Inflow [node]/12"
         ],
         [
             "Angles Canal Outflow [node]/1",
@@ -15492,150 +14448,6 @@
             "Collierville PH [node]/12"
         ],
         [
-            "Donnells Diversion [link]/1",
-            "Donnells Diversion Inflow [node]/1"
-        ],
-        [
-            "Donnells Diversion [link]/2",
-            "Donnells Diversion Inflow [node]/2"
-        ],
-        [
-            "Donnells Diversion [link]/3",
-            "Donnells Diversion Inflow [node]/3"
-        ],
-        [
-            "Donnells Diversion [link]/4",
-            "Donnells Diversion Inflow [node]/4"
-        ],
-        [
-            "Donnells Diversion [link]/5",
-            "Donnells Diversion Inflow [node]/5"
-        ],
-        [
-            "Donnells Diversion [link]/6",
-            "Donnells Diversion Inflow [node]/6"
-        ],
-        [
-            "Donnells Diversion [link]/7",
-            "Donnells Diversion Inflow [node]/7"
-        ],
-        [
-            "Donnells Diversion [link]/8",
-            "Donnells Diversion Inflow [node]/8"
-        ],
-        [
-            "Donnells Diversion [link]/9",
-            "Donnells Diversion Inflow [node]/9"
-        ],
-        [
-            "Donnells Diversion [link]/10",
-            "Donnells Diversion Inflow [node]/10"
-        ],
-        [
-            "Donnells Diversion [link]/11",
-            "Donnells Diversion Inflow [node]/11"
-        ],
-        [
-            "Donnells Diversion [link]/12",
-            "Donnells Diversion Inflow [node]/12"
-        ],
-        [
-            "Lower Collierville Tunnel 1 [link]/1",
-            "Collierville Tunnel Inflow (1) [node]/1"
-        ],
-        [
-            "Lower Collierville Tunnel 1 [link]/2",
-            "Collierville Tunnel Inflow (1) [node]/2"
-        ],
-        [
-            "Lower Collierville Tunnel 1 [link]/3",
-            "Collierville Tunnel Inflow (1) [node]/3"
-        ],
-        [
-            "Lower Collierville Tunnel 1 [link]/4",
-            "Collierville Tunnel Inflow (1) [node]/4"
-        ],
-        [
-            "Lower Collierville Tunnel 1 [link]/5",
-            "Collierville Tunnel Inflow (1) [node]/5"
-        ],
-        [
-            "Lower Collierville Tunnel 1 [link]/6",
-            "Collierville Tunnel Inflow (1) [node]/6"
-        ],
-        [
-            "Lower Collierville Tunnel 1 [link]/7",
-            "Collierville Tunnel Inflow (1) [node]/7"
-        ],
-        [
-            "Lower Collierville Tunnel 1 [link]/8",
-            "Collierville Tunnel Inflow (1) [node]/8"
-        ],
-        [
-            "Lower Collierville Tunnel 1 [link]/9",
-            "Collierville Tunnel Inflow (1) [node]/9"
-        ],
-        [
-            "Lower Collierville Tunnel 1 [link]/10",
-            "Collierville Tunnel Inflow (1) [node]/10"
-        ],
-        [
-            "Lower Collierville Tunnel 1 [link]/11",
-            "Collierville Tunnel Inflow (1) [node]/11"
-        ],
-        [
-            "Lower Collierville Tunnel 1 [link]/12",
-            "Collierville Tunnel Inflow (1) [node]/12"
-        ],
-        [
-            "Lower Collierville Tunnel 2 [link]/1",
-            "Collierville Tunnel Inflow [node]/1"
-        ],
-        [
-            "Lower Collierville Tunnel 2 [link]/2",
-            "Collierville Tunnel Inflow [node]/2"
-        ],
-        [
-            "Lower Collierville Tunnel 2 [link]/3",
-            "Collierville Tunnel Inflow [node]/3"
-        ],
-        [
-            "Lower Collierville Tunnel 2 [link]/4",
-            "Collierville Tunnel Inflow [node]/4"
-        ],
-        [
-            "Lower Collierville Tunnel 2 [link]/5",
-            "Collierville Tunnel Inflow [node]/5"
-        ],
-        [
-            "Lower Collierville Tunnel 2 [link]/6",
-            "Collierville Tunnel Inflow [node]/6"
-        ],
-        [
-            "Lower Collierville Tunnel 2 [link]/7",
-            "Collierville Tunnel Inflow [node]/7"
-        ],
-        [
-            "Lower Collierville Tunnel 2 [link]/8",
-            "Collierville Tunnel Inflow [node]/8"
-        ],
-        [
-            "Lower Collierville Tunnel 2 [link]/9",
-            "Collierville Tunnel Inflow [node]/9"
-        ],
-        [
-            "Lower Collierville Tunnel 2 [link]/10",
-            "Collierville Tunnel Inflow [node]/10"
-        ],
-        [
-            "Lower Collierville Tunnel 2 [link]/11",
-            "Collierville Tunnel Inflow [node]/11"
-        ],
-        [
-            "Lower Collierville Tunnel 2 [link]/12",
-            "Collierville Tunnel Inflow [node]/12"
-        ],
-        [
             "Sand Bar Power Tunnel Inflow [node]/1",
             "Stanislaus Tunnel Outflow [node]/1"
         ],
@@ -15826,102 +14638,6 @@
         [
             "Mill Ck Inflow [node]/12",
             "Middle Fork Stanislaus R Inflow [node]/12"
-        ],
-        [
-            "Philadelphia Aqueduct [link]/1",
-            "Philadelphia Aqueduct Inflow [node]/1"
-        ],
-        [
-            "Philadelphia Aqueduct [link]/2",
-            "Philadelphia Aqueduct Inflow [node]/2"
-        ],
-        [
-            "Philadelphia Aqueduct [link]/3",
-            "Philadelphia Aqueduct Inflow [node]/3"
-        ],
-        [
-            "Philadelphia Aqueduct [link]/4",
-            "Philadelphia Aqueduct Inflow [node]/4"
-        ],
-        [
-            "Philadelphia Aqueduct [link]/5",
-            "Philadelphia Aqueduct Inflow [node]/5"
-        ],
-        [
-            "Philadelphia Aqueduct [link]/6",
-            "Philadelphia Aqueduct Inflow [node]/6"
-        ],
-        [
-            "Philadelphia Aqueduct [link]/7",
-            "Philadelphia Aqueduct Inflow [node]/7"
-        ],
-        [
-            "Philadelphia Aqueduct [link]/8",
-            "Philadelphia Aqueduct Inflow [node]/8"
-        ],
-        [
-            "Philadelphia Aqueduct [link]/9",
-            "Philadelphia Aqueduct Inflow [node]/9"
-        ],
-        [
-            "Philadelphia Aqueduct [link]/10",
-            "Philadelphia Aqueduct Inflow [node]/10"
-        ],
-        [
-            "Philadelphia Aqueduct [link]/11",
-            "Philadelphia Aqueduct Inflow [node]/11"
-        ],
-        [
-            "Philadelphia Aqueduct [link]/12",
-            "Philadelphia Aqueduct Inflow [node]/12"
-        ],
-        [
-            "Sand Bar Power Tunnel [link]/1",
-            "Sand Bar Power Tunnel Inflow [node]/1"
-        ],
-        [
-            "Sand Bar Power Tunnel [link]/2",
-            "Sand Bar Power Tunnel Inflow [node]/2"
-        ],
-        [
-            "Sand Bar Power Tunnel [link]/3",
-            "Sand Bar Power Tunnel Inflow [node]/3"
-        ],
-        [
-            "Sand Bar Power Tunnel [link]/4",
-            "Sand Bar Power Tunnel Inflow [node]/4"
-        ],
-        [
-            "Sand Bar Power Tunnel [link]/5",
-            "Sand Bar Power Tunnel Inflow [node]/5"
-        ],
-        [
-            "Sand Bar Power Tunnel [link]/6",
-            "Sand Bar Power Tunnel Inflow [node]/6"
-        ],
-        [
-            "Sand Bar Power Tunnel [link]/7",
-            "Sand Bar Power Tunnel Inflow [node]/7"
-        ],
-        [
-            "Sand Bar Power Tunnel [link]/8",
-            "Sand Bar Power Tunnel Inflow [node]/8"
-        ],
-        [
-            "Sand Bar Power Tunnel [link]/9",
-            "Sand Bar Power Tunnel Inflow [node]/9"
-        ],
-        [
-            "Sand Bar Power Tunnel [link]/10",
-            "Sand Bar Power Tunnel Inflow [node]/10"
-        ],
-        [
-            "Sand Bar Power Tunnel [link]/11",
-            "Sand Bar Power Tunnel Inflow [node]/11"
-        ],
-        [
-            "Sand Bar Power Tunnel [link]/12",
-            "Sand Bar Power Tunnel Inflow [node]/12"
         ],
         [
             "Lyons Reservoir [node]/1",
@@ -16212,726 +14928,6 @@
             "STANI-N-JUN3 [node]/12"
         ],
         [
-            "Stanislaus Tunnel [link]/1",
-            "Stanislaus Tunnel Inflow [node]/1"
-        ],
-        [
-            "Stanislaus Tunnel [link]/2",
-            "Stanislaus Tunnel Inflow [node]/2"
-        ],
-        [
-            "Stanislaus Tunnel [link]/3",
-            "Stanislaus Tunnel Inflow [node]/3"
-        ],
-        [
-            "Stanislaus Tunnel [link]/4",
-            "Stanislaus Tunnel Inflow [node]/4"
-        ],
-        [
-            "Stanislaus Tunnel [link]/5",
-            "Stanislaus Tunnel Inflow [node]/5"
-        ],
-        [
-            "Stanislaus Tunnel [link]/6",
-            "Stanislaus Tunnel Inflow [node]/6"
-        ],
-        [
-            "Stanislaus Tunnel [link]/7",
-            "Stanislaus Tunnel Inflow [node]/7"
-        ],
-        [
-            "Stanislaus Tunnel [link]/8",
-            "Stanislaus Tunnel Inflow [node]/8"
-        ],
-        [
-            "Stanislaus Tunnel [link]/9",
-            "Stanislaus Tunnel Inflow [node]/9"
-        ],
-        [
-            "Stanislaus Tunnel [link]/10",
-            "Stanislaus Tunnel Inflow [node]/10"
-        ],
-        [
-            "Stanislaus Tunnel [link]/11",
-            "Stanislaus Tunnel Inflow [node]/11"
-        ],
-        [
-            "Stanislaus Tunnel [link]/12",
-            "Stanislaus Tunnel Inflow [node]/12"
-        ],
-        [
-            "New Melones Lake [node]/1",
-            "STAN-L-CON 1/1"
-        ],
-        [
-            "New Melones Lake [node]/2",
-            "STAN-L-CON 1/2"
-        ],
-        [
-            "New Melones Lake [node]/3",
-            "STAN-L-CON 1/3"
-        ],
-        [
-            "New Melones Lake [node]/4",
-            "STAN-L-CON 1/4"
-        ],
-        [
-            "New Melones Lake [node]/5",
-            "STAN-L-CON 1/5"
-        ],
-        [
-            "New Melones Lake [node]/6",
-            "STAN-L-CON 1/6"
-        ],
-        [
-            "New Melones Lake [node]/7",
-            "STAN-L-CON 1/7"
-        ],
-        [
-            "New Melones Lake [node]/8",
-            "STAN-L-CON 1/8"
-        ],
-        [
-            "New Melones Lake [node]/9",
-            "STAN-L-CON 1/9"
-        ],
-        [
-            "New Melones Lake [node]/10",
-            "STAN-L-CON 1/10"
-        ],
-        [
-            "New Melones Lake [node]/11",
-            "STAN-L-CON 1/11"
-        ],
-        [
-            "New Melones Lake [node]/12",
-            "STAN-L-CON 1/12"
-        ],
-        [
-            "STAN-L-CON 1/1",
-            "Release from New Melones [node]/1"
-        ],
-        [
-            "STAN-L-CON 1/2",
-            "Release from New Melones [node]/2"
-        ],
-        [
-            "STAN-L-CON 1/3",
-            "Release from New Melones [node]/3"
-        ],
-        [
-            "STAN-L-CON 1/4",
-            "Release from New Melones [node]/4"
-        ],
-        [
-            "STAN-L-CON 1/5",
-            "Release from New Melones [node]/5"
-        ],
-        [
-            "STAN-L-CON 1/6",
-            "Release from New Melones [node]/6"
-        ],
-        [
-            "STAN-L-CON 1/7",
-            "Release from New Melones [node]/7"
-        ],
-        [
-            "STAN-L-CON 1/8",
-            "Release from New Melones [node]/8"
-        ],
-        [
-            "STAN-L-CON 1/9",
-            "Release from New Melones [node]/9"
-        ],
-        [
-            "STAN-L-CON 1/10",
-            "Release from New Melones [node]/10"
-        ],
-        [
-            "STAN-L-CON 1/11",
-            "Release from New Melones [node]/11"
-        ],
-        [
-            "STAN-L-CON 1/12",
-            "Release from New Melones [node]/12"
-        ],
-        [
-            "Release from New Melones [node]/1",
-            "STAN-L-CON 3/1"
-        ],
-        [
-            "Release from New Melones [node]/2",
-            "STAN-L-CON 3/2"
-        ],
-        [
-            "Release from New Melones [node]/3",
-            "STAN-L-CON 3/3"
-        ],
-        [
-            "Release from New Melones [node]/4",
-            "STAN-L-CON 3/4"
-        ],
-        [
-            "Release from New Melones [node]/5",
-            "STAN-L-CON 3/5"
-        ],
-        [
-            "Release from New Melones [node]/6",
-            "STAN-L-CON 3/6"
-        ],
-        [
-            "Release from New Melones [node]/7",
-            "STAN-L-CON 3/7"
-        ],
-        [
-            "Release from New Melones [node]/8",
-            "STAN-L-CON 3/8"
-        ],
-        [
-            "Release from New Melones [node]/9",
-            "STAN-L-CON 3/9"
-        ],
-        [
-            "Release from New Melones [node]/10",
-            "STAN-L-CON 3/10"
-        ],
-        [
-            "Release from New Melones [node]/11",
-            "STAN-L-CON 3/11"
-        ],
-        [
-            "Release from New Melones [node]/12",
-            "STAN-L-CON 3/12"
-        ],
-        [
-            "STAN-L-CON 3/1",
-            "STANI-N-JUN4/1"
-        ],
-        [
-            "STAN-L-CON 3/2",
-            "STANI-N-JUN4/2"
-        ],
-        [
-            "STAN-L-CON 3/3",
-            "STANI-N-JUN4/3"
-        ],
-        [
-            "STAN-L-CON 3/4",
-            "STANI-N-JUN4/4"
-        ],
-        [
-            "STAN-L-CON 3/5",
-            "STANI-N-JUN4/5"
-        ],
-        [
-            "STAN-L-CON 3/6",
-            "STANI-N-JUN4/6"
-        ],
-        [
-            "STAN-L-CON 3/7",
-            "STANI-N-JUN4/7"
-        ],
-        [
-            "STAN-L-CON 3/8",
-            "STANI-N-JUN4/8"
-        ],
-        [
-            "STAN-L-CON 3/9",
-            "STANI-N-JUN4/9"
-        ],
-        [
-            "STAN-L-CON 3/10",
-            "STANI-N-JUN4/10"
-        ],
-        [
-            "STAN-L-CON 3/11",
-            "STANI-N-JUN4/11"
-        ],
-        [
-            "STAN-L-CON 3/12",
-            "STANI-N-JUN4/12"
-        ],
-        [
-            "New Melones Lake [node]/1",
-            "STAN-L-CON 2/1"
-        ],
-        [
-            "New Melones Lake [node]/2",
-            "STAN-L-CON 2/2"
-        ],
-        [
-            "New Melones Lake [node]/3",
-            "STAN-L-CON 2/3"
-        ],
-        [
-            "New Melones Lake [node]/4",
-            "STAN-L-CON 2/4"
-        ],
-        [
-            "New Melones Lake [node]/5",
-            "STAN-L-CON 2/5"
-        ],
-        [
-            "New Melones Lake [node]/6",
-            "STAN-L-CON 2/6"
-        ],
-        [
-            "New Melones Lake [node]/7",
-            "STAN-L-CON 2/7"
-        ],
-        [
-            "New Melones Lake [node]/8",
-            "STAN-L-CON 2/8"
-        ],
-        [
-            "New Melones Lake [node]/9",
-            "STAN-L-CON 2/9"
-        ],
-        [
-            "New Melones Lake [node]/10",
-            "STAN-L-CON 2/10"
-        ],
-        [
-            "New Melones Lake [node]/11",
-            "STAN-L-CON 2/11"
-        ],
-        [
-            "New Melones Lake [node]/12",
-            "STAN-L-CON 2/12"
-        ],
-        [
-            "STAN-L-CON 2/1",
-            "New Melones Flood Control [node]/1"
-        ],
-        [
-            "STAN-L-CON 2/2",
-            "New Melones Flood Control [node]/2"
-        ],
-        [
-            "STAN-L-CON 2/3",
-            "New Melones Flood Control [node]/3"
-        ],
-        [
-            "STAN-L-CON 2/4",
-            "New Melones Flood Control [node]/4"
-        ],
-        [
-            "STAN-L-CON 2/5",
-            "New Melones Flood Control [node]/5"
-        ],
-        [
-            "STAN-L-CON 2/6",
-            "New Melones Flood Control [node]/6"
-        ],
-        [
-            "STAN-L-CON 2/7",
-            "New Melones Flood Control [node]/7"
-        ],
-        [
-            "STAN-L-CON 2/8",
-            "New Melones Flood Control [node]/8"
-        ],
-        [
-            "STAN-L-CON 2/9",
-            "New Melones Flood Control [node]/9"
-        ],
-        [
-            "STAN-L-CON 2/10",
-            "New Melones Flood Control [node]/10"
-        ],
-        [
-            "STAN-L-CON 2/11",
-            "New Melones Flood Control [node]/11"
-        ],
-        [
-            "STAN-L-CON 2/12",
-            "New Melones Flood Control [node]/12"
-        ],
-        [
-            "New Melones Flood Control [node]/1",
-            "STAN-L-CON 4/1"
-        ],
-        [
-            "New Melones Flood Control [node]/2",
-            "STAN-L-CON 4/2"
-        ],
-        [
-            "New Melones Flood Control [node]/3",
-            "STAN-L-CON 4/3"
-        ],
-        [
-            "New Melones Flood Control [node]/4",
-            "STAN-L-CON 4/4"
-        ],
-        [
-            "New Melones Flood Control [node]/5",
-            "STAN-L-CON 4/5"
-        ],
-        [
-            "New Melones Flood Control [node]/6",
-            "STAN-L-CON 4/6"
-        ],
-        [
-            "New Melones Flood Control [node]/7",
-            "STAN-L-CON 4/7"
-        ],
-        [
-            "New Melones Flood Control [node]/8",
-            "STAN-L-CON 4/8"
-        ],
-        [
-            "New Melones Flood Control [node]/9",
-            "STAN-L-CON 4/9"
-        ],
-        [
-            "New Melones Flood Control [node]/10",
-            "STAN-L-CON 4/10"
-        ],
-        [
-            "New Melones Flood Control [node]/11",
-            "STAN-L-CON 4/11"
-        ],
-        [
-            "New Melones Flood Control [node]/12",
-            "STAN-L-CON 4/12"
-        ],
-        [
-            "STAN-L-CON 4/1",
-            "STANI-N-JUN4/1"
-        ],
-        [
-            "STAN-L-CON 4/2",
-            "STANI-N-JUN4/2"
-        ],
-        [
-            "STAN-L-CON 4/3",
-            "STANI-N-JUN4/3"
-        ],
-        [
-            "STAN-L-CON 4/4",
-            "STANI-N-JUN4/4"
-        ],
-        [
-            "STAN-L-CON 4/5",
-            "STANI-N-JUN4/5"
-        ],
-        [
-            "STAN-L-CON 4/6",
-            "STANI-N-JUN4/6"
-        ],
-        [
-            "STAN-L-CON 4/7",
-            "STANI-N-JUN4/7"
-        ],
-        [
-            "STAN-L-CON 4/8",
-            "STANI-N-JUN4/8"
-        ],
-        [
-            "STAN-L-CON 4/9",
-            "STANI-N-JUN4/9"
-        ],
-        [
-            "STAN-L-CON 4/10",
-            "STANI-N-JUN4/10"
-        ],
-        [
-            "STAN-L-CON 4/11",
-            "STANI-N-JUN4/11"
-        ],
-        [
-            "STAN-L-CON 4/12",
-            "STANI-N-JUN4/12"
-        ],
-        [
-            "STANI-N-JUN4/1",
-            "STAN-L-CON 5/1"
-        ],
-        [
-            "STANI-N-JUN4/2",
-            "STAN-L-CON 5/2"
-        ],
-        [
-            "STANI-N-JUN4/3",
-            "STAN-L-CON 5/3"
-        ],
-        [
-            "STANI-N-JUN4/4",
-            "STAN-L-CON 5/4"
-        ],
-        [
-            "STANI-N-JUN4/5",
-            "STAN-L-CON 5/5"
-        ],
-        [
-            "STANI-N-JUN4/6",
-            "STAN-L-CON 5/6"
-        ],
-        [
-            "STANI-N-JUN4/7",
-            "STAN-L-CON 5/7"
-        ],
-        [
-            "STANI-N-JUN4/8",
-            "STAN-L-CON 5/8"
-        ],
-        [
-            "STANI-N-JUN4/9",
-            "STAN-L-CON 5/9"
-        ],
-        [
-            "STANI-N-JUN4/10",
-            "STAN-L-CON 5/10"
-        ],
-        [
-            "STANI-N-JUN4/11",
-            "STAN-L-CON 5/11"
-        ],
-        [
-            "STANI-N-JUN4/12",
-            "STAN-L-CON 5/12"
-        ],
-        [
-            "STAN-L-CON 5/1",
-            "New Melones PH [node]/1"
-        ],
-        [
-            "STAN-L-CON 5/2",
-            "New Melones PH [node]/2"
-        ],
-        [
-            "STAN-L-CON 5/3",
-            "New Melones PH [node]/3"
-        ],
-        [
-            "STAN-L-CON 5/4",
-            "New Melones PH [node]/4"
-        ],
-        [
-            "STAN-L-CON 5/5",
-            "New Melones PH [node]/5"
-        ],
-        [
-            "STAN-L-CON 5/6",
-            "New Melones PH [node]/6"
-        ],
-        [
-            "STAN-L-CON 5/7",
-            "New Melones PH [node]/7"
-        ],
-        [
-            "STAN-L-CON 5/8",
-            "New Melones PH [node]/8"
-        ],
-        [
-            "STAN-L-CON 5/9",
-            "New Melones PH [node]/9"
-        ],
-        [
-            "STAN-L-CON 5/10",
-            "New Melones PH [node]/10"
-        ],
-        [
-            "STAN-L-CON 5/11",
-            "New Melones PH [node]/11"
-        ],
-        [
-            "STAN-L-CON 5/12",
-            "New Melones PH [node]/12"
-        ],
-        [
-            "New Melones PH [node]/1",
-            "STAN-L-CON 6/1"
-        ],
-        [
-            "New Melones PH [node]/2",
-            "STAN-L-CON 6/2"
-        ],
-        [
-            "New Melones PH [node]/3",
-            "STAN-L-CON 6/3"
-        ],
-        [
-            "New Melones PH [node]/4",
-            "STAN-L-CON 6/4"
-        ],
-        [
-            "New Melones PH [node]/5",
-            "STAN-L-CON 6/5"
-        ],
-        [
-            "New Melones PH [node]/6",
-            "STAN-L-CON 6/6"
-        ],
-        [
-            "New Melones PH [node]/7",
-            "STAN-L-CON 6/7"
-        ],
-        [
-            "New Melones PH [node]/8",
-            "STAN-L-CON 6/8"
-        ],
-        [
-            "New Melones PH [node]/9",
-            "STAN-L-CON 6/9"
-        ],
-        [
-            "New Melones PH [node]/10",
-            "STAN-L-CON 6/10"
-        ],
-        [
-            "New Melones PH [node]/11",
-            "STAN-L-CON 6/11"
-        ],
-        [
-            "New Melones PH [node]/12",
-            "STAN-L-CON 6/12"
-        ],
-        [
-            "STAN-L-CON 6/1",
-            "STANI-N-JUN5/1"
-        ],
-        [
-            "STAN-L-CON 6/2",
-            "STANI-N-JUN5/2"
-        ],
-        [
-            "STAN-L-CON 6/3",
-            "STANI-N-JUN5/3"
-        ],
-        [
-            "STAN-L-CON 6/4",
-            "STANI-N-JUN5/4"
-        ],
-        [
-            "STAN-L-CON 6/5",
-            "STANI-N-JUN5/5"
-        ],
-        [
-            "STAN-L-CON 6/6",
-            "STANI-N-JUN5/6"
-        ],
-        [
-            "STAN-L-CON 6/7",
-            "STANI-N-JUN5/7"
-        ],
-        [
-            "STAN-L-CON 6/8",
-            "STANI-N-JUN5/8"
-        ],
-        [
-            "STAN-L-CON 6/9",
-            "STANI-N-JUN5/9"
-        ],
-        [
-            "STAN-L-CON 6/10",
-            "STANI-N-JUN5/10"
-        ],
-        [
-            "STAN-L-CON 6/11",
-            "STANI-N-JUN5/11"
-        ],
-        [
-            "STAN-L-CON 6/12",
-            "STANI-N-JUN5/12"
-        ],
-        [
-            "STANI-N-JUN4/1",
-            "STN_below_Melons.2.1/1"
-        ],
-        [
-            "STANI-N-JUN4/2",
-            "STN_below_Melons.2.1/2"
-        ],
-        [
-            "STANI-N-JUN4/3",
-            "STN_below_Melons.2.1/3"
-        ],
-        [
-            "STANI-N-JUN4/4",
-            "STN_below_Melons.2.1/4"
-        ],
-        [
-            "STANI-N-JUN4/5",
-            "STN_below_Melons.2.1/5"
-        ],
-        [
-            "STANI-N-JUN4/6",
-            "STN_below_Melons.2.1/6"
-        ],
-        [
-            "STANI-N-JUN4/7",
-            "STN_below_Melons.2.1/7"
-        ],
-        [
-            "STANI-N-JUN4/8",
-            "STN_below_Melons.2.1/8"
-        ],
-        [
-            "STANI-N-JUN4/9",
-            "STN_below_Melons.2.1/9"
-        ],
-        [
-            "STANI-N-JUN4/10",
-            "STN_below_Melons.2.1/10"
-        ],
-        [
-            "STANI-N-JUN4/11",
-            "STN_below_Melons.2.1/11"
-        ],
-        [
-            "STANI-N-JUN4/12",
-            "STN_below_Melons.2.1/12"
-        ],
-        [
-            "STN_below_Melons.2.1/1",
-            "STANI-N-JUN5/1"
-        ],
-        [
-            "STN_below_Melons.2.1/2",
-            "STANI-N-JUN5/2"
-        ],
-        [
-            "STN_below_Melons.2.1/3",
-            "STANI-N-JUN5/3"
-        ],
-        [
-            "STN_below_Melons.2.1/4",
-            "STANI-N-JUN5/4"
-        ],
-        [
-            "STN_below_Melons.2.1/5",
-            "STANI-N-JUN5/5"
-        ],
-        [
-            "STN_below_Melons.2.1/6",
-            "STANI-N-JUN5/6"
-        ],
-        [
-            "STN_below_Melons.2.1/7",
-            "STANI-N-JUN5/7"
-        ],
-        [
-            "STN_below_Melons.2.1/8",
-            "STANI-N-JUN5/8"
-        ],
-        [
-            "STN_below_Melons.2.1/9",
-            "STANI-N-JUN5/9"
-        ],
-        [
-            "STN_below_Melons.2.1/10",
-            "STANI-N-JUN5/10"
-        ],
-        [
-            "STN_below_Melons.2.1/11",
-            "STANI-N-JUN5/11"
-        ],
-        [
-            "STN_below_Melons.2.1/12",
-            "STANI-N-JUN5/12"
-        ],
-        [
             "STANI-N-JUN5/1",
             "STN_below_Melons.2.2/1"
         ],
@@ -17124,390 +15120,6 @@
             "New Melones Lake [node]/12"
         ],
         [
-            "Tulloch Lake [node]/1",
-            "STAN-L-CON 7/1"
-        ],
-        [
-            "Tulloch Lake [node]/2",
-            "STAN-L-CON 7/2"
-        ],
-        [
-            "Tulloch Lake [node]/3",
-            "STAN-L-CON 7/3"
-        ],
-        [
-            "Tulloch Lake [node]/4",
-            "STAN-L-CON 7/4"
-        ],
-        [
-            "Tulloch Lake [node]/5",
-            "STAN-L-CON 7/5"
-        ],
-        [
-            "Tulloch Lake [node]/6",
-            "STAN-L-CON 7/6"
-        ],
-        [
-            "Tulloch Lake [node]/7",
-            "STAN-L-CON 7/7"
-        ],
-        [
-            "Tulloch Lake [node]/8",
-            "STAN-L-CON 7/8"
-        ],
-        [
-            "Tulloch Lake [node]/9",
-            "STAN-L-CON 7/9"
-        ],
-        [
-            "Tulloch Lake [node]/10",
-            "STAN-L-CON 7/10"
-        ],
-        [
-            "Tulloch Lake [node]/11",
-            "STAN-L-CON 7/11"
-        ],
-        [
-            "Tulloch Lake [node]/12",
-            "STAN-L-CON 7/12"
-        ],
-        [
-            "STAN-L-CON 7/1",
-            "Release from Tulloch Lake [node]/1"
-        ],
-        [
-            "STAN-L-CON 7/2",
-            "Release from Tulloch Lake [node]/2"
-        ],
-        [
-            "STAN-L-CON 7/3",
-            "Release from Tulloch Lake [node]/3"
-        ],
-        [
-            "STAN-L-CON 7/4",
-            "Release from Tulloch Lake [node]/4"
-        ],
-        [
-            "STAN-L-CON 7/5",
-            "Release from Tulloch Lake [node]/5"
-        ],
-        [
-            "STAN-L-CON 7/6",
-            "Release from Tulloch Lake [node]/6"
-        ],
-        [
-            "STAN-L-CON 7/7",
-            "Release from Tulloch Lake [node]/7"
-        ],
-        [
-            "STAN-L-CON 7/8",
-            "Release from Tulloch Lake [node]/8"
-        ],
-        [
-            "STAN-L-CON 7/9",
-            "Release from Tulloch Lake [node]/9"
-        ],
-        [
-            "STAN-L-CON 7/10",
-            "Release from Tulloch Lake [node]/10"
-        ],
-        [
-            "STAN-L-CON 7/11",
-            "Release from Tulloch Lake [node]/11"
-        ],
-        [
-            "STAN-L-CON 7/12",
-            "Release from Tulloch Lake [node]/12"
-        ],
-        [
-            "Release from Tulloch Lake [node]/1",
-            "STAN-L-CON 9/1"
-        ],
-        [
-            "Release from Tulloch Lake [node]/2",
-            "STAN-L-CON 9/2"
-        ],
-        [
-            "Release from Tulloch Lake [node]/3",
-            "STAN-L-CON 9/3"
-        ],
-        [
-            "Release from Tulloch Lake [node]/4",
-            "STAN-L-CON 9/4"
-        ],
-        [
-            "Release from Tulloch Lake [node]/5",
-            "STAN-L-CON 9/5"
-        ],
-        [
-            "Release from Tulloch Lake [node]/6",
-            "STAN-L-CON 9/6"
-        ],
-        [
-            "Release from Tulloch Lake [node]/7",
-            "STAN-L-CON 9/7"
-        ],
-        [
-            "Release from Tulloch Lake [node]/8",
-            "STAN-L-CON 9/8"
-        ],
-        [
-            "Release from Tulloch Lake [node]/9",
-            "STAN-L-CON 9/9"
-        ],
-        [
-            "Release from Tulloch Lake [node]/10",
-            "STAN-L-CON 9/10"
-        ],
-        [
-            "Release from Tulloch Lake [node]/11",
-            "STAN-L-CON 9/11"
-        ],
-        [
-            "Release from Tulloch Lake [node]/12",
-            "STAN-L-CON 9/12"
-        ],
-        [
-            "STAN-L-CON 9/1",
-            "STANI-N-JUN6/1"
-        ],
-        [
-            "STAN-L-CON 9/2",
-            "STANI-N-JUN6/2"
-        ],
-        [
-            "STAN-L-CON 9/3",
-            "STANI-N-JUN6/3"
-        ],
-        [
-            "STAN-L-CON 9/4",
-            "STANI-N-JUN6/4"
-        ],
-        [
-            "STAN-L-CON 9/5",
-            "STANI-N-JUN6/5"
-        ],
-        [
-            "STAN-L-CON 9/6",
-            "STANI-N-JUN6/6"
-        ],
-        [
-            "STAN-L-CON 9/7",
-            "STANI-N-JUN6/7"
-        ],
-        [
-            "STAN-L-CON 9/8",
-            "STANI-N-JUN6/8"
-        ],
-        [
-            "STAN-L-CON 9/9",
-            "STANI-N-JUN6/9"
-        ],
-        [
-            "STAN-L-CON 9/10",
-            "STANI-N-JUN6/10"
-        ],
-        [
-            "STAN-L-CON 9/11",
-            "STANI-N-JUN6/11"
-        ],
-        [
-            "STAN-L-CON 9/12",
-            "STANI-N-JUN6/12"
-        ],
-        [
-            "Tulloch Lake [node]/1",
-            "STAN-L-CON 8/1"
-        ],
-        [
-            "Tulloch Lake [node]/2",
-            "STAN-L-CON 8/2"
-        ],
-        [
-            "Tulloch Lake [node]/3",
-            "STAN-L-CON 8/3"
-        ],
-        [
-            "Tulloch Lake [node]/4",
-            "STAN-L-CON 8/4"
-        ],
-        [
-            "Tulloch Lake [node]/5",
-            "STAN-L-CON 8/5"
-        ],
-        [
-            "Tulloch Lake [node]/6",
-            "STAN-L-CON 8/6"
-        ],
-        [
-            "Tulloch Lake [node]/7",
-            "STAN-L-CON 8/7"
-        ],
-        [
-            "Tulloch Lake [node]/8",
-            "STAN-L-CON 8/8"
-        ],
-        [
-            "Tulloch Lake [node]/9",
-            "STAN-L-CON 8/9"
-        ],
-        [
-            "Tulloch Lake [node]/10",
-            "STAN-L-CON 8/10"
-        ],
-        [
-            "Tulloch Lake [node]/11",
-            "STAN-L-CON 8/11"
-        ],
-        [
-            "Tulloch Lake [node]/12",
-            "STAN-L-CON 8/12"
-        ],
-        [
-            "STAN-L-CON 8/1",
-            "Tulloch Lake Flood Control [node]/1"
-        ],
-        [
-            "STAN-L-CON 8/2",
-            "Tulloch Lake Flood Control [node]/2"
-        ],
-        [
-            "STAN-L-CON 8/3",
-            "Tulloch Lake Flood Control [node]/3"
-        ],
-        [
-            "STAN-L-CON 8/4",
-            "Tulloch Lake Flood Control [node]/4"
-        ],
-        [
-            "STAN-L-CON 8/5",
-            "Tulloch Lake Flood Control [node]/5"
-        ],
-        [
-            "STAN-L-CON 8/6",
-            "Tulloch Lake Flood Control [node]/6"
-        ],
-        [
-            "STAN-L-CON 8/7",
-            "Tulloch Lake Flood Control [node]/7"
-        ],
-        [
-            "STAN-L-CON 8/8",
-            "Tulloch Lake Flood Control [node]/8"
-        ],
-        [
-            "STAN-L-CON 8/9",
-            "Tulloch Lake Flood Control [node]/9"
-        ],
-        [
-            "STAN-L-CON 8/10",
-            "Tulloch Lake Flood Control [node]/10"
-        ],
-        [
-            "STAN-L-CON 8/11",
-            "Tulloch Lake Flood Control [node]/11"
-        ],
-        [
-            "STAN-L-CON 8/12",
-            "Tulloch Lake Flood Control [node]/12"
-        ],
-        [
-            "Tulloch Lake Flood Control [node]/1",
-            "STAN-L-CON 10/1"
-        ],
-        [
-            "Tulloch Lake Flood Control [node]/2",
-            "STAN-L-CON 10/2"
-        ],
-        [
-            "Tulloch Lake Flood Control [node]/3",
-            "STAN-L-CON 10/3"
-        ],
-        [
-            "Tulloch Lake Flood Control [node]/4",
-            "STAN-L-CON 10/4"
-        ],
-        [
-            "Tulloch Lake Flood Control [node]/5",
-            "STAN-L-CON 10/5"
-        ],
-        [
-            "Tulloch Lake Flood Control [node]/6",
-            "STAN-L-CON 10/6"
-        ],
-        [
-            "Tulloch Lake Flood Control [node]/7",
-            "STAN-L-CON 10/7"
-        ],
-        [
-            "Tulloch Lake Flood Control [node]/8",
-            "STAN-L-CON 10/8"
-        ],
-        [
-            "Tulloch Lake Flood Control [node]/9",
-            "STAN-L-CON 10/9"
-        ],
-        [
-            "Tulloch Lake Flood Control [node]/10",
-            "STAN-L-CON 10/10"
-        ],
-        [
-            "Tulloch Lake Flood Control [node]/11",
-            "STAN-L-CON 10/11"
-        ],
-        [
-            "Tulloch Lake Flood Control [node]/12",
-            "STAN-L-CON 10/12"
-        ],
-        [
-            "STAN-L-CON 10/1",
-            "STANI-N-JUN6/1"
-        ],
-        [
-            "STAN-L-CON 10/2",
-            "STANI-N-JUN6/2"
-        ],
-        [
-            "STAN-L-CON 10/3",
-            "STANI-N-JUN6/3"
-        ],
-        [
-            "STAN-L-CON 10/4",
-            "STANI-N-JUN6/4"
-        ],
-        [
-            "STAN-L-CON 10/5",
-            "STANI-N-JUN6/5"
-        ],
-        [
-            "STAN-L-CON 10/6",
-            "STANI-N-JUN6/6"
-        ],
-        [
-            "STAN-L-CON 10/7",
-            "STANI-N-JUN6/7"
-        ],
-        [
-            "STAN-L-CON 10/8",
-            "STANI-N-JUN6/8"
-        ],
-        [
-            "STAN-L-CON 10/9",
-            "STANI-N-JUN6/9"
-        ],
-        [
-            "STAN-L-CON 10/10",
-            "STANI-N-JUN6/10"
-        ],
-        [
-            "STAN-L-CON 10/11",
-            "STANI-N-JUN6/11"
-        ],
-        [
-            "STAN-L-CON 10/12",
-            "STANI-N-JUN6/12"
-        ],
-        [
             "STANI-N-JUN6/1",
             "STANI-N-JUN7/1"
         ],
@@ -17553,102 +15165,6 @@
         ],
         [
             "STANI-N-JUN6/12",
-            "STANI-N-JUN7/12"
-        ],
-        [
-            "STANI-N-JUN6/1",
-            "STAN-L-CON 11/1"
-        ],
-        [
-            "STANI-N-JUN6/2",
-            "STAN-L-CON 11/2"
-        ],
-        [
-            "STANI-N-JUN6/3",
-            "STAN-L-CON 11/3"
-        ],
-        [
-            "STANI-N-JUN6/4",
-            "STAN-L-CON 11/4"
-        ],
-        [
-            "STANI-N-JUN6/5",
-            "STAN-L-CON 11/5"
-        ],
-        [
-            "STANI-N-JUN6/6",
-            "STAN-L-CON 11/6"
-        ],
-        [
-            "STANI-N-JUN6/7",
-            "STAN-L-CON 11/7"
-        ],
-        [
-            "STANI-N-JUN6/8",
-            "STAN-L-CON 11/8"
-        ],
-        [
-            "STANI-N-JUN6/9",
-            "STAN-L-CON 11/9"
-        ],
-        [
-            "STANI-N-JUN6/10",
-            "STAN-L-CON 11/10"
-        ],
-        [
-            "STANI-N-JUN6/11",
-            "STAN-L-CON 11/11"
-        ],
-        [
-            "STANI-N-JUN6/12",
-            "STAN-L-CON 11/12"
-        ],
-        [
-            "STAN-L-CON 12/1",
-            "STANI-N-JUN7/1"
-        ],
-        [
-            "STAN-L-CON 12/2",
-            "STANI-N-JUN7/2"
-        ],
-        [
-            "STAN-L-CON 12/3",
-            "STANI-N-JUN7/3"
-        ],
-        [
-            "STAN-L-CON 12/4",
-            "STANI-N-JUN7/4"
-        ],
-        [
-            "STAN-L-CON 12/5",
-            "STANI-N-JUN7/5"
-        ],
-        [
-            "STAN-L-CON 12/6",
-            "STANI-N-JUN7/6"
-        ],
-        [
-            "STAN-L-CON 12/7",
-            "STANI-N-JUN7/7"
-        ],
-        [
-            "STAN-L-CON 12/8",
-            "STANI-N-JUN7/8"
-        ],
-        [
-            "STAN-L-CON 12/9",
-            "STANI-N-JUN7/9"
-        ],
-        [
-            "STAN-L-CON 12/10",
-            "STANI-N-JUN7/10"
-        ],
-        [
-            "STAN-L-CON 12/11",
-            "STANI-N-JUN7/11"
-        ],
-        [
-            "STAN-L-CON 12/12",
             "STANI-N-JUN7/12"
         ],
         [
@@ -17748,52 +15264,532 @@
             "STN_R-N-JUN1 [node]/12"
         ],
         [
-            "Upper Collierville Tunnel Outflow [node]/1",
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/1"
+            "New Melones Lake [node]/1",
+            "Release from New Melones [node]/1"
         ],
         [
-            "Upper Collierville Tunnel Outflow [node]/2",
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/2"
+            "New Melones Lake [node]/2",
+            "Release from New Melones [node]/2"
         ],
         [
-            "Upper Collierville Tunnel Outflow [node]/3",
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/3"
+            "New Melones Lake [node]/3",
+            "Release from New Melones [node]/3"
         ],
         [
-            "Upper Collierville Tunnel Outflow [node]/4",
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/4"
+            "New Melones Lake [node]/4",
+            "Release from New Melones [node]/4"
         ],
         [
-            "Upper Collierville Tunnel Outflow [node]/5",
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/5"
+            "New Melones Lake [node]/5",
+            "Release from New Melones [node]/5"
         ],
         [
-            "Upper Collierville Tunnel Outflow [node]/6",
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/6"
+            "New Melones Lake [node]/6",
+            "Release from New Melones [node]/6"
         ],
         [
-            "Upper Collierville Tunnel Outflow [node]/7",
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/7"
+            "New Melones Lake [node]/7",
+            "Release from New Melones [node]/7"
         ],
         [
-            "Upper Collierville Tunnel Outflow [node]/8",
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/8"
+            "New Melones Lake [node]/8",
+            "Release from New Melones [node]/8"
         ],
         [
-            "Upper Collierville Tunnel Outflow [node]/9",
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/9"
+            "New Melones Lake [node]/9",
+            "Release from New Melones [node]/9"
         ],
         [
-            "Upper Collierville Tunnel Outflow [node]/10",
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/10"
+            "New Melones Lake [node]/10",
+            "Release from New Melones [node]/10"
         ],
         [
-            "Upper Collierville Tunnel Outflow [node]/11",
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/11"
+            "New Melones Lake [node]/11",
+            "Release from New Melones [node]/11"
         ],
         [
-            "Upper Collierville Tunnel Outflow [node]/12",
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/12"
+            "New Melones Lake [node]/12",
+            "Release from New Melones [node]/12"
+        ],
+        [
+            "New Melones Lake [node]/1",
+            "New Melones Flood Control [node]/1"
+        ],
+        [
+            "New Melones Lake [node]/2",
+            "New Melones Flood Control [node]/2"
+        ],
+        [
+            "New Melones Lake [node]/3",
+            "New Melones Flood Control [node]/3"
+        ],
+        [
+            "New Melones Lake [node]/4",
+            "New Melones Flood Control [node]/4"
+        ],
+        [
+            "New Melones Lake [node]/5",
+            "New Melones Flood Control [node]/5"
+        ],
+        [
+            "New Melones Lake [node]/6",
+            "New Melones Flood Control [node]/6"
+        ],
+        [
+            "New Melones Lake [node]/7",
+            "New Melones Flood Control [node]/7"
+        ],
+        [
+            "New Melones Lake [node]/8",
+            "New Melones Flood Control [node]/8"
+        ],
+        [
+            "New Melones Lake [node]/9",
+            "New Melones Flood Control [node]/9"
+        ],
+        [
+            "New Melones Lake [node]/10",
+            "New Melones Flood Control [node]/10"
+        ],
+        [
+            "New Melones Lake [node]/11",
+            "New Melones Flood Control [node]/11"
+        ],
+        [
+            "New Melones Lake [node]/12",
+            "New Melones Flood Control [node]/12"
+        ],
+        [
+            "Release from New Melones [node]/1",
+            "STANI-N-JUN4/1"
+        ],
+        [
+            "Release from New Melones [node]/2",
+            "STANI-N-JUN4/2"
+        ],
+        [
+            "Release from New Melones [node]/3",
+            "STANI-N-JUN4/3"
+        ],
+        [
+            "Release from New Melones [node]/4",
+            "STANI-N-JUN4/4"
+        ],
+        [
+            "Release from New Melones [node]/5",
+            "STANI-N-JUN4/5"
+        ],
+        [
+            "Release from New Melones [node]/6",
+            "STANI-N-JUN4/6"
+        ],
+        [
+            "Release from New Melones [node]/7",
+            "STANI-N-JUN4/7"
+        ],
+        [
+            "Release from New Melones [node]/8",
+            "STANI-N-JUN4/8"
+        ],
+        [
+            "Release from New Melones [node]/9",
+            "STANI-N-JUN4/9"
+        ],
+        [
+            "Release from New Melones [node]/10",
+            "STANI-N-JUN4/10"
+        ],
+        [
+            "Release from New Melones [node]/11",
+            "STANI-N-JUN4/11"
+        ],
+        [
+            "Release from New Melones [node]/12",
+            "STANI-N-JUN4/12"
+        ],
+        [
+            "New Melones Flood Control [node]/1",
+            "STANI-N-JUN4/1"
+        ],
+        [
+            "New Melones Flood Control [node]/2",
+            "STANI-N-JUN4/2"
+        ],
+        [
+            "New Melones Flood Control [node]/3",
+            "STANI-N-JUN4/3"
+        ],
+        [
+            "New Melones Flood Control [node]/4",
+            "STANI-N-JUN4/4"
+        ],
+        [
+            "New Melones Flood Control [node]/5",
+            "STANI-N-JUN4/5"
+        ],
+        [
+            "New Melones Flood Control [node]/6",
+            "STANI-N-JUN4/6"
+        ],
+        [
+            "New Melones Flood Control [node]/7",
+            "STANI-N-JUN4/7"
+        ],
+        [
+            "New Melones Flood Control [node]/8",
+            "STANI-N-JUN4/8"
+        ],
+        [
+            "New Melones Flood Control [node]/9",
+            "STANI-N-JUN4/9"
+        ],
+        [
+            "New Melones Flood Control [node]/10",
+            "STANI-N-JUN4/10"
+        ],
+        [
+            "New Melones Flood Control [node]/11",
+            "STANI-N-JUN4/11"
+        ],
+        [
+            "New Melones Flood Control [node]/12",
+            "STANI-N-JUN4/12"
+        ],
+        [
+            "STANI-N-JUN4/1",
+            "New Melones PH [node]/1"
+        ],
+        [
+            "STANI-N-JUN4/2",
+            "New Melones PH [node]/2"
+        ],
+        [
+            "STANI-N-JUN4/3",
+            "New Melones PH [node]/3"
+        ],
+        [
+            "STANI-N-JUN4/4",
+            "New Melones PH [node]/4"
+        ],
+        [
+            "STANI-N-JUN4/5",
+            "New Melones PH [node]/5"
+        ],
+        [
+            "STANI-N-JUN4/6",
+            "New Melones PH [node]/6"
+        ],
+        [
+            "STANI-N-JUN4/7",
+            "New Melones PH [node]/7"
+        ],
+        [
+            "STANI-N-JUN4/8",
+            "New Melones PH [node]/8"
+        ],
+        [
+            "STANI-N-JUN4/9",
+            "New Melones PH [node]/9"
+        ],
+        [
+            "STANI-N-JUN4/10",
+            "New Melones PH [node]/10"
+        ],
+        [
+            "STANI-N-JUN4/11",
+            "New Melones PH [node]/11"
+        ],
+        [
+            "STANI-N-JUN4/12",
+            "New Melones PH [node]/12"
+        ],
+        [
+            "New Melones PH [node]/1",
+            "STANI-N-JUN5/1"
+        ],
+        [
+            "New Melones PH [node]/2",
+            "STANI-N-JUN5/2"
+        ],
+        [
+            "New Melones PH [node]/3",
+            "STANI-N-JUN5/3"
+        ],
+        [
+            "New Melones PH [node]/4",
+            "STANI-N-JUN5/4"
+        ],
+        [
+            "New Melones PH [node]/5",
+            "STANI-N-JUN5/5"
+        ],
+        [
+            "New Melones PH [node]/6",
+            "STANI-N-JUN5/6"
+        ],
+        [
+            "New Melones PH [node]/7",
+            "STANI-N-JUN5/7"
+        ],
+        [
+            "New Melones PH [node]/8",
+            "STANI-N-JUN5/8"
+        ],
+        [
+            "New Melones PH [node]/9",
+            "STANI-N-JUN5/9"
+        ],
+        [
+            "New Melones PH [node]/10",
+            "STANI-N-JUN5/10"
+        ],
+        [
+            "New Melones PH [node]/11",
+            "STANI-N-JUN5/11"
+        ],
+        [
+            "New Melones PH [node]/12",
+            "STANI-N-JUN5/12"
+        ],
+        [
+            "Tulloch Lake [node]/1",
+            "Release from Tulloch Lake [node]/1"
+        ],
+        [
+            "Tulloch Lake [node]/2",
+            "Release from Tulloch Lake [node]/2"
+        ],
+        [
+            "Tulloch Lake [node]/3",
+            "Release from Tulloch Lake [node]/3"
+        ],
+        [
+            "Tulloch Lake [node]/4",
+            "Release from Tulloch Lake [node]/4"
+        ],
+        [
+            "Tulloch Lake [node]/5",
+            "Release from Tulloch Lake [node]/5"
+        ],
+        [
+            "Tulloch Lake [node]/6",
+            "Release from Tulloch Lake [node]/6"
+        ],
+        [
+            "Tulloch Lake [node]/7",
+            "Release from Tulloch Lake [node]/7"
+        ],
+        [
+            "Tulloch Lake [node]/8",
+            "Release from Tulloch Lake [node]/8"
+        ],
+        [
+            "Tulloch Lake [node]/9",
+            "Release from Tulloch Lake [node]/9"
+        ],
+        [
+            "Tulloch Lake [node]/10",
+            "Release from Tulloch Lake [node]/10"
+        ],
+        [
+            "Tulloch Lake [node]/11",
+            "Release from Tulloch Lake [node]/11"
+        ],
+        [
+            "Tulloch Lake [node]/12",
+            "Release from Tulloch Lake [node]/12"
+        ],
+        [
+            "Tulloch Lake [node]/1",
+            "Tulloch Lake Flood Control [node]/1"
+        ],
+        [
+            "Tulloch Lake [node]/2",
+            "Tulloch Lake Flood Control [node]/2"
+        ],
+        [
+            "Tulloch Lake [node]/3",
+            "Tulloch Lake Flood Control [node]/3"
+        ],
+        [
+            "Tulloch Lake [node]/4",
+            "Tulloch Lake Flood Control [node]/4"
+        ],
+        [
+            "Tulloch Lake [node]/5",
+            "Tulloch Lake Flood Control [node]/5"
+        ],
+        [
+            "Tulloch Lake [node]/6",
+            "Tulloch Lake Flood Control [node]/6"
+        ],
+        [
+            "Tulloch Lake [node]/7",
+            "Tulloch Lake Flood Control [node]/7"
+        ],
+        [
+            "Tulloch Lake [node]/8",
+            "Tulloch Lake Flood Control [node]/8"
+        ],
+        [
+            "Tulloch Lake [node]/9",
+            "Tulloch Lake Flood Control [node]/9"
+        ],
+        [
+            "Tulloch Lake [node]/10",
+            "Tulloch Lake Flood Control [node]/10"
+        ],
+        [
+            "Tulloch Lake [node]/11",
+            "Tulloch Lake Flood Control [node]/11"
+        ],
+        [
+            "Tulloch Lake [node]/12",
+            "Tulloch Lake Flood Control [node]/12"
+        ],
+        [
+            "Release from Tulloch Lake [node]/1",
+            "STANI-N-JUN6/1"
+        ],
+        [
+            "Release from Tulloch Lake [node]/2",
+            "STANI-N-JUN6/2"
+        ],
+        [
+            "Release from Tulloch Lake [node]/3",
+            "STANI-N-JUN6/3"
+        ],
+        [
+            "Release from Tulloch Lake [node]/4",
+            "STANI-N-JUN6/4"
+        ],
+        [
+            "Release from Tulloch Lake [node]/5",
+            "STANI-N-JUN6/5"
+        ],
+        [
+            "Release from Tulloch Lake [node]/6",
+            "STANI-N-JUN6/6"
+        ],
+        [
+            "Release from Tulloch Lake [node]/7",
+            "STANI-N-JUN6/7"
+        ],
+        [
+            "Release from Tulloch Lake [node]/8",
+            "STANI-N-JUN6/8"
+        ],
+        [
+            "Release from Tulloch Lake [node]/9",
+            "STANI-N-JUN6/9"
+        ],
+        [
+            "Release from Tulloch Lake [node]/10",
+            "STANI-N-JUN6/10"
+        ],
+        [
+            "Release from Tulloch Lake [node]/11",
+            "STANI-N-JUN6/11"
+        ],
+        [
+            "Release from Tulloch Lake [node]/12",
+            "STANI-N-JUN6/12"
+        ],
+        [
+            "Tulloch Lake Flood Control [node]/1",
+            "STANI-N-JUN6/1"
+        ],
+        [
+            "Tulloch Lake Flood Control [node]/2",
+            "STANI-N-JUN6/2"
+        ],
+        [
+            "Tulloch Lake Flood Control [node]/3",
+            "STANI-N-JUN6/3"
+        ],
+        [
+            "Tulloch Lake Flood Control [node]/4",
+            "STANI-N-JUN6/4"
+        ],
+        [
+            "Tulloch Lake Flood Control [node]/5",
+            "STANI-N-JUN6/5"
+        ],
+        [
+            "Tulloch Lake Flood Control [node]/6",
+            "STANI-N-JUN6/6"
+        ],
+        [
+            "Tulloch Lake Flood Control [node]/7",
+            "STANI-N-JUN6/7"
+        ],
+        [
+            "Tulloch Lake Flood Control [node]/8",
+            "STANI-N-JUN6/8"
+        ],
+        [
+            "Tulloch Lake Flood Control [node]/9",
+            "STANI-N-JUN6/9"
+        ],
+        [
+            "Tulloch Lake Flood Control [node]/10",
+            "STANI-N-JUN6/10"
+        ],
+        [
+            "Tulloch Lake Flood Control [node]/11",
+            "STANI-N-JUN6/11"
+        ],
+        [
+            "Tulloch Lake Flood Control [node]/12",
+            "STANI-N-JUN6/12"
+        ],
+        [
+            "STANI-N-JUN4/1",
+            "STANI-N-JUN5/1"
+        ],
+        [
+            "STANI-N-JUN4/2",
+            "STANI-N-JUN5/2"
+        ],
+        [
+            "STANI-N-JUN4/3",
+            "STANI-N-JUN5/3"
+        ],
+        [
+            "STANI-N-JUN4/4",
+            "STANI-N-JUN5/4"
+        ],
+        [
+            "STANI-N-JUN4/5",
+            "STANI-N-JUN5/5"
+        ],
+        [
+            "STANI-N-JUN4/6",
+            "STANI-N-JUN5/6"
+        ],
+        [
+            "STANI-N-JUN4/7",
+            "STANI-N-JUN5/7"
+        ],
+        [
+            "STANI-N-JUN4/8",
+            "STANI-N-JUN5/8"
+        ],
+        [
+            "STANI-N-JUN4/9",
+            "STANI-N-JUN5/9"
+        ],
+        [
+            "STANI-N-JUN4/10",
+            "STANI-N-JUN5/10"
+        ],
+        [
+            "STANI-N-JUN4/11",
+            "STANI-N-JUN5/11"
+        ],
+        [
+            "STANI-N-JUN4/12",
+            "STANI-N-JUN5/12"
         ],
         [
             "IFR bl Angels Div [node]/1",
@@ -17941,99 +15937,99 @@
         ],
         [
             "Beaver Creek Diversion [node]/1",
-            "Lower Collierville Tunnel 1 [link]/1"
+            "Collierville Tunnel Inflow (1) [node]/1"
         ],
         [
             "Beaver Creek Diversion [node]/2",
-            "Lower Collierville Tunnel 1 [link]/2"
+            "Collierville Tunnel Inflow (1) [node]/2"
         ],
         [
             "Beaver Creek Diversion [node]/3",
-            "Lower Collierville Tunnel 1 [link]/3"
+            "Collierville Tunnel Inflow (1) [node]/3"
         ],
         [
             "Beaver Creek Diversion [node]/4",
-            "Lower Collierville Tunnel 1 [link]/4"
+            "Collierville Tunnel Inflow (1) [node]/4"
         ],
         [
             "Beaver Creek Diversion [node]/5",
-            "Lower Collierville Tunnel 1 [link]/5"
+            "Collierville Tunnel Inflow (1) [node]/5"
         ],
         [
             "Beaver Creek Diversion [node]/6",
-            "Lower Collierville Tunnel 1 [link]/6"
+            "Collierville Tunnel Inflow (1) [node]/6"
         ],
         [
             "Beaver Creek Diversion [node]/7",
-            "Lower Collierville Tunnel 1 [link]/7"
+            "Collierville Tunnel Inflow (1) [node]/7"
         ],
         [
             "Beaver Creek Diversion [node]/8",
-            "Lower Collierville Tunnel 1 [link]/8"
+            "Collierville Tunnel Inflow (1) [node]/8"
         ],
         [
             "Beaver Creek Diversion [node]/9",
-            "Lower Collierville Tunnel 1 [link]/9"
+            "Collierville Tunnel Inflow (1) [node]/9"
         ],
         [
             "Beaver Creek Diversion [node]/10",
-            "Lower Collierville Tunnel 1 [link]/10"
+            "Collierville Tunnel Inflow (1) [node]/10"
         ],
         [
             "Beaver Creek Diversion [node]/11",
-            "Lower Collierville Tunnel 1 [link]/11"
+            "Collierville Tunnel Inflow (1) [node]/11"
         ],
         [
             "Beaver Creek Diversion [node]/12",
-            "Lower Collierville Tunnel 1 [link]/12"
+            "Collierville Tunnel Inflow (1) [node]/12"
         ],
         [
             "Beaver Creek Diversion [node]/1",
-            "STANI-N-JUN2 [node]/1"
+            "Beaver Ck Inflow [node]/1"
         ],
         [
             "Beaver Creek Diversion [node]/2",
-            "STANI-N-JUN2 [node]/2"
+            "Beaver Ck Inflow [node]/2"
         ],
         [
             "Beaver Creek Diversion [node]/3",
-            "STANI-N-JUN2 [node]/3"
+            "Beaver Ck Inflow [node]/3"
         ],
         [
             "Beaver Creek Diversion [node]/4",
-            "STANI-N-JUN2 [node]/4"
+            "Beaver Ck Inflow [node]/4"
         ],
         [
             "Beaver Creek Diversion [node]/5",
-            "STANI-N-JUN2 [node]/5"
+            "Beaver Ck Inflow [node]/5"
         ],
         [
             "Beaver Creek Diversion [node]/6",
-            "STANI-N-JUN2 [node]/6"
+            "Beaver Ck Inflow [node]/6"
         ],
         [
             "Beaver Creek Diversion [node]/7",
-            "STANI-N-JUN2 [node]/7"
+            "Beaver Ck Inflow [node]/7"
         ],
         [
             "Beaver Creek Diversion [node]/8",
-            "STANI-N-JUN2 [node]/8"
+            "Beaver Ck Inflow [node]/8"
         ],
         [
             "Beaver Creek Diversion [node]/9",
-            "STANI-N-JUN2 [node]/9"
+            "Beaver Ck Inflow [node]/9"
         ],
         [
             "Beaver Creek Diversion [node]/10",
-            "STANI-N-JUN2 [node]/10"
+            "Beaver Ck Inflow [node]/10"
         ],
         [
             "Beaver Creek Diversion [node]/11",
-            "STANI-N-JUN2 [node]/11"
+            "Beaver Ck Inflow [node]/11"
         ],
         [
             "Beaver Creek Diversion [node]/12",
-            "STANI-N-JUN2 [node]/12"
+            "Beaver Ck Inflow [node]/12"
         ],
         [
             "IFR bl McKays Point Div [node]/1",
@@ -18277,51 +16273,51 @@
         ],
         [
             "Sand Bar PH [node]/1",
-            "Sand Bar Power Tunnel [link]/1"
+            "Sand Bar Power Tunnel Inflow [node]/1"
         ],
         [
             "Sand Bar PH [node]/2",
-            "Sand Bar Power Tunnel [link]/2"
+            "Sand Bar Power Tunnel Inflow [node]/2"
         ],
         [
             "Sand Bar PH [node]/3",
-            "Sand Bar Power Tunnel [link]/3"
+            "Sand Bar Power Tunnel Inflow [node]/3"
         ],
         [
             "Sand Bar PH [node]/4",
-            "Sand Bar Power Tunnel [link]/4"
+            "Sand Bar Power Tunnel Inflow [node]/4"
         ],
         [
             "Sand Bar PH [node]/5",
-            "Sand Bar Power Tunnel [link]/5"
+            "Sand Bar Power Tunnel Inflow [node]/5"
         ],
         [
             "Sand Bar PH [node]/6",
-            "Sand Bar Power Tunnel [link]/6"
+            "Sand Bar Power Tunnel Inflow [node]/6"
         ],
         [
             "Sand Bar PH [node]/7",
-            "Sand Bar Power Tunnel [link]/7"
+            "Sand Bar Power Tunnel Inflow [node]/7"
         ],
         [
             "Sand Bar PH [node]/8",
-            "Sand Bar Power Tunnel [link]/8"
+            "Sand Bar Power Tunnel Inflow [node]/8"
         ],
         [
             "Sand Bar PH [node]/9",
-            "Sand Bar Power Tunnel [link]/9"
+            "Sand Bar Power Tunnel Inflow [node]/9"
         ],
         [
             "Sand Bar PH [node]/10",
-            "Sand Bar Power Tunnel [link]/10"
+            "Sand Bar Power Tunnel Inflow [node]/10"
         ],
         [
             "Sand Bar PH [node]/11",
-            "Sand Bar Power Tunnel [link]/11"
+            "Sand Bar Power Tunnel Inflow [node]/11"
         ],
         [
             "Sand Bar PH [node]/12",
-            "Sand Bar Power Tunnel [link]/12"
+            "Sand Bar Power Tunnel Inflow [node]/12"
         ],
         [
             "Donnells Diversion Inflow [node]/1",
@@ -18852,292 +16848,292 @@
             "IFR bl Philadelphia Div [node]/12"
         ],
         [
-            "STAN-L-CON 11/1",
-            "STAN-L-CON 12/1"
+            "STANI-N-JUN6/1",
+            "STANI-N-JUN7/1"
         ],
         [
-            "STAN-L-CON 11/2",
-            "STAN-L-CON 12/2"
+            "STANI-N-JUN6/2",
+            "STANI-N-JUN7/2"
         ],
         [
-            "STAN-L-CON 11/3",
-            "STAN-L-CON 12/3"
+            "STANI-N-JUN6/3",
+            "STANI-N-JUN7/3"
         ],
         [
-            "STAN-L-CON 11/4",
-            "STAN-L-CON 12/4"
+            "STANI-N-JUN6/4",
+            "STANI-N-JUN7/4"
         ],
         [
-            "STAN-L-CON 11/5",
-            "STAN-L-CON 12/5"
+            "STANI-N-JUN6/5",
+            "STANI-N-JUN7/5"
         ],
         [
-            "STAN-L-CON 11/6",
-            "STAN-L-CON 12/6"
+            "STANI-N-JUN6/6",
+            "STANI-N-JUN7/6"
         ],
         [
-            "STAN-L-CON 11/7",
-            "STAN-L-CON 12/7"
+            "STANI-N-JUN6/7",
+            "STANI-N-JUN7/7"
         ],
         [
-            "STAN-L-CON 11/8",
-            "STAN-L-CON 12/8"
+            "STANI-N-JUN6/8",
+            "STANI-N-JUN7/8"
         ],
         [
-            "STAN-L-CON 11/9",
-            "STAN-L-CON 12/9"
+            "STANI-N-JUN6/9",
+            "STANI-N-JUN7/9"
         ],
         [
-            "STAN-L-CON 11/10",
-            "STAN-L-CON 12/10"
+            "STANI-N-JUN6/10",
+            "STANI-N-JUN7/10"
         ],
         [
-            "STAN-L-CON 11/11",
-            "STAN-L-CON 12/11"
+            "STANI-N-JUN6/11",
+            "STANI-N-JUN7/11"
         ],
         [
-            "STAN-L-CON 11/12",
-            "STAN-L-CON 12/12"
+            "STANI-N-JUN6/12",
+            "STANI-N-JUN7/12"
         ],
         [
             "Donnells PH [node]/1",
-            "Donnells Diversion [link]/1"
+            "Donnells Diversion Inflow [node]/1"
         ],
         [
             "Donnells PH [node]/2",
-            "Donnells Diversion [link]/2"
+            "Donnells Diversion Inflow [node]/2"
         ],
         [
             "Donnells PH [node]/3",
-            "Donnells Diversion [link]/3"
+            "Donnells Diversion Inflow [node]/3"
         ],
         [
             "Donnells PH [node]/4",
-            "Donnells Diversion [link]/4"
+            "Donnells Diversion Inflow [node]/4"
         ],
         [
             "Donnells PH [node]/5",
-            "Donnells Diversion [link]/5"
+            "Donnells Diversion Inflow [node]/5"
         ],
         [
             "Donnells PH [node]/6",
-            "Donnells Diversion [link]/6"
+            "Donnells Diversion Inflow [node]/6"
         ],
         [
             "Donnells PH [node]/7",
-            "Donnells Diversion [link]/7"
+            "Donnells Diversion Inflow [node]/7"
         ],
         [
             "Donnells PH [node]/8",
-            "Donnells Diversion [link]/8"
+            "Donnells Diversion Inflow [node]/8"
         ],
         [
             "Donnells PH [node]/9",
-            "Donnells Diversion [link]/9"
+            "Donnells Diversion Inflow [node]/9"
         ],
         [
             "Donnells PH [node]/10",
-            "Donnells Diversion [link]/10"
+            "Donnells Diversion Inflow [node]/10"
         ],
         [
             "Donnells PH [node]/11",
-            "Donnells Diversion [link]/11"
+            "Donnells Diversion Inflow [node]/11"
         ],
         [
             "Donnells PH [node]/12",
-            "Donnells Diversion [link]/12"
+            "Donnells Diversion Inflow [node]/12"
         ],
         [
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/1",
+            "Upper Collierville Tunnel Outflow [node]/1",
             "Upper Collierville Tunnel Inflow [node]/1"
         ],
         [
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/2",
+            "Upper Collierville Tunnel Outflow [node]/2",
             "Upper Collierville Tunnel Inflow [node]/2"
         ],
         [
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/3",
+            "Upper Collierville Tunnel Outflow [node]/3",
             "Upper Collierville Tunnel Inflow [node]/3"
         ],
         [
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/4",
+            "Upper Collierville Tunnel Outflow [node]/4",
             "Upper Collierville Tunnel Inflow [node]/4"
         ],
         [
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/5",
+            "Upper Collierville Tunnel Outflow [node]/5",
             "Upper Collierville Tunnel Inflow [node]/5"
         ],
         [
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/6",
+            "Upper Collierville Tunnel Outflow [node]/6",
             "Upper Collierville Tunnel Inflow [node]/6"
         ],
         [
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/7",
+            "Upper Collierville Tunnel Outflow [node]/7",
             "Upper Collierville Tunnel Inflow [node]/7"
         ],
         [
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/8",
+            "Upper Collierville Tunnel Outflow [node]/8",
             "Upper Collierville Tunnel Inflow [node]/8"
         ],
         [
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/9",
+            "Upper Collierville Tunnel Outflow [node]/9",
             "Upper Collierville Tunnel Inflow [node]/9"
         ],
         [
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/10",
+            "Upper Collierville Tunnel Outflow [node]/10",
             "Upper Collierville Tunnel Inflow [node]/10"
         ],
         [
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/11",
+            "Upper Collierville Tunnel Outflow [node]/11",
             "Upper Collierville Tunnel Inflow [node]/11"
         ],
         [
-            "USGS_11293580_NF STAN R DIV TUNNEL [link]/12",
+            "Upper Collierville Tunnel Outflow [node]/12",
             "Upper Collierville Tunnel Inflow [node]/12"
         ],
         [
             "Collierville PH [node]/1",
-            "Lower Collierville Tunnel 2 [link]/1"
+            "Collierville Tunnel Inflow [node]/1"
         ],
         [
             "Collierville PH [node]/2",
-            "Lower Collierville Tunnel 2 [link]/2"
+            "Collierville Tunnel Inflow [node]/2"
         ],
         [
             "Collierville PH [node]/3",
-            "Lower Collierville Tunnel 2 [link]/3"
+            "Collierville Tunnel Inflow [node]/3"
         ],
         [
             "Collierville PH [node]/4",
-            "Lower Collierville Tunnel 2 [link]/4"
+            "Collierville Tunnel Inflow [node]/4"
         ],
         [
             "Collierville PH [node]/5",
-            "Lower Collierville Tunnel 2 [link]/5"
+            "Collierville Tunnel Inflow [node]/5"
         ],
         [
             "Collierville PH [node]/6",
-            "Lower Collierville Tunnel 2 [link]/6"
+            "Collierville Tunnel Inflow [node]/6"
         ],
         [
             "Collierville PH [node]/7",
-            "Lower Collierville Tunnel 2 [link]/7"
+            "Collierville Tunnel Inflow [node]/7"
         ],
         [
             "Collierville PH [node]/8",
-            "Lower Collierville Tunnel 2 [link]/8"
+            "Collierville Tunnel Inflow [node]/8"
         ],
         [
             "Collierville PH [node]/9",
-            "Lower Collierville Tunnel 2 [link]/9"
+            "Collierville Tunnel Inflow [node]/9"
         ],
         [
             "Collierville PH [node]/10",
-            "Lower Collierville Tunnel 2 [link]/10"
+            "Collierville Tunnel Inflow [node]/10"
         ],
         [
             "Collierville PH [node]/11",
-            "Lower Collierville Tunnel 2 [link]/11"
+            "Collierville Tunnel Inflow [node]/11"
         ],
         [
             "Collierville PH [node]/12",
-            "Lower Collierville Tunnel 2 [link]/12"
+            "Collierville Tunnel Inflow [node]/12"
         ],
         [
             "Stanislaus PH [node]/1",
-            "Stanislaus Tunnel [link]/1"
+            "Stanislaus Tunnel Inflow [node]/1"
         ],
         [
             "Stanislaus PH [node]/2",
-            "Stanislaus Tunnel [link]/2"
+            "Stanislaus Tunnel Inflow [node]/2"
         ],
         [
             "Stanislaus PH [node]/3",
-            "Stanislaus Tunnel [link]/3"
+            "Stanislaus Tunnel Inflow [node]/3"
         ],
         [
             "Stanislaus PH [node]/4",
-            "Stanislaus Tunnel [link]/4"
+            "Stanislaus Tunnel Inflow [node]/4"
         ],
         [
             "Stanislaus PH [node]/5",
-            "Stanislaus Tunnel [link]/5"
+            "Stanislaus Tunnel Inflow [node]/5"
         ],
         [
             "Stanislaus PH [node]/6",
-            "Stanislaus Tunnel [link]/6"
+            "Stanislaus Tunnel Inflow [node]/6"
         ],
         [
             "Stanislaus PH [node]/7",
-            "Stanislaus Tunnel [link]/7"
+            "Stanislaus Tunnel Inflow [node]/7"
         ],
         [
             "Stanislaus PH [node]/8",
-            "Stanislaus Tunnel [link]/8"
+            "Stanislaus Tunnel Inflow [node]/8"
         ],
         [
             "Stanislaus PH [node]/9",
-            "Stanislaus Tunnel [link]/9"
+            "Stanislaus Tunnel Inflow [node]/9"
         ],
         [
             "Stanislaus PH [node]/10",
-            "Stanislaus Tunnel [link]/10"
+            "Stanislaus Tunnel Inflow [node]/10"
         ],
         [
             "Stanislaus PH [node]/11",
-            "Stanislaus Tunnel [link]/11"
+            "Stanislaus Tunnel Inflow [node]/11"
         ],
         [
             "Stanislaus PH [node]/12",
-            "Stanislaus Tunnel [link]/12"
+            "Stanislaus Tunnel Inflow [node]/12"
         ],
         [
             "Spring Gap PH [node]/1",
-            "Philadelphia Aqueduct [link]/1"
+            "Philadelphia Aqueduct Inflow [node]/1"
         ],
         [
             "Spring Gap PH [node]/2",
-            "Philadelphia Aqueduct [link]/2"
+            "Philadelphia Aqueduct Inflow [node]/2"
         ],
         [
             "Spring Gap PH [node]/3",
-            "Philadelphia Aqueduct [link]/3"
+            "Philadelphia Aqueduct Inflow [node]/3"
         ],
         [
             "Spring Gap PH [node]/4",
-            "Philadelphia Aqueduct [link]/4"
+            "Philadelphia Aqueduct Inflow [node]/4"
         ],
         [
             "Spring Gap PH [node]/5",
-            "Philadelphia Aqueduct [link]/5"
+            "Philadelphia Aqueduct Inflow [node]/5"
         ],
         [
             "Spring Gap PH [node]/6",
-            "Philadelphia Aqueduct [link]/6"
+            "Philadelphia Aqueduct Inflow [node]/6"
         ],
         [
             "Spring Gap PH [node]/7",
-            "Philadelphia Aqueduct [link]/7"
+            "Philadelphia Aqueduct Inflow [node]/7"
         ],
         [
             "Spring Gap PH [node]/8",
-            "Philadelphia Aqueduct [link]/8"
+            "Philadelphia Aqueduct Inflow [node]/8"
         ],
         [
             "Spring Gap PH [node]/9",
-            "Philadelphia Aqueduct [link]/9"
+            "Philadelphia Aqueduct Inflow [node]/9"
         ],
         [
             "Spring Gap PH [node]/10",
-            "Philadelphia Aqueduct [link]/10"
+            "Philadelphia Aqueduct Inflow [node]/10"
         ],
         [
             "Spring Gap PH [node]/11",
-            "Philadelphia Aqueduct [link]/11"
+            "Philadelphia Aqueduct Inflow [node]/11"
         ],
         [
             "Spring Gap PH [node]/12",
-            "Philadelphia Aqueduct [link]/12"
+            "Philadelphia Aqueduct Inflow [node]/12"
         ],
         [
             "Lyons Reservoir [node]/1",
