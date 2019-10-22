@@ -31,10 +31,10 @@ class network_PH_Cost(WaterLPParameter):
         minVal = self.model.parameters[self.demand_constant_param].value(timestep, scenario_index) \
                  * (totDemand / (self.baseline_median_daily_energy_demand * days_in_period))
         maxVal = minVal * (maxDemand / minDemand)
-        d = maxVal - minVal
+        max_min_diff = maxVal - minVal
 
         nblocks = self.model.parameters['Blocks'].value(timestep, scenario_index)
-        return -(maxVal - ((self.block * 2 - 1) * d / 2) / nblocks)
+        return - (maxVal - ((max_min_diff/(2*nblocks)) * (self.block * 2 - 1)))
 
     def value(self, timestep, scenario_index):
         return self._value(timestep, scenario_index, mode=self.mode)
