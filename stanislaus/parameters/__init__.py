@@ -11,6 +11,11 @@ from pywr.parameters import Parameter
 def monthlen(year, month):
     return monthrange(year, month)[1]
 
+class Timestep(object):
+    step = None
+    datetime = None
+    year = None
+    month = None
 
 class WaterLPParameter(Parameter):
     store = {}  # TODO: create h5 store on disk (or redis?) to share between class instances
@@ -30,6 +35,8 @@ class WaterLPParameter(Parameter):
     month_suffix = ''
     demand_constant_param = ''
     elevation_param = ''
+
+    timestep = Timestep()
 
     def setup(self):
         super(WaterLPParameter, self).setup()
@@ -82,10 +89,13 @@ class WaterLPParameter(Parameter):
     def before(self):
         super(WaterLPParameter, self).before()
         if self.month_offset:
-            self.datetime = self.model.timestepper.current.datetime + relativedelta(months=+self.month_offset)
-            self.year = self.datetime.year
-            self.month = self.datetime.month
-            print(self.datetime)
+            datetime = self.model.timestepper.current.datetime + relativedelta(months=+self.month_offset)
+        else:
+            datetime = self.model.timestepper.current.datetime
+
+        self.timestep.datetime = datetime
+        self.timestep.year = datetime.year
+        self.timestep.month = datetime.month
 
     def GET(self, *args, **kwargs):
         return self.get(*args, **kwargs)

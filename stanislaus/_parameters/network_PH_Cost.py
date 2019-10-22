@@ -22,7 +22,7 @@ class network_PH_Cost(WaterLPParameter):
             maxDemand = maxDemandP.value(timestep, scenario_index)
 
         else:
-            dates_in_period = self.dates_in_month(self.year, self.month)
+            dates_in_period = self.dates_in_month(timestep.year, timestep.month)
             days_in_period = len(dates_in_period)
             totDemand = totDemandP[dates_in_period].sum()
             minDemand = minDemandP[dates_in_period].min()
@@ -37,6 +37,9 @@ class network_PH_Cost(WaterLPParameter):
         return -(maxVal - ((self.block * 2 - 1) * d / 2) / nblocks)
 
     def value(self, timestep, scenario_index):
+        if self.mode == 'planning':
+            print(timestep.month, self.timestep.month)
+            timestep = self.timestep
         return self._value(timestep, scenario_index, mode=self.mode)
 
     @classmethod

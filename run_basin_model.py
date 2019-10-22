@@ -346,8 +346,8 @@ def run_model(basin, network_key, debug=False):
         dates = pd.date_range(start=start, end=end, freq='MS') # MS = month start
 
         nodes_of_type = {}
-        for node in monthly_model.nodes:
-            nodes_of_type[node.type] = node.name
+        # for node in monthly_model.nodes:
+        #     nodes_of_type[node.type] = node.name
 
         for date in tqdm(dates, ncols=80, disable=False):
             print(date)
