@@ -301,6 +301,8 @@ def run_model(basin, network_key):
                 print('Updating daily model')
 
             # Step 3: run daily model
+            if step == 319:
+                    print("Reached")
             daily_model.step()
         except Exception as err:
             print('\nFailed at step {}'.format(today))
