@@ -36,7 +36,7 @@ class node_IFR_bl_Donnells_Reservoir_Requirement(WaterLPParameter):
                 self.peak_dt = peak_inflow_Donnells[timestep.year + 1]
             diff_day = (timestep.datetime - self.peak_dt).days
             ifr_supp = 0
-            if diff_day > 0 and diff_day <= 91:
+            if diff_day > 0 and diff_day < 91:
                 ifr_supp = (data_supp[(data_supp['Day_st'] <= diff_day) & (diff_day < data_supp['Day_end'])][str(WYT)]).values[-1] / 35.314666
             return ifr_val + ifr_supp
         else:
