@@ -1,11 +1,15 @@
 import os
 import pandas as pd
-from calendar import monthlen
+from calendar import monthrange
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 from hashlib import md5
 
 from pywr.parameters import Parameter
+
+
+def monthlen(year, month):
+    return monthrange(year, month)[1]
 
 
 class WaterLPParameter(Parameter):
@@ -81,21 +85,21 @@ class WaterLPParameter(Parameter):
     def get(self, param, timestep=None, scenario_index=None):
         return self.model.parameters[param].value(timestep or self.model.timestep, scenario_index)
 
-    def planning_date(self, timestep, month_offset=0):
+    def planning_date(self, datetime, month_offset=0):
         try:
             # month_offset = int(self.mode == 'planning' and self.name.split('/')[-1])
-            future_date = timestep.datetime + relativedelta(months=+month_offset)
+            future_date = datetime + relativedelta(months=+month_offset)
             return future_date
         except Exception:
             print(Exception)
-            return timestep.datetime
+            return datetime
 
     def days_in_planning_month(self, timestep, month_offset=0):
-        date = self.planning_date(timestep, month_offset)
+        date = self.planning_date(timestep.datetime, month_offset)
         return monthlen(date.year, date.month)
 
-    def dates_in_planning_month(self, timestep, month_offset=0):
-        today = self.planning_date(timestep, month_offset)
+    def dates_in_planning_month(self, timestep, month_offset=0, periods=12, freq='M'):
+        today = self.planning_date(timestep.datetime, month_offset)
         ndays = monthlen(today.year, today.month)
         dates = pd.date_range(today, periods=ndays).tolist()
         return dates
@@ -148,4 +152,3 @@ class WaterLPParameter(Parameter):
             self.store[hashval] = data
 
         return data
-
