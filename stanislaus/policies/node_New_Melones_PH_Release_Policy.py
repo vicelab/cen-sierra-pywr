@@ -10,7 +10,7 @@ class New_Melones_Release_Policy(WaterLPParameter):
 
         wyt_number = self.model.parameters['WYT_SJValley'].value(timestep, scenario_index)
         wyt = self.year_names[wyt_number - 1]
-        net_demand = self.read_csv("NetDemand_belowTulloch.csv",
+        net_demand = self.read_csv("Management/BAU/NetDemand_belowTulloch.csv",
                                    index_col=[0], parse_dates=True)
         day = timestep.day if timestep.month != 2 else min(28, timestep.day)
         datestring = '1990-{:02}-{:02}'.format(timestep.month, day)

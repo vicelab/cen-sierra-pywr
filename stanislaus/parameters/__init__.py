@@ -79,29 +79,27 @@ class WaterLPParameter(Parameter):
                     if self.month:
                         self.elevation_param += self.month_suffix
 
+    def before(self):
+        super(WaterLPParameter, self).before()
+        if self.month_offset:
+            self.datetime = self.model.timestepper.current.datetime + relativedelta(months=+self.month_offset)
+            self.year = self.datetime.year
+            self.month = self.datetime.month
+            print(self.datetime)
+
     def GET(self, *args, **kwargs):
         return self.get(*args, **kwargs)
 
     def get(self, param, timestep=None, scenario_index=None):
         return self.model.parameters[param].value(timestep or self.model.timestep, scenario_index)
 
-    def planning_date(self, datetime, month_offset=0):
-        try:
-            # month_offset = int(self.mode == 'planning' and self.name.split('/')[-1])
-            future_date = datetime + relativedelta(months=+month_offset)
-            return future_date
-        except Exception:
-            print(Exception)
-            return datetime
+    def days_in_month(self, year, month):
+        return monthlen(year, month)
 
-    def days_in_planning_month(self, timestep, month_offset=0):
-        date = self.planning_date(timestep.datetime, month_offset)
-        return monthlen(date.year, date.month)
-
-    def dates_in_planning_month(self, timestep, month_offset=0, periods=12, freq='M'):
-        today = self.planning_date(timestep.datetime, month_offset)
-        ndays = monthlen(today.year, today.month)
-        dates = pd.date_range(today, periods=ndays).tolist()
+    def dates_in_month(self, year, month):
+        start = pd.datetime(year, month, 1)
+        ndays = monthlen(year, month)
+        dates = pd.date_range(start, periods=ndays).tolist()
         return dates
 
     def read_csv(self, *args, **kwargs):

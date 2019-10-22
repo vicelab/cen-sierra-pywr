@@ -10,9 +10,9 @@ class network_PH_Cost(WaterLPParameter):
 
     def _value(self, timestep, scenario_index, mode='scheduling'):
 
-        totDemandP = self.model.parameters["Total Net Energy Demand"]
-        maxDemandP = self.model.parameters["Max Net Energy Demand"]
-        minDemandP = self.model.parameters["Min Net Energy Demand"]
+        totDemandP = self.model.parameters["Total Net Energy Demand"].dataframe
+        maxDemandP = self.model.parameters["Max Net Energy Demand"].dataframe
+        minDemandP = self.model.parameters["Min Net Energy Demand"].dataframe
 
         days_in_period = 1
 
@@ -22,11 +22,11 @@ class network_PH_Cost(WaterLPParameter):
             maxDemand = maxDemandP.value(timestep, scenario_index)
 
         else:
-            planning_dates = self.dates_in_planning_month(timestep, month_offset=self.month_offset)
-            days_in_period = len(planning_dates)
-            totDemand = totDemandP.dataframe[planning_dates].sum()
-            minDemand = minDemandP.dataframe[planning_dates].min()
-            maxDemand = maxDemandP.dataframe[planning_dates].max()
+            dates_in_period = self.dates_in_month(self.year, self.month)
+            days_in_period = len(dates_in_period)
+            totDemand = totDemandP[dates_in_period].sum()
+            minDemand = minDemandP[dates_in_period].min()
+            maxDemand = maxDemandP[dates_in_period].max()
 
         minVal = self.model.parameters[self.demand_constant_param].value(timestep, scenario_index) \
                  * (totDemand / (self.baseline_median_daily_energy_demand * days_in_period))
