@@ -1,0 +1,183 @@
+// stanislaus
+digraph stanislaus {
+	"Angels PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Angels Canal Outflow [node]" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Beardsley Reservoir [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Beardsley PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Beaver Creek Diversion [node]" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Collierville PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Donnells PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Donnells Reservoir [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"IFR bl Angels Div [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"IFR bl Donnells Reservoir [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"IFR bl Hunters Reservoir [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"IFR bl Lyons Res [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"IFR bl McKays Point Div [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"IFR bl New Spicer Meadow Reservoir [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"IFR bl Philadelphia Div [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"IFR bl Relief Reservoir [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"IFR bl Sand Bar Div [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"IFR bl Utica Div [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below Beaver Creek Diversion Dam [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"IFR Confluence of NF and Beaver Creek [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"IFR Below New Melones Res [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"IFR Below Pinecrest Lake [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"IFR Below Utica Res [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"IFR below Beardsley Afterbay [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Lower Utica Canal Outflow [node]" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Lyons Reservoir [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"McKay Point Diversion [node]" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Murphys PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"New Melones Lake [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"New Melones PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"New Spicer Meadow Reservoir [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"New Spicer Meadow PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Philadelphia Aquaduct Outflow [node]" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Phoenix Canal Outflow [node]" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"Phoenix PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Pinecrest Reservoir [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Relief Reservoir [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Sand Bar PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Beardsley Afterbay [node]" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Spring Gap PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"STANI-N-JUN1 [node]" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Stanislaus PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Stanislaus Tunnel Outflow [node]" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"STN-L-DEL1 Outflow [node]" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"STN-L-DEL2 Outflow [node]" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"STN-L-RIV2 Outflow [node]" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"STN_01 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_01 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"STN_02 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_03 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_04 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_05 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_06 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_07 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_08 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_09 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_10 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_11 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_12 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_13 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_14 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_15 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_16 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_17 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_18 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_19 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_20 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_21 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_22 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_23 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_24 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_25 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_R-N-JUN1 [node]" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Tulloch Lake [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Release from Tulloch Lake [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Tulloch Lake Flood Control [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	blwTullochPH [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Utica Reservoir [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"UPA Tunnel Tap Outflow [node]" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Upper Collierville Tunnel Outflow [node]" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Release from New Melones [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"New Melones Flood Control [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"STN_below_Melons.2.2" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"STANI-N-JUN4" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Angels Canal Outflow [node]" -> "Angels PH [node]"
+	"Angels Canal Outflow [node]" -> "IFR bl Angels Div [node]"
+	"Donnells Reservoir [node]" -> "Donnells PH [node]"
+	"Donnells Reservoir [node]" -> "IFR bl Donnells Reservoir [node]"
+	"Upper Collierville Tunnel Outflow [node]" -> "IFR bl Utica Div [node]"
+	"McKay Point Diversion [node]" -> "UPA Tunnel Tap Outflow [node]"
+	"Lower Utica Canal Outflow [node]" -> "IFR bl Hunters Reservoir [node]"
+	"New Spicer Meadow Reservoir [node]" -> "New Spicer Meadow PH [node]"
+	"New Spicer Meadow PH [node]" -> "IFR bl New Spicer Meadow Reservoir [node]"
+	"Philadelphia Aquaduct Outflow [node]" -> "Spring Gap PH [node]"
+	"Pinecrest Reservoir [node]" -> "IFR Below Pinecrest Lake [node]"
+	"Relief Reservoir [node]" -> "IFR bl Relief Reservoir [node]"
+	"Beardsley Afterbay [node]" -> "Sand Bar PH [node]"
+	"Stanislaus Tunnel Outflow [node]" -> "Stanislaus PH [node]"
+	"STN_01 Headflow [node]" -> "STN_01 Inflow [node]"
+	"McKay Point Diversion [node]" -> "IFR bl McKays Point Div [node]"
+	"Utica Reservoir [node]" -> "IFR Below Utica Res [node]"
+	"Beardsley Afterbay [node]" -> "IFR below Beardsley Afterbay [node]"
+	"UPA Tunnel Tap Outflow [node]" -> "Collierville PH [node]"
+	"Stanislaus Tunnel Outflow [node]" -> "IFR bl Sand Bar Div [node]"
+	"Lyons Reservoir [node]" -> "IFR bl Lyons Res [node]"
+	"STANI-N-JUN1 [node]" -> "STN-L-DEL2 Outflow [node]"
+	"STANI-N-JUN1 [node]" -> "STN-L-RIV2 Outflow [node]"
+	"STN_below_Melons.2.2" -> "IFR Below New Melones Res [node]"
+	"STN_R-N-JUN1 [node]" -> "STN-L-DEL1 Outflow [node]"
+	"STN_01 Inflow [node]" -> "New Melones Lake [node]"
+	blwTullochPH -> "STN_R-N-JUN1 [node]"
+	"Angels PH [node]" -> "STN_01 Inflow [node]"
+	"IFR bl Angels Div [node]" -> "STN_01 Inflow [node]"
+	"Beardsley Reservoir [node]" -> "Beardsley PH [node]"
+	"Beaver Creek Diversion [node]" -> "Below Beaver Creek Diversion Dam [node]"
+	"IFR bl McKays Point Div [node]" -> "IFR Confluence of NF and Beaver Creek [node]"
+	"Beaver Creek Diversion [node]" -> "McKay Point Diversion [node]"
+	"Phoenix PH [node]" -> "Phoenix Canal Outflow [node]"
+	"Sand Bar PH [node]" -> "Stanislaus Tunnel Outflow [node]"
+	"Philadelphia Aquaduct Outflow [node]" -> "IFR bl Philadelphia Div [node]"
+	"IFR bl Lyons Res [node]" -> "STN_01 Inflow [node]"
+	"Below Beaver Creek Diversion Dam [node]" -> "IFR Confluence of NF and Beaver Creek [node]"
+	"STN_R-N-JUN1 [node]" -> "STANI-N-JUN1 [node]"
+	"STN_02 Headflow [node]" -> "Angels Canal Outflow [node]"
+	"Murphys PH [node]" -> "Angels Canal Outflow [node]"
+	"STN_03 Headflow [node]" -> "STN_01 Inflow [node]"
+	"IFR bl Sand Bar Div [node]" -> "STN_01 Inflow [node]"
+	"IFR bl Hunters Reservoir [node]" -> "STN_01 Inflow [node]"
+	"STN_04 Headflow [node]" -> "Lower Utica Canal Outflow [node]"
+	"STN_05 Headflow [node]" -> "STN_01 Inflow [node]"
+	"IFR Confluence of NF and Beaver Creek [node]" -> "STN_01 Inflow [node]"
+	"STN_06 Headflow [node]" -> "McKay Point Diversion [node]"
+	"STN_07 Headflow [node]" -> "McKay Point Diversion [node]"
+	"IFR bl New Spicer Meadow Reservoir [node]" -> "McKay Point Diversion [node]"
+	"STN_08 Headflow [node]" -> "McKay Point Diversion [node]"
+	"IFR bl Utica Div [node]" -> "McKay Point Diversion [node]"
+	"STN_09 Headflow [node]" -> "Upper Collierville Tunnel Outflow [node]"
+	"IFR Below Utica Res [node]" -> "Upper Collierville Tunnel Outflow [node]"
+	"STN_10 Headflow [node]" -> "Utica Reservoir [node]"
+	"STN_11 Headflow [node]" -> "New Spicer Meadow Reservoir [node]"
+	"STN_13 Headflow [node]" -> "Beaver Creek Diversion [node]"
+	"STN_14 Headflow [node]" -> "Stanislaus Tunnel Outflow [node]"
+	"IFR below Beardsley Afterbay [node]" -> "Stanislaus Tunnel Outflow [node]"
+	"Beardsley PH [node]" -> "Beardsley Afterbay [node]"
+	"STN_15 Headflow [node]" -> "Beardsley Afterbay [node]"
+	"STN_16 Headflow [node]" -> "Beardsley Reservoir [node]"
+	"IFR bl Donnells Reservoir [node]" -> "Beardsley Reservoir [node]"
+	"STN_17 Headflow [node]" -> "Beardsley Reservoir [node]"
+	"STN_18 Headflow [node]" -> "Donnells Reservoir [node]"
+	"STN_19 Headflow [node]" -> "Donnells Reservoir [node]"
+	"STN_21 Headflow [node]" -> "Relief Reservoir [node]"
+	"IFR bl Philadelphia Div [node]" -> "Lyons Reservoir [node]"
+	"STN_22 Headflow [node]" -> "Lyons Reservoir [node]"
+	"STN_23 Headflow [node]" -> "Philadelphia Aquaduct Outflow [node]"
+	"IFR Below Pinecrest Lake [node]" -> "Philadelphia Aquaduct Outflow [node]"
+	"STN_24 Headflow [node]" -> "Philadelphia Aquaduct Outflow [node]"
+	"STN_25 Headflow [node]" -> "Pinecrest Reservoir [node]"
+	"IFR bl Relief Reservoir [node]" -> "Donnells Reservoir [node]"
+	"STN_20 Headflow [node]" -> "Donnells Reservoir [node]"
+	"Lower Utica Canal Outflow [node]" -> "Murphys PH [node]"
+	"UPA Tunnel Tap Outflow [node]" -> "Murphys PH [node]"
+	"STN_12 Headflow [node]" -> "New Spicer Meadow Reservoir [node]"
+	"Donnells PH [node]" -> "Beardsley Reservoir [node]"
+	"Upper Collierville Tunnel Outflow [node]" -> "New Spicer Meadow Reservoir [node]"
+	"Collierville PH [node]" -> "STN_01 Inflow [node]"
+	"Stanislaus PH [node]" -> "STN_01 Inflow [node]"
+	"Spring Gap PH [node]" -> "Stanislaus Tunnel Outflow [node]"
+	"Lyons Reservoir [node]" -> "Phoenix PH [node]"
+	"New Melones Lake [node]" -> "Release from New Melones [node]"
+	"New Melones Lake [node]" -> "New Melones Flood Control [node]"
+	"Release from New Melones [node]" -> "STANI-N-JUN4"
+	"New Melones Flood Control [node]" -> "STANI-N-JUN4"
+	"STANI-N-JUN4" -> "New Melones PH [node]"
+	"Tulloch Lake [node]" -> "Release from Tulloch Lake [node]"
+	"Tulloch Lake [node]" -> "Tulloch Lake Flood Control [node]"
+	"IFR Below New Melones Res [node]" -> "Tulloch Lake [node]"
+	"New Melones PH [node]" -> "STN_below_Melons.2.2"
+	"STANI-N-JUN4" -> "STN_below_Melons.2.2"
+	"Release from Tulloch Lake [node]" -> blwTullochPH
+	"Tulloch Lake Flood Control [node]" -> blwTullochPH
+}
