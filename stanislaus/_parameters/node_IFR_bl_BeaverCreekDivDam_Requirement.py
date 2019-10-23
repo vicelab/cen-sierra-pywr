@@ -13,7 +13,7 @@ class node_IFR_bl_BeaverCreekDivDam_Requirement(WaterLPParameter):
             timestep.datetime]  # cms
         ifr_val = min(0.4672, flw_catchment13)#cms 16.5 cfs
         if self.mode == 'planning':
-            ifr_val *= self.days_in_planning_month(timestep, self.month_offset)
+            ifr_val *= self.days_in_month()
         return ifr_val
 
     def value(self, timestep, scenario_index):

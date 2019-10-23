@@ -8,36 +8,26 @@ class node_IFR_bl_Lyons_Res_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        WYT = int(self.get("WYI_SJValley"))
-        flw_catchment22 = self.read_csv("Scenarios/Livneh/Runoff/tot_runoff_sb22.csv", squeeze=True)[
-            timestep.datetime]  # cms
-        flw_catchment23 = self.read_csv("Scenarios/Livneh/Runoff/tot_runoff_sb23.csv", squeeze=True)[
-            timestep.datetime]  # cms
-        flw_catchment24 = self.read_csv("Scenarios/Livneh/Runoff/tot_runoff_sb24.csv", squeeze=True)[
-            timestep.datetime]  # cms
-        flw_catchment25 = self.read_csv("Scenarios/Livneh/Runoff/tot_runoff_sb25.csv", squeeze=True)[
-            timestep.datetime]  # cms
-        inflow_res = flw_catchment22 + flw_catchment23 + flw_catchment24 + flw_catchment22
-        if timestep.datetime.month >= 10:
-            dt = datetime.date(1999, timestep.month, timestep.day)
-        else:
-            dt = datetime.date(2000, timestep.month, timestep.day)
 
-        if (WYT == 1):
-            sch_flow = 5 #cfs
+        WYT = self.get("WYT_SJValley")
+
+        # ifr is in cfs
+        if WYT == 1:
+            ifr = 5
         else:
-            if ((datetime.date(1999,10,1) <= dt) & (datetime.date(1999,10,31) >= dt)):
-                sch_flow = 8 #cfs
-            elif ((datetime.date(1999,11,1) <= dt) & (datetime.date(2000,6,30) >= dt)):
-                sch_flow = 10 #cfs
-            elif ((datetime.date(2000,7,1) <= dt) & (datetime.date(2000,7,31) >= dt)):
-                sch_flow = 8 #cfs
-            elif ((datetime.date(1999,8,1) <= dt & datetime.date(2000,9,30) >= dt)):
-                sch_flow = 5 #cfs
-        ifr_val = min(inflow_res,sch_flow/35.314666)
+            month = timestep.month  # not necessary, but a little easier to read
+            if month == 10:  # Oct
+                ifr = 8
+            elif month >= 11 or month <= 6:  # Nov-Jun
+                ifr = 10
+            elif month == 7:  # July
+                ifr = 8
+            else:  # Aug-Sep
+                ifr = 5
+        ifr *= self.cfs_to_cms
         if self.mode == 'planning':
-            ifr_val *= self.days_in_planning_month(timestep, self.month_offset)
-        return ifr_val
+            ifr *= self.days_in_month()
+        return ifr
 
     def value(self, timestep, scenario_index):
         return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)

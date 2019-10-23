@@ -25,7 +25,7 @@ class node_IFR_bl_Philadelphia_Div_Requirement(WaterLPParameter):
         # Critically Dry: 1,Dry: 2,Normal-Dry: 3,Normal-Wet: 4,Wet: 5
         ifr_val = (data[(data['start_date'] <= dt) & (data['end_date'] >= dt)][str(WYT)]) / 35.314666
         if self.mode == 'planning':
-            ifr_val *= self.days_in_planning_month(timestep, self.month_offset)
+            ifr_val *= self.days_in_month()
         return ifr_val
         
     def value(self, timestep, scenario_index):

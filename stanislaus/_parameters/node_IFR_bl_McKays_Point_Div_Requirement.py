@@ -14,7 +14,7 @@ class node_IFR_bl_McKays_Point_Div_Requirement(WaterLPParameter):
         ifr_bl_NSM = 0.4672 #cms 16.5 cfs
         ifr_val = min(0.4672, flw_catchments + ifr_bl_utica + ifr_bl_NSM)
         if self.mode == 'planning':
-            ifr_val *= self.days_in_planning_month(timestep, self.month_offset)
+            ifr_val *= self.days_in_month()
         return ifr_val
 
     def value(self, timestep, scenario_index):

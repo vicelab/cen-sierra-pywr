@@ -19,7 +19,10 @@ class network_PH_Water_Demand(WaterLPParameter):
         return q_demand
 
     def value(self, timestep, scenario_index):
-        return self._value(timestep, scenario_index, mode=self.mode) / 1e6
+        try:
+            return self._value(timestep, scenario_index, mode=self.mode) / 1e6
+        except:
+            print('\nERROR for parameter {}'.format(self.name))
 
     @classmethod
     def load(cls, model, data):

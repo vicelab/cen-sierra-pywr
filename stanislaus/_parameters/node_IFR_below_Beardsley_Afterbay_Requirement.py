@@ -12,7 +12,7 @@ class node_IFR_below_Beardsley_Afterbay_Requirement(WaterLPParameter):
         else:
             ifr_val = 135
         if self.mode == 'planning':
-            ifr_val *= self.days_in_planning_month(timestep, self.month_offset)
+            ifr_val *= self.days_in_month()
         return ifr_val/35.314666
 
 

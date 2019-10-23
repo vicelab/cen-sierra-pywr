@@ -18,8 +18,8 @@ class New_Melones_Release_Policy(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         # date_timestep = datetime(1900, timestep.month, timestep.day)
-        storage_name = "New Melones Lake [node]" + self.month_suffix
-        inflow_name = "STN_01 Inflow [node]" + self.month_suffix
+        storage_name = "New Melones Lake" + self.month_suffix
+        inflow_name = "STN_01 Inflow" + self.month_suffix
         outflow = self.model.nodes[storage_name].volume[-1] \
                    + self.model.nodes[inflow_name].flow[-1] \
                    - self.model.parameters["node/New Melones Lake/Storage Demand"].value(timestep, scenario_index)

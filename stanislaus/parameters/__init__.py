@@ -11,11 +11,13 @@ from pywr.parameters import Parameter
 def monthlen(year, month):
     return monthrange(year, month)[1]
 
+
 class Timestep(object):
     step = None
     datetime = None
     year = None
     month = None
+
 
 class WaterLPParameter(Parameter):
     store = {}  # TODO: create h5 store on disk (or redis?) to share between class instances
@@ -23,6 +25,8 @@ class WaterLPParameter(Parameter):
     root_path = os.environ.get('ROOT_S3_PATH')
 
     # h5store = 'store.h5'
+
+    cfs_to_cms = 1 / 35.315
 
     mode = 'scheduling'
     res_class = 'network'
@@ -32,7 +36,7 @@ class WaterLPParameter(Parameter):
     block = None
     month = None
     year = None
-    month_offset = 0
+    month_offset = None
     month_suffix = ''
     demand_constant_param = ''
     elevation_param = ''
@@ -51,7 +55,7 @@ class WaterLPParameter(Parameter):
             self.res_class = name_parts[0]
             self.res_name = name_parts[1]
             self.attr_name = name_parts[2]
-            self.res_name_full = '{} [{}]'.format(self.res_name, res_class)
+            self.res_name_full = '{}'.format(self.res_name)  # TODO: update when 'node/' is added as prefix
 
             if self.mode == 'scheduling':
                 if len(name_parts) == 4:
@@ -73,7 +77,7 @@ class WaterLPParameter(Parameter):
             try:
                 node = self.model.nodes[self.res_name_full]
             except:
-                pass
+                raise
 
             if node:
 
@@ -108,7 +112,11 @@ class WaterLPParameter(Parameter):
             month = self.month
         return monthrange(year, month)[1]
 
-    def dates_in_month(self, year, month):
+    def dates_in_month(self, year=None, month=None):
+        if year is None:
+            year = self.year
+        if month is None:
+            month = self.month
         start = pd.datetime(year, month, 1)
         ndays = monthrange(year, month)[1]
         dates = pd.date_range(start, periods=ndays).tolist()

@@ -8,13 +8,19 @@ class node_IFR_bl_Hunters_Reservoir_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        if datetime.date(timestep.year,5,1) <= datetime.date(timestep.year,timestep.month,timestep.day) <= datetime.date(timestep.year,10,31):
-            ifr_val = 0.042475 # cms (1.5 cfs)
+        # if datetime.date(timestep.year,5,1) <= timestep.datetime <= datetime.date(timestep.year,10,31):
+        if 5 <= timestep.month <= 10: # May-Oct
+            # ifr_val = 0.042475 # cms (1.5 cfs)
+            ifr_val = 1.5
         else:
-            ifr_val = 0.014158 #cms (0.5 cfs)
+            # ifr_val = 0.014158 #cms (0.5 cfs)
+            ifr_val = 0.5
+        # NOTE: the above can be written as
+        # ifr = 1.5 if 5 <= timestep.month <= 10 else 0.5, though it's less intuitive
+        ifr_val *= self.cfs_to_cms
 
         if self.mode == 'planning':
-            ifr_val *= self.days_in_planning_month(timestep, self.month_offset)
+            ifr_val *= self.days_in_month()
         return ifr_val
         
     def value(self, timestep, scenario_index):

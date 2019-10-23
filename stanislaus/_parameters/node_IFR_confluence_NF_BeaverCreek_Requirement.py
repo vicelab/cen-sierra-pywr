@@ -11,7 +11,7 @@ class node_IFR_confluence_NF_BeaverCreek_Requirement(WaterLPParameter):
     def _value(self, timestep, scenario_index):
         ifr_val = 0.7079 #cms (25 cfs)
         if self.mode == 'planning':
-            ifr_val *= self.days_in_planning_month(timestep, self.month_offset)
+            ifr_val *= self.days_in_month()
         return ifr_val
 
     def value(self, timestep, scenario_index):

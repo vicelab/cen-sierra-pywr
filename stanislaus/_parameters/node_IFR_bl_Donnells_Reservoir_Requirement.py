@@ -8,7 +8,7 @@ class node_IFR_bl_Donnells_Reservoir_Requirement(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         
-        WYT = int(self.get("WYI_SJValley"))
+        WYT = self.get("WYT_SJValley")
         management = "BAU"
         path = "Management/{mgt}/IFRs/".format(mgt=management)
         if self.mode == 'scheduling':
@@ -30,9 +30,8 @@ class node_IFR_bl_Donnells_Reservoir_Requirement(WaterLPParameter):
                                   names=['Day_st', 'Day_end', '1', '2', '3', '4', '5'], header=0, index_col=None)
         if self.mode == 'scheduling':
             if timestep.month == 10 and timestep.day == 1:
-                peak_inflow_Donnells = self.read_csv('Scenarios/Livneh/runoff/peak_runoff_DonnellsRes_MarToMay_cms.csv',
-                                                     usecols=[0, 1], index_col=[0], parse_dates=[1],
-                                                     squeeze=True)  # cms
+                path = 'Scenarios/Livneh/preprocessed/peak_runoff_DonnellsRes_MarToMay_cms.csv'
+                peak_inflow_Donnells = self.read_csv(path, usecols=[0, 1], index_col=[0], parse_dates=[1], squeeze=True)  # cms
                 self.peak_dt = peak_inflow_Donnells[timestep.year + 1]
             diff_day = (timestep.datetime - self.peak_dt).days
             ifr_supp = 0
