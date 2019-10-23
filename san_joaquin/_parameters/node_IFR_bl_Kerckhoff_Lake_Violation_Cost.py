@@ -7,8 +7,8 @@ class node_IFR_bl_Kerckhoff_Lake_Violation_Cost(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         
-        k1 =self.model.nodes['Kerckhoff 1 PH [node]'].base_cost
-        k2 =self.model.nodes['Kerckhoff 2 PH [node]'].base_cost
+        k1 =self.model.nodes['Kerckhoff 1 PH'].base_cost
+        k2 =self.model.nodes['Kerckhoff 2 PH'].base_cost
         return max(k1, k2)*1.2
         
     def value(self, timestep, scenario_index):

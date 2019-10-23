@@ -10,10 +10,10 @@ class node_Shaver_Lake_Storage_Demand(WaterLPParameter):
         date_string = timestep.datetime.strftime('%m-%d')
         if date_string >= '12-15' or date_string < '04-01':
             # return self.get("node/Shaver Lake/Inactive Pool", **kwargs) + 50
-            return self.model.nodes['Shaver Lake [node]'].min_volume + 50
+            return self.model.nodes['Shaver Lake'].min_volume + 50
         else:
             # return self.get("node/Shaver Lake/Storage Capacity", **kwargs)
-            return self.model.nodes['Shaver Lake [node]'].max_volume
+            return self.model.nodes['Shaver Lake'].max_volume
 
     def value(self, timestep, scenario_index):
         return self._value(timestep, scenario_index)
