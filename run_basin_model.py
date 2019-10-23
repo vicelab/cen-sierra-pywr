@@ -7,6 +7,8 @@ from tqdm import tqdm
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import pandas as pd
+
+
 # from pandas import ExcelWriter
 
 
@@ -44,42 +46,85 @@ def setup_model(root_dir, model_path, bucket=None, network_key=None, check_graph
     return
 
 
-def prepare_planning_model(path, outpath, steps=12, debug=False):
-    with open(path) as f:
-        m = json.load(f)
-
+def simplify_network(m, delete_gauges=False):
     # simplify the network
-    up_nodes = []
-    down_nodes = []
-    up_edges = {}
-    down_edges = {}
-    for a, b in m['edges']:
-        up_nodes.append(a)
-        down_nodes.append(b)
-        down_edges[a] = [a, b]
-        up_edges[b] = [a, b]
+    mission_complete = False
+    obsolete_gauges = []
 
-    obsolete_nodes = []
-    obsolete_edges = []
-    new_edges = []
-    for node in m['nodes']:
-        # is the node a simple link? if so, we might be able to remove it
-        node_name = node['name']
-        if node['type'] in ['Link', 'River'] and set(node.keys()) == {'name', 'type'}:
-            if up_nodes.count(node_name) == down_nodes.count(node_name) == 1:
-                obsolete_nodes.append(node_name)
-                up_edge = up_edges[node_name]
-                down_edge = down_edges[node_name]
-                obsolete_edges.extend([up_edge, down_edge])
-                new_edges.append([up_edge[0], down_edge[1]])
+    while not mission_complete:
+        mission_complete = True
+        up_nodes = []
+        down_nodes = []
+        up_edges = {}
+        down_edges = {}
+        for edge in m['edges']:
+            a, b = edge
+            up_nodes.append(a)
+            down_nodes.append(b)
+            down_edges[a] = edge
+            up_edges[b] = [edge] if b not in up_edges else up_edges[b] + [edge]
 
-    m['nodes'] = [node for node in m['nodes'] if node['name'] not in obsolete_nodes]
-    m['edges'] = [edge for edge in m['edges'] if edge not in obsolete_edges] + new_edges
+        obsolete_nodes = []
+        obsolete_edges = []
+        new_edges = []
+
+        for node in m['nodes']:
+            # is the node a simple link? if so, we might be able to remove it
+            node_name = node['name']
+            node_type = node['type'].lower()
+            if set(node.keys()) == {'name', 'type'} \
+                    or delete_gauges and node_type == 'rivergauge' \
+                    or node_type == 'storage' and not node.get('max_volume'):
+                if delete_gauges and node_type == 'rivergauge':
+                    obsolete_gauges.append(node_name)
+                if down_nodes.count(node_name) == 0:
+                    # upstream-most node
+                    obsolete_nodes.append(node_name)
+                    obsolete_edges.append(down_edges[node_name])
+                    mission_complete = False
+                    break
+                elif up_nodes.count(node_name) == 1:
+                    obsolete_nodes.append(node_name)
+                    down_edge = down_edges[node_name]
+                    obsolete_edges.append(down_edge)
+                    for up_edge in up_edges[node_name]:
+                        obsolete_edges.append(up_edge)
+                        new_edges.append([up_edge[0], down_edge[1]])
+                    mission_complete = False
+                    break
+
+        m['nodes'] = [node for node in m['nodes'] if node['name'] not in obsolete_nodes]
+        m['edges'] = [edge for edge in m['edges'] if edge not in obsolete_edges] + new_edges
+        edges_set = []
+        for edge in m['edges']:
+            if edge not in edges_set:
+                edges_set.append(edge)
+        m['edges'] = edges_set
+
+    for gauge in obsolete_gauges:
+        for p in list(m['parameters']):
+            parts = p.split('/')
+            if gauge in parts:
+                m['parameters'].pop(p, None)
+
+        for r in list(m['recorders']):
+            name_parts = r.split('/')
+            node_parts = m['recorders'][r].get('node', '').split('/')
+            parameter_parts = m['recorders'][r].get('parameter', '').split('/')
+            if gauge in name_parts + node_parts + parameter_parts:
+                m['recorders'].pop(r, None)
+
+    return m
+
+
+def prepare_planning_model(m, outpath, steps=12, debug=False):
 
     # update time step
     # m['timestepper']['end'] = m['timestepper']['start']
     # m['timestepper']['timestep'] = 'M'
     # m['metadata']['title'] += ' - planning'
+
+    m = simplify_network(m, delete_gauges=True)
 
     all_steps = range(steps)
 
@@ -98,9 +143,6 @@ def prepare_planning_model(path, outpath, steps=12, debug=False):
     for node in m['nodes']:
         old_name = node['name']
         node_type = node['type']
-        if node_type == 'RiverGauge':
-            gauges[old_name] = [0, 0]
-            continue
 
         for key, value in node.items():
             if key in black_list:
@@ -281,7 +323,7 @@ def prepare_planning_model(path, outpath, steps=12, debug=False):
                 recorder['type'] = 'NumpyArrayNodeRecorder'
                 recorder['node'] = storage_recorders[recorder['node']]
             elif '/storage' in recorder_name:
-                continue # old storage nodes will be zero storage
+                continue  # old storage nodes will be zero storage
             if not debug:
                 recorder['node'] += '/1'  # record just the first time step results
                 new_recorders[recorder_name] = recorder
@@ -346,22 +388,38 @@ def run_model(basin, network_key, debug=False):
             print(type(err))
             print(err)
 
+    # prepare paths
+    root, filename = os.path.split(model_path)
+    base, ext = os.path.splitext(filename)
+
+    # simplify model
+    simplified_filename = '{}_simplified.json'.format(base)
+    simplified_model_path = os.path.join(root, simplified_filename)
+
+    # prepare the model files
+    with open(model_path, 'r') as f:
+        m = json.load(f)
+
+    m = simplify_network(m, delete_gauges=True)
+    # with open(simplified_model_path, 'w') as f:
+    #     json.dump(f, m, indent=4)
+    with open(simplified_model_path, 'w') as f:
+        f.write(json.dumps(m, indent=4))
+
     # Area for testing monthly model
-    include_monthly = True
+    include_monthly = False
 
     if include_monthly:
 
         # create filenames, etc.
-        root, filename = os.path.split(model_path)
-        base, ext = os.path.splitext(filename)
-        new_filename = '{}_monthly'.format(base) + ext
-        monthly_model_path = os.path.join(root, new_filename)
+        monthly_filename = '{}_monthly.json'.format(base)
+        monthly_model_path = os.path.join(root, monthly_filename)
 
-        # prepare the model files
-        prepare_planning_model(model_path, monthly_model_path, debug=debug=='m')
+        prepare_planning_model(m, monthly_model_path, debug=debug == 'm')
 
         # create pywr model
         monthly_model = Model.load(monthly_model_path, path=monthly_model_path)
+        # monthly_model = Model.load(monthly_model_path, path=monthly_model_path, solver='glpk-edge')
 
         # set model mode to planning
         setattr(monthly_model, 'mode', 'planning')
@@ -372,11 +430,13 @@ def run_model(basin, network_key, debug=False):
         end = monthly_model.timestepper.end
 
         # setup the planning model
+        now = datetime.now()
         monthly_model.setup()
+        print('Model setup in {} seconds'.format((datetime.now()-now).seconds))
 
         if debug == 'm':
 
-            dates = pd.date_range(start=start, end=end, freq='MS') # MS = month start
+            dates = pd.date_range(start=start, end=end, freq='MS')  # MS = month start
 
             nodes_of_type = {}
             # for node in monthly_model.nodes:
@@ -424,13 +484,8 @@ def run_model(basin, network_key, debug=False):
     # ==================
     # Create daily model
     # ==================
-    daily_model = Model.load(model_path, path=model_path)
-    print('Daily model loaded')
+    daily_model = Model.load(simplified_model_path, path=simplified_model_path)
     daily_model.setup()
-    print('Daily model setup completed')
-    # =====================
-    # Create planning model
-    # =====================
 
     timesteps = range(len(daily_model.timestepper))
 
