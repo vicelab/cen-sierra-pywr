@@ -26,15 +26,15 @@ class node_IFR_bl_Lyons_Res_Requirement(WaterLPParameter):
         if (WYT == 1):
             sch_flow = 5 #cfs
         else:
-            if ((datetime.date(1999,10,1) <= dt) & (datetime.date(1999,10,31) >= dt)):
+            if (datetime.date(1999,10,1) <= dt) & (datetime.date(1999,10,31) >= dt):
                 sch_flow = 8 #cfs
-            elif ((datetime.date(1999,11,1) <= dt) & (datetime.date(2000,6,30) >= dt)):
+            elif (datetime.date(1999,11,1) <= dt) & (datetime.date(2000,6,30) >= dt):
                 sch_flow = 10 #cfs
-            elif ((datetime.date(2000,7,1) <= dt) & (datetime.date(2000,7,31) >= dt)):
+            elif (datetime.date(2000,7,1) <= dt) & (datetime.date(2000,7,31) >= dt):
                 sch_flow = 8 #cfs
-            elif ((datetime.date(1999,8,1) <= dt & datetime.date(2000,9,30) >= dt)):
+            elif (datetime.date(1999,8,1) <= dt) & (datetime.date(2000,9,30) >= dt):
                 sch_flow = 5 #cfs
-        ifr_val = min(inflow_res,sch_flow/35.314666)
+        ifr_val = min(inflow_res, sch_flow/35.314666)
         if self.mode == 'planning':
             ifr_val *= self.days_in_planning_month(timestep, self.month_offset)
         return ifr_val
