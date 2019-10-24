@@ -72,7 +72,9 @@ def simplify_network(m, delete_gauges=False):
             # is the node a simple link? if so, we might be able to remove it
             node_name = node['name']
             node_type = node['type'].lower()
-            if set(node.keys()) == {'name', 'type'} \
+            metadata = json.loads(node.get('comment', '{}'))
+            keys_set = set(node.keys())
+            if keys_set in [{'name', 'type'}, {'name', 'type', 'comment'}] and not metadata.get('keep') \
                     or delete_gauges and node_type == 'rivergauge' \
                     or node_type == 'storage' and not node.get('max_volume'):
                 if delete_gauges and node_type == 'rivergauge':
@@ -154,10 +156,13 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
                     parameters_to_expand.append(value)
 
         res_class = 'network'
-        res_name = 'network'
-        name_parts = old_name.replace(' [', '/').replace(']', '').split('/')
-        if len(name_parts) > 1 and name_parts[1] in ['node', 'link']:
-            res_name, res_class = name_parts
+        # res_name = 'network'
+        # name_parts = old_name.replace(' [', '/').replace(']', '').split('/')
+        # if len(name_parts) > 1 and name_parts[1] in ['node', 'link']:
+        #     res_name, res_class = name_parts
+        res_name = old_name
+        metadata = json.loads(node.get('comment', '{}'))
+        res_class = metadata.get('resource_class', 'network')
 
         for step in all_steps:
             t = step + 1
@@ -352,7 +357,7 @@ def run_model(basin, network_key, debug=False):
 
     root_dir = os.path.join(os.getcwd(), basin)
     bucket = 'openagua-networks'
-    model_path = os.path.join(root_dir, 'pywr_model.json')
+    model_path = os.path.join(root_dir, 'pywr_model_cleaned.json')
 
     # setup_model(root_dir, model_path, bucket=bucket, network_key=network_key)
     os.chdir(root_dir)
@@ -393,7 +398,7 @@ def run_model(basin, network_key, debug=False):
     base, ext = os.path.splitext(filename)
 
     # simplify model
-    simplified_filename = '{}_simplified.json'.format(base)
+    simplified_filename = 'pywr_model_simplified.json'.format(base)
     simplified_model_path = os.path.join(root, simplified_filename)
 
     # prepare the model files
@@ -412,7 +417,7 @@ def run_model(basin, network_key, debug=False):
     if include_monthly:
 
         # create filenames, etc.
-        monthly_filename = '{}_monthly.json'.format(base)
+        monthly_filename = 'pywr_model_monthly.json'.format(base)
         monthly_model_path = os.path.join(root, monthly_filename)
 
         prepare_planning_model(m, monthly_model_path, debug=debug == 'm')
@@ -484,6 +489,7 @@ def run_model(basin, network_key, debug=False):
     # ==================
     # Create daily model
     # ==================
+    # daily_model = Model.load(model_path, path=model_path)
     daily_model = Model.load(simplified_model_path, path=simplified_model_path)
     daily_model.setup()
 
@@ -525,8 +531,6 @@ def run_model(basin, network_key, debug=False):
                 print('Updating daily model')
 
             # Step 3: run daily model
-            if step == 319:
-                    print("Reached")
             daily_model.step()
         except Exception as err:
             print('\nFailed at step {}'.format(today))

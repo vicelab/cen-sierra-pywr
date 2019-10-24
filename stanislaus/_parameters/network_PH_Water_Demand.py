@@ -21,8 +21,10 @@ class network_PH_Water_Demand(WaterLPParameter):
     def value(self, timestep, scenario_index):
         try:
             return self._value(timestep, scenario_index, mode=self.mode) / 1e6
-        except:
+        except Exception as err:
             print('\nERROR for parameter {}'.format(self.name))
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
 
     @classmethod
     def load(cls, model, data):

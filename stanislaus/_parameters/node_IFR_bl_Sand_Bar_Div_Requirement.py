@@ -29,7 +29,7 @@ class node_IFR_bl_Sand_Bar_Div_Requirement(WaterLPParameter):
                                   names=['Day_st', 'Day_end', '1', '2', '3', '4', '5'], header=0, index_col=None)
         if self.mode == 'scheduling':
             if timestep.month == 10 and timestep.day == 1:
-                peak_inflow_Donnells = self.read_csv('Scenarios/Livneh/runoff/peak_runoff_DonnellsRes_MarToMay_cms.csv',
+                peak_inflow_Donnells = self.read_csv('Scenarios/Livneh/preprocessed/peak_runoff_DonnellsRes_MarToMay_cms.csv',
                                                      usecols=[0, 1], index_col=[0], parse_dates=[1],
                                                      squeeze=True)  # cms
                 self.peak_dt = peak_inflow_Donnells[timestep.year + 1]
@@ -50,8 +50,12 @@ class node_IFR_bl_Sand_Bar_Div_Requirement(WaterLPParameter):
         return ifr_val + ifr_supp
         
     def value(self, timestep, scenario_index):
-        return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
-
+        try:
+            return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
+        except Exception as err:
+            print('\nERROR for parameter {}'.format(self.name))
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
     @classmethod
     def load(cls, model, data):
         return cls(model, **data)
