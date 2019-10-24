@@ -5,7 +5,7 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class node_IFR_bl_Hunters_Reservoir_Requirement(WaterLPParameter):
+class node_IFR_bl_Hunter_Reservoir_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
@@ -38,5 +38,5 @@ class node_IFR_bl_Hunters_Reservoir_Requirement(WaterLPParameter):
         return cls(model, **data)
 
 
-node_IFR_bl_Hunters_Reservoir_Requirement.register()
-print(" [*] node_IFR_bl_Hunters_Reservoir_Requirement successfully registered")
+node_IFR_bl_Hunter_Reservoir_Requirement.register()
+print(" [*] node_IFR_bl_Hunter_Reservoir_Requirement successfully registered")

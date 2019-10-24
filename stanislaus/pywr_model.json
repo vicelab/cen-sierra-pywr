@@ -258,10 +258,10 @@
       "mrf": "node/IFR bl Donnells Reservoir/Requirement"
     },
     {
-      "name": "IFR bl Hunters Reservoir",
+      "name": "IFR bl Hunter Reservoir",
       "type": "InstreamFlowRequirement",
-      "mrf_cost": "node/IFR bl Hunters Reservoir/Violation Cost",
-      "mrf": "node/IFR bl Hunters Reservoir/Requirement"
+      "mrf_cost": "node/IFR bl Hunter Reservoir/Violation Cost",
+      "mrf": "node/IFR bl Hunter Reservoir/Requirement"
     },
     {
       "name": "IFR bl Lyons Res",
@@ -352,7 +352,7 @@
       "type": "River"
     },
     {
-      "name": "Lower Utica Canal Outflow",
+      "name": "Hunter Reservoir",
       "type": "BreakLink"
     },
     {
@@ -364,7 +364,7 @@
       "cost": "node/Lyons Reservoir/Storage Value"
     },
     {
-      "name": "McKay Point Diversion",
+      "name": "McKays Point Diversion",
       "type": "BreakLink"
     },
     {
@@ -1118,7 +1118,7 @@
     ],
     [
       "Collierville Tunnel Inflow (1)",
-      "McKay Point Diversion"
+      "McKays Point Diversion"
     ],
     [
       "Beaver Creek Diversion",
@@ -1189,7 +1189,7 @@
       "STN_17 Inflow"
     ],
     [
-      "IFR bl Hunters Reservoir",
+      "IFR bl Hunter Reservoir",
       "Mill Ck Inflow"
     ],
     [
@@ -1225,11 +1225,11 @@
       "BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210"
     ],
     [
-      "McKay Point Diversion",
+      "McKays Point Diversion",
       "UPA Tunnel Tap Outflow"
     ],
     [
-      "Lower Utica Canal Outflow",
+      "Hunter Reservoir",
       "UPA Tunnel Tap Inflow"
     ],
     [
@@ -1237,8 +1237,8 @@
       "STN_02 Inflow"
     ],
     [
-      "Lower Utica Canal Outflow",
-      "IFR bl Hunters Reservoir"
+      "Hunter Reservoir",
+      "IFR bl Hunter Reservoir"
     ],
     [
       "IFR bl Philadelphia Div",
@@ -1390,14 +1390,14 @@
     ],
     [
       "STN_04 Inflow",
-      "Lower Utica Canal Outflow"
+      "Hunter Reservoir"
     ],
     [
       "STN_05 Headflow",
       "STN_05 Inflow"
     ],
     [
-      "McKay Point Diversion",
+      "McKays Point Diversion",
       "IFR bl McKays Point Div"
     ],
     [
@@ -1858,10 +1858,6 @@
     ],
     [
       "STANI-N-JUN6",
-      "STN-L-RIV2.1.2.1"
-    ],
-    [
-      "STN-L-RIV2.1.2.1",
       "STANI-N-JUN7"
     ],
     [
@@ -2258,12 +2254,12 @@
     "node/IFR bl Donnells Reservoir/Requirement": {
       "type": "node_IFR_bl_Donnells_Reservoir_Requirement"
     },
-    "node/IFR bl Hunters Reservoir/Violation Cost": {
+    "node/IFR bl Hunter Reservoir/Violation Cost": {
       "type": "constant",
       "value": 10
     },
-    "node/IFR bl Hunters Reservoir/Requirement": {
-      "type": "node_IFR_bl_Hunters_Reservoir_Requirement"
+    "node/IFR bl Hunter Reservoir/Requirement": {
+      "type": "node_IFR_bl_Hunter_Reservoir_Requirement"
     },
     "node/IFR bl Lyons Res/Violation Cost": {
       "type": "constant",
@@ -3248,13 +3244,13 @@
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/IFR bl Donnells Reservoir/Requirement"
     },
-    "node/IFR bl Hunters Reservoir/flow": {
+    "node/IFR bl Hunter Reservoir/flow": {
       "type": "NumpyArrayNodeRecorder",
-      "node": "IFR bl Hunters Reservoir"
+      "node": "IFR bl Hunter Reservoir"
     },
-    "node/IFR bl Hunters Reservoir/requirement": {
+    "node/IFR bl Hunter Reservoir/requirement": {
       "type": "NumpyArrayParameterRecorder",
-      "parameter": "node/IFR bl Hunters Reservoir/Requirement"
+      "parameter": "node/IFR bl Hunter Reservoir/Requirement"
     },
     "node/IFR bl Lyons Res/flow": {
       "type": "NumpyArrayNodeRecorder",

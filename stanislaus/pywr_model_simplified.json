@@ -27,11 +27,13 @@
                 "node/Angels PH/Cost/2",
                 "node/Angels PH/Cost/3",
                 "node/Angels PH/Cost/4"
-            ]
+            ],
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Angels Canal Outflow",
-            "type": "BreakLink"
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Beardsley Reservoir",
@@ -39,7 +41,8 @@
             "initial_volume": 40.0634304,
             "max_volume": "node/Beardsley Reservoir/Storage Capacity",
             "min_volume": "node/Beardsley Reservoir/Inactive Pool",
-            "cost": "node/Beardsley Reservoir/Storage Value"
+            "cost": "node/Beardsley Reservoir/Storage Value",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Beardsley PH",
@@ -55,11 +58,13 @@
                 "node/Beardsley PH/Cost/2",
                 "node/Beardsley PH/Cost/3",
                 "node/Beardsley PH/Cost/4"
-            ]
+            ],
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Beaver Creek Diversion",
-            "type": "BreakLink"
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Collierville PH",
@@ -75,7 +80,8 @@
                 "node/Collierville PH/Cost/2",
                 "node/Collierville PH/Cost/3",
                 "node/Collierville PH/Cost/4"
-            ]
+            ],
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Donnells PH",
@@ -91,7 +97,8 @@
                 "node/Donnells PH/Cost/2",
                 "node/Donnells PH/Cost/3",
                 "node/Donnells PH/Cost/4"
-            ]
+            ],
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Donnells Reservoir",
@@ -99,107 +106,125 @@
             "initial_volume": 66.8422812,
             "max_volume": "node/Donnells Reservoir/Storage Capacity",
             "min_volume": "node/Donnells Reservoir/Inactive Pool",
-            "cost": "node/Donnells Reservoir/Storage Value"
+            "cost": "node/Donnells Reservoir/Storage Value",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl Angels Div",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "node/IFR bl Angels Div/Violation Cost",
-            "mrf": "node/IFR bl Angels Div/Requirement"
+            "mrf": "node/IFR bl Angels Div/Requirement",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl Donnells Reservoir",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "node/IFR bl Donnells Reservoir/Violation Cost",
-            "mrf": "node/IFR bl Donnells Reservoir/Requirement"
+            "mrf": "node/IFR bl Donnells Reservoir/Requirement",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl Hunters Reservoir",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "node/IFR bl Hunters Reservoir/Violation Cost",
-            "mrf": "node/IFR bl Hunters Reservoir/Requirement"
+            "mrf": "node/IFR bl Hunters Reservoir/Requirement",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl Lyons Res",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "node/IFR bl Lyons Res/Violation Cost",
-            "mrf": "node/IFR bl Lyons Res/Requirement"
+            "mrf": "node/IFR bl Lyons Res/Requirement",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl McKays Point Div",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "node/IFR bl McKays Point Div/Violation Cost",
-            "mrf": "node/IFR bl McKays Point Div/Requirement"
+            "mrf": "node/IFR bl McKays Point Div/Requirement",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl New Spicer Meadow Reservoir",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "node/IFR bl New Spicer Meadow Reservoir/Violation Cost",
-            "mrf": "node/IFR bl New Spicer Meadow Reservoir/Requirement"
+            "mrf": "node/IFR bl New Spicer Meadow Reservoir/Requirement",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl Philadelphia Div",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "node/IFR bl Philadelphia Div/Violation Cost",
-            "mrf": "node/IFR bl Philadelphia Div/Requirement"
+            "mrf": "node/IFR bl Philadelphia Div/Requirement",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl Relief Reservoir",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "node/IFR bl Relief Reservoir/Violation Cost",
-            "mrf": "node/IFR bl Relief Reservoir/Requirement"
+            "mrf": "node/IFR bl Relief Reservoir/Requirement",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl Sand Bar Div",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "node/IFR bl Sand Bar Div/Violation Cost",
-            "mrf": "node/IFR bl Sand Bar Div/Requirement"
+            "mrf": "node/IFR bl Sand Bar Div/Requirement",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl Utica Div",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "node/IFR bl Utica Div/Violation Cost",
-            "mrf": "node/IFR bl Utica Div/Requirement"
+            "mrf": "node/IFR bl Utica Div/Requirement",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Below Beaver Creek Diversion Dam",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "node/Below Beaver Creek Diversion Dam/Violation Cost",
-            "mrf": "node/Below Beaver Creek Diversion Dam/Requirement"
+            "mrf": "node/Below Beaver Creek Diversion Dam/Requirement",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR Confluence of NF and Beaver Creek",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "node/IFR Confluence of NF and Beaver Creek/Violation Cost",
-            "mrf": "node/IFR Confluence of NF and Beaver Creek/Requirement"
+            "mrf": "node/IFR Confluence of NF and Beaver Creek/Requirement",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR Below New Melones Res",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "node/IFR Below New Melones Res/Violation Cost",
-            "mrf": "node/IFR Below New Melones Res/Requirement"
+            "mrf": "node/IFR Below New Melones Res/Requirement",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR Below Pinecrest Lake",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "node/IFR Below Pinecrest Lake/Violation Cost",
-            "mrf": "node/IFR Below Pinecrest Lake/Requirement"
+            "mrf": "node/IFR Below Pinecrest Lake/Requirement",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR Below Utica Res",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "node/IFR Below Utica Res/Violation Cost",
-            "mrf": "node/IFR Below Utica Res/Requirement"
+            "mrf": "node/IFR Below Utica Res/Requirement",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR below Beardsley Afterbay",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "node/IFR below Beardsley Afterbay/Violation Cost",
-            "mrf": "node/IFR below Beardsley Afterbay/Requirement"
+            "mrf": "node/IFR below Beardsley Afterbay/Requirement",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Lower Utica Canal Outflow",
-            "type": "BreakLink"
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Lyons Reservoir",
@@ -207,11 +232,13 @@
             "initial_volume": 2.220264,
             "max_volume": "node/Lyons Reservoir/Storage Capacity",
             "min_volume": "node/Lyons Reservoir/Inactive Pool",
-            "cost": "node/Lyons Reservoir/Storage Value"
+            "cost": "node/Lyons Reservoir/Storage Value",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "McKay Point Diversion",
-            "type": "BreakLink"
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Murphys PH",
@@ -227,14 +254,16 @@
                 "node/Murphys PH/Cost/2",
                 "node/Murphys PH/Cost/3",
                 "node/Murphys PH/Cost/4"
-            ]
+            ],
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "New Melones Lake",
             "type": "Storage",
             "initial_volume": 1366.7,
             "max_volume": 2960.35,
-            "cost": "node/New Melones Lake/Storage Value"
+            "cost": "node/New Melones Lake/Storage Value",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "New Melones PH",
@@ -250,7 +279,8 @@
                 "node/New Melones PH/Cost/2",
                 "node/New Melones PH/Cost/3",
                 "node/New Melones PH/Cost/4"
-            ]
+            ],
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "New Spicer Meadow Reservoir",
@@ -258,7 +288,8 @@
             "initial_volume": 173.92068,
             "max_volume": "node/New Spicer Meadow Reservoir/Storage Capacity",
             "min_volume": "node/New Spicer Meadow Reservoir/Inactive Pool",
-            "cost": "node/New Spicer Meadow Reservoir/Storage Value"
+            "cost": "node/New Spicer Meadow Reservoir/Storage Value",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "New Spicer Meadow PH",
@@ -274,15 +305,18 @@
                 "node/New Spicer Meadow PH/Cost/2",
                 "node/New Spicer Meadow PH/Cost/3",
                 "node/New Spicer Meadow PH/Cost/4"
-            ]
+            ],
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Philadelphia Aquaduct Outflow",
-            "type": "BreakLink"
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Phoenix Canal Outflow",
-            "type": "Output"
+            "type": "Output",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Phoenix PH",
@@ -298,7 +332,8 @@
                 "node/Phoenix PH/Cost/2",
                 "node/Phoenix PH/Cost/3",
                 "node/Phoenix PH/Cost/4"
-            ]
+            ],
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Pinecrest Reservoir",
@@ -306,7 +341,8 @@
             "initial_volume": 16.898676,
             "max_volume": "node/Pinecrest Reservoir/Storage Capacity",
             "min_volume": "node/Pinecrest Reservoir/Inactive Pool",
-            "cost": "node/Pinecrest Reservoir/Storage Value"
+            "cost": "node/Pinecrest Reservoir/Storage Value",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Relief Reservoir",
@@ -314,7 +350,8 @@
             "initial_volume": 10.546254,
             "max_volume": "node/Relief Reservoir/Storage Capacity",
             "min_volume": "node/Relief Reservoir/Inactive Pool",
-            "cost": "node/Relief Reservoir/Storage Value"
+            "cost": "node/Relief Reservoir/Storage Value",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Sand Bar PH",
@@ -330,11 +367,13 @@
                 "node/Sand Bar PH/Cost/2",
                 "node/Sand Bar PH/Cost/3",
                 "node/Sand Bar PH/Cost/4"
-            ]
+            ],
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Beardsley Afterbay",
-            "type": "BreakLink"
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Spring Gap PH",
@@ -350,11 +389,13 @@
                 "node/Spring Gap PH/Cost/2",
                 "node/Spring Gap PH/Cost/3",
                 "node/Spring Gap PH/Cost/4"
-            ]
+            ],
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STANI-N-JUN1",
-            "type": "BreakLink"
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Stanislaus PH",
@@ -370,215 +411,256 @@
                 "node/Stanislaus PH/Cost/2",
                 "node/Stanislaus PH/Cost/3",
                 "node/Stanislaus PH/Cost/4"
-            ]
+            ],
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Stanislaus Tunnel Outflow",
-            "type": "BreakLink"
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN-L-DEL1 Outflow",
-            "type": "Output"
+            "type": "Output",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN-L-DEL2 Outflow",
-            "type": "Output"
+            "type": "Output",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN-L-RIV2 Outflow",
-            "type": "Output"
+            "type": "Output",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_01 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_01 Headflow/Runoff"
+            "flow": "node/STN_01 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_01 Inflow",
-            "comment": "keep",
+            "comment": "{\"keep\": true, \"resource_class\": \"node\"}",
             "type": "River"
         },
         {
             "name": "STN_02 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_02 Headflow/Runoff"
+            "flow": "node/STN_02 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_03 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_03 Headflow/Runoff"
+            "flow": "node/STN_03 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_04 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_04 Headflow/Runoff"
+            "flow": "node/STN_04 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_05 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_05 Headflow/Runoff"
+            "flow": "node/STN_05 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_06 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_06 Headflow/Runoff"
+            "flow": "node/STN_06 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_07 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_07 Headflow/Runoff"
+            "flow": "node/STN_07 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_08 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_08 Headflow/Runoff"
+            "flow": "node/STN_08 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_09 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_09 Headflow/Runoff"
+            "flow": "node/STN_09 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_10 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_10 Headflow/Runoff"
+            "flow": "node/STN_10 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_11 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_11 Headflow/Runoff"
+            "flow": "node/STN_11 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_12 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_12 Headflow/Runoff"
+            "flow": "node/STN_12 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_13 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_13 Headflow/Runoff"
+            "flow": "node/STN_13 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_14 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_14 Headflow/Runoff"
+            "flow": "node/STN_14 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_15 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_15 Headflow/Runoff"
+            "flow": "node/STN_15 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_16 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_16 Headflow/Runoff"
+            "flow": "node/STN_16 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_17 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_17 Headflow/Runoff"
+            "flow": "node/STN_17 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_18 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_18 Headflow/Runoff"
+            "flow": "node/STN_18 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_19 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_19 Headflow/Runoff"
+            "flow": "node/STN_19 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_20 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_20 Headflow/Runoff"
+            "flow": "node/STN_20 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_21 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_21 Headflow/Runoff"
+            "flow": "node/STN_21 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_22 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_22 Headflow/Runoff"
+            "flow": "node/STN_22 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_23 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_23 Headflow/Runoff"
+            "flow": "node/STN_23 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_24 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_24 Headflow/Runoff"
+            "flow": "node/STN_24 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_25 Headflow",
             "type": "Catchment",
-            "flow": "node/STN_25 Headflow/Runoff"
+            "flow": "node/STN_25 Headflow/Runoff",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_R-N-JUN1",
-            "type": "BreakLink"
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Tulloch Lake",
             "type": "Storage",
             "initial_volume": 74.66,
             "max_volume": 82.64,
-            "cost": "node/Tulloch Lake/Storage Value"
+            "cost": "node/Tulloch Lake/Storage Value",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Release from Tulloch Lake",
             "type": "Link",
-            "max_flow": "node/Release from Tulloch Lake/Release"
+            "max_flow": "node/Release from Tulloch Lake/Release",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Tulloch Lake Flood Control",
             "type": "InstreamFlowRequirement",
             "mrf": "node/Tulloch Lake Flood Control/Requirement",
-            "mrf_cost": "node/Tulloch Lake Flood Control/Violation Cost"
+            "mrf_cost": "node/Tulloch Lake Flood Control/Violation Cost",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "blwTullochPH",
             "type": "InstreamFlowRequirement",
             "mrf": "node/blwTullochPH/Requirement",
-            "mrf_cost": 0
+            "mrf_cost": 0,
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Utica Reservoir",
             "type": "Storage",
             "initial_volume": 65,
-            "max_volume": 82.64
+            "max_volume": 82.64,
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "UPA Tunnel Tap Outflow",
-            "type": "BreakLink"
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Upper Collierville Tunnel Outflow",
-            "type": "BreakLink"
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Release from New Melones",
             "type": "Link",
-            "max_flow": "node/Release from New Melones/Release"
+            "max_flow": "node/Release from New Melones/Release",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "New Melones Flood Control",
             "type": "InstreamFlowRequirement",
             "mrf": "node/New Melones Flood Control/Requirement",
-            "mrf_cost": "node/New Melones Flood Control/Violation Cost"
+            "mrf_cost": "node/New Melones Flood Control/Violation Cost",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "STN_below_Melons.2.2",
-            "comment": "keep",
+            "comment": "{\"keep\": true, \"resource_class\": \"node\"}",
             "type": "River"
         },
         {
             "name": "STANI-N-JUN4",
-            "type": "BreakLink"
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
         }
     ],
     "edges": [
