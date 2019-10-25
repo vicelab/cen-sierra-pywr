@@ -14,11 +14,6 @@
     },
     "nodes": [
         {
-            "name": "USGS_11293580_NF STAN R DIV TUNNEL",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
             "name": "Angels PH",
             "type": "PiecewiseHydropower",
             "max_flow": [
@@ -44,7 +39,7 @@
             "name": "Beardsley Reservoir",
             "type": "Storage",
             "initial_volume": 40.0634304,
-            "max_volume": "Beardsley Reservoir/Storage Capacity",
+            "max_volume": 121.45,
             "min_volume": "Beardsley Reservoir/Inactive Pool",
             "cost": "Beardsley Reservoir/Storage Value",
             "comment": "{\"resource_class\": \"node\"}"
@@ -109,7 +104,7 @@
             "name": "Donnells Reservoir",
             "type": "Storage",
             "initial_volume": 66.8422812,
-            "max_volume": "Donnells Reservoir/Storage Capacity",
+            "max_volume": 79.83,
             "min_volume": "Donnells Reservoir/Inactive Pool",
             "cost": "Donnells Reservoir/Storage Value",
             "comment": "{\"resource_class\": \"node\"}"
@@ -235,7 +230,7 @@
             "name": "Lyons Reservoir",
             "type": "Storage",
             "initial_volume": 2.220264,
-            "max_volume": "Lyons Reservoir/Storage Capacity",
+            "max_volume": 7.5,
             "min_volume": "Lyons Reservoir/Inactive Pool",
             "cost": "Lyons Reservoir/Storage Value",
             "comment": "{\"resource_class\": \"node\"}"
@@ -291,7 +286,7 @@
             "name": "New Spicer Meadow Reservoir",
             "type": "Storage",
             "initial_volume": 173.92068,
-            "max_volume": "New Spicer Meadow Reservoir/Storage Capacity",
+            "max_volume": 227.24,
             "min_volume": "New Spicer Meadow Reservoir/Inactive Pool",
             "cost": "New Spicer Meadow Reservoir/Storage Value",
             "comment": "{\"resource_class\": \"node\"}"
@@ -344,7 +339,7 @@
             "name": "Pinecrest Reservoir",
             "type": "Storage",
             "initial_volume": 16.898676,
-            "max_volume": "Pinecrest Reservoir/Storage Capacity",
+            "max_volume": 22.58,
             "min_volume": "Pinecrest Reservoir/Inactive Pool",
             "cost": "Pinecrest Reservoir/Storage Value",
             "comment": "{\"resource_class\": \"node\"}"
@@ -353,7 +348,7 @@
             "name": "Relief Reservoir",
             "type": "Storage",
             "initial_volume": 10.546254,
-            "max_volume": "Relief Reservoir/Storage Capacity",
+            "max_volume": 18.5,
             "min_volume": "Relief Reservoir/Inactive Pool",
             "cost": "Relief Reservoir/Storage Value",
             "comment": "{\"resource_class\": \"node\"}"
@@ -645,13 +640,6 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "USGS_11293580_NF STAN R DIV TUNNEL",
-            "type": "RiverGauge",
-            "mrf": 0.0,
-            "mrf_cost": 0.0,
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
             "name": "Release from New Melones",
             "type": "Link",
             "max_flow": "Release from New Melones/Release",
@@ -783,14 +771,6 @@
         [
             "blwTullochPH",
             "STN_R-N-JUN1"
-        ],
-        [
-            "Upper Collierville Tunnel Outflow",
-            "USGS_11293580_NF STAN R DIV TUNNEL"
-        ],
-        [
-            "USGS_11293580_NF STAN R DIV TUNNEL",
-            "USGS_11293580_NF STAN R DIV TUNNEL"
         ],
         [
             "Angels PH",
@@ -993,16 +973,16 @@
             "Murphys PH"
         ],
         [
-            "USGS_11293580_NF STAN R DIV TUNNEL",
-            "New Spicer Meadow Reservoir"
-        ],
-        [
             "STN_12 Headflow",
             "New Spicer Meadow Reservoir"
         ],
         [
             "Donnells PH",
             "Beardsley Reservoir"
+        ],
+        [
+            "Upper Collierville Tunnel Outflow",
+            "New Spicer Meadow Reservoir"
         ],
         [
             "Collierville PH",
@@ -1166,10 +1146,6 @@
         "Angels PH/Cost/4": {
             "type": "network_PH_Cost"
         },
-        "Beardsley Reservoir/Storage Capacity": {
-            "type": "constant",
-            "value": 121.45
-        },
         "Beardsley Reservoir/Inactive Pool": {
             "type": "constant",
             "value": 25
@@ -1296,10 +1272,6 @@
         },
         "Donnells PH/Cost/4": {
             "type": "network_PH_Cost"
-        },
-        "Donnells Reservoir/Storage Capacity": {
-            "type": "constant",
-            "value": 79.83
         },
         "Donnells Reservoir/Inactive Pool": {
             "type": "constant",
@@ -1468,10 +1440,6 @@
         "IFR below Beardsley Afterbay/Requirement": {
             "type": "node_IFR_below_Beardsley_Afterbay_Requirement"
         },
-        "Lyons Reservoir/Storage Capacity": {
-            "type": "constant",
-            "value": 7.5
-        },
         "Lyons Reservoir/Inactive Pool": {
             "type": "constant",
             "value": 1.25
@@ -1573,10 +1541,6 @@
         "Release from New Melones/Release": {
             "type": "New_Melones_Release_Policy"
         },
-        "New Spicer Meadow Reservoir/Storage Capacity": {
-            "type": "constant",
-            "value": 227.24
-        },
         "New Spicer Meadow Reservoir/Inactive Pool": {
             "type": "constant",
             "value": 50
@@ -1651,10 +1615,6 @@
         "Phoenix PH/Cost/4": {
             "type": "network_PH_Cost"
         },
-        "Pinecrest Reservoir/Storage Capacity": {
-            "type": "constant",
-            "value": 22.58
-        },
         "Pinecrest Reservoir/Inactive Pool": {
             "type": "constant",
             "value": 4
@@ -1697,10 +1657,6 @@
                 22.58
             ],
             "kind": "cubic"
-        },
-        "Relief Reservoir/Storage Capacity": {
-            "type": "constant",
-            "value": 18.5
         },
         "Relief Reservoir/Inactive Pool": {
             "type": "constant",

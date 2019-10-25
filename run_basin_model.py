@@ -135,6 +135,8 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
     new_parameters = {}
     new_recorders = {}
 
+    updated_node_names = {}
+
     gauges = {}
 
     parameters_to_expand = []
@@ -168,18 +170,25 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
             t = step + 1
             new_node = node.copy()
             new_res_name = '{}/{}'.format(old_name, t)
-            next_res_name = '{}/{}'.format(old_name, t + 1)
             new_node['name'] = new_res_name
 
             month = '/{}'.format(t)
 
             if node_type == 'Storage' and node.get('max_volume'):
                 # 1. rename and empty storage for original storage node
-                for key in ['cost', 'min_volume', 'max_volume', 'initial_volume']:
-                    new_node.pop(key, None)
-                    new_node['max_volume'] = 0.0
-                    new_node['initial_volume'] = 0.0
-                new_nodes.append(new_node)
+                # for key in ['cost', 'min_volume', 'max_volume', 'initial_volume']:
+                #     new_node.pop(key, None)
+                #     new_node['max_volume'] = 0.0
+                #     new_node['initial_volume'] = 0.0
+                # new_nodes.append(new_node)
+                original_reservoir_name = '{} [original]/{}'.format(old_name, t)
+                next_reservoir_name = '{} [original]/{}'.format(old_name, t+1)
+                original_storage_node = {
+                    'name': original_reservoir_name,
+                    'type': 'BreakLink'
+                }
+                new_nodes.append(original_storage_node)
+                updated_node_names[new_res_name] = original_reservoir_name
 
                 # 2. add a catchment to represent initial storage
                 if step == 0:
@@ -190,8 +199,9 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
                         'flow': node.get('initial_volume', 0.0)
                     }
                     new_nodes.append(storage_input)
+
                     # 2.1 connect inflow to new "reservoir"
-                    new_edges.append([input_name, new_res_name])
+                    new_edges.append([input_name, original_reservoir_name])
 
                 # 3. create new storage node as link
                 link_reservoir_base_name = old_name + ' [link]'
@@ -210,16 +220,30 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
                 new_nodes.append(storage_link)
 
                 # 3.1 connect this reservoir to new link reservoir
-                new_edges.append([new_res_name, link_reservoir_name])
+                new_edges.append([original_reservoir_name, link_reservoir_name])
 
                 # 3.2 connect new link reservoir to next reservoir
                 if step != all_steps[-1]:
-                    new_edges.append([link_reservoir_name, next_res_name])
+                    new_edges.append([link_reservoir_name, next_reservoir_name])
 
                 # 3.3 note we need to update storage recorders
                 storage_recorders[node['name']] = link_reservoir_base_name
 
-                # 4. create outflow node for reservoir
+                # 4. create virtual storage node to represent the original storage reservoir
+                # the virtual storage node is not physically connected to the system,
+                # but is nonetheless "filled" by flows in the system
+                virtual_storage = node.copy()
+                virtual_storage.update({
+                    'name': new_res_name,
+                    'type': 'VirtualStorage',
+                    'nodes': [link_reservoir_name],
+                    'factors': [-1],
+                    'initial_volume': 0.0,
+                })
+                virtual_storage.pop('min_volume', None)
+                new_nodes.append(virtual_storage)
+
+                # 5. create outflow node for reservoir
                 if step == all_steps[-1]:
                     output_name = old_name + ' [output]'
                     storage_output = {
@@ -273,7 +297,12 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
         # for n1, n2 in m['edges']:
         for step in all_steps:
             t = step + 1
-            new_edges.append(['{}/{}'.format(n1, t), '{}/{}'.format(n2, t)])
+            new_n1 = '{}/{}'.format(n1, t)
+            new_n2 = '{}/{}'.format(n2, t)
+            new_edges.append([
+                updated_node_names.get(new_n1, new_n1),
+                updated_node_names.get(new_n2, new_n2),
+            ])
 
     for param_name in m['parameters']:
 
@@ -411,7 +440,7 @@ def run_model(basin, network_key, debug=False):
         f.write(json.dumps(m, indent=4))
 
     # Area for testing monthly model
-    include_monthly = True
+    include_monthly = False
 
     if include_monthly:
 
@@ -447,10 +476,11 @@ def run_model(basin, network_key, debug=False):
             #     nodes_of_type[node.type] = node.name
             fn_tpl = 'monthly_{v}_S{level}.csv'
 
-            for date in tqdm(dates, ncols=80, disable=False):
-                # print(date)
-                monthly_model.timestepper.start = date
-                # monthly_model.timestepper.end = date
+            for date in tqdm(dates[:3], ncols=80, disable=False):
+                monthly_model.timestepper.delta = date.days_in_month
+
+                # update virtual storage initial conditions
+
                 monthly_model.step()
                 if date == dates[0]:
                     monthly_dir = './results'
@@ -464,6 +494,7 @@ def run_model(basin, network_key, debug=False):
                         month_numbers = []
                         col_names = []
                         for c in df.columns:
+                            res_class, res_name, variable, month_str = c.split('/')
                             res_class, res_name, variable, month_str = c.split('/')
                             if variable == v:
                                 col_names.append(c)
