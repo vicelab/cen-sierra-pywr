@@ -7,7 +7,7 @@ class WYT_SJValley(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
-        SJVI = self.GET("WYI_SJValley", **kwargs)
+        SJVI = self.get("WYI_SJValley", **kwargs)
         thresholds = [0, 2.1, 2.8, 3.1, 3.8]
         WYT = len([x for x in thresholds if SJVI > x])
         return WYT

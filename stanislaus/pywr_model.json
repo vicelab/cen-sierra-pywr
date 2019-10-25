@@ -3128,7 +3128,7 @@
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/Angels PH/Water Demand"
     },
-    "node/AVERY_11294500/observed flow": {
+    "node/AVERY_11294500/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/AVERY_11294500/Observed Flow"
     },
@@ -3136,7 +3136,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "AVERY_11294500"
     },
-    "node/BEARDSLEY PH NR STRAWBERRY CA_11292820/observed flow": {
+    "node/BEARDSLEY PH NR STRAWBERRY CA_11292820/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/BEARDSLEY PH NR STRAWBERRY CA_11292820/Observed Flow"
     },
@@ -3144,15 +3144,15 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "BEARDSLEY PH NR STRAWBERRY CA_11292820"
     },
-    "node/Beardsley Reservoir/storage": {
+    "node/Beardsley Reservoir/Storage": {
       "type": "NumpyArrayStorageRecorder",
       "node": "Beardsley Reservoir"
     },
-    "node/Beardsley Reservoir/observed storage": {
+    "node/Beardsley Reservoir/Observed Storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/Beardsley Reservoir/Observed Storage"
     },
-    "node/BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210/observed flow": {
+    "node/BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210/Observed Flow"
     },
@@ -3160,7 +3160,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210"
     },
-    "node/BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230/observed flow": {
+    "node/BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230/Observed Flow"
     },
@@ -3168,7 +3168,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230"
     },
-    "node/BL MCKAYS POINT DAM_11295270/observed flow": {
+    "node/BL MCKAYS POINT DAM_11295270/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/BL MCKAYS POINT DAM_11295270/Observed Flow"
     },
@@ -3176,7 +3176,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "BL MCKAYS POINT DAM_11295270"
     },
-    "node/CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500/observed flow": {
+    "node/CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500/Observed Flow"
     },
@@ -3200,11 +3200,11 @@
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/Donnells PH/Water Demand"
     },
-    "node/Donnells Reservoir/storage": {
+    "node/Donnells Reservoir/Storage": {
       "type": "NumpyArrayStorageRecorder",
       "node": "Donnells Reservoir"
     },
-    "node/Donnells Reservoir/observed storage": {
+    "node/Donnells Reservoir/Observed Storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/Donnells Reservoir/Observed Storage"
     },
@@ -3212,7 +3212,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "Gauge_Phoenix"
     },
-    "node/HIGHLAND CREEK BELOW NEW SPICER_11294000/observed flow": {
+    "node/HIGHLAND CREEK BELOW NEW SPICER_11294000/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/HIGHLAND CREEK BELOW NEW SPICER_11294000/Observed Flow"
     },
@@ -3220,7 +3220,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "HIGHLAND CREEK BELOW NEW SPICER_11294000"
     },
-    "node/HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700/observed flow": {
+    "node/HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700/Observed Flow"
     },
@@ -3308,7 +3308,7 @@
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/IFR bl Utica Div/Requirement"
     },
-    "node/JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/observed flow": {
+    "node/JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/Observed Flow"
     },
@@ -3316,15 +3316,15 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA"
     },
-    "node/Lyons Reservoir/storage": {
+    "node/Lyons Reservoir/Storage": {
       "type": "NumpyArrayStorageRecorder",
       "node": "Lyons Reservoir"
     },
-    "node/Lyons Reservoir/observed storage": {
+    "node/Lyons Reservoir/Observed Storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/Lyons Reservoir/Observed Storage"
     },
-    "node/MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700/observed flow": {
+    "node/MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700/Observed Flow"
     },
@@ -3332,7 +3332,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700"
     },
-    "node/MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000/observed flow": {
+    "node/MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000/Observed Flow"
     },
@@ -3340,7 +3340,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000"
     },
-    "node/MF STANISLAUS R BL BEARDSLEY DAM CA_11292900/observed flow": {
+    "node/MF STANISLAUS R BL BEARDSLEY DAM CA_11292900/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/MF STANISLAUS R BL BEARDSLEY DAM CA_11292900/Observed Flow"
     },
@@ -3348,7 +3348,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "MF STANISLAUS R BL BEARDSLEY DAM CA_11292900"
     },
-    "node/MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200/observed flow": {
+    "node/MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200/Observed Flow"
     },
@@ -3364,11 +3364,11 @@
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/Murphys PH/Water Demand"
     },
-    "node/New Melones Lake/storage": {
+    "node/New Melones Lake/Storage": {
       "type": "NumpyArrayStorageRecorder",
       "node": "New Melones Lake"
     },
-    "node/New Melones Lake/observed storage": {
+    "node/New Melones Lake/Observed Storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/New Melones Lake/Observed Storage"
     },
@@ -3380,15 +3380,15 @@
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/New Melones PH/Water Demand"
     },
-    "node/New Spicer Meadow Reservoir/storage": {
+    "node/New Spicer Meadow Reservoir/Storage": {
       "type": "NumpyArrayStorageRecorder",
       "node": "New Spicer Meadow Reservoir"
     },
-    "node/New Spicer Meadow Reservoir/observed storage": {
+    "node/New Spicer Meadow Reservoir/Observed Storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/New Spicer Meadow Reservoir/Observed Storage"
     },
-    "node/NF STANISLAUS DIV TU OL BL HOBART C_11293710/observed flow": {
+    "node/NF STANISLAUS DIV TU OL BL HOBART C_11293710/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/NF STANISLAUS DIV TU OL BL HOBART C_11293710/Observed Flow"
     },
@@ -3396,7 +3396,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "NF STANISLAUS DIV TU OL BL HOBART C_11293710"
     },
-    "node/NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300/observed flow": {
+    "node/NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300/Observed Flow"
     },
@@ -3404,7 +3404,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300"
     },
-    "node/NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600/observed flow": {
+    "node/NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600/Observed Flow"
     },
@@ -3412,7 +3412,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600"
     },
-    "node/NF STANISLAUS R BL SILVER C CA_11293500/observed flow": {
+    "node/NF STANISLAUS R BL SILVER C CA_11293500/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/NF STANISLAUS R BL SILVER C CA_11293500/Observed Flow"
     },
@@ -3432,19 +3432,19 @@
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/Phoenix PH/Water Demand"
     },
-    "node/Pinecrest Reservoir/storage": {
+    "node/Pinecrest Reservoir/Storage": {
       "type": "NumpyArrayStorageRecorder",
       "node": "Pinecrest Reservoir"
     },
-    "node/Pinecrest Reservoir/observed storage": {
+    "node/Pinecrest Reservoir/Observed Storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/Pinecrest Reservoir/Observed Storage"
     },
-    "node/Relief Reservoir/storage": {
+    "node/Relief Reservoir/Storage": {
       "type": "NumpyArrayStorageRecorder",
       "node": "Relief Reservoir"
     },
-    "node/Relief Reservoir/observed storage": {
+    "node/Relief Reservoir/Observed Storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/Relief Reservoir/Observed Storage"
     },
@@ -3456,7 +3456,7 @@
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/Sand Bar PH/Water Demand"
     },
-    "node/SF STANISLAUS R A STRAWBERRY CA_11296500/observed flow": {
+    "node/SF STANISLAUS R A STRAWBERRY CA_11296500/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/SF STANISLAUS R A STRAWBERRY CA_11296500/Observed Flow"
     },
@@ -3464,7 +3464,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "SF STANISLAUS R A STRAWBERRY CA_11296500"
     },
-    "node/SF STANISLAUS R NR LONG BARN CA_11298000/observed flow": {
+    "node/SF STANISLAUS R NR LONG BARN CA_11298000/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/SF STANISLAUS R NR LONG BARN CA_11298000/Observed Flow"
     },
@@ -3472,7 +3472,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "SF STANISLAUS R NR LONG BARN CA_11298000"
     },
-    "node/SF STANISLAUS R NR STRAWBERRY CA_11297200/observed flow": {
+    "node/SF STANISLAUS R NR STRAWBERRY CA_11297200/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/SF STANISLAUS R NR STRAWBERRY CA_11297200/Observed Flow"
     },
@@ -3512,7 +3512,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_01 Headflow"
     },
-    "node/STN_01 Headflow/runoff": {
+    "node/STN_01 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_01 Headflow"
     },
@@ -3520,7 +3520,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_02 Headflow"
     },
-    "node/STN_02 Headflow/runoff": {
+    "node/STN_02 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_02 Headflow"
     },
@@ -3528,7 +3528,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_03 Headflow"
     },
-    "node/STN_03 Headflow/runoff": {
+    "node/STN_03 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_03 Headflow"
     },
@@ -3536,7 +3536,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_04 Headflow"
     },
-    "node/STN_04 Headflow/runoff": {
+    "node/STN_04 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_04 Headflow"
     },
@@ -3544,7 +3544,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_05 Headflow"
     },
-    "node/STN_05 Headflow/runoff": {
+    "node/STN_05 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_05 Headflow"
     },
@@ -3552,7 +3552,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_06 Headflow"
     },
-    "node/STN_06 Headflow/runoff": {
+    "node/STN_06 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_06 Headflow"
     },
@@ -3560,7 +3560,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_07 Headflow"
     },
-    "node/STN_07 Headflow/runoff": {
+    "node/STN_07 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_07 Headflow"
     },
@@ -3568,7 +3568,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_08 Headflow"
     },
-    "node/STN_08 Headflow/runoff": {
+    "node/STN_08 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_08 Headflow"
     },
@@ -3576,7 +3576,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_09 Headflow"
     },
-    "node/STN_09 Headflow/runoff": {
+    "node/STN_09 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_09 Headflow"
     },
@@ -3584,7 +3584,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_10 Headflow"
     },
-    "node/STN_10 Headflow/runoff": {
+    "node/STN_10 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_10 Headflow"
     },
@@ -3592,7 +3592,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_11 Headflow"
     },
-    "node/STN_11 Headflow/runoff": {
+    "node/STN_11 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_11 Headflow"
     },
@@ -3600,7 +3600,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_12 Headflow"
     },
-    "node/STN_12 Headflow/runoff": {
+    "node/STN_12 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_12 Headflow"
     },
@@ -3608,7 +3608,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_13 Headflow"
     },
-    "node/STN_13 Headflow/runoff": {
+    "node/STN_13 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_13 Headflow"
     },
@@ -3616,7 +3616,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_14 Headflow"
     },
-    "node/STN_14 Headflow/runoff": {
+    "node/STN_14 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_14 Headflow"
     },
@@ -3624,7 +3624,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_15 Headflow"
     },
-    "node/STN_15 Headflow/runoff": {
+    "node/STN_15 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_15 Headflow"
     },
@@ -3632,7 +3632,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_16 Headflow"
     },
-    "node/STN_16 Headflow/runoff": {
+    "node/STN_16 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_16 Headflow"
     },
@@ -3640,7 +3640,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_17 Headflow"
     },
-    "node/STN_17 Headflow/runoff": {
+    "node/STN_17 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_17 Headflow"
     },
@@ -3648,7 +3648,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_18 Headflow"
     },
-    "node/STN_18 Headflow/runoff": {
+    "node/STN_18 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_18 Headflow"
     },
@@ -3656,7 +3656,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_19 Headflow"
     },
-    "node/STN_19 Headflow/runoff": {
+    "node/STN_19 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_19 Headflow"
     },
@@ -3664,7 +3664,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_20 Headflow"
     },
-    "node/STN_20 Headflow/runoff": {
+    "node/STN_20 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_20 Headflow"
     },
@@ -3672,7 +3672,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_21 Headflow"
     },
-    "node/STN_21 Headflow/runoff": {
+    "node/STN_21 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_21 Headflow"
     },
@@ -3680,7 +3680,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_22 Headflow"
     },
-    "node/STN_22 Headflow/runoff": {
+    "node/STN_22 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_22 Headflow"
     },
@@ -3688,7 +3688,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_23 Headflow"
     },
-    "node/STN_23 Headflow/runoff": {
+    "node/STN_23 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_23 Headflow"
     },
@@ -3696,7 +3696,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_24 Headflow"
     },
-    "node/STN_24 Headflow/runoff": {
+    "node/STN_24 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_24 Headflow"
     },
@@ -3704,19 +3704,19 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_25 Headflow"
     },
-    "node/STN_25 Headflow/runoff": {
+    "node/STN_25 Headflow/Runoff": {
       "type": "NumpyArrayNodeRecorder",
       "node": "STN_25 Headflow"
     },
-    "node/Tulloch Lake/storage": {
+    "node/Tulloch Lake/Storage": {
       "type": "NumpyArrayStorageRecorder",
       "node": "Tulloch Lake"
     },
-    "node/Tulloch Lake/observed storage": {
+    "node/Tulloch Lake/Observed Storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/Tulloch Lake/Observed Storage"
     },
-    "node/USGS_11292610 DONNELLS PH/observed flow": {
+    "node/USGS_11292610 DONNELLS PH/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/USGS_11292610 DONNELLS PH/Observed Flow"
     },
@@ -3724,7 +3724,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "USGS_11292610 DONNELLS PH"
     },
-    "node/USGS_11293580_NF STAN R DIV TUNNEL/observed flow": {
+    "node/USGS_11293580_NF STAN R DIV TUNNEL/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/USGS_11293580_NF STAN R DIV TUNNEL/Observed Flow"
     },
@@ -3732,7 +3732,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "USGS_11293580_NF STAN R DIV TUNNEL"
     },
-    "node/USGS_11295250_COLLIERVILLE PP/observed flow": {
+    "node/USGS_11295250_COLLIERVILLE PP/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/USGS_11295250_COLLIERVILLE PP/Observed Flow"
     },
@@ -3740,7 +3740,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "USGS_11295250_COLLIERVILLE PP"
     },
-    "node/USGS_11295505_STANISLAUS PP/observed flow": {
+    "node/USGS_11295505_STANISLAUS PP/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/USGS_11295505_STANISLAUS PP/Observed Flow"
     },
@@ -3748,7 +3748,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "USGS_11295505_STANISLAUS PP"
     },
-    "node/USGS_11297000_PHILADELPHIA CN/observed flow": {
+    "node/USGS_11297000_PHILADELPHIA CN/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/USGS_11297000_PHILADELPHIA CN/Observed Flow"
     },
@@ -3756,7 +3756,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "USGS_11297000_PHILADELPHIA CN"
     },
-    "node/USGS_11297500_TUOLUMNE CN/observed flow": {
+    "node/USGS_11297500_TUOLUMNE CN/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/USGS_11297500_TUOLUMNE CN/Observed Flow"
     },

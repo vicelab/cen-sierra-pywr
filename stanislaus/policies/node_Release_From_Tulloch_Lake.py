@@ -1,5 +1,6 @@
 from parameters import WaterLPParameter
 
+
 class node_Release_From_Tulloch_Lake(WaterLPParameter):
     million_m3day_to_m3sec = 11.5740740741
     year_names = ["Critical", "Dry", "Below", "Above", "Wet"]
@@ -7,7 +8,7 @@ class node_Release_From_Tulloch_Lake(WaterLPParameter):
     def get_demand(self, timestep, scenario_index):
 
         wyt_number = self.model.parameters['WYT_SJValley'].value(timestep, scenario_index)
-        wyt = self.year_names[wyt_number-1]
+        wyt = self.year_names[wyt_number - 1]
         net_demand = self.read_csv("Management/BAU/NetDemand_belowTulloch.csv", index_col=[0], parse_dates=True)
 
         day = timestep.day if timestep.month != 2 else min(28, timestep.day)
@@ -16,18 +17,17 @@ class node_Release_From_Tulloch_Lake(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         max_outflow = 226.535
-        # Reservoir Node (Tulloch)
-        storage_name = "Tulloch Lake" + self.month_suffix
-        storage_demand_name = "Tulloch Lake/Storage Demand"
-        # Inflow into Tulloch Lake
-        inflow_name = "STN_below_Melons.2.2" + self.month_suffix
-        outflow = self.model.nodes[storage_name].volume[-1] \
-                  + self.model.nodes[inflow_name].flow[-1] \
-                  - self.model.parameters[storage_demand_name].value(timestep, scenario_index)
 
-        tulloch_reqt_name = "blwTullochPH/Requirement" + self.month_suffix
-        net_demand = self.get_demand(timestep, scenario_index) \
-                     + self.model.parameters[tulloch_reqt_name].value(timestep, scenario_index)
+        # anticipated outflow
+        prev_storage = self.model.nodes["Tulloch Lake" + self.month_suffix].volume[-1]
+        prev_inflow = self.model.nodes["STN_below_Melons.2.2" + self.month_suffix].flow[-1]
+        storage_demand = self.model.parameters["Tulloch Lake/Storage Demand"].value(timestep, scenario_index)
+        outflow = prev_storage + prev_inflow - storage_demand
+
+        # net demand
+        reqt = self.model.parameters["blwTullochPH/Requirement" + self.month_suffix].value(timestep, scenario_index)
+        net_demand = self.get_demand(timestep, scenario_index) + reqt
+
         return max(net_demand, min(outflow, max_outflow))
 
     def value(self, timestep, scenario_index):

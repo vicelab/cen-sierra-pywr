@@ -244,12 +244,12 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
                                 if v not in parameters_to_expand:
                                     parameters_to_expand.append(v)
                                 parts = v.split('/')
-                                if len(parts) == 3:
+                                if len(parts) == 2:
                                     new_values.append(v + month)
-                                elif len(parts) == 4:
+                                elif len(parts) == 3:
                                     attr = parts[-2]
                                     block = parts[-1]
-                                    new_v = '{}/{}/{}/{}/{}'.format(res_class, res_name, attr, t, block)
+                                    new_v = '{}/{}/{}/{}'.format(res_name, attr, t, block)
                                     new_values.append(new_v)
                                 else:
                                     new_values.append(v)
@@ -286,14 +286,13 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
 
         parts = param_name.split('/')
         param = m['parameters'][param_name]
-        res_class = None
         res_name = None
         attribute = None
         block = None
-        if len(parts) == 3:
-            res_class, res_name, attribute = parts
-        elif len(parts) == 4:
-            res_class, res_name, attribute, block = parts
+        if len(parts) == 2:
+            res_name, attribute = parts
+        elif len(parts) == 3:
+            res_name, attribute, block = parts
             block = int(block)
 
         if attribute in ['Observed Flow', 'Observed Storage']:
@@ -302,7 +301,7 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
         if param_name in parameters_to_expand or 'node' in param:
             for step in all_steps:
                 t = step + 1
-                new_param_name = '{}/{}/{}/{}'.format(res_class, res_name, attribute, t)
+                new_param_name = '{}/{}/{}'.format(res_name, attribute, t)
                 if block:
                     new_param_name += '/{}'.format(block)
                 new_param = param.copy()
@@ -412,7 +411,7 @@ def run_model(basin, network_key, debug=False):
         f.write(json.dumps(m, indent=4))
 
     # Area for testing monthly model
-    include_monthly = False
+    include_monthly = True
 
     if include_monthly:
 

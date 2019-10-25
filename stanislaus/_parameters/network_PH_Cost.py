@@ -10,6 +10,10 @@ class network_PH_Cost(WaterLPParameter):
 
     def _value(self, timestep, scenario_index, mode='scheduling'):
 
+        if timestep.index == 0:
+            self.nblocks = self.model.parameters["Blocks"].get_value(scenario_index)
+            self.demandParam = self.model.parameters[self.demand_constant_param].get_value(scenario_index)
+
         totDemandP = self.model.parameters["Total Net Energy Demand"]
         maxDemandP = self.model.parameters["Max Net Energy Demand"]
         minDemandP = self.model.parameters["Min Net Energy Demand"]
@@ -22,19 +26,19 @@ class network_PH_Cost(WaterLPParameter):
             maxDemand = maxDemandP.value(timestep, scenario_index)
 
         else:
-            planning_dates = self.dates_in_planning_month(timestep, month_offset=self.month_offset)
+            planning_dates = self.dates_in_month()
             days_in_period = len(planning_dates)
             totDemand = totDemandP.dataframe[planning_dates].sum()
             minDemand = minDemandP.dataframe[planning_dates].min()
             maxDemand = maxDemandP.dataframe[planning_dates].max()
 
-        minVal = self.model.parameters[self.demand_constant_param].value(timestep, scenario_index) \
-                 * (totDemand / (self.baseline_median_daily_energy_demand * days_in_period))
+        baselineDemand = self.baseline_median_daily_energy_demand * days_in_period
+        minVal = self.demandParam * (totDemand / baselineDemand)
         maxVal = minVal * (maxDemand / minDemand)
         max_min_diff = maxVal - minVal
 
-        nblocks = self.model.parameters['Blocks'].get_value(scenario_index)
-        return - (maxVal - ((max_min_diff/(2*nblocks)) * (self.block * 2 - 1)))
+        value = maxVal - ((max_min_diff / (2 * self.nblocks)) * (self.block * 2 - 1))
+        return -value
 
     def value(self, timestep, scenario_index):
         try:
