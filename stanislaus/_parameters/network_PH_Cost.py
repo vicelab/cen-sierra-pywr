@@ -33,11 +33,16 @@ class network_PH_Cost(WaterLPParameter):
         maxVal = minVal * (maxDemand / minDemand)
         max_min_diff = maxVal - minVal
 
-        nblocks = self.model.parameters['Blocks'].value(timestep, scenario_index)
+        nblocks = self.model.parameters['Blocks'].get_value(scenario_index)
         return - (maxVal - ((max_min_diff/(2*nblocks)) * (self.block * 2 - 1)))
 
     def value(self, timestep, scenario_index):
-        return self._value(timestep, scenario_index, mode=self.mode)
+        try:
+            return self._value(timestep, scenario_index, mode=self.mode)
+        except Exception as err:
+            print('\nERROR for parameter {}'.format(self.name))
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
 
     @classmethod
     def load(cls, model, data):

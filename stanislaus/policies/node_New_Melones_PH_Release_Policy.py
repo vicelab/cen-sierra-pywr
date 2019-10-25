@@ -22,9 +22,9 @@ class New_Melones_Release_Policy(WaterLPParameter):
         inflow_name = "STN_01 Inflow" + self.month_suffix
         outflow = self.model.nodes[storage_name].volume[-1] \
                    + self.model.nodes[inflow_name].flow[-1] \
-                   - self.model.parameters["node/New Melones Lake/Storage Demand"].value(timestep, scenario_index)
+                   - self.model.parameters["New Melones Lake/Storage Demand"].value(timestep, scenario_index)
         base_demand = self.get_demand(timestep, scenario_index)
-        ph_demand = self.model.parameters["node/blwTullochPH/Requirement" + self.month_suffix].value(timestep, scenario_index)
+        ph_demand = self.model.parameters["blwTullochPH/Requirement" + self.month_suffix].value(timestep, scenario_index)
         net_demand = base_demand + ph_demand
 
         # if datetime(1900, 3, 21) < date_timestep < datetime(1900, 5, 31):
@@ -39,7 +39,12 @@ class New_Melones_Release_Policy(WaterLPParameter):
             return max(net_demand, min(outflow, flow_threshold))
 
     def value(self, timestep, scenario_index):
-        return self._value(timestep, scenario_index)
+        try:
+            return self._value(timestep, scenario_index)
+        except Exception as err:
+            print('\nERROR for parameter {}'.format(self.name))
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
 
     @classmethod
     def load(cls, model, data):

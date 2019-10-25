@@ -10,7 +10,7 @@ class network_PH_Water_Demand(WaterLPParameter):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
 
         nblocks = self.model.parameters['Blocks'].value(timestep, scenario_index)
-        q_demand = self.model.parameters['node/' + self.res_name + '/Turbine Capacity'] \
+        q_demand = self.model.parameters[self.res_name + '/Turbine Capacity'] \
                        .value(timestep, scenario_index) * 3600 * 24 / nblocks
 
         if mode == 'planning':

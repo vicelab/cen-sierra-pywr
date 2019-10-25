@@ -11,7 +11,12 @@ class node_New_Melones_Storage_Demand(WaterLPParameter):
         return flood_control_req['1900-{:02}-{:02}'.format(timestep.month, day)]
 
     def value(self, timestep, scenario_index):
-        return self._value(timestep, scenario_index)
+        try:
+            return self._value(timestep, scenario_index)
+        except Exception as err:
+            print('\nERROR for parameter {}'.format(self.name))
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
 
     @classmethod
     def load(cls, model, data):

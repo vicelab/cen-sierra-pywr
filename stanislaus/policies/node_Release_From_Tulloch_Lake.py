@@ -18,20 +18,25 @@ class node_Release_From_Tulloch_Lake(WaterLPParameter):
         max_outflow = 226.535
         # Reservoir Node (Tulloch)
         storage_name = "Tulloch Lake" + self.month_suffix
-        storage_demand_name = "node/Tulloch Lake/Storage Demand"
+        storage_demand_name = "Tulloch Lake/Storage Demand"
         # Inflow into Tulloch Lake
         inflow_name = "STN_below_Melons.2.2" + self.month_suffix
         outflow = self.model.nodes[storage_name].volume[-1] \
                   + self.model.nodes[inflow_name].flow[-1] \
                   - self.model.parameters[storage_demand_name].value(timestep, scenario_index)
 
-        tulloch_reqt_name = "node/blwTullochPH/Requirement" + self.month_suffix
+        tulloch_reqt_name = "blwTullochPH/Requirement" + self.month_suffix
         net_demand = self.get_demand(timestep, scenario_index) \
                      + self.model.parameters[tulloch_reqt_name].value(timestep, scenario_index)
         return max(net_demand, min(outflow, max_outflow))
 
     def value(self, timestep, scenario_index):
-        return self._value(timestep, scenario_index)
+        try:
+            return self._value(timestep, scenario_index)
+        except Exception as err:
+            print('\nERROR for parameter {}'.format(self.name))
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
 
     @classmethod
     def load(cls, model, data):

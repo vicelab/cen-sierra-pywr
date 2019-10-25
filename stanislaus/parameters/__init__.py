@@ -1,3 +1,4 @@
+import json
 import os
 import pandas as pd
 from calendar import monthrange
@@ -49,55 +50,56 @@ class WaterLPParameter(Parameter):
         self.mode = getattr(self.model, 'mode', self.mode)
 
         name_parts = self.name.split('/')
-        res_class = name_parts[0]
 
-        if res_class in ['link', 'node']:
-            self.res_class = name_parts[0]
-            self.res_name = name_parts[1]
-            self.attr_name = name_parts[2]
-            self.res_name_full = '{}'.format(self.res_name)  # TODO: update when 'node/' is added as prefix
+        try:
+            self.res_name = name_parts[0]
+            node = self.model.nodes[self.res_name]
+        except:
+            return
+        if node.comment:
+            metadata = json.loads(node.comment)
+        else:
+            metadata = {}
+        self.res_class = metadata.get('resource_class')
+
+        if self.res_class in ['link', 'node']:
+            self.attr_name = name_parts[1]
+            self.res_name_full = self.res_name
 
             if self.mode == 'scheduling':
-                if len(name_parts) == 4:
-                    self.block = int(name_parts[3])
+                if len(name_parts) == 3:
+                    self.block = int(name_parts[2])
 
             elif self.mode == 'planning':
-                if len(name_parts) == 4:
-                    self.month_offset = int(name_parts[3]) - 1
-                elif len(name_parts) == 5:
-                    self.month_offset = int(name_parts[3]) - 1
-                    self.block = int(name_parts[4])
+                if len(name_parts) == 3:
+                    self.month_offset = int(name_parts[2]) - 1
+                elif len(name_parts) == 4:
+                    self.month_offset = int(name_parts[2]) - 1
+                    self.block = int(name_parts[3])
 
             if self.month_offset is not None:
                 self.month_suffix = '/{}'.format(self.month_offset + 1)
 
-            self.res_name_full += self.month_suffix
+            self.res_name += self.month_suffix
 
-            node = None
-            try:
-                node = self.model.nodes[self.res_name_full]
-            except:
-                raise
+            if ' PH' in node.name:
+                self.demand_constant_param = "{}/Demand Constant".format(self.res_name)
 
-            if node:
-
-                if ' PH' in node.name:
-                    self.demand_constant_param = "node/{}/Demand Constant".format(self.res_name)
-
-                if 'level' in node.component_attrs:
-                    self.elevation_param = 'node/{}/Elevation'.format(self.res_name)
-                    self.elevation_param += self.month_suffix
+            if 'level' in node.component_attrs:
+                self.elevation_param = '{}/Elevation'.format(self.res_name)
+                self.elevation_param += self.month_suffix
 
     def before(self):
         super(WaterLPParameter, self).before()
-        if self.month_offset:
-            datetime = self.model.timestepper.current.datetime + relativedelta(months=+self.month_offset)
-        else:
-            datetime = self.model.timestepper.current.datetime
+        if self.mode == 'planning':
+            if self.month_offset:
+                datetime = self.model.timestepper.current.datetime + relativedelta(months=+self.month_offset)
+            else:
+                datetime = self.model.timestepper.current.datetime
 
-        self.datetime = datetime
-        self.year = datetime.year
-        self.month = datetime.month
+            self.datetime = datetime
+            self.year = datetime.year
+            self.month = datetime.month
 
     def GET(self, *args, **kwargs):
         return self.get(*args, **kwargs)

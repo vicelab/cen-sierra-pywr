@@ -663,7 +663,7 @@
     },
     {
       "name": "STN_01 Inflow",
-      "comment": "{\"keep\": true}",
+      "comment": "keep",
       "type": "River"
     },
     {
@@ -1043,7 +1043,7 @@
     },
     {
       "name": "STN_below_Melons.2.2",
-      "comment": "{\"keep\": true}",
+      "comment": "keep",
       "type": "River"
     },
     {
