@@ -1,0 +1,9 @@
+Parameters, Min, High, StepSize
+node/Beardsley Reservoir/Storage Value, -100, 0, 10
+node/Donnells Reservoir/Storage Value, -100, 0, 10
+node/New Spicer Meadow Reservoir/Storage Value, -100, 0, 10
+node/Pinecrest Reservoir/Storage Value, -100, 0, 10
+node/Relief Reservoir/Storage Value, -100, 0, 10
+node/Tulloch Lake/Storage Value, -100, 0, 10
+melones_storageValueConstant, 5, 20, 2
+melones_storage_value_leading, 0.1, 1.5, 0.1

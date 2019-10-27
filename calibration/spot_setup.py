@@ -17,10 +17,10 @@ class SpotSetup(object):
         # Generates a random param value based on the self.params
         return spotpy.parameter.generate(self.params)
 
-    def __init__(self, used_algorithm='default'):
+    def __init__(self, results_path, used_algorithm='default'):
         self.used_algorithm = used_algorithm
         # Generating Parameter Values via CSV
-        parameters_csv = pd.read_csv("Stan_Model/input_csvs/parameters.csv")
+        parameters_csv = pd.read_csv("inputs/parameters.csv")
         self.params = []
         for index in range(0, len(parameters_csv)):
             self.params.append(spotpy.parameter.Uniform(parameters_csv.iloc[index, 0],
@@ -31,8 +31,10 @@ class SpotSetup(object):
 
         # Generating Evaluation Data via CSV
         self.evaluation_data = np.array([])
-        evaluation_csv = pd.read_csv("Stan_Model/input_csvs/evaluation.csv")
-        results = pd.read_csv("Stan_Model/results.csv")
+        evaluation_csv = pd.read_csv("inputs/evaluation.csv")
+        obs_flow = pd.read_csv(results_path + "observed flow.csv")
+        obs_storage = pd.read_csv(results_path + "observed storage.csv")
+        results = obs_flow.join(obs_storage)
         for index in range(0, len(evaluation_csv)):
             self.evaluation_data = np.append(self.evaluation_data, results[evaluation_csv.iloc[index]][1:])
         del evaluation_csv, results
