@@ -7,3 +7,6 @@ data/
 *.pyc
 
 */results/*
+
+*.lp
+*.mps
