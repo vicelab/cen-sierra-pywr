@@ -24,12 +24,6 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Below Canyon Power Tunnel Diverted Inflow",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 3.6703497517784163
-        },
-        {
             "name": "Below Canyon Power Tunnel Inflow",
             "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
@@ -114,11 +108,6 @@
         {
             "name": "Below IFR bl Lake Eleanor",
             "type": "River",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
-            "name": "Below Kirkwood PH",
-            "type": "Link",
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
@@ -482,7 +471,7 @@
             "name": "Canyon Power Tunnel",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": "Canyon Power Tunnel/Flow Capacity"
+            "max_flow": 3.6703497517784163
         },
         {
             "name": "Cherry Ck",
@@ -538,6 +527,26 @@
         },
         {
             "name": "Hetch Hetchy - Moccasin",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "Kirkwood Bypass Tunnel",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "Kirkwood to Early Intake",
+            "type": "River",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "Lower Cherry Aqueduct 1",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "Lower Cherry Aqueduct 2",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}"
         },
@@ -653,16 +662,6 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Upper Hetch Hetchy Tunnel 1",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
-            "name": "Upper Hetch Hetchy Tunnel 2",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
             "name": "Algerine",
             "type": "Output",
             "comment": "{\"resource_class\": \"node\"}"
@@ -686,7 +685,7 @@
         },
         {
             "name": "Canyon Power Tunnel Inflow",
-            "type": "River",
+            "type": "Link",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -807,13 +806,6 @@
             "mrf_cost": 0.0
         },
         {
-            "name": "Gauge Kirkwood PH",
-            "type": "RiverGauge",
-            "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.0,
-            "mrf_cost": 0.0
-        },
-        {
             "name": "Gauge Moccasin PH",
             "type": "RiverGauge",
             "comment": "{\"resource_class\": \"node\"}",
@@ -835,7 +827,7 @@
             "type": "Storage",
             "comment": "{\"resource_class\": \"node\"}",
             "initial_volume": 308.37547798199085,
-            "max_volume": 444.6,
+            "max_volume": 444.55408905883803,
             "min_volume": 123.3
         },
         {
@@ -1355,14 +1347,6 @@
             "S Fk Tuol R Inflow"
         ],
         [
-            "Hetch Hetchy Reservoir",
-            "Below Canyon Power Tunnel Diverted Inflow"
-        ],
-        [
-            "Below Canyon Power Tunnel Diverted Inflow",
-            "Kirkwood PH"
-        ],
-        [
             "TUO_12 Inflow",
             "Below Canyon Power Tunnel Inflow"
         ],
@@ -1497,14 +1481,6 @@
         [
             "Below IFR bl Lake Eleanor",
             "ELEANOR C NR HETCH HETCHY CA_11278000"
-        ],
-        [
-            "Kirkwood PH",
-            "Below Kirkwood PH"
-        ],
-        [
-            "Below Kirkwood PH",
-            "Gauge Kirkwood PH"
         ],
         [
             "Lake Eleanor",
@@ -2075,12 +2051,12 @@
             "Big Ck Inflow"
         ],
         [
-            "Gauge Kirkwood PH",
+            "Hetch Hetchy Reservoir",
             "Canyon Power Tunnel"
         ],
         [
             "Canyon Power Tunnel",
-            "Canyon Power Tunnel Inflow"
+            "Kirkwood PH"
         ],
         [
             "TUO_08 Inflow",
@@ -2169,6 +2145,38 @@
         [
             "Hetch Hetchy - Moccasin",
             "TUO_R-N-JUN13"
+        ],
+        [
+            "Kirkwood PH",
+            "Kirkwood Bypass Tunnel"
+        ],
+        [
+            "Kirkwood Bypass Tunnel",
+            "Upper Hetch Hetchy Tunnel Inflow"
+        ],
+        [
+            "Kirkwood PH",
+            "Kirkwood to Early Intake"
+        ],
+        [
+            "Kirkwood to Early Intake",
+            "Hetch Hetchy Aquaduct Outflow"
+        ],
+        [
+            "Upper Hetch Hetchy Tunnel Outflow",
+            "Lower Cherry Aqueduct 1"
+        ],
+        [
+            "Lower Cherry Aqueduct 1",
+            "USGS_11278200_CHERRY CR CN"
+        ],
+        [
+            "USGS_11278200_CHERRY CR CN",
+            "Lower Cherry Aqueduct 2"
+        ],
+        [
+            "Lower Cherry Aqueduct 2",
+            "Hetch Hetchy Aquaduct Outflow"
         ],
         [
             "M TUOLUMNE R A OAKLAND RECREATION CAMP CA_11282000",
@@ -2345,29 +2353,9 @@
         [
             "Tuolumne River (2).1",
             "Don Pedro Reservoir"
-        ],
-        [
-            "Upper Hetch Hetchy Tunnel Outflow",
-            "Upper Hetch Hetchy Tunnel 1"
-        ],
-        [
-            "Upper Hetch Hetchy Tunnel 1",
-            "USGS_11278200_CHERRY CR CN"
-        ],
-        [
-            "USGS_11278200_CHERRY CR CN",
-            "Upper Hetch Hetchy Tunnel 2"
-        ],
-        [
-            "Upper Hetch Hetchy Tunnel 2",
-            "Upper Hetch Hetchy Tunnel Inflow"
         ]
     ],
     "parameters": {
-        "Canyon Power Tunnel/Flow Capacity": {
-            "type": "Canyon_Power_Tunnel_Flow_Capacity",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
         "Dion R Holm Tunnel/Flow Capacity": {
             "type": "Dion_R_Holm_Tunnel_Flow_Capacity",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
@@ -2591,18 +2579,6 @@
         },
         "ELEANOR C NR HETCH HETCHY CA_11278000/Observed Flow": {
             "type": "ELEANOR_C_NR_HETCH_HETCHY_CA_11278000_Observed_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Gauge Dion R Holm PH/Observed Flow": {
-            "type": "Gauge_Dion_R_Holm_PH_Observed_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Gauge Kirkwood PH/Observed Flow": {
-            "type": "Gauge_Kirkwood_PH_Observed_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Gauge Moccasin PH/Observed Flow": {
-            "type": "Gauge_Moccasin_PH_Observed_Flow",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Hetch Hetchy Reservoir/Volume Elevation Curve": {
@@ -3102,133 +3078,133 @@
         },
         "TUO_01 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb01.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb01.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_02 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb02.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb02.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_03 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb03.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb03.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_04 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb04.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb04.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_05 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb05.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb05.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_06 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb06.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb06.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_07 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb07.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb07.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_08 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb08.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb08.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_09 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb09.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb09.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_10 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb10.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb10.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_11 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb11.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb11.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_12 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb12.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb12.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_13 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb13.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb13.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_14 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb14.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb14.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_15 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb15.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb15.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_16 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb16.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb16.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_17 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb17.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb17.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_18 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb18.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb18.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_19 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb19.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb19.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
@@ -3331,25 +3307,9 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "ELEANOR C NR HETCH HETCHY CA_11278000"
         },
-        "Gauge Dion R Holm PH/observed flow": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "Gauge Dion R Holm PH/Observed Flow"
-        },
         "Gauge Dion R Holm PH/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Gauge Dion R Holm PH"
-        },
-        "Gauge Kirkwood PH/observed flow": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "Gauge Kirkwood PH/Observed Flow"
-        },
-        "Gauge Kirkwood PH/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "Gauge Kirkwood PH"
-        },
-        "Gauge Moccasin PH/observed flow": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "Gauge Moccasin PH/Observed Flow"
         },
         "Gauge Moccasin PH/flow": {
             "type": "NumpyArrayNodeRecorder",

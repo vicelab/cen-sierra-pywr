@@ -6,10 +6,6 @@ class Gauge_Kirkwood_PH_Observed_Flow(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        # kwargs = dict(timestep=timestep, scenario_index=scenario_index)
-        # path="{ExternalDir}/GAGES/Hydropower_flow/SFPUC_KPH_Kirkwood_Powerhouse.csv".format(ExternalDir=self.GET("network/1237/1594", **kwargs))
-        # data = self.read_csv(path, usecols=[0,1,2], comment=';', header=None, **kwargs)
-        # return data.iloc[timestep][2]*self.GET("network/1237/1584", **kwargs)
         return 0
         
     def value(self, timestep, scenario_index):
