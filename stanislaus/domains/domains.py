@@ -80,6 +80,8 @@ class Hydropower(RiverDomainMixin, PiecewiseLink):
     """A river gauging station, with a minimum residual flow (MRF)
     """
 
+    type = 'hydropower'
+
     def __init__(self, *args, **kwargs):
         """Initialise a new Hydropower instance
         Parameters
@@ -199,6 +201,8 @@ class Hydropower(RiverDomainMixin, PiecewiseLink):
 class PiecewiseHydropower(RiverDomainMixin, PiecewiseLink):
     """A river gauging station, with a minimum residual flow (MRF)
     """
+
+    _type = 'piecewisehydropower'
 
     def __init__(self, *args, **kwargs):
         """Initialise a new Hydropower instance

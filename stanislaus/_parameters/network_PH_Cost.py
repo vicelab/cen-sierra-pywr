@@ -12,15 +12,14 @@ class network_PH_Cost(WaterLPParameter):
 
         if timestep.index == 0:
             self.nblocks = self.model.parameters["Blocks"].get_value(scenario_index)
-            self.demandParam = self.model.parameters[self.demand_constant_param].get_value(scenario_index)
+            self.demandParam = self.model.parameters[self.res_name + '/Demand Constant'].get_value(scenario_index)
 
         totDemandP = self.model.parameters["Total Net Energy Demand"]
         maxDemandP = self.model.parameters["Max Net Energy Demand"]
         minDemandP = self.model.parameters["Min Net Energy Demand"]
 
-        days_in_period = 1
-
         if self.mode == 'scheduling':
+            days_in_period = 1
             totDemand = totDemandP.value(timestep, scenario_index)
             minDemand = maxDemandP.value(timestep, scenario_index)
             maxDemand = maxDemandP.value(timestep, scenario_index)

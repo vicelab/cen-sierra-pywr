@@ -50,44 +50,33 @@ class WaterLPParameter(Parameter):
         self.mode = getattr(self.model, 'mode', self.mode)
 
         name_parts = self.name.split('/')
+        self.res_name = name_parts[0]
+
+        if len(name_parts) >= 2:
+            self.attr_name = name_parts[1]
+
+        if self.mode == 'scheduling':
+            if len(name_parts) == 3:
+                self.block = int(name_parts[2])
+        else:
+            if len(name_parts) == 3:
+                self.month_offset = int(name_parts[-1]) - 1
+            elif len(name_parts) == 4:
+                self.block = int(name_parts[3])
+                self.month_offset = int(name_parts[2]) - 1
+            # if self.month_offset is not None:
+            #     self.res_name = '{}/{}'.format(name_parts[0], self.month_offset + 1)
+
+        if self.month_offset is not None:
+            self.month_suffix = '/{}'.format(self.month_offset + 1)
 
         try:
-            self.res_name = name_parts[0]
-            node = self.model.nodes[self.res_name]
+            node = self.model.nodes[self.res_name + self.month_suffix]
         except:
-            return
-        if node.comment:
-            metadata = json.loads(node.comment)
-        else:
-            metadata = {}
-        self.res_class = metadata.get('resource_class')
+            node = None
 
-        if self.res_class in ['link', 'node']:
-            self.attr_name = name_parts[1]
-            self.res_name_full = self.res_name
-
-            if self.mode == 'scheduling':
-                if len(name_parts) == 3:
-                    self.block = int(name_parts[2])
-
-            elif self.mode == 'planning':
-                if len(name_parts) == 3:
-                    self.month_offset = int(name_parts[2]) - 1
-                elif len(name_parts) == 4:
-                    self.month_offset = int(name_parts[2]) - 1
-                    self.block = int(name_parts[3])
-
-            if self.month_offset is not None:
-                self.month_suffix = '/{}'.format(self.month_offset + 1)
-
-            self.res_name += self.month_suffix
-
-            if ' PH' in node.name:
-                self.demand_constant_param = "{}/Demand Constant".format(self.res_name)
-
-            if 'level' in node.component_attrs:
-                self.elevation_param = '{}/Elevation'.format(self.res_name)
-                self.elevation_param += self.month_suffix
+        if node and 'level' in node.component_attrs or self.attr_name == 'Storage Value':
+            self.elevation_param = '{}/Elevation'.format(self.res_name) + self.month_suffix
 
     def before(self):
         super(WaterLPParameter, self).before()

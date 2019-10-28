@@ -13,15 +13,18 @@ class node_IFR_bl_New_Melones_Requirement(WaterLPParameter):
             path = "Management/BAU/IFRs/IFR_Below_Melones_Lake_mcm.csv"
             col_names = ['store_inflow_fr', 'store_inflow_to', 'rel_fr', 'rel_to']
             self.df = self.read_csv(path, usecols=[0, 1, 2, 3], index_col=None, header=0, names=col_names)
-
+            self.runoff_tpl = 'STN_{:02} Headflow/Runoff'
+            if self.mode == 'planning':
+                self.runoff_tpl += self.month_suffix
         # inflow = self.model.parameters["Total Runoff"].value(timestep, scenario_index)
         # on-the-fly summing of runoff doesn't seem particularly slow
+
         inflow = sum(
-            [self.model.parameters['STN_{:02} Headflow/Runoff'.format(c)].value(timestep, scenario_index)
+            [self.model.parameters[self.runoff_tpl.format(c)].value(timestep, scenario_index)
              for c in range(1, 26)]
         )
         inflow = convert(inflow, "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
-        storage = self.model.nodes["New Melones Lake"].volume[-1]
+        storage = self.model.nodes["New Melones Lake" + self.month_suffix].volume[-1]
         inflow_store = inflow + storage
         df = self.df
         r = df[(df['store_inflow_fr'] <= inflow_store) & (df['store_inflow_to'] > inflow_store)]

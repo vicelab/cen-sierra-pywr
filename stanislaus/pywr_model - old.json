@@ -6,7 +6,7 @@
   },
   "timestepper": {
     "start": "2000-10-01",
-    "end": "2001-09-30",
+    "end": "2003-09-30",
     "timestep": 1
   },
   "solver": {
@@ -35,10 +35,6 @@
     },
     {
       "name": "Stanislaus Tunnel [link]",
-      "type": "Link"
-    },
-    {
-      "name": "USGS_11293580_NF STAN R DIV TUNNEL [link]",
       "type": "Link"
     },
     {
@@ -95,8 +91,8 @@
       "name": "Beardsley Reservoir",
       "type": "Storage",
       "initial_volume": 40.0634304,
-      "max_volume": "node/Beardsley Reservoir/Storage Capacity",
-      "min_volume": "node/Beardsley Reservoir/Inactive Pool",
+      "max_volume": 121.45,
+      "min_volume": 25,
       "cost": "node/Beardsley Reservoir/Storage Value"
     },
     {
@@ -207,8 +203,8 @@
       "name": "Donnells Reservoir",
       "type": "Storage",
       "initial_volume": 66.8422812,
-      "max_volume": "node/Donnells Reservoir/Storage Capacity",
-      "min_volume": "node/Donnells Reservoir/Inactive Pool",
+      "max_volume": 79.83,
+      "min_volume": 6.2,
       "cost": "node/Donnells Reservoir/Storage Value"
     },
     {
@@ -280,6 +276,10 @@
       "type": "InstreamFlowRequirement",
       "mrf_cost": "node/IFR bl New Spicer Meadow Reservoir/Violation Cost",
       "mrf": "node/IFR bl New Spicer Meadow Reservoir/Requirement"
+    },
+    {
+      "name": "STANI-N-JUN9",
+      "type": "Link"
     },
     {
       "name": "IFR bl Philadelphia Div",
@@ -359,8 +359,8 @@
       "name": "Lyons Reservoir",
       "type": "Storage",
       "initial_volume": 2.220264,
-      "max_volume": "node/Lyons Reservoir/Storage Capacity",
-      "min_volume": "node/Lyons Reservoir/Inactive Pool",
+      "max_volume": 7.5,
+      "min_volume": 1.25,
       "cost": "node/Lyons Reservoir/Storage Value"
     },
     {
@@ -446,8 +446,8 @@
       "name": "New Spicer Meadow Reservoir",
       "type": "Storage",
       "initial_volume": 173.92068,
-      "max_volume": "node/New Spicer Meadow Reservoir/Storage Capacity",
-      "min_volume": "node/New Spicer Meadow Reservoir/Inactive Pool",
+      "max_volume": 227.24,
+      "min_volume": 50,
       "cost": "node/New Spicer Meadow Reservoir/Storage Value"
     },
     {
@@ -526,16 +526,16 @@
       "name": "Pinecrest Reservoir",
       "type": "Storage",
       "initial_volume": 16.898676,
-      "max_volume": "node/Pinecrest Reservoir/Storage Capacity",
-      "min_volume": "node/Pinecrest Reservoir/Inactive Pool",
+      "max_volume": 22.58,
+      "min_volume": 4,
       "cost": "node/Pinecrest Reservoir/Storage Value"
     },
     {
       "name": "Relief Reservoir",
       "type": "Storage",
       "initial_volume": 10.546254,
-      "max_volume": "node/Relief Reservoir/Storage Capacity",
-      "min_volume": "node/Relief Reservoir/Inactive Pool",
+      "max_volume": 18.5,
+      "min_volume": 1.2,
       "cost": "node/Relief Reservoir/Storage Value"
     },
     {
@@ -663,7 +663,7 @@
     },
     {
       "name": "STN_01 Inflow",
-      "comment": "keep",
+      "comment": "{\"keep\": true}",
       "type": "River"
     },
     {
@@ -1043,7 +1043,7 @@
     },
     {
       "name": "STN_below_Melons.2.2",
-      "comment": "keep",
+      "comment": "{\"keep\": true}",
       "type": "River"
     },
     {
@@ -1890,10 +1890,6 @@
     ],
     [
       "Upper Collierville Tunnel Outflow",
-      "USGS_11293580_NF STAN R DIV TUNNEL [link]"
-    ],
-    [
-      "USGS_11293580_NF STAN R DIV TUNNEL [link]",
       "USGS_11293580_NF STAN R DIV TUNNEL"
     ]
   ],
@@ -2007,14 +2003,6 @@
       "column": "11292820",
       "index_col": "Date",
       "parse_dates": true
-    },
-    "node/Beardsley Reservoir/Storage Capacity": {
-      "type": "constant",
-      "value": 121.45
-    },
-    "node/Beardsley Reservoir/Inactive Pool": {
-      "type": "constant",
-      "value": 25
     },
     "node/Beardsley Reservoir/Observed Storage": {
       "type": "dataframe",
@@ -2166,14 +2154,6 @@
     },
     "node/Donnells PH/Cost/4": {
       "type": "network_PH_Cost"
-    },
-    "node/Donnells Reservoir/Storage Capacity": {
-      "type": "constant",
-      "value": 79.83
-    },
-    "node/Donnells Reservoir/Inactive Pool": {
-      "type": "constant",
-      "value": 6.2
     },
     "node/Donnells Reservoir/Observed Storage": {
       "type": "dataframe",
@@ -2359,14 +2339,6 @@
       "index_col": "Date",
       "parse_dates": true
     },
-    "node/Lyons Reservoir/Storage Capacity": {
-      "type": "constant",
-      "value": 7.5
-    },
-    "node/Lyons Reservoir/Inactive Pool": {
-      "type": "constant",
-      "value": 1.25
-    },
     "node/Lyons Reservoir/Observed Storage": {
       "type": "dataframe",
       "url": "../data/Stanislaus River/gauges/storage_cleaned.csv",
@@ -2492,14 +2464,6 @@
     "node/Release from New Melones/Release": {
       "type": "New_Melones_Release_Policy"
     },
-    "node/New Spicer Meadow Reservoir/Storage Capacity": {
-      "type": "constant",
-      "value": 227.24
-    },
-    "node/New Spicer Meadow Reservoir/Inactive Pool": {
-      "type": "constant",
-      "value": 50
-    },
     "node/New Spicer Meadow Reservoir/Observed Storage": {
       "type": "dataframe",
       "url": "../data/Stanislaus River/gauges/storage_cleaned.csv",
@@ -2598,14 +2562,6 @@
     "node/Phoenix PH/Cost/4": {
       "type": "network_PH_Cost"
     },
-    "node/Pinecrest Reservoir/Storage Capacity": {
-      "type": "constant",
-      "value": 22.58
-    },
-    "node/Pinecrest Reservoir/Inactive Pool": {
-      "type": "constant",
-      "value": 4
-    },
     "node/Pinecrest Reservoir/Observed Storage": {
       "type": "dataframe",
       "url": "../data/Stanislaus River/gauges/storage_cleaned.csv",
@@ -2644,14 +2600,6 @@
         22.58
       ],
       "kind": "cubic"
-    },
-    "node/Relief Reservoir/Storage Capacity": {
-      "type": "constant",
-      "value": 18.5
-    },
-    "node/Relief Reservoir/Inactive Pool": {
-      "type": "constant",
-      "value": 1.2
     },
     "node/Relief Reservoir/Observed Storage": {
       "type": "dataframe",
@@ -3128,7 +3076,7 @@
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/Angels PH/Water Demand"
     },
-    "node/AVERY_11294500/observed flow": {
+    "node/AVERY_11294500/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/AVERY_11294500/Observed Flow"
     },
@@ -3136,7 +3084,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "AVERY_11294500"
     },
-    "node/BEARDSLEY PH NR STRAWBERRY CA_11292820/observed flow": {
+    "node/BEARDSLEY PH NR STRAWBERRY CA_11292820/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/BEARDSLEY PH NR STRAWBERRY CA_11292820/Observed Flow"
     },
@@ -3152,7 +3100,7 @@
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/Beardsley Reservoir/Observed Storage"
     },
-    "node/BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210/observed flow": {
+    "node/BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210/Observed Flow"
     },
@@ -3160,7 +3108,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210"
     },
-    "node/BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230/observed flow": {
+    "node/BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230/Observed Flow"
     },
@@ -3168,7 +3116,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230"
     },
-    "node/BL MCKAYS POINT DAM_11295270/observed flow": {
+    "node/BL MCKAYS POINT DAM_11295270/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/BL MCKAYS POINT DAM_11295270/Observed Flow"
     },
@@ -3176,7 +3124,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "BL MCKAYS POINT DAM_11295270"
     },
-    "node/CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500/observed flow": {
+    "node/CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500/Observed Flow"
     },
@@ -3212,7 +3160,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "Gauge_Phoenix"
     },
-    "node/HIGHLAND CREEK BELOW NEW SPICER_11294000/observed flow": {
+    "node/HIGHLAND CREEK BELOW NEW SPICER_11294000/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/HIGHLAND CREEK BELOW NEW SPICER_11294000/Observed Flow"
     },
@@ -3220,7 +3168,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "HIGHLAND CREEK BELOW NEW SPICER_11294000"
     },
-    "node/HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700/observed flow": {
+    "node/HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700/Observed Flow"
     },
@@ -3308,7 +3256,7 @@
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/IFR bl Utica Div/Requirement"
     },
-    "node/JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/observed flow": {
+    "node/JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/Observed Flow"
     },
@@ -3324,7 +3272,7 @@
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/Lyons Reservoir/Observed Storage"
     },
-    "node/MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700/observed flow": {
+    "node/MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700/Observed Flow"
     },
@@ -3332,7 +3280,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700"
     },
-    "node/MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000/observed flow": {
+    "node/MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000/Observed Flow"
     },
@@ -3340,7 +3288,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000"
     },
-    "node/MF STANISLAUS R BL BEARDSLEY DAM CA_11292900/observed flow": {
+    "node/MF STANISLAUS R BL BEARDSLEY DAM CA_11292900/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/MF STANISLAUS R BL BEARDSLEY DAM CA_11292900/Observed Flow"
     },
@@ -3348,7 +3296,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "MF STANISLAUS R BL BEARDSLEY DAM CA_11292900"
     },
-    "node/MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200/observed flow": {
+    "node/MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200/Observed Flow"
     },
@@ -3388,7 +3336,7 @@
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/New Spicer Meadow Reservoir/Observed Storage"
     },
-    "node/NF STANISLAUS DIV TU OL BL HOBART C_11293710/observed flow": {
+    "node/NF STANISLAUS DIV TU OL BL HOBART C_11293710/Observed Flow": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/NF STANISLAUS DIV TU OL BL HOBART C_11293710/Observed Flow"
     },
@@ -3396,7 +3344,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "NF STANISLAUS DIV TU OL BL HOBART C_11293710"
     },
-    "node/NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300/observed flow": {
+    "node/NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300/Observed Flow"
     },
@@ -3404,7 +3352,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300"
     },
-    "node/NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600/observed flow": {
+    "node/NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600/Observed Flow"
     },
@@ -3412,7 +3360,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600"
     },
-    "node/NF STANISLAUS R BL SILVER C CA_11293500/observed flow": {
+    "node/NF STANISLAUS R BL SILVER C CA_11293500/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/NF STANISLAUS R BL SILVER C CA_11293500/Observed Flow"
     },
@@ -3456,7 +3404,7 @@
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/Sand Bar PH/Water Demand"
     },
-    "node/SF STANISLAUS R A STRAWBERRY CA_11296500/observed flow": {
+    "node/SF STANISLAUS R A STRAWBERRY CA_11296500/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/SF STANISLAUS R A STRAWBERRY CA_11296500/Observed Flow"
     },
@@ -3464,7 +3412,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "SF STANISLAUS R A STRAWBERRY CA_11296500"
     },
-    "node/SF STANISLAUS R NR LONG BARN CA_11298000/observed flow": {
+    "node/SF STANISLAUS R NR LONG BARN CA_11298000/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/SF STANISLAUS R NR LONG BARN CA_11298000/Observed Flow"
     },
@@ -3472,7 +3420,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "SF STANISLAUS R NR LONG BARN CA_11298000"
     },
-    "node/SF STANISLAUS R NR STRAWBERRY CA_11297200/observed flow": {
+    "node/SF STANISLAUS R NR STRAWBERRY CA_11297200/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/SF STANISLAUS R NR STRAWBERRY CA_11297200/Observed Flow"
     },
@@ -3716,7 +3664,7 @@
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/Tulloch Lake/Observed Storage"
     },
-    "node/USGS_11292610 DONNELLS PH/observed flow": {
+    "node/USGS_11292610 DONNELLS PH/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/USGS_11292610 DONNELLS PH/Observed Flow"
     },
@@ -3724,7 +3672,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "USGS_11292610 DONNELLS PH"
     },
-    "node/USGS_11293580_NF STAN R DIV TUNNEL/observed flow": {
+    "node/USGS_11293580_NF STAN R DIV TUNNEL/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/USGS_11293580_NF STAN R DIV TUNNEL/Observed Flow"
     },
@@ -3732,7 +3680,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "USGS_11293580_NF STAN R DIV TUNNEL"
     },
-    "node/USGS_11295250_COLLIERVILLE PP/observed flow": {
+    "node/USGS_11295250_COLLIERVILLE PP/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/USGS_11295250_COLLIERVILLE PP/Observed Flow"
     },
@@ -3740,7 +3688,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "USGS_11295250_COLLIERVILLE PP"
     },
-    "node/USGS_11295505_STANISLAUS PP/observed flow": {
+    "node/USGS_11295505_STANISLAUS PP/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/USGS_11295505_STANISLAUS PP/Observed Flow"
     },
@@ -3748,7 +3696,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "USGS_11295505_STANISLAUS PP"
     },
-    "node/USGS_11297000_PHILADELPHIA CN/observed flow": {
+    "node/USGS_11297000_PHILADELPHIA CN/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/USGS_11297000_PHILADELPHIA CN/Observed Flow"
     },
@@ -3756,7 +3704,7 @@
       "type": "NumpyArrayNodeRecorder",
       "node": "USGS_11297000_PHILADELPHIA CN"
     },
-    "node/USGS_11297500_TUOLUMNE CN/observed flow": {
+    "node/USGS_11297500_TUOLUMNE CN/observed storage": {
       "type": "NumpyArrayParameterRecorder",
       "parameter": "node/USGS_11297500_TUOLUMNE CN/Observed Flow"
     },
