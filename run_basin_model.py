@@ -2,49 +2,13 @@ import os
 import sys
 import json
 from pywr.core import Model
+from pywr.parameters import ConstantParameter
 from importlib import import_module
 from tqdm import tqdm
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-import pandas as pd
-
-
-# from pandas import ExcelWriter
-
-
-def setup_model(root_dir, model_path, bucket=None, network_key=None, check_graph=False):
-    os.chdir(root_dir)
-
-    # needed when loading JSON file
-    # root_path = 's3://{}/{}/'.format(bucket, network_key)
-    root_path = '../data'
-    os.environ['ROOT_S3_PATH'] = root_path
-
-    # Step 1: Load and register policies for daily model
-    sys.path.insert(0, os.getcwd())
-    policy_folder = '_parameters'
-    for filename in os.listdir(policy_folder):
-        if '__init__' in filename:
-            continue
-        policy_name = os.path.splitext(filename)[0]
-        policy_module = '.{policy_name}'.format(policy_name=policy_name)
-        # package = '.{}'.format(policy_folder)
-        import_module(policy_module, policy_folder)
-
-    modules = [
-        # ('.IFRS', 'policies'),
-        ('.domains', 'domains')
-    ]
-    for name, package in modules:
-        try:
-            import_module(name, package)
-        except Exception as err:
-            print(' [-] WARNING: {} could not be imported from {}'.format(name, package))
-            print(type(err))
-            print(err)
-
-    return
-
+# from common.domains import PiecewiseHydropower
+from common.tests import test_planning_model
 
 def simplify_network(m, delete_gauges=False):
     # simplify the network
@@ -120,7 +84,6 @@ def simplify_network(m, delete_gauges=False):
 
 
 def prepare_planning_model(m, outpath, steps=12, debug=False):
-
     # update time step
     # m['timestepper']['end'] = m['timestepper']['start']
     # m['timestepper']['timestep'] = 'M'
@@ -164,7 +127,8 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
         #     res_name, res_class = name_parts
         res_name = old_name
         metadata = json.loads(node.get('comment', '{}'))
-        res_class = metadata.get('resource_class', 'network')
+        metadata.update(type=node_type)
+        node['comment'] = json.dumps(metadata)
 
         for step in all_steps:
             t = step + 1
@@ -182,7 +146,7 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
                 #     new_node['initial_volume'] = 0.0
                 # new_nodes.append(new_node)
                 original_reservoir_name = '{} [original]/{}'.format(old_name, t)
-                next_reservoir_name = '{} [original]/{}'.format(old_name, t+1)
+                next_reservoir_name = '{} [original]/{}'.format(old_name, t + 1)
                 original_storage_node = {
                     'name': original_reservoir_name,
                     'type': 'BreakLink'
@@ -210,12 +174,18 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
                     'name': link_reservoir_name,
                     'type': 'Link',
                 }
-                if 'min_volume' in node:
-                    storage_link['min_flow'] = node['min_volume']
+                # Actually, we don't want to do the following, since it might cause an infeasibility
+                # if 'min_volume' in node:
+                #     storage_link['min_flow'] = node['min_volume']
                 if 'max_volume' in node:
                     storage_link['max_flow'] = node['max_volume']
-                # if 'cost' in node:
-                #     storage_link['cost'] = node['cost']
+                cost = node.pop('cost', None)
+                if cost:
+                    if type(cost) == str:
+                        if cost not in parameters_to_expand:
+                            parameters_to_expand.append(cost)
+                        cost += '/{}'.format(t)
+                    storage_link['cost'] = cost
                 # for now, set cost to zero (by omission)
                 new_nodes.append(storage_link)
 
@@ -227,12 +197,17 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
                     new_edges.append([link_reservoir_name, next_reservoir_name])
 
                 # 3.3 note we need to update storage recorders
-                storage_recorders[node['name']] = link_reservoir_base_name
+                # storage_recorders[node['name']] = link_reservoir_base_name
 
                 # 4. create virtual storage node to represent the original storage reservoir
                 # the virtual storage node is not physically connected to the system,
                 # but is nonetheless "filled" by flows in the system
                 virtual_storage = node.copy()
+                level = virtual_storage.get('level')
+                if type(level) == str:
+                    if level not in parameters_to_expand:
+                        parameters_to_expand.append(level)
+                    virtual_storage['level'] += '/{}'.format(t)
                 virtual_storage.update({
                     'name': new_res_name,
                     'type': 'VirtualStorage',
@@ -241,6 +216,15 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
                     'initial_volume': 0.0,
                 })
                 virtual_storage.pop('min_volume', None)
+                # virtual_storage.pop('cost', None)
+                # if cost in m['parameters'] and cost not in parameters_to_delete:
+                #     parameters_to_delete.append
+                # for attr in ['cost', 'min_volume', 'max_volume', 'initial_volume']:
+                #     val = virtual_storage.get(attr)
+                #     if type(val) == str and val in m['parameters']:
+                #         if val not in parameters_to_expand:
+                #             parameters_to_expand.append(val)
+
                 new_nodes.append(virtual_storage)
 
                 # 5. create outflow node for reservoir
@@ -310,8 +294,8 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
             continue
 
         # Delete storage value (at least for now)
-        if '/Storage Value' in param_name:
-            continue
+        # if '/Storage Value' in param_name:
+        #     continue
 
         parts = param_name.split('/')
         param = m['parameters'][param_name]
@@ -335,8 +319,9 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
                     new_param_name += '/{}'.format(block)
                 new_param = param.copy()
                 if attribute == 'Runoff':
-                    new_param['column'] = '{:02}'.format(t)
                     new_param['url'] = new_param['url'].replace('/runoff/', '/runoff_monthly_forecasts/')
+                    new_param['column'] = '{:02}'.format(t)
+                    # new_param['parse_dates'] = False
                 if 'node' in param:
                     new_param['node'] += '/{}'.format(t)
                 if 'storage_node' in param:
@@ -347,25 +332,45 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
 
         new_parameters[param_name] = param
 
-    for recorder_name in m['recorders']:
-        recorder = m['recorders'][recorder_name]
-        if 'node' in recorder:
-            if recorder['node'] in gauges:
-                continue
-            if recorder['node'] in storage_recorders:
-                recorder['type'] = 'NumpyArrayNodeRecorder'
-                recorder['node'] = storage_recorders[recorder['node']]
-            elif '/storage' in recorder_name:
-                continue  # old storage nodes will be zero storage
-            if not debug:
-                recorder['node'] += '/1'  # record just the first time step results
-                new_recorders[recorder_name] = recorder
-            else:
-                for step in all_steps:
-                    t = step + 1
-                    new_recorder = recorder.copy()
-                    new_recorder['node'] += '/{}'.format(t)
-                    new_recorders['{}/{}'.format(recorder_name, t)] = new_recorder
+    if debug:
+        for n in new_nodes:
+            node_name = n['name']
+            parts = node_name.split('/')
+            month = int(parts[1]) if len(parts) > 1 else None
+            node_type = n['type']
+            if node_type == 'VirtualStorage':
+                new_recorders[node_name.replace('/', '/{}/'.format('storage'))] = {
+                    'type': 'NumpyArrayStorageRecorder',
+                    'node': node_name,
+                    # 'comment': node_type
+                }
+            elif 'hydropower' in node_type.lower():
+                recorder_name = node_name.replace('/', '/{}/'.format('flow'))
+                new_recorders[recorder_name] = {
+                    'type': 'NumpyArrayNodeRecorder',
+                    'node': node_name,
+                    # 'comment': node_type
+                }
+
+    # for recorder_name in m['recorders']:
+    #     recorder = m['recorders'][recorder_name]
+    #     if 'node' in recorder:
+    #         if recorder['node'] in gauges:
+    #             continue
+    #         if recorder['node'] in storage_recorders:
+    #             recorder['type'] = 'NumpyArrayNodeRecorder'
+    #             recorder['node'] = storage_recorders[recorder['node']]
+    #         # elif '/storage' in recorder_name:
+    #         #     continue  # old storage nodes will be zero storage
+    #         if not debug:
+    #             recorder['node'] += '/1'  # record just the first time step results
+    #             new_recorders[recorder_name] = recorder
+    #         else:
+    #             for step in all_steps:
+    #                 t = step + 1
+    #                 new_recorder = recorder.copy()
+    #                 new_recorder['node'] += '/{}'.format(t)
+    #                 new_recorders['{}/{}'.format(recorder_name, t)] = new_recorder
 
     # update the model
     m['nodes'] = new_nodes
@@ -378,16 +383,15 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
     return
 
 
-def run_model(basin, network_key, debug=False):
+def run_model(basin, network_key, include_planning=False, debug=False):
     # ========================
     # Set up model environment
     # ========================
 
     root_dir = os.path.join(os.getcwd(), basin)
     bucket = 'openagua-networks'
-    model_path = os.path.join(root_dir, 'pywr_model_cleaned.json')
+    model_path = os.path.join(root_dir, 'pywr_model.json')
 
-    # setup_model(root_dir, model_path, bucket=bucket, network_key=network_key)
     os.chdir(root_dir)
 
     # needed when loading JSON file
@@ -413,6 +417,7 @@ def run_model(basin, network_key, debug=False):
         ('.IFRS', 'policies'),
         ('.domains', 'domains')
     ]
+    # from domains import domains
     for name, package in modules:
         try:
             import_module(name, package)
@@ -440,137 +445,104 @@ def run_model(basin, network_key, debug=False):
         f.write(json.dumps(m, indent=4))
 
     # Area for testing monthly model
-    include_monthly = False
+    debug = 'm'
+    months = 3
+    save_results = True
+    planning_model = None
 
-    if include_monthly:
+    if include_planning:
+
+        print('Creating planning model (this may take a minute or two)')
 
         # create filenames, etc.
         monthly_filename = 'pywr_model_monthly.json'.format(base)
-        monthly_model_path = os.path.join(root, monthly_filename)
+        planning_model_path = os.path.join(root, monthly_filename)
 
-        prepare_planning_model(m, monthly_model_path, debug=debug == 'm')
+        prepare_planning_model(m, planning_model_path, steps=months, debug=save_results)
 
         # create pywr model
-        monthly_model = Model.load(monthly_model_path, path=monthly_model_path)
-        # monthly_model = Model.load(monthly_model_path, path=monthly_model_path, solver='glpk-edge')
+        planning_model = Model.load(planning_model_path, path=planning_model_path)
 
         # set model mode to planning
-        setattr(monthly_model, 'mode', 'planning')
+        setattr(planning_model, 'mode', 'planning')
 
         # set time steps
-        monthly_model.timestepper.end -= relativedelta(months=12)
-        start = monthly_model.timestepper.start
-        end = monthly_model.timestepper.end
-
-        # setup the planning model
-        now = datetime.now()
-        monthly_model.setup()
-        print('Model setup in {} seconds'.format((datetime.now()-now).seconds))
+        planning_model.timestepper.end -= relativedelta(months=months)
+        planning_model.setup()
 
         if debug == 'm':
-
-            dates = pd.date_range(start=start, end=end, freq='MS')  # MS = month start
-
-            nodes_of_type = {}
-            # for node in monthly_model.nodes:
-            #     nodes_of_type[node.type] = node.name
-            fn_tpl = 'monthly_{v}_S{level}.csv'
-
-            for date in tqdm(dates[:3], ncols=80, disable=False):
-                monthly_model.timestepper.delta = date.days_in_month
-
-                # update virtual storage initial conditions
-
-                monthly_model.step()
-                if date == dates[0]:
-                    monthly_dir = './results'
-                    # xl_path = os.path.join(monthly_dir, 'monthly_results.xlsx')
-                    # with ExcelWriter(xl_path) as xlwriter:
-                    df = monthly_model.to_dataframe()
-                    df.columns = df.columns.droplevel(1)
-                    variables = set([c.split('/')[2] for c in df.columns])
-                    for v in variables:
-                        node_names = []
-                        month_numbers = []
-                        col_names = []
-                        for c in df.columns:
-                            res_class, res_name, variable, month_str = c.split('/')
-                            res_class, res_name, variable, month_str = c.split('/')
-                            if variable == v:
-                                col_names.append(c)
-                                node_names.append(res_name)
-                                month_numbers.append(int(month_str))
-                        df_filtered = df[col_names]
-                        df_filtered.columns = pd.MultiIndex.from_arrays([node_names, month_numbers])
-                        df0 = df_filtered.stack(level=0)
-                        # df1 = df_filtered.stack(level=1)
-                        path0 = os.path.join(monthly_dir, fn_tpl.format(v=v, level=0))
-                        # path1 = os.path.join(monthly_dir, fn_tpl.format(v=v, level=1))
-                        df0.index.names = ['Start month', 'Resource']
-                        df0.to_csv(path0)
-                        # df1.index.names = ['Start month', 'Planning month']
-                        # df1.to_csv(path1)
-
-                        # df0.to_excel(xlwriter, sheet_name=v)
-
-            print('...done')
-            return
+            test_planning_model(planning_model, months=months, save_results=save_results)
 
     # ==================
     # Create daily model
     # ==================
-    # daily_model = Model.load(model_path, path=model_path)
-    daily_model = Model.load(simplified_model_path, path=simplified_model_path)
-    daily_model.setup()
-
-    timesteps = range(len(daily_model.timestepper))
+    print('Loading daily model')
+    from pywr.nodes import Storage
+    from domains import PiecewiseHydropower
+    m = Model.load(simplified_model_path, path=simplified_model_path)
+    reservoirs = [n.name for n in m.nodes if type(n) == Storage and '(storage)' not in n.name]
+    peaking_hp = [n.name for n in m.nodes if type(n) == PiecewiseHydropower]
+    m.setup()
 
     # run model
     # note that tqdm + step adds a little bit of overhead.
     # use model.run() instead if seeing progress is not important
 
-    for step in tqdm(timesteps, ncols=80):
+    # IMPORTANT: The following can be embedded into the scheduling model via
+    # the 'before' and 'after' functions.
 
-        today = daily_model.timestepper.current if step else daily_model.timestepper.start
-
+    datetime_index = m.timestepper.datetime_index[:-months]
+    step = -1
+    now = datetime.now()
+    monthly_seconds = 0
+    setattr(m, 'planning', planning_model if include_planning else None)
+    for date in tqdm(datetime_index, ncols=80, disable=False):
+        step += 1
         try:
 
             # Step 1: run planning model & update daily model
 
-            if include_monthly and today.day == 1:
-
+            if include_planning and date.day == 1:
+                # monthly_now = datetime.now()
                 # Step 1a: update planning model
-
-                # ...update time steps
-                monthly_model.timestepper.start = today
-                monthly_model.timestepper.end = today
+                # ...update start day
+                m.planning.reset(start=date.to_timestamp())
 
                 # ...update initial conditions (not needed for the first step)
-                if step > 0:
-                    for node in monthly_model.nodes:
-                        if node['type'] != 'Storage':
-                            continue
-
-                        node['initial_volume'] = daily_model.node[node['name']].volume
+                for res in reservoirs:
+                    if step == 0:
+                        initial_volume = m.nodes[res].initial_volume
+                    else:
+                        initial_volume = m.nodes[res].volume[-1]
+                    m.planning.nodes[res + ' [input]'].flow = initial_volume
 
                 # Step 1b: run planning model
-                print('Running planning model')
-                monthly_model.step()  # redundant with run, since only one timestep
+                m.planning.step()  # redundant with run, since only one timestep
 
                 # Step 1c: update daily model with planning model results
-                print('Updating daily model')
+                # print('Updating daily model')
+                # for ph in peaking_hp:
+                #     planning_demand = planning_model.nodes[ph + '/1'].flow[-1]
+                #     m.parameters[ph + '/Planning Demand'] = ConstantParameter(m, planning_demand)
+
+                # this_monthly_seconds = (datetime.now() - monthly_now).total_seconds()
+                # print('Monthly run in {} seconds'.format(this_monthly_seconds))
+                # monthly_seconds += this_monthly_seconds
 
             # Step 3: run daily model
-            daily_model.step()
+            m.step()
         except Exception as err:
-            print('\nFailed at step {}'.format(today))
+            print('\nFailed at step {}'.format(date))
             print(err)
             # continue
             break
+    total_seconds = (datetime.now() - now).total_seconds()
+    print('Total run: {} seconds'.format(total_seconds))
+    print('Monthly overhead: {} seconds (:02% of total)'.format(monthly_seconds, monthly_seconds / total_seconds * 100))
 
     # save results to CSV
 
-    results = daily_model.to_dataframe()
+    results = m.to_dataframe()
     results_path = './results'
     results.columns = results.columns.droplevel(1)
     if not os.path.exists(results_path):
@@ -601,12 +573,14 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-b", "--basin", help="Basin to run")
 parser.add_argument("-nk", "--network_key", help="Network key")
 parser.add_argument("-d", "--debug", help="Debug ('m' or 'd')")
+parser.add_argument("-p", "--include_planning", help="Include planning model", action='store_true')
 args = parser.parse_args()
 
 basin = args.basin
 network_key = args.network_key or os.environ.get('NETWORK_KEY')
 debug = args.debug
+include_planning = args.include_planning
 
-run_model(basin, network_key, debug)
+run_model(basin, network_key, include_planning=include_planning, debug=debug)
 
 print('done!')
