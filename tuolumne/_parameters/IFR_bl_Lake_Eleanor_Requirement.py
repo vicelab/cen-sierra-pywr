@@ -7,7 +7,7 @@ class IFR_bl_Lake_Eleanor_Requirement(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
-        schedule = self.GET("IFR bl Lake Eleanor/IFR Schedule", **kwargs)
+        schedule = self.get("IFR bl Lake Eleanor/IFR Schedule", **kwargs)
         
         is_pumping = True
         

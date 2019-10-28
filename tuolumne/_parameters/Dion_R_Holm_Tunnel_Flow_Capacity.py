@@ -7,7 +7,7 @@ class Dion_R_Holm_Tunnel_Flow_Capacity(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
-        return 1000*self.cfs_to_cms
+        return 1000*self.get("cfs2cms", **kwargs)
         
     def value(self, timestep, scenario_index):
         try:

@@ -15,7 +15,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
         start = '{}-10-10'.format(start_year)
         
         # get criteria
-        schedule = self.GET("IFR bl Hetch Hetchy Reservoir/IFR Schedule", **kwargs)
+        schedule = self.get("IFR bl Hetch Hetchy Reservoir/IFR Schedule", **kwargs)
         row = date.month + 1
         criteria = [schedule[row][1], schedule[row][3]]
         
@@ -25,7 +25,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
         
         # These are monthly values, so only calculate values in the first time step of each month
         elif date.day > 10 or date.month in [9,10,11,12]:
-            WYT = self.GET("IFR bl Hetch Hetchy Reservoir/Water Year Type", offset=-1, **kwargs)
+            WYT = self.get("IFR bl Hetch Hetchy Reservoir/Water Year Type", offset=-1, **kwargs)
         
         # Jan-June:
         elif date.month in [1,2,3,4,5,6]:

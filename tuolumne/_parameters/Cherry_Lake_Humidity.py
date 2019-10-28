@@ -7,7 +7,7 @@ class Cherry_Lake_Humidity(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
-        path="{ExternalDir}/{Scenario}/Climate/TUO_10_Humidity.csv".format(ExternalDir=self.GET("network/1237/1594", **kwargs), Scenario=self.GET("network/1237/1595", **kwargs))
+        path="{ExternalDir}/{Scenario}/Climate/TUO_10_Humidity.csv".format(ExternalDir=self.get("ExternalDir", **kwargs), Scenario=self.get("network/1237/1595", **kwargs))
         data = self.read_csv(path, usecols=[0,1,2], comment=';', header=None, **kwargs)
         return data.iloc[timestep][2]
         

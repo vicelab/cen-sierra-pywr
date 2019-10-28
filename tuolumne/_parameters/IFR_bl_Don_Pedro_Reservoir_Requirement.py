@@ -7,8 +7,8 @@ class IFR_bl_Don_Pedro_Reservoir_Requirement(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
-        SJVI = self.GET("IFR bl Don Pedro Reservoir/Water Year Type", **kwargs)
-        schedule = self.GET("IFR bl Don Pedro Reservoir/IFR Schedule", **kwargs)
+        SJVI = self.get("IFR bl Don Pedro Reservoir/Water Year Type", **kwargs)
+        schedule = self.get("IFR bl Don Pedro Reservoir/IFR Schedule", **kwargs)
         thresholds = [1500, 2000, 2200, 2400, 2700, 3100]
         col = 1
         for threshold in thresholds:

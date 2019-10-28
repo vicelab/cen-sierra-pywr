@@ -3212,6 +3212,11 @@
         "USGS_11278200_CHERRY CR CN/Observed Flow": {
             "type": "USGS_11278200_CHERRY_CR_CN_Observed_Flow",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "cfs2cms": {
+            "type": "constant",
+            "value": 0.02832058906825262,
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         }
     },
     "recorders": {

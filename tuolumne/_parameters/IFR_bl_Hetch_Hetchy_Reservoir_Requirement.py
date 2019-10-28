@@ -12,10 +12,10 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Requirement(WaterLPParameter):
         # ======
         
         # get water year type
-        wyt = self.GET("IFR bl Hetch Hetchy Reservoir/Water Year Type", **kwargs)
+        wyt = self.get("IFR bl Hetch Hetchy Reservoir/Water Year Type", **kwargs)
         
         # get schedule
-        schedule = self.GET("IFR bl Hetch Hetchy Reservoir/IFR Schedule", **kwargs)
+        schedule = self.get("IFR bl Hetch Hetchy Reservoir/IFR Schedule", **kwargs)
         
         # get row & column
         row = date.month + 1
@@ -34,7 +34,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Requirement(WaterLPParameter):
             ifr += 64
             
         # 1987 Stipulation 2: Additional blocks of water
-        wyt = self.GET("IFR bl Hetch Hetchy Reservoir/Water Year Type", **kwargs)
+        wyt = self.get("IFR bl Hetch Hetchy Reservoir/Water Year Type", **kwargs)
         if wyt in [1,2] and date.month in [5,6,7]:
             if wyt == 1:  # A
                 block = 15000  # AF

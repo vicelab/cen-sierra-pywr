@@ -1269,136 +1269,141 @@
         },
         "TUO_01 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb01.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb01.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_02 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb02.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb02.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_03 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb03.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb03.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_04 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb04.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb04.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_05 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb05.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb05.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_06 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb06.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb06.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_07 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb07.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb07.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_08 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb08.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb08.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_09 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb09.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb09.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_10 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb10.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb10.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_11 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb11.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb11.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_12 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb12.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb12.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_13 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb13.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb13.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_14 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb14.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb14.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_15 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb15.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb15.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_16 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb16.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb16.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_17 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb17.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb17.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_18 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb18.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb18.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_19 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb19.csv",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb19.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
+        },
+        "cfs2cms": {
+            "type": "constant",
+            "value": 0.02832058906825262,
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         }
     },
     "recorders": {
