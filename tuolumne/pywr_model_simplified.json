@@ -1,0 +1,1692 @@
+{
+    "metadata": {
+        "title": "Tuolumne River",
+        "description": "Imported from WEAP Area",
+        "minimum_version": "1.0.0"
+    },
+    "timestepper": {
+        "start": "1951-10-01",
+        "end": "2013-09-30",
+        "timestep": 1
+    },
+    "solver": {
+        "name": "glpk"
+    },
+    "nodes": [
+        {
+            "name": "Below Canyon Power Tunnel Diverted Inflow",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}",
+            "max_flow": 3.6703497517784163
+        },
+        {
+            "name": "Below Dion R Holm Tunnel Diverted Inflow",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}",
+            "max_flow": 2.4468998345189443
+        },
+        {
+            "name": "Below Hetch Hetchy Aquaduct Diverted Inflow",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}",
+            "max_flow": 2.2022063950670576
+        },
+        {
+            "name": "Below Lake Eleanor Tunel Diverted Inflow.1",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}",
+            "max_flow": 1.761765116053646
+        },
+        {
+            "name": "Below Moccasin Aquaduct Diverted Inflow.1",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}",
+            "max_flow": 2.2022063950670576
+        },
+        {
+            "name": "Canyon Power Tunnel",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}",
+            "max_flow": "Canyon Power Tunnel/Flow Capacity"
+        },
+        {
+            "name": "Dion R Holm Tunnel",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}",
+            "max_flow": "Dion R Holm Tunnel/Flow Capacity"
+        },
+        {
+            "name": "Hetch Hetch Aquaduct.1",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}",
+            "max_flow": 2.2022063950670576
+        },
+        {
+            "name": "Moccasin Aquaduct",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}",
+            "max_flow": "Moccasin Aquaduct/Flow Capacity"
+        },
+        {
+            "name": "Algerine",
+            "type": "Output",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "Cherry Lake",
+            "type": "Storage",
+            "comment": "{\"resource_class\": \"node\"}",
+            "initial_volume": 230.80547674848896,
+            "max_volume": 338.2
+        },
+        {
+            "name": "Dion R Holm PH",
+            "type": "Hydropower",
+            "comment": "{\"resource_class\": \"node\"}",
+            "max_flow": "Dion R Holm PH/Water Demand"
+        },
+        {
+            "name": "Diversion bl Don Pedro Reservoir",
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "Don Pedro PH",
+            "type": "Hydropower",
+            "comment": "{\"resource_class\": \"node\"}",
+            "max_flow": "Don Pedro PH/Water Demand"
+        },
+        {
+            "name": "Don Pedro Reservoir",
+            "type": "Storage",
+            "comment": "{\"resource_class\": \"node\"}",
+            "initial_volume": 1000.0,
+            "max_volume": 2504.0,
+            "min_volume": 616.75
+        },
+        {
+            "name": "Eleanor-Cherry Pumping Station",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"node\"}",
+            "max_flow": 2.446898890015973
+        },
+        {
+            "name": "Hetch Hetchy Aquaduct Outflow",
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "Hetch Hetchy Reservoir",
+            "type": "Storage",
+            "comment": "{\"resource_class\": \"node\"}",
+            "initial_volume": 308.37547798199085,
+            "max_volume": 444.6,
+            "min_volume": 123.3
+        },
+        {
+            "name": "IFR bl Cherry Lake",
+            "type": "InstreamFlowRequirement",
+            "comment": "{\"resource_class\": \"node\"}",
+            "mrf_cost": 195,
+            "mrf": "IFR bl Cherry Lake/Requirement"
+        },
+        {
+            "name": "IFR bl Don Pedro Reservoir",
+            "type": "InstreamFlowRequirement",
+            "comment": "{\"resource_class\": \"node\"}",
+            "mrf_cost": 196,
+            "mrf": "IFR bl Don Pedro Reservoir/Requirement"
+        },
+        {
+            "name": "IFR bl Hetch Hetchy Reservoir",
+            "type": "InstreamFlowRequirement",
+            "comment": "{\"resource_class\": \"node\"}",
+            "mrf_cost": 195,
+            "mrf": "IFR bl Hetch Hetchy Reservoir/Requirement"
+        },
+        {
+            "name": "IFR bl Lake Eleanor",
+            "type": "InstreamFlowRequirement",
+            "comment": "{\"resource_class\": \"node\"}",
+            "mrf": "IFR bl Lake Eleanor/Requirement"
+        },
+        {
+            "name": "IFR bl Moccasin Reservoir",
+            "type": "InstreamFlowRequirement",
+            "comment": "{\"resource_class\": \"node\"}",
+            "mrf": 0.03915038224025556
+        },
+        {
+            "name": "Kirkwood PH",
+            "type": "Hydropower",
+            "comment": "{\"resource_class\": \"node\"}",
+            "max_flow": "Kirkwood PH/Water Demand"
+        },
+        {
+            "name": "Lake Eleanor",
+            "type": "Storage",
+            "comment": "{\"resource_class\": \"node\"}",
+            "initial_volume": 24.67003823855927,
+            "max_volume": 32.2,
+            "min_volume": 12.335019119279634
+        },
+        {
+            "name": "Moccasin PH",
+            "type": "Hydropower",
+            "comment": "{\"resource_class\": \"node\"}",
+            "max_flow": "Moccasin PH/Water Demand"
+        },
+        {
+            "name": "Modesto Irrigation District",
+            "type": "Output",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "Priest Reservoir",
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "SFPUC",
+            "type": "Output",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "Tuolumne River Outflow",
+            "type": "Output",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "Tuolumne Utility District",
+            "type": "Output",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "TUO_01 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_01 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_02 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_02 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_03 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_03 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_04 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_04 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_05 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_05 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_06 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_06 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_07 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_07 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_08 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_08 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_09 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_09 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_10 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_10 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_11 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_11 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_12 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_12 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_13 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_13 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_14 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_14 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_15 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_15 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_16 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_16 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_17 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_17 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_18 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_18 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_19 Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "TUO_19 Headflow/Runoff"
+        },
+        {
+            "name": "TUO_R-N-JUN12",
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "Turlock Irrigation District",
+            "type": "Output",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "Upper Hetch Hetchy Tunnel Outflow",
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "Withdrawal Node 1",
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "Withdrawal Node 2",
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "Withdrawal Node 3",
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
+        }
+    ],
+    "edges": [
+        [
+            "Hetch Hetchy Reservoir",
+            "Below Canyon Power Tunnel Diverted Inflow"
+        ],
+        [
+            "Below Canyon Power Tunnel Diverted Inflow",
+            "Kirkwood PH"
+        ],
+        [
+            "Cherry Lake",
+            "Below Dion R Holm Tunnel Diverted Inflow"
+        ],
+        [
+            "Below Dion R Holm Tunnel Diverted Inflow",
+            "Dion R Holm PH"
+        ],
+        [
+            "Hetch Hetchy Aquaduct Outflow",
+            "Below Hetch Hetchy Aquaduct Diverted Inflow"
+        ],
+        [
+            "Lake Eleanor",
+            "Below Lake Eleanor Tunel Diverted Inflow.1"
+        ],
+        [
+            "Below Lake Eleanor Tunel Diverted Inflow.1",
+            "Eleanor-Cherry Pumping Station"
+        ],
+        [
+            "Priest Reservoir",
+            "Below Moccasin Aquaduct Diverted Inflow.1"
+        ],
+        [
+            "Hetch Hetch Aquaduct.1",
+            "TUO_R-N-JUN12"
+        ],
+        [
+            "Cherry Lake",
+            "IFR bl Cherry Lake"
+        ],
+        [
+            "Hetch Hetchy Reservoir",
+            "IFR bl Hetch Hetchy Reservoir"
+        ],
+        [
+            "Lake Eleanor",
+            "IFR bl Lake Eleanor"
+        ],
+        [
+            "Eleanor-Cherry Pumping Station",
+            "Cherry Lake"
+        ],
+        [
+            "Withdrawal Node 1",
+            "Withdrawal Node 2"
+        ],
+        [
+            "Diversion bl Don Pedro Reservoir",
+            "Turlock Irrigation District"
+        ],
+        [
+            "TUO_R-N-JUN12",
+            "Priest Reservoir"
+        ],
+        [
+            "Withdrawal Node 3",
+            "IFR bl Moccasin Reservoir"
+        ],
+        [
+            "Withdrawal Node 1",
+            "Algerine"
+        ],
+        [
+            "Withdrawal Node 2",
+            "Tuolumne Utility District"
+        ],
+        [
+            "Don Pedro Reservoir",
+            "Don Pedro PH"
+        ],
+        [
+            "Diversion bl Don Pedro Reservoir",
+            "Modesto Irrigation District"
+        ],
+        [
+            "IFR bl Don Pedro Reservoir",
+            "Tuolumne River Outflow"
+        ],
+        [
+            "Diversion bl Don Pedro Reservoir",
+            "IFR bl Don Pedro Reservoir"
+        ],
+        [
+            "Canyon Power Tunnel",
+            "Hetch Hetchy Aquaduct Outflow"
+        ],
+        [
+            "Dion R Holm PH",
+            "Dion R Holm Tunnel"
+        ],
+        [
+            "Kirkwood PH",
+            "Canyon Power Tunnel"
+        ],
+        [
+            "Moccasin PH",
+            "Moccasin Aquaduct"
+        ],
+        [
+            "Moccasin Aquaduct",
+            "Withdrawal Node 3"
+        ],
+        [
+            "TUO_01 Headflow",
+            "Don Pedro Reservoir"
+        ],
+        [
+            "TUO_02 Headflow",
+            "Withdrawal Node 1"
+        ],
+        [
+            "TUO_09 Headflow",
+            "Upper Hetch Hetchy Tunnel Outflow"
+        ],
+        [
+            "IFR bl Cherry Lake",
+            "Upper Hetch Hetchy Tunnel Outflow"
+        ],
+        [
+            "IFR bl Lake Eleanor",
+            "Upper Hetch Hetchy Tunnel Outflow"
+        ],
+        [
+            "TUO_10 Headflow",
+            "Cherry Lake"
+        ],
+        [
+            "TUO_11 Headflow",
+            "Lake Eleanor"
+        ],
+        [
+            "TUO_12 Headflow",
+            "Hetch Hetchy Aquaduct Outflow"
+        ],
+        [
+            "IFR bl Hetch Hetchy Reservoir",
+            "Hetch Hetchy Aquaduct Outflow"
+        ],
+        [
+            "TUO_13 Headflow",
+            "Hetch Hetchy Reservoir"
+        ],
+        [
+            "TUO_18 Headflow",
+            "Withdrawal Node 3"
+        ],
+        [
+            "Priest Reservoir",
+            "Withdrawal Node 3"
+        ],
+        [
+            "TUO_19 Headflow",
+            "Priest Reservoir"
+        ],
+        [
+            "Withdrawal Node 3",
+            "SFPUC"
+        ],
+        [
+            "Moccasin PH",
+            "SFPUC"
+        ],
+        [
+            "Below Moccasin Aquaduct Diverted Inflow.1",
+            "Moccasin PH"
+        ],
+        [
+            "TUO_R-N-JUN12",
+            "Moccasin PH"
+        ],
+        [
+            "Don Pedro PH",
+            "Diversion bl Don Pedro Reservoir"
+        ],
+        [
+            "Don Pedro Reservoir",
+            "Diversion bl Don Pedro Reservoir"
+        ],
+        [
+            "Below Hetch Hetchy Aquaduct Diverted Inflow",
+            "Hetch Hetch Aquaduct.1"
+        ],
+        [
+            "Upper Hetch Hetchy Tunnel Outflow",
+            "Hetch Hetch Aquaduct.1"
+        ],
+        [
+            "Withdrawal Node 2",
+            "Don Pedro Reservoir"
+        ],
+        [
+            "TUO_03 Headflow",
+            "Don Pedro Reservoir"
+        ],
+        [
+            "Dion R Holm Tunnel",
+            "Don Pedro Reservoir"
+        ],
+        [
+            "Hetch Hetchy Aquaduct Outflow",
+            "Don Pedro Reservoir"
+        ],
+        [
+            "TUO_04 Headflow",
+            "Don Pedro Reservoir"
+        ],
+        [
+            "TUO_05 Headflow",
+            "Don Pedro Reservoir"
+        ],
+        [
+            "TUO_06 Headflow",
+            "Don Pedro Reservoir"
+        ],
+        [
+            "TUO_07 Headflow",
+            "Don Pedro Reservoir"
+        ],
+        [
+            "TUO_08 Headflow",
+            "Don Pedro Reservoir"
+        ],
+        [
+            "Upper Hetch Hetchy Tunnel Outflow",
+            "Don Pedro Reservoir"
+        ],
+        [
+            "TUO_14 Headflow",
+            "Don Pedro Reservoir"
+        ],
+        [
+            "TUO_15 Headflow",
+            "Don Pedro Reservoir"
+        ],
+        [
+            "TUO_16 Headflow",
+            "Don Pedro Reservoir"
+        ],
+        [
+            "TUO_17 Headflow",
+            "Don Pedro Reservoir"
+        ],
+        [
+            "Withdrawal Node 3",
+            "Don Pedro Reservoir"
+        ],
+        [
+            "IFR bl Moccasin Reservoir",
+            "Don Pedro Reservoir"
+        ]
+    ],
+    "parameters": {
+        "Canyon Power Tunnel/Flow Capacity": {
+            "type": "Canyon_Power_Tunnel_Flow_Capacity",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "Dion R Holm Tunnel/Flow Capacity": {
+            "type": "Dion_R_Holm_Tunnel_Flow_Capacity",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "Moccasin Aquaduct/Flow Capacity": {
+            "type": "Moccasin_Aquaduct_Flow_Capacity",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "Algerine/Delivery": {
+            "type": "Algerine_Delivery",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "Cherry Lake/Volume Elevation Curve": {
+            "type": "interpolatedvolume",
+            "node": "Cherry Lake",
+            "volumes": [
+                0.0,
+                0.1,
+                0.3,
+                0.8,
+                1.9,
+                3.7,
+                7.4,
+                14.4,
+                24.3,
+                48.0,
+                75.0,
+                104.9,
+                137.8,
+                172.5,
+                209.2,
+                248.0,
+                288.6,
+                331.4,
+                338.2
+            ],
+            "values": [
+                1353.3,
+                1356.4,
+                1359.4,
+                1362.5,
+                1365.5,
+                1368.6,
+                1371.6,
+                1374.6,
+                1377.7,
+                1383.8,
+                1389.9,
+                1396.0,
+                1402.1,
+                1408.2,
+                1414.3,
+                1420.4,
+                1426.5,
+                1432.6,
+                1433.5
+            ],
+            "kind": "cubic",
+            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
+        },
+        "Cherry Lake/Observed Storage": {
+            "type": "Cherry_Lake_Observed_Storage",
+            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
+        },
+        "Cherry Lake/Storage Demand": {
+            "type": "Cherry_Lake_Storage_Demand",
+            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
+        },
+        "Cherry Lake/Air Temperature": {
+            "type": "Cherry_Lake_Air_Temperature",
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
+        },
+        "Cherry Lake/Net Incoming Radiation": {
+            "type": "Cherry_Lake_Net_Incoming_Radiation",
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
+        },
+        "Cherry Lake/Humidity": {
+            "type": "Cherry_Lake_Humidity",
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"%\"}"
+        },
+        "Cherry Lake/Cloudiness Fraction": {
+            "type": "constant",
+            "value": 0.5,
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
+        },
+        "Dion R Holm PH/Fixed Head": {
+            "type": "constant",
+            "value": 640.1,
+            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
+        },
+        "Dion R Holm PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 26.900750389352968,
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "Dion R Holm PH/Water Demand": {
+            "type": "Dion_R_Holm_PH_Water_Demand",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "Dion R Holm PH/Unconstrained Cost": {
+            "type": "constant",
+            "value": -1,
+            "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
+        },
+        "Don Pedro PH/Fixed Head": {
+            "type": "constant",
+            "value": 170.0,
+            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
+        },
+        "Don Pedro PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 25.484921421492285,
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "Don Pedro PH/Water Demand": {
+            "type": "Don_Pedro_PH_Water_Demand",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "Don Pedro PH/Unconstrained Cost": {
+            "type": "constant",
+            "value": -1,
+            "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
+        },
+        "Don Pedro Reservoir/Volume Elevation Curve": {
+            "type": "interpolatedvolume",
+            "node": "Don Pedro Reservoir",
+            "volumes": [
+                0.0,
+                0.2,
+                0.5,
+                1.1,
+                2.2,
+                4.0,
+                7.8,
+                15.3,
+                27.0,
+                43.7,
+                66.9,
+                98.4,
+                139.8,
+                195.8,
+                262.6,
+                338.9,
+                385.5,
+                524.9,
+                638.3,
+                767.2,
+                911.5,
+                989.9,
+                1072.8,
+                1252.9,
+                1453.4,
+                1676.6,
+                1924.6,
+                2199.7,
+                2504.0,
+                2821.8
+            ],
+            "values": [
+                88.4,
+                97.5,
+                100.6,
+                106.7,
+                112.8,
+                118.9,
+                125.0,
+                131.1,
+                137.2,
+                143.3,
+                149.3,
+                155.4,
+                161.5,
+                167.6,
+                173.7,
+                179.8,
+                185.9,
+                192.0,
+                198.1,
+                204.2,
+                210.3,
+                213.3,
+                216.4,
+                222.5,
+                228.6,
+                234.7,
+                240.8,
+                246.9,
+                253.0,
+                258.8
+            ],
+            "kind": "cubic",
+            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
+        },
+        "Don Pedro Reservoir/Storage Demand": {
+            "type": "Don_Pedro_Reservoir_Storage_Demand",
+            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
+        },
+        "Hetch Hetchy Reservoir/Volume Elevation Curve": {
+            "type": "interpolatedvolume",
+            "node": "Hetch Hetchy Reservoir",
+            "volumes": [
+                0.0,
+                0.1,
+                0.2,
+                0.5,
+                4.1,
+                10.7,
+                28.2,
+                48.7,
+                70.8,
+                94.3,
+                119.6,
+                147.8,
+                180.3,
+                215.8,
+                254.0,
+                294.6,
+                337.5,
+                382.7,
+                429.8,
+                444.4
+            ],
+            "values": [
+                1070.5,
+                1070.8,
+                1071.4,
+                1072.9,
+                1075.9,
+                1079.0,
+                1085.1,
+                1091.2,
+                1097.3,
+                1103.4,
+                1109.5,
+                1115.6,
+                1121.7,
+                1127.8,
+                1133.9,
+                1140.0,
+                1146.0,
+                1152.1,
+                1158.2,
+                1160.1
+            ],
+            "kind": "cubic",
+            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
+        },
+        "Hetch Hetchy Reservoir/Observed Storage": {
+            "type": "Hetch_Hetchy_Reservoir_Observed_Storage",
+            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
+        },
+        "Hetch Hetchy Reservoir/Storage Demand": {
+            "type": "Hetch_Hetchy_Reservoir_Storage_Demand",
+            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
+        },
+        "Hetch Hetchy Reservoir/Air Temperature": {
+            "type": "Hetch_Hetchy_Reservoir_Air_Temperature",
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
+        },
+        "Hetch Hetchy Reservoir/Net Incoming Radiation": {
+            "type": "Hetch_Hetchy_Reservoir_Net_Incoming_Radiation",
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
+        },
+        "Hetch Hetchy Reservoir/Humidity": {
+            "type": "Hetch_Hetchy_Reservoir_Humidity",
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"%\"}"
+        },
+        "Hetch Hetchy Reservoir/Cloudiness Fraction": {
+            "type": "constant",
+            "value": 0.5,
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
+        },
+        "IFR bl Cherry Lake/Requirement": {
+            "type": "IFR_bl_Cherry_Lake_Requirement",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "IFR bl Don Pedro Reservoir/IFR Schedule": {
+            "type": "numpyarray",
+            "value": [
+                [
+                    "",
+                    "Critical and Below",
+                    "Median Critical",
+                    "Intermed Critical / Dry",
+                    "Median Dry",
+                    "Intermed Dry / Below Normal",
+                    "Median Below Normal",
+                    "Intermed Below Normal / Above Normal and Above"
+                ],
+                [
+                    "October 1-15",
+                    "100",
+                    "100",
+                    "150",
+                    "150",
+                    "180",
+                    "200",
+                    "300"
+                ],
+                [
+                    "October 16 - May 31",
+                    "150",
+                    "150",
+                    "150",
+                    "150",
+                    "180",
+                    "175",
+                    "300"
+                ],
+                [
+                    "June 1 - Sept. 30",
+                    "50",
+                    "50",
+                    "50",
+                    "75",
+                    "75",
+                    "75",
+                    "250"
+                ]
+            ],
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
+        },
+        "IFR bl Don Pedro Reservoir/Water Year Type": {
+            "type": "IFR_bl_Don_Pedro_Reservoir_Water_Year_Type",
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
+        },
+        "IFR bl Don Pedro Reservoir/Requirement": {
+            "type": "IFR_bl_Don_Pedro_Reservoir_Requirement",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "IFR bl Hetch Hetchy Reservoir/IFR Schedule": {
+            "type": "numpyarray",
+            "value": [
+                [
+                    "",
+                    "Year Type A",
+                    "Year Type A",
+                    "Year Type B",
+                    "Year Type B",
+                    "Year Type C"
+                ],
+                [
+                    "",
+                    "Criteria",
+                    "cfs",
+                    "Criteria",
+                    "cfs",
+                    "cfs"
+                ],
+                [
+                    "January",
+                    "8.8",
+                    "50",
+                    "6.1",
+                    "40",
+                    "35"
+                ],
+                [
+                    "February",
+                    "14",
+                    "60",
+                    "9.5",
+                    "50",
+                    "35"
+                ],
+                [
+                    "March",
+                    "18.6",
+                    "60",
+                    "14.2",
+                    "50",
+                    "35"
+                ],
+                [
+                    "April",
+                    "26",
+                    "75",
+                    "18",
+                    "65",
+                    "35"
+                ],
+                [
+                    "May",
+                    "26.6",
+                    "100",
+                    "19.5",
+                    "80",
+                    "50"
+                ],
+                [
+                    "June",
+                    "28.45",
+                    "125",
+                    "21.25",
+                    "110",
+                    "75"
+                ],
+                [
+                    "July",
+                    "575",
+                    "125",
+                    "390",
+                    "110",
+                    "75"
+                ],
+                [
+                    "August",
+                    "640",
+                    "125",
+                    "400",
+                    "110",
+                    "75"
+                ],
+                [
+                    "Sept. 1-15",
+                    "",
+                    "100",
+                    "",
+                    "80",
+                    "75"
+                ],
+                [
+                    "Sept. 15-30",
+                    "",
+                    "80",
+                    "",
+                    "65",
+                    "50"
+                ],
+                [
+                    "October",
+                    "",
+                    "60",
+                    "",
+                    "50",
+                    "35"
+                ],
+                [
+                    "November",
+                    "",
+                    "60",
+                    "",
+                    "50",
+                    "35"
+                ],
+                [
+                    "December",
+                    "",
+                    "50",
+                    "",
+                    "40",
+                    "35"
+                ]
+            ],
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
+        },
+        "IFR bl Hetch Hetchy Reservoir/Water Year Type": {
+            "type": "IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type",
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
+        },
+        "IFR bl Hetch Hetchy Reservoir/Requirement": {
+            "type": "IFR_bl_Hetch_Hetchy_Reservoir_Requirement",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "IFR bl Lake Eleanor/IFR Schedule": {
+            "type": "numpyarray",
+            "value": [
+                [
+                    "Date",
+                    "Pumping",
+                    "Not pumping"
+                ],
+                [
+                    "January",
+                    "5",
+                    "5"
+                ],
+                [
+                    "February",
+                    "5",
+                    "5"
+                ],
+                [
+                    "March",
+                    "10",
+                    "5"
+                ],
+                [
+                    "April_10",
+                    "10",
+                    "5"
+                ],
+                [
+                    "April_20",
+                    "15",
+                    "5"
+                ],
+                [
+                    "April_30",
+                    "20",
+                    "5"
+                ],
+                [
+                    "May",
+                    "20",
+                    "5"
+                ],
+                [
+                    "June",
+                    "20",
+                    "5"
+                ],
+                [
+                    "July",
+                    "20",
+                    "16"
+                ],
+                [
+                    "August",
+                    "20",
+                    "16"
+                ],
+                [
+                    "September_10",
+                    "20",
+                    "16"
+                ],
+                [
+                    "September_20",
+                    "15",
+                    "16"
+                ],
+                [
+                    "September_30",
+                    "10",
+                    "16"
+                ],
+                [
+                    "October",
+                    "10",
+                    "5"
+                ],
+                [
+                    "November",
+                    "5",
+                    "5"
+                ],
+                [
+                    "December",
+                    "5",
+                    "5"
+                ]
+            ],
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
+        },
+        "IFR bl Lake Eleanor/Requirement": {
+            "type": "IFR_bl_Lake_Eleanor_Requirement",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "Kirkwood PH/Fixed Head": {
+            "type": "constant",
+            "value": 335.3,
+            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
+        },
+        "Kirkwood PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 38.227382132238425,
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "Kirkwood PH/Water Demand": {
+            "type": "Kirkwood_PH_Water_Demand",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "Kirkwood PH/Unconstrained Cost": {
+            "type": "constant",
+            "value": -1,
+            "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
+        },
+        "Lake Eleanor/Volume Elevation Curve": {
+            "type": "interpolatedvolume",
+            "node": "Lake Eleanor",
+            "volumes": [
+                0.0,
+                0.1,
+                0.3,
+                0.7,
+                1.2,
+                1.8,
+                3.0,
+                4.4,
+                6.5,
+                9.0,
+                12.7,
+                16.6,
+                21.0,
+                26.5,
+                32.2,
+                35.9
+            ],
+            "values": [
+                1404.5,
+                1408.8,
+                1409.7,
+                1410.0,
+                1410.3,
+                1410.6,
+                1411.2,
+                1411.8,
+                1412.7,
+                1413.7,
+                1414.9,
+                1416.1,
+                1417.3,
+                1418.8,
+                1420.4,
+                1421.3
+            ],
+            "kind": "cubic",
+            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
+        },
+        "Lake Eleanor/Observed Storage": {
+            "type": "Lake_Eleanor_Observed_Storage",
+            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
+        },
+        "Lake Eleanor/Storage Demand": {
+            "type": "Lake_Eleanor_Storage_Demand",
+            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
+        },
+        "Lake Eleanor/Air Temperature": {
+            "type": "Lake_Eleanor_Air_Temperature",
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
+        },
+        "Lake Eleanor/Net Incoming Radiation": {
+            "type": "Lake_Eleanor_Net_Incoming_Radiation",
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
+        },
+        "Lake Eleanor/Humidity": {
+            "type": "Lake_Eleanor_Humidity",
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"%\"}"
+        },
+        "Lake Eleanor/Cloudiness Fraction": {
+            "type": "constant",
+            "value": 0.5,
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
+        },
+        "Moccasin PH/Fixed Head": {
+            "type": "constant",
+            "value": 377.952,
+            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
+        },
+        "Moccasin PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 25.484921421492285,
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "Moccasin PH/Water Demand": {
+            "type": "Moccasin_PH_Water_Demand",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "Moccasin PH/Unconstrained Cost": {
+            "type": "constant",
+            "value": -1,
+            "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
+        },
+        "TUO_01 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb01.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "TUO_02 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb02.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "TUO_03 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb03.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "TUO_04 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb04.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "TUO_05 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb05.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "TUO_06 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb06.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "TUO_07 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb07.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "TUO_08 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb08.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "TUO_09 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb09.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "TUO_10 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb10.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "TUO_11 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb11.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "TUO_12 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb12.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "TUO_13 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb13.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "TUO_14 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb14.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "TUO_15 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb15.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "TUO_16 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb16.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "TUO_17 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb17.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "TUO_18 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb18.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "TUO_19 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb19.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        }
+    },
+    "recorders": {
+        "Algerine/delivery": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Algerine/Delivery"
+        },
+        "Algerine/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Algerine"
+        },
+        "Cherry Lake/storage": {
+            "type": "NumpyArrayStorageRecorder",
+            "node": "Cherry Lake"
+        },
+        "Cherry Lake/observed storage": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Cherry Lake/Observed Storage"
+        },
+        "Dion R Holm PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Dion R Holm PH"
+        },
+        "Dion R Holm PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Dion R Holm PH/Water Demand"
+        },
+        "Don Pedro PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Don Pedro PH"
+        },
+        "Don Pedro PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Don Pedro PH/Water Demand"
+        },
+        "Don Pedro Reservoir/storage": {
+            "type": "NumpyArrayStorageRecorder",
+            "node": "Don Pedro Reservoir"
+        },
+        "Hetch Hetchy Reservoir/storage": {
+            "type": "NumpyArrayStorageRecorder",
+            "node": "Hetch Hetchy Reservoir"
+        },
+        "Hetch Hetchy Reservoir/observed storage": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Hetch Hetchy Reservoir/Observed Storage"
+        },
+        "IFR bl Cherry Lake/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Cherry Lake"
+        },
+        "IFR bl Cherry Lake/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Cherry Lake/Requirement"
+        },
+        "IFR bl Don Pedro Reservoir/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Don Pedro Reservoir"
+        },
+        "IFR bl Don Pedro Reservoir/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Don Pedro Reservoir/Requirement"
+        },
+        "IFR bl Hetch Hetchy Reservoir/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Hetch Hetchy Reservoir"
+        },
+        "IFR bl Hetch Hetchy Reservoir/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Hetch Hetchy Reservoir/Requirement"
+        },
+        "IFR bl Lake Eleanor/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Lake Eleanor"
+        },
+        "IFR bl Lake Eleanor/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Lake Eleanor/Requirement"
+        },
+        "IFR bl Moccasin Reservoir/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Moccasin Reservoir"
+        },
+        "Kirkwood PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Kirkwood PH"
+        },
+        "Kirkwood PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Kirkwood PH/Water Demand"
+        },
+        "Lake Eleanor/storage": {
+            "type": "NumpyArrayStorageRecorder",
+            "node": "Lake Eleanor"
+        },
+        "Lake Eleanor/observed storage": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Lake Eleanor/Observed Storage"
+        },
+        "Moccasin PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Moccasin PH"
+        },
+        "Moccasin PH/water demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Moccasin PH/Water Demand"
+        },
+        "Modesto Irrigation District/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Modesto Irrigation District"
+        },
+        "SFPUC/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "SFPUC"
+        },
+        "Tuolumne River Outflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Tuolumne River Outflow"
+        },
+        "Tuolumne Utility District/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Tuolumne Utility District"
+        },
+        "TUO_01 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_01 Headflow"
+        },
+        "TUO_01 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_01 Headflow"
+        },
+        "TUO_02 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_02 Headflow"
+        },
+        "TUO_02 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_02 Headflow"
+        },
+        "TUO_03 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_03 Headflow"
+        },
+        "TUO_03 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_03 Headflow"
+        },
+        "TUO_04 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_04 Headflow"
+        },
+        "TUO_04 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_04 Headflow"
+        },
+        "TUO_05 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_05 Headflow"
+        },
+        "TUO_05 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_05 Headflow"
+        },
+        "TUO_06 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_06 Headflow"
+        },
+        "TUO_06 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_06 Headflow"
+        },
+        "TUO_07 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_07 Headflow"
+        },
+        "TUO_07 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_07 Headflow"
+        },
+        "TUO_08 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_08 Headflow"
+        },
+        "TUO_08 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_08 Headflow"
+        },
+        "TUO_09 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_09 Headflow"
+        },
+        "TUO_09 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_09 Headflow"
+        },
+        "TUO_10 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_10 Headflow"
+        },
+        "TUO_10 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_10 Headflow"
+        },
+        "TUO_11 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_11 Headflow"
+        },
+        "TUO_11 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_11 Headflow"
+        },
+        "TUO_12 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_12 Headflow"
+        },
+        "TUO_12 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_12 Headflow"
+        },
+        "TUO_13 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_13 Headflow"
+        },
+        "TUO_13 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_13 Headflow"
+        },
+        "TUO_14 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_14 Headflow"
+        },
+        "TUO_14 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_14 Headflow"
+        },
+        "TUO_15 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_15 Headflow"
+        },
+        "TUO_15 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_15 Headflow"
+        },
+        "TUO_16 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_16 Headflow"
+        },
+        "TUO_16 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_16 Headflow"
+        },
+        "TUO_17 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_17 Headflow"
+        },
+        "TUO_17 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_17 Headflow"
+        },
+        "TUO_18 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_18 Headflow"
+        },
+        "TUO_18 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_18 Headflow"
+        },
+        "TUO_19 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_19 Headflow"
+        },
+        "TUO_19 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "TUO_19 Headflow"
+        },
+        "Turlock Irrigation District/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Turlock Irrigation District"
+        }
+    }
+}
