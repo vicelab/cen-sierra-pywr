@@ -23,7 +23,7 @@ class ELEANOR_C_NR_HETCH_HETCHY_CA_11278000_Observed_Flow(WaterLPParameter):
     def load(cls, model, data):
         try:
             return cls(model, **data)
-        except:
+        except Exception as err:
             print('File where error occurred: {}'.format(__file__))
             print(err)
             raise

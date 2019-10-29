@@ -23,7 +23,7 @@ class TUOLUMNE_R_BL_EARLY_INTAKE_NR_MATHER_CA_11276900_Observed_Flow(WaterLPPara
     def load(cls, model, data):
         try:
             return cls(model, **data)
-        except:
+        except Exception as err:
             print('File where error occurred: {}'.format(__file__))
             print(err)
             raise

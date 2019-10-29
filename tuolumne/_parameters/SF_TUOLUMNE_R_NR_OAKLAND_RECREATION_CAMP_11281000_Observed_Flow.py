@@ -23,7 +23,7 @@ class SF_TUOLUMNE_R_NR_OAKLAND_RECREATION_CAMP_11281000_Observed_Flow(WaterLPPar
     def load(cls, model, data):
         try:
             return cls(model, **data)
-        except:
+        except Exception as err:
             print('File where error occurred: {}'.format(__file__))
             print(err)
             raise

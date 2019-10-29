@@ -23,7 +23,7 @@ class REED_C_NR_LONG_BARN_CA_11283350_Observed_Flow(WaterLPParameter):
     def load(cls, model, data):
         try:
             return cls(model, **data)
-        except:
+        except Exception as err:
             print('File where error occurred: {}'.format(__file__))
             print(err)
             raise

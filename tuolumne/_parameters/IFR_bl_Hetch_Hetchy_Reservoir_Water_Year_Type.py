@@ -2,6 +2,7 @@ from parameters import WaterLPParameter
 from datetime import datetime
 from utilities.converter import convert
 
+
 class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
     """"""
 
@@ -9,12 +10,13 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
 
         # initial IFR
-        WYT = 2 # default
-        
+        if timestep.index == 0:
+            WYT = 2  # default
+
         # These are monthly values, so only calculate values in the first time step of each month
-        if timestep.month >= 9:
+        elif timestep.month >= 9:
             WYT = self.WYT
-        
+
         # Jan-June:
         else:
             schedule = self.model.parameters["IFR bl Hetch Hetchy Reservoir/IFR Schedule"].array()
@@ -36,10 +38,10 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
                     WYT = 1
 
             # July-Aug:
-            elif timestep.month in [7,8]:
+            else:
                 runoff = self.get("TUO_13 Headflow/Runoff").dataframe
                 cumulative_runoff = runoff[datetime(timestep.year - 1, 10, 1):timestep.datetime].sum()
-                cumulative_runoff *= 810.7 # convert mcm to af
+                cumulative_runoff *= 810.7  # convert mcm to af
                 if cumulative_runoff >= criteria[0]:
                     WYT = 3
                 elif cumulative_runoff >= criteria[1]:
@@ -50,24 +52,27 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
         self.WYT = WYT
 
         return WYT
-        
-    def value(self, timestep, scenario_index):
-        try:
-            return self._value(timestep, scenario_index)
-        except Exception as err:
-            print('ERROR for parameter {}'.format(self.name))
-            print('File where error occurred: {}'.format(__file__))
-            print(err)
-            raise
 
-    @classmethod
-    def load(cls, model, data):
-        try:
-            return cls(model, **data)
-        except:
-            print('File where error occurred: {}'.format(__file__))
-            print(err)
-            raise
-        
+
+def value(self, timestep, scenario_index):
+    try:
+        return self._value(timestep, scenario_index)
+    except Exception as err:
+        print('ERROR for parameter {}'.format(self.name))
+        print('File where error occurred: {}'.format(__file__))
+        print(err)
+        raise
+
+
+@classmethod
+def load(cls, model, data):
+    try:
+        return cls(model, **data)
+    except Exception as err:
+        print('File where error occurred: {}'.format(__file__))
+        print(err)
+        raise
+
+
 IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type.register()
 print(" [*] IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type successfully registered")

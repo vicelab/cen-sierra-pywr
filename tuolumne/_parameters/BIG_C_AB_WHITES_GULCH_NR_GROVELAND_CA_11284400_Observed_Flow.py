@@ -23,7 +23,7 @@ class BIG_C_AB_WHITES_GULCH_NR_GROVELAND_CA_11284400_Observed_Flow(WaterLPParame
     def load(cls, model, data):
         try:
             return cls(model, **data)
-        except:
+        except Exception as err:
             print('File where error occurred: {}'.format(__file__))
             print(err)
             raise

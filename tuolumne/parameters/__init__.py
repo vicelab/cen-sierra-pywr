@@ -100,7 +100,7 @@ class WaterLPParameter(Parameter):
 
         try:
             node = self.model.nodes[self.res_name + self.month_suffix]
-        except:
+        except Exception as err:
             node = None
 
         if node and 'level' in node.component_attrs or self.attr_name == 'Storage Value':

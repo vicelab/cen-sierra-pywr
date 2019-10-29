@@ -23,7 +23,7 @@ class Lake_Eleanor_Storage_Demand(WaterLPParameter):
     def load(cls, model, data):
         try:
             return cls(model, **data)
-        except:
+        except Exception as err:
             print('File where error occurred: {}'.format(__file__))
             print(err)
             raise

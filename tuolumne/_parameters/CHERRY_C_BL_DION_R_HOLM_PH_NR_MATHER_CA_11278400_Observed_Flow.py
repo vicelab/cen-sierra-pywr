@@ -23,7 +23,7 @@ class CHERRY_C_BL_DION_R_HOLM_PH_NR_MATHER_CA_11278400_Observed_Flow(WaterLPPara
     def load(cls, model, data):
         try:
             return cls(model, **data)
-        except:
+        except Exception as err:
             print('File where error occurred: {}'.format(__file__))
             print(err)
             raise

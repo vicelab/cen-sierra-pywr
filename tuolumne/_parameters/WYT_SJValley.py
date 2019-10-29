@@ -7,8 +7,7 @@ class WYT_SJValley(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
-        kwargs = dict(timestep=timestep, scenario_index=scenario_index)
-        SJVI = self.self.get("WYI_SJValley", **kwargs, **kwargs)
+        SJVI = self.get("WYI_SJValley", **kwargs)
         thresholds = [0, 2.1, 2.8, 3.1, 3.8]
         WYT = len([x for x in thresholds if SJVI > x])
         return WYT
@@ -26,7 +25,7 @@ class WYT_SJValley(WaterLPParameter):
     def load(cls, model, data):
         try:
             return cls(model, **data)
-        except:
+        except Exception as err:
             print('File where error occurred: {}'.format(__file__))
             print(err)
             raise

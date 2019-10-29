@@ -23,7 +23,7 @@ class TUOLUMNE_R_NR_HETCH_HETCHY_CA_11276500_Observed_Flow(WaterLPParameter):
     def load(cls, model, data):
         try:
             return cls(model, **data)
-        except:
+        except Exception as err:
             print('File where error occurred: {}'.format(__file__))
             print(err)
             raise

@@ -24,7 +24,7 @@ class Hetch_Hetchy_Reservoir_Observed_Storage(WaterLPParameter):
     def load(cls, model, data):
         try:
             return cls(model, **data)
-        except:
+        except Exception as err:
             print('File where error occurred: {}'.format(__file__))
             print(err)
             raise
