@@ -10,7 +10,8 @@ from dateutil.relativedelta import relativedelta
 # from common.domains import PiecewiseHydropower
 from common.tests import test_planning_model
 
-def simplify_network(m, delete_gauges=False):
+
+def simplify_network(m, delete_gauges=False, delete_observed=True):
     # simplify the network
     mission_complete = False
     obsolete_gauges = []
@@ -73,11 +74,18 @@ def simplify_network(m, delete_gauges=False):
             if gauge in parts:
                 m['parameters'].pop(p, None)
 
+            if delete_observed and '/observed' in p.lower():
+                m['parameters'].pop(p, None)
+
+
         for r in list(m['recorders']):
             name_parts = r.split('/')
             node_parts = m['recorders'][r].get('node', '').split('/')
             parameter_parts = m['recorders'][r].get('parameter', '').split('/')
             if gauge in name_parts + node_parts + parameter_parts:
+                m['recorders'].pop(r, None)
+
+            if delete_observed and '/observed' in r:
                 m['recorders'].pop(r, None)
 
     return m
@@ -383,7 +391,7 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
     return
 
 
-def run_model(basin, network_key, include_planning=False, debug=False):
+def run_model(basin, network_key, include_planning=False, simplify=True, debug=False):
     # ========================
     # Set up model environment
     # ========================
@@ -430,19 +438,23 @@ def run_model(basin, network_key, include_planning=False, debug=False):
     root, filename = os.path.split(model_path)
     base, ext = os.path.splitext(filename)
 
-    # simplify model
-    simplified_filename = 'pywr_model_simplified.json'.format(base)
-    simplified_model_path = os.path.join(root, simplified_filename)
-
     # prepare the model files
-    with open(model_path, 'r') as f:
-        m = json.load(f)
+    if simplify or include_planning:
+        with open(model_path, 'r') as f:
+            m = json.load(f)
 
-    m = simplify_network(m, delete_gauges=True)
-    # with open(simplified_model_path, 'w') as f:
-    #     json.dump(f, m, indent=4)
-    with open(simplified_model_path, 'w') as f:
-        f.write(json.dumps(m, indent=4))
+    if simplify:
+        # simplify model
+        simplified_filename = 'pywr_model_simplified.json'.format(base)
+        simplified_model_path = os.path.join(root, simplified_filename)
+
+        m = simplify_network(m, delete_gauges=True, delete_observed=True)
+        # with open(simplified_model_path, 'w') as f:
+        #     json.dump(f, m, indent=4)
+        with open(simplified_model_path, 'w') as f:
+            f.write(json.dumps(m, indent=4))
+
+        model_path = simplified_model_path
 
     # Area for testing monthly model
     debug = 'm'
@@ -479,7 +491,7 @@ def run_model(basin, network_key, include_planning=False, debug=False):
     print('Loading daily model')
     from pywr.nodes import Storage
     from domains import PiecewiseHydropower
-    m = Model.load(simplified_model_path, path=simplified_model_path)
+    m = Model.load(model_path, path=model_path)
     reservoirs = [n.name for n in m.nodes if type(n) == Storage and '(storage)' not in n.name]
     peaking_hp = [n.name for n in m.nodes if type(n) == PiecewiseHydropower]
     m.setup()
@@ -538,7 +550,8 @@ def run_model(basin, network_key, include_planning=False, debug=False):
             break
     total_seconds = (datetime.now() - now).total_seconds()
     print('Total run: {} seconds'.format(total_seconds))
-    print('Monthly overhead: {} seconds ({:02}% of total)'.format(monthly_seconds, monthly_seconds / total_seconds * 100))
+    print(
+        'Monthly overhead: {} seconds ({:02}% of total)'.format(monthly_seconds, monthly_seconds / total_seconds * 100))
 
     # save results to CSV
 
