@@ -15,6 +15,8 @@ class Cherry_Lake_Observed_Storage(WaterLPParameter):
             return self._value(timestep, scenario_index)
         except Exception as err:
             print('ERROR for parameter {}'.format(self.name))
+            if type(err) == AssertionError:
+                print('Value should return a real number, not a string')
             print('File where error occurred: {}'.format(__file__))
             print(err)
             raise

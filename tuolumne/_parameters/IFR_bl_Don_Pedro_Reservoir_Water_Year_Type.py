@@ -8,7 +8,7 @@ class IFR_bl_Don_Pedro_Reservoir_Water_Year_Type(WaterLPParameter):
     def _value(self, timestep, scenario_index):
         
         # San Joaquin Valley Index
-        SJVI = self.get("WYI_SJValley")
+        SJVI = self.model.parameters['WYI_SJValley'].value(timestep, scenario_index)
         
         return SJVI
         

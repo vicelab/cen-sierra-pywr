@@ -7,9 +7,8 @@ class Lake_Eleanor_Observed_Storage(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
-        path="{ExternalDir}/GAGES/Reservoirs/USGS_11277500_LK_ELEANOR_NR_HETCH_HETCHY_CA.csv".format(ExternalDir=self.get("ExternalDir", **kwargs))
-        data = self.read_csv(path, usecols=[0,1,2], comment=';', header=None, **kwargs)
-        return data.iloc[timestep][2]*1233/1000000
+        df = self.read_csv("Observed/Reservoirs/GaugeReservoir_mcm_TUO_R3.csv", index_col=0, header=0)
+        return df["Lake Eleanor Reservoir"][timestep.datetime]
         
     def value(self, timestep, scenario_index):
         try:
