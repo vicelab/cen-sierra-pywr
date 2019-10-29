@@ -10,27 +10,23 @@ class IFR_bl_Don_Pedro_Reservoir_Requirement(WaterLPParameter):
         SJVI = self.get("IFR bl Don Pedro Reservoir/Water Year Type", **kwargs)
         schedule = self.model.parameters["IFR bl Don Pedro Reservoir/IFR Schedule"].array()
         thresholds = [1500, 2000, 2200, 2400, 2700, 3100]
-        col = 1
-        for threshold in thresholds:
-            if SJVI < threshold:
-                break
-            col += 1
+        col = 1 + sum([1 for t in thresholds if SJVI >= t])
         
-        if date.month == 10 and date.day == 20:
+        if timestep.month == 10 and timestep.day == 20:
             IFR = (schedule[1][col] + schedule[2][col]) / 2
         else:
-            if date.month == 10 and date.day < 15:
+            if timestep.month == 10 and timestep.day < 15:
                 row = 1
-            elif date.month >= 10 or date.month <= 5:
+            elif timestep.month >= 10 or timestep.month <= 5:
                 row = 2
             else:
                 row = 3
             IFR = schedule[row][col]
         
         pulse_flow = 0
-        if date.month == 4 and date.day == 30:
+        if timestep.month == 4 and timestep.day == 30:
             pulse_flow = 700
-        elif date.month == 4 and date.day == 20 or date.month == 5 and date.day == 10:
+        elif timestep.month == 4 and timestep.day == 20 or timestep.month == 5 and timestep.day == 10:
             pulse_flow = 350
             
         return max(IFR, pulse_flow, 100)
