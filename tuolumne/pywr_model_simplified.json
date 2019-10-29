@@ -663,10 +663,6 @@
             "kind": "cubic",
             "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
         },
-        "Cherry Lake/Observed Storage": {
-            "type": "Cherry_Lake_Observed_Storage",
-            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
-        },
         "Cherry Lake/Storage Demand": {
             "type": "Cherry_Lake_Storage_Demand",
             "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
@@ -832,10 +828,6 @@
             ],
             "kind": "cubic",
             "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "Hetch Hetchy Reservoir/Observed Storage": {
-            "type": "Hetch_Hetchy_Reservoir_Observed_Storage",
-            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
         },
         "Hetch Hetchy Reservoir/Storage Demand": {
             "type": "Hetch_Hetchy_Reservoir_Storage_Demand",
@@ -1189,10 +1181,6 @@
             "kind": "cubic",
             "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
         },
-        "Lake Eleanor/Observed Storage": {
-            "type": "Lake_Eleanor_Observed_Storage",
-            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
-        },
         "Lake Eleanor/Storage Demand": {
             "type": "Lake_Eleanor_Storage_Demand",
             "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
@@ -1376,10 +1364,6 @@
             "type": "NumpyArrayStorageRecorder",
             "node": "Cherry Lake"
         },
-        "Cherry Lake/observed storage": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "Cherry Lake/Observed Storage"
-        },
         "Dion R Holm PH/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Dion R Holm PH"
@@ -1403,10 +1387,6 @@
         "Hetch Hetchy Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Hetch Hetchy Reservoir"
-        },
-        "Hetch Hetchy Reservoir/observed storage": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "Hetch Hetchy Reservoir/Observed Storage"
         },
         "IFR bl Cherry Lake/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -1455,10 +1435,6 @@
         "Lake Eleanor/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Lake Eleanor"
-        },
-        "Lake Eleanor/observed storage": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "Lake Eleanor/Observed Storage"
         },
         "Moccasin PH/flow": {
             "type": "NumpyArrayNodeRecorder",
