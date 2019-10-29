@@ -538,7 +538,7 @@ def run_model(basin, network_key, include_planning=False, debug=False):
             break
     total_seconds = (datetime.now() - now).total_seconds()
     print('Total run: {} seconds'.format(total_seconds))
-    print('Monthly overhead: {} seconds (:02% of total)'.format(monthly_seconds, monthly_seconds / total_seconds * 100))
+    print('Monthly overhead: {} seconds ({:02}% of total)'.format(monthly_seconds, monthly_seconds / total_seconds * 100))
 
     # save results to CSV
 

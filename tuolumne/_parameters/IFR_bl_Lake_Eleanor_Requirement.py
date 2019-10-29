@@ -7,7 +7,7 @@ class IFR_bl_Lake_Eleanor_Requirement(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
-        schedule = self.get("IFR bl Lake Eleanor/IFR Schedule", **kwargs)
+        schedule = self.model.parameters["IFR bl Lake Eleanor/IFR Schedule"].array()
         
         is_pumping = True
         
@@ -35,7 +35,12 @@ class IFR_bl_Lake_Eleanor_Requirement(WaterLPParameter):
 
     @classmethod
     def load(cls, model, data):
-        return cls(model, **data)
+        try:
+            return cls(model, **data)
+        except:
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
+            raise
         
 IFR_bl_Lake_Eleanor_Requirement.register()
 print(" [*] IFR_bl_Lake_Eleanor_Requirement successfully registered")

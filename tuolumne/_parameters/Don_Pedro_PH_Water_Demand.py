@@ -20,7 +20,12 @@ class Don_Pedro_PH_Water_Demand(WaterLPParameter):
 
     @classmethod
     def load(cls, model, data):
-        return cls(model, **data)
+        try:
+            return cls(model, **data)
+        except:
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
+            raise
         
 Don_Pedro_PH_Water_Demand.register()
 print(" [*] Don_Pedro_PH_Water_Demand successfully registered")

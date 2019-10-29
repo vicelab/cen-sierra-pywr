@@ -21,7 +21,12 @@ class TUOLUMNE_R_AB_EARLY_INTAKE_NR_MATHER_CA_11276600_Observed_Flow(WaterLPPara
 
     @classmethod
     def load(cls, model, data):
-        return cls(model, **data)
+        try:
+            return cls(model, **data)
+        except:
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
+            raise
         
 TUOLUMNE_R_AB_EARLY_INTAKE_NR_MATHER_CA_11276600_Observed_Flow.register()
 print(" [*] TUOLUMNE_R_AB_EARLY_INTAKE_NR_MATHER_CA_11276600_Observed_Flow successfully registered")

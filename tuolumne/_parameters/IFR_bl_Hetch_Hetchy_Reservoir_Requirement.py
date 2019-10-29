@@ -15,7 +15,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Requirement(WaterLPParameter):
         wyt = self.get("IFR bl Hetch Hetchy Reservoir/Water Year Type", **kwargs)
         
         # get schedule
-        schedule = self.get("IFR bl Hetch Hetchy Reservoir/IFR Schedule", **kwargs)
+        schedule = self.model.parameters["IFR bl Hetch Hetchy Reservoir/IFR Schedule"].array()
         
         # get row & column
         row = date.month + 1
@@ -58,7 +58,12 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Requirement(WaterLPParameter):
 
     @classmethod
     def load(cls, model, data):
-        return cls(model, **data)
+        try:
+            return cls(model, **data)
+        except:
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
+            raise
         
 IFR_bl_Hetch_Hetchy_Reservoir_Requirement.register()
 print(" [*] IFR_bl_Hetch_Hetchy_Reservoir_Requirement successfully registered")

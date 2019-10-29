@@ -15,17 +15,25 @@ class NumpyArray(Parameter):
         super().__init__(model, **kwargs)
         if type(value) == str:
             value = literal_eval(value)
-        self._value = np.array(value)
+        self._value = np.array(value, dtype=object)
+
+    def array(self, row=None, col=None):
+        if row is None and col is None:
+            return self._value
+        else:
+            return 0
 
     def value(self, timestep=None, scenario_index=None):
         # called once per timestep for each scenario
-        return self._value
+        return 0
 
     @classmethod
     def load(cls, model, data):
         # called when the parameter is loaded from a JSON document
-        value = data.pop("value")
+        value = data.pop("value", None)
+        data.pop("comment", None)
         return cls(model, value, **data)
+
 NumpyArray.register()  # register the name so it can be loaded from JSON
 print(' [*] NumpyArray parameter registered')
 
@@ -181,3 +189,4 @@ class WaterLPParameter(Parameter):
             self.store[hashval] = data
 
         return data
+

@@ -20,7 +20,12 @@ class Algerine_Delivery(WaterLPParameter):
 
     @classmethod
     def load(cls, model, data):
-        return cls(model, **data)
+        try:
+            return cls(model, **data)
+        except:
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
+            raise
         
 Algerine_Delivery.register()
 print(" [*] Algerine_Delivery successfully registered")

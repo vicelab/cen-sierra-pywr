@@ -22,7 +22,12 @@ class Hetch_Hetchy_Reservoir_Observed_Storage(WaterLPParameter):
 
     @classmethod
     def load(cls, model, data):
-        return cls(model, **data)
+        try:
+            return cls(model, **data)
+        except:
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
+            raise
         
 Hetch_Hetchy_Reservoir_Observed_Storage.register()
 print(" [*] Hetch_Hetchy_Reservoir_Observed_Storage successfully registered")

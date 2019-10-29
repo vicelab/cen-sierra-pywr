@@ -8,7 +8,7 @@ class IFR_bl_Don_Pedro_Reservoir_Water_Year_Type(WaterLPParameter):
     def _value(self, timestep, scenario_index):
         
         # San Joaquin Valley Index
-        SJVI = [1970, 2060, 2720, 3550, 5580, 2180, 1710, 1160][date.year - 2007]
+        SJVI = self.get("WYI_SJValley")
         
         return SJVI
         
@@ -23,7 +23,12 @@ class IFR_bl_Don_Pedro_Reservoir_Water_Year_Type(WaterLPParameter):
 
     @classmethod
     def load(cls, model, data):
-        return cls(model, **data)
+        try:
+            return cls(model, **data)
+        except:
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
+            raise
         
 IFR_bl_Don_Pedro_Reservoir_Water_Year_Type.register()
 print(" [*] IFR_bl_Don_Pedro_Reservoir_Water_Year_Type successfully registered")

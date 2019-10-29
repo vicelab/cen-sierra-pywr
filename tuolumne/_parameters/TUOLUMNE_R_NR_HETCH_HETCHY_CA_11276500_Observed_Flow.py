@@ -21,7 +21,12 @@ class TUOLUMNE_R_NR_HETCH_HETCHY_CA_11276500_Observed_Flow(WaterLPParameter):
 
     @classmethod
     def load(cls, model, data):
-        return cls(model, **data)
+        try:
+            return cls(model, **data)
+        except:
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
+            raise
         
 TUOLUMNE_R_NR_HETCH_HETCHY_CA_11276500_Observed_Flow.register()
 print(" [*] TUOLUMNE_R_NR_HETCH_HETCHY_CA_11276500_Observed_Flow successfully registered")

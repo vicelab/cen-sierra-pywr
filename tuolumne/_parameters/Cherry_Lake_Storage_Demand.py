@@ -7,7 +7,8 @@ class Cherry_Lake_Storage_Demand(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
-        return min({22: 0.0, 39: 1.0, 40: 0.0}.get(period, 0)*self.get("Cherry Lake/Storage Capacity", **kwargs), self.get("node/92018/65", **kwargs))
+        # min({22: 0.0, 39: 1.0, 40: 0.0}.get(period, 0)*self.get("Cherry Lake/Storage Capacity", **kwargs), self.get("node/92018/65", **kwargs))
+        return 0
         
     def value(self, timestep, scenario_index):
         try:
@@ -20,7 +21,12 @@ class Cherry_Lake_Storage_Demand(WaterLPParameter):
 
     @classmethod
     def load(cls, model, data):
-        return cls(model, **data)
+        try:
+            return cls(model, **data)
+        except:
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
+            raise
         
 Cherry_Lake_Storage_Demand.register()
 print(" [*] Cherry_Lake_Storage_Demand successfully registered")

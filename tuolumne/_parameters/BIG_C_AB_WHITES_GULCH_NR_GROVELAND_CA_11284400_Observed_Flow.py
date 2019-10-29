@@ -21,7 +21,12 @@ class BIG_C_AB_WHITES_GULCH_NR_GROVELAND_CA_11284400_Observed_Flow(WaterLPParame
 
     @classmethod
     def load(cls, model, data):
-        return cls(model, **data)
+        try:
+            return cls(model, **data)
+        except:
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
+            raise
         
 BIG_C_AB_WHITES_GULCH_NR_GROVELAND_CA_11284400_Observed_Flow.register()
 print(" [*] BIG_C_AB_WHITES_GULCH_NR_GROVELAND_CA_11284400_Observed_Flow successfully registered")

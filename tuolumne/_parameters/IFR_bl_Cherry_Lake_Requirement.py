@@ -25,7 +25,12 @@ class IFR_bl_Cherry_Lake_Requirement(WaterLPParameter):
 
     @classmethod
     def load(cls, model, data):
-        return cls(model, **data)
+        try:
+            return cls(model, **data)
+        except:
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
+            raise
         
 IFR_bl_Cherry_Lake_Requirement.register()
 print(" [*] IFR_bl_Cherry_Lake_Requirement successfully registered")

@@ -22,7 +22,12 @@ class Lake_Eleanor_Observed_Storage(WaterLPParameter):
 
     @classmethod
     def load(cls, model, data):
-        return cls(model, **data)
+        try:
+            return cls(model, **data)
+        except:
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
+            raise
         
 Lake_Eleanor_Observed_Storage.register()
 print(" [*] Lake_Eleanor_Observed_Storage successfully registered")

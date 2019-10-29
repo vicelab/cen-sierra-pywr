@@ -21,7 +21,12 @@ class M_TUOLUMNE_R_A_OAKLAND_RECREATION_CAMP_CA_11282000_Observed_Flow(WaterLPPa
 
     @classmethod
     def load(cls, model, data):
-        return cls(model, **data)
+        try:
+            return cls(model, **data)
+        except:
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
+            raise
         
 M_TUOLUMNE_R_A_OAKLAND_RECREATION_CAMP_CA_11282000_Observed_Flow.register()
 print(" [*] M_TUOLUMNE_R_A_OAKLAND_RECREATION_CAMP_CA_11282000_Observed_Flow successfully registered")

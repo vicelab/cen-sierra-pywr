@@ -5,7 +5,7 @@
         "minimum_version": "1.0.0"
     },
     "timestepper": {
-        "start": "1951-10-01",
+        "start": "2000-10-01",
         "end": "2013-09-30",
         "timestep": 1
     },
@@ -2440,23 +2440,6 @@
             "type": "Cherry_Lake_Storage_Demand",
             "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
         },
-        "Cherry Lake/Air Temperature": {
-            "type": "Cherry_Lake_Air_Temperature",
-            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
-        },
-        "Cherry Lake/Net Incoming Radiation": {
-            "type": "Cherry_Lake_Net_Incoming_Radiation",
-            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
-        },
-        "Cherry Lake/Humidity": {
-            "type": "Cherry_Lake_Humidity",
-            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"%\"}"
-        },
-        "Cherry Lake/Cloudiness Fraction": {
-            "type": "constant",
-            "value": 0.5,
-            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
-        },
         "CLAVEY R NR BUCK MEADOWS CA_11283500/Observed Flow": {
             "type": "CLAVEY_R_NR_BUCK_MEADOWS_CA_11283500_Observed_Flow",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
@@ -2638,23 +2621,6 @@
         "Hetch Hetchy Reservoir/Storage Demand": {
             "type": "Hetch_Hetchy_Reservoir_Storage_Demand",
             "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
-        },
-        "Hetch Hetchy Reservoir/Air Temperature": {
-            "type": "Hetch_Hetchy_Reservoir_Air_Temperature",
-            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
-        },
-        "Hetch Hetchy Reservoir/Net Incoming Radiation": {
-            "type": "Hetch_Hetchy_Reservoir_Net_Incoming_Radiation",
-            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
-        },
-        "Hetch Hetchy Reservoir/Humidity": {
-            "type": "Hetch_Hetchy_Reservoir_Humidity",
-            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"%\"}"
-        },
-        "Hetch Hetchy Reservoir/Cloudiness Fraction": {
-            "type": "constant",
-            "value": 0.5,
-            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         },
         "IFR bl Cherry Lake/Requirement": {
             "type": "IFR_bl_Cherry_Lake_Requirement",
@@ -3012,23 +2978,6 @@
             "type": "Lake_Eleanor_Storage_Demand",
             "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
         },
-        "Lake Eleanor/Air Temperature": {
-            "type": "Lake_Eleanor_Air_Temperature",
-            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
-        },
-        "Lake Eleanor/Net Incoming Radiation": {
-            "type": "Lake_Eleanor_Net_Incoming_Radiation",
-            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
-        },
-        "Lake Eleanor/Humidity": {
-            "type": "Lake_Eleanor_Humidity",
-            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"%\"}"
-        },
-        "Lake Eleanor/Cloudiness Fraction": {
-            "type": "constant",
-            "value": 0.5,
-            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
-        },
         "M TUOLUMNE R A OAKLAND RECREATION CAMP CA_11282000/Observed Flow": {
             "type": "M_TUOLUMNE_R_A_OAKLAND_RECREATION_CAMP_CA_11282000_Observed_Flow",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
@@ -3217,6 +3166,14 @@
             "type": "constant",
             "value": 0.02832058906825262,
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
+        },
+        "WYT_SJValley": {
+            "type": "WYT_SJValley",
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
+        },
+        "WYI_SJValley": {
+            "type": "WYI_SJValley",
+            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"ac-ft\"}"
         }
     },
     "recorders": {

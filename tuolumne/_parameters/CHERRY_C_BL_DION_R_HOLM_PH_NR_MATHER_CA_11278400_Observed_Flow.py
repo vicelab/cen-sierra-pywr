@@ -21,7 +21,12 @@ class CHERRY_C_BL_DION_R_HOLM_PH_NR_MATHER_CA_11278400_Observed_Flow(WaterLPPara
 
     @classmethod
     def load(cls, model, data):
-        return cls(model, **data)
+        try:
+            return cls(model, **data)
+        except:
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
+            raise
         
 CHERRY_C_BL_DION_R_HOLM_PH_NR_MATHER_CA_11278400_Observed_Flow.register()
 print(" [*] CHERRY_C_BL_DION_R_HOLM_PH_NR_MATHER_CA_11278400_Observed_Flow successfully registered")

@@ -21,7 +21,12 @@ class CLAVEY_R_NR_BUCK_MEADOWS_CA_11283500_Observed_Flow(WaterLPParameter):
 
     @classmethod
     def load(cls, model, data):
-        return cls(model, **data)
+        try:
+            return cls(model, **data)
+        except:
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
+            raise
         
 CLAVEY_R_NR_BUCK_MEADOWS_CA_11283500_Observed_Flow.register()
 print(" [*] CLAVEY_R_NR_BUCK_MEADOWS_CA_11283500_Observed_Flow successfully registered")

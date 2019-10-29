@@ -11,7 +11,7 @@ class Don_Pedro_Reservoir_Storage_Demand(WaterLPParameter):
         
         targets = [1690,1690,1690,1717.6,2002.4,2030,2030,2030,1773,1690,1690,1690]
         #return [1070, targets[date.month - 1] - 570]
-        return targets[date.month - 1] # TAF
+        return targets[timestep.month - 1] # TAF
         
     def value(self, timestep, scenario_index):
         try:
@@ -24,7 +24,12 @@ class Don_Pedro_Reservoir_Storage_Demand(WaterLPParameter):
 
     @classmethod
     def load(cls, model, data):
-        return cls(model, **data)
+        try:
+            return cls(model, **data)
+        except:
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
+            raise
         
 Don_Pedro_Reservoir_Storage_Demand.register()
 print(" [*] Don_Pedro_Reservoir_Storage_Demand successfully registered")

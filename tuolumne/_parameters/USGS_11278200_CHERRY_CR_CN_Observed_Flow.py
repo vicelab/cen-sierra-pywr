@@ -21,7 +21,12 @@ class USGS_11278200_CHERRY_CR_CN_Observed_Flow(WaterLPParameter):
 
     @classmethod
     def load(cls, model, data):
-        return cls(model, **data)
+        try:
+            return cls(model, **data)
+        except:
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
+            raise
         
 USGS_11278200_CHERRY_CR_CN_Observed_Flow.register()
 print(" [*] USGS_11278200_CHERRY_CR_CN_Observed_Flow successfully registered")
