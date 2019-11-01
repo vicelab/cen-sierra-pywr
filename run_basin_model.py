@@ -92,6 +92,14 @@ def simplify_network(m, delete_gauges=False, delete_observed=True):
 
 
 def prepare_planning_model(m, outpath, steps=12, debug=False):
+    """
+    Convert the daily scheduling model to a planning model.
+    :param m:
+    :param outpath:
+    :param steps:
+    :param debug:
+    :return:
+    """
     # update time step
     # m['timestepper']['end'] = m['timestepper']['start']
     # m['timestepper']['timestep'] = 'M'
