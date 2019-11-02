@@ -607,11 +607,6 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "TUO-L-CON1",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
             "name": "TUO-L-CON2",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}"
@@ -632,17 +627,42 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "TUO-L-RIV1.1",
-            "type": "River",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
             "name": "TUO-L-RIV1.2.1.1.1",
             "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
             "name": "TUO-L-RIV1.2.1.1.2",
+            "type": "River",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "TUOLU-L-CON1",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "TUOLU-L-CON2",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "TUOLU-L-CON3",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "TUOLU-L-CON4",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "TUOLU-L-CON5",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "TUOLU-L-RIV1",
             "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
         },
@@ -757,8 +777,18 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
+            "name": "Div Before Don Pedro HP",
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
             "name": "Diversion bl Don Pedro Reservoir",
             "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "Don Pedro Flood Control",
+            "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -766,6 +796,11 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "max_flow": "Don Pedro PH/Water Demand"
+        },
+        {
+            "name": "Don Pedro Release Req",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Don Pedro Reservoir",
@@ -2267,14 +2302,6 @@
             "SFPUC"
         ],
         [
-            "Don Pedro Reservoir",
-            "TUO-L-CON1"
-        ],
-        [
-            "TUO-L-CON1",
-            "Don Pedro PH"
-        ],
-        [
             "Don Pedro PH",
             "TUO-L-CON2"
         ],
@@ -2307,14 +2334,6 @@
             "Tuolumne River Outflow"
         ],
         [
-            "Don Pedro Reservoir",
-            "TUO-L-RIV1.1"
-        ],
-        [
-            "TUO-L-RIV1.1",
-            "TUO_R-N-JUN3"
-        ],
-        [
             "TUO_R-N-JUN3",
             "TUO-L-RIV1.2.1.1.1"
         ],
@@ -2329,6 +2348,54 @@
         [
             "TUO-L-RIV1.2.1.1.2",
             "IFR bl Don Pedro Reservoir"
+        ],
+        [
+            "Don Pedro Reservoir",
+            "TUOLU-L-CON1"
+        ],
+        [
+            "TUOLU-L-CON1",
+            "Don Pedro Release Req"
+        ],
+        [
+            "Don Pedro Reservoir",
+            "TUOLU-L-CON2"
+        ],
+        [
+            "TUOLU-L-CON2",
+            "Don Pedro Flood Control"
+        ],
+        [
+            "Don Pedro Release Req",
+            "TUOLU-L-CON3"
+        ],
+        [
+            "TUOLU-L-CON3",
+            "Div Before Don Pedro HP"
+        ],
+        [
+            "Don Pedro Flood Control",
+            "TUOLU-L-CON4"
+        ],
+        [
+            "TUOLU-L-CON4",
+            "Div Before Don Pedro HP"
+        ],
+        [
+            "Div Before Don Pedro HP",
+            "TUOLU-L-CON5"
+        ],
+        [
+            "TUOLU-L-CON5",
+            "Don Pedro PH"
+        ],
+        [
+            "Div Before Don Pedro HP",
+            "TUOLU-L-RIV1"
+        ],
+        [
+            "TUOLU-L-RIV1",
+            "TUO_R-N-JUN3"
         ],
         [
             "Moccasin Ck Inflow",
@@ -3027,133 +3094,133 @@
         },
         "TUO_01 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb01.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb01.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_02 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb02.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb02.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_03 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb03.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb03.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_04 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb04.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb04.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_05 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb05.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb05.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_06 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb06.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb06.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_07 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb07.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb07.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_08 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb08.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb08.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_09 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb09.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb09.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_10 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb10.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb10.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_11 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb11.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb11.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_12 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb12.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb12.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_13 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb13.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb13.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_14 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb14.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb14.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_15 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb15.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb15.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_16 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb16.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb16.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_17 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb17.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb17.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_18 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb18.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb18.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_19 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb19.csv",
+            "url": "./data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb19.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
@@ -3249,6 +3316,10 @@
             "type": "NumpyArrayParameterRecorder",
             "parameter": "Dion R Holm PH/Water Demand"
         },
+        "Don Pedro Flood Control/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Don Pedro Flood Control"
+        },
         "Don Pedro PH/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Don Pedro PH"
@@ -3256,6 +3327,10 @@
         "Don Pedro PH/water demand": {
             "type": "NumpyArrayParameterRecorder",
             "parameter": "Don Pedro PH/Water Demand"
+        },
+        "Don Pedro Release Req/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Don Pedro Release Req"
         },
         "Don Pedro Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
