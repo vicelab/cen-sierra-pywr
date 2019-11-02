@@ -1337,6 +1337,12 @@
             "index_col": "Date",
             "parse_dates": true
         },
+        "MID Demand": {
+            "type": "MID_Demand"
+        },
+        "TID Demand": {
+            "type": "TID_Demand"
+        },
         "cfs2cms": {
             "type": "constant",
             "value": 0.02832058906825262,
@@ -1349,6 +1355,16 @@
         "WYI_SJValley": {
             "type": "WYI_SJValley",
             "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"ac-ft\"}"
+        }
+    },
+    "tables": {
+        "MID_Demand": {
+            "url": "../data/Tuolumne River/Management/BAU/Demand/ModestoIrrigationDistrict_Demand_cfs.csv",
+            "index_col": "Date"
+        },
+        "TID_Demand": {
+            "url": "../data/Tuolumne River/Management/BAU/Demand/TerlockIrrigationDistrict_Demand_cfs.csv",
+            "index_col": "Date"
         }
     },
     "recorders": {
