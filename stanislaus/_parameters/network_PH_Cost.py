@@ -49,10 +49,9 @@ class network_PH_Cost(WaterLPParameter):
         price_per_mcm = price_per_kWh * gamma * head * eta * 24 / 1e6
 
         # We can add some conversion function here to go from price to Pywr cost
-        # For now, divide by 100, which results in costs of about -5 to -120
+        # For now, divide by 100, which results in costs of about -5 to -170
         # E-flow costs can be set to less than this, or say -1000
         cost = - price_per_mcm / 100
-        print(cost)
         return cost
 
     def value(self, timestep, scenario_index):
