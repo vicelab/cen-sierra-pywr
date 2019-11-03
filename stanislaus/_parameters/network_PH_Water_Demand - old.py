@@ -6,27 +6,21 @@ from utilities.converter import convert
 class network_PH_Water_Demand(WaterLPParameter):
     """"""
 
-    def __init__(self, model, node, block, **kwargs):
-        super().__init__(model, **kwargs)
-        self.node = node
-        self.block = block
-
     def _value(self, timestep, scenario_index, mode='scheduling'):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
 
-        block = self.model.tables["Price Blocks"].at[timestep.datetime, str(self.block)]
-        turbine_capacity = self.model.parameters[self.res_name + '/Turbine Capacity']\
-            .value(timestep, scenario_index)
-        demand_mcm = turbine_capacity * block * 3600 * 24 / 1e6
+        nblocks = self.model.parameters['Blocks'].value(timestep, scenario_index)
+        q_demand = self.model.parameters[self.res_name + '/Turbine Capacity'] \
+                       .value(timestep, scenario_index) * 3600 * 24 / nblocks
 
         if mode == 'planning':
-            demand_mcm *= self.days_in_month()
+            q_demand *= self.days_in_month()
 
-        return demand_mcm
+        return q_demand
 
     def value(self, timestep, scenario_index):
         try:
-            return self._value(timestep, scenario_index, mode=self.mode)
+            return self._value(timestep, scenario_index, mode=self.mode) / 1e6
         except Exception as err:
             print('\nERROR for parameter {}'.format(self.name))
             print('File where error occurred: {}'.format(__file__))
@@ -34,9 +28,7 @@ class network_PH_Water_Demand(WaterLPParameter):
 
     @classmethod
     def load(cls, model, data):
-        node = data.pop('node', None)
-        block = data.pop('block', None)
-        return cls(model, node, block, **data)
+        return cls(model, **data)
 
 
 network_PH_Water_Demand.register()
