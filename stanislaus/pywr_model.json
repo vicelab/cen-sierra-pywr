@@ -68,6 +68,7 @@
         {
             "name": "Angels PH",
             "type": "PiecewiseHydropower",
+            "head": 135.3,
             "max_flow": [
                 "Angels PH/Water Demand/1",
                 "Angels PH/Water Demand/2",
@@ -112,19 +113,9 @@
         },
         {
             "name": "Beardsley PH",
-            "type": "PiecewiseHydropower",
-            "max_flow": [
-                "Beardsley PH/Water Demand/1",
-                "Beardsley PH/Water Demand/2",
-                "Beardsley PH/Water Demand/3",
-                "Beardsley PH/Water Demand/4"
-            ],
-            "cost": [
-                "Beardsley PH/Cost/1",
-                "Beardsley PH/Cost/2",
-                "Beardsley PH/Cost/3",
-                "Beardsley PH/Cost/4"
-            ],
+            "type": "Hydropower",
+            "max_flow": "Beardsley PH/Turbine Capacity",
+            "cost": -1,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -183,6 +174,7 @@
         {
             "name": "Collierville PH",
             "type": "PiecewiseHydropower",
+            "head": 691.896,
             "max_flow": [
                 "Collierville PH/Water Demand/1",
                 "Collierville PH/Water Demand/2",
@@ -215,6 +207,7 @@
         {
             "name": "Donnells PH",
             "type": "PiecewiseHydropower",
+            "head": 350.8,
             "max_flow": [
                 "Donnells PH/Water Demand/1",
                 "Donnells PH/Water Demand/2",
@@ -472,6 +465,7 @@
         {
             "name": "Murphys PH",
             "type": "PiecewiseHydropower",
+            "head": 208.5,
             "max_flow": [
                 "Murphys PH/Water Demand/1",
                 "Murphys PH/Water Demand/2",
@@ -496,19 +490,9 @@
         },
         {
             "name": "New Melones PH",
-            "type": "PiecewiseHydropower",
-            "max_flow": [
-                "New Melones PH/Water Demand/1",
-                "New Melones PH/Water Demand/2",
-                "New Melones PH/Water Demand/3",
-                "New Melones PH/Water Demand/4"
-            ],
-            "cost": [
-                "New Melones PH/Cost/1",
-                "New Melones PH/Cost/2",
-                "New Melones PH/Cost/3",
-                "New Melones PH/Cost/4"
-            ],
+            "type": "Hydropower",
+            "max_flow": "New Melones PH/Turbine Capacity",
+            "cost": -1,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -523,6 +507,7 @@
         {
             "name": "New Spicer Meadow PH",
             "type": "PiecewiseHydropower",
+            "head": 50,
             "max_flow": [
                 "New Spicer Meadow PH/Water Demand/1",
                 "New Spicer Meadow PH/Water Demand/2",
@@ -588,6 +573,7 @@
         {
             "name": "Phoenix PH",
             "type": "PiecewiseHydropower",
+            "head": 361.7976,
             "max_flow": [
                 "Phoenix PH/Water Demand/1",
                 "Phoenix PH/Water Demand/2",
@@ -623,6 +609,7 @@
         {
             "name": "Sand Bar PH",
             "type": "PiecewiseHydropower",
+            "head": 130,
             "max_flow": [
                 "Sand Bar PH/Water Demand/1",
                 "Sand Bar PH/Water Demand/2",
@@ -681,6 +668,7 @@
         {
             "name": "Spring Gap PH",
             "type": "PiecewiseHydropower",
+            "head": 568.452,
             "max_flow": [
                 "Spring Gap PH/Water Demand/1",
                 "Spring Gap PH/Water Demand/2",
@@ -718,6 +706,7 @@
         {
             "name": "Stanislaus PH",
             "type": "PiecewiseHydropower",
+            "head": 463.296,
             "max_flow": [
                 "Stanislaus PH/Water Demand/1",
                 "Stanislaus PH/Water Demand/2",
@@ -2282,39 +2271,7 @@
             ],
             "kind": "cubic"
         },
-        "Beardsley PH/Water Demand/1": {
-            "type": "constant",
-            "value": 10
-        },
-        "Beardsley PH/Water Demand/2": {
-            "type": "constant",
-            "value": 10
-        },
-        "Beardsley PH/Water Demand/3": {
-            "type": "constant",
-            "value": 10
-        },
-        "Beardsley PH/Water Demand/4": {
-            "type": "constant",
-            "value": 10
-        },
-        "Beardsley PH/Cost/1": {
-            "type": "network_PH_Cost"
-        },
-        "Beardsley PH/Cost/2": {
-            "type": "network_PH_Cost"
-        },
-        "Beardsley PH/Cost/3": {
-            "type": "network_PH_Cost"
-        },
-        "Beardsley PH/Cost/4": {
-            "type": "network_PH_Cost"
-        },
         "Beardsley PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 10
-        },
-        "Beardsley PH/Demand Constant": {
             "type": "constant",
             "value": 10
         },
@@ -2681,30 +2638,6 @@
         "New Melones PH/Turbine Capacity": {
             "type": "constant",
             "value": 203.0
-        },
-        "New Melones PH/Water Demand/1": {
-            "type": "network_PH_Water_Demand"
-        },
-        "New Melones PH/Water Demand/2": {
-            "type": "network_PH_Water_Demand"
-        },
-        "New Melones PH/Water Demand/3": {
-            "type": "network_PH_Water_Demand"
-        },
-        "New Melones PH/Water Demand/4": {
-            "type": "network_PH_Water_Demand"
-        },
-        "New Melones PH/Cost/1": {
-            "type": "network_PH_Cost"
-        },
-        "New Melones PH/Cost/2": {
-            "type": "network_PH_Cost"
-        },
-        "New Melones PH/Cost/3": {
-            "type": "network_PH_Cost"
-        },
-        "New Melones PH/Cost/4": {
-            "type": "network_PH_Cost"
         },
         "Release from New Melones/Release": {
             "type": "New_Melones_Release_Policy"

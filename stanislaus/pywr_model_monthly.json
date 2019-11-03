@@ -17,14 +17,14 @@
             "name": "Angels PH/1",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Angels PH/Water Demand/1",
-                "Angels PH/Water Demand/1",
-                "Angels PH/Water Demand/1",
-                "Angels PH/Water Demand/1",
-                "Angels PH/Water Demand/1",
-                "Angels PH/Water Demand/1",
-                "Angels PH/Water Demand/1",
-                "Angels PH/Water Demand/1"
+                "Angels PH/Water Demand/1/1",
+                "Angels PH/Water Demand/2/1",
+                "Angels PH/Water Demand/3/1",
+                "Angels PH/Water Demand/4/1",
+                "Angels PH/Water Demand/5/1",
+                "Angels PH/Water Demand/6/1",
+                "Angels PH/Water Demand/7/1",
+                "Angels PH/Water Demand/8/1"
             ],
             "cost": [
                 "Angels PH/Cost/1/1",
@@ -42,14 +42,14 @@
             "name": "Angels PH/2",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Angels PH/Water Demand/2",
-                "Angels PH/Water Demand/2",
-                "Angels PH/Water Demand/2",
-                "Angels PH/Water Demand/2",
-                "Angels PH/Water Demand/2",
-                "Angels PH/Water Demand/2",
-                "Angels PH/Water Demand/2",
-                "Angels PH/Water Demand/2"
+                "Angels PH/Water Demand/1/2",
+                "Angels PH/Water Demand/2/2",
+                "Angels PH/Water Demand/3/2",
+                "Angels PH/Water Demand/4/2",
+                "Angels PH/Water Demand/5/2",
+                "Angels PH/Water Demand/6/2",
+                "Angels PH/Water Demand/7/2",
+                "Angels PH/Water Demand/8/2"
             ],
             "cost": [
                 "Angels PH/Cost/1/2",
@@ -67,14 +67,14 @@
             "name": "Angels PH/3",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Angels PH/Water Demand/3",
-                "Angels PH/Water Demand/3",
-                "Angels PH/Water Demand/3",
-                "Angels PH/Water Demand/3",
-                "Angels PH/Water Demand/3",
-                "Angels PH/Water Demand/3",
-                "Angels PH/Water Demand/3",
-                "Angels PH/Water Demand/3"
+                "Angels PH/Water Demand/1/3",
+                "Angels PH/Water Demand/2/3",
+                "Angels PH/Water Demand/3/3",
+                "Angels PH/Water Demand/4/3",
+                "Angels PH/Water Demand/5/3",
+                "Angels PH/Water Demand/6/3",
+                "Angels PH/Water Demand/7/3",
+                "Angels PH/Water Demand/8/3"
             ],
             "cost": [
                 "Angels PH/Cost/1/3",
@@ -183,14 +183,14 @@
             "name": "Beardsley PH/1",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Beardsley PH/Water Demand/1",
-                "Beardsley PH/Water Demand/1",
-                "Beardsley PH/Water Demand/1",
-                "Beardsley PH/Water Demand/1",
-                "Beardsley PH/Water Demand/1",
-                "Beardsley PH/Water Demand/1",
-                "Beardsley PH/Water Demand/1",
-                "Beardsley PH/Water Demand/1"
+                "Beardsley PH/Water Demand/1/1",
+                "Beardsley PH/Water Demand/2/1",
+                "Beardsley PH/Water Demand/3/1",
+                "Beardsley PH/Water Demand/4/1",
+                "Beardsley PH/Water Demand/5/1",
+                "Beardsley PH/Water Demand/6/1",
+                "Beardsley PH/Water Demand/7/1",
+                "Beardsley PH/Water Demand/8/1"
             ],
             "cost": [
                 "Beardsley PH/Cost/1/1",
@@ -208,14 +208,14 @@
             "name": "Beardsley PH/2",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Beardsley PH/Water Demand/2",
-                "Beardsley PH/Water Demand/2",
-                "Beardsley PH/Water Demand/2",
-                "Beardsley PH/Water Demand/2",
-                "Beardsley PH/Water Demand/2",
-                "Beardsley PH/Water Demand/2",
-                "Beardsley PH/Water Demand/2",
-                "Beardsley PH/Water Demand/2"
+                "Beardsley PH/Water Demand/1/2",
+                "Beardsley PH/Water Demand/2/2",
+                "Beardsley PH/Water Demand/3/2",
+                "Beardsley PH/Water Demand/4/2",
+                "Beardsley PH/Water Demand/5/2",
+                "Beardsley PH/Water Demand/6/2",
+                "Beardsley PH/Water Demand/7/2",
+                "Beardsley PH/Water Demand/8/2"
             ],
             "cost": [
                 "Beardsley PH/Cost/1/2",
@@ -233,14 +233,14 @@
             "name": "Beardsley PH/3",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Beardsley PH/Water Demand/3",
-                "Beardsley PH/Water Demand/3",
-                "Beardsley PH/Water Demand/3",
-                "Beardsley PH/Water Demand/3",
-                "Beardsley PH/Water Demand/3",
-                "Beardsley PH/Water Demand/3",
-                "Beardsley PH/Water Demand/3",
-                "Beardsley PH/Water Demand/3"
+                "Beardsley PH/Water Demand/1/3",
+                "Beardsley PH/Water Demand/2/3",
+                "Beardsley PH/Water Demand/3/3",
+                "Beardsley PH/Water Demand/4/3",
+                "Beardsley PH/Water Demand/5/3",
+                "Beardsley PH/Water Demand/6/3",
+                "Beardsley PH/Water Demand/7/3",
+                "Beardsley PH/Water Demand/8/3"
             ],
             "cost": [
                 "Beardsley PH/Cost/1/3",
@@ -273,14 +273,14 @@
             "name": "Collierville PH/1",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Collierville PH/Water Demand/1",
-                "Collierville PH/Water Demand/1",
-                "Collierville PH/Water Demand/1",
-                "Collierville PH/Water Demand/1",
-                "Collierville PH/Water Demand/1",
-                "Collierville PH/Water Demand/1",
-                "Collierville PH/Water Demand/1",
-                "Collierville PH/Water Demand/1"
+                "Collierville PH/Water Demand/1/1",
+                "Collierville PH/Water Demand/2/1",
+                "Collierville PH/Water Demand/3/1",
+                "Collierville PH/Water Demand/4/1",
+                "Collierville PH/Water Demand/5/1",
+                "Collierville PH/Water Demand/6/1",
+                "Collierville PH/Water Demand/7/1",
+                "Collierville PH/Water Demand/8/1"
             ],
             "cost": [
                 "Collierville PH/Cost/1/1",
@@ -298,14 +298,14 @@
             "name": "Collierville PH/2",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Collierville PH/Water Demand/2",
-                "Collierville PH/Water Demand/2",
-                "Collierville PH/Water Demand/2",
-                "Collierville PH/Water Demand/2",
-                "Collierville PH/Water Demand/2",
-                "Collierville PH/Water Demand/2",
-                "Collierville PH/Water Demand/2",
-                "Collierville PH/Water Demand/2"
+                "Collierville PH/Water Demand/1/2",
+                "Collierville PH/Water Demand/2/2",
+                "Collierville PH/Water Demand/3/2",
+                "Collierville PH/Water Demand/4/2",
+                "Collierville PH/Water Demand/5/2",
+                "Collierville PH/Water Demand/6/2",
+                "Collierville PH/Water Demand/7/2",
+                "Collierville PH/Water Demand/8/2"
             ],
             "cost": [
                 "Collierville PH/Cost/1/2",
@@ -323,14 +323,14 @@
             "name": "Collierville PH/3",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Collierville PH/Water Demand/3",
-                "Collierville PH/Water Demand/3",
-                "Collierville PH/Water Demand/3",
-                "Collierville PH/Water Demand/3",
-                "Collierville PH/Water Demand/3",
-                "Collierville PH/Water Demand/3",
-                "Collierville PH/Water Demand/3",
-                "Collierville PH/Water Demand/3"
+                "Collierville PH/Water Demand/1/3",
+                "Collierville PH/Water Demand/2/3",
+                "Collierville PH/Water Demand/3/3",
+                "Collierville PH/Water Demand/4/3",
+                "Collierville PH/Water Demand/5/3",
+                "Collierville PH/Water Demand/6/3",
+                "Collierville PH/Water Demand/7/3",
+                "Collierville PH/Water Demand/8/3"
             ],
             "cost": [
                 "Collierville PH/Cost/1/3",
@@ -348,14 +348,14 @@
             "name": "Donnells PH/1",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Donnells PH/Water Demand/1",
-                "Donnells PH/Water Demand/1",
-                "Donnells PH/Water Demand/1",
-                "Donnells PH/Water Demand/1",
-                "Donnells PH/Water Demand/1",
-                "Donnells PH/Water Demand/1",
-                "Donnells PH/Water Demand/1",
-                "Donnells PH/Water Demand/1"
+                "Donnells PH/Water Demand/1/1",
+                "Donnells PH/Water Demand/2/1",
+                "Donnells PH/Water Demand/3/1",
+                "Donnells PH/Water Demand/4/1",
+                "Donnells PH/Water Demand/5/1",
+                "Donnells PH/Water Demand/6/1",
+                "Donnells PH/Water Demand/7/1",
+                "Donnells PH/Water Demand/8/1"
             ],
             "cost": [
                 "Donnells PH/Cost/1/1",
@@ -373,14 +373,14 @@
             "name": "Donnells PH/2",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Donnells PH/Water Demand/2",
-                "Donnells PH/Water Demand/2",
-                "Donnells PH/Water Demand/2",
-                "Donnells PH/Water Demand/2",
-                "Donnells PH/Water Demand/2",
-                "Donnells PH/Water Demand/2",
-                "Donnells PH/Water Demand/2",
-                "Donnells PH/Water Demand/2"
+                "Donnells PH/Water Demand/1/2",
+                "Donnells PH/Water Demand/2/2",
+                "Donnells PH/Water Demand/3/2",
+                "Donnells PH/Water Demand/4/2",
+                "Donnells PH/Water Demand/5/2",
+                "Donnells PH/Water Demand/6/2",
+                "Donnells PH/Water Demand/7/2",
+                "Donnells PH/Water Demand/8/2"
             ],
             "cost": [
                 "Donnells PH/Cost/1/2",
@@ -398,14 +398,14 @@
             "name": "Donnells PH/3",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Donnells PH/Water Demand/3",
-                "Donnells PH/Water Demand/3",
-                "Donnells PH/Water Demand/3",
-                "Donnells PH/Water Demand/3",
-                "Donnells PH/Water Demand/3",
-                "Donnells PH/Water Demand/3",
-                "Donnells PH/Water Demand/3",
-                "Donnells PH/Water Demand/3"
+                "Donnells PH/Water Demand/1/3",
+                "Donnells PH/Water Demand/2/3",
+                "Donnells PH/Water Demand/3/3",
+                "Donnells PH/Water Demand/4/3",
+                "Donnells PH/Water Demand/5/3",
+                "Donnells PH/Water Demand/6/3",
+                "Donnells PH/Water Demand/7/3",
+                "Donnells PH/Water Demand/8/3"
             ],
             "cost": [
                 "Donnells PH/Cost/1/3",
@@ -941,14 +941,14 @@
             "name": "Murphys PH/1",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Murphys PH/Water Demand/1",
-                "Murphys PH/Water Demand/1",
-                "Murphys PH/Water Demand/1",
-                "Murphys PH/Water Demand/1",
-                "Murphys PH/Water Demand/1",
-                "Murphys PH/Water Demand/1",
-                "Murphys PH/Water Demand/1",
-                "Murphys PH/Water Demand/1"
+                "Murphys PH/Water Demand/1/1",
+                "Murphys PH/Water Demand/2/1",
+                "Murphys PH/Water Demand/3/1",
+                "Murphys PH/Water Demand/4/1",
+                "Murphys PH/Water Demand/5/1",
+                "Murphys PH/Water Demand/6/1",
+                "Murphys PH/Water Demand/7/1",
+                "Murphys PH/Water Demand/8/1"
             ],
             "cost": [
                 "Murphys PH/Cost/1/1",
@@ -966,14 +966,14 @@
             "name": "Murphys PH/2",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Murphys PH/Water Demand/2",
-                "Murphys PH/Water Demand/2",
-                "Murphys PH/Water Demand/2",
-                "Murphys PH/Water Demand/2",
-                "Murphys PH/Water Demand/2",
-                "Murphys PH/Water Demand/2",
-                "Murphys PH/Water Demand/2",
-                "Murphys PH/Water Demand/2"
+                "Murphys PH/Water Demand/1/2",
+                "Murphys PH/Water Demand/2/2",
+                "Murphys PH/Water Demand/3/2",
+                "Murphys PH/Water Demand/4/2",
+                "Murphys PH/Water Demand/5/2",
+                "Murphys PH/Water Demand/6/2",
+                "Murphys PH/Water Demand/7/2",
+                "Murphys PH/Water Demand/8/2"
             ],
             "cost": [
                 "Murphys PH/Cost/1/2",
@@ -991,14 +991,14 @@
             "name": "Murphys PH/3",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Murphys PH/Water Demand/3",
-                "Murphys PH/Water Demand/3",
-                "Murphys PH/Water Demand/3",
-                "Murphys PH/Water Demand/3",
-                "Murphys PH/Water Demand/3",
-                "Murphys PH/Water Demand/3",
-                "Murphys PH/Water Demand/3",
-                "Murphys PH/Water Demand/3"
+                "Murphys PH/Water Demand/1/3",
+                "Murphys PH/Water Demand/2/3",
+                "Murphys PH/Water Demand/3/3",
+                "Murphys PH/Water Demand/4/3",
+                "Murphys PH/Water Demand/5/3",
+                "Murphys PH/Water Demand/6/3",
+                "Murphys PH/Water Demand/7/3",
+                "Murphys PH/Water Demand/8/3"
             ],
             "cost": [
                 "Murphys PH/Cost/1/3",
@@ -1092,14 +1092,14 @@
             "name": "New Melones PH/1",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "New Melones PH/Water Demand/1",
-                "New Melones PH/Water Demand/1",
-                "New Melones PH/Water Demand/1",
-                "New Melones PH/Water Demand/1",
-                "New Melones PH/Water Demand/1",
-                "New Melones PH/Water Demand/1",
-                "New Melones PH/Water Demand/1",
-                "New Melones PH/Water Demand/1"
+                "New Melones PH/Water Demand/1/1",
+                "New Melones PH/Water Demand/2/1",
+                "New Melones PH/Water Demand/3/1",
+                "New Melones PH/Water Demand/4/1",
+                "New Melones PH/Water Demand/5/1",
+                "New Melones PH/Water Demand/6/1",
+                "New Melones PH/Water Demand/7/1",
+                "New Melones PH/Water Demand/8/1"
             ],
             "cost": [
                 "New Melones PH/Cost/1/1",
@@ -1117,14 +1117,14 @@
             "name": "New Melones PH/2",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "New Melones PH/Water Demand/2",
-                "New Melones PH/Water Demand/2",
-                "New Melones PH/Water Demand/2",
-                "New Melones PH/Water Demand/2",
-                "New Melones PH/Water Demand/2",
-                "New Melones PH/Water Demand/2",
-                "New Melones PH/Water Demand/2",
-                "New Melones PH/Water Demand/2"
+                "New Melones PH/Water Demand/1/2",
+                "New Melones PH/Water Demand/2/2",
+                "New Melones PH/Water Demand/3/2",
+                "New Melones PH/Water Demand/4/2",
+                "New Melones PH/Water Demand/5/2",
+                "New Melones PH/Water Demand/6/2",
+                "New Melones PH/Water Demand/7/2",
+                "New Melones PH/Water Demand/8/2"
             ],
             "cost": [
                 "New Melones PH/Cost/1/2",
@@ -1142,14 +1142,14 @@
             "name": "New Melones PH/3",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "New Melones PH/Water Demand/3",
-                "New Melones PH/Water Demand/3",
-                "New Melones PH/Water Demand/3",
-                "New Melones PH/Water Demand/3",
-                "New Melones PH/Water Demand/3",
-                "New Melones PH/Water Demand/3",
-                "New Melones PH/Water Demand/3",
-                "New Melones PH/Water Demand/3"
+                "New Melones PH/Water Demand/1/3",
+                "New Melones PH/Water Demand/2/3",
+                "New Melones PH/Water Demand/3/3",
+                "New Melones PH/Water Demand/4/3",
+                "New Melones PH/Water Demand/5/3",
+                "New Melones PH/Water Demand/6/3",
+                "New Melones PH/Water Demand/7/3",
+                "New Melones PH/Water Demand/8/3"
             ],
             "cost": [
                 "New Melones PH/Cost/1/3",
@@ -1243,14 +1243,14 @@
             "name": "New Spicer Meadow PH/1",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "New Spicer Meadow PH/Water Demand/1",
-                "New Spicer Meadow PH/Water Demand/1",
-                "New Spicer Meadow PH/Water Demand/1",
-                "New Spicer Meadow PH/Water Demand/1",
-                "New Spicer Meadow PH/Water Demand/1",
-                "New Spicer Meadow PH/Water Demand/1",
-                "New Spicer Meadow PH/Water Demand/1",
-                "New Spicer Meadow PH/Water Demand/1"
+                "New Spicer Meadow PH/Water Demand/1/1",
+                "New Spicer Meadow PH/Water Demand/2/1",
+                "New Spicer Meadow PH/Water Demand/3/1",
+                "New Spicer Meadow PH/Water Demand/4/1",
+                "New Spicer Meadow PH/Water Demand/5/1",
+                "New Spicer Meadow PH/Water Demand/6/1",
+                "New Spicer Meadow PH/Water Demand/7/1",
+                "New Spicer Meadow PH/Water Demand/8/1"
             ],
             "cost": [
                 "New Spicer Meadow PH/Cost/1/1",
@@ -1268,14 +1268,14 @@
             "name": "New Spicer Meadow PH/2",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "New Spicer Meadow PH/Water Demand/2",
-                "New Spicer Meadow PH/Water Demand/2",
-                "New Spicer Meadow PH/Water Demand/2",
-                "New Spicer Meadow PH/Water Demand/2",
-                "New Spicer Meadow PH/Water Demand/2",
-                "New Spicer Meadow PH/Water Demand/2",
-                "New Spicer Meadow PH/Water Demand/2",
-                "New Spicer Meadow PH/Water Demand/2"
+                "New Spicer Meadow PH/Water Demand/1/2",
+                "New Spicer Meadow PH/Water Demand/2/2",
+                "New Spicer Meadow PH/Water Demand/3/2",
+                "New Spicer Meadow PH/Water Demand/4/2",
+                "New Spicer Meadow PH/Water Demand/5/2",
+                "New Spicer Meadow PH/Water Demand/6/2",
+                "New Spicer Meadow PH/Water Demand/7/2",
+                "New Spicer Meadow PH/Water Demand/8/2"
             ],
             "cost": [
                 "New Spicer Meadow PH/Cost/1/2",
@@ -1293,14 +1293,14 @@
             "name": "New Spicer Meadow PH/3",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "New Spicer Meadow PH/Water Demand/3",
-                "New Spicer Meadow PH/Water Demand/3",
-                "New Spicer Meadow PH/Water Demand/3",
-                "New Spicer Meadow PH/Water Demand/3",
-                "New Spicer Meadow PH/Water Demand/3",
-                "New Spicer Meadow PH/Water Demand/3",
-                "New Spicer Meadow PH/Water Demand/3",
-                "New Spicer Meadow PH/Water Demand/3"
+                "New Spicer Meadow PH/Water Demand/1/3",
+                "New Spicer Meadow PH/Water Demand/2/3",
+                "New Spicer Meadow PH/Water Demand/3/3",
+                "New Spicer Meadow PH/Water Demand/4/3",
+                "New Spicer Meadow PH/Water Demand/5/3",
+                "New Spicer Meadow PH/Water Demand/6/3",
+                "New Spicer Meadow PH/Water Demand/7/3",
+                "New Spicer Meadow PH/Water Demand/8/3"
             ],
             "cost": [
                 "New Spicer Meadow PH/Cost/1/3",
@@ -1348,14 +1348,14 @@
             "name": "Phoenix PH/1",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Phoenix PH/Water Demand/1",
-                "Phoenix PH/Water Demand/1",
-                "Phoenix PH/Water Demand/1",
-                "Phoenix PH/Water Demand/1",
-                "Phoenix PH/Water Demand/1",
-                "Phoenix PH/Water Demand/1",
-                "Phoenix PH/Water Demand/1",
-                "Phoenix PH/Water Demand/1"
+                "Phoenix PH/Water Demand/1/1",
+                "Phoenix PH/Water Demand/2/1",
+                "Phoenix PH/Water Demand/3/1",
+                "Phoenix PH/Water Demand/4/1",
+                "Phoenix PH/Water Demand/5/1",
+                "Phoenix PH/Water Demand/6/1",
+                "Phoenix PH/Water Demand/7/1",
+                "Phoenix PH/Water Demand/8/1"
             ],
             "cost": [
                 "Phoenix PH/Cost/1/1",
@@ -1373,14 +1373,14 @@
             "name": "Phoenix PH/2",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Phoenix PH/Water Demand/2",
-                "Phoenix PH/Water Demand/2",
-                "Phoenix PH/Water Demand/2",
-                "Phoenix PH/Water Demand/2",
-                "Phoenix PH/Water Demand/2",
-                "Phoenix PH/Water Demand/2",
-                "Phoenix PH/Water Demand/2",
-                "Phoenix PH/Water Demand/2"
+                "Phoenix PH/Water Demand/1/2",
+                "Phoenix PH/Water Demand/2/2",
+                "Phoenix PH/Water Demand/3/2",
+                "Phoenix PH/Water Demand/4/2",
+                "Phoenix PH/Water Demand/5/2",
+                "Phoenix PH/Water Demand/6/2",
+                "Phoenix PH/Water Demand/7/2",
+                "Phoenix PH/Water Demand/8/2"
             ],
             "cost": [
                 "Phoenix PH/Cost/1/2",
@@ -1398,14 +1398,14 @@
             "name": "Phoenix PH/3",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Phoenix PH/Water Demand/3",
-                "Phoenix PH/Water Demand/3",
-                "Phoenix PH/Water Demand/3",
-                "Phoenix PH/Water Demand/3",
-                "Phoenix PH/Water Demand/3",
-                "Phoenix PH/Water Demand/3",
-                "Phoenix PH/Water Demand/3",
-                "Phoenix PH/Water Demand/3"
+                "Phoenix PH/Water Demand/1/3",
+                "Phoenix PH/Water Demand/2/3",
+                "Phoenix PH/Water Demand/3/3",
+                "Phoenix PH/Water Demand/4/3",
+                "Phoenix PH/Water Demand/5/3",
+                "Phoenix PH/Water Demand/6/3",
+                "Phoenix PH/Water Demand/7/3",
+                "Phoenix PH/Water Demand/8/3"
             ],
             "cost": [
                 "Phoenix PH/Cost/1/3",
@@ -1575,14 +1575,14 @@
             "name": "Sand Bar PH/1",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Sand Bar PH/Water Demand/1",
-                "Sand Bar PH/Water Demand/1",
-                "Sand Bar PH/Water Demand/1",
-                "Sand Bar PH/Water Demand/1",
-                "Sand Bar PH/Water Demand/1",
-                "Sand Bar PH/Water Demand/1",
-                "Sand Bar PH/Water Demand/1",
-                "Sand Bar PH/Water Demand/1"
+                "Sand Bar PH/Water Demand/1/1",
+                "Sand Bar PH/Water Demand/2/1",
+                "Sand Bar PH/Water Demand/3/1",
+                "Sand Bar PH/Water Demand/4/1",
+                "Sand Bar PH/Water Demand/5/1",
+                "Sand Bar PH/Water Demand/6/1",
+                "Sand Bar PH/Water Demand/7/1",
+                "Sand Bar PH/Water Demand/8/1"
             ],
             "cost": [
                 "Sand Bar PH/Cost/1/1",
@@ -1600,14 +1600,14 @@
             "name": "Sand Bar PH/2",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Sand Bar PH/Water Demand/2",
-                "Sand Bar PH/Water Demand/2",
-                "Sand Bar PH/Water Demand/2",
-                "Sand Bar PH/Water Demand/2",
-                "Sand Bar PH/Water Demand/2",
-                "Sand Bar PH/Water Demand/2",
-                "Sand Bar PH/Water Demand/2",
-                "Sand Bar PH/Water Demand/2"
+                "Sand Bar PH/Water Demand/1/2",
+                "Sand Bar PH/Water Demand/2/2",
+                "Sand Bar PH/Water Demand/3/2",
+                "Sand Bar PH/Water Demand/4/2",
+                "Sand Bar PH/Water Demand/5/2",
+                "Sand Bar PH/Water Demand/6/2",
+                "Sand Bar PH/Water Demand/7/2",
+                "Sand Bar PH/Water Demand/8/2"
             ],
             "cost": [
                 "Sand Bar PH/Cost/1/2",
@@ -1625,14 +1625,14 @@
             "name": "Sand Bar PH/3",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Sand Bar PH/Water Demand/3",
-                "Sand Bar PH/Water Demand/3",
-                "Sand Bar PH/Water Demand/3",
-                "Sand Bar PH/Water Demand/3",
-                "Sand Bar PH/Water Demand/3",
-                "Sand Bar PH/Water Demand/3",
-                "Sand Bar PH/Water Demand/3",
-                "Sand Bar PH/Water Demand/3"
+                "Sand Bar PH/Water Demand/1/3",
+                "Sand Bar PH/Water Demand/2/3",
+                "Sand Bar PH/Water Demand/3/3",
+                "Sand Bar PH/Water Demand/4/3",
+                "Sand Bar PH/Water Demand/5/3",
+                "Sand Bar PH/Water Demand/6/3",
+                "Sand Bar PH/Water Demand/7/3",
+                "Sand Bar PH/Water Demand/8/3"
             ],
             "cost": [
                 "Sand Bar PH/Cost/1/3",
@@ -1665,14 +1665,14 @@
             "name": "Spring Gap PH/1",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Spring Gap PH/Water Demand/1",
-                "Spring Gap PH/Water Demand/1",
-                "Spring Gap PH/Water Demand/1",
-                "Spring Gap PH/Water Demand/1",
-                "Spring Gap PH/Water Demand/1",
-                "Spring Gap PH/Water Demand/1",
-                "Spring Gap PH/Water Demand/1",
-                "Spring Gap PH/Water Demand/1"
+                "Spring Gap PH/Water Demand/1/1",
+                "Spring Gap PH/Water Demand/2/1",
+                "Spring Gap PH/Water Demand/3/1",
+                "Spring Gap PH/Water Demand/4/1",
+                "Spring Gap PH/Water Demand/5/1",
+                "Spring Gap PH/Water Demand/6/1",
+                "Spring Gap PH/Water Demand/7/1",
+                "Spring Gap PH/Water Demand/8/1"
             ],
             "cost": [
                 "Spring Gap PH/Cost/1/1",
@@ -1690,14 +1690,14 @@
             "name": "Spring Gap PH/2",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Spring Gap PH/Water Demand/2",
-                "Spring Gap PH/Water Demand/2",
-                "Spring Gap PH/Water Demand/2",
-                "Spring Gap PH/Water Demand/2",
-                "Spring Gap PH/Water Demand/2",
-                "Spring Gap PH/Water Demand/2",
-                "Spring Gap PH/Water Demand/2",
-                "Spring Gap PH/Water Demand/2"
+                "Spring Gap PH/Water Demand/1/2",
+                "Spring Gap PH/Water Demand/2/2",
+                "Spring Gap PH/Water Demand/3/2",
+                "Spring Gap PH/Water Demand/4/2",
+                "Spring Gap PH/Water Demand/5/2",
+                "Spring Gap PH/Water Demand/6/2",
+                "Spring Gap PH/Water Demand/7/2",
+                "Spring Gap PH/Water Demand/8/2"
             ],
             "cost": [
                 "Spring Gap PH/Cost/1/2",
@@ -1715,14 +1715,14 @@
             "name": "Spring Gap PH/3",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Spring Gap PH/Water Demand/3",
-                "Spring Gap PH/Water Demand/3",
-                "Spring Gap PH/Water Demand/3",
-                "Spring Gap PH/Water Demand/3",
-                "Spring Gap PH/Water Demand/3",
-                "Spring Gap PH/Water Demand/3",
-                "Spring Gap PH/Water Demand/3",
-                "Spring Gap PH/Water Demand/3"
+                "Spring Gap PH/Water Demand/1/3",
+                "Spring Gap PH/Water Demand/2/3",
+                "Spring Gap PH/Water Demand/3/3",
+                "Spring Gap PH/Water Demand/4/3",
+                "Spring Gap PH/Water Demand/5/3",
+                "Spring Gap PH/Water Demand/6/3",
+                "Spring Gap PH/Water Demand/7/3",
+                "Spring Gap PH/Water Demand/8/3"
             ],
             "cost": [
                 "Spring Gap PH/Cost/1/3",
@@ -1755,14 +1755,14 @@
             "name": "Stanislaus PH/1",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Stanislaus PH/Water Demand/1",
-                "Stanislaus PH/Water Demand/1",
-                "Stanislaus PH/Water Demand/1",
-                "Stanislaus PH/Water Demand/1",
-                "Stanislaus PH/Water Demand/1",
-                "Stanislaus PH/Water Demand/1",
-                "Stanislaus PH/Water Demand/1",
-                "Stanislaus PH/Water Demand/1"
+                "Stanislaus PH/Water Demand/1/1",
+                "Stanislaus PH/Water Demand/2/1",
+                "Stanislaus PH/Water Demand/3/1",
+                "Stanislaus PH/Water Demand/4/1",
+                "Stanislaus PH/Water Demand/5/1",
+                "Stanislaus PH/Water Demand/6/1",
+                "Stanislaus PH/Water Demand/7/1",
+                "Stanislaus PH/Water Demand/8/1"
             ],
             "cost": [
                 "Stanislaus PH/Cost/1/1",
@@ -1780,14 +1780,14 @@
             "name": "Stanislaus PH/2",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Stanislaus PH/Water Demand/2",
-                "Stanislaus PH/Water Demand/2",
-                "Stanislaus PH/Water Demand/2",
-                "Stanislaus PH/Water Demand/2",
-                "Stanislaus PH/Water Demand/2",
-                "Stanislaus PH/Water Demand/2",
-                "Stanislaus PH/Water Demand/2",
-                "Stanislaus PH/Water Demand/2"
+                "Stanislaus PH/Water Demand/1/2",
+                "Stanislaus PH/Water Demand/2/2",
+                "Stanislaus PH/Water Demand/3/2",
+                "Stanislaus PH/Water Demand/4/2",
+                "Stanislaus PH/Water Demand/5/2",
+                "Stanislaus PH/Water Demand/6/2",
+                "Stanislaus PH/Water Demand/7/2",
+                "Stanislaus PH/Water Demand/8/2"
             ],
             "cost": [
                 "Stanislaus PH/Cost/1/2",
@@ -1805,14 +1805,14 @@
             "name": "Stanislaus PH/3",
             "type": "PiecewiseHydropower",
             "max_flow": [
-                "Stanislaus PH/Water Demand/3",
-                "Stanislaus PH/Water Demand/3",
-                "Stanislaus PH/Water Demand/3",
-                "Stanislaus PH/Water Demand/3",
-                "Stanislaus PH/Water Demand/3",
-                "Stanislaus PH/Water Demand/3",
-                "Stanislaus PH/Water Demand/3",
-                "Stanislaus PH/Water Demand/3"
+                "Stanislaus PH/Water Demand/1/3",
+                "Stanislaus PH/Water Demand/2/3",
+                "Stanislaus PH/Water Demand/3/3",
+                "Stanislaus PH/Water Demand/4/3",
+                "Stanislaus PH/Water Demand/5/3",
+                "Stanislaus PH/Water Demand/6/3",
+                "Stanislaus PH/Water Demand/7/3",
+                "Stanislaus PH/Water Demand/8/3"
             ],
             "cost": [
                 "Stanislaus PH/Cost/1/3",
@@ -4107,6 +4107,23 @@
             "blwTullochPH/3"
         ]
     ],
+    "tables": {
+        "Price Blocks": {
+            "url": "../data/piecewise_blocks_monthly_historical.csv",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "Price Values": {
+            "url": "../data/piecewise_prices_DpMWh_monthly_historical.csv",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "Energy Demand": {
+            "url": "../data/energy_net_demand.csv",
+            "index_col": "Date",
+            "parse_dates": true
+        }
+    },
     "parameters": {
         "Blocks": {
             "type": "constant",
@@ -4114,24 +4131,18 @@
         },
         "Total Net Energy Demand": {
             "type": "dataframe",
-            "url": "../data/energy_net_demand.csv",
-            "column": "Tot Demand (GWh)",
-            "index_col": "Date",
-            "parse_dates": true
+            "table": "Energy Demand",
+            "column": "Tot Demand (GWh)"
         },
         "Max Net Energy Demand": {
             "type": "dataframe",
-            "url": "../data/energy_net_demand.csv",
-            "column": "Max Hr Demand (GWh)",
-            "index_col": "Date",
-            "parse_dates": true
+            "table": "Energy Demand",
+            "column": "Max Hr Demand (GWh)"
         },
         "Min Net Energy Demand": {
             "type": "dataframe",
-            "url": "../data/energy_net_demand.csv",
-            "column": "Min Hr Demand (GWh)",
-            "index_col": "Date",
-            "parse_dates": true
+            "table": "Energy Demand",
+            "column": "Min Hr Demand (GWh)"
         },
         "New Melones Flood Control/Violation Cost/1": {
             "type": "controlcurveinterpolated",
@@ -4285,13 +4296,76 @@
             "type": "constant",
             "value": 1.13
         },
-        "Angels PH/Water Demand/1": {
+        "Angels PH/Water Demand/1/1": {
             "type": "network_PH_Water_Demand"
         },
-        "Angels PH/Water Demand/2": {
+        "Angels PH/Water Demand/2/1": {
             "type": "network_PH_Water_Demand"
         },
-        "Angels PH/Water Demand/3": {
+        "Angels PH/Water Demand/3/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/4/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/5/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/6/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/7/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/8/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/1/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/2/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/3/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/4/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/5/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/6/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/7/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/8/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/1/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/2/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/3/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/4/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/5/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/6/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/7/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Angels PH/Water Demand/8/3": {
             "type": "network_PH_Water_Demand"
         },
         "Angels PH/Cost/1/1": {
@@ -4496,15 +4570,99 @@
             ],
             "kind": "cubic"
         },
-        "Beardsley PH/Water Demand/1": {
+        "Beardsley PH/Water Demand/1/1": {
             "type": "constant",
             "value": 10
         },
-        "Beardsley PH/Water Demand/2": {
+        "Beardsley PH/Water Demand/2/1": {
             "type": "constant",
             "value": 10
         },
-        "Beardsley PH/Water Demand/3": {
+        "Beardsley PH/Water Demand/3/1": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/4/1": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/5/1": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/6/1": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/7/1": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/8/1": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/1/2": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/2/2": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/3/2": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/4/2": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/5/2": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/6/2": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/7/2": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/8/2": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/1/3": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/2/3": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/3/3": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/4/3": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/5/3": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/6/3": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/7/3": {
+            "type": "constant",
+            "value": 10
+        },
+        "Beardsley PH/Water Demand/8/3": {
             "type": "constant",
             "value": 10
         },
@@ -4596,13 +4754,76 @@
             "type": "constant",
             "value": 39.64
         },
-        "Collierville PH/Water Demand/1": {
+        "Collierville PH/Water Demand/1/1": {
             "type": "network_PH_Water_Demand"
         },
-        "Collierville PH/Water Demand/2": {
+        "Collierville PH/Water Demand/2/1": {
             "type": "network_PH_Water_Demand"
         },
-        "Collierville PH/Water Demand/3": {
+        "Collierville PH/Water Demand/3/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/4/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/5/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/6/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/7/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/8/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/1/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/2/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/3/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/4/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/5/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/6/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/7/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/8/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/1/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/2/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/3/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/4/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/5/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/6/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/7/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Collierville PH/Water Demand/8/3": {
             "type": "network_PH_Water_Demand"
         },
         "Collierville PH/Cost/1/1": {
@@ -4685,13 +4906,76 @@
             "type": "constant",
             "value": 19.82
         },
-        "Donnells PH/Water Demand/1": {
+        "Donnells PH/Water Demand/1/1": {
             "type": "network_PH_Water_Demand"
         },
-        "Donnells PH/Water Demand/2": {
+        "Donnells PH/Water Demand/2/1": {
             "type": "network_PH_Water_Demand"
         },
-        "Donnells PH/Water Demand/3": {
+        "Donnells PH/Water Demand/3/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/4/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/5/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/6/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/7/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/8/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/1/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/2/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/3/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/4/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/5/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/6/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/7/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/8/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/1/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/2/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/3/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/4/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/5/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/6/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/7/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Donnells PH/Water Demand/8/3": {
             "type": "network_PH_Water_Demand"
         },
         "Donnells PH/Cost/1/1": {
@@ -5338,13 +5622,76 @@
             "type": "constant",
             "value": 2.78
         },
-        "Murphys PH/Water Demand/1": {
+        "Murphys PH/Water Demand/1/1": {
             "type": "network_PH_Water_Demand"
         },
-        "Murphys PH/Water Demand/2": {
+        "Murphys PH/Water Demand/2/1": {
             "type": "network_PH_Water_Demand"
         },
-        "Murphys PH/Water Demand/3": {
+        "Murphys PH/Water Demand/3/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/4/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/5/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/6/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/7/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/8/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/1/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/2/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/3/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/4/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/5/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/6/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/7/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/8/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/1/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/2/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/3/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/4/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/5/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/6/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/7/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Murphys PH/Water Demand/8/3": {
             "type": "network_PH_Water_Demand"
         },
         "Murphys PH/Cost/1/1": {
@@ -5435,13 +5782,76 @@
             "type": "constant",
             "value": 203.0
         },
-        "New Melones PH/Water Demand/1": {
+        "New Melones PH/Water Demand/1/1": {
             "type": "network_PH_Water_Demand"
         },
-        "New Melones PH/Water Demand/2": {
+        "New Melones PH/Water Demand/2/1": {
             "type": "network_PH_Water_Demand"
         },
-        "New Melones PH/Water Demand/3": {
+        "New Melones PH/Water Demand/3/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/4/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/5/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/6/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/7/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/8/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/1/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/2/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/3/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/4/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/5/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/6/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/7/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/8/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/1/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/2/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/3/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/4/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/5/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/6/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/7/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Melones PH/Water Demand/8/3": {
             "type": "network_PH_Water_Demand"
         },
         "New Melones PH/Cost/1/1": {
@@ -5645,13 +6055,76 @@
             "type": "constant",
             "value": 0.708
         },
-        "Phoenix PH/Water Demand/1": {
+        "Phoenix PH/Water Demand/1/1": {
             "type": "network_PH_Water_Demand"
         },
-        "Phoenix PH/Water Demand/2": {
+        "Phoenix PH/Water Demand/2/1": {
             "type": "network_PH_Water_Demand"
         },
-        "Phoenix PH/Water Demand/3": {
+        "Phoenix PH/Water Demand/3/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/4/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/5/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/6/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/7/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/8/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/1/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/2/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/3/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/4/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/5/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/6/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/7/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/8/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/1/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/2/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/3/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/4/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/5/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/6/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/7/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Phoenix PH/Water Demand/8/3": {
             "type": "network_PH_Water_Demand"
         },
         "Phoenix PH/Cost/1/1": {
@@ -5944,13 +6417,76 @@
             "type": "constant",
             "value": 16.99
         },
-        "Sand Bar PH/Water Demand/1": {
+        "Sand Bar PH/Water Demand/1/1": {
             "type": "network_PH_Water_Demand"
         },
-        "Sand Bar PH/Water Demand/2": {
+        "Sand Bar PH/Water Demand/2/1": {
             "type": "network_PH_Water_Demand"
         },
-        "Sand Bar PH/Water Demand/3": {
+        "Sand Bar PH/Water Demand/3/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/4/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/5/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/6/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/7/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/8/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/1/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/2/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/3/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/4/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/5/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/6/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/7/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/8/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/1/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/2/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/3/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/4/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/5/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/6/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/7/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Sand Bar PH/Water Demand/8/3": {
             "type": "network_PH_Water_Demand"
         },
         "Sand Bar PH/Cost/1/1": {
@@ -6033,13 +6569,76 @@
             "type": "constant",
             "value": 1.67
         },
-        "Spring Gap PH/Water Demand/1": {
+        "Spring Gap PH/Water Demand/1/1": {
             "type": "network_PH_Water_Demand"
         },
-        "Spring Gap PH/Water Demand/2": {
+        "Spring Gap PH/Water Demand/2/1": {
             "type": "network_PH_Water_Demand"
         },
-        "Spring Gap PH/Water Demand/3": {
+        "Spring Gap PH/Water Demand/3/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/4/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/5/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/6/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/7/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/8/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/1/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/2/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/3/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/4/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/5/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/6/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/7/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/8/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/1/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/2/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/3/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/4/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/5/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/6/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/7/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Spring Gap PH/Water Demand/8/3": {
             "type": "network_PH_Water_Demand"
         },
         "Spring Gap PH/Cost/1/1": {
@@ -6118,13 +6717,76 @@
             "type": "constant",
             "value": 463.296
         },
-        "New Spicer Meadow PH/Water Demand/1": {
+        "New Spicer Meadow PH/Water Demand/1/1": {
             "type": "network_PH_Water_Demand"
         },
-        "New Spicer Meadow PH/Water Demand/2": {
+        "New Spicer Meadow PH/Water Demand/2/1": {
             "type": "network_PH_Water_Demand"
         },
-        "New Spicer Meadow PH/Water Demand/3": {
+        "New Spicer Meadow PH/Water Demand/3/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/4/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/5/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/6/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/7/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/8/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/1/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/2/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/3/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/4/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/5/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/6/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/7/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/8/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/1/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/2/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/3/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/4/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/5/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/6/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/7/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "New Spicer Meadow PH/Water Demand/8/3": {
             "type": "network_PH_Water_Demand"
         },
         "New Spicer Meadow PH/Cost/1/1": {
@@ -6211,13 +6873,76 @@
             "type": "constant",
             "value": 23.5
         },
-        "Stanislaus PH/Water Demand/1": {
+        "Stanislaus PH/Water Demand/1/1": {
             "type": "network_PH_Water_Demand"
         },
-        "Stanislaus PH/Water Demand/2": {
+        "Stanislaus PH/Water Demand/2/1": {
             "type": "network_PH_Water_Demand"
         },
-        "Stanislaus PH/Water Demand/3": {
+        "Stanislaus PH/Water Demand/3/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/4/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/5/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/6/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/7/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/8/1": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/1/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/2/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/3/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/4/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/5/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/6/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/7/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/8/2": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/1/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/2/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/3/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/4/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/5/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/6/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/7/3": {
+            "type": "network_PH_Water_Demand"
+        },
+        "Stanislaus PH/Water Demand/8/3": {
             "type": "network_PH_Water_Demand"
         },
         "Stanislaus PH/Cost/1/1": {

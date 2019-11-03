@@ -204,20 +204,22 @@ class PiecewiseHydropower(RiverDomainMixin, PiecewiseLink):
 
     _type = 'piecewisehydropower'
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, model, head, **kwargs):
         """Initialise a new Hydropower instance
         Parameters
         ----------
         """
         kwargs['max_flow'] = kwargs.pop('max_flow', [0.0])
         kwargs['cost'] = kwargs.pop('cost', [0.0])
-        super(PiecewiseHydropower, self).__init__(*args, **kwargs)
+        super(PiecewiseHydropower, self).__init__(model, **kwargs)
+        self.head = head
 
 
     @classmethod
     def load(cls, data, model):
         max_flow = [load_parameter(model, c) for c in data.pop('max_flow', [0.0])]
         cost = [load_parameter(model, c) for c in data.pop('cost', [0.0])]
+        head = data.pop('head', 0.0)
         del (data["type"])
-        node = cls(model, max_flow=max_flow, cost=cost, **data)
+        node = cls(model, head, max_flow=max_flow, cost=cost, **data)
         return node

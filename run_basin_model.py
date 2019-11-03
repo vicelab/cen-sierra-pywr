@@ -91,7 +91,7 @@ def simplify_network(m, delete_gauges=False, delete_observed=True):
     return m
 
 
-def prepare_planning_model(m, outpath, steps=12, debug=False):
+def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
     """
     Convert the daily scheduling model to a planning model.
     :param m:
@@ -263,20 +263,22 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
 
                     elif type(value) == list:
                         new_values = []
-                        for v in value:
+                        for j, v in enumerate(value):
                             if type(v) == str:
                                 if v not in parameters_to_expand:
                                     parameters_to_expand.append(v)
-                                parts = v.split('/')
-                                if len(parts) == 2:
-                                    new_values.append(v + month)
-                                elif len(parts) == 3:
-                                    attr = parts[-2]
-                                    block = parts[-1]
-                                    new_v = '{}/{}/{}/{}'.format(res_name, attr, t, block)
-                                    new_values.append(new_v)
-                                else:
-                                    new_values.append(v)
+                                if j == 0:
+                                    parts = v.split('/')
+                                    for b in range(blocks):
+                                        if len(parts) == 2:
+                                            # no block-specific value, but still need to expand to number of blocks
+                                            new_values.append(v + month)
+                                        elif len(parts) == 3:
+                                            # there are block-specific parameters
+                                            attr = parts[-2]
+                                            # note the scheme: resource name / attribute / block / month
+                                            new_v = '{}/{}/{}/{}'.format(res_name, attr, b+1, t)
+                                            new_values.append(new_v)
                             else:
                                 new_values.append(v)
                         new_node[key] = new_values
@@ -304,6 +306,8 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
                 updated_node_names.get(new_n2, new_n2),
             ])
 
+    block_params_expanded = []
+
     for param_name in m['parameters']:
 
         if param_name in parameters_to_delete:
@@ -330,9 +334,13 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
         if param_name in parameters_to_expand or 'node' in param:
             for step in all_steps:
                 t = step + 1
-                new_param_name = '{}/{}/{}'.format(res_name, attribute, t)
                 if block:
-                    new_param_name += '/{}'.format(block)
+                    # check if we've already expanded this
+                    block_param = (res_name, attribute, t)
+                    if block_param in block_params_expanded:
+                        continue # continue if we have
+                    block_params_expanded.append(block_param)
+
                 new_param = param.copy()
                 if attribute == 'Runoff':
                     new_param['url'] = new_param['url'].replace('/runoff/', '/runoff_monthly_forecasts/')
@@ -343,10 +351,24 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
                 if 'storage_node' in param:
                     new_param['storage_node'] += '/{}'.format(t)
 
-                new_parameters[new_param_name] = new_param
+                if block:
+                    for b in range(blocks):
+                        new_param_name = '/'.join([res_name, attribute, str(b+1), str(t)])
+                        new_parameters[new_param_name] = new_param
+                else:
+                    new_param_name = '/'.join([res_name, attribute, str(t)])
+                    new_parameters[new_param_name] = new_param
             continue
 
         new_parameters[param_name] = param
+
+    new_tables = {}
+    for table_name, table in m['tables'].items():
+        if 'observed' in table_name.lower():
+            continue
+        if 'url' in table:
+            table['url'] = table['url'].replace('daily', 'monthly')
+        new_tables[table_name] = table
 
     if debug:
         for n in new_nodes:
@@ -391,6 +413,7 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
     # update the model
     m['nodes'] = new_nodes
     m['edges'] = new_edges
+    m['tables'] = new_tables
     m['parameters'] = new_parameters
     m['recorders'] = new_recorders
 
