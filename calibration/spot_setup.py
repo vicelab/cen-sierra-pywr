@@ -3,13 +3,9 @@ import spotpy
 import pandas as pd
 import numpy as np
 import subprocess
+import json
 
 from spotpy.objectivefunctions import rmse
-
-root_dir = os.path.join(os.getcwd(), 'Stan_Model')
-bucket = 'openagua-networks'
-model_path = os.path.join(root_dir, 'pywr_model.json')
-network_key = os.environ.get('NETWORK_KEY')
 
 class SpotSetup(object):
 
@@ -18,7 +14,10 @@ class SpotSetup(object):
         return spotpy.parameter.generate(self.params)
 
     def __init__(self, results_path, used_algorithm='default'):
+        self.results_path = results_path
+        self.model_name = results_path.split("/")[2]
         self.used_algorithm = used_algorithm
+        self.nodes = pd.read_csv("inputs/nodes.csv")
         # Generating Parameter Values via CSV
         parameters_csv = pd.read_csv("inputs/parameters.csv")
         self.params = []
@@ -31,27 +30,42 @@ class SpotSetup(object):
 
         # Generating Evaluation Data via CSV
         self.evaluation_data = np.array([])
-        evaluation_csv = pd.read_csv("inputs/evaluation.csv")
-        obs_flow = pd.read_csv(results_path + "observed flow.csv")
-        obs_storage = pd.read_csv(results_path + "observed storage.csv")
-        results = obs_flow.join(obs_storage)
-        for index in range(0, len(evaluation_csv)):
-            self.evaluation_data = np.append(self.evaluation_data, results[evaluation_csv.iloc[index]][1:])
-        del evaluation_csv, results
+        results = pd.read_csv(results_path + "observed storage.csv")
+        for index in range(0, len(self.nodes)):
+            self.evaluation_data = np.append(self.evaluation_data, results[self.nodes.iloc[index]][1:])
 
     def simulation(self, vector):
 
         print("Trying parametre: {}".format(vector))
 
-        # Create an array of parameters to pass to the model
+        # Change the JSON in File
         parameters = []
         for parameter in vector:
             parameters.append(parameter)
 
-        # Simulate the model in another file simulation_run.py
-        proc = subprocess.run(['python', 'simulation_run.py',
-                               model_path, root_dir, bucket, network_key, str(parameters)], stdout=subprocess.PIPE)
-        return np.load("Stan_Model/model_output.npy")
+        with open("../{}/pywr_model.json".format(self.model_name), "r") as f:
+            data = json.load(f)
+
+        parameters_csv = pd.read_csv("Stan_Model/input_csvs/parameters.csv")
+        for index in range(0, len(parameters_csv)):
+            data['parameters'][parameters_csv.iloc[index, 0]]['value'] = parameters[index]
+        del parameters_csv
+
+        with open("../{}/pywr_model.json".format(self.model_name), 'w') as f:
+            json.dump(data, f, indent=2)
+
+        # Run the model using run_basin_model
+        proc = subprocess.run(['python', '../run_basin_model.py', "-b {}".format(self.model_name)])
+
+        # Save the output from the model running
+        # Join all results tables together
+        results_csv = pd.read_csv(self.results_path + "storage.csv")
+
+        output = np.array([])
+        for index in range(0, len(results_csv)):
+            output = np.append(output, results_csv[self.nodes.iloc[index]])
+
+        return output
 
     def evaluation(self):
         # Returns the observed data

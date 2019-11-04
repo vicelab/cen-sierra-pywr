@@ -1,5 +1,5 @@
 import spotpy
-from .spot_setup import SpotSetup
+from spot_setup import SpotSetup
 
 # Set local storage variables for calibration ie: Name and Format(CSV, RAM)
 results_path = "../stanislaus/results/"
