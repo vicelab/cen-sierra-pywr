@@ -21,6 +21,7 @@ digraph stanislaus {
 	"Below Beaver Creek Diversion Dam" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"IFR Confluence of NF and Beaver Creek" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"IFR Below New Melones Res" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR below Goodwin Reservoir" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"IFR Below Pinecrest Lake" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"IFR Below Utica Res" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"IFR below Beardsley Afterbay" [fillcolor=green fontcolor=black shape=oval style=filled]
@@ -40,12 +41,11 @@ digraph stanislaus {
 	"Sand Bar PH" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"Beardsley Afterbay" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Spring Gap PH" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"STANI-N-JUN1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Stanislaus PH" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"Stanislaus Tunnel Outflow" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
-	"STN-L-DEL1 Outflow" [fillcolor=black fontcolor=white shape=oval style=filled]
-	"STN-L-DEL2 Outflow" [fillcolor=black fontcolor=white shape=oval style=filled]
-	"STN-L-RIV2 Outflow" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"South San Jouquin Irrigation District" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"Oakdale Irrigation District" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"Stanislaus River Outflow" [fillcolor=black fontcolor=white shape=oval style=filled]
 	"STN_01 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"STN_01 Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"STN_02 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
@@ -72,11 +72,10 @@ digraph stanislaus {
 	"STN_23 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"STN_24 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"STN_25 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_R-N-JUN1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Tulloch Lake" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Release from Tulloch Lake" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Tulloch Release Requirement" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Tulloch Lake Flood Control" [fillcolor=green fontcolor=black shape=oval style=filled]
-	blwTullochPH [fillcolor=green fontcolor=black shape=oval style=filled]
+	"Goodwin Reservoir" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Utica Reservoir" [fillcolor=blue fontcolor=white shape=rect style=filled]
 	"UPA Tunnel Tap Outflow" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Upper Collierville Tunnel Outflow" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
@@ -105,12 +104,11 @@ digraph stanislaus {
 	"UPA Tunnel Tap Outflow" -> "Collierville PH"
 	"Stanislaus Tunnel Outflow" -> "IFR bl Sand Bar Div"
 	"Lyons Reservoir" -> "IFR bl Lyons Res"
-	"STANI-N-JUN1" -> "STN-L-DEL2 Outflow"
-	"STANI-N-JUN1" -> "STN-L-RIV2 Outflow"
+	"Goodwin Reservoir" -> "Oakdale Irrigation District"
+	"Goodwin Reservoir" -> "IFR below Goodwin Reservoir"
 	"STN_below_Melons.2.2" -> "IFR Below New Melones Res"
-	"STN_R-N-JUN1" -> "STN-L-DEL1 Outflow"
+	"Goodwin Reservoir" -> "South San Jouquin Irrigation District"
 	"STN_01 Inflow" -> "New Melones Lake"
-	blwTullochPH -> "STN_R-N-JUN1"
 	"Angels PH" -> "STN_01 Inflow"
 	"IFR bl Angels Div" -> "STN_01 Inflow"
 	"Below Beaver Creek Diversion Dam" -> "IFR Confluence of NF and Beaver Creek"
@@ -123,7 +121,7 @@ digraph stanislaus {
 	"Sand Bar PH" -> "Stanislaus Tunnel Outflow"
 	"Philadelphia Aquaduct Outflow" -> "IFR bl Philadelphia Div"
 	"IFR bl Lyons Res" -> "STN_01 Inflow"
-	"STN_R-N-JUN1" -> "STANI-N-JUN1"
+	"IFR below Goodwin Reservoir" -> "Stanislaus River Outflow"
 	"STN_02 Headflow" -> "Angels Canal Outflow"
 	"Murphys PH" -> "Angels Canal Outflow"
 	"STN_03 Headflow" -> "STN_01 Inflow"
@@ -175,11 +173,11 @@ digraph stanislaus {
 	"Release from New Melones" -> "STANI-N-JUN4"
 	"New Melones Flood Control" -> "STANI-N-JUN4"
 	"STANI-N-JUN4" -> "New Melones PH"
-	"Tulloch Lake" -> "Release from Tulloch Lake"
+	"Tulloch Lake" -> "Tulloch Release Requirement"
 	"Tulloch Lake" -> "Tulloch Lake Flood Control"
+	"Tulloch Release Requirement" -> "Goodwin Reservoir"
+	"Tulloch Lake Flood Control" -> "Goodwin Reservoir"
 	"IFR Below New Melones Res" -> "Tulloch Lake"
 	"New Melones PH" -> "STN_below_Melons.2.2"
 	"STANI-N-JUN4" -> "STN_below_Melons.2.2"
-	"Release from Tulloch Lake" -> blwTullochPH
-	"Tulloch Lake Flood Control" -> blwTullochPH
 }

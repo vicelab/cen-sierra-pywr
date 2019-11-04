@@ -24,7 +24,7 @@ class New_Melones_Release_Policy(WaterLPParameter):
                    + self.model.nodes[inflow_name].flow[-1] \
                    - self.model.parameters["New Melones Lake/Storage Demand"].value(timestep, scenario_index)
         base_demand = self.get_demand(timestep, scenario_index)
-        ph_demand = self.model.parameters["blwTullochPH/Requirement" + self.month_suffix].value(timestep, scenario_index)
+        ph_demand = self.model.parameters["IFR below Goodwin Reservoir/Requirement" + self.month_suffix].value(timestep, scenario_index)
         net_demand = base_demand + ph_demand
 
         # if datetime(1900, 3, 21) < date_timestep < datetime(1900, 5, 31):

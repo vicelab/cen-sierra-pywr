@@ -9,6 +9,7 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 # from common.domains import PiecewiseHydropower
 from common.tests import test_planning_model
+import matplotlib.pyplot as plt
 
 
 def simplify_network(m, delete_gauges=False, delete_observed=True):
@@ -105,7 +106,7 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
     # m['timestepper']['timestep'] = 'M'
     # m['metadata']['title'] += ' - planning'
 
-    m = simplify_network(m, delete_gauges=True)
+    m = simplify_network(m, delete_gauges=False)
 
     all_steps = range(steps)
 
@@ -533,8 +534,10 @@ def run_model(basin, network_key, include_planning=False, simplify=True, debug=F
 
     # IMPORTANT: The following can be embedded into the scheduling model via
     # the 'before' and 'after' functions.
-
-    datetime_index = m.timestepper.datetime_index[:-months]
+    if include_planning:
+        datetime_index = m.timestepper.datetime_index[:-months]
+    else:
+        datetime_index = m.timestepper.datetime_index
     step = -1
     now = datetime.now()
     monthly_seconds = 0
@@ -587,28 +590,30 @@ def run_model(basin, network_key, include_planning=False, simplify=True, debug=F
     # save results to CSV
 
     results = m.to_dataframe()
+    results.index.name = 'Date'
     results_path = './results'
     results.columns = results.columns.droplevel(1)
     if not os.path.exists(results_path):
         os.makedirs(results_path)
     results.to_csv(os.path.join(results_path, 'system.csv'))
-    attributes = {}
+    columns = {}
     for c in results.columns:
-        attribute = c.split('/')[-1]
-        if attribute in attributes:
-            attributes[attribute].append(c)
+        res_name, attr = c.split('/')
+        node = m.nodes[res_name]
+        _type = type(node).__name__
+        key = (_type, attr)
+        if key in columns:
+            columns[key].append(c)
         else:
-            attributes[attribute] = [c]
-    for attribute in attributes:
-        path = os.path.join(results_path, '{}.csv'.format(attribute))
-        df = results[attributes[attribute]]
-        df.columns = [c.split('/')[-2] for c in df.columns]
+            columns[key] = [c]
+    for (_type, attr), cols in columns.items():
+        path = os.path.join(results_path, '{}_{}.csv'.format(_type, attr.title()))
+        df = results[cols]
+        df.columns = [c.split('/')[0] for c in cols]
         df.to_csv(path)
-
-        if attribute == 'flow':
-            df2 = df[[c for c in df.columns if c[-3:] == ' PH']]
-            path2 = os.path.join(results_path, 'powerhouse flow.csv')
-            df2.to_csv(path2)
+        # if _type in ['Storage']:
+        df.plot(title='{}: {}'.format(_type, attr.title()))
+    plt.show()
 
 
 import argparse

@@ -6,7 +6,7 @@
     },
     "timestepper": {
         "start": "2000-10-01",
-        "end": "2003-09-30",
+        "end": "2001-09-30",
         "timestep": 1
     },
     "solver": {
@@ -42,14 +42,14 @@
             "initial_volume": 40.0634304,
             "max_volume": 121.45,
             "min_volume": 25,
-            "cost": "Beardsley Reservoir/Storage Value",
+            "cost": -5.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Beardsley PH",
             "type": "Hydropower",
-            "max_flow": "Beardsley PH/Turbine Capacity",
-            "cost": -1,
+            "base_flow": "Beardsley PH/Turbine Capacity",
+            "base_cost": -1,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -99,7 +99,7 @@
             "initial_volume": 66.8422812,
             "max_volume": 79.83,
             "min_volume": 6.2,
-            "cost": "Donnells Reservoir/Storage Value",
+            "cost": -5.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -194,6 +194,13 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
+            "name": "IFR below Goodwin Reservoir",
+            "type": "InstreamFlowRequirement",
+            "mrf_cost": "IFR below Goodwin Reservoir/Violation Cost",
+            "mrf": "IFR below Goodwin Reservoir/Requirement",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
             "name": "IFR Below Pinecrest Lake",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "IFR Below Pinecrest Lake/Violation Cost",
@@ -225,7 +232,7 @@
             "initial_volume": 2.220264,
             "max_volume": 7.5,
             "min_volume": 1.25,
-            "cost": "Lyons Reservoir/Storage Value",
+            "cost": -5.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -256,14 +263,14 @@
             "type": "Storage",
             "initial_volume": 1366.7,
             "max_volume": 2960.35,
-            "cost": "New Melones Lake/Storage Value",
+            "cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "New Melones PH",
             "type": "Hydropower",
-            "max_flow": "New Melones PH/Turbine Capacity",
-            "cost": -1,
+            "base_flow": "New Melones PH/Turbine Capacity",
+            "base_cost": -1,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -272,7 +279,7 @@
             "initial_volume": 173.92068,
             "max_volume": 227.24,
             "min_volume": 50,
-            "cost": "New Spicer Meadow Reservoir/Storage Value",
+            "cost": -5.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -327,7 +334,7 @@
             "initial_volume": 16.898676,
             "max_volume": 22.58,
             "min_volume": 4,
-            "cost": "Pinecrest Reservoir/Storage Value",
+            "cost": -5.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -336,7 +343,7 @@
             "initial_volume": 10.546254,
             "max_volume": 18.5,
             "min_volume": 1.2,
-            "cost": "Relief Reservoir/Storage Value",
+            "cost": -5.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -381,11 +388,6 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "STANI-N-JUN1",
-            "type": "BreakLink",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
             "name": "Stanislaus PH",
             "type": "PiecewiseHydropower",
             "head": 463.296,
@@ -409,17 +411,19 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "STN-L-DEL1 Outflow",
+            "name": "South San Jouquin Irrigation District",
             "type": "Output",
+            "max_flow": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "STN-L-DEL2 Outflow",
+            "name": "Oakdale Irrigation District",
             "type": "Output",
+            "max_flow": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "STN-L-RIV2 Outflow",
+            "name": "Stanislaus River Outflow",
             "type": "Output",
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -579,22 +583,17 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "STN_R-N-JUN1",
-            "type": "BreakLink",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
             "name": "Tulloch Lake",
             "type": "Storage",
-            "initial_volume": 74.66,
+            "initial_volume": 82.64,
             "max_volume": 82.64,
             "cost": "Tulloch Lake/Storage Value",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Release from Tulloch Lake",
+            "name": "Tulloch Release Requirement",
             "type": "Link",
-            "max_flow": "Release from Tulloch Lake/Release",
+            "max_flow": "Tulloch Release Requirement/Release",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -605,10 +604,8 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "blwTullochPH",
-            "type": "InstreamFlowRequirement",
-            "mrf": "blwTullochPH/Requirement",
-            "mrf_cost": 0,
+            "name": "Goodwin Reservoir",
+            "type": "BreakLink",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -616,6 +613,7 @@
             "type": "Storage",
             "initial_volume": 65,
             "max_volume": 82.64,
+            "cost": -5.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -738,28 +736,24 @@
             "IFR bl Lyons Res"
         ],
         [
-            "STANI-N-JUN1",
-            "STN-L-DEL2 Outflow"
+            "Goodwin Reservoir",
+            "Oakdale Irrigation District"
         ],
         [
-            "STANI-N-JUN1",
-            "STN-L-RIV2 Outflow"
+            "Goodwin Reservoir",
+            "IFR below Goodwin Reservoir"
         ],
         [
             "STN_below_Melons.2.2",
             "IFR Below New Melones Res"
         ],
         [
-            "STN_R-N-JUN1",
-            "STN-L-DEL1 Outflow"
+            "Goodwin Reservoir",
+            "South San Jouquin Irrigation District"
         ],
         [
             "STN_01 Inflow",
             "New Melones Lake"
-        ],
-        [
-            "blwTullochPH",
-            "STN_R-N-JUN1"
         ],
         [
             "Angels PH",
@@ -810,8 +804,8 @@
             "STN_01 Inflow"
         ],
         [
-            "STN_R-N-JUN1",
-            "STANI-N-JUN1"
+            "IFR below Goodwin Reservoir",
+            "Stanislaus River Outflow"
         ],
         [
             "STN_02 Headflow",
@@ -1019,11 +1013,19 @@
         ],
         [
             "Tulloch Lake",
-            "Release from Tulloch Lake"
+            "Tulloch Release Requirement"
         ],
         [
             "Tulloch Lake",
             "Tulloch Lake Flood Control"
+        ],
+        [
+            "Tulloch Release Requirement",
+            "Goodwin Reservoir"
+        ],
+        [
+            "Tulloch Lake Flood Control",
+            "Goodwin Reservoir"
         ],
         [
             "IFR Below New Melones Res",
@@ -1036,14 +1038,6 @@
         [
             "STANI-N-JUN4",
             "STN_below_Melons.2.2"
-        ],
-        [
-            "Release from Tulloch Lake",
-            "blwTullochPH"
-        ],
-        [
-            "Tulloch Lake Flood Control",
-            "blwTullochPH"
         ]
     ],
     "tables": {
@@ -1112,7 +1106,7 @@
                 "New Melones Lake/Storage Demand"
             ],
             "values": [
-                10000,
+                -10000,
                 0.0,
                 0.0
             ]
@@ -1333,112 +1327,119 @@
         },
         "IFR bl Angels Div/Violation Cost": {
             "type": "constant",
-            "value": 10
+            "value": -1000
         },
         "IFR bl Angels Div/Requirement": {
             "type": "node_IFR_bl_Angels_Div_Requirement"
         },
         "IFR bl Donnells Reservoir/Violation Cost": {
             "type": "constant",
-            "value": 10
+            "value": -1000
         },
         "IFR bl Donnells Reservoir/Requirement": {
             "type": "node_IFR_bl_Donnells_Reservoir_Requirement"
         },
         "IFR bl Hunter Reservoir/Violation Cost": {
             "type": "constant",
-            "value": 10
+            "value": -1000
         },
         "IFR bl Hunter Reservoir/Requirement": {
             "type": "node_IFR_bl_Hunter_Reservoir_Requirement"
         },
         "IFR bl Lyons Res/Violation Cost": {
             "type": "constant",
-            "value": 10
+            "value": -1000
         },
         "IFR bl Lyons Res/Requirement": {
             "type": "node_IFR_bl_Lyons_Res_Requirement"
         },
         "IFR bl McKays Point Div/Violation Cost": {
             "type": "constant",
-            "value": 10
+            "value": -1000
         },
         "IFR bl McKays Point Div/Requirement": {
             "type": "node_IFR_bl_McKays_Point_Div_Requirement"
         },
         "IFR bl New Spicer Meadow Reservoir/Violation Cost": {
             "type": "constant",
-            "value": 10
+            "value": -1000
         },
         "IFR bl New Spicer Meadow Reservoir/Requirement": {
             "type": "node_IFR_bl_New_Spicer_Meadow_Reservoir_Requirement"
         },
         "IFR bl Philadelphia Div/Violation Cost": {
             "type": "constant",
-            "value": 10
+            "value": -1000
         },
         "IFR bl Philadelphia Div/Requirement": {
             "type": "node_IFR_bl_Philadelphia_Div_Requirement"
         },
         "IFR bl Relief Reservoir/Violation Cost": {
             "type": "constant",
-            "value": 10
+            "value": -1000
         },
         "IFR bl Relief Reservoir/Requirement": {
             "type": "node_IFR_bl_Relief_Reservoir_Requirement"
         },
         "IFR bl Sand Bar Div/Violation Cost": {
             "type": "constant",
-            "value": 10
+            "value": -1000
         },
         "IFR bl Sand Bar Div/Requirement": {
             "type": "node_IFR_bl_Sand_Bar_Div_Requirement"
         },
         "IFR bl Utica Div/Violation Cost": {
             "type": "constant",
-            "value": 10
+            "value": -1000
         },
         "IFR bl Utica Div/Requirement": {
             "type": "node_IFR_bl_Utica_Div_Requirement"
         },
         "Below Beaver Creek Diversion Dam/Violation Cost": {
             "type": "constant",
-            "value": 10
+            "value": -1000
         },
         "Below Beaver Creek Diversion Dam/Requirement": {
             "type": "node_IFR_bl_BeaverCreekDivDam_Requirement"
         },
         "IFR Confluence of NF and Beaver Creek/Violation Cost": {
             "type": "constant",
-            "value": 10
+            "value": -1000
         },
         "IFR Confluence of NF and Beaver Creek/Requirement": {
             "type": "node_IFR_confluence_NF_BeaverCreek_Requirement"
         },
         "IFR Below New Melones Res/Violation Cost": {
             "type": "constant",
-            "value": 10
+            "value": -1000
         },
         "IFR Below New Melones Res/Requirement": {
             "type": "node_IFR_bl_New_Melones_Requirement"
         },
+        "IFR below Goodwin Reservoir/Violation Cost": {
+            "type": "constant",
+            "value": -1000
+        },
+        "IFR below Goodwin Reservoir/Requirement": {
+            "type": "node_IFR_below_Goodwin_Reservoir_Requirement"
+        },
         "IFR Below Pinecrest Lake/Violation Cost": {
             "type": "constant",
-            "value": 10
+            "value": -1000
         },
         "IFR Below Pinecrest Lake/Requirement": {
             "type": "node_IFR_bl_Pinecrest_Lake_Requirement"
         },
         "IFR Below Utica Res/Violation Cost": {
             "type": "constant",
-            "value": 10
+            "value": -1000
         },
         "IFR Below Utica Res/Requirement": {
             "type": "node_IFR_bl_Utica_Res_Requirement"
         },
         "IFR below Beardsley Afterbay/Violation Cost": {
             "type": "constant",
-            "value": 10
+            "value": -1000
         },
         "IFR below Beardsley Afterbay/Requirement": {
             "type": "node_IFR_below_Beardsley_Afterbay_Requirement"
@@ -1508,10 +1509,19 @@
             "type": "network_PH_Cost"
         },
         "New Melones Lake/Storage Demand": {
-            "type": "node_New_Melones_Storage_Demand"
+            "type": "node_New_Melones_Lake_Storage_Demand"
         },
         "New Melones Lake/Storage Value": {
-            "type": "node_New_Melones_Reservoir_Storage_Value"
+            "type": "controlcurveinterpolated",
+            "storage_node": "New Melones Lake",
+            "control_curves": [
+                "New Melones Lake/Storage Demand"
+            ],
+            "values": [
+                0.0,
+                0.0,
+                -10.0
+            ]
         },
         "New Melones PH/Turbine Capacity": {
             "type": "constant",
@@ -1967,15 +1977,12 @@
         },
         "Tulloch Lake/Storage Value": {
             "type": "constant",
-            "value": 75.4521182166705
+            "value": -75.4521182166705
         },
         "Tulloch Lake/Storage Demand": {
             "type": "node_Tulloch_Lake_Storage_Demand"
         },
-        "blwTullochPH/Requirement": {
-            "type": "node_blwTullochPH_Requirement"
-        },
-        "Release from Tulloch Lake/Release": {
+        "Tulloch Release Requirement/Release": {
             "type": "node_Release_From_Tulloch_Lake"
         },
         "WYT_SJValley": {
@@ -2030,7 +2037,7 @@
         },
         "storage_value_leading": {
             "type": "constant",
-            "value": 10
+            "value": -10
         },
         "melones_storageValueConstant": {
             "type": "constant",
@@ -2042,7 +2049,7 @@
         },
         "melones_storage_value_leading": {
             "type": "constant",
-            "value": 10
+            "value": -10
         }
     },
     "recorders": {
@@ -2053,6 +2060,10 @@
         "Beardsley Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Beardsley Reservoir"
+        },
+        "Beardsley Reservoir/cost": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Beardsley Reservoir/Storage Value"
         },
         "Collierville PH/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -2065,6 +2076,10 @@
         "Donnells Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Donnells Reservoir"
+        },
+        "Donnells Reservoir/cost": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Donnells Reservoir/Storage Value"
         },
         "IFR bl Angels Div/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -2150,6 +2165,10 @@
             "type": "NumpyArrayStorageRecorder",
             "node": "Lyons Reservoir"
         },
+        "Lyons Reservoir/cost": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Lyons Reservoir/Storage Value"
+        },
         "Murphys PH/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Murphys PH"
@@ -2166,6 +2185,10 @@
             "type": "NumpyArrayStorageRecorder",
             "node": "New Spicer Meadow Reservoir"
         },
+        "New Spicer Meadow Reservoir/cost": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "New Spicer Meadow Reservoir/Storage Value"
+        },
         "Phoenix Canal Outflow/outflow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Phoenix Canal Outflow"
@@ -2178,9 +2201,17 @@
             "type": "NumpyArrayStorageRecorder",
             "node": "Pinecrest Reservoir"
         },
+        "Pinecrest Reservoir/cost": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Pinecrest Reservoir/Storage Value"
+        },
         "Relief Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Relief Reservoir"
+        },
+        "Relief Reservoir/cost": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Relief Reservoir/Storage Value"
         },
         "Sand Bar PH/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -2194,213 +2225,113 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Stanislaus PH"
         },
-        "STN-L-DEL1 Outflow/outflow": {
+        "South San Jouquin Irrigation District/outflow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "STN-L-DEL1 Outflow"
+            "node": "South San Jouquin Irrigation District"
         },
-        "STN-L-DEL2 Outflow/outflow": {
+        "Oakdale Irrigation District/outflow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "STN-L-DEL2 Outflow"
+            "node": "Oakdale Irrigation District"
         },
-        "STN-L-RIV2 Outflow/outflow": {
+        "Stanislaus River Outflow/outflow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "STN-L-RIV2 Outflow"
-        },
-        "STN_01 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_01 Headflow"
+            "node": "Stanislaus River Outflow"
         },
         "STN_01 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_01 Headflow"
         },
-        "STN_02 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_02 Headflow"
-        },
         "STN_02 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_02 Headflow"
-        },
-        "STN_03 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_03 Headflow"
         },
         "STN_03 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_03 Headflow"
         },
-        "STN_04 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_04 Headflow"
-        },
         "STN_04 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_04 Headflow"
-        },
-        "STN_05 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_05 Headflow"
         },
         "STN_05 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_05 Headflow"
         },
-        "STN_06 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_06 Headflow"
-        },
         "STN_06 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_06 Headflow"
-        },
-        "STN_07 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_07 Headflow"
         },
         "STN_07 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_07 Headflow"
         },
-        "STN_08 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_08 Headflow"
-        },
         "STN_08 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_08 Headflow"
-        },
-        "STN_09 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_09 Headflow"
         },
         "STN_09 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_09 Headflow"
         },
-        "STN_10 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_10 Headflow"
-        },
         "STN_10 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_10 Headflow"
-        },
-        "STN_11 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_11 Headflow"
         },
         "STN_11 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_11 Headflow"
         },
-        "STN_12 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_12 Headflow"
-        },
         "STN_12 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_12 Headflow"
-        },
-        "STN_13 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_13 Headflow"
         },
         "STN_13 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_13 Headflow"
         },
-        "STN_14 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_14 Headflow"
-        },
         "STN_14 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_14 Headflow"
-        },
-        "STN_15 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_15 Headflow"
         },
         "STN_15 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_15 Headflow"
         },
-        "STN_16 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_16 Headflow"
-        },
         "STN_16 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_16 Headflow"
-        },
-        "STN_17 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_17 Headflow"
         },
         "STN_17 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_17 Headflow"
         },
-        "STN_18 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_18 Headflow"
-        },
         "STN_18 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_18 Headflow"
-        },
-        "STN_19 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_19 Headflow"
         },
         "STN_19 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_19 Headflow"
         },
-        "STN_20 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_20 Headflow"
-        },
         "STN_20 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_20 Headflow"
-        },
-        "STN_21 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_21 Headflow"
         },
         "STN_21 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_21 Headflow"
         },
-        "STN_22 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_22 Headflow"
-        },
         "STN_22 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_22 Headflow"
-        },
-        "STN_23 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_23 Headflow"
         },
         "STN_23 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_23 Headflow"
         },
-        "STN_24 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_24 Headflow"
-        },
         "STN_24 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
             "node": "STN_24 Headflow"
-        },
-        "STN_25 Headflow/outflow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "STN_25 Headflow"
         },
         "STN_25 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
@@ -2409,6 +2340,10 @@
         "Tulloch Lake/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Tulloch Lake"
+        },
+        "Tulloch Lake/cost": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Tulloch Lake/Storage Value"
         }
     }
 }

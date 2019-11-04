@@ -25,7 +25,7 @@ class node_Release_From_Tulloch_Lake(WaterLPParameter):
         outflow = prev_storage + prev_inflow - storage_demand
 
         # net demand
-        reqt = self.model.parameters["blwTullochPH/Requirement" + self.month_suffix].value(timestep, scenario_index)
+        reqt = self.model.parameters["IFR below Goodwin Reservoir/Requirement" + self.month_suffix].value(timestep, scenario_index)
         net_demand = self.get_demand(timestep, scenario_index) + reqt
 
         return max(net_demand, min(outflow, max_outflow))

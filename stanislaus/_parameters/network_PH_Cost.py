@@ -40,9 +40,10 @@ class network_PH_Cost(WaterLPParameter):
 
         # per-mcm value is a function of:
         # 1. electricity price
-        # 2. generating potential, a function of generating efficiency and head
+        # 2. generating potential, a function of generating efficiency, head, etc.
 
-        price_per_kWh = self.model.tables["Price Values"].at[timestep.datetime, str(self.block)]
+        price_per_kWh = self.model.tables["Price Values"] \
+            .at[timestep.datetime, str(self.block)]
         head = self.model.nodes[self.res_name].head
         eta = 0.9  # generation efficiency
         gamma = 9807  # specific weight of water = rho*g
@@ -51,8 +52,8 @@ class network_PH_Cost(WaterLPParameter):
         # We can add some conversion function here to go from price to Pywr cost
         # For now, divide by 100, which results in costs of about -5 to -170
         # E-flow costs can be set to less than this, or say -1000
-        cost = - price_per_mcm / 100
-        return cost
+        pywr_cost = - price_per_mcm / 100 * 0
+        return pywr_cost
 
     def value(self, timestep, scenario_index):
         try:
