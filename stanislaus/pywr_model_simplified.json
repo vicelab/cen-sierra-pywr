@@ -263,6 +263,7 @@
             "type": "Storage",
             "initial_volume": 1366.7,
             "max_volume": 2960.35,
+            "min_volume": 500,
             "cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -270,7 +271,7 @@
             "name": "New Melones PH",
             "type": "Hydropower",
             "base_flow": "New Melones PH/Turbine Capacity",
-            "base_cost": -1,
+            "base_cost": -1.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -411,20 +412,23 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "South San Jouquin Irrigation District",
+            "name": "South San Joaquin Irrigation District",
             "type": "Output",
-            "max_flow": 0.0,
+            "max_flow": "South San Joaquin Irrigation District/Demand",
+            "cost": -500,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Oakdale Irrigation District",
             "type": "Output",
-            "max_flow": 0.0,
+            "max_flow": "Oakdale Irrigation District/Demand",
+            "cost": -500,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Stanislaus River Outflow",
             "type": "Output",
+            "cost": 10.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -587,7 +591,7 @@
             "type": "Storage",
             "initial_volume": 82.64,
             "max_volume": 82.64,
-            "cost": "Tulloch Lake/Storage Value",
+            "cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -741,15 +745,15 @@
         ],
         [
             "Goodwin Reservoir",
+            "South San Joaquin Irrigation District"
+        ],
+        [
+            "Goodwin Reservoir",
             "IFR below Goodwin Reservoir"
         ],
         [
             "STN_below_Melons.2.2",
             "IFR Below New Melones Res"
-        ],
-        [
-            "Goodwin Reservoir",
-            "South San Jouquin Irrigation District"
         ],
         [
             "STN_01 Inflow",
@@ -1086,6 +1090,12 @@
             "type": "dataframe",
             "table": "Energy Demand",
             "column": "Min Hr Demand (GWh)"
+        },
+        "South San Joaquin Irrigation District/Demand": {
+            "type": "node_South_San_Joaquin_Irrigation_District_Demand"
+        },
+        "Oakdale Irrigation District/Demand": {
+            "type": "node_Oakdale_Irrigation_District_Demand"
         },
         "New Melones Flood Control/Violation Cost": {
             "type": "controlcurveinterpolated",
@@ -1512,15 +1522,14 @@
             "type": "node_New_Melones_Lake_Storage_Demand"
         },
         "New Melones Lake/Storage Value": {
-            "type": "controlcurveinterpolated",
+            "type": "controlcurve",
             "storage_node": "New Melones Lake",
             "control_curves": [
                 "New Melones Lake/Storage Demand"
             ],
             "values": [
-                0.0,
-                0.0,
-                -10.0
+                2.0,
+                -20.0
             ]
         },
         "New Melones PH/Turbine Capacity": {
@@ -1977,7 +1986,7 @@
         },
         "Tulloch Lake/Storage Value": {
             "type": "constant",
-            "value": -75.4521182166705
+            "value": -1
         },
         "Tulloch Lake/Storage Demand": {
             "type": "node_Tulloch_Lake_Storage_Demand"
@@ -2225,9 +2234,9 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Stanislaus PH"
         },
-        "South San Jouquin Irrigation District/outflow": {
+        "South San Joaquin Irrigation District/outflow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "South San Jouquin Irrigation District"
+            "node": "South San Joaquin Irrigation District"
         },
         "Oakdale Irrigation District/outflow": {
             "type": "NumpyArrayNodeRecorder",

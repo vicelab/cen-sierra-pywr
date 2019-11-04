@@ -7,6 +7,8 @@ from utilities.converter import convert
 class node_IFR_bl_New_Melones_Requirement(WaterLPParameter):
     """"""
 
+    annual_ifr = 500  # in the middle somewhere
+
     def _value(self, timestep, scenario_index):
         if timestep.index == 0:
             # self.inflow = self.read_csv("Scenarios/Livneh/preprocessed/tot_runoff_sbAll.csv", squeeze=True)  # cms
@@ -16,20 +18,25 @@ class node_IFR_bl_New_Melones_Requirement(WaterLPParameter):
             self.runoff_tpl = 'STN_{:02} Headflow/Runoff'
             if self.mode == 'planning':
                 self.runoff_tpl += self.month_suffix
-        # inflow = self.model.parameters["Total Runoff"].value(timestep, scenario_index)
-        # on-the-fly summing of runoff doesn't seem particularly slow
 
-        inflow = sum(
-            [self.model.parameters[self.runoff_tpl.format(c)].value(timestep, scenario_index)
-             for c in range(1, 26)]
-        )
-        inflow = convert(inflow, "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
-        storage = self.model.nodes["New Melones Lake" + self.month_suffix].volume[-1]
-        inflow_store = inflow + storage
-        df = self.df
-        r = df[(df['store_inflow_fr'] <= inflow_store) & (df['store_inflow_to'] > inflow_store)]
-        ifr_val = r['rel_fr'] + (((r['rel_to'] - r['rel_fr']) / (r['store_inflow_to'] - r['store_inflow_fr'])) * (
-                inflow_store - r['store_inflow_fr']))
+        if timestep.month == 3 and timestep.day == 1:
+            projected_inflow = 0
+            start = timestep.datetime
+            end = '{}-09-30'.format(timestep.year)
+            for c in range(1, 26):
+                projected_inflow += self.model.parameters[self.runoff_tpl.format(c)] \
+                                        .dataframe[start:end].sum()
+
+            storage = self.model.nodes["New Melones Lake" + self.month_suffix].volume[-1]
+            inflow_plus_storage = projected_inflow + storage
+            df = self.df
+            r = df[(df['store_inflow_fr'] <= inflow_plus_storage) & (
+                    df['store_inflow_to'] > inflow_plus_storage)]
+            scale = (r['rel_to'] - r['rel_fr']) / (r['store_inflow_to'] - r['store_inflow_fr'])
+            self.annual_ifr = r['rel_fr'] + scale * (inflow_plus_storage - r['store_inflow_fr'])
+
+        ifr_val = self.annual_ifr / 365  # for now
+
         return ifr_val  # unit: mcm
 
     def value(self, timestep, scenario_index):
