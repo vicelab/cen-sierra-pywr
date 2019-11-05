@@ -42,7 +42,7 @@ class network_PH_Cost(WaterLPParameter):
         # 1. electricity price
         # 2. generating potential, a function of generating efficiency, head, etc.
 
-        price_per_kWh = self.model.tables["Price Values"] \
+        price_per_kWh = self.model.tables["Energy Price Values"] \
             .at[timestep.datetime, str(self.block)]
         head = self.model.nodes[self.res_name].head
         eta = 0.9  # generation efficiency

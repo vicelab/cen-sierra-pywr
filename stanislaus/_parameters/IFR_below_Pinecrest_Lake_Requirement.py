@@ -4,7 +4,7 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class node_IFR_bl_Pinecrest_Lake_Requirement(WaterLPParameter):
+class IFR_below_Pinecrest_Lake_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
@@ -41,5 +41,5 @@ class node_IFR_bl_Pinecrest_Lake_Requirement(WaterLPParameter):
         return cls(model, **data)
 
 
-node_IFR_bl_Pinecrest_Lake_Requirement.register()
+IFR_below_Pinecrest_Lake_Requirement.register()
 print(" [*] node_IFR_bl_Pinecrest_Lake_Requirement successfully registered")

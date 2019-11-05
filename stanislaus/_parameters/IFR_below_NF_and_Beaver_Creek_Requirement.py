@@ -5,7 +5,7 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class node_IFR_confluence_NF_BeaverCreek_Requirement(WaterLPParameter):
+class IFR_below_NF_and_Beaver_Creek_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
@@ -27,5 +27,5 @@ class node_IFR_confluence_NF_BeaverCreek_Requirement(WaterLPParameter):
         return cls(model, **data)
 
 
-node_IFR_confluence_NF_BeaverCreek_Requirement.register()
-print(" [*] node_IFR_confluence_NF_BeaverCreek_Requirement successfully registered")
+IFR_below_NF_and_Beaver_Creek_Requirement.register()
+print(" [*] IFR_below_NF_and_Beaver_Creek_Requirement successfully registered")

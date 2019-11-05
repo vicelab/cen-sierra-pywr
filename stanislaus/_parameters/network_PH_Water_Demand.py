@@ -14,7 +14,7 @@ class network_PH_Water_Demand(WaterLPParameter):
     def _value(self, timestep, scenario_index, mode='scheduling'):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
 
-        block = self.model.tables["Price Blocks"].at[timestep.datetime, str(self.block)]
+        block = self.model.tables["Energy Price Blocks"].at[timestep.datetime, str(self.block)]
         turbine_capacity = self.model.parameters[self.res_name + '/Turbine Capacity']\
             .value(timestep, scenario_index)
         demand_mcm = turbine_capacity * block * 3600 * 24 / 1e6

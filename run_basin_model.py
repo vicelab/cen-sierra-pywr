@@ -423,7 +423,7 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
     return
 
 
-def run_model(basin, network_key, include_planning=False, simplify=True, debug=False):
+def run_model(basin, network_key, run_name="default", include_planning=False, simplify=True, debug=False):
     # ========================
     # Set up model environment
     # ========================
@@ -591,7 +591,13 @@ def run_model(basin, network_key, include_planning=False, simplify=True, debug=F
 
     results = m.to_dataframe()
     results.index.name = 'Date'
-    results_path = './results'
+    results_path = os.path.join('./results', run_name)
+    if not os.path.exists(results_path):
+        os.makedirs(results_path)
+    for part in ['tables', 'figures']:
+        subpath = os.path.join(results_path, part)
+        if not os.path.exists(subpath):
+            os.makedirs(subpath)
     results.columns = results.columns.droplevel(1)
     if not os.path.exists(results_path):
         os.makedirs(results_path)
@@ -607,13 +613,29 @@ def run_model(basin, network_key, include_planning=False, simplify=True, debug=F
         else:
             columns[key] = [c]
     for (_type, attr), cols in columns.items():
-        path = os.path.join(results_path, '{}_{}.csv'.format(_type, attr.title()))
+        tab_path = os.path.join(results_path, 'tables', '{}_{}'.format(_type, attr.title()))
+        fig_path = os.path.join(results_path, 'figures', '{}_{}'.format(_type, attr.title()))
+        fig, ax = plt.subplots(figsize=(10, 6))
         df = results[cols]
         df.columns = [c.split('/')[0] for c in cols]
-        df.to_csv(path)
-        # if _type in ['Storage']:
-        df.plot(title='{}: {}'.format(_type, attr.title()))
-    plt.show()
+        df.to_csv(tab_path + '.csv')
+        if attr.lower() == 'storage':
+            df *= 810 / 1000
+            ax.set_ylabel('Storage (TAF)')
+        elif attr.lower() == 'cost':
+            ax.set_ylabel('Value ($/mcm)')
+        else:
+            df *= 1 / 0.0864 * 35.31
+            ax.set_ylabel('Flow (cfs)')
+        # for col in df.columns:
+        #     ax.plot(df.index.to_timestamp(), df[col], label=col)
+        df.plot(ax=ax)
+        ax.set_title('{}: {}'.format(_type, attr.title()))
+        ax.legend(loc='upper right', ncol=2)
+        plt.tight_layout()
+        # plt.show()
+        plt.close()
+        fig.savefig(fig_path + '.png', dpi=300)
 
 
 import argparse
@@ -623,6 +645,7 @@ parser.add_argument("-b", "--basin", help="Basin to run")
 parser.add_argument("-nk", "--network_key", help="Network key")
 parser.add_argument("-d", "--debug", help="Debug ('m' or 'd')")
 parser.add_argument("-p", "--include_planning", help="Include planning model", action='store_true')
+parser.add_argument("-n", "--run_name", help="Run name")
 args = parser.parse_args()
 
 basin = args.basin
@@ -630,6 +653,6 @@ network_key = args.network_key or os.environ.get('NETWORK_KEY')
 debug = args.debug
 include_planning = args.include_planning
 
-run_model(basin, network_key, include_planning=include_planning, debug=debug)
+run_model(basin, network_key, run_name=args.run_name, include_planning=include_planning, debug=debug)
 
 print('done!')

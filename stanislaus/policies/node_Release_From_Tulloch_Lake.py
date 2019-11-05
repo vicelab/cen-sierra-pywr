@@ -15,7 +15,7 @@ class node_Release_From_Tulloch_Lake(WaterLPParameter):
         outflow = prev_storage + prev_inflow - storage_demand
 
         # net demand
-        reqt = self.model.parameters["IFR below Goodwin Reservoir/Requirement" + self.month_suffix].value(timestep, scenario_index)
+        reqt = self.model.parameters["IFR bl Goodwin Reservoir/Requirement" + self.month_suffix].value(timestep, scenario_index)
 
         net_demand = self.model.parameters["Oakdale Irrigation District/Demand"].value(timestep, scenario_index) \
             + self.model.parameters["South San Joaquin Irrigation District/Demand"].value(timestep, scenario_index)

@@ -7,9 +7,13 @@ class node_New_Melones_Lake_Storage_Demand(WaterLPParameter):
     def _value(self, timestep, scenario_index):
         flood_control_req = self.read_csv("Management/BAU/LakeMelones_FloodControl_Requirement.csv", index_col=[0],
                                         parse_dates=True, squeeze=True)
-        day = timestep.day if timestep.month != 2 else min(timestep.day, 28)
-        control_curve_target = flood_control_req['1900-{:02}-{:02}'.format(timestep.month, day)]
-        max_storage = self.model.nodes["New Melones Lake"].max_volume
+        start = timestep.datetime.strftime('%m-%d')
+        if self.model.mode == 'scheduling':
+            control_curve_target = flood_control_req[start]
+        else:
+            end = '{:02}-{:02}'.format(timestep.month, self.days_in_month())
+            control_curve_target = flood_control_req[start:end].mean()
+        max_storage = self.model.nodes["New Melones Lake" + self.month_suffix].max_volume
         storage_demand = control_curve_target / max_storage
         return storage_demand
 

@@ -17,7 +17,7 @@ class New_Melones_Release_Policy(WaterLPParameter):
         # net demand
         net_demand = self.model.parameters["Oakdale Irrigation District/Demand"].value(timestep, scenario_index) \
             + self.model.parameters["South San Joaquin Irrigation District/Demand"].value(timestep, scenario_index)
-        ph_demand = self.model.parameters["IFR below Goodwin Reservoir/Requirement" + self.month_suffix].value(timestep,
+        ph_demand = self.model.parameters["IFR bl Goodwin Reservoir/Requirement" + self.month_suffix].value(timestep,
                                                                                                                scenario_index)
         total_demand = net_demand + ph_demand
 

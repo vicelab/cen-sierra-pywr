@@ -6,7 +6,7 @@
     },
     "timestepper": {
         "start": "2000-10-01",
-        "end": "2001-09-30",
+        "end": "2002-09-30",
         "timestep": 1
     },
     "solver": {
@@ -42,7 +42,7 @@
             "initial_volume": 40.0634304,
             "max_volume": 121.45,
             "min_volume": 25,
-            "cost": -5.0,
+            "cost": "Beardsley Reservoir/Storage Value",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -99,7 +99,7 @@
             "initial_volume": 66.8422812,
             "max_volume": 79.83,
             "min_volume": 6.2,
-            "cost": -5.0,
+            "cost": "Donnells Reservoir/Storage Value",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -180,31 +180,24 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "IFR Confluence of NF and Beaver Creek",
+            "name": "IFR below NF and Beaver Creek",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR Confluence of NF and Beaver Creek/Violation Cost",
-            "mrf": "IFR Confluence of NF and Beaver Creek/Requirement",
+            "mrf_cost": "IFR below NF and Beaver Creek/Violation Cost",
+            "mrf": "IFR below NF and Beaver Creek/Requirement",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "IFR Below New Melones Res",
+            "name": "IFR bl Goodwin Reservoir",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR Below New Melones Res/Violation Cost",
-            "mrf": "IFR Below New Melones Res/Requirement",
+            "mrf_cost": "IFR bl Goodwin Reservoir/Violation Cost",
+            "mrf": "IFR bl Goodwin Reservoir/Requirement",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "IFR below Goodwin Reservoir",
+            "name": "IFR below Pinecrest Lake",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR below Goodwin Reservoir/Violation Cost",
-            "mrf": "IFR below Goodwin Reservoir/Requirement",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
-            "name": "IFR Below Pinecrest Lake",
-            "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR Below Pinecrest Lake/Violation Cost",
-            "mrf": "IFR Below Pinecrest Lake/Requirement",
+            "mrf_cost": "IFR below Pinecrest Lake/Violation Cost",
+            "mrf": "IFR below Pinecrest Lake/Requirement",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -232,7 +225,7 @@
             "initial_volume": 2.220264,
             "max_volume": 7.5,
             "min_volume": 1.25,
-            "cost": -5.0,
+            "cost": "Lyons Reservoir/Storage Value",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -264,7 +257,7 @@
             "initial_volume": 1366.7,
             "max_volume": 2960.35,
             "min_volume": 500,
-            "cost": 0.0,
+            "cost": "New Melones Lake/Storage Value",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -280,7 +273,7 @@
             "initial_volume": 173.92068,
             "max_volume": 227.24,
             "min_volume": 50,
-            "cost": -5.0,
+            "cost": "New Spicer Meadow Reservoir/Storage Value",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -335,7 +328,7 @@
             "initial_volume": 16.898676,
             "max_volume": 22.58,
             "min_volume": 4,
-            "cost": -5.0,
+            "cost": "Pinecrest Reservoir/Storage Value",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -344,7 +337,7 @@
             "initial_volume": 10.546254,
             "max_volume": 18.5,
             "min_volume": 1.2,
-            "cost": -5.0,
+            "cost": "Relief Reservoir/Storage Value",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -617,7 +610,7 @@
             "type": "Storage",
             "initial_volume": 65,
             "max_volume": 82.64,
-            "cost": -5.0,
+            "cost": "Utica Reservoir/Storage Value",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -693,7 +686,7 @@
         ],
         [
             "Pinecrest Reservoir",
-            "IFR Below Pinecrest Lake"
+            "IFR below Pinecrest Lake"
         ],
         [
             "Relief Reservoir",
@@ -749,11 +742,7 @@
         ],
         [
             "Goodwin Reservoir",
-            "IFR below Goodwin Reservoir"
-        ],
-        [
-            "STN_below_Melons.2.2",
-            "IFR Below New Melones Res"
+            "IFR bl Goodwin Reservoir"
         ],
         [
             "STN_01 Inflow",
@@ -769,7 +758,7 @@
         ],
         [
             "Below Beaver Creek Diversion Dam",
-            "IFR Confluence of NF and Beaver Creek"
+            "IFR below NF and Beaver Creek"
         ],
         [
             "Beaver Creek Diversion",
@@ -777,7 +766,7 @@
         ],
         [
             "IFR bl McKays Point Div",
-            "IFR Confluence of NF and Beaver Creek"
+            "IFR below NF and Beaver Creek"
         ],
         [
             "Beaver Creek Diversion",
@@ -808,7 +797,7 @@
             "STN_01 Inflow"
         ],
         [
-            "IFR below Goodwin Reservoir",
+            "IFR bl Goodwin Reservoir",
             "Stanislaus River Outflow"
         ],
         [
@@ -840,7 +829,7 @@
             "STN_01 Inflow"
         ],
         [
-            "IFR Confluence of NF and Beaver Creek",
+            "IFR below NF and Beaver Creek",
             "STN_01 Inflow"
         ],
         [
@@ -940,7 +929,7 @@
             "Philadelphia Aquaduct Outflow"
         ],
         [
-            "IFR Below Pinecrest Lake",
+            "IFR below Pinecrest Lake",
             "Philadelphia Aquaduct Outflow"
         ],
         [
@@ -1032,7 +1021,7 @@
             "Goodwin Reservoir"
         ],
         [
-            "IFR Below New Melones Res",
+            "STN_below_Melons.2.2",
             "Tulloch Lake"
         ],
         [
@@ -1045,18 +1034,13 @@
         ]
     ],
     "tables": {
-        "Price Blocks": {
+        "Energy Price Blocks": {
             "url": "../data/piecewise_blocks_daily_historical.csv",
             "index_col": "Date",
             "parse_dates": true
         },
-        "Price Values": {
+        "Energy Price Values": {
             "url": "../data/piecewise_prices_DpMWh_daily_historical.csv",
-            "index_col": "Date",
-            "parse_dates": true
-        },
-        "Energy Demand": {
-            "url": "../data/energy_net_demand.csv",
             "index_col": "Date",
             "parse_dates": true
         },
@@ -1075,21 +1059,6 @@
         "Blocks": {
             "type": "constant",
             "value": 4
-        },
-        "Total Net Energy Demand": {
-            "type": "dataframe",
-            "table": "Energy Demand",
-            "column": "Tot Demand (GWh)"
-        },
-        "Max Net Energy Demand": {
-            "type": "dataframe",
-            "table": "Energy Demand",
-            "column": "Max Hr Demand (GWh)"
-        },
-        "Min Net Energy Demand": {
-            "type": "dataframe",
-            "table": "Energy Demand",
-            "column": "Min Hr Demand (GWh)"
         },
         "South San Joaquin Irrigation District/Demand": {
             "type": "node_South_San_Joaquin_Irrigation_District_Demand"
@@ -1116,7 +1085,7 @@
                 "New Melones Lake/Storage Demand"
             ],
             "values": [
-                -10000,
+                10000,
                 0.0,
                 0.0
             ]
@@ -1182,7 +1151,8 @@
             "value": 17.556
         },
         "Beardsley Reservoir/Storage Value": {
-            "type": "node_Beardsley_Reservoir_Storage_Value"
+            "type": "constant",
+            "value": -5.0
         },
         "Beardsley Reservoir/Elevation": {
             "type": "interpolatedvolume",
@@ -1292,7 +1262,8 @@
             "type": "network_PH_Cost"
         },
         "Donnells Reservoir/Storage Value": {
-            "type": "node_Donnells_Reservoir_Storage_Value"
+            "type": "constant",
+            "value": -5.0
         },
         "Donnells Reservoir/Elevation": {
             "type": "interpolatedvolume",
@@ -1412,33 +1383,30 @@
         "Below Beaver Creek Diversion Dam/Requirement": {
             "type": "node_IFR_bl_BeaverCreekDivDam_Requirement"
         },
-        "IFR Confluence of NF and Beaver Creek/Violation Cost": {
+        "IFR below NF and Beaver Creek/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
-        "IFR Confluence of NF and Beaver Creek/Requirement": {
-            "type": "node_IFR_confluence_NF_BeaverCreek_Requirement"
+        "IFR below NF and Beaver Creek/Requirement": {
+            "type": "IFR_below_NF_and_Beaver_Creek_Requirement"
         },
         "IFR Below New Melones Res/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
-        "IFR Below New Melones Res/Requirement": {
-            "type": "node_IFR_bl_New_Melones_Requirement"
-        },
-        "IFR below Goodwin Reservoir/Violation Cost": {
+        "IFR bl Goodwin Reservoir/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
-        "IFR below Goodwin Reservoir/Requirement": {
-            "type": "node_IFR_below_Goodwin_Reservoir_Requirement"
+        "IFR bl Goodwin Reservoir/Requirement": {
+            "type": "IFR_bl_Goodwin_Reservoir_Requirement"
         },
-        "IFR Below Pinecrest Lake/Violation Cost": {
+        "IFR below Pinecrest Lake/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
-        "IFR Below Pinecrest Lake/Requirement": {
-            "type": "node_IFR_bl_Pinecrest_Lake_Requirement"
+        "IFR below Pinecrest Lake/Requirement": {
+            "type": "IFR_below_Pinecrest_Lake_Requirement"
         },
         "IFR Below Utica Res/Violation Cost": {
             "type": "constant",
@@ -1455,7 +1423,8 @@
             "type": "node_IFR_below_Beardsley_Afterbay_Requirement"
         },
         "Lyons Reservoir/Storage Value": {
-            "type": "node_Lyons_Reservoir_Storage_Value"
+            "type": "constant",
+            "value": -5.0
         },
         "Lyons Reservoir/Elevation": {
             "type": "interpolatedvolume",
@@ -1522,15 +1491,8 @@
             "type": "node_New_Melones_Lake_Storage_Demand"
         },
         "New Melones Lake/Storage Value": {
-            "type": "controlcurve",
-            "storage_node": "New Melones Lake",
-            "control_curves": [
-                "New Melones Lake/Storage Demand"
-            ],
-            "values": [
-                2.0,
-                -20.0
-            ]
+            "type": "constant",
+            "value": 0.0
         },
         "New Melones PH/Turbine Capacity": {
             "type": "constant",
@@ -1544,7 +1506,8 @@
             "value": 5.66
         },
         "New Spicer Meadow Reservoir/Storage Value": {
-            "type": "node_New_Spicer_Meadow_Reservoir_Storage_Value"
+            "type": "constant",
+            "value": -5.0
         },
         "New Spicer Meadow Reservoir/Elevation": {
             "type": "interpolatedvolume",
@@ -1612,7 +1575,8 @@
             "type": "network_PH_Cost"
         },
         "Pinecrest Reservoir/Storage Value": {
-            "type": "node_Pinecrest_Reservoir_Storage_Value"
+            "type": "constant",
+            "value": -5.0
         },
         "Pinecrest Reservoir/Elevation": {
             "type": "interpolatedvolume",
@@ -1644,7 +1608,8 @@
             "kind": "cubic"
         },
         "Relief Reservoir/Storage Value": {
-            "type": "node_Relief_Reservoir_Storage_Value"
+            "type": "constant",
+            "value": -5.0
         },
         "Relief Reservoir/Elevation": {
             "type": "interpolatedvolume",
@@ -1780,6 +1745,10 @@
         "New Spicer Meadow PH/Demand Constant": {
             "type": "constant",
             "value": 10
+        },
+        "Utica Reservoir/Storage Value": {
+            "type": "constant",
+            "value": -5.0
         },
         "Stanislaus PH/Turbine Capacity": {
             "type": "constant",
@@ -2169,6 +2138,54 @@
         "IFR bl Utica Div/requirement": {
             "type": "NumpyArrayParameterRecorder",
             "parameter": "IFR bl Utica Div/Requirement"
+        },
+        "IFR bl Goodwin Reservoir/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Goodwin Reservoir"
+        },
+        "IFR bl Goodwin Reservoir/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Goodwin Reservoir/Requirement"
+        },
+        "IFR below Beardsley Afterbay/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR below Beardsley Afterbay"
+        },
+        "IFR below Beardsley Afterbay/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR below Beardsley Afterbay/Requirement"
+        },
+        "Below Beaver Creek Diversion Dam/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Below Beaver Creek Diversion Dam"
+        },
+        "Below Beaver Creek Diversion Dam/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Below Beaver Creek Diversion Dam/Requirement"
+        },
+        "IFR below NF and Beaver Creek/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR below NF and Beaver Creek"
+        },
+        "IFR below NF and Beaver Creek/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR below NF and Beaver Creek/Requirement"
+        },
+        "IFR below Pinecrest Lake/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR below Pinecrest Lake"
+        },
+        "IFR below Pinecrest Lake/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR below Pinecrest Lake/Requirement"
+        },
+        "IFR Below Utica Res/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR Below Utica Res"
+        },
+        "IFR Below Utica Res/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR Below Utica Res/Requirement"
         },
         "Lyons Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
