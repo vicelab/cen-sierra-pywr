@@ -204,12 +204,19 @@ def create_planning_model(model_path):
     return monthly_model
 
 
-def run_model(basin, network_key):
+def run_model(basin, network_key, run_type='normal'):
     # ========================
     # Set up model environment
     # ========================
 
-    root_dir = os.path.join(os.getcwd(), basin)
+    basin = basin.strip()
+    run_type = run_type.strip()
+
+    if run_type == 'calibrate':
+        root_dir = os.path.join(os.path.dirname(os.getcwd()), basin)
+    else:
+        root_dir = os.path.join(os.getcwd(), basin)
+
     bucket = 'openagua-networks'
     model_path = os.path.join(root_dir, 'pywr_model.json')
 
@@ -340,11 +347,13 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("-b", "--basin", help="Basin to run")
 parser.add_argument("-nk", "--network_key", help="Network key")
+parser.add_argument("-t", "--model_type", help="Model Type")
 args = parser.parse_args()
 
 basin = args.basin
 network_key = args.network_key or os.environ.get('NETWORK_KEY')
+run_type = args.model_type
 
-run_model(basin, network_key)
+run_model(basin, network_key, run_type)
 
 print('done!')

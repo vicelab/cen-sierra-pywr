@@ -15,7 +15,7 @@ class SpotSetup(object):
 
     def __init__(self, results_path, used_algorithm='default'):
         self.results_path = results_path
-        self.model_name = results_path.split("/")[2]
+        self.model_name = results_path.split("/")[1]
         self.used_algorithm = used_algorithm
         self.nodes = pd.read_csv("inputs/nodes.csv")
         # Generating Parameter Values via CSV
@@ -46,7 +46,7 @@ class SpotSetup(object):
         with open("../{}/pywr_model.json".format(self.model_name), "r") as f:
             data = json.load(f)
 
-        parameters_csv = pd.read_csv("Stan_Model/input_csvs/parameters.csv")
+        parameters_csv = pd.read_csv("inputs/parameters.csv")
         for index in range(0, len(parameters_csv)):
             data['parameters'][parameters_csv.iloc[index, 0]]['value'] = parameters[index]
         del parameters_csv
@@ -55,7 +55,7 @@ class SpotSetup(object):
             json.dump(data, f, indent=2)
 
         # Run the model using run_basin_model
-        proc = subprocess.run(['python', '../run_basin_model.py', "-b {}".format(self.model_name)])
+        proc = subprocess.run(['python', '../run_basin_model.py', "-b {}".format(self.model_name), '-t calibrate'])
 
         # Save the output from the model running
         # Join all results tables together
