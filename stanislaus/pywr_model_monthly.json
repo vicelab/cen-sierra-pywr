@@ -395,7 +395,7 @@
             "flow": {
                 "type": "constant",
                 "table": "Initial Storage",
-                "index": "2008-10-01",
+                "index": "2008-09-30",
                 "column": "Beardsley Reservoir"
             }
         },
@@ -1442,7 +1442,7 @@
             "flow": {
                 "type": "constant",
                 "table": "Initial Storage",
-                "index": "2008-10-01",
+                "index": "2008-09-30",
                 "column": "Donnells Reservoir"
             }
         },
@@ -3125,7 +3125,7 @@
             "flow": {
                 "type": "constant",
                 "table": "Initial Storage",
-                "index": "2008-10-01",
+                "index": "2008-09-30",
                 "column": "Lyons Reservoir"
             }
         },
@@ -3776,7 +3776,7 @@
             "flow": {
                 "type": "constant",
                 "table": "Initial Storage",
-                "index": "2008-10-01",
+                "index": "2008-09-30",
                 "column": "New Melones Lake"
             }
         },
@@ -4139,7 +4139,7 @@
             "flow": {
                 "type": "constant",
                 "table": "Initial Storage",
-                "index": "2008-10-01",
+                "index": "2008-09-30",
                 "column": "New Spicer Meadow Reservoir"
             }
         },
@@ -5162,7 +5162,7 @@
             "flow": {
                 "type": "constant",
                 "table": "Initial Storage",
-                "index": "2008-10-01",
+                "index": "2008-09-30",
                 "column": "Pinecrest Reservoir"
             }
         },
@@ -5441,7 +5441,7 @@
             "flow": {
                 "type": "constant",
                 "table": "Initial Storage",
-                "index": "2008-10-01",
+                "index": "2008-09-30",
                 "column": "Relief Reservoir"
             }
         },
@@ -8876,7 +8876,7 @@
             "flow": {
                 "type": "constant",
                 "table": "Initial Storage",
-                "index": "2008-10-01",
+                "index": "2008-09-30",
                 "column": "Beardsley Reservoir"
             }
         },

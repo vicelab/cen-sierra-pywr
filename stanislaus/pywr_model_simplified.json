@@ -42,7 +42,7 @@
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
-                "index": "2008-10-01",
+                "index": "2008-09-30",
                 "column": "Beardsley Reservoir"
             },
             "max_volume": 121.45,
@@ -104,7 +104,7 @@
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
-                "index": "2008-10-01",
+                "index": "2008-09-30",
                 "column": "Donnells Reservoir"
             },
             "max_volume": 79.83,
@@ -235,7 +235,7 @@
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
-                "index": "2008-10-01",
+                "index": "2008-09-30",
                 "column": "Lyons Reservoir"
             },
             "max_volume": 7.5,
@@ -272,7 +272,7 @@
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
-                "index": "2008-10-01",
+                "index": "2008-09-30",
                 "column": "New Melones Lake"
             },
             "max_volume": 2960.35,
@@ -293,7 +293,7 @@
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
-                "index": "2008-10-01",
+                "index": "2008-09-30",
                 "column": "New Spicer Meadow Reservoir"
             },
             "max_volume": 227.24,
@@ -353,7 +353,7 @@
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
-                "index": "2008-10-01",
+                "index": "2008-09-30",
                 "column": "Pinecrest Reservoir"
             },
             "max_volume": 22.58,
@@ -367,7 +367,7 @@
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
-                "index": "2008-10-01",
+                "index": "2008-09-30",
                 "column": "Relief Reservoir"
             },
             "max_volume": 18.5,
@@ -620,7 +620,7 @@
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
-                "index": "2008-10-01",
+                "index": "2008-09-30",
                 "column": "Beardsley Reservoir"
             },
             "max_volume": 82.64,
