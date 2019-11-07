@@ -1,3 +1,4 @@
+import json
 import os
 import pandas as pd
 from calendar import monthrange
@@ -8,6 +9,17 @@ from hashlib import md5
 from pywr.parameters import Parameter
 
 
+def monthlen(year, month):
+    return monthrange(year, month)[1]
+
+
+class Timestep(object):
+    step = None
+    datetime = None
+    year = None
+    month = None
+
+
 class WaterLPParameter(Parameter):
     store = {}  # TODO: create h5 store on disk (or redis?) to share between class instances
 
@@ -15,17 +27,22 @@ class WaterLPParameter(Parameter):
 
     # h5store = 'store.h5'
 
+    cfs_to_cms = 1 / 35.315
+
     mode = 'scheduling'
     res_class = 'network'
     res_name = None
     res_name_full = None
     attr_name = None
     block = None
-    month = 0
-    month_offset = 0
+    month = None
+    year = None
+    month_offset = None
     month_suffix = ''
     demand_constant_param = ''
     elevation_param = ''
+
+    timestep = Timestep()
 
     def setup(self):
         super(WaterLPParameter, self).setup()
@@ -33,47 +50,45 @@ class WaterLPParameter(Parameter):
         self.mode = getattr(self.model, 'mode', self.mode)
 
         name_parts = self.name.split('/')
-        res_class = name_parts[0]
+        self.res_name = name_parts[0]
 
-        if res_class in ['link', 'node']:
-            self.res_class = name_parts[0]
-            self.res_name = name_parts[1]
-            self.attr_name = name_parts[2]
-            self.res_name_full = '{} [{}]'.format(self.res_name, res_class)
+        if len(name_parts) >= 2:
+            self.attr_name = name_parts[1]
 
-            if self.mode == 'scheduling':
-                if len(name_parts) == 4:
-                    self.block = int(name_parts[3])
+        if self.mode == 'scheduling':
+            if len(name_parts) == 3:
+                self.block = int(name_parts[2])
+        else:
+            if len(name_parts) == 3:
+                self.month_offset = int(name_parts[-1]) - 1
+            elif len(name_parts) == 4:
+                self.block = int(name_parts[3])
+                self.month_offset = int(name_parts[2]) - 1
+            # if self.month_offset is not None:
+            #     self.res_name = '{}/{}'.format(name_parts[0], self.month_offset + 1)
 
-            elif self.mode == 'planning':
-                if len(name_parts) == 4:
-                    self.month = int(name_parts[3])
-                elif len(name_parts) == 5:
-                    self.month = int(name_parts[3])
-                    self.block = int(name_parts[4])
-                if self.month:
-                    self.month_offset = self.month - 1
+        if self.month_offset is not None:
+            self.month_suffix = '/{}'.format(self.month_offset + 1)
 
-            if self.month:
-                self.month_suffix = '/{}'.format(self.month)
-
-            self.res_name_full += self.month_suffix
-
+        try:
+            node = self.model.nodes[self.res_name + self.month_suffix]
+        except:
             node = None
-            try:
-                node = self.model.nodes[self.res_name_full]
-            except:
-                pass
 
-            if node:
+        if node and 'level' in node.component_attrs or self.attr_name == 'Storage Value':
+            self.elevation_param = '{}/Elevation'.format(self.res_name) + self.month_suffix
 
-                if ' PH' in node.name:
-                    self.demand_constant_param = "node/{}/Demand Constant".format(self.res_name)
+    def before(self):
+        super(WaterLPParameter, self).before()
+        if self.mode == 'planning':
+            if self.month_offset:
+                datetime = self.model.timestepper.current.datetime + relativedelta(months=+self.month_offset)
+            else:
+                datetime = self.model.timestepper.current.datetime
 
-                if 'level' in node.component_attrs:
-                    self.elevation_param = 'node/{}/Elevation'.format(self.res_name)
-                    if self.month:
-                        self.elevation_param += self.month_suffix
+            self.datetime = datetime
+            self.year = datetime.year
+            self.month = datetime.month
 
     def GET(self, *args, **kwargs):
         return self.get(*args, **kwargs)
@@ -81,23 +96,21 @@ class WaterLPParameter(Parameter):
     def get(self, param, timestep=None, scenario_index=None):
         return self.model.parameters[param].value(timestep or self.model.timestep, scenario_index)
 
-    def planning_date(self, timestep, month_offset=0):
-        try:
-            # month_offset = int(self.mode == 'planning' and self.name.split('/')[-1])
-            future_date = timestep.datetime + relativedelta(months=+month_offset)
-            return future_date
-        except Exception:
-            print(Exception)
-            return timestep.datetime
+    def days_in_month(self, year=None, month=None):
+        if year is None:
+            year = self.year
+        if month is None:
+            month = self.month
+        return monthrange(year, month)[1]
 
-    def days_in_planning_month(self, timestep, month_offset=0):
-        date = self.planning_date(timestep, month_offset)
-        return monthrange(date.year, date.month)[1]
-
-    def dates_in_planning_month(self, timestep, month_offset=0):
-        today = self.planning_date(timestep, month_offset)
-        ndays = monthrange(today.year, today.month)[1]
-        dates = pd.date_range(today, periods=ndays).tolist()
+    def dates_in_month(self, year=None, month=None):
+        if year is None:
+            year = self.year
+        if month is None:
+            month = self.month
+        start = pd.datetime(year, month, 1)
+        ndays = monthrange(year, month)[1]
+        dates = pd.date_range(start, periods=ndays).tolist()
         return dates
 
     def read_csv(self, *args, **kwargs):
@@ -148,4 +161,3 @@ class WaterLPParameter(Parameter):
             self.store[hashval] = data
 
         return data
-

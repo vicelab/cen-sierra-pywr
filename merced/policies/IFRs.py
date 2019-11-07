@@ -148,7 +148,7 @@ class Requirement_Merced_R_below_Crocker_Huffman_Dam(WaterLPParameter):
             flow_val = 0
             for j in range(1, 7):
                 # Note: the following two are about equivalent in time. Which to use seems to be arbitrary.
-                # flow_val += self.model.nodes['MER_0{} Headflow [node]'.format(j)].max_flow.value(timestep, scenario_index)
+                # flow_val += self.model.nodes['MER_0{} Headflow'.format(j)].max_flow.value(timestep, scenario_index)
                 flow_val += self.model.parameters['node/MER_0{} Headflow/Runoff'.format(j)].value(timestep,
                                                                                                   scenario_index)
 

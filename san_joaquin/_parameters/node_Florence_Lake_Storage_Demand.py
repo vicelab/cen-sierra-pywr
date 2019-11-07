@@ -14,7 +14,7 @@ class node_Florence_Lake_Storage_Demand(WaterLPParameter):
         #else:
         #    return self.get("node/Florence Lake/Storage Capacity", **kwargs)
         # return self.get("node/Florence Lake/Storage Capacity", **kwargs)
-        return self.model.nodes['Florence Lake [node]'].max_volume
+        return self.model.nodes['Florence Lake'].max_volume
         
     def value(self, timestep, scenario_index):
         return self._value(timestep, scenario_index)

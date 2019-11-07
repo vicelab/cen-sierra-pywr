@@ -5,3 +5,8 @@ data/
 
 !/.gitignore
 *.pyc
+
+*/results/*
+
+*.lp
+*.mps

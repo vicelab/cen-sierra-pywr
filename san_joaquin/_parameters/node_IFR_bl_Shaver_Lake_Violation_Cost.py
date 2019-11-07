@@ -7,7 +7,7 @@ class node_IFR_bl_Shaver_Lake_Violation_Cost(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         
-        return self.model.nodes['Big Creek 2A PH [node]'].base_cost*1.1
+        return self.model.nodes['Big Creek 2A PH'].base_cost*1.1
         
     def value(self, timestep, scenario_index):
         return self._value(timestep, scenario_index)

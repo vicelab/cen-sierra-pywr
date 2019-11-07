@@ -7,8 +7,8 @@ class node_IFR_bl_San_Joaquin_1_Div_Violation_Cost(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         
-        x=self.model.nodes['San Joaquin 1 PH [node]'].base_cost
-        y=self.model.nodes['San Joaquin 1A PH [node]'].base_cost
+        x=self.model.nodes['San Joaquin 1 PH'].base_cost
+        y=self.model.nodes['San Joaquin 1A PH'].base_cost
         if (x >= y):
             return x*1.2
         else:

@@ -1,1181 +1,197 @@
 // System
 digraph {
-	"Donnells Diversion [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Lower Collierville Tunnel 1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Lower Collierville Tunnel 2 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Philadelphia Aqueduct [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Sand Bar Power Tunnel [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Stanislaus Tunnel [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"ANGELS C BL UTICA D DIV DAM NR MURPHYS CA_11298700 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Angels Canal Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Angels Ck Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Angels Ck Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Angels PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Angles Canal Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"AVERY_11294500 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"BEARDSLEY PH NR STRAWBERRY CA_11292820 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Beardsley Reservoir [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Beaver Ck Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Beaver Ck Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Beaver Creek Diversion [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"BL MCKAYS POINT DAM_11295270 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Clark Fk Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Clark Fk Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Collierville PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Collierville Tunnel Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Collierville Tunnel Inflow (1) [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Donnells Diversion Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Donnells PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Donnells Reservoir [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Gauge_Phoenix [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Highland Ck Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Highland Ck Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"HIGHLAND CREEK BELOW NEW SPICER_11294000 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Hobart Ck Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Hobart Ck Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"IFR bl Angels Div [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Donnells Reservoir [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Hunters Reservoir [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Lyons Res [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl McKays Point Div [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl New Spicer Meadow Reservoir [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Philadelphia Div [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Relief Reservoir [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Sand Bar Div [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Utica Div [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Lower Utica Canal Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Lower Utica Canal Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Lyons Reservoir [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"McKay Point Diversion [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"MF STANISLAUS R BL BEARDSLEY DAM CA_11292900 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Middle Fork Stanislaus R Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Mill Ck Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Mill Ck Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Murphys PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"New Melones Lake [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"New Melones PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"New Spicer Meadow Reservoir [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"NF STANISLAUS DIV TU OL BL HOBART C_11293710 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"NF STANISLAUS R BL SILVER C CA_11293500 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"North Fork Stanislaus R Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Philadelphia Aquaduct Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Philadelphia Aqueduct Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Phoenix Canal Outflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Phoenix PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Pinecrest Reservoir [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Relief Reservoir [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Sand Bar PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Sand Bar Power Tunnel Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"sand bar power tunnel Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"SF STANISLAUS R A STRAWBERRY CA_11296500 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SF STANISLAUS R NR LONG BARN CA_11298000 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SF STANISLAUS R NR STRAWBERRY CA_11297200 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"South Fork Stanislaus R Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"South Fork Stanislaus R Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Spring Gap PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STANI-N-INF1 [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STANI-N-JUN1 [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"STANI-N-JUN2 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STANI-N-JUN3 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Stanislaus PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Stanislaus Tunnel Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Stanislaus Tunnel Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"STN-L-DEL1 Outflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN-L-DEL2 Outflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN-L-RIV2 Outflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_01 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_01 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_02 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_02 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_03 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_03 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_04 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_04 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_05 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_05 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_06 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_06 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_07 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_07 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_08 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_08 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_09 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_09 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_10 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_10 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_11 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_11 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_12 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_12 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_13 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_13 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_14 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_14 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_15 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_15 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_16 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_16 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_17 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_17 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_18 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_18 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_19 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_19 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_20 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_21 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_21 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_22 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_22 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_23 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_23 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_24 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_24 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_25 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_25 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_R-N-JUN1 [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Summit Ck Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Summit Ck Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Tulloch Lake [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"UPA Tunnel Tap Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"UPA Tunnel Tap Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Upper Collierville Tunnel Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Upper Collierville Tunnel Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"USGS_11292610 DONNELLS PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11293580_NF STAN R DIV TUNNEL [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11295250_COLLIERVILLE PP [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11295505_STANISLAUS PP [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11297000_PHILADELPHIA CN [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11297500_TUOLUMNE CN [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Angels Canal Inflow [node]" -> "Angels Ck Inflow [node]"
-	"STANI-N-JUN2 [node]" -> "Beaver Ck Inflow [node]"
-	"Angles Canal Outflow [node]" -> "Angels PH [node]"
-	"ANGELS C BL UTICA D DIV DAM NR MURPHYS CA_11298700 [node]" -> "Angels Canal Inflow [node]"
-	"Angels Ck Headflow [node]" -> "Lower Utica Canal Inflow [node]"
-	"Angels PH [node]" -> "Angels Canal Inflow [node]"
-	"Angles Canal Outflow [node]" -> "IFR bl Angels Div [node]"
-	"STN_16 Inflow [node]" -> "Beardsley Reservoir [node]"
-	"Beaver Ck Headflow [node]" -> "STN_13 Inflow [node]"
-	"Collierville Tunnel Inflow (1) [node]" -> "McKay Point Diversion [node]"
-	"Beaver Creek Diversion [node]" -> "BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230 [node]"
-	"Clark Fk Headflow [node]" -> "STN_19 Inflow [node]"
-	"Clark Fk Inflow [node]" -> "STN_18 Inflow [node]"
-	"Collierville PH [node]" -> "USGS_11295250_COLLIERVILLE PP [node]"
-	"STN_03 Inflow [node]" -> "Stanislaus Tunnel Inflow [node]"
-	"STN_07 Inflow [node]" -> "AVERY_11294500 [node]"
-	"Donnells Reservoir [node]" -> "Donnells PH [node]"
-	"Donnells Diversion Inflow [node]" -> "MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700 [node]"
-	"Donnells PH [node]" -> "USGS_11292610 DONNELLS PH [node]"
-	"Donnells Reservoir [node]" -> "IFR bl Donnells Reservoir [node]"
-	"Highland Ck Headflow [node]" -> "STN_11 Inflow [node]"
-	"NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600 [node]" -> "STN_08 Inflow [node]"
-	"Hobart Ck Headflow [node]" -> "STN_12 Inflow [node]"
-	"Hobart Ck Inflow [node]" -> "New Spicer Meadow Reservoir [node]"
-	"Phoenix PH [node]" -> "Gauge_Phoenix [node]"
-	"IFR bl Angels Div [node]" -> "ANGELS C BL UTICA D DIV DAM NR MURPHYS CA_11298700 [node]"
-	"IFR bl Donnells Reservoir [node]" -> "STN_17 Inflow [node]"
-	"IFR bl Hunters Reservoir [node]" -> "Mill Ck Inflow [node]"
-	"STN_22 Inflow [node]" -> "Lyons Reservoir [node]"
-	"STN_06 Inflow [node]" -> "Collierville Tunnel Inflow (1) [node]"
-	"IFR bl New Spicer Meadow Reservoir [node]" -> "HIGHLAND CREEK BELOW NEW SPICER_11294000 [node]"
-	"Philadelphia Aquaduct Outflow [node]" -> "SF STANISLAUS R NR STRAWBERRY CA_11297200 [node]"
-	"IFR bl Relief Reservoir [node]" -> "Summit Ck Inflow [node]"
-	"STN_14 Inflow [node]" -> "Sand Bar Power Tunnel Inflow [node]"
-	"Upper Collierville Tunnel Outflow [node]" -> "IFR bl Utica Div [node]"
-	"Beaver Creek Diversion [node]" -> "BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210 [node]"
-	"McKay Point Diversion [node]" -> "UPA Tunnel Tap Outflow [node]"
-	"Lower Utica Canal Outflow [node]" -> "UPA Tunnel Tap Inflow [node]"
-	"Lower Utica Canal Inflow [node]" -> "STN_02 Inflow [node]"
-	"Lower Utica Canal Outflow [node]" -> "IFR bl Hunters Reservoir [node]"
-	"IFR bl Philadelphia Div [node]" -> "STN_22 Inflow [node]"
-	"AVERY_11294500 [node]" -> "STN_06 Inflow [node]"
-	"Summit Ck Inflow [node]" -> "MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000 [node]"
-	"Collierville Tunnel Inflow [node]" -> "STN_03 Inflow [node]"
-	"Mill Ck Headflow [node]" -> "STN_04 Inflow [node]"
-	"IFR bl McKays Point Div [node]" -> "BL MCKAYS POINT DAM_11295270 [node]"
-	"Murphys PH [node]" -> "Lower Utica Canal Inflow [node]"
-	"New Spicer Meadow Reservoir [node]" -> "IFR bl New Spicer Meadow Reservoir [node]"
-	"North Fork Stanislaus R Headflow [node]" -> "STN_10 Inflow [node]"
-	"STN_23 Inflow [node]" -> "Philadelphia Aquaduct Outflow [node]"
-	"Philadelphia Aquaduct Outflow [node]" -> "Spring Gap PH [node]"
-	"STN_15 Inflow [node]" -> "sand bar power tunnel Outflow [node]"
-	"Lyons Reservoir [node]" -> "USGS_11297500_TUOLUMNE CN [node]"
-	"Pinecrest Reservoir [node]" -> "STN_24 Inflow [node]"
-	"Relief Reservoir [node]" -> "IFR bl Relief Reservoir [node]"
-	"Sand Bar PH [node]" -> "JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA [node]"
-	"sand bar power tunnel Outflow [node]" -> "Sand Bar PH [node]"
-	"MF STANISLAUS R BL BEARDSLEY DAM CA_11292900 [node]" -> "Philadelphia Aqueduct Inflow [node]"
-	"BEARDSLEY PH NR STRAWBERRY CA_11292820 [node]" -> "STN_15 Inflow [node]"
-	"USGS_11297500_TUOLUMNE CN [node]" -> "Phoenix PH [node]"
-	"South Fork Stanislaus R Headflow [node]" -> "STN_25 Inflow [node]"
-	"Angels Ck Inflow [node]" -> "STN_01 Inflow [node]"
-	"Spring Gap PH [node]" -> "USGS_11297000_PHILADELPHIA CN [node]"
-	"Stanislaus PH [node]" -> "USGS_11295505_STANISLAUS PP [node]"
-	"Middle Fork Stanislaus R Inflow [node]" -> "Collierville Tunnel Inflow [node]"
-	"Stanislaus Tunnel Outflow [node]" -> "Stanislaus PH [node]"
-	"South Fork Stanislaus R Inflow [node]" -> "Angels Ck Inflow [node]"
-	"Philadelphia Aqueduct Inflow [node]" -> "STN_14 Inflow [node]"
-	"STN_01 Headflow [node]" -> "STN_01 Inflow [node]"
-	"STN_02 Headflow [node]" -> "STN_02 Inflow [node]"
-	"STN_02 Inflow [node]" -> "Angles Canal Outflow [node]"
-	"STN_03 Headflow [node]" -> "STN_03 Inflow [node]"
-	"Stanislaus Tunnel Inflow [node]" -> "South Fork Stanislaus R Inflow [node]"
-	"STN_04 Headflow [node]" -> "STN_04 Inflow [node]"
-	"STN_04 Inflow [node]" -> "Lower Utica Canal Outflow [node]"
-	"STN_05 Headflow [node]" -> "STN_05 Inflow [node]"
-	"McKay Point Diversion [node]" -> "IFR bl McKays Point Div [node]"
-	"STN_06 Headflow [node]" -> "STN_06 Inflow [node]"
-	"Highland Ck Inflow [node]" -> "STN_07 Inflow [node]"
-	"STN_07 Headflow [node]" -> "STN_07 Inflow [node]"
-	"STN_08 Inflow [node]" -> "Highland Ck Inflow [node]"
-	"STN_08 Headflow [node]" -> "STN_08 Inflow [node]"
-	"IFR bl Utica Div [node]" -> "NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600 [node]"
-	"STN_09 Headflow [node]" -> "STN_09 Inflow [node]"
-	"STN_09 Inflow [node]" -> "NF STANISLAUS R BL SILVER C CA_11293500 [node]"
-	"STN_10 Headflow [node]" -> "STN_10 Inflow [node]"
-	"STN_10 Inflow [node]" -> "STN_09 Inflow [node]"
-	"STN_11 Headflow [node]" -> "STN_11 Inflow [node]"
-	"STN_11 Inflow [node]" -> "Hobart Ck Inflow [node]"
-	"STN_12 Headflow [node]" -> "STN_12 Inflow [node]"
-	"STN_12 Inflow [node]" -> "HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700 [node]"
-	"STN_13 Headflow [node]" -> "STN_13 Inflow [node]"
-	"STN_13 Inflow [node]" -> "Beaver Creek Diversion [node]"
-	"STN_14 Headflow [node]" -> "STN_14 Inflow [node]"
-	"sand bar power tunnel Outflow [node]" -> "MF STANISLAUS R BL BEARDSLEY DAM CA_11292900 [node]"
-	"STN_15 Headflow [node]" -> "STN_15 Inflow [node]"
-	"Beardsley Reservoir [node]" -> "BEARDSLEY PH NR STRAWBERRY CA_11292820 [node]"
-	"STN_16 Headflow [node]" -> "STN_16 Inflow [node]"
-	"MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700 [node]" -> "STN_16 Inflow [node]"
-	"STN_17 Headflow [node]" -> "STN_17 Inflow [node]"
-	"STN_17 Inflow [node]" -> "Donnells Diversion Inflow [node]"
-	"STN_18 Headflow [node]" -> "STN_18 Inflow [node]"
-	"STN_18 Inflow [node]" -> "Donnells Reservoir [node]"
-	"STN_19 Headflow [node]" -> "STN_19 Inflow [node]"
-	"STN_19 Inflow [node]" -> "CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500 [node]"
-	"STN_20 Headflow [node]" -> "Summit Ck Inflow [node]"
-	"STN_21 Headflow [node]" -> "STN_21 Inflow [node]"
-	"STN_21 Inflow [node]" -> "Relief Reservoir [node]"
-	"STN_22 Headflow [node]" -> "STN_22 Inflow [node]"
-	"SF STANISLAUS R NR STRAWBERRY CA_11297200 [node]" -> "IFR bl Philadelphia Div [node]"
-	"STN_23 Headflow [node]" -> "STN_23 Inflow [node]"
-	"SF STANISLAUS R A STRAWBERRY CA_11296500 [node]" -> "STN_23 Inflow [node]"
-	"STN_24 Headflow [node]" -> "STN_24 Inflow [node]"
-	"STN_24 Inflow [node]" -> "SF STANISLAUS R A STRAWBERRY CA_11296500 [node]"
-	"STN_25 Headflow [node]" -> "STN_25 Inflow [node]"
-	"STN_25 Inflow [node]" -> "Pinecrest Reservoir [node]"
-	"Summit Ck Headflow [node]" -> "STN_21 Inflow [node]"
-	"MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000 [node]" -> "Clark Fk Inflow [node]"
-	"UPA Tunnel Tap Outflow [node]" -> "UPA Tunnel Tap Inflow [node]"
-	"UPA Tunnel Tap Inflow [node]" -> "Murphys PH [node]"
-	"UPA Tunnel Tap Outflow [node]" -> "Collierville PH [node]"
-	"HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700 [node]" -> "Upper Collierville Tunnel Inflow [node]"
-	"NF STANISLAUS R BL SILVER C CA_11293500 [node]" -> "Upper Collierville Tunnel Outflow [node]"
-	"CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500 [node]" -> "Clark Fk Inflow [node]"
-	"USGS_11292610 DONNELLS PH [node]" -> "Donnells Diversion [link]"
-	"Donnells Diversion [link]" -> "Donnells Diversion Inflow [node]"
-	"HIGHLAND CREEK BELOW NEW SPICER_11294000 [node]" -> "Highland Ck Inflow [node]"
-	"Upper Collierville Tunnel Inflow [node]" -> "NF STANISLAUS DIV TU OL BL HOBART C_11293710 [node]"
-	"NF STANISLAUS DIV TU OL BL HOBART C_11293710 [node]" -> "Hobart Ck Inflow [node]"
-	"BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210 [node]" -> "Lower Collierville Tunnel 1 [link]"
-	"Lower Collierville Tunnel 1 [link]" -> "Collierville Tunnel Inflow (1) [node]"
-	"USGS_11295250_COLLIERVILLE PP [node]" -> "Lower Collierville Tunnel 2 [link]"
-	"Lower Collierville Tunnel 2 [link]" -> "Collierville Tunnel Inflow [node]"
-	"Sand Bar Power Tunnel Inflow [node]" -> "Stanislaus Tunnel Outflow [node]"
-	"Stanislaus Tunnel Outflow [node]" -> "IFR bl Sand Bar Div [node]"
-	"IFR bl Sand Bar Div [node]" -> "MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200 [node]"
-	"MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200 [node]" -> "Middle Fork Stanislaus R Inflow [node]"
-	"BL MCKAYS POINT DAM_11295270 [node]" -> "Beaver Ck Inflow [node]"
-	"Beaver Ck Inflow [node]" -> "STN_05 Inflow [node]"
-	"STN_05 Inflow [node]" -> "NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300 [node]"
-	"NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300 [node]" -> "Mill Ck Inflow [node]"
-	"Mill Ck Inflow [node]" -> "Middle Fork Stanislaus R Inflow [node]"
-	"USGS_11297000_PHILADELPHIA CN [node]" -> "Philadelphia Aqueduct [link]"
-	"Philadelphia Aqueduct [link]" -> "Philadelphia Aqueduct Inflow [node]"
-	"Gauge_Phoenix [node]" -> "Phoenix Canal Outflow [node]"
-	"JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA [node]" -> "Sand Bar Power Tunnel [link]"
-	"Sand Bar Power Tunnel [link]" -> "Sand Bar Power Tunnel Inflow [node]"
-	"Lyons Reservoir [node]" -> "IFR bl Lyons Res [node]"
-	"IFR bl Lyons Res [node]" -> "SF STANISLAUS R NR LONG BARN CA_11298000 [node]"
-	"SF STANISLAUS R NR LONG BARN CA_11298000 [node]" -> "South Fork Stanislaus R Inflow [node]"
-	"STANI-N-JUN1 [node]" -> "STN-L-DEL2 Outflow [node]"
-	"BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230 [node]" -> "STANI-N-JUN2 [node]"
-	"STN_R-N-JUN1 [node]" -> "STANI-N-JUN3 [node]"
-	"STANI-N-JUN3 [node]" -> "STANI-N-JUN1 [node]"
-	"STANI-N-JUN1 [node]" -> "STN-L-RIV2 Outflow [node]"
-	"STANI-N-INF1 [node]" -> "STANI-N-JUN3 [node]"
-	"USGS_11295505_STANISLAUS PP [node]" -> "Stanislaus Tunnel [link]"
-	"Stanislaus Tunnel [link]" -> "Stanislaus Tunnel Inflow [node]"
-	"New Melones Lake [node]" -> "New Melones PH [node]"
-	"STN_R-N-JUN1 [node]" -> "STN-L-DEL1 Outflow [node]"
-	"STN_01 Inflow [node]" -> "New Melones Lake [node]"
-	"Tulloch Lake [node]" -> "STN_R-N-JUN1 [node]"
-	"New Melones PH [node]" -> "Tulloch Lake [node]"
-	"USGS_11293580_NF STAN R DIV TUNNEL [node]" -> "Upper Collierville Tunnel Inflow [node]"
-	"Upper Collierville Tunnel Outflow [node]" -> "USGS_11293580_NF STAN R DIV TUNNEL [node]"
-	"Below Maxwell Ck Headflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Maxwell Ck Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Merced River Headflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below MER_01 Headflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below MER_01 Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below MER_02 Headflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below MER_02 Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below MER_03 Headflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below MER_03 Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below MER_04 Headflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below MER_04 Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below MER_05 Headflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below MER_05 Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below MER_06 Headflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below MER_06 Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below South Fork Merced R Headflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below South Fork Merced R Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"BlwMcClure.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"BlwMcClure.2.1.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"BlwMcClure.2.1.2 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"BlwMcClure.2.2 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Main Canal [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"MERCE-L-CON1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Merced River [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Merced River (1).1.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Merced River (1).1.2 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Merced River (2).2.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Merced River (2).2.2.1.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Merced River (2).2.2.1.2.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Merced River (2).2.2.1.2.2.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Merced River (2).2.2.1.2.2.2.1.1.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Merced River (2).2.2.1.2.2.2.1.1.2 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Merced River (2).2.2.1.2.2.2.2 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Merced River (2).2.2.2.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Merced River (2).2.2.2.2.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Merced River (2).2.2.2.2.2 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Merced River below Crocker-Huffman [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Northside Canal [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Valley_inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Ex Chequer Dam [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Merced Falls Dam [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"blwNewExchequerPH [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"Crocker-Huffman Diversion Reservoir [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Lake McClure [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Lake McClure Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Lake McSwain [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Maxwell Ck Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Maxwell Ck Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"McSwain PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"MERCE-N-JUN1 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"MERCE-N-JUN2 [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Merced Falls PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"Merced Falls Res [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Merced R below Crocker-Huffman Dam [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"Merced River Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Merced River Outflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"MER_01 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"MER_01 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"MER_02 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"MER_02 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"MER_03 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"MER_03 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"MER_04 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"MER_04 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"MER_05 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"MER_05 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"MER_06 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"MER_06 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"MID Main [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"MID Northside [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Near Shaffer Bridge_11271290 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Near Stevinson_11272500 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"New Exchequer PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"South Fork Merced R Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"South Fork Merced R Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11264500 MERCED R A HAPPY ISLES [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Valley_Demand [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Valley_Inflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Maxwell Ck Headflow [node]" -> "Below Maxwell Ck Headflow [link]"
-	"Below Maxwell Ck Headflow [link]" -> "MER_02 Inflow [node]"
-	"South Fork Merced R Inflow [node]" -> "Below Maxwell Ck Inflow [link]"
-	"Below Maxwell Ck Inflow [link]" -> "MER_03 Inflow [node]"
-	"Merced River Headflow [node]" -> "Below Merced River Headflow [link]"
-	"Below Merced River Headflow [link]" -> "MER_06 Inflow [node]"
-	"MER_01 Headflow [node]" -> "Below MER_01 Headflow [link]"
-	"Below MER_01 Headflow [link]" -> "MER_01 Inflow [node]"
-	"MER_03 Inflow [node]" -> "Below MER_01 Inflow [link]"
-	"Below MER_01 Inflow [link]" -> "Maxwell Ck Inflow [node]"
-	"MER_02 Headflow [node]" -> "Below MER_02 Headflow [link]"
-	"Below MER_02 Headflow [link]" -> "MER_02 Inflow [node]"
-	"MER_02 Inflow [node]" -> "Below MER_02 Inflow [link]"
-	"Below MER_02 Inflow [link]" -> "Maxwell Ck Inflow [node]"
-	"MER_03 Headflow [node]" -> "Below MER_03 Headflow [link]"
-	"Below MER_03 Headflow [link]" -> "MER_03 Inflow [node]"
-	"MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500 [node]" -> "Below MER_03 Inflow [link]"
-	"Below MER_03 Inflow [link]" -> "South Fork Merced R Inflow [node]"
-	"MER_04 Headflow [node]" -> "Below MER_04 Headflow [link]"
-	"Below MER_04 Headflow [link]" -> "MER_04 Inflow [node]"
-	"MER_04 Inflow [node]" -> "Below MER_04 Inflow [link]"
-	"Below MER_04 Inflow [link]" -> "South Fork Merced R Inflow [node]"
-	"MER_05 Headflow [node]" -> "Below MER_05 Headflow [link]"
-	"Below MER_05 Headflow [link]" -> "MER_05 Inflow [node]"
-	"USGS_11264500 MERCED R A HAPPY ISLES [node]" -> "Below MER_05 Inflow [link]"
-	"Below MER_05 Inflow [link]" -> "MER_05 Inflow [node]"
-	"MER_06 Headflow [node]" -> "Below MER_06 Headflow [link]"
-	"Below MER_06 Headflow [link]" -> "MER_06 Inflow [node]"
-	"MER_06 Inflow [node]" -> "Below MER_06 Inflow [link]"
-	"Below MER_06 Inflow [link]" -> "USGS_11264500 MERCED R A HAPPY ISLES [node]"
-	"South Fork Merced R Headflow [node]" -> "Below South Fork Merced R Headflow [link]"
-	"Below South Fork Merced R Headflow [link]" -> "MER_04 Inflow [node]"
-	"MER_05 Inflow [node]" -> "Below South Fork Merced R Inflow [link]"
-	"Below South Fork Merced R Inflow [link]" -> "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500 [node]"
-	"Lake McClure [node]" -> "BlwMcClure.1 [link]"
-	"BlwMcClure.1 [link]" -> "New Exchequer PH [node]"
-	"New Exchequer PH [node]" -> "BlwMcClure.2.1.1 [link]"
-	"BlwMcClure.2.1.1 [link]" -> "Below Ex Chequer Dam [node]"
-	"Below Ex Chequer Dam [node]" -> "BlwMcClure.2.1.2 [link]"
-	"BlwMcClure.2.1.2 [link]" -> "blwNewExchequerPH [node]"
-	"blwNewExchequerPH [node]" -> "BlwMcClure.2.2 [link]"
-	"BlwMcClure.2.2 [link]" -> "Lake McSwain [node]"
-	"Crocker-Huffman Diversion Reservoir [node]" -> "Main Canal [link]"
-	"Main Canal [link]" -> "MID Main [node]"
-	"MERCE-N-JUN2 [node]" -> "MERCE-L-CON1 [link]"
-	"MERCE-L-CON1 [link]" -> "Valley_Demand [node]"
-	"Maxwell Ck Inflow [node]" -> "Merced River [link]"
-	"Merced River [link]" -> "MER_01 Inflow [node]"
-	"MER_01 Inflow [node]" -> "Merced River (1).1.1 [link]"
-	"Merced River (1).1.1 [link]" -> "Lake McClure Inflow [node]"
-	"Lake McClure Inflow [node]" -> "Merced River (1).1.2 [link]"
-	"Merced River (1).1.2 [link]" -> "Lake McClure [node]"
-	"Lake McSwain [node]" -> "Merced River (2).2.1 [link]"
-	"Merced River (2).2.1 [link]" -> "McSwain PH [node]"
-	"McSwain PH [node]" -> "Merced River (2).2.2.1.1 [link]"
-	"Merced River (2).2.2.1.1 [link]" -> "Merced Falls Res [node]"
-	"Merced Falls Res [node]" -> "Merced River (2).2.2.1.2.1 [link]"
-	"Merced River (2).2.2.1.2.1 [link]" -> "Merced Falls PH [node]"
-	"Merced Falls PH [node]" -> "Merced River (2).2.2.1.2.2.1 [link]"
-	"Merced River (2).2.2.1.2.2.1 [link]" -> "Below Merced Falls Dam [node]"
-	"Below Merced Falls Dam [node]" -> "Merced River (2).2.2.1.2.2.2.1.1.1 [link]"
-	"Merced River (2).2.2.1.2.2.2.1.1.1 [link]" -> "Crocker-Huffman Diversion Reservoir [node]"
-	"Crocker-Huffman Diversion Reservoir [node]" -> "Merced River (2).2.2.1.2.2.2.1.1.2 [link]"
-	"Merced River (2).2.2.1.2.2.2.1.1.2 [link]" -> "Merced R below Crocker-Huffman Dam [node]"
-	"Near Shaffer Bridge_11271290 [node]" -> "Merced River (2).2.2.1.2.2.2.2 [link]"
-	"Merced River (2).2.2.1.2.2.2.2 [link]" -> "MERCE-N-JUN1 [node]"
-	"MERCE-N-JUN1 [node]" -> "Merced River (2).2.2.2.1 [link]"
-	"Merced River (2).2.2.2.1 [link]" -> "MERCE-N-JUN2 [node]"
-	"MERCE-N-JUN2 [node]" -> "Merced River (2).2.2.2.2.1 [link]"
-	"Merced River (2).2.2.2.2.1 [link]" -> "Near Stevinson_11272500 [node]"
-	"Near Stevinson_11272500 [node]" -> "Merced River (2).2.2.2.2.2 [link]"
-	"Merced River (2).2.2.2.2.2 [link]" -> "Merced River Outflow [node]"
-	"Merced R below Crocker-Huffman Dam [node]" -> "Merced River below Crocker-Huffman [link]"
-	"Merced River below Crocker-Huffman [link]" -> "Near Shaffer Bridge_11271290 [node]"
-	"Merced Falls PH [node]" -> "Northside Canal [link]"
-	"Northside Canal [link]" -> "MID Northside [node]"
-	"Valley_Inflow [node]" -> "Valley_inflow [link]"
-	"Valley_inflow [link]" -> "MERCE-N-JUN1 [node]"
-	"Bear Diversion Tunnel [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Balsam Diversion Tunnel Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Balsam Meadows Tunnel Outflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Bear Diversion Tunnel Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Big Creek 1 PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Big Creek 2 PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Big Creek 2 Tunnel Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Big Creek 2A PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Big Creek 3 Aqueduct Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Big Creek 3 PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Big Creek 4 Aqueduct Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Big Creek 4 PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Big Creek 8 Penstock Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Big Creek 8 PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Bolsillo Cr. Div. Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Bolsillo Cr. Div. Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Camp 62 Cr. Div. Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Camp 62 Cr. Div. Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Chinquapin Cr. Div. Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Chinquapin Cr. Div. Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Eastwood PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Eastwood Tunnel Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Kerckhoff 1 PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Kerckhoff 1 Tunnel Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Kerckhoff 2 PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Kerckhoff 2 Tunnel Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Mammoth Pool PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Mammoth Pool Tunnel Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below No. 1 Conduit Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below No. 2 Conduit Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below No. 2 Conduit Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below No. 3 Conduit Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below PH 2A Aqueduct Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Pitman Cr Div Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Pitman Cr Div Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Portal Aqueduct Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Portal Aqueduct Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Portal Penstock Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Portal PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below San Joaquin 1 PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below San Joaquin 1A Div Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below San Joaquin 1A Div Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below San Joaquin 1A Div Outflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below San Joaquin 1A PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below San Joaquin 2 PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below San Joaquin 3 PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below SD Big Creek 1 PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below SD Big Creek 2 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below SD Big Creek 2A [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below SD Big Creek 3 PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below SD Big Creek 4 PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below SD Big Creek 8 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below SD Eastwood PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below SD Kerckhoff 1 PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below SD Kerckhoff 2 PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below SD Mammoth Pool PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below SD Portal PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below SD San Joaquin 1 PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below SD San Joaquin 1A PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below SD San Joaquin 2 PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below SD San Joaquin 3 PH [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Tunnel No. 1 Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Tunnel No. 7 Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Ward Tunnel Diverted Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Ward Tunnel Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Big Creek 2 Tunnel [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Big Creek 3 Aqueduct [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Big Creek 4 Aqueduct [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Big Creek 8 Penstock [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Browns Creek Ditch [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Eastwood Tunnel [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Kerckhoff 1 Tunnel [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Kerckhoff 2 Tunnel [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Mammoth Pool Tunnel [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Mono Tunnel [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"No. 1 Conduit [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"No. 2 Conduit [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"No. 3 Conduit [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"No. 3 Conduit (1) [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"PH 2A Aqueduct [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Portal Penstock [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"San Joaquin 1A Div [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Tunnel No. 1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Ward Tunnel [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Balsam Creek Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Balsam Creek Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Balsam Diversion Tunnel Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Balsam Meadows Tunnel Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Bass Lake [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Bear Creek Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Bear Creek Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Bear Creek NR TA Edison_11230500 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Bear Diversion Tunnel Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Big Creek 1 PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"Big Creek 2 PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"Big Creek 2 Tunnel Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Big Creek 2 Tunnel Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Big Creek 2A PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"Big Creek 3 Aqueduct Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Big Creek 3 Conduit Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Big Creek 3 PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"Big Creek 4 Aqueduct Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Big Creek 4 PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"Big Creek 8 Penstock Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Big Creek 8 Penstock Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Big Creek 8 PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"Big Creek Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Big Creek Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Bolsillo Cr. Div. Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Bolsillo Cr. Div. Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Bolsillo Creek Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Bolsillo Creek Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Browns Creek Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Browns Creek Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Camp 61 Creek Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Camp 61 Creek Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Camp 62 Cr. Div. Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Camp 62 Cr. Div. Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Camp 62 Creek Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Camp 62 Creek Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Chinquapin Cr. Div. Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Chinquapin Cr. Div. Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Chinquapin Creek Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Chinquapin Creek Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Demand Below Friant Dam [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Eastwood PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"Eastwood Tunnel Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Eastwood Tunnel Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Florence Lake [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Friant Dam Flood Release [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"Friant PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"Gauge Portal PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Granite Creek Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Granite Creek Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Huntington Lake [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"IFR bl Bass Lake [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Bear Div [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Big Creek 5 Div [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Big Creek 6 Div [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Bolsillo Creek Div [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Browns Creek Ditch [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Camp 62 Creek Div [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Chinquapin Creek Div [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Florence Lake [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Huntington Lake [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Kerckhoff Lake [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Mammoth Pool Reservoir [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Manzanita Div [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Mono Creek Div [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Pitman Creek Div [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Redinger Lake [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl San Joaquin 1 Div [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Shaver Lake [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Tunnel 7 Div [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"Inflow_below_FriantDam [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Jose Cr Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Jose Cr Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Kerckhoff 1 PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"Kerckhoff 1 Tunnel Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Kerckhoff 2 PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"Kerckhoff 2 Tunnel Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Kerckhoff Lake [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Lake Thomas A Edison [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Mammoth Pool PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"Mammoth Pool Reservoir [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Mammoth Pool Tunnel Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Millerton Lake [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Mono Creek Bl Thomas A Edison Lk_11231500 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Mono Creek Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Mono Creek Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Mono Tunnel Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Mono Tunnel Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"N Fk Stevenson Creek Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"N Fk Stevenson Creek Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"N Fk Willow Creek Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"N Fk Willow Creek Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"N Fk Willow Creek Nr Bass Lake_11244000 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"N Fk Willow Creek Nr Sugar Pine_11242400 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"No. 2 Conduit Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"No. 2 Conduit Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"No. 3 Conduit Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"No. 3 Conduit Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"No.1A Conduit Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"PH 2A Aqueduct Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Pitman Cr Div Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Pitman Cr Div Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Pitman Creek BL Tamarack Creek_11237500 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Pitman Creek Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Pitman Creek Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Portal Aqueduct Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Portal Penstock Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Portal Penstock Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Portal PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"Redinger Lake [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"S Fk San Joaquin Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"S Fk San Joaquin Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"S Joaquin A Miller Crossing_11226500 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"S Joaquin R Ab Shakeflat C_11234760 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"S Joaquin R Ab Willow Creek_11242000 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"S Millerton Lake Cr Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SAN J-N-JUN1 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SAN J-N-JUN3 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SAN J-N-JUN4 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SAN J-N-JUN5 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SAN J-N-JUN6 [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"SAN J-N-JUN7 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"San Joaquin 1 PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"San Joaquin 1A Div Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"San Joaquin 1A Div Outflow [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"San Joaquin 1A PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"San Joaquin 2 PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"San Joaquin 3 PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"San Joaquin River Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"San Joaquin River Outflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SAN-N-FLO1 [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"SAN-N-INF1 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SAN-N-INF2 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SAN-N-OUT1 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SAN-N-OUT2 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SD Big Creek 1 PH [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"SD Big Creek 2 [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"SD Big Creek 2A [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"SD Big Creek 3 PH [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"SD Big Creek 4 PH [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"SD Big Creek 8 [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"SD Eastwood PH [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"SD Mammoth Pool PH [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"SD Portal PH [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"SD San Joaquin 1 PH [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"SD San Joaquin 1A PH [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"SD San Joaquin 2 PH [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"SD San Joaquin 3 PH [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"Shaver Lake [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"SJN_01 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_02 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_02 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_03 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_03 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_04 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_04 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_05 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_05 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_06 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_06 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_07 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_07 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_08 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_08 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_09 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_09 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_10 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_10 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_11 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_11 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_12 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_12 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_13 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_13 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_14 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_14 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_15 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_15 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_16 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_16 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_17 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_17 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_18 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_18 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_19 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_19 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_20 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_20 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_21 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_21 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_22 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_22 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_23 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_23 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_24 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_24 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_25 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_25 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_26 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_26 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_27 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_27 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_28 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_28 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_29 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_29 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_30 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_30 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_31 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_31 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_32 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_32 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_33 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_33 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_34 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_34 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_35 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_35 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_36 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_36 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_37 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_37 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"SJN_38 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_38 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Stevenson Creek Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Stevenson Creek Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Tunnel No. 1 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Tunnel No. 7 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_1122950_Ward Tunnel at intake [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11230520_BEAR C COND [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11231550_MONO C COND [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11235100_MAMMOTH POOL PP [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11238100_BIG C PH NO1 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11238250_EASTWOOD PP [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11238380_BIG C PH NO 2 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11238400_BIG C PH NO2A [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11238550_BIG C PH NO8 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11241800_BIG CR PH NO3 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11243300_BROWNS C CN [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11243500_PGE NO 3 COND [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11244100_SAN JOAQUIN PH NO3 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11246530_BIG C PH NO4 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11246570_SAN JOAQUIN PH NO2 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11246590_SAN JOAQUIN PH NO1A [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11246610_SAN JOAQUIN PH NO1 WISHON [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11246950_KERCKHOFF PH [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"USGS_11247050_KERCKHOFF PH NO2 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Ward Tunnel Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Willow C A Mouth_11246500 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Willow Creek Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"Willow Creek Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Wishon Penstock Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Bear Diversion Tunnel Outflow [node]" -> "USGS_11230520_BEAR C COND [node]"
-	"Mono Tunnel Outflow [node]" -> "USGS_11231550_MONO C COND [node]"
-	"Browns Creek Outflow [node]" -> "USGS_11243300_BROWNS C CN [node]"
-	"IFR bl Bear Div [node]" -> "Bear Creek Inflow [node]"
-	"USGS_11230520_BEAR C COND [node]" -> "Bear Diversion Tunnel [link]"
-	"Balsam Creek Headflow [node]" -> "Balsam Diversion Tunnel Inflow [node]"
-	"Balsam Creek Inflow [node]" -> "SJN_25 Inflow [node]"
-	"Balsam Meadows Tunnel Outflow [node]" -> "Below Balsam Diversion Tunnel Diverted Inflow [link]"
-	"Below Balsam Diversion Tunnel Diverted Inflow [link]" -> "Balsam Diversion Tunnel Inflow [node]"
-	"Balsam Diversion Tunnel Inflow [node]" -> "Eastwood Tunnel Outflow [node]"
-	"Balsam Meadows Tunnel Outflow [node]" -> "Below Balsam Meadows Tunnel Outflow [link]"
-	"Below Balsam Meadows Tunnel Outflow [link]" -> "Tunnel No. 7 Inflow [node]"
-	"Browns Creek Inflow [node]" -> "Bass Lake [node]"
-	"Bear Creek Headflow [node]" -> "SJN_36 Inflow [node]"
-	"Bear Creek Inflow [node]" -> "Chinquapin Creek Inflow [node]"
-	"Mono Tunnel Inflow [node]" -> "Below Bear Diversion Tunnel Inflow [link]"
-	"Below Bear Diversion Tunnel Inflow [link]" -> "Portal Aqueduct Inflow [node]"
-	"Bear Creek NR TA Edison_11230500 [node]" -> "Bear Diversion Tunnel Outflow [node]"
-	"Big Creek 1 PH [node]" -> "Below Big Creek 1 PH [link]"
-	"Below Big Creek 1 PH [link]" -> "USGS_11238100_BIG C PH NO1 [node]"
-	"Big Creek 2 PH [node]" -> "Below Big Creek 2 PH [link]"
-	"Below Big Creek 2 PH [link]" -> "USGS_11238380_BIG C PH NO 2 [node]"
-	"Big Creek 2 Tunnel Outflow [node]" -> "Below Big Creek 2 Tunnel Diverted Inflow [link]"
-	"Below Big Creek 2 Tunnel Diverted Inflow [link]" -> "SD Big Creek 2 [node]"
-	"Big Creek 2 Tunnel Inflow [node]" -> "Big Creek 8 Penstock Outflow [node]"
-	"Big Creek 2 Tunnel Outflow [node]" -> "Balsam Creek Inflow [node]"
-	"Big Creek 2A PH [node]" -> "Below Big Creek 2A PH [link]"
-	"Below Big Creek 2A PH [link]" -> "USGS_11238400_BIG C PH NO2A [node]"
-	"Big Creek 3 Conduit Outflow [node]" -> "Below Big Creek 3 Aqueduct Diverted Inflow [link]"
-	"Below Big Creek 3 Aqueduct Diverted Inflow [link]" -> "SD Big Creek 3 PH [node]"
-	"Big Creek 3 Aqueduct Inflow [node]" -> "Jose Cr Inflow [node]"
-	"Big Creek Inflow [node]" -> "SJN_18 Inflow [node]"
-	"Big Creek 3 PH [node]" -> "Below Big Creek 3 PH [link]"
-	"Below Big Creek 3 PH [link]" -> "USGS_11241800_BIG CR PH NO3 [node]"
-	"Redinger Lake [node]" -> "Below Big Creek 4 Aqueduct Diverted Inflow [link]"
-	"Below Big Creek 4 Aqueduct Diverted Inflow [link]" -> "SD Big Creek 4 PH [node]"
-	"S Joaquin R Ab Willow Creek_11242000 [node]" -> "Willow Creek Inflow [node]"
-	"Big Creek 4 PH [node]" -> "Below Big Creek 4 PH [link]"
-	"Below Big Creek 4 PH [link]" -> "USGS_11246530_BIG C PH NO4 [node]"
-	"Big Creek 8 Penstock Outflow [node]" -> "Below Big Creek 8 Penstock Diverted Inflow [link]"
-	"Below Big Creek 8 Penstock Diverted Inflow [link]" -> "SD Big Creek 8 [node]"
-	"Big Creek 8 Penstock Inflow [node]" -> "Big Creek Inflow [node]"
-	"Big Creek 8 Penstock Outflow [node]" -> "IFR bl Big Creek 5 Div [node]"
-	"Big Creek 8 PH [node]" -> "Below Big Creek 8 PH [link]"
-	"Below Big Creek 8 PH [link]" -> "USGS_11238550_BIG C PH NO8 [node]"
-	"Big Creek Headflow [node]" -> "SJN_30 Inflow [node]"
-	"SJN_19 Inflow [node]" -> "Mammoth Pool Tunnel Inflow [node]"
-	"Bolsillo Cr. Div. Outflow [node]" -> "Below Bolsillo Cr. Div. Diverted Inflow [link]"
-	"Below Bolsillo Cr. Div. Diverted Inflow [link]" -> "Bolsillo Cr. Div. Inflow [node]"
-	"Camp 62 Cr. Div. Inflow [node]" -> "Below Bolsillo Cr. Div. Inflow [link]"
-	"Below Bolsillo Cr. Div. Inflow [link]" -> "Bolsillo Cr. Div. Inflow [node]"
-	"Bolsillo Cr. Div. Outflow [node]" -> "IFR bl Bolsillo Creek Div [node]"
-	"Bolsillo Creek Headflow [node]" -> "SJN_33 Inflow [node]"
-	"Bolsillo Creek Inflow [node]" -> "Camp 61 Creek Inflow [node]"
-	"SJN_11 Inflow [node]" -> "Browns Creek Inflow [node]"
-	"Browns Creek Outflow [node]" -> "IFR bl Browns Creek Ditch [node]"
-	"Camp 61 Creek Headflow [node]" -> "SJN_32 Inflow [node]"
-	"Camp 61 Creek Inflow [node]" -> "Mono Creek Inflow [node]"
-	"Camp 62 Cr. Div. Outflow [node]" -> "Below Camp 62 Cr. Div. Diverted Inflow [link]"
-	"Below Camp 62 Cr. Div. Diverted Inflow [link]" -> "Camp 62 Cr. Div. Inflow [node]"
-	"Portal Aqueduct Inflow [node]" -> "Below Camp 62 Cr. Div. Inflow [link]"
-	"Below Camp 62 Cr. Div. Inflow [link]" -> "Camp 62 Cr. Div. Inflow [node]"
-	"Camp 62 Cr. Div. Outflow [node]" -> "IFR bl Camp 62 Creek Div [node]"
-	"Camp 62 Creek Headflow [node]" -> "SJN_34 Inflow [node]"
-	"Camp 62 Creek Inflow [node]" -> "Chinquapin Creek Inflow [node]"
-	"Chinquapin Cr. Div. Outflow [node]" -> "Below Chinquapin Cr. Div. Diverted Inflow [link]"
-	"Below Chinquapin Cr. Div. Diverted Inflow [link]" -> "Chinquapin Cr. Div. Inflow [node]"
-	"USGS_1122950_Ward Tunnel at intake [node]" -> "Below Chinquapin Cr. Div. Inflow [link]"
-	"Below Chinquapin Cr. Div. Inflow [link]" -> "Chinquapin Cr. Div. Inflow [node]"
-	"Chinquapin Cr. Div. Outflow [node]" -> "IFR bl Chinquapin Creek Div [node]"
-	"Chinquapin Creek Headflow [node]" -> "SJN_35 Inflow [node]"
-	"Chinquapin Creek Inflow [node]" -> "Bolsillo Creek Inflow [node]"
-	"Eastwood PH [node]" -> "Below Eastwood PH [link]"
-	"Below Eastwood PH [link]" -> "USGS_11238250_EASTWOOD PP [node]"
-	"Eastwood Tunnel Outflow [node]" -> "Below Eastwood Tunnel Diverted Inflow [link]"
-	"Below Eastwood Tunnel Diverted Inflow [link]" -> "SD Eastwood PH [node]"
-	"Eastwood Tunnel Inflow [node]" -> "N Fk Stevenson Creek Inflow [node]"
-	"Eastwood Tunnel Outflow [node]" -> "Balsam Creek Inflow [node]"
-	"Florence Lake [node]" -> "IFR bl Florence Lake [node]"
-	"Granite Creek Headflow [node]" -> "SJN_22 Inflow [node]"
-	"S Joaquin A Miller Crossing_11226500 [node]" -> "Granite Creek Inflow [node]"
-	"Huntington Lake [node]" -> "IFR bl Huntington Lake [node]"
-	"No. 3 Conduit Outflow [node]" -> "IFR bl Bass Lake [node]"
-	"Bear Diversion Tunnel Outflow [node]" -> "IFR bl Bear Div [node]"
-	"IFR bl Big Creek 5 Div [node]" -> "SJN_24 Inflow [node]"
-	"SJN_18 Inflow [node]" -> "Big Creek 3 Conduit Outflow [node]"
-	"IFR bl Bolsillo Creek Div [node]" -> "Bolsillo Creek Inflow [node]"
-	"IFR bl Browns Creek Ditch [node]" -> "No.1A Conduit Outflow [node]"
-	"IFR bl Camp 62 Creek Div [node]" -> "Camp 62 Creek Inflow [node]"
-	"IFR bl Chinquapin Creek Div [node]" -> "Camp 62 Creek Inflow [node]"
-	"IFR bl Florence Lake [node]" -> "SJN_37 Inflow [node]"
-	"IFR bl Huntington Lake [node]" -> "SJN_28 Inflow [node]"
-	"Wishon Penstock Inflow [node]" -> "SJN_06 Inflow [node]"
-	"Mammoth Pool Reservoir [node]" -> "IFR bl Mammoth Pool Reservoir [node]"
-	"No. 3 Conduit Inflow [node]" -> "No. 2 Conduit Outflow [node]"
-	"Mono Tunnel Outflow [node]" -> "IFR bl Mono Creek Div [node]"
-	"Pitman Cr Div Outflow [node]" -> "IFR bl Pitman Creek Div [node]"
-	"SJN_13 Inflow [node]" -> "Redinger Lake [node]"
-	"IFR bl San Joaquin 1 Div [node]" -> "SJN_08 Inflow [node]"
-	"IFR bl Shaver Lake [node]" -> "Stevenson Creek Inflow [node]"
-	"IFR bl Tunnel 7 Div [node]" -> "SJN_16 Inflow [node]"
-	"Jose Cr Headflow [node]" -> "SJN_14 Inflow [node]"
-	"IFR bl Big Creek 6 Div [node]" -> "Stevenson Creek Inflow [node]"
-	"Kerckhoff 1 PH [node]" -> "Below Kerckhoff 1 PH [link]"
-	"Below Kerckhoff 1 PH [link]" -> "USGS_11246950_KERCKHOFF PH [node]"
-	"Kerckhoff Lake [node]" -> "Below Kerckhoff 1 Tunnel Diverted Inflow [link]"
-	"Kerckhoff Lake [node]" -> "IFR bl Kerckhoff Lake [node]"
-	"Kerckhoff 2 PH [node]" -> "Below Kerckhoff 2 PH [link]"
-	"Below Kerckhoff 2 PH [link]" -> "USGS_11247050_KERCKHOFF PH NO2 [node]"
-	"Kerckhoff Lake [node]" -> "Below Kerckhoff 2 Tunnel Diverted Inflow [link]"
-	"SJN_05 Inflow [node]" -> "Kerckhoff 1 Tunnel Inflow [node]"
-	"Big Creek 4 Aqueduct Inflow [node]" -> "Wishon Penstock Inflow [node]"
-	"Lake Thomas A Edison [node]" -> "Mono Creek Bl Thomas A Edison Lk_11231500 [node]"
-	"Mammoth Pool PH [node]" -> "Below Mammoth Pool PH [link]"
-	"Below Mammoth Pool PH [link]" -> "USGS_11235100_MAMMOTH POOL PP [node]"
-	"SJN_21 Inflow [node]" -> "Mammoth Pool Reservoir [node]"
-	"Mammoth Pool Reservoir [node]" -> "Below Mammoth Pool Tunnel Diverted Inflow [link]"
-	"Below Mammoth Pool Tunnel Diverted Inflow [link]" -> "SD Mammoth Pool PH [node]"
-	"S Joaquin R Ab Shakeflat C_11234760 [node]" -> "SJN_19 Inflow [node]"
-	"Mono Creek Headflow [node]" -> "SJN_31 Inflow [node]"
-	"Mono Creek Inflow [node]" -> "SAN-N-OUT1 [node]"
-	"SAN-N-INF1 [node]" -> "S Fk San Joaquin Inflow [node]"
-	"Mono Creek Bl Thomas A Edison Lk_11231500 [node]" -> "Mono Tunnel Outflow [node]"
-	"N Fk Stevenson Creek Headflow [node]" -> "SJN_17 Inflow [node]"
-	"N Fk Stevenson Creek Inflow [node]" -> "SJN_15 Inflow [node]"
-	"N Fk Willow Creek Headflow [node]" -> "SJN_12 Inflow [node]"
-	"N Fk Willow Creek Inflow [node]" -> "IFR bl San Joaquin 1 Div [node]"
-	"No.1A Conduit Outflow [node]" -> "Below No. 1 Conduit Diverted Inflow [link]"
-	"Below No. 1 Conduit Diverted Inflow [link]" -> "No. 2 Conduit Inflow [node]"
-	"No. 2 Conduit Outflow [node]" -> "Below No. 2 Conduit Diverted Inflow [link]"
-	"Below No. 2 Conduit Diverted Inflow [link]" -> "SD San Joaquin 2 PH [node]"
-	"No. 2 Conduit Inflow [node]" -> "Below No. 2 Conduit Inflow [link]"
-	"Below No. 2 Conduit Inflow [link]" -> "San Joaquin 1A Div Outflow [node]"
-	"SJN_10 Inflow [node]" -> "No. 3 Conduit Inflow [node]"
-	"No. 3 Conduit Outflow [node]" -> "Below No. 3 Conduit Diverted Inflow [link]"
-	"Below No. 3 Conduit Diverted Inflow [link]" -> "USGS_11243500_PGE NO 3 COND [node]"
-	"N Fk Willow Creek Nr Bass Lake_11244000 [node]" -> "SJN_10 Inflow [node]"
-	"Bass Lake [node]" -> "No. 3 Conduit Outflow [node]"
-	"No.1A Conduit Outflow [node]" -> "N Fk Willow Creek Inflow [node]"
-	"Shaver Lake [node]" -> "Below PH 2A Aqueduct Diverted Inflow [link]"
-	"Below PH 2A Aqueduct Diverted Inflow [link]" -> "SD Big Creek 2A [node]"
-	"PH 2A Aqueduct Inflow [node]" -> "Big Creek 2 Tunnel Inflow [node]"
-	"Pitman Cr Div Outflow [node]" -> "Below Pitman Cr Div Diverted Inflow [link]"
-	"Below Pitman Cr Div Diverted Inflow [link]" -> "Pitman Cr Div Inflow [node]"
-	"Pitman Cr Div Inflow [node]" -> "Below Pitman Cr Div Inflow [link]"
-	"Below Pitman Cr Div Inflow [link]" -> "Balsam Meadows Tunnel Outflow [node]"
-	"Pitman Creek BL Tamarack Creek_11237500 [node]" -> "Pitman Cr Div Outflow [node]"
-	"Pitman Creek Headflow [node]" -> "SJN_27 Inflow [node]"
-	"Pitman Creek Inflow [node]" -> "SJN_26 Inflow [node]"
-	"Bear Diversion Tunnel [link]" -> "Below Portal Aqueduct Diverted Inflow [link]"
-	"Below Portal Aqueduct Diverted Inflow [link]" -> "Mono Tunnel Inflow [node]"
-	"Chinquapin Cr. Div. Inflow [node]" -> "Below Portal Aqueduct Inflow [link]"
-	"Below Portal Aqueduct Inflow [link]" -> "Portal Aqueduct Inflow [node]"
-	"Portal Penstock Outflow [node]" -> "Below Portal Penstock Diverted Inflow [link]"
-	"Below Portal Penstock Diverted Inflow [link]" -> "Ward Tunnel Inflow [node]"
-	"Portal Penstock Inflow [node]" -> "SAN-N-OUT2 [node]"
-	"SAN-N-INF2 [node]" -> "SJN_29 Inflow [node]"
-	"Portal Penstock Outflow [node]" -> "Camp 61 Creek Inflow [node]"
-	"Portal PH [node]" -> "Below Portal PH [link]"
-	"Below Portal PH [link]" -> "Gauge Portal PH [node]"
-	"Jose Cr Inflow [node]" -> "SJN_13 Inflow [node]"
-	"S Fk San Joaquin Headflow [node]" -> "SJN_38 Inflow [node]"
-	"Granite Creek Inflow [node]" -> "S Fk San Joaquin Inflow [node]"
-	"S Millerton Lake Cr Headflow [node]" -> "SJN_03 Inflow [node]"
-	"SJN_04 Inflow [node]" -> "Kerckhoff 2 Tunnel Inflow [node]"
-	"San Joaquin 1 PH [node]" -> "Below San Joaquin 1 PH [link]"
-	"Below San Joaquin 1 PH [link]" -> "USGS_11246610_SAN JOAQUIN PH NO1 WISHON [node]"
-	"San Joaquin 1A Div Outflow [node]" -> "Below San Joaquin 1A Div Diverted Inflow [link]"
-	"Below San Joaquin 1A Div Diverted Inflow [link]" -> "SD San Joaquin 1A PH [node]"
-	"San Joaquin 1A Div Inflow [node]" -> "Below San Joaquin 1A Div Inflow [link]"
-	"Below San Joaquin 1A Div Inflow [link]" -> "SD San Joaquin 1 PH [node]"
-	"San Joaquin 1A Div Outflow [node]" -> "Below San Joaquin 1A Div Outflow [link]"
-	"Below San Joaquin 1A Div Outflow [link]" -> "San Joaquin 1A Div Inflow [node]"
-	"San Joaquin 1A PH [node]" -> "Below San Joaquin 1A PH [link]"
-	"Below San Joaquin 1A PH [link]" -> "USGS_11246590_SAN JOAQUIN PH NO1A [node]"
-	"San Joaquin 2 PH [node]" -> "Below San Joaquin 2 PH [link]"
-	"Below San Joaquin 2 PH [link]" -> "USGS_11246570_SAN JOAQUIN PH NO2 [node]"
-	"SD San Joaquin 3 PH [node]" -> "Below San Joaquin 3 PH [link]"
-	"Below San Joaquin 3 PH [link]" -> "San Joaquin 3 PH [node]"
-	"San Joaquin River Headflow [node]" -> "SJN_23 Inflow [node]"
-	"SD Big Creek 1 PH [node]" -> "Below SD Big Creek 1 PH [link]"
-	"Below SD Big Creek 1 PH [link]" -> "Big Creek 1 PH [node]"
-	"SD Big Creek 2 [node]" -> "Below SD Big Creek 2 [link]"
-	"Below SD Big Creek 2 [link]" -> "Big Creek 2 PH [node]"
-	"SD Big Creek 2A [node]" -> "Below SD Big Creek 2A [link]"
-	"Below SD Big Creek 2A [link]" -> "Big Creek 2A PH [node]"
-	"SD Big Creek 3 PH [node]" -> "Below SD Big Creek 3 PH [link]"
-	"Below SD Big Creek 3 PH [link]" -> "Big Creek 3 PH [node]"
-	"SD Big Creek 4 PH [node]" -> "Below SD Big Creek 4 PH [link]"
-	"Below SD Big Creek 4 PH [link]" -> "Big Creek 4 PH [node]"
-	"SD Big Creek 8 [node]" -> "Below SD Big Creek 8 [link]"
-	"Below SD Big Creek 8 [link]" -> "Big Creek 8 PH [node]"
-	"SD Eastwood PH [node]" -> "Below SD Eastwood PH [link]"
-	"Below SD Eastwood PH [link]" -> "Eastwood PH [node]"
-	"Below Kerckhoff 1 Tunnel Diverted Inflow [link]" -> "Below SD Kerckhoff 1 PH [link]"
-	"Below SD Kerckhoff 1 PH [link]" -> "Kerckhoff 1 PH [node]"
-	"Below Kerckhoff 2 Tunnel Diverted Inflow [link]" -> "Below SD Kerckhoff 2 PH [link]"
-	"Below SD Kerckhoff 2 PH [link]" -> "Kerckhoff 2 PH [node]"
-	"SD Mammoth Pool PH [node]" -> "Below SD Mammoth Pool PH [link]"
-	"Below SD Mammoth Pool PH [link]" -> "Mammoth Pool PH [node]"
-	"SD Portal PH [node]" -> "Below SD Portal PH [link]"
-	"Below SD Portal PH [link]" -> "Portal PH [node]"
-	"SD San Joaquin 1 PH [node]" -> "Below SD San Joaquin 1 PH [link]"
-	"Below SD San Joaquin 1 PH [link]" -> "San Joaquin 1 PH [node]"
-	"SD San Joaquin 1A PH [node]" -> "Below SD San Joaquin 1A PH [link]"
-	"Below SD San Joaquin 1A PH [link]" -> "San Joaquin 1A PH [node]"
-	"SD San Joaquin 2 PH [node]" -> "Below SD San Joaquin 2 PH [link]"
-	"Below SD San Joaquin 2 PH [link]" -> "San Joaquin 2 PH [node]"
-	"USGS_11243500_PGE NO 3 COND [node]" -> "Below SD San Joaquin 3 PH [link]"
-	"Below SD San Joaquin 3 PH [link]" -> "SD San Joaquin 3 PH [node]"
-	"Shaver Lake [node]" -> "IFR bl Shaver Lake [node]"
-	"SJN_01 Headflow [node]" -> "SAN J-N-JUN1 [node]"
-	"Kerckhoff 2 Tunnel Inflow [node]" -> "SJN_02 Inflow [node]"
-	"SJN_02 Headflow [node]" -> "SJN_02 Inflow [node]"
-	"Kerckhoff 1 Tunnel Inflow [node]" -> "SJN_04 Inflow [node]"
-	"SJN_03 Headflow [node]" -> "SJN_03 Inflow [node]"
-	"SJN_03 Inflow [node]" -> "Millerton Lake [node]"
-	"SJN_04 Headflow [node]" -> "SJN_04 Inflow [node]"
-	"IFR bl Kerckhoff Lake [node]" -> "SJN_05 Inflow [node]"
-	"SJN_05 Headflow [node]" -> "SJN_05 Inflow [node]"
-	"SJN_06 Inflow [node]" -> "Kerckhoff Lake [node]"
-	"SJN_06 Headflow [node]" -> "SJN_06 Inflow [node]"
-	"SJN_07 Inflow [node]" -> "Big Creek 4 Aqueduct Inflow [node]"
-	"SJN_07 Headflow [node]" -> "SJN_07 Inflow [node]"
-	"IFR bl Redinger Lake [node]" -> "S Joaquin R Ab Willow Creek_11242000 [node]"
-	"SJN_08 Headflow [node]" -> "SJN_08 Inflow [node]"
-	"SJN_08 Inflow [node]" -> "Willow C A Mouth_11246500 [node]"
-	"SJN_09 Headflow [node]" -> "SJN_09 Inflow [node]"
-	"SJN_09 Inflow [node]" -> "Browns Creek Outflow [node]"
-	"SJN_10 Headflow [node]" -> "SJN_10 Inflow [node]"
-	"IFR bl Bass Lake [node]" -> "N Fk Willow Creek Nr Bass Lake_11244000 [node]"
-	"SJN_11 Headflow [node]" -> "SJN_11 Inflow [node]"
-	"N Fk Willow Creek Nr Sugar Pine_11242400 [node]" -> "SJN_11 Inflow [node]"
-	"SJN_12 Headflow [node]" -> "SJN_12 Inflow [node]"
-	"SJN_12 Inflow [node]" -> "N Fk Willow Creek Nr Sugar Pine_11242400 [node]"
-	"SJN_13 Headflow [node]" -> "SJN_13 Inflow [node]"
-	"Stevenson Creek Inflow [node]" -> "Jose Cr Inflow [node]"
-	"SJN_14 Headflow [node]" -> "SJN_14 Inflow [node]"
-	"SJN_14 Inflow [node]" -> "Big Creek 3 Aqueduct Inflow [node]"
-	"SJN_15 Headflow [node]" -> "SJN_15 Inflow [node]"
-	"SJN_15 Inflow [node]" -> "Shaver Lake [node]"
-	"SJN_16 Headflow [node]" -> "SJN_16 Inflow [node]"
-	"SJN_16 Inflow [node]" -> "Eastwood Tunnel Inflow [node]"
-	"SJN_17 Headflow [node]" -> "SJN_17 Inflow [node]"
-	"SJN_17 Inflow [node]" -> "Tunnel No. 7 Inflow [node]"
-	"SJN_18 Headflow [node]" -> "SJN_18 Inflow [node]"
-	"Mammoth Pool Tunnel Inflow [node]" -> "Big Creek Inflow [node]"
-	"SJN_19 Headflow [node]" -> "SJN_19 Inflow [node]"
-	"SJN_20 Inflow [node]" -> "S Joaquin R Ab Shakeflat C_11234760 [node]"
-	"SJN_20 Headflow [node]" -> "SJN_20 Inflow [node]"
-	"IFR bl Mammoth Pool Reservoir [node]" -> "SJN_20 Inflow [node]"
-	"SJN_21 Headflow [node]" -> "SJN_21 Inflow [node]"
-	"S Fk San Joaquin Inflow [node]" -> "SJN_21 Inflow [node]"
-	"SJN_22 Headflow [node]" -> "SJN_22 Inflow [node]"
-	"SJN_22 Inflow [node]" -> "Granite Creek Inflow [node]"
-	"SJN_23 Headflow [node]" -> "SJN_23 Inflow [node]"
-	"SJN_23 Inflow [node]" -> "S Joaquin A Miller Crossing_11226500 [node]"
-	"SJN_24 Headflow [node]" -> "SJN_24 Inflow [node]"
-	"SJN_24 Inflow [node]" -> "Big Creek 8 Penstock Inflow [node]"
-	"SJN_25 Headflow [node]" -> "SJN_25 Inflow [node]"
-	"SJN_25 Inflow [node]" -> "PH 2A Aqueduct Inflow [node]"
-	"SJN_26 Headflow [node]" -> "SJN_26 Inflow [node]"
-	"SJN_26 Inflow [node]" -> "Tunnel No. 1 Inflow [node]"
-	"SJN_27 Headflow [node]" -> "SJN_27 Inflow [node]"
-	"SJN_27 Inflow [node]" -> "Pitman Creek BL Tamarack Creek_11237500 [node]"
-	"SJN_28 Headflow [node]" -> "SJN_28 Inflow [node]"
-	"SJN_28 Inflow [node]" -> "Pitman Creek Inflow [node]"
-	"SJN_29 Headflow [node]" -> "SJN_29 Inflow [node]"
-	"SJN_29 Inflow [node]" -> "Huntington Lake [node]"
-	"SJN_30 Headflow [node]" -> "SJN_30 Inflow [node]"
-	"SJN_30 Inflow [node]" -> "Portal Penstock Inflow [node]"
-	"SJN_31 Headflow [node]" -> "SJN_31 Inflow [node]"
-	"SJN_31 Inflow [node]" -> "Lake Thomas A Edison [node]"
-	"SJN_32 Headflow [node]" -> "SJN_32 Inflow [node]"
-	"SJN_32 Inflow [node]" -> "Portal Penstock Outflow [node]"
-	"SJN_33 Headflow [node]" -> "SJN_33 Inflow [node]"
-	"SJN_33 Inflow [node]" -> "Bolsillo Cr. Div. Outflow [node]"
-	"SJN_34 Headflow [node]" -> "SJN_34 Inflow [node]"
-	"SJN_34 Inflow [node]" -> "Camp 62 Cr. Div. Outflow [node]"
-	"SJN_35 Headflow [node]" -> "SJN_35 Inflow [node]"
-	"SJN_35 Inflow [node]" -> "Chinquapin Cr. Div. Outflow [node]"
-	"SJN_36 Headflow [node]" -> "SJN_36 Inflow [node]"
-	"SJN_36 Inflow [node]" -> "Bear Creek NR TA Edison_11230500 [node]"
-	"SJN_37 Headflow [node]" -> "SJN_37 Inflow [node]"
-	"SJN_37 Inflow [node]" -> "Bear Creek Inflow [node]"
-	"SJN_38 Headflow [node]" -> "SJN_38 Inflow [node]"
-	"SJN_38 Inflow [node]" -> "Florence Lake [node]"
-	"Stevenson Creek Headflow [node]" -> "N Fk Stevenson Creek Inflow [node]"
-	"Big Creek 3 Conduit Outflow [node]" -> "IFR bl Big Creek 6 Div [node]"
-	"Huntington Lake [node]" -> "Below Tunnel No. 1 Diverted Inflow [link]"
-	"Below Tunnel No. 1 Diverted Inflow [link]" -> "SD Big Creek 1 PH [node]"
-	"Tunnel No. 1 Inflow [node]" -> "Big Creek 2 Tunnel Outflow [node]"
-	"Huntington Lake [node]" -> "Below Tunnel No. 7 Diverted Inflow [link]"
-	"Below Tunnel No. 7 Diverted Inflow [link]" -> "Pitman Cr Div Inflow [node]"
-	"Tunnel No. 7 Inflow [node]" -> "IFR bl Tunnel 7 Div [node]"
-	"Florence Lake [node]" -> "Below Ward Tunnel Diverted Inflow [link]"
-	"Below Ward Tunnel Diverted Inflow [link]" -> "USGS_1122950_Ward Tunnel at intake [node]"
-	"Ward Tunnel Inflow [node]" -> "Below Ward Tunnel Inflow [link]"
-	"Below Ward Tunnel Inflow [link]" -> "SD Portal PH [node]"
-	"Willow Creek Headflow [node]" -> "SJN_09 Inflow [node]"
-	"Redinger Lake [node]" -> "IFR bl Redinger Lake [node]"
-	"Willow Creek Inflow [node]" -> "SJN_07 Inflow [node]"
-	"USGS_11238380_BIG C PH NO 2 [node]" -> "Big Creek 2 Tunnel [link]"
-	"Big Creek 2 Tunnel [link]" -> "Big Creek 2 Tunnel Inflow [node]"
-	"USGS_11241800_BIG CR PH NO3 [node]" -> "Big Creek 3 Aqueduct [link]"
-	"Big Creek 3 Aqueduct [link]" -> "Big Creek 3 Aqueduct Inflow [node]"
-	"USGS_11246530_BIG C PH NO4 [node]" -> "Big Creek 4 Aqueduct [link]"
-	"Big Creek 4 Aqueduct [link]" -> "Big Creek 4 Aqueduct Inflow [node]"
-	"USGS_11238550_BIG C PH NO8 [node]" -> "Big Creek 8 Penstock [link]"
-	"Big Creek 8 Penstock [link]" -> "Big Creek 8 Penstock Inflow [node]"
-	"USGS_11243300_BROWNS C CN [node]" -> "Browns Creek Ditch [link]"
-	"Browns Creek Ditch [link]" -> "Browns Creek Inflow [node]"
-	"SAN J-N-JUN6 [node]" -> "Demand Below Friant Dam [node]"
-	"USGS_11238250_EASTWOOD PP [node]" -> "Eastwood Tunnel [link]"
-	"Eastwood Tunnel [link]" -> "Eastwood Tunnel Inflow [node]"
-	"USGS_11246950_KERCKHOFF PH [node]" -> "Kerckhoff 1 Tunnel [link]"
-	"Kerckhoff 1 Tunnel [link]" -> "Kerckhoff 1 Tunnel Inflow [node]"
-	"USGS_11247050_KERCKHOFF PH NO2 [node]" -> "Kerckhoff 2 Tunnel [link]"
-	"Kerckhoff 2 Tunnel [link]" -> "Kerckhoff 2 Tunnel Inflow [node]"
-	"USGS_11235100_MAMMOTH POOL PP [node]" -> "Mammoth Pool Tunnel [link]"
-	"Mammoth Pool Tunnel [link]" -> "Mammoth Pool Tunnel Inflow [node]"
-	"IFR bl Mono Creek Div [node]" -> "Mono Creek Inflow [node]"
-	"USGS_11231550_MONO C COND [node]" -> "Mono Tunnel [link]"
-	"Mono Tunnel [link]" -> "Mono Tunnel Inflow [node]"
-	"No. 2 Conduit Outflow [node]" -> "IFR bl Manzanita Div [node]"
-	"IFR bl Manzanita Div [node]" -> "N Fk Willow Creek Inflow [node]"
-	"USGS_11246610_SAN JOAQUIN PH NO1 WISHON [node]" -> "No. 1 Conduit [link]"
-	"No. 1 Conduit [link]" -> "Wishon Penstock Inflow [node]"
-	"USGS_11246570_SAN JOAQUIN PH NO2 [node]" -> "No. 2 Conduit [link]"
-	"No. 2 Conduit [link]" -> "No. 2 Conduit Inflow [node]"
-	"San Joaquin 3 PH [node]" -> "No. 3 Conduit [link]"
-	"No. 3 Conduit [link]" -> "USGS_11244100_SAN JOAQUIN PH NO3 [node]"
-	"USGS_11244100_SAN JOAQUIN PH NO3 [node]" -> "No. 3 Conduit (1) [link]"
-	"No. 3 Conduit (1) [link]" -> "No. 3 Conduit Inflow [node]"
-	"USGS_11238400_BIG C PH NO2A [node]" -> "PH 2A Aqueduct [link]"
-	"PH 2A Aqueduct [link]" -> "PH 2A Aqueduct Inflow [node]"
-	"IFR bl Pitman Creek Div [node]" -> "Pitman Creek Inflow [node]"
-	"Gauge Portal PH [node]" -> "Portal Penstock [link]"
-	"Portal Penstock [link]" -> "Portal Penstock Inflow [node]"
-	"Inflow_below_FriantDam [node]" -> "SAN J-N-JUN4 [node]"
-	"USGS_11246590_SAN JOAQUIN PH NO1A [node]" -> "San Joaquin 1A Div [link]"
-	"San Joaquin 1A Div [link]" -> "San Joaquin 1A Div Inflow [node]"
-	"SAN-N-FLO1 [node]" -> "SAN J-N-JUN6 [node]"
-	"SAN J-N-JUN6 [node]" -> "SAN J-N-JUN5 [node]"
-	"SAN J-N-JUN5 [node]" -> "SAN J-N-JUN4 [node]"
-	"SAN J-N-JUN4 [node]" -> "San Joaquin River Outflow [node]"
-	"Millerton Lake [node]" -> "Friant PH [node]"
-	"Friant PH [node]" -> "SAN J-N-JUN7 [node]"
-	"Millerton Lake [node]" -> "Friant Dam Flood Release [node]"
-	"Friant Dam Flood Release [node]" -> "SAN J-N-JUN7 [node]"
-	"SAN-N-OUT2 [node]" -> "SAN-N-INF2 [node]"
-	"SAN-N-OUT1 [node]" -> "SAN-N-INF1 [node]"
-	"SAN J-N-JUN3 [node]" -> "Millerton Lake [node]"
-	"SJN_02 Inflow [node]" -> "SAN J-N-JUN3 [node]"
-	"Millerton Lake [node]" -> "SAN J-N-JUN7 [node]"
-	"SAN J-N-JUN7 [node]" -> "SAN-N-FLO1 [node]"
-	"SAN J-N-JUN1 [node]" -> "SAN J-N-JUN3 [node]"
-	"USGS_11238100_BIG C PH NO1 [node]" -> "Tunnel No. 1 [link]"
-	"Tunnel No. 1 [link]" -> "Tunnel No. 1 Inflow [node]"
-	"Bolsillo Cr. Div. Inflow [node]" -> "Ward Tunnel [link]"
-	"Ward Tunnel [link]" -> "Ward Tunnel Inflow [node]"
-	"Willow C A Mouth_11246500 [node]" -> "Willow Creek Inflow [node]"
+	"Donnells Diversion [link]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Lower Collierville Tunnel 1 [link]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Lower Collierville Tunnel 2 [link]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Philadelphia Aqueduct [link]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Sand Bar Power Tunnel [link]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Stanislaus Tunnel [link]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"USGS_11293580_NF STAN R DIV TUNNEL [link]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"ANGELS C BL UTICA D DIV DAM NR MURPHYS CA_11298700 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Angels Canal Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Angels Ck Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"Angels Ck Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Angels PH [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Angles Canal Outflow [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"AVERY_11294500 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"BEARDSLEY PH NR STRAWBERRY CA_11292820 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Beardsley Reservoir [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"Beardsley PH [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Beaver Ck Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"Beaver Ck Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Beaver Creek Diversion [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"BL MCKAYS POINT DAM_11295270 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Clark Fk Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"Clark Fk Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Collierville PH [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Collierville Tunnel Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Collierville Tunnel Inflow (1) [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Donnells Diversion Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Donnells PH [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Donnells Reservoir [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"Gauge_Phoenix [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Highland Ck Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"Highland Ck Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"HIGHLAND CREEK BELOW NEW SPICER_11294000 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Hobart Ck Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"Hobart Ck Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"IFR bl Angels Div [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"IFR bl Donnells Reservoir [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"IFR bl Hunters Reservoir [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"IFR bl Lyons Res [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"IFR bl McKays Point Div [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"IFR bl New Spicer Meadow Reservoir [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"IFR bl Philadelphia Div [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"IFR bl Relief Reservoir [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"IFR bl Sand Bar Div [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"IFR bl Utica Div [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Below Beaver Creek Diversion Dam [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"IFR Confluence of NF and Beaver Creek [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"IFR Below New Melones Res [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"IFR Below Pinecrest Lake [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"IFR Below Utica Res [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"IFR below Beardsley Afterbay [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Lower Utica Canal Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Lower Utica Canal Outflow [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"Lyons Reservoir [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"McKay Point Diversion [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"MF STANISLAUS R BL BEARDSLEY DAM CA_11292900 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Middle Fork Stanislaus R Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Mill Ck Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"Mill Ck Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Murphys PH [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"New Melones Lake [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"New Melones PH [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"New Spicer Meadow Reservoir [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"New Spicer Meadow PH [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"NF STANISLAUS DIV TU OL BL HOBART C_11293710 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"NF STANISLAUS R BL SILVER C CA_11293500 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"North Fork Stanislaus R Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"Philadelphia Aquaduct Outflow [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"Philadelphia Aqueduct Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Phoenix Canal Outflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Phoenix PH [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Pinecrest Reservoir [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"Relief Reservoir [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"Sand Bar PH [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Sand Bar Power Tunnel Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Beardsley Afterbay [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"SF STANISLAUS R A STRAWBERRY CA_11296500 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"SF STANISLAUS R NR LONG BARN CA_11298000 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"SF STANISLAUS R NR STRAWBERRY CA_11297200 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"South Fork Stanislaus R Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"South Fork Stanislaus R Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Spring Gap PH [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STANI-N-INF1 [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STANI-N-JUN1 [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"STANI-N-JUN2 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STANI-N-JUN3 [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Stanislaus PH [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Stanislaus Tunnel Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Stanislaus Tunnel Outflow [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"STN-L-DEL1 Outflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN-L-DEL2 Outflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN-L-RIV2 Outflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_01 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_01 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_02 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_02 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_03 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_03 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_04 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_04 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_05 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_05 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_06 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_06 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_07 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_07 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_08 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_08 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_09 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_09 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_10 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_10 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_11 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_11 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_12 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_12 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_13 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_13 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_14 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_14 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_15 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_15 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_16 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_16 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_17 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_17 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_18 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_18 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_19 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_19 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_20 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_21 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_21 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_22 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_22 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_23 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_23 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_24 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_24 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_25 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"STN_25 Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_R-N-JUN1 [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"Summit Ck Headflow [node]" [fillcolor=lightblue fontcolor=black shape=star style=filled]
+	"Summit Ck Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Tulloch Lake [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"Release from Tulloch Lake [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Tulloch Lake Flood Control [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Tulloch Lake PH [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	blwTullochPH [fillcolor=white fontcolor=black shape=star style=filled]
+	"Utica Reservoir [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"UPA Tunnel Tap Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"UPA Tunnel Tap Outflow [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"Upper Collierville Tunnel Inflow [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Upper Collierville Tunnel Outflow [node]" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"USGS_11292610 DONNELLS PH [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"USGS_11293580_NF STAN R DIV TUNNEL [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"USGS_11295250_COLLIERVILLE PP [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"USGS_11295505_STANISLAUS PP [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"USGS_11297000_PHILADELPHIA CN [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"USGS_11297500_TUOLUMNE CN [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"Release from New Melones [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"New Melones Flood Control [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STAN-L-CON 1" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STAN-L-CON 2" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STAN-L-CON 3" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STAN-L-CON 4" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STAN-L-CON 5" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STAN-L-CON 6" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STAN-L-CON 7" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STAN-L-CON 8" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STAN-L-CON 9" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STAN-L-CON 10" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STAN-L-CON 11" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STAN-L-CON 12" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_below_Melons.2.1" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_below_Melons.2.2" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN_below_Melons.2.2.2" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STN-L-RIV2.1.2.1" [fillcolor=white fontcolor=black shape=star style=filled]
+	"STANI-N-JUN4" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"STANI-N-JUN5" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"STANI-N-JUN6" [fillcolor=blue fontcolor=white shape=star style=filled]
+	"STANI-N-JUN7" [fillcolor=blue fontcolor=white shape=star style=filled]
 	"San Joaquin River Outflow [node]" -> "San Joaquin-San Joaquin"
 	"Merced River Outflow [node]" -> "Merced-San Joaquin"
 	"STN-L-RIV2 Outflow [node]" -> "Stanislaus-San Joaquin"

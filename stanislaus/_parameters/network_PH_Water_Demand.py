@@ -10,16 +10,21 @@ class network_PH_Water_Demand(WaterLPParameter):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
 
         nblocks = self.model.parameters['Blocks'].value(timestep, scenario_index)
-        q_demand = self.model.parameters['node/' + self.res_name + '/Turbine Capacity'] \
+        q_demand = self.model.parameters[self.res_name + '/Turbine Capacity'] \
                        .value(timestep, scenario_index) * 3600 * 24 / nblocks
 
         if mode == 'planning':
-            q_demand *= self.days_in_planning_month(timestep, self.month_offset)
+            q_demand *= self.days_in_month()
 
         return q_demand
 
     def value(self, timestep, scenario_index):
-        return self._value(timestep, scenario_index, mode=self.mode) / 1e6
+        try:
+            return self._value(timestep, scenario_index, mode=self.mode) / 1e6
+        except Exception as err:
+            print('\nERROR for parameter {}'.format(self.name))
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
 
     @classmethod
     def load(cls, model, data):

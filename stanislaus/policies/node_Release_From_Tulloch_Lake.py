@@ -1,5 +1,6 @@
 from parameters import WaterLPParameter
 
+
 class node_Release_From_Tulloch_Lake(WaterLPParameter):
     million_m3day_to_m3sec = 11.5740740741
     year_names = ["Critical", "Dry", "Below", "Above", "Wet"]
@@ -7,8 +8,8 @@ class node_Release_From_Tulloch_Lake(WaterLPParameter):
     def get_demand(self, timestep, scenario_index):
 
         wyt_number = self.model.parameters['WYT_SJValley'].value(timestep, scenario_index)
-        wyt = self.year_names[wyt_number-1]
-        net_demand = self.read_csv("NetDemand_belowTulloch.csv", index_col=[0], parse_dates=True)
+        wyt = self.year_names[wyt_number - 1]
+        net_demand = self.read_csv("Management/BAU/NetDemand_belowTulloch.csv", index_col=[0], parse_dates=True)
 
         day = timestep.day if timestep.month != 2 else min(28, timestep.day)
         datestring = '1990-{:02}-{:02}'.format(timestep.month, day)
@@ -32,7 +33,12 @@ class node_Release_From_Tulloch_Lake(WaterLPParameter):
         return max(net_demand, min(outflow, max_outflow))
 
     def value(self, timestep, scenario_index):
-        return self._value(timestep, scenario_index)
+        try:
+            return self._value(timestep, scenario_index)
+        except Exception as err:
+            print('\nERROR for parameter {}'.format(self.name))
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
 
     @classmethod
     def load(cls, model, data):
