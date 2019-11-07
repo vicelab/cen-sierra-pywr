@@ -619,10 +619,10 @@ parser.add_argument("-p", "--include_planning", help="Include planning model", a
 args = parser.parse_args()
 basin = args.basin
 network_key = args.network_key or os.environ.get('NETWORK_KEY')
-run_type = args.model_type
+run_type = args.model_type or "normal"
 
 debug = args.debug
 include_planning = args.include_planning
-run_model(basin, network_key, run_type,include_planning=include_planning, debug=debug)
+run_model(basin, network_key, run_type, include_planning=include_planning, debug=debug)
 
 print('done!')
