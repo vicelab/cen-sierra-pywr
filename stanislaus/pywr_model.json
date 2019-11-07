@@ -105,7 +105,12 @@
         {
             "name": "Beardsley Reservoir",
             "type": "Storage",
-            "initial_volume": 40.0634304,
+            "initial_volume": {
+                "type": "constant",
+                "table": "Initial Storage",
+                "index": "2008-10-01",
+                "column": "Beardsley Reservoir"
+            },
             "max_volume": 121.45,
             "min_volume": 25,
             "cost": "Beardsley Reservoir/Storage Value",
@@ -225,7 +230,13 @@
         {
             "name": "Donnells Reservoir",
             "type": "Storage",
-            "initial_volume": 66.8422812,
+            "initial_volume": {
+                "type": "constant",
+                "table": "Initial Storage",
+                "index": "2008-10-01",
+                "column": "Donnells Reservoir"
+            },
+
             "max_volume": 79.83,
             "min_volume": 6.2,
             "cost": "Donnells Reservoir/Storage Value",
@@ -408,7 +419,13 @@
         {
             "name": "Lyons Reservoir",
             "type": "Storage",
-            "initial_volume": 2.220264,
+            "initial_volume": {
+                "type": "constant",
+                "table": "Initial Storage",
+                "index": "2008-10-01",
+                "column": "Lyons Reservoir"
+            },
+
             "max_volume": 7.5,
             "min_volume": 1.25,
             "cost": "Lyons Reservoir/Storage Value",
@@ -483,7 +500,13 @@
         {
             "name": "New Melones Lake",
             "type": "Storage",
-            "initial_volume": 1366.7,
+            "initial_volume": {
+                "type": "constant",
+                "table": "Initial Storage",
+                "index": "2008-10-01",
+                "column": "New Melones Lake"
+            },
+
             "max_volume": 2960.35,
             "min_volume": 500,
             "cost": "New Melones Lake/Storage Value",
@@ -499,7 +522,12 @@
         {
             "name": "New Spicer Meadow Reservoir",
             "type": "Storage",
-            "initial_volume": 173.92068,
+            "initial_volume": {
+                "type": "constant",
+                "table": "Initial Storage",
+                "index": "2008-10-01",
+                "column": "New Spicer Meadow Reservoir"
+            },
             "max_volume": 227.24,
             "min_volume": 50,
             "cost": "New Spicer Meadow Reservoir/Storage Value",
@@ -592,7 +620,12 @@
         {
             "name": "Pinecrest Reservoir",
             "type": "Storage",
-            "initial_volume": 16.898676,
+            "initial_volume": {
+                "type": "constant",
+                "table": "Initial Storage",
+                "index": "2008-10-01",
+                "column": "Pinecrest Reservoir"
+            },
             "max_volume": 22.58,
             "min_volume": 4,
             "cost": "Pinecrest Reservoir/Storage Value",
@@ -601,7 +634,12 @@
         {
             "name": "Relief Reservoir",
             "type": "Storage",
-            "initial_volume": 10.546254,
+            "initial_volume": {
+                "type": "constant",
+                "table": "Initial Storage",
+                "index": "2008-10-01",
+                "column": "Relief Reservoir"
+            },
             "max_volume": 18.5,
             "min_volume": 1.2,
             "cost": "Relief Reservoir/Storage Value",
@@ -1035,7 +1073,12 @@
         {
             "name": "Tulloch Lake",
             "type": "Storage",
-            "initial_volume": 82.64,
+            "initial_volume": {
+                "type": "constant",
+                "table": "Initial Storage",
+                "index": "2008-10-01",
+                "column": "Beardsley Reservoir"
+            },
             "max_volume": 82.64,
             "cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
@@ -1061,8 +1104,8 @@
         {
             "name": "Utica Reservoir",
             "type": "Storage",
-            "initial_volume": 65,
-            "max_volume": 82.64,
+            "initial_volume": 2.7,
+            "max_volume": 2.7,
             "cost": "Utica Reservoir/Storage Value",
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -2044,6 +2087,11 @@
             "url": "../data/Stanislaus River/gauges/storage_cleaned.csv",
             "index_col": "Date",
             "parse_dates": true
+        },
+        "Initial Storage": {
+            "url": "../data/Stanislaus River/gauges/storage_cleaned.csv",
+            "index_col": "Date",
+            "parse_dates": false
         }
     },
     "parameters": {

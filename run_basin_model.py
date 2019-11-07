@@ -526,7 +526,7 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
         model_path = simplified_model_path
 
     # Area for testing monthly model
-    months = 2
+    months = 12
     save_results = True
     planning_model = None
 
@@ -577,19 +577,14 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
     if include_planning:
         end = m.timestepper.end
         new_end = end + relativedelta(months=-months)
-        # days_to_omit = (end - new_end).days
         m.timestepper.end = new_end
-        # datetime_index = m.timestepper.datetime_index[:-days_to_omit]
-    else:
-        # days_to_omit = 0
-        datetime_index = m.timestepper.datetime_index
     step = -1
     now = datetime.now()
     monthly_seconds = 0
     setattr(m, 'mode', 'scheduling')
     setattr(m, 'planning', planning_model if include_planning else None)
 
-    for date in tqdm(m.timestepper.datetime_index[:190], ncols=80, disable=False):
+    for date in tqdm(m.timestepper.datetime_index, ncols=80, disable=False):
         step += 1
         try:
 
@@ -599,8 +594,8 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
                 # monthly_now = datetime.now()
                 # Step 1a: update planning model
                 # ...update start day
-                m.planning.timestepper.start = date.to_timestamp()
-                m.planning.reset()
+                # m.planning.timestepper.start = date.to_timestamp()
+                m.planning.reset(start=date.to_timestamp())
 
                 # ...update initial conditions (not needed for the first step)
                 for res in reservoirs:
