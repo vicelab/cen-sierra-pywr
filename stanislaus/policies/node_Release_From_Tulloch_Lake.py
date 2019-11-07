@@ -16,18 +16,20 @@ class node_Release_From_Tulloch_Lake(WaterLPParameter):
         return net_demand[wyt][datestring] / self.million_m3day_to_m3sec
 
     def _value(self, timestep, scenario_index):
-        max_outflow = 226.535
+        max_outflow = 19.572  # mcm/days
 
-        # anticipated outflow
-        prev_storage = self.model.nodes["Tulloch Lake" + self.month_suffix].volume[-1]
-        prev_inflow = self.model.nodes["STN_below_Melons.2.2" + self.month_suffix].flow[-1]
-        storage_demand = self.model.parameters["Tulloch Lake/Storage Demand"].value(timestep, scenario_index)
-        outflow = prev_storage + prev_inflow - storage_demand
+        # Reservoir we are releasing
+        storage_name = "Tulloch Lake [node]" + self.month_suffix
+        storage_demand_name = "node/Tulloch Lake/Storage Demand"
+        # Inflow to Tulloch Lake
+        inflow_name = "STN_below_Melons.2.2" + self.month_suffix
+        outflow = self.model.nodes[storage_name].volume[-1] \
+                  + self.model.nodes[inflow_name].flow[-1] \
+                  - self.model.parameters[storage_demand_name].value(timestep, scenario_index)
 
-        # net demand
-        reqt = self.model.parameters["blwTullochPH/Requirement" + self.month_suffix].value(timestep, scenario_index)
-        net_demand = self.get_demand(timestep, scenario_index) + reqt
-
+        tulloch_reqt_name = "node/blwTullochPH/Requirement" + self.month_suffix
+        net_demand = self.get_demand(timestep, scenario_index) \
+                     + self.model.parameters[tulloch_reqt_name].value(timestep, scenario_index)
         return max(net_demand, min(outflow, max_outflow))
 
     def value(self, timestep, scenario_index):

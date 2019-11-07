@@ -397,14 +397,34 @@ def prepare_planning_model(m, outpath, steps=12, debug=False):
     with open(outpath, 'w') as f:
         json.dump(m, f, indent=4)
     return
+ 
+def create_planning_model(model_path):
+    root, filename = os.path.split(model_path)
+    base, ext = os.path.splitext(filename)
+    new_filename = '{}_monthly'.format(base) + ext
+    monthly_model_path = os.path.join(root, new_filename)
+    prepare_planning_model(model_path, monthly_model_path)
+    # monthly_model = load_model(root_dir, monthly_model_path, bucket=bucket, network_key=network_key, mode='planning')
+    monthly_model = Model.load(monthly_model_path, path=monthly_model_path)
+    setattr(monthly_model, 'mode', 'planning')
+    monthly_model.setup()
+    print('Monthly model setup complete')
+    return monthly_model
 
 
-def run_model(basin, network_key, include_planning=False, simplify=True, debug=False):
+def run_model(basin, network_key, run_type='normal',include_planning=False, simplify=True, debug=False):
     # ========================
     # Set up model environment
     # ========================
 
-    root_dir = os.path.join(os.getcwd(), basin)
+    basin = basin.strip()
+    run_type = run_type.strip()
+
+    if run_type == 'calibrate':
+        root_dir = os.path.join(os.path.dirname(os.getcwd()), basin)
+    else:
+        root_dir = os.path.join(os.getcwd(), basin)
+
     bucket = 'openagua-networks'
     model_path = os.path.join(root_dir, 'pywr_model.json')
 
@@ -593,15 +613,16 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("-b", "--basin", help="Basin to run")
 parser.add_argument("-nk", "--network_key", help="Network key")
+parser.add_argument("-t", "--model_type", help="Model Type")
 parser.add_argument("-d", "--debug", help="Debug ('m' or 'd')")
 parser.add_argument("-p", "--include_planning", help="Include planning model", action='store_true')
 args = parser.parse_args()
-
 basin = args.basin
 network_key = args.network_key or os.environ.get('NETWORK_KEY')
+run_type = args.model_type
+
 debug = args.debug
 include_planning = args.include_planning
-
-run_model(basin, network_key, include_planning=include_planning, debug=debug)
+run_model(basin, network_key, run_type,include_planning=include_planning, debug=debug)
 
 print('done!')
