@@ -10,7 +10,7 @@ class IFR_bl_Goodwin_Reservoir_Requirement(WaterLPParameter):
     def _value(self, timestep, scenario_index):
         wyt = self.model.parameters['WYT_SJValley'].value(timestep, scenario_index)
         df = self.read_csv("Management/BAU/IFRs/IFR_Below Goodwin Dam_cfs_daily.csv", names=[1, 2, 3, 4, 5], header=0)
-        start = timestep.datetime.strftime('%b-%d')
+        start = self.datetime.strftime('%b-%d')
         if self.model.mode == 'scheduling':
             return df.at[start, wyt] / 35.31  # convert cfs to mcm
         else:

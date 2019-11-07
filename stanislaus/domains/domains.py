@@ -214,7 +214,6 @@ class PiecewiseHydropower(RiverDomainMixin, PiecewiseLink):
         super(PiecewiseHydropower, self).__init__(model, **kwargs)
         self.head = head
 
-
     @classmethod
     def load(cls, data, model):
         max_flow = [load_parameter(model, c) for c in data.pop('max_flow', [0.0])]

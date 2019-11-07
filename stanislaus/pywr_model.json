@@ -5,8 +5,8 @@
         "minimum_version": "1.0.0"
     },
     "timestepper": {
-        "start": "2000-10-01",
-        "end": "2002-09-30",
+        "start": "2008-10-01",
+        "end": "2010-09-30",
         "timestep": 1
     },
     "solver": {
@@ -2016,6 +2016,15 @@
         ]
     ],
     "tables": {
+        "Storage Costs": {
+            "url": "../data/Stanislaus River/storage_costs.csv",
+            "index_col": "Reservoir"
+        },
+        "All Energy Price Values": {
+            "url": "../data/historical_prices_pivoted.csv",
+            "index_col": "Date",
+            "parse_dates": true
+        },
         "Energy Price Blocks": {
             "url": "../data/piecewise_blocks_daily_historical.csv",
             "index_col": "Date",
@@ -2149,7 +2158,9 @@
         },
         "Beardsley Reservoir/Storage Value": {
             "type": "constant",
-            "value": -5.0
+            "table": "Storage Costs",
+            "column": "Cost",
+            "index": "Beardsley Reservoir"
         },
         "Beardsley Reservoir/Elevation": {
             "type": "interpolatedvolume",
@@ -2285,7 +2296,9 @@
         },
         "Donnells Reservoir/Storage Value": {
             "type": "constant",
-            "value": -5.0
+            "table": "Storage Costs",
+            "index": "Donnells Reservoir",
+            "column": "Cost"
         },
         "Donnells Reservoir/Elevation": {
             "type": "interpolatedvolume",
@@ -2466,7 +2479,9 @@
         },
         "Lyons Reservoir/Storage Value": {
             "type": "constant",
-            "value": -5.0
+            "table": "Storage Costs",
+            "index": "Lyons Reservoir",
+            "column": "Cost"
         },
         "Lyons Reservoir/Elevation": {
             "type": "interpolatedvolume",
@@ -2559,7 +2574,9 @@
         },
         "New Melones Lake/Storage Value": {
             "type": "constant",
-            "value": 0.0
+            "table": "Storage Costs",
+            "index": "New Melones Lake",
+            "column": "Cost"
         },
         "New Melones PH/Turbine Capacity": {
             "type": "constant",
@@ -2579,7 +2596,9 @@
         },
         "New Spicer Meadow Reservoir/Storage Value": {
             "type": "constant",
-            "value": -5.0
+            "table": "Storage Costs",
+            "index": "New Spicer Meadow Reservoir",
+            "column": "Cost"
         },
         "New Spicer Meadow Reservoir/Elevation": {
             "type": "interpolatedvolume",
@@ -2673,7 +2692,9 @@
         },
         "Pinecrest Reservoir/Storage Value": {
             "type": "constant",
-            "value": -5.0
+            "table": "Storage Costs",
+            "index": "Pinecrest Reservoir",
+            "column": "Cost"
         },
         "Pinecrest Reservoir/Elevation": {
             "type": "interpolatedvolume",
@@ -2711,7 +2732,9 @@
         },
         "Relief Reservoir/Storage Value": {
             "type": "constant",
-            "value": -5.0
+            "table": "Storage Costs",
+            "index": "Relief Reservoir",
+            "column": "Cost"
         },
         "Relief Reservoir/Elevation": {
             "type": "interpolatedvolume",
@@ -2865,11 +2888,13 @@
         },
         "Utica Reservoir/Storage Value": {
             "type": "constant",
-            "value": -5.0
+            "table": "Storage Costs",
+            "index": "Beardsley Reservoir",
+            "column": "Cost"
         },
         "Stanislaus PH/Turbine Capacity": {
             "type": "constant",
-            "value": 23.5
+            "value": 15.0
         },
         "Stanislaus PH/Water Demand/1": {
             "type": "network_PH_Water_Demand"
@@ -3077,7 +3102,9 @@
         },
         "Tulloch Lake/Storage Value": {
             "type": "constant",
-            "value": -1
+            "table": "Storage Costs",
+            "index": "Tulloch Lake",
+            "column": "Cost"
         },
         "Tulloch Lake/Storage Demand": {
             "type": "node_Tulloch_Lake_Storage_Demand"

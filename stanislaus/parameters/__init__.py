@@ -59,13 +59,10 @@ class WaterLPParameter(Parameter):
             if len(name_parts) == 3:
                 self.block = int(name_parts[2])
         else:
-            if len(name_parts) == 3:
+            if len(name_parts) >= 3:
                 self.month_offset = int(name_parts[-1]) - 1
-            elif len(name_parts) == 4:
-                self.block = int(name_parts[3])
-                self.month_offset = int(name_parts[2]) - 1
-            # if self.month_offset is not None:
-            #     self.res_name = '{}/{}'.format(name_parts[0], self.month_offset + 1)
+            if len(name_parts) == 4:
+                self.block = int(name_parts[-2])
 
         if self.month_offset is not None:
             self.month_suffix = '/{}'.format(self.month_offset + 1)
@@ -80,15 +77,13 @@ class WaterLPParameter(Parameter):
 
     def before(self):
         super(WaterLPParameter, self).before()
+        self.datetime = self.model.timestepper.current.datetime
         if self.mode == 'planning':
             if self.month_offset:
-                datetime = self.model.timestepper.current.datetime + relativedelta(months=+self.month_offset)
-            else:
-                datetime = self.model.timestepper.current.datetime
+                self.datetime += relativedelta(months=+self.month_offset)
 
-            self.datetime = datetime
-            self.year = datetime.year
-            self.month = datetime.month
+            self.year = self.datetime.year
+            self.month = self.datetime.month
 
     def GET(self, *args, **kwargs):
         return self.get(*args, **kwargs)

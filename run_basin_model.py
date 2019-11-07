@@ -2,14 +2,36 @@ import os
 import sys
 import json
 from pywr.core import Model
-from pywr.parameters import ConstantParameter
+from pywr.timestepper import Timestepper
 from importlib import import_module
 from tqdm import tqdm
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-# from common.domains import PiecewiseHydropower
-from common.tests import test_planning_model
+from common.tests import test_planning_model, save_planning_results
 import matplotlib.pyplot as plt
+import numpy as np
+
+SECONDS_IN_DAY = 3600 * 24
+
+
+class PlanningTimestepper(Timestepper):
+
+    def setup(self):
+        periods = self.datetime_index
+
+        # Compute length of each period
+        deltas = periods.to_timestamp(how='e') - periods.to_timestamp(how='s')
+        # Round to nearest second
+        deltas = np.round(deltas.total_seconds())
+        # Convert to days
+        deltas = deltas / SECONDS_IN_DAY
+        self._periods = periods
+        self._deltas = deltas
+        self.reset()
+        self._dirty = False
+
+
+# PlanningTimestepper.register()
 
 
 def simplify_network(m, delete_gauges=False, delete_observed=True):
@@ -61,6 +83,7 @@ def simplify_network(m, delete_gauges=False, delete_observed=True):
                     mission_complete = False
                     break
 
+
         m['nodes'] = [node for node in m['nodes'] if node['name'] not in obsolete_nodes]
         m['edges'] = [edge for edge in m['edges'] if edge not in obsolete_edges] + new_edges
         edges_set = []
@@ -77,7 +100,6 @@ def simplify_network(m, delete_gauges=False, delete_observed=True):
 
             if delete_observed and '/observed' in p.lower():
                 m['parameters'].pop(p, None)
-
 
         for r in list(m['recorders']):
             name_parts = r.split('/')
@@ -106,7 +128,7 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
     # m['timestepper']['timestep'] = 'M'
     # m['metadata']['title'] += ' - planning'
 
-    m = simplify_network(m, delete_gauges=False)
+    m = simplify_network(m, delete_gauges=False, delete_observed=True)
 
     all_steps = range(steps)
 
@@ -262,6 +284,10 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
                         if key not in black_list:
                             new_node[key] += month
 
+                    # elif type(value) in [float, int]:
+                    #     if "flow" in key:
+                    #         new_node[key] *= days_in_month
+
                     elif type(value) == list:
                         new_values = []
                         for j, v in enumerate(value):
@@ -278,7 +304,7 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
                                             # there are block-specific parameters
                                             attr = parts[-2]
                                             # note the scheme: resource name / attribute / block / month
-                                            new_v = '{}/{}/{}/{}'.format(res_name, attr, b+1, t)
+                                            new_v = '{}/{}/{}/{}'.format(res_name, attr, b + 1, t)
                                             new_values.append(new_v)
                             else:
                                 new_values.append(v)
@@ -309,6 +335,12 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
 
     block_params_expanded = []
 
+    for param_name, param in m['parameters'].items():
+        if 'control_curves' in param:
+            for cc in param['control_curves']:
+                if type(cc) == str and cc not in parameters_to_expand:
+                    parameters_to_expand.append(cc)
+
     for param_name in m['parameters']:
 
         if param_name in parameters_to_delete:
@@ -335,11 +367,12 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
         if param_name in parameters_to_expand or 'node' in param:
             for step in all_steps:
                 t = step + 1
+                month_suffix = '/{}'.format(t)
                 if block:
                     # check if we've already expanded this
                     block_param = (res_name, attribute, t)
                     if block_param in block_params_expanded:
-                        continue # continue if we have
+                        continue  # continue if we have
                     block_params_expanded.append(block_param)
 
                 new_param = param.copy()
@@ -348,13 +381,17 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
                     new_param['column'] = '{:02}'.format(t)
                     # new_param['parse_dates'] = False
                 if 'node' in param:
-                    new_param['node'] += '/{}'.format(t)
+                    new_param['node'] += month_suffix
                 if 'storage_node' in param:
-                    new_param['storage_node'] += '/{}'.format(t)
+                    new_param['storage_node'] += month_suffix
+                if 'control_curves' in param:
+                    new_param['control_curves'] = []
+                    for cc in param['control_curves']:
+                        new_param['control_curves'].append(cc + month_suffix)
 
                 if block:
                     for b in range(blocks):
-                        new_param_name = '/'.join([res_name, attribute, str(b+1), str(t)])
+                        new_param_name = '/'.join([res_name, attribute, str(b + 1), str(t)])
                         new_parameters[new_param_name] = new_param
                 else:
                     new_param_name = '/'.join([res_name, attribute, str(t)])
@@ -489,8 +526,7 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
         model_path = simplified_model_path
 
     # Area for testing monthly model
-    debug = 'm'
-    months = 3
+    months = 2
     save_results = True
     planning_model = None
 
@@ -511,21 +547,24 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
         setattr(planning_model, 'mode', 'planning')
 
         # set time steps
-        planning_model.timestepper.end -= relativedelta(months=months)
+        start = planning_model.timestepper.start
+        end = planning_model.timestepper.end
+        end -= relativedelta(months=months)
+        # planning_model.timestepper = PlanningTimestepper(start, end)
+
         planning_model.setup()
 
         if debug == 'm':
             test_planning_model(planning_model, months=months, save_results=save_results)
+            return
 
     # ==================
     # Create daily model
     # ==================
     print('Loading daily model')
     from pywr.nodes import Storage
-    from domains import PiecewiseHydropower
     m = Model.load(model_path, path=model_path)
     reservoirs = [n.name for n in m.nodes if type(n) == Storage and '(storage)' not in n.name]
-    peaking_hp = [n.name for n in m.nodes if type(n) == PiecewiseHydropower]
     m.setup()
 
     # run model
@@ -534,15 +573,23 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
 
     # IMPORTANT: The following can be embedded into the scheduling model via
     # the 'before' and 'after' functions.
+    days_to_omit = 0
     if include_planning:
-        datetime_index = m.timestepper.datetime_index[:-months]
+        end = m.timestepper.end
+        new_end = end + relativedelta(months=-months)
+        # days_to_omit = (end - new_end).days
+        m.timestepper.end = new_end
+        # datetime_index = m.timestepper.datetime_index[:-days_to_omit]
     else:
+        # days_to_omit = 0
         datetime_index = m.timestepper.datetime_index
     step = -1
     now = datetime.now()
     monthly_seconds = 0
+    setattr(m, 'mode', 'scheduling')
     setattr(m, 'planning', planning_model if include_planning else None)
-    for date in tqdm(datetime_index, ncols=80, disable=False):
+
+    for date in tqdm(m.timestepper.datetime_index[:190], ncols=80, disable=False):
         step += 1
         try:
 
@@ -552,7 +599,8 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
                 # monthly_now = datetime.now()
                 # Step 1a: update planning model
                 # ...update start day
-                m.planning.reset(start=date.to_timestamp())
+                m.planning.timestepper.start = date.to_timestamp()
+                m.planning.reset()
 
                 # ...update initial conditions (not needed for the first step)
                 for res in reservoirs:
@@ -560,16 +608,16 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
                         initial_volume = m.nodes[res].initial_volume
                     else:
                         initial_volume = m.nodes[res].volume[-1]
-                    m.planning.nodes[res + ' [input]'].flow = initial_volume
+                    m.planning.nodes[res + ' [input]'].min_flow = initial_volume
+                    m.planning.nodes[res + ' [input]'].max_flow = initial_volume
 
                 # Step 1b: run planning model
                 m.planning.step()  # redundant with run, since only one timestep
+                if debug == 'dm' and save_results:
+                    save_planning_results(m.planning, months)
 
                 # Step 1c: update daily model with planning model results
                 # print('Updating daily model')
-                # for ph in peaking_hp:
-                #     planning_demand = planning_model.nodes[ph + '/1'].flow[-1]
-                #     m.parameters[ph + '/Planning Demand'] = ConstantParameter(m, planning_demand)
 
                 # this_monthly_seconds = (datetime.now() - monthly_now).total_seconds()
                 # print('Monthly run in {} seconds'.format(this_monthly_seconds))
@@ -620,13 +668,13 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
         df.columns = [c.split('/')[0] for c in cols]
         df.to_csv(tab_path + '.csv')
         if attr.lower() == 'storage':
-            df *= 810 / 1000
-            ax.set_ylabel('Storage (TAF)')
+            # df *= 810 / 1000
+            ax.set_ylabel('Storage (mcm)')
         elif attr.lower() == 'cost':
             ax.set_ylabel('Value ($/mcm)')
         else:
-            df *= 1 / 0.0864 * 35.31
-            ax.set_ylabel('Flow (cfs)')
+            # df *= 1 / 0.0864 * 35.31
+            ax.set_ylabel('Flow (mcm)')
         # for col in df.columns:
         #     ax.plot(df.index.to_timestamp(), df[col], label=col)
         df.plot(ax=ax)
@@ -637,13 +685,12 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
         plt.close()
         fig.savefig(fig_path + '.png', dpi=300)
 
-
 import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-b", "--basin", help="Basin to run")
 parser.add_argument("-nk", "--network_key", help="Network key")
-parser.add_argument("-d", "--debug", help="Debug ('m' or 'd')")
+parser.add_argument("-d", "--debug", help="Debug ('m' or 'd' or 'dm')")
 parser.add_argument("-p", "--include_planning", help="Include planning model", action='store_true')
 parser.add_argument("-n", "--run_name", help="Run name")
 args = parser.parse_args()
