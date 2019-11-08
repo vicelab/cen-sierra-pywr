@@ -1,0 +1,253 @@
+// stanislaus
+digraph stanislaus {
+	"Angels PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Angels Canal Outflow/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Beardsley Reservoir [original]/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Beardsley Reservoir [input]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Beardsley Reservoir [link]/1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Beardsley Reservoir/1" [fillcolor=blue fontcolor=white shape=oval style="filled,dashed"]
+	"Beardsley Reservoir [link]/1" -> "Beardsley Reservoir/1" [style=dashed]
+	"Beardsley Reservoir [original]/2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Beardsley PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Beaver Creek Diversion/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Collierville PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Donnells PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Donnells Reservoir [original]/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Donnells Reservoir [input]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Donnells Reservoir [link]/1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Donnells Reservoir/1" [fillcolor=blue fontcolor=white shape=oval style="filled,dashed"]
+	"Donnells Reservoir [link]/1" -> "Donnells Reservoir/1" [style=dashed]
+	"Donnells Reservoir [original]/2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"IFR bl Angels Div/1" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Donnells Reservoir/1" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Hunter Reservoir/1" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Lyons Res/1" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl McKays Point Div/1" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl New Spicer Meadow Reservoir/1" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Philadelphia Div/1" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Relief Reservoir/1" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Sand Bar Div/1" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Utica Div/1" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"Below Beaver Creek Diversion Dam/1" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR below NF and Beaver Creek/1" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Goodwin Reservoir/1" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR below Pinecrest Lake/1" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR Below Utica Res/1" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR below Beardsley Afterbay/1" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"Hunter Reservoir/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Lyons Reservoir [original]/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Lyons Reservoir [input]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Lyons Reservoir [link]/1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Lyons Reservoir/1" [fillcolor=blue fontcolor=white shape=oval style="filled,dashed"]
+	"Lyons Reservoir [link]/1" -> "Lyons Reservoir/1" [style=dashed]
+	"Lyons Reservoir [original]/2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"McKays Point Diversion/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Murphys PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"New Melones Lake [original]/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"New Melones Lake [input]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"New Melones Lake [link]/1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"New Melones Lake/1" [fillcolor=blue fontcolor=white shape=oval style="filled,dashed"]
+	"New Melones Lake [link]/1" -> "New Melones Lake/1" [style=dashed]
+	"New Melones Lake [original]/2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"New Melones PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"New Spicer Meadow Reservoir [original]/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"New Spicer Meadow Reservoir [input]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"New Spicer Meadow Reservoir [link]/1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"New Spicer Meadow Reservoir/1" [fillcolor=blue fontcolor=white shape=oval style="filled,dashed"]
+	"New Spicer Meadow Reservoir [link]/1" -> "New Spicer Meadow Reservoir/1" [style=dashed]
+	"New Spicer Meadow Reservoir [original]/2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"New Spicer Meadow PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Philadelphia Aquaduct Outflow/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Phoenix Canal Outflow/1" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"Phoenix PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Pinecrest Reservoir [original]/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Pinecrest Reservoir [input]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Pinecrest Reservoir [link]/1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Pinecrest Reservoir/1" [fillcolor=blue fontcolor=white shape=oval style="filled,dashed"]
+	"Pinecrest Reservoir [link]/1" -> "Pinecrest Reservoir/1" [style=dashed]
+	"Pinecrest Reservoir [original]/2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Relief Reservoir [original]/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Relief Reservoir [input]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Relief Reservoir [link]/1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Relief Reservoir/1" [fillcolor=blue fontcolor=white shape=oval style="filled,dashed"]
+	"Relief Reservoir [link]/1" -> "Relief Reservoir/1" [style=dashed]
+	"Relief Reservoir [original]/2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Sand Bar PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Beardsley Afterbay/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Spring Gap PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Stanislaus PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Stanislaus Tunnel Outflow/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"South San Joaquin Irrigation District/1" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"Oakdale Irrigation District/1" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"Stanislaus River Outflow/1" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"STN_01 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_01 Inflow/1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"STN_02 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_03 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_04 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_05 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_06 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_07 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_08 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_09 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_10 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_11 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_12 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_13 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_14 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_15 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_16 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_17 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_18 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_19 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_20 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_21 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_22 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_23 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_24 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"STN_25 Headflow/1" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Tulloch Lake [original]/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Tulloch Lake [input]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Tulloch Lake [link]/1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Tulloch Lake/1" [fillcolor=blue fontcolor=white shape=oval style="filled,dashed"]
+	"Tulloch Lake [link]/1" -> "Tulloch Lake/1" [style=dashed]
+	"Tulloch Lake [original]/2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Tulloch Release Requirement/1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Tulloch Lake Flood Control/1" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"Goodwin Reservoir/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Utica Reservoir [original]/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Utica Reservoir [input]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Utica Reservoir [link]/1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Utica Reservoir/1" [fillcolor=blue fontcolor=white shape=oval style="filled,dashed"]
+	"Utica Reservoir [link]/1" -> "Utica Reservoir/1" [style=dashed]
+	"Utica Reservoir [original]/2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"UPA Tunnel Tap Outflow/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Upper Collierville Tunnel Outflow/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Release from New Melones/1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"New Melones Flood Control/1" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"STN_below_Melons.2.2/1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"STANI-N-JUN4/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Beardsley Reservoir [input]" -> "Beardsley Reservoir [original]/1"
+	"Beardsley Reservoir [original]/1" -> "Beardsley Reservoir [link]/1"
+	"Beardsley Reservoir [link]/1" -> "Beardsley Reservoir [original]/2"
+	"Donnells Reservoir [input]" -> "Donnells Reservoir [original]/1"
+	"Donnells Reservoir [original]/1" -> "Donnells Reservoir [link]/1"
+	"Donnells Reservoir [link]/1" -> "Donnells Reservoir [original]/2"
+	"Lyons Reservoir [input]" -> "Lyons Reservoir [original]/1"
+	"Lyons Reservoir [original]/1" -> "Lyons Reservoir [link]/1"
+	"Lyons Reservoir [link]/1" -> "Lyons Reservoir [original]/2"
+	"New Melones Lake [input]" -> "New Melones Lake [original]/1"
+	"New Melones Lake [original]/1" -> "New Melones Lake [link]/1"
+	"New Melones Lake [link]/1" -> "New Melones Lake [original]/2"
+	"New Spicer Meadow Reservoir [input]" -> "New Spicer Meadow Reservoir [original]/1"
+	"New Spicer Meadow Reservoir [original]/1" -> "New Spicer Meadow Reservoir [link]/1"
+	"New Spicer Meadow Reservoir [link]/1" -> "New Spicer Meadow Reservoir [original]/2"
+	"Pinecrest Reservoir [input]" -> "Pinecrest Reservoir [original]/1"
+	"Pinecrest Reservoir [original]/1" -> "Pinecrest Reservoir [link]/1"
+	"Pinecrest Reservoir [link]/1" -> "Pinecrest Reservoir [original]/2"
+	"Relief Reservoir [input]" -> "Relief Reservoir [original]/1"
+	"Relief Reservoir [original]/1" -> "Relief Reservoir [link]/1"
+	"Relief Reservoir [link]/1" -> "Relief Reservoir [original]/2"
+	"Tulloch Lake [input]" -> "Tulloch Lake [original]/1"
+	"Tulloch Lake [original]/1" -> "Tulloch Lake [link]/1"
+	"Tulloch Lake [link]/1" -> "Tulloch Lake [original]/2"
+	"Utica Reservoir [input]" -> "Utica Reservoir [original]/1"
+	"Utica Reservoir [original]/1" -> "Utica Reservoir [link]/1"
+	"Utica Reservoir [link]/1" -> "Utica Reservoir [original]/2"
+	"Angels Canal Outflow/1" -> "Angels PH/1"
+	"Angels Canal Outflow/1" -> "IFR bl Angels Div/1"
+	"Donnells Reservoir [original]/1" -> "Donnells PH/1"
+	"Donnells Reservoir [original]/1" -> "IFR bl Donnells Reservoir/1"
+	"Upper Collierville Tunnel Outflow/1" -> "IFR bl Utica Div/1"
+	"McKays Point Diversion/1" -> "UPA Tunnel Tap Outflow/1"
+	"Hunter Reservoir/1" -> "IFR bl Hunter Reservoir/1"
+	"New Spicer Meadow Reservoir [original]/1" -> "New Spicer Meadow PH/1"
+	"Philadelphia Aquaduct Outflow/1" -> "Spring Gap PH/1"
+	"Pinecrest Reservoir [original]/1" -> "IFR below Pinecrest Lake/1"
+	"Relief Reservoir [original]/1" -> "IFR bl Relief Reservoir/1"
+	"Beardsley Afterbay/1" -> "Sand Bar PH/1"
+	"Stanislaus Tunnel Outflow/1" -> "Stanislaus PH/1"
+	"STN_01 Headflow/1" -> "STN_01 Inflow/1"
+	"McKays Point Diversion/1" -> "IFR bl McKays Point Div/1"
+	"Utica Reservoir [original]/1" -> "IFR Below Utica Res/1"
+	"Beardsley Afterbay/1" -> "IFR below Beardsley Afterbay/1"
+	"Beardsley Reservoir [original]/1" -> "Beardsley PH/1"
+	"UPA Tunnel Tap Outflow/1" -> "Collierville PH/1"
+	"Stanislaus Tunnel Outflow/1" -> "IFR bl Sand Bar Div/1"
+	"Lyons Reservoir [original]/1" -> "IFR bl Lyons Res/1"
+	"Goodwin Reservoir/1" -> "Oakdale Irrigation District/1"
+	"Goodwin Reservoir/1" -> "South San Joaquin Irrigation District/1"
+	"Goodwin Reservoir/1" -> "IFR bl Goodwin Reservoir/1"
+	"STN_01 Inflow/1" -> "New Melones Lake [original]/1"
+	"Angels PH/1" -> "STN_01 Inflow/1"
+	"IFR bl Angels Div/1" -> "STN_01 Inflow/1"
+	"Below Beaver Creek Diversion Dam/1" -> "IFR below NF and Beaver Creek/1"
+	"Beaver Creek Diversion/1" -> "Below Beaver Creek Diversion Dam/1"
+	"IFR bl McKays Point Div/1" -> "IFR below NF and Beaver Creek/1"
+	"Beaver Creek Diversion/1" -> "McKays Point Diversion/1"
+	"Phoenix PH/1" -> "Phoenix Canal Outflow/1"
+	"New Spicer Meadow Reservoir [original]/1" -> "IFR bl New Spicer Meadow Reservoir/1"
+	"New Spicer Meadow PH/1" -> "IFR bl New Spicer Meadow Reservoir/1"
+	"Sand Bar PH/1" -> "Stanislaus Tunnel Outflow/1"
+	"Philadelphia Aquaduct Outflow/1" -> "IFR bl Philadelphia Div/1"
+	"IFR bl Lyons Res/1" -> "STN_01 Inflow/1"
+	"IFR bl Goodwin Reservoir/1" -> "Stanislaus River Outflow/1"
+	"STN_02 Headflow/1" -> "Angels Canal Outflow/1"
+	"Murphys PH/1" -> "Angels Canal Outflow/1"
+	"STN_03 Headflow/1" -> "STN_01 Inflow/1"
+	"IFR bl Sand Bar Div/1" -> "STN_01 Inflow/1"
+	"IFR bl Hunter Reservoir/1" -> "STN_01 Inflow/1"
+	"STN_04 Headflow/1" -> "Hunter Reservoir/1"
+	"STN_05 Headflow/1" -> "STN_01 Inflow/1"
+	"IFR below NF and Beaver Creek/1" -> "STN_01 Inflow/1"
+	"STN_06 Headflow/1" -> "McKays Point Diversion/1"
+	"STN_07 Headflow/1" -> "McKays Point Diversion/1"
+	"IFR bl New Spicer Meadow Reservoir/1" -> "McKays Point Diversion/1"
+	"STN_08 Headflow/1" -> "McKays Point Diversion/1"
+	"IFR bl Utica Div/1" -> "McKays Point Diversion/1"
+	"STN_09 Headflow/1" -> "Upper Collierville Tunnel Outflow/1"
+	"IFR Below Utica Res/1" -> "Upper Collierville Tunnel Outflow/1"
+	"STN_10 Headflow/1" -> "Utica Reservoir [original]/1"
+	"STN_11 Headflow/1" -> "New Spicer Meadow Reservoir [original]/1"
+	"STN_13 Headflow/1" -> "Beaver Creek Diversion/1"
+	"STN_14 Headflow/1" -> "Stanislaus Tunnel Outflow/1"
+	"IFR below Beardsley Afterbay/1" -> "Stanislaus Tunnel Outflow/1"
+	"STN_15 Headflow/1" -> "Beardsley Afterbay/1"
+	"Beardsley Reservoir [original]/1" -> "Beardsley Afterbay/1"
+	"Beardsley PH/1" -> "Beardsley Afterbay/1"
+	"STN_16 Headflow/1" -> "Beardsley Reservoir [original]/1"
+	"IFR bl Donnells Reservoir/1" -> "Beardsley Reservoir [original]/1"
+	"STN_17 Headflow/1" -> "Beardsley Reservoir [original]/1"
+	"STN_18 Headflow/1" -> "Donnells Reservoir [original]/1"
+	"STN_19 Headflow/1" -> "Donnells Reservoir [original]/1"
+	"STN_21 Headflow/1" -> "Relief Reservoir [original]/1"
+	"IFR bl Philadelphia Div/1" -> "Lyons Reservoir [original]/1"
+	"STN_22 Headflow/1" -> "Lyons Reservoir [original]/1"
+	"STN_23 Headflow/1" -> "Philadelphia Aquaduct Outflow/1"
+	"IFR below Pinecrest Lake/1" -> "Philadelphia Aquaduct Outflow/1"
+	"STN_24 Headflow/1" -> "Philadelphia Aquaduct Outflow/1"
+	"STN_25 Headflow/1" -> "Pinecrest Reservoir [original]/1"
+	"IFR bl Relief Reservoir/1" -> "Donnells Reservoir [original]/1"
+	"STN_20 Headflow/1" -> "Donnells Reservoir [original]/1"
+	"Hunter Reservoir/1" -> "Murphys PH/1"
+	"UPA Tunnel Tap Outflow/1" -> "Murphys PH/1"
+	"STN_12 Headflow/1" -> "New Spicer Meadow Reservoir [original]/1"
+	"Donnells PH/1" -> "Beardsley Reservoir [original]/1"
+	"Upper Collierville Tunnel Outflow/1" -> "New Spicer Meadow Reservoir [original]/1"
+	"Collierville PH/1" -> "STN_01 Inflow/1"
+	"Stanislaus PH/1" -> "STN_01 Inflow/1"
+	"Spring Gap PH/1" -> "Stanislaus Tunnel Outflow/1"
+	"Lyons Reservoir [original]/1" -> "Phoenix PH/1"
+	"New Melones Lake [original]/1" -> "Release from New Melones/1"
+	"New Melones Lake [original]/1" -> "New Melones Flood Control/1"
+	"Release from New Melones/1" -> "STANI-N-JUN4/1"
+	"New Melones Flood Control/1" -> "STANI-N-JUN4/1"
+	"STANI-N-JUN4/1" -> "New Melones PH/1"
+	"Tulloch Lake [original]/1" -> "Tulloch Release Requirement/1"
+	"Tulloch Lake [original]/1" -> "Tulloch Lake Flood Control/1"
+	"Tulloch Release Requirement/1" -> "Goodwin Reservoir/1"
+	"Tulloch Lake Flood Control/1" -> "Goodwin Reservoir/1"
+	"STN_below_Melons.2.2/1" -> "Tulloch Lake [original]/1"
+	"New Melones PH/1" -> "STN_below_Melons.2.2/1"
+	"STANI-N-JUN4/1" -> "STN_below_Melons.2.2/1"
+}
