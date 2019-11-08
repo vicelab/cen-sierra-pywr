@@ -4,7 +4,7 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class node_IFR_bl_Lyons_Res_Requirement(WaterLPParameter):
+class IFR_bl_Lyons_Res_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
@@ -42,5 +42,5 @@ class node_IFR_bl_Lyons_Res_Requirement(WaterLPParameter):
         return cls(model, **data)
 
 
-node_IFR_bl_Lyons_Res_Requirement.register()
-print(" [*] node_IFR_bl_Lyons_Res_Requirement successfully registered")
+IFR_bl_Lyons_Res_Requirement.register()
+print(" [*] IFR_bl_Lyons_Res_Requirement successfully registered")

@@ -42,4 +42,4 @@ class IFR_below_Pinecrest_Lake_Requirement(WaterLPParameter):
 
 
 IFR_below_Pinecrest_Lake_Requirement.register()
-print(" [*] node_IFR_bl_Pinecrest_Lake_Requirement successfully registered")
+print(" [*] IFR_bl_Pinecrest_Lake_Requirement successfully registered")
