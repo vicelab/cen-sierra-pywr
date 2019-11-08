@@ -5,7 +5,7 @@ from parameters import WaterLPParameter
 from datetime import datetime, timedelta
 
 
-class node_New_Melones_Lake_Storage_Value(WaterLPParameter):
+class New_Melones_Lake_Storage_Value(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         multiplier = self.model.parameters['melones_storageValueConstant'].value(timestep, scenario_index)
@@ -27,5 +27,5 @@ class node_New_Melones_Lake_Storage_Value(WaterLPParameter):
         return cls(model, **data)
 
 
-node_New_Melones_Lake_Storage_Value.register()
-print(" [*] node_New_Lake_Reservoir_Storage_Value successfully registered")
+New_Melones_Lake_Storage_Value.register()
+print(" [*] New_Lake_Reservoir_Storage_Value successfully registered")

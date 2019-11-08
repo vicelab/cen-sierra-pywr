@@ -4,7 +4,7 @@ from utilities.converter import convert
 import datetime as dt
 
 
-class node_New_Melones_Lake_Storage_Demand(WaterLPParameter):
+class New_Melones_Lake_Storage_Demand(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         path = "Management/BAU/Flood Control/LakeMelones_FloodControl_Requirement.csv"
@@ -13,11 +13,11 @@ class node_New_Melones_Lake_Storage_Demand(WaterLPParameter):
         if self.model.mode == 'scheduling':
             control_curve_target = flood_control_req[start]
         else:
-            end = dt.datetime(self.datetime.year, self.datetime.month, self.days_in_month()).strftime('%b-%d')
+            end = self.datetime.strftime('%b-{:02}'.format(self.days_in_month()))
             control_curve_target = flood_control_req[start:end].mean()
         max_storage = self.model.nodes["New Melones Lake" + self.month_suffix].max_volume
-        storage_demand = control_curve_target / max_storage
-        return storage_demand
+        return control_curve_target / max_storage
+        # return control_curve_target
 
     def value(self, timestep, scenario_index):
         try:
@@ -32,5 +32,5 @@ class node_New_Melones_Lake_Storage_Demand(WaterLPParameter):
         return cls(model, **data)
 
 
-node_New_Melones_Lake_Storage_Demand.register()
-print(" [*] node_New_Melones_Lake_Storage_Demand successfully registered")
+New_Melones_Lake_Storage_Demand.register()
+print(" [*] New_Melones_Lake_Storage_Demand successfully registered")

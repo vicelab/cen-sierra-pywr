@@ -2,7 +2,7 @@ import math
 from parameters import WaterLPParameter
 
 
-class node_Donnells_Reservoir_Storage_Value(WaterLPParameter):
+class Beardsley_Reservoir_Storage_Value(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         x = self.model.parameters['storageValueConstant'].value(timestep, scenario_index)
@@ -13,9 +13,7 @@ class node_Donnells_Reservoir_Storage_Value(WaterLPParameter):
         val = alpha * math.exp(x * (beta / elev))
         return val
 
-
     def value(self, timestep, scenario_index):
-
         try:
             return self._value(timestep, scenario_index)
         except Exception as err:
@@ -23,11 +21,10 @@ class node_Donnells_Reservoir_Storage_Value(WaterLPParameter):
             print('File where error occurred: {}'.format(__file__))
             print(err)
 
-
     @classmethod
     def load(cls, model, data):
         return cls(model, **data)
 
 
-node_Donnells_Reservoir_Storage_Value.register()
-print(" [*] node_Donnells_Reservoir_Storage_Value successfully registered")
+Beardsley_Reservoir_Storage_Value.register()
+print(" [*] Beardsley_Reservoir_Storage_Value successfully registered")

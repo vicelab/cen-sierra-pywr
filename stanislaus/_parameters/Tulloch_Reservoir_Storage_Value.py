@@ -2,15 +2,12 @@ import math
 from parameters import WaterLPParameter
 
 
-class node_Beardsley_Reservoir_Storage_Value(WaterLPParameter):
+class Tulloch_Reservoir_Storage_Value(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
-        x = self.model.parameters['storageValueConstant'].value(timestep, scenario_index)
-        beta = self.model.parameters['storage_value_numerator'].value(timestep, scenario_index)
-        alpha = self.model.parameters['storage_value_leading'].value(timestep, scenario_index)
-
+        multiplier = self.model.parameters['storageValueConstant'].value(timestep, scenario_index)
         elev = self.model.parameters[self.elevation_param].value(timestep, scenario_index)
-        val = alpha * math.exp(x * (beta / elev))
+        val = -0.003 * math.exp(multiplier * (254 / elev))
         return val
 
     def value(self, timestep, scenario_index):
@@ -26,5 +23,5 @@ class node_Beardsley_Reservoir_Storage_Value(WaterLPParameter):
         return cls(model, **data)
 
 
-node_Beardsley_Reservoir_Storage_Value.register()
-print(" [*] node_Beardsley_Reservoir_Storage_Value successfully registered")
+Tulloch_Reservoir_Storage_Value.register()
+print(" [*] Tulloch_Reservoir_Storage_Value successfully registered")

@@ -5,7 +5,7 @@ from parameters import WaterLPParameter
 from datetime import datetime, timedelta
 
 
-class node_Relief_Reservoir_Storage_Value(WaterLPParameter):
+class New_Spicer_Meadow_Reservoir_Storage_Value(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         x = self.model.parameters['storageValueConstant'].value(timestep, scenario_index)
@@ -29,5 +29,5 @@ class node_Relief_Reservoir_Storage_Value(WaterLPParameter):
         return cls(model, **data)
 
 
-node_Relief_Reservoir_Storage_Value.register()
-print(" [*] node_Relief_Reservoir_Storage_Value successfully registered")
+New_Spicer_Meadow_Reservoir_Storage_Value.register()
+print(" [*] New_Spicer_Meadow_Reservoir_Storage_Value successfully registered")

@@ -3,7 +3,7 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class node_AVERY_11294500_Observed_Flow(WaterLPParameter):
+class AVERY_11294500_Observed_Flow(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
@@ -25,5 +25,5 @@ class node_AVERY_11294500_Observed_Flow(WaterLPParameter):
         return cls(model, **data)
 
 
-node_AVERY_11294500_Observed_Flow.register()
-print(" [*] node_AVERY_11294500_Observed_Flow successfully registered")
+AVERY_11294500_Observed_Flow.register()
+print(" [*] AVERY_11294500_Observed_Flow successfully registered")

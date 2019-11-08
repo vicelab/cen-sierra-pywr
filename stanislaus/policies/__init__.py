@@ -1,2 +1,2 @@
-from .node_Release_From_Tulloch_Lake import node_Release_From_Tulloch_Lake
-from .node_New_Melones_PH_Release_Policy import New_Melones_Release_Policy
+from .Release_From_Tulloch_Lake import Release_From_Tulloch_Lake
+from .New_Melones_PH_Release_Policy import New_Melones_Release_Policy

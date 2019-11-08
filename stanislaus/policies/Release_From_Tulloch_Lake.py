@@ -1,7 +1,7 @@
 from parameters import WaterLPParameter
 
 
-class node_Release_From_Tulloch_Lake(WaterLPParameter):
+class Release_From_Tulloch_Lake(WaterLPParameter):
     cms_to_mcm = 1 / 11.5740740741
     year_names = ["Critical", "Dry", "Below", "Above", "Wet"]
 
@@ -38,5 +38,5 @@ class node_Release_From_Tulloch_Lake(WaterLPParameter):
         return cls(model, **data)
 
 
-node_Release_From_Tulloch_Lake.register()
-print(" [*] node_Release_From_Tulloch_Lake successfully registered")
+Release_From_Tulloch_Lake.register()
+print(" [*] Release_From_Tulloch_Lake successfully registered")
