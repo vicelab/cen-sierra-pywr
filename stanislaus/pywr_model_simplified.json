@@ -623,8 +623,8 @@
                 "index": "2008-09-30",
                 "column": "Beardsley Reservoir"
             },
-            "max_volume": 82.64,
-            "cost": 0.0,
+            "max_volume": 82.6,
+            "cost": "Tulloch Lake/Storage Value",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -1115,10 +1115,10 @@
             "value": 4
         },
         "South San Joaquin Irrigation District/Demand": {
-            "type": "node_South_San_Joaquin_Irrigation_District_Demand"
+            "type": "South_San_Joaquin_Irrigation_District_Demand"
         },
         "Oakdale Irrigation District/Demand": {
-            "type": "node_Oakdale_Irrigation_District_Demand"
+            "type": "Oakdale_Irrigation_District_Demand"
         },
         "New Melones Flood Control/Violation Cost": {
             "type": "controlcurveinterpolated",
@@ -1139,22 +1139,14 @@
                 "New Melones Lake/Storage Demand"
             ],
             "values": [
-                10000,
+                100,
                 0.0,
                 0.0
             ]
         },
         "Tulloch Lake Flood Control/Violation Cost": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Tulloch Lake",
-            "control_curves": [
-                "Tulloch Lake/Storage Demand"
-            ],
-            "values": [
-                -5000.0,
-                0.0,
-                0.0
-            ]
+            "type": "constant",
+            "value": -4000
         },
         "Tulloch Lake Flood Control/Requirement": {
             "type": "controlcurveinterpolated",
@@ -1163,9 +1155,9 @@
                 "Tulloch Lake/Storage Demand"
             ],
             "values": [
-                10000,
-                0.0,
-                0.0
+                5,
+                0,
+                0
             ]
         },
         "Angels PH/Fixed Head": {
@@ -1177,28 +1169,28 @@
             "value": 1.13
         },
         "Angels PH/Water Demand/1": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Angels PH/Water Demand/2": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Angels PH/Water Demand/3": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Angels PH/Water Demand/4": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Angels PH/Cost/1": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Angels PH/Cost/2": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Angels PH/Cost/3": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Angels PH/Cost/4": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Beardsley Reservoir/Turbine Capacity": {
             "type": "constant",
@@ -1262,28 +1254,28 @@
             "value": 39.64
         },
         "Collierville PH/Water Demand/1": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Collierville PH/Water Demand/2": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Collierville PH/Water Demand/3": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Collierville PH/Water Demand/4": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Collierville PH/Cost/1": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Collierville PH/Cost/2": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Collierville PH/Cost/3": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Collierville PH/Cost/4": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Donnells PH/Fixed Head": {
             "type": "constant",
@@ -1294,28 +1286,28 @@
             "value": 19.82
         },
         "Donnells PH/Water Demand/1": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Donnells PH/Water Demand/2": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Donnells PH/Water Demand/3": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Donnells PH/Water Demand/4": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Donnells PH/Cost/1": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Donnells PH/Cost/2": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Donnells PH/Cost/3": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Donnells PH/Cost/4": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Donnells Reservoir/Storage Value": {
             "type": "constant",
@@ -1369,77 +1361,77 @@
             "value": -1000
         },
         "IFR bl Angels Div/Requirement": {
-            "type": "node_IFR_bl_Angels_Div_Requirement"
+            "type": "IFR_bl_Angels_Div_Requirement"
         },
         "IFR bl Donnells Reservoir/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
         "IFR bl Donnells Reservoir/Requirement": {
-            "type": "node_IFR_bl_Donnells_Reservoir_Requirement"
+            "type": "IFR_bl_Donnells_Reservoir_Requirement"
         },
         "IFR bl Hunter Reservoir/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
         "IFR bl Hunter Reservoir/Requirement": {
-            "type": "node_IFR_bl_Hunter_Reservoir_Requirement"
+            "type": "IFR_bl_Hunter_Reservoir_Requirement"
         },
         "IFR bl Lyons Res/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
         "IFR bl Lyons Res/Requirement": {
-            "type": "node_IFR_bl_Lyons_Res_Requirement"
+            "type": "IFR_bl_Lyons_Res_Requirement"
         },
         "IFR bl McKays Point Div/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
         "IFR bl McKays Point Div/Requirement": {
-            "type": "node_IFR_bl_McKays_Point_Div_Requirement"
+            "type": "IFR_bl_McKays_Point_Div_Requirement"
         },
         "IFR bl New Spicer Meadow Reservoir/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
         "IFR bl New Spicer Meadow Reservoir/Requirement": {
-            "type": "node_IFR_bl_New_Spicer_Meadow_Reservoir_Requirement"
+            "type": "IFR_bl_New_Spicer_Meadow_Reservoir_Requirement"
         },
         "IFR bl Philadelphia Div/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
         "IFR bl Philadelphia Div/Requirement": {
-            "type": "node_IFR_bl_Philadelphia_Div_Requirement"
+            "type": "IFR_bl_Philadelphia_Div_Requirement"
         },
         "IFR bl Relief Reservoir/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
         "IFR bl Relief Reservoir/Requirement": {
-            "type": "node_IFR_bl_Relief_Reservoir_Requirement"
+            "type": "IFR_bl_Relief_Reservoir_Requirement"
         },
         "IFR bl Sand Bar Div/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
         "IFR bl Sand Bar Div/Requirement": {
-            "type": "node_IFR_bl_Sand_Bar_Div_Requirement"
+            "type": "IFR_bl_Sand_Bar_Div_Requirement"
         },
         "IFR bl Utica Div/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
         "IFR bl Utica Div/Requirement": {
-            "type": "node_IFR_bl_Utica_Div_Requirement"
+            "type": "IFR_bl_Utica_Div_Requirement"
         },
         "Below Beaver Creek Diversion Dam/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
         "Below Beaver Creek Diversion Dam/Requirement": {
-            "type": "node_IFR_bl_BeaverCreekDivDam_Requirement"
+            "type": "IFR_bl_BeaverCreekDivDam_Requirement"
         },
         "IFR below NF and Beaver Creek/Violation Cost": {
             "type": "constant",
@@ -1471,14 +1463,14 @@
             "value": -1000
         },
         "IFR Below Utica Res/Requirement": {
-            "type": "node_IFR_bl_Utica_Res_Requirement"
+            "type": "IFR_bl_Utica_Res_Requirement"
         },
         "IFR below Beardsley Afterbay/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
         "IFR below Beardsley Afterbay/Requirement": {
-            "type": "node_IFR_below_Beardsley_Afterbay_Requirement"
+            "type": "IFR_below_Beardsley_Afterbay_Requirement"
         },
         "Lyons Reservoir/Storage Value": {
             "type": "constant",
@@ -1524,37 +1516,35 @@
             "value": 2.78
         },
         "Murphys PH/Water Demand/1": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Murphys PH/Water Demand/2": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Murphys PH/Water Demand/3": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Murphys PH/Water Demand/4": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Murphys PH/Cost/1": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Murphys PH/Cost/2": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Murphys PH/Cost/3": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Murphys PH/Cost/4": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "New Melones Lake/Storage Demand": {
-            "type": "node_New_Melones_Lake_Storage_Demand"
+            "type": "New_Melones_Lake_Storage_Demand"
         },
         "New Melones Lake/Storage Value": {
             "type": "constant",
-            "table": "Storage Costs",
-            "index": "New Melones Lake",
-            "column": "Cost"
+            "value": -5.0
         },
         "New Melones PH/Turbine Capacity": {
             "type": "constant",
@@ -1615,28 +1605,28 @@
             "value": 0.708
         },
         "Phoenix PH/Water Demand/1": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Phoenix PH/Water Demand/2": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Phoenix PH/Water Demand/3": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Phoenix PH/Water Demand/4": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Phoenix PH/Cost/1": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Phoenix PH/Cost/2": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Phoenix PH/Cost/3": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Phoenix PH/Cost/4": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Pinecrest Reservoir/Storage Value": {
             "type": "constant",
@@ -1723,28 +1713,28 @@
             "value": 16.99
         },
         "Sand Bar PH/Water Demand/1": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Sand Bar PH/Water Demand/2": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Sand Bar PH/Water Demand/3": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Sand Bar PH/Water Demand/4": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Sand Bar PH/Cost/1": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Sand Bar PH/Cost/2": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Sand Bar PH/Cost/3": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Sand Bar PH/Cost/4": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Spring Gap PH/Fixed Head": {
             "type": "constant",
@@ -1755,56 +1745,56 @@
             "value": 1.67
         },
         "Spring Gap PH/Water Demand/1": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Spring Gap PH/Water Demand/2": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Spring Gap PH/Water Demand/3": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Spring Gap PH/Water Demand/4": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Spring Gap PH/Cost/1": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Spring Gap PH/Cost/2": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Spring Gap PH/Cost/3": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Spring Gap PH/Cost/4": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Stanislaus PH/Fixed Head": {
             "type": "constant",
             "value": 463.296
         },
         "New Spicer Meadow PH/Water Demand/1": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "New Spicer Meadow PH/Water Demand/2": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "New Spicer Meadow PH/Water Demand/3": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "New Spicer Meadow PH/Water Demand/4": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "New Spicer Meadow PH/Cost/1": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "New Spicer Meadow PH/Cost/2": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "New Spicer Meadow PH/Cost/3": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "New Spicer Meadow PH/Cost/4": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "New Spicer Meadow PH/Turbine Capacity": {
             "type": "constant",
@@ -1817,7 +1807,7 @@
         "Utica Reservoir/Storage Value": {
             "type": "constant",
             "table": "Storage Costs",
-            "index": "Beardsley Reservoir",
+            "index": "Utica Reservoir",
             "column": "Cost"
         },
         "Stanislaus PH/Turbine Capacity": {
@@ -1825,28 +1815,28 @@
             "value": 15.0
         },
         "Stanislaus PH/Water Demand/1": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Stanislaus PH/Water Demand/2": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Stanislaus PH/Water Demand/3": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Stanislaus PH/Water Demand/4": {
-            "type": "network_PH_Water_Demand"
+            "type": "PH_Water_Demand"
         },
         "Stanislaus PH/Cost/1": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Stanislaus PH/Cost/2": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Stanislaus PH/Cost/3": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "Stanislaus PH/Cost/4": {
-            "type": "network_PH_Cost"
+            "type": "PH_Cost"
         },
         "STN_01 Headflow/Runoff": {
             "type": "dataframe",
@@ -2024,16 +2014,22 @@
             "parse_dates": true
         },
         "Tulloch Lake/Storage Value": {
-            "type": "constant",
-            "table": "Storage Costs",
-            "index": "Tulloch Lake",
-            "column": "Cost"
+            "type": "controlcurveinterpolated",
+            "storage_node": "Tulloch Lake",
+            "control_curves": [
+                "Tulloch Lake/Storage Demand"
+            ],
+            "values": [
+                100.0,
+                -5.0,
+                -5.0
+            ]
         },
         "Tulloch Lake/Storage Demand": {
-            "type": "node_Tulloch_Lake_Storage_Demand"
+            "type": "Tulloch_Lake_Storage_Demand"
         },
         "Tulloch Release Requirement/Release": {
-            "type": "node_Release_From_Tulloch_Lake"
+            "type": "Release_From_Tulloch_Lake"
         },
         "WYT_SJValley": {
             "type": "WYT_SJValley"

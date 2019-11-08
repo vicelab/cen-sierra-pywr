@@ -584,7 +584,7 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
     setattr(m, 'mode', 'scheduling')
     setattr(m, 'planning', planning_model if include_planning else None)
 
-    for date in tqdm(m.timestepper.datetime_index, ncols=80, disable=False):
+    for date in tqdm(m.timestepper.datetime_index[:95], ncols=80, disable=False):
         step += 1
         try:
 
