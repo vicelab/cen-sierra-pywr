@@ -4,7 +4,7 @@ from utilities.converter import convert
 from dateutil.relativedelta import relativedelta
 
 
-class network_PH_Water_Demand(WaterLPParameter):
+class PH_Water_Demand(WaterLPParameter):
     """"""
 
     price_threshold = 20.0  # an arbitrary first value
@@ -86,5 +86,5 @@ class network_PH_Water_Demand(WaterLPParameter):
         return cls(model, node, block, **data)
 
 
-network_PH_Water_Demand.register()
-print(" [*] network_PH_Water_Demand successfully registered")
+PH_Water_Demand.register()
+print(" [*] PH_Water_Demand successfully registered")

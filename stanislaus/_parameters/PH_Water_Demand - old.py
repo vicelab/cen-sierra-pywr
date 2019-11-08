@@ -3,7 +3,7 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class network_PH_Water_Demand(WaterLPParameter):
+class PH_Water_Demand(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index, mode='scheduling'):
@@ -31,5 +31,5 @@ class network_PH_Water_Demand(WaterLPParameter):
         return cls(model, **data)
 
 
-network_PH_Water_Demand.register()
-print(" [*] network_PH_Water_Demand successfully registered")
+PH_Water_Demand.register()
+print(" [*] PH_Water_Demand successfully registered")

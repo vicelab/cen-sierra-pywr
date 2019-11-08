@@ -1976,19 +1976,19 @@
       "value": 1.13
     },
     "node/Angels PH/Water Demand": {
-      "type": "network_PH_Water_Demand"
+      "type": "PH_Water_Demand"
     },
     "node/Angels PH/Cost/1": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Angels PH/Cost/2": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Angels PH/Cost/3": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Angels PH/Cost/4": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/AVERY_11294500/Observed Flow": {
       "type": "dataframe",
@@ -2062,16 +2062,16 @@
       "value": 10
     },
     "node/Beardsley PH/Cost/1": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Beardsley PH/Cost/2": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Beardsley PH/Cost/3": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Beardsley PH/Cost/4": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Beardsley PH/Turbine Capacity": {
       "type": "constant",
@@ -2118,19 +2118,19 @@
       "value": 39.64
     },
     "node/Collierville PH/Water Demand": {
-      "type": "network_PH_Water_Demand"
+      "type": "PH_Water_Demand"
     },
     "node/Collierville PH/Cost/1": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Collierville PH/Cost/2": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Collierville PH/Cost/3": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Collierville PH/Cost/4": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Donnells PH/Fixed Head": {
       "type": "constant",
@@ -2141,19 +2141,19 @@
       "value": 19.82
     },
     "node/Donnells PH/Water Demand": {
-      "type": "network_PH_Water_Demand"
+      "type": "PH_Water_Demand"
     },
     "node/Donnells PH/Cost/1": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Donnells PH/Cost/2": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Donnells PH/Cost/3": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Donnells PH/Cost/4": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Donnells Reservoir/Observed Storage": {
       "type": "dataframe",
@@ -2225,112 +2225,112 @@
       "value": 10
     },
     "node/IFR bl Angels Div/Requirement": {
-      "type": "node_IFR_bl_Angels_Div_Requirement"
+      "type": "IFR_bl_Angels_Div_Requirement"
     },
     "node/IFR bl Donnells Reservoir/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR bl Donnells Reservoir/Requirement": {
-      "type": "node_IFR_bl_Donnells_Reservoir_Requirement"
+      "type": "IFR_bl_Donnells_Reservoir_Requirement"
     },
     "node/IFR bl Hunter Reservoir/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR bl Hunter Reservoir/Requirement": {
-      "type": "node_IFR_bl_Hunter_Reservoir_Requirement"
+      "type": "IFR_bl_Hunter_Reservoir_Requirement"
     },
     "node/IFR bl Lyons Res/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR bl Lyons Res/Requirement": {
-      "type": "node_IFR_bl_Lyons_Res_Requirement"
+      "type": "IFR_bl_Lyons_Res_Requirement"
     },
     "node/IFR bl McKays Point Div/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR bl McKays Point Div/Requirement": {
-      "type": "node_IFR_bl_McKays_Point_Div_Requirement"
+      "type": "IFR_bl_McKays_Point_Div_Requirement"
     },
     "node/IFR bl New Spicer Meadow Reservoir/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR bl New Spicer Meadow Reservoir/Requirement": {
-      "type": "node_IFR_bl_New_Spicer_Meadow_Reservoir_Requirement"
+      "type": "IFR_bl_New_Spicer_Meadow_Reservoir_Requirement"
     },
     "node/IFR bl Philadelphia Div/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR bl Philadelphia Div/Requirement": {
-      "type": "node_IFR_bl_Philadelphia_Div_Requirement"
+      "type": "IFR_bl_Philadelphia_Div_Requirement"
     },
     "node/IFR bl Relief Reservoir/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR bl Relief Reservoir/Requirement": {
-      "type": "node_IFR_bl_Relief_Reservoir_Requirement"
+      "type": "IFR_bl_Relief_Reservoir_Requirement"
     },
     "node/IFR bl Sand Bar Div/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR bl Sand Bar Div/Requirement": {
-      "type": "node_IFR_bl_Sand_Bar_Div_Requirement"
+      "type": "IFR_bl_Sand_Bar_Div_Requirement"
     },
     "node/IFR bl Utica Div/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR bl Utica Div/Requirement": {
-      "type": "node_IFR_bl_Utica_Div_Requirement"
+      "type": "IFR_bl_Utica_Div_Requirement"
     },
     "node/Below Beaver Creek Diversion Dam/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/Below Beaver Creek Diversion Dam/Requirement": {
-      "type": "node_IFR_bl_BeaverCreekDivDam_Requirement"
+      "type": "IFR_bl_BeaverCreekDivDam_Requirement"
     },
     "node/IFR Confluence of NF and Beaver Creek/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR Confluence of NF and Beaver Creek/Requirement": {
-      "type": "node_IFR_confluence_NF_BeaverCreek_Requirement"
+      "type": "IFR_confluence_NF_BeaverCreek_Requirement"
     },
     "node/IFR Below New Melones Res/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR Below New Melones Res/Requirement": {
-      "type": "node_IFR_bl_New_Melones_Requirement"
+      "type": "IFR_bl_New_Melones_Requirement"
     },
     "node/IFR Below Pinecrest Lake/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR Below Pinecrest Lake/Requirement": {
-      "type": "node_IFR_bl_Pinecrest_Lake_Requirement"
+      "type": "IFR_bl_Pinecrest_Lake_Requirement"
     },
     "node/IFR Below Utica Res/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR Below Utica Res/Requirement": {
-      "type": "node_IFR_bl_Utica_Res_Requirement"
+      "type": "IFR_bl_Utica_Res_Requirement"
     },
     "node/IFR below Beardsley Afterbay/Violation Cost": {
       "type": "constant",
       "value": 10
     },
     "node/IFR below Beardsley Afterbay/Requirement": {
-      "type": "node_IFR_below_Beardsley_Afterbay_Requirement"
+      "type": "IFR_below_Beardsley_Afterbay_Requirement"
     },
     "node/JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/Observed Flow": {
       "type": "dataframe",
@@ -2415,19 +2415,19 @@
       "value": 2.78
     },
     "node/Murphys PH/Water Demand": {
-      "type": "network_PH_Water_Demand"
+      "type": "PH_Water_Demand"
     },
     "node/Murphys PH/Cost/1": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Murphys PH/Cost/2": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Murphys PH/Cost/3": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Murphys PH/Cost/4": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/New Melones Lake/Observed Storage": {
       "type": "dataframe",
@@ -2447,19 +2447,19 @@
       "value": 203.0
     },
     "node/New Melones PH/Water Demand": {
-      "type": "network_PH_Water_Demand"
+      "type": "PH_Water_Demand"
     },
     "node/New Melones PH/Cost/1": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/New Melones PH/Cost/2": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/New Melones PH/Cost/3": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/New Melones PH/Cost/4": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Release from New Melones/Release": {
       "type": "New_Melones_Release_Policy"
@@ -2548,19 +2548,19 @@
       "value": 0.708
     },
     "node/Phoenix PH/Water Demand": {
-      "type": "network_PH_Water_Demand"
+      "type": "PH_Water_Demand"
     },
     "node/Phoenix PH/Cost/1": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Phoenix PH/Cost/2": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Phoenix PH/Cost/3": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Phoenix PH/Cost/4": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Pinecrest Reservoir/Observed Storage": {
       "type": "dataframe",
@@ -2655,19 +2655,19 @@
       "value": 16.99
     },
     "node/Sand Bar PH/Water Demand": {
-      "type": "network_PH_Water_Demand"
+      "type": "PH_Water_Demand"
     },
     "node/Sand Bar PH/Cost/1": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Sand Bar PH/Cost/2": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Sand Bar PH/Cost/3": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Sand Bar PH/Cost/4": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/SF STANISLAUS R A STRAWBERRY CA_11296500/Observed Flow": {
       "type": "dataframe",
@@ -2699,38 +2699,38 @@
       "value": 1.67
     },
     "node/Spring Gap PH/Water Demand": {
-      "type": "network_PH_Water_Demand"
+      "type": "PH_Water_Demand"
     },
     "node/Spring Gap PH/Cost/1": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Spring Gap PH/Cost/2": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Spring Gap PH/Cost/3": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Spring Gap PH/Cost/4": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Stanislaus PH/Fixed Head": {
       "type": "constant",
       "value": 463.296
     },
     "node/New Spicer Meadow PH/Water Demand": {
-      "type": "network_PH_Water_Demand"
+      "type": "PH_Water_Demand"
     },
     "node/New Spicer Meadow PH/Cost/1": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/New Spicer Meadow PH/Cost/2": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/New Spicer Meadow PH/Cost/3": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/New Spicer Meadow PH/Cost/4": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/New Spicer Meadow PH/Turbine Capacity": {
       "type": "constant",
@@ -2745,19 +2745,19 @@
       "value": 23.5
     },
     "node/Stanislaus PH/Water Demand": {
-      "type": "network_PH_Water_Demand"
+      "type": "PH_Water_Demand"
     },
     "node/Stanislaus PH/Cost/1": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Stanislaus PH/Cost/2": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Stanislaus PH/Cost/3": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/Stanislaus PH/Cost/4": {
-      "type": "network_PH_Cost"
+      "type": "PH_Cost"
     },
     "node/STN_01 Headflow/Runoff": {
       "type": "dataframe",

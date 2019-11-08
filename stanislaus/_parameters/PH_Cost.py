@@ -1,7 +1,7 @@
 from parameters import WaterLPParameter
 
 
-class network_PH_Cost(WaterLPParameter):
+class PH_Cost(WaterLPParameter):
     """"""
 
     # path = "s3_imports/energy_netDemand.csv"
@@ -40,6 +40,6 @@ class network_PH_Cost(WaterLPParameter):
         return cls(model, **data)
 
 
-network_PH_Cost.register()
+PH_Cost.register()
 
 print(" [*] PH_Cost successfully registered")
