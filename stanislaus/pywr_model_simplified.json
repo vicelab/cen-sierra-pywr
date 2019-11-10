@@ -2014,16 +2014,8 @@
             "parse_dates": true
         },
         "Tulloch Lake/Storage Value": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Tulloch Lake",
-            "control_curves": [
-                "Tulloch Lake/Storage Demand"
-            ],
-            "values": [
-                100.0,
-                -5.0,
-                -5.0
-            ]
+            "type": "constant",
+            "value": -4.0
         },
         "Tulloch Lake/Storage Demand": {
             "type": "Tulloch_Lake_Storage_Demand"

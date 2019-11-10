@@ -28030,148 +28030,52 @@
             "parse_dates": true
         },
         "Tulloch Lake/Storage Value/1": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Tulloch Lake/1",
-            "control_curves": [
-                "Tulloch Lake/Storage Demand/1"
-            ],
-            "values": [
-                100.0,
-                -5.0,
-                -5.0
-            ]
+            "type": "constant",
+            "value": -4.0
         },
         "Tulloch Lake/Storage Value/2": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Tulloch Lake/2",
-            "control_curves": [
-                "Tulloch Lake/Storage Demand/2"
-            ],
-            "values": [
-                100.0,
-                -5.0,
-                -5.0
-            ]
+            "type": "constant",
+            "value": -4.0
         },
         "Tulloch Lake/Storage Value/3": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Tulloch Lake/3",
-            "control_curves": [
-                "Tulloch Lake/Storage Demand/3"
-            ],
-            "values": [
-                100.0,
-                -5.0,
-                -5.0
-            ]
+            "type": "constant",
+            "value": -4.0
         },
         "Tulloch Lake/Storage Value/4": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Tulloch Lake/4",
-            "control_curves": [
-                "Tulloch Lake/Storage Demand/4"
-            ],
-            "values": [
-                100.0,
-                -5.0,
-                -5.0
-            ]
+            "type": "constant",
+            "value": -4.0
         },
         "Tulloch Lake/Storage Value/5": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Tulloch Lake/5",
-            "control_curves": [
-                "Tulloch Lake/Storage Demand/5"
-            ],
-            "values": [
-                100.0,
-                -5.0,
-                -5.0
-            ]
+            "type": "constant",
+            "value": -4.0
         },
         "Tulloch Lake/Storage Value/6": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Tulloch Lake/6",
-            "control_curves": [
-                "Tulloch Lake/Storage Demand/6"
-            ],
-            "values": [
-                100.0,
-                -5.0,
-                -5.0
-            ]
+            "type": "constant",
+            "value": -4.0
         },
         "Tulloch Lake/Storage Value/7": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Tulloch Lake/7",
-            "control_curves": [
-                "Tulloch Lake/Storage Demand/7"
-            ],
-            "values": [
-                100.0,
-                -5.0,
-                -5.0
-            ]
+            "type": "constant",
+            "value": -4.0
         },
         "Tulloch Lake/Storage Value/8": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Tulloch Lake/8",
-            "control_curves": [
-                "Tulloch Lake/Storage Demand/8"
-            ],
-            "values": [
-                100.0,
-                -5.0,
-                -5.0
-            ]
+            "type": "constant",
+            "value": -4.0
         },
         "Tulloch Lake/Storage Value/9": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Tulloch Lake/9",
-            "control_curves": [
-                "Tulloch Lake/Storage Demand/9"
-            ],
-            "values": [
-                100.0,
-                -5.0,
-                -5.0
-            ]
+            "type": "constant",
+            "value": -4.0
         },
         "Tulloch Lake/Storage Value/10": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Tulloch Lake/10",
-            "control_curves": [
-                "Tulloch Lake/Storage Demand/10"
-            ],
-            "values": [
-                100.0,
-                -5.0,
-                -5.0
-            ]
+            "type": "constant",
+            "value": -4.0
         },
         "Tulloch Lake/Storage Value/11": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Tulloch Lake/11",
-            "control_curves": [
-                "Tulloch Lake/Storage Demand/11"
-            ],
-            "values": [
-                100.0,
-                -5.0,
-                -5.0
-            ]
+            "type": "constant",
+            "value": -4.0
         },
         "Tulloch Lake/Storage Value/12": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Tulloch Lake/12",
-            "control_curves": [
-                "Tulloch Lake/Storage Demand/12"
-            ],
-            "values": [
-                100.0,
-                -5.0,
-                -5.0
-            ]
+            "type": "constant",
+            "value": -4.0
         },
         "Tulloch Lake/Storage Demand/1": {
             "type": "Tulloch_Lake_Storage_Demand"
