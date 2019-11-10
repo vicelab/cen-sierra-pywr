@@ -1,0 +1,11 @@
+.timeseries-collection {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.timeseries-chart {
+    width: 500px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
