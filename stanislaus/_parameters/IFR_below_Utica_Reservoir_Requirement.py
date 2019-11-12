@@ -5,7 +5,7 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class IFR_bl_Utica_Res_Requirement(WaterLPParameter):
+class IFR_below_Utica_Reservoir_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
@@ -26,5 +26,5 @@ class IFR_bl_Utica_Res_Requirement(WaterLPParameter):
         return cls(model, **data)
 
 
-IFR_bl_Utica_Res_Requirement.register()
-print(" [*] IFR_bl_Utica_Res_Requirement successfully registered")
+IFR_below_Utica_Reservoir_Requirement.register()
+print(" [*] IFR_below_Utica_Reservoir_Requirement successfully registered")

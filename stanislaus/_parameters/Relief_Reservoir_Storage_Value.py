@@ -8,13 +8,10 @@ from datetime import datetime, timedelta
 class Relief_Reservoir_Storage_Value(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
-        x = self.model.parameters['storageValueConstant'].value(timestep, scenario_index)
-        beta = self.model.parameters['storage_value_numerator'].value(timestep, scenario_index)
-        alpha = self.model.parameters['storage_value_leading'].value(timestep, scenario_index)
-
-        elev = self.model.parameters[self.elevation_param].value(timestep, scenario_index)
-        val = alpha * math.exp(x * (beta / elev))
-        return val
+        if timestep.month >= 11 or timestep.month <= 7:
+            return -3500
+        else:
+            return -60
 
     def value(self, timestep, scenario_index):
         try:

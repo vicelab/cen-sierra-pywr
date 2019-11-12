@@ -27,6 +27,8 @@ class PH_Water_Demand(WaterLPParameter):
 
         elif self.model.planning:
 
+            # TODO: move as much of this as possible to a single parameter
+
             if timestep.day == 1:
                 start = timestep.datetime
                 end = start + relativedelta(months=+1) - relativedelta(days=+1)
@@ -49,20 +51,13 @@ class PH_Water_Demand(WaterLPParameter):
             production_hours = len([1 for p in energy_prices_today if p >= self.price_threshold])
             max_flow_fraction = production_hours / 24
 
-            blocks_as_strings = [str(b) for b in range(1, self.block+1)]
-            blocks = self.model.tables["Energy Price Blocks"][blocks_as_strings].loc[timestep.datetime]
+            # blocks = self.model.tables["Energy Price Blocks"].loc[timestep.datetime]
 
-            sum_of_blocks = 0
-            block = 0
-            for b in blocks_as_strings:
-                sum_of_blocks += blocks[b]
-                if sum_of_blocks > max_flow_fraction:
-                    if block == self.block:
-                        block = sum_of_blocks - max_flow_fraction
-                    else:
-                        block = 0.0
-                else:
-                    block = blocks[b]
+            # sum_of_previous_blocks = blocks[:str(self.block - 1)].sum()
+            # allocation_remaining = max_flow_fraction - sum_of_previous_blocks
+            # allocation_to_this_block = min(allocation_remaining, blocks[str(self.block)])
+            # block = max(allocation_to_this_block, 0.0)
+            block = max_flow_fraction
 
         else:
             block = self.model.tables["Energy Price Blocks"].at[timestep.datetime, str(self.block)]

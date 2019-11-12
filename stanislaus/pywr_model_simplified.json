@@ -18,16 +18,10 @@
             "type": "PiecewiseHydropower",
             "head": 135.3,
             "max_flow": [
-                "Angels PH/Water Demand/1",
-                "Angels PH/Water Demand/2",
-                "Angels PH/Water Demand/3",
-                "Angels PH/Water Demand/4"
+                "Angels PH/Water Demand/1"
             ],
             "cost": [
-                "Angels PH/Cost/1",
-                "Angels PH/Cost/2",
-                "Angels PH/Cost/3",
-                "Angels PH/Cost/4"
+                "Angels PH/Cost/1"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -67,16 +61,10 @@
             "type": "PiecewiseHydropower",
             "head": 691.896,
             "max_flow": [
-                "Collierville PH/Water Demand/1",
-                "Collierville PH/Water Demand/2",
-                "Collierville PH/Water Demand/3",
-                "Collierville PH/Water Demand/4"
+                "Collierville PH/Water Demand/1"
             ],
             "cost": [
-                "Collierville PH/Cost/1",
-                "Collierville PH/Cost/2",
-                "Collierville PH/Cost/3",
-                "Collierville PH/Cost/4"
+                "Collierville PH/Cost/1"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -85,16 +73,10 @@
             "type": "PiecewiseHydropower",
             "head": 350.8,
             "max_flow": [
-                "Donnells PH/Water Demand/1",
-                "Donnells PH/Water Demand/2",
-                "Donnells PH/Water Demand/3",
-                "Donnells PH/Water Demand/4"
+                "Donnells PH/Water Demand/1"
             ],
             "cost": [
-                "Donnells PH/Cost/1",
-                "Donnells PH/Cost/2",
-                "Donnells PH/Cost/3",
-                "Donnells PH/Cost/4"
+                "Donnells PH/Cost/1"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -117,6 +99,13 @@
             "type": "InstreamFlowRequirement",
             "mrf_cost": "IFR bl Angels Div/Violation Cost",
             "mrf": "IFR bl Angels Div/Requirement",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "IFR at Murphys Park",
+            "type": "InstreamFlowRequirement",
+            "mrf_cost": "IFR at Murphys Park/Violation Cost",
+            "mrf": "IFR at Murphys Park/Requirement",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -183,17 +172,17 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Below Beaver Creek Diversion Dam",
+            "name": "IFR below Beaver Creek Diversion Dam",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "Below Beaver Creek Diversion Dam/Violation Cost",
-            "mrf": "Below Beaver Creek Diversion Dam/Requirement",
+            "mrf_cost": "IFR below Beaver Creek Diversion Dam/Violation Cost",
+            "mrf": "IFR below Beaver Creek Diversion Dam/Requirement",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "IFR below NF and Beaver Creek",
+            "name": "IFR bl confluence of NF Stanislaus and Beaver Creek",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR below NF and Beaver Creek/Violation Cost",
-            "mrf": "IFR below NF and Beaver Creek/Requirement",
+            "mrf_cost": "IFR bl confluence of NF Stanislaus and Beaver Creek/Violation Cost",
+            "mrf": "IFR bl confluence of NF Stanislaus and Beaver Creek/Requirement",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -211,10 +200,10 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "IFR Below Utica Res",
+            "name": "IFR below Utica Reservoir",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR Below Utica Res/Violation Cost",
-            "mrf": "IFR Below Utica Res/Requirement",
+            "mrf_cost": "IFR below Utica Reservoir/Violation Cost",
+            "mrf": "IFR below Utica Reservoir/Requirement",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -226,7 +215,11 @@
         },
         {
             "name": "Hunter Reservoir",
-            "type": "BreakLink",
+            "type": "Storage",
+            "initial_volume": 0.15,
+            "max_volume": 0.31,
+            "min_volume": 0.1,
+            "cost": -60,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -250,20 +243,9 @@
         },
         {
             "name": "Murphys PH",
-            "type": "PiecewiseHydropower",
+            "type": "Hydropower",
             "head": 208.5,
-            "max_flow": [
-                "Murphys PH/Water Demand/1",
-                "Murphys PH/Water Demand/2",
-                "Murphys PH/Water Demand/3",
-                "Murphys PH/Water Demand/4"
-            ],
-            "cost": [
-                "Murphys PH/Cost/1",
-                "Murphys PH/Cost/2",
-                "Murphys PH/Cost/3",
-                "Murphys PH/Cost/4"
-            ],
+            "cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -306,16 +288,10 @@
             "type": "PiecewiseHydropower",
             "head": 50,
             "max_flow": [
-                "New Spicer Meadow PH/Water Demand/1",
-                "New Spicer Meadow PH/Water Demand/2",
-                "New Spicer Meadow PH/Water Demand/3",
-                "New Spicer Meadow PH/Water Demand/4"
+                "New Spicer Meadow PH/Water Demand/1"
             ],
             "cost": [
-                "New Spicer Meadow PH/Cost/1",
-                "New Spicer Meadow PH/Cost/2",
-                "New Spicer Meadow PH/Cost/3",
-                "New Spicer Meadow PH/Cost/4"
+                "New Spicer Meadow PH/Cost/1"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -334,16 +310,10 @@
             "type": "PiecewiseHydropower",
             "head": 361.7976,
             "max_flow": [
-                "Phoenix PH/Water Demand/1",
-                "Phoenix PH/Water Demand/2",
-                "Phoenix PH/Water Demand/3",
-                "Phoenix PH/Water Demand/4"
+                "Phoenix PH/Water Demand/1"
             ],
             "cost": [
-                "Phoenix PH/Cost/1",
-                "Phoenix PH/Cost/2",
-                "Phoenix PH/Cost/3",
-                "Phoenix PH/Cost/4"
+                "Phoenix PH/Cost/1"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -380,16 +350,10 @@
             "type": "PiecewiseHydropower",
             "head": 130,
             "max_flow": [
-                "Sand Bar PH/Water Demand/1",
-                "Sand Bar PH/Water Demand/2",
-                "Sand Bar PH/Water Demand/3",
-                "Sand Bar PH/Water Demand/4"
+                "Sand Bar PH/Water Demand/1"
             ],
             "cost": [
-                "Sand Bar PH/Cost/1",
-                "Sand Bar PH/Cost/2",
-                "Sand Bar PH/Cost/3",
-                "Sand Bar PH/Cost/4"
+                "Sand Bar PH/Cost/1"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -403,16 +367,10 @@
             "type": "PiecewiseHydropower",
             "head": 568.452,
             "max_flow": [
-                "Spring Gap PH/Water Demand/1",
-                "Spring Gap PH/Water Demand/2",
-                "Spring Gap PH/Water Demand/3",
-                "Spring Gap PH/Water Demand/4"
+                "Spring Gap PH/Water Demand/1"
             ],
             "cost": [
-                "Spring Gap PH/Cost/1",
-                "Spring Gap PH/Cost/2",
-                "Spring Gap PH/Cost/3",
-                "Spring Gap PH/Cost/4"
+                "Spring Gap PH/Cost/1"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -421,16 +379,10 @@
             "type": "PiecewiseHydropower",
             "head": 463.296,
             "max_flow": [
-                "Stanislaus PH/Water Demand/1",
-                "Stanislaus PH/Water Demand/2",
-                "Stanislaus PH/Water Demand/3",
-                "Stanislaus PH/Water Demand/4"
+                "Stanislaus PH/Water Demand/1"
             ],
             "cost": [
-                "Stanislaus PH/Cost/1",
-                "Stanislaus PH/Cost/2",
-                "Stanislaus PH/Cost/3",
-                "Stanislaus PH/Cost/4"
+                "Stanislaus PH/Cost/1"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -630,7 +582,7 @@
         {
             "name": "Tulloch Release Requirement",
             "type": "Link",
-            "max_flow": "Tulloch Release Requirement/Release",
+            "max_flow": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -654,6 +606,18 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
+            "name": "Lower Utica Canal",
+            "type": "Link",
+            "max_flow": 0.076,
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "UPA Tunnel Tap",
+            "type": "Link",
+            "max_flow": 0.02,
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
             "name": "UPA Tunnel Tap Outflow",
             "type": "BreakLink",
             "comment": "{\"resource_class\": \"node\"}"
@@ -664,9 +628,10 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Release from New Melones",
+            "name": "New Melones Release Requirement",
             "type": "Link",
-            "max_flow": "Release from New Melones/Release",
+            "cost": -1,
+            "max_flow": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -750,7 +715,7 @@
         ],
         [
             "Utica Reservoir",
-            "IFR Below Utica Res"
+            "IFR below Utica Reservoir"
         ],
         [
             "Beardsley Afterbay",
@@ -759,6 +724,14 @@
         [
             "Beardsley Reservoir",
             "Beardsley PH"
+        ],
+        [
+            "UPA Tunnel Tap Outflow",
+            "UPA Tunnel Tap"
+        ],
+        [
+            "Lower Utica Canal",
+            "Murphys PH"
         ],
         [
             "UPA Tunnel Tap Outflow",
@@ -797,16 +770,12 @@
             "STN_01 Inflow"
         ],
         [
-            "Below Beaver Creek Diversion Dam",
-            "IFR below NF and Beaver Creek"
+            "IFR below Beaver Creek Diversion Dam",
+            "IFR bl confluence of NF Stanislaus and Beaver Creek"
         ],
         [
             "Beaver Creek Diversion",
-            "Below Beaver Creek Diversion Dam"
-        ],
-        [
-            "IFR bl McKays Point Div",
-            "IFR below NF and Beaver Creek"
+            "IFR below Beaver Creek Diversion Dam"
         ],
         [
             "Beaver Creek Diversion",
@@ -823,6 +792,10 @@
         [
             "New Spicer Meadow PH",
             "IFR bl New Spicer Meadow Reservoir"
+        ],
+        [
+            "Murphys PH",
+            "IFR at Murphys Park"
         ],
         [
             "Sand Bar PH",
@@ -845,7 +818,7 @@
             "Angels Canal Outflow"
         ],
         [
-            "Murphys PH",
+            "IFR at Murphys Park",
             "Angels Canal Outflow"
         ],
         [
@@ -861,16 +834,20 @@
             "STN_01 Inflow"
         ],
         [
+            "IFR bl confluence of NF Stanislaus and Beaver Creek",
+            "STN_01 Inflow"
+        ],
+        [
             "STN_04 Headflow",
             "Hunter Reservoir"
         ],
         [
             "STN_05 Headflow",
-            "STN_01 Inflow"
+            "IFR bl confluence of NF Stanislaus and Beaver Creek"
         ],
         [
-            "IFR below NF and Beaver Creek",
-            "STN_01 Inflow"
+            "IFR bl McKays Point Div",
+            "IFR bl confluence of NF Stanislaus and Beaver Creek"
         ],
         [
             "STN_06 Headflow",
@@ -897,7 +874,7 @@
             "Upper Collierville Tunnel Outflow"
         ],
         [
-            "IFR Below Utica Res",
+            "IFR below Utica Reservoir",
             "Upper Collierville Tunnel Outflow"
         ],
         [
@@ -990,11 +967,11 @@
         ],
         [
             "Hunter Reservoir",
-            "Murphys PH"
+            "Lower Utica Canal"
         ],
         [
-            "UPA Tunnel Tap Outflow",
-            "Murphys PH"
+            "UPA Tunnel Tap",
+            "Lower Utica Canal"
         ],
         [
             "STN_12 Headflow",
@@ -1026,14 +1003,14 @@
         ],
         [
             "New Melones Lake",
-            "Release from New Melones"
+            "New Melones Release Requirement"
         ],
         [
             "New Melones Lake",
             "New Melones Flood Control"
         ],
         [
-            "Release from New Melones",
+            "New Melones Release Requirement",
             "STANI-N-JUN4"
         ],
         [
@@ -1171,25 +1148,7 @@
         "Angels PH/Water Demand/1": {
             "type": "PH_Water_Demand"
         },
-        "Angels PH/Water Demand/2": {
-            "type": "PH_Water_Demand"
-        },
-        "Angels PH/Water Demand/3": {
-            "type": "PH_Water_Demand"
-        },
-        "Angels PH/Water Demand/4": {
-            "type": "PH_Water_Demand"
-        },
         "Angels PH/Cost/1": {
-            "type": "PH_Cost"
-        },
-        "Angels PH/Cost/2": {
-            "type": "PH_Cost"
-        },
-        "Angels PH/Cost/3": {
-            "type": "PH_Cost"
-        },
-        "Angels PH/Cost/4": {
             "type": "PH_Cost"
         },
         "Beardsley Reservoir/Turbine Capacity": {
@@ -1256,25 +1215,7 @@
         "Collierville PH/Water Demand/1": {
             "type": "PH_Water_Demand"
         },
-        "Collierville PH/Water Demand/2": {
-            "type": "PH_Water_Demand"
-        },
-        "Collierville PH/Water Demand/3": {
-            "type": "PH_Water_Demand"
-        },
-        "Collierville PH/Water Demand/4": {
-            "type": "PH_Water_Demand"
-        },
         "Collierville PH/Cost/1": {
-            "type": "PH_Cost"
-        },
-        "Collierville PH/Cost/2": {
-            "type": "PH_Cost"
-        },
-        "Collierville PH/Cost/3": {
-            "type": "PH_Cost"
-        },
-        "Collierville PH/Cost/4": {
             "type": "PH_Cost"
         },
         "Donnells PH/Fixed Head": {
@@ -1288,25 +1229,7 @@
         "Donnells PH/Water Demand/1": {
             "type": "PH_Water_Demand"
         },
-        "Donnells PH/Water Demand/2": {
-            "type": "PH_Water_Demand"
-        },
-        "Donnells PH/Water Demand/3": {
-            "type": "PH_Water_Demand"
-        },
-        "Donnells PH/Water Demand/4": {
-            "type": "PH_Water_Demand"
-        },
         "Donnells PH/Cost/1": {
-            "type": "PH_Cost"
-        },
-        "Donnells PH/Cost/2": {
-            "type": "PH_Cost"
-        },
-        "Donnells PH/Cost/3": {
-            "type": "PH_Cost"
-        },
-        "Donnells PH/Cost/4": {
             "type": "PH_Cost"
         },
         "Donnells Reservoir/Storage Value": {
@@ -1363,6 +1286,13 @@
         "IFR bl Angels Div/Requirement": {
             "type": "IFR_bl_Angels_Div_Requirement"
         },
+        "IFR at Murphys Park/Violation Cost": {
+            "type": "constant",
+            "value": -2000
+        },
+        "IFR at Murphys Park/Requirement": {
+            "type": "IFR_at_Murphys_Park_Requirement"
+        },
         "IFR bl Donnells Reservoir/Violation Cost": {
             "type": "constant",
             "value": -1000
@@ -1407,7 +1337,7 @@
         },
         "IFR bl Relief Reservoir/Violation Cost": {
             "type": "constant",
-            "value": -1000
+            "value": -4000
         },
         "IFR bl Relief Reservoir/Requirement": {
             "type": "IFR_bl_Relief_Reservoir_Requirement"
@@ -1426,19 +1356,19 @@
         "IFR bl Utica Div/Requirement": {
             "type": "IFR_bl_Utica_Div_Requirement"
         },
-        "Below Beaver Creek Diversion Dam/Violation Cost": {
+        "IFR below Beaver Creek Diversion Dam/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
-        "Below Beaver Creek Diversion Dam/Requirement": {
-            "type": "IFR_bl_BeaverCreekDivDam_Requirement"
+        "IFR below Beaver Creek Diversion Dam/Requirement": {
+            "type": "IFR_below_Beaver_Creek_Diversion_Dam_Requirement"
         },
-        "IFR below NF and Beaver Creek/Violation Cost": {
+        "IFR bl confluence of NF Stanislaus and Beaver Creek/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
-        "IFR below NF and Beaver Creek/Requirement": {
-            "type": "IFR_below_NF_and_Beaver_Creek_Requirement"
+        "IFR bl confluence of NF Stanislaus and Beaver Creek/Requirement": {
+            "type": "IFR_bl_confluence_of_NF_Stanislaus_and_Beaver_Creek_Requirement"
         },
         "IFR Below New Melones Res/Violation Cost": {
             "type": "constant",
@@ -1458,12 +1388,12 @@
         "IFR below Pinecrest Lake/Requirement": {
             "type": "IFR_below_Pinecrest_Lake_Requirement"
         },
-        "IFR Below Utica Res/Violation Cost": {
+        "IFR below Utica Reservoir/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
-        "IFR Below Utica Res/Requirement": {
-            "type": "IFR_bl_Utica_Res_Requirement"
+        "IFR below Utica Reservoir/Requirement": {
+            "type": "IFR_below_Utica_Reservoir_Requirement"
         },
         "IFR below Beardsley Afterbay/Violation Cost": {
             "type": "constant",
@@ -1507,37 +1437,9 @@
             ],
             "kind": "cubic"
         },
-        "Murphys PH/Fixed Head": {
-            "type": "constant",
-            "value": 208.5
-        },
         "Murphys PH/Turbine Capacity": {
             "type": "constant",
             "value": 2.78
-        },
-        "Murphys PH/Water Demand/1": {
-            "type": "PH_Water_Demand"
-        },
-        "Murphys PH/Water Demand/2": {
-            "type": "PH_Water_Demand"
-        },
-        "Murphys PH/Water Demand/3": {
-            "type": "PH_Water_Demand"
-        },
-        "Murphys PH/Water Demand/4": {
-            "type": "PH_Water_Demand"
-        },
-        "Murphys PH/Cost/1": {
-            "type": "PH_Cost"
-        },
-        "Murphys PH/Cost/2": {
-            "type": "PH_Cost"
-        },
-        "Murphys PH/Cost/3": {
-            "type": "PH_Cost"
-        },
-        "Murphys PH/Cost/4": {
-            "type": "PH_Cost"
         },
         "New Melones Lake/Storage Demand": {
             "type": "New_Melones_Lake_Storage_Demand"
@@ -1549,9 +1451,6 @@
         "New Melones PH/Turbine Capacity": {
             "type": "constant",
             "value": 203.0
-        },
-        "Release from New Melones/Release": {
-            "type": "New_Melones_Release_Policy"
         },
         "New Spicer Meadow Reservoir/Turbine Capacity": {
             "type": "constant",
@@ -1607,25 +1506,7 @@
         "Phoenix PH/Water Demand/1": {
             "type": "PH_Water_Demand"
         },
-        "Phoenix PH/Water Demand/2": {
-            "type": "PH_Water_Demand"
-        },
-        "Phoenix PH/Water Demand/3": {
-            "type": "PH_Water_Demand"
-        },
-        "Phoenix PH/Water Demand/4": {
-            "type": "PH_Water_Demand"
-        },
         "Phoenix PH/Cost/1": {
-            "type": "PH_Cost"
-        },
-        "Phoenix PH/Cost/2": {
-            "type": "PH_Cost"
-        },
-        "Phoenix PH/Cost/3": {
-            "type": "PH_Cost"
-        },
-        "Phoenix PH/Cost/4": {
             "type": "PH_Cost"
         },
         "Pinecrest Reservoir/Storage Value": {
@@ -1664,10 +1545,7 @@
             "kind": "cubic"
         },
         "Relief Reservoir/Storage Value": {
-            "type": "constant",
-            "table": "Storage Costs",
-            "index": "Relief Reservoir",
-            "column": "Cost"
+            "type": "Relief_Reservoir_Storage_Value"
         },
         "Relief Reservoir/Elevation": {
             "type": "interpolatedvolume",
@@ -1715,25 +1593,7 @@
         "Sand Bar PH/Water Demand/1": {
             "type": "PH_Water_Demand"
         },
-        "Sand Bar PH/Water Demand/2": {
-            "type": "PH_Water_Demand"
-        },
-        "Sand Bar PH/Water Demand/3": {
-            "type": "PH_Water_Demand"
-        },
-        "Sand Bar PH/Water Demand/4": {
-            "type": "PH_Water_Demand"
-        },
         "Sand Bar PH/Cost/1": {
-            "type": "PH_Cost"
-        },
-        "Sand Bar PH/Cost/2": {
-            "type": "PH_Cost"
-        },
-        "Sand Bar PH/Cost/3": {
-            "type": "PH_Cost"
-        },
-        "Sand Bar PH/Cost/4": {
             "type": "PH_Cost"
         },
         "Spring Gap PH/Fixed Head": {
@@ -1747,25 +1607,7 @@
         "Spring Gap PH/Water Demand/1": {
             "type": "PH_Water_Demand"
         },
-        "Spring Gap PH/Water Demand/2": {
-            "type": "PH_Water_Demand"
-        },
-        "Spring Gap PH/Water Demand/3": {
-            "type": "PH_Water_Demand"
-        },
-        "Spring Gap PH/Water Demand/4": {
-            "type": "PH_Water_Demand"
-        },
         "Spring Gap PH/Cost/1": {
-            "type": "PH_Cost"
-        },
-        "Spring Gap PH/Cost/2": {
-            "type": "PH_Cost"
-        },
-        "Spring Gap PH/Cost/3": {
-            "type": "PH_Cost"
-        },
-        "Spring Gap PH/Cost/4": {
             "type": "PH_Cost"
         },
         "Stanislaus PH/Fixed Head": {
@@ -1775,34 +1617,12 @@
         "New Spicer Meadow PH/Water Demand/1": {
             "type": "PH_Water_Demand"
         },
-        "New Spicer Meadow PH/Water Demand/2": {
-            "type": "PH_Water_Demand"
-        },
-        "New Spicer Meadow PH/Water Demand/3": {
-            "type": "PH_Water_Demand"
-        },
-        "New Spicer Meadow PH/Water Demand/4": {
-            "type": "PH_Water_Demand"
-        },
         "New Spicer Meadow PH/Cost/1": {
-            "type": "PH_Cost"
-        },
-        "New Spicer Meadow PH/Cost/2": {
-            "type": "PH_Cost"
-        },
-        "New Spicer Meadow PH/Cost/3": {
-            "type": "PH_Cost"
-        },
-        "New Spicer Meadow PH/Cost/4": {
             "type": "PH_Cost"
         },
         "New Spicer Meadow PH/Turbine Capacity": {
             "type": "constant",
             "value": 23.5
-        },
-        "New Spicer Meadow PH/Demand Constant": {
-            "type": "constant",
-            "value": 10
         },
         "Utica Reservoir/Storage Value": {
             "type": "constant",
@@ -1817,25 +1637,7 @@
         "Stanislaus PH/Water Demand/1": {
             "type": "PH_Water_Demand"
         },
-        "Stanislaus PH/Water Demand/2": {
-            "type": "PH_Water_Demand"
-        },
-        "Stanislaus PH/Water Demand/3": {
-            "type": "PH_Water_Demand"
-        },
-        "Stanislaus PH/Water Demand/4": {
-            "type": "PH_Water_Demand"
-        },
         "Stanislaus PH/Cost/1": {
-            "type": "PH_Cost"
-        },
-        "Stanislaus PH/Cost/2": {
-            "type": "PH_Cost"
-        },
-        "Stanislaus PH/Cost/3": {
-            "type": "PH_Cost"
-        },
-        "Stanislaus PH/Cost/4": {
             "type": "PH_Cost"
         },
         "STN_01 Headflow/Runoff": {
@@ -2020,50 +1822,11 @@
         "Tulloch Lake/Storage Demand": {
             "type": "Tulloch_Lake_Storage_Demand"
         },
-        "Tulloch Release Requirement/Release": {
-            "type": "Release_From_Tulloch_Lake"
-        },
         "WYT_SJValley": {
             "type": "WYT_SJValley"
         },
         "WYI_SJValley": {
             "type": "WYI_SJValley"
-        },
-        "Angels PH/Demand Constant": {
-            "type": "constant",
-            "value": 958.230743414711
-        },
-        "Collierville PH/Demand Constant": {
-            "type": "constant",
-            "value": 165.2725104141144
-        },
-        "Donnells PH/Demand Constant": {
-            "type": "constant",
-            "value": 46.44309810809872
-        },
-        "Murphys PH/Demand Constant": {
-            "type": "constant",
-            "value": 294.655618942065
-        },
-        "New Melones PH/Demand Constant": {
-            "type": "constant",
-            "value": 327.6402564696251
-        },
-        "Phoenix PH/Demand Constant": {
-            "type": "constant",
-            "value": 196.4993486352508
-        },
-        "Sand Bar PH/Demand Constant": {
-            "type": "constant",
-            "value": 945.8655696668
-        },
-        "Spring Gap PH/Demand Constant": {
-            "type": "constant",
-            "value": 775.982077202702
-        },
-        "Stanislaus PH/Demand Constant": {
-            "type": "constant",
-            "value": 89.07849185187
         },
         "storageValueConstant": {
             "type": "constant",
@@ -2118,6 +1881,10 @@
         "Donnells Reservoir/cost": {
             "type": "NumpyArrayParameterRecorder",
             "parameter": "Donnells Reservoir/Storage Value"
+        },
+        "Hunter Reservoir/storage": {
+            "type": "NumpyArrayStorageRecorder",
+            "node": "Hunter Reservoir"
         },
         "IFR bl Angels Div/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -2215,21 +1982,21 @@
             "type": "NumpyArrayParameterRecorder",
             "parameter": "IFR below Beardsley Afterbay/Requirement"
         },
-        "Below Beaver Creek Diversion Dam/flow": {
+        "IFR below Beaver Creek Diversion Dam/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "Below Beaver Creek Diversion Dam"
+            "node": "IFR below Beaver Creek Diversion Dam"
         },
-        "Below Beaver Creek Diversion Dam/requirement": {
+        "IFR below Beaver Creek Diversion Dam/requirement": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "Below Beaver Creek Diversion Dam/Requirement"
+            "parameter": "IFR below Beaver Creek Diversion Dam/Requirement"
         },
-        "IFR below NF and Beaver Creek/flow": {
+        "IFR bl confluence of NF Stanislaus and Beaver Creek/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "IFR below NF and Beaver Creek"
+            "node": "IFR bl confluence of NF Stanislaus and Beaver Creek"
         },
-        "IFR below NF and Beaver Creek/requirement": {
+        "IFR bl confluence of NF Stanislaus and Beaver Creek/requirement": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR below NF and Beaver Creek/Requirement"
+            "parameter": "IFR bl confluence of NF Stanislaus and Beaver Creek/Requirement"
         },
         "IFR below Pinecrest Lake/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -2239,13 +2006,13 @@
             "type": "NumpyArrayParameterRecorder",
             "parameter": "IFR below Pinecrest Lake/Requirement"
         },
-        "IFR Below Utica Res/flow": {
+        "IFR below Utica Reservoir/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "IFR Below Utica Res"
+            "node": "IFR below Utica Reservoir"
         },
-        "IFR Below Utica Res/requirement": {
+        "IFR below Utica Reservoir/requirement": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR Below Utica Res/Requirement"
+            "parameter": "IFR below Utica Reservoir/Requirement"
         },
         "Lyons Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
@@ -2266,6 +2033,10 @@
         "New Melones PH/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "New Melones PH"
+        },
+        "New Spicer Meadow PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "New Spicer Meadow PH"
         },
         "New Spicer Meadow Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
@@ -2430,6 +2201,22 @@
         "Tulloch Lake/cost": {
             "type": "NumpyArrayParameterRecorder",
             "parameter": "Tulloch Lake/Storage Value"
+        },
+        "UPA Tunnel Tap/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "UPA Tunnel Tap"
+        },
+        "Beardsley PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Beardsley PH"
+        },
+        "IFR at Murphys Park/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR at Murphys Park"
+        },
+        "IFR at Murphys Park/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR at Murphys Park/Requirement"
         }
     }
 }

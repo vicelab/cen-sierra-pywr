@@ -81,6 +81,7 @@ class Hydropower(RiverDomainMixin, PiecewiseLink):
     """
 
     type = 'hydropower'
+    head = 0.0
 
     def __init__(self, *args, **kwargs):
         """Initialise a new Hydropower instance
@@ -109,6 +110,7 @@ class Hydropower(RiverDomainMixin, PiecewiseLink):
         #     excess_capacity = turbine_capacity - base_flow
         # if base_flow < 0.0:
         #     base_flow = max(base_flow, 0.0)
+        self.head = kwargs.pop('head', 0.0)
         kwargs['cost'] = [base_cost, excess_cost]
         kwargs['max_flow'] = [base_flow, None]
         super(Hydropower, self).__init__(*args, **kwargs)

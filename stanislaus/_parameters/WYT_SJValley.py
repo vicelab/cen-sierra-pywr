@@ -2,6 +2,7 @@ from parameters import WaterLPParameter
 
 from utilities.converter import convert
 
+
 class WYT_SJValley(WaterLPParameter):
     """"""
 
@@ -11,7 +12,7 @@ class WYT_SJValley(WaterLPParameter):
         thresholds = [0, 2.1, 2.8, 3.1, 3.8]
         WYT = len([x for x in thresholds if SJVI > x])
         return WYT
-        
+
     def value(self, timestep, scenario_index):
         try:
             return self._value(timestep, scenario_index)
@@ -23,6 +24,7 @@ class WYT_SJValley(WaterLPParameter):
     @classmethod
     def load(cls, model, data):
         return cls(model, **data)
-        
+
+
 WYT_SJValley.register()
 print(" [*] WYT_SJValley successfully registered")

@@ -7,14 +7,14 @@ class IFR_below_Beardsley_Afterbay_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        WYT = int(self.get("WYI_SJValley"))
-        if WYT == 1 or WYT == 2:
-            ifr_val = 50
+        WYT = self.get("WYT_SJValley")
+        if WYT in [1, 2]:  # Critical or Dry years
+            ifr_val = 50  # cfs
         else:
             ifr_val = 135
         if self.mode == 'planning':
             ifr_val *= self.days_in_month()
-        return ifr_val / 35.31
+        return ifr_val / 35.31  # convert to cms
 
     def value(self, timestep, scenario_index):
         try:
