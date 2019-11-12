@@ -83,7 +83,6 @@ def simplify_network(m, delete_gauges=False, delete_observed=True):
                     mission_complete = False
                     break
 
-
         m['nodes'] = [node for node in m['nodes'] if node['name'] not in obsolete_nodes]
         m['edges'] = [edge for edge in m['edges'] if edge not in obsolete_edges] + new_edges
         edges_set = []
@@ -284,9 +283,9 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
                         if key not in black_list:
                             new_node[key] += month
 
-                    # elif type(value) in [float, int]:
-                    #     if "flow" in key:
-                    #         new_node[key] *= days_in_month
+                    elif type(value) in [float, int]:
+                        if "max_flow" in key:
+                            new_node[key] *= 30  # TODO: figure out some scheme to get actual days
 
                     elif type(value) == list:
                         new_values = []
@@ -526,7 +525,7 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
         model_path = simplified_model_path
 
     # Area for testing monthly model
-    months = 12
+    months = 6
     save_results = True
     planning_model = None
 
@@ -657,28 +656,29 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
             columns[key] = [c]
     for (_type, attr), cols in columns.items():
         tab_path = os.path.join(results_path, 'tables', '{}_{}'.format(_type, attr.title()))
-        fig_path = os.path.join(results_path, 'figures', '{}_{}'.format(_type, attr.title()))
-        fig, ax = plt.subplots(figsize=(10, 6))
+        # fig_path = os.path.join(results_path, 'figures', '{}_{}'.format(_type, attr.title()))
+        # fig, ax = plt.subplots(figsize=(10, 6))
         df = results[cols]
         df.columns = [c.split('/')[0] for c in cols]
         df.to_csv(tab_path + '.csv')
-        if attr.lower() == 'storage':
-            # df *= 810 / 1000
-            ax.set_ylabel('Storage (mcm)')
-        elif attr.lower() == 'cost':
-            ax.set_ylabel('Value ($/mcm)')
-        else:
-            # df *= 1 / 0.0864 * 35.31
-            ax.set_ylabel('Flow (mcm)')
-        # for col in df.columns:
-        #     ax.plot(df.index.to_timestamp(), df[col], label=col)
-        df.plot(ax=ax)
-        ax.set_title('{}: {}'.format(_type, attr.title()))
-        ax.legend(loc='upper right', ncol=2)
-        plt.tight_layout()
-        # plt.show()
-        plt.close()
-        fig.savefig(fig_path + '.png', dpi=300)
+        # if attr.lower() == 'storage':
+        #     # df *= 810 / 1000
+        #     ax.set_ylabel('Storage (mcm)')
+        # elif attr.lower() == 'cost':
+        #     ax.set_ylabel('Value ($/mcm)')
+        # else:
+        #     # df *= 1 / 0.0864 * 35.31
+        #     ax.set_ylabel('Flow (mcm)')
+        # # for col in df.columns:
+        # #     ax.plot(df.index.to_timestamp(), df[col], label=col)
+        # df.plot(ax=ax)
+        # ax.set_title('{}: {}'.format(_type, attr.title()))
+        # ax.legend(loc='upper right', ncol=2)
+        # plt.tight_layout()
+        # # plt.show()
+        # plt.close()
+        # fig.savefig(fig_path + '.png', dpi=300)
+
 
 import argparse
 
