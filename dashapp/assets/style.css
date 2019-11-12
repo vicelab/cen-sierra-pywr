@@ -3,9 +3,16 @@
     flex-wrap: wrap;
 }
 
-.timeseries-chart {
-    width: 500px;
-    height: 200px;
+.timeseries-metrics-box {
     margin-left: auto;
     margin-right: auto;
+}
+
+.timeseries-metrics-data {
+    display: flex;
+}
+
+.timeseries-chart {
+    width: 600px;
+    height: 300px;
 }
