@@ -138,6 +138,7 @@ class WaterLPParameter(Parameter):
 
             kwargs['parse_dates'] = kwargs.get('parse_dates', True)
             kwargs['index_col'] = kwargs.get('index_col', 0)
+            kwargs['comment'] = kwargs.get('comment', '#')
 
             # Import data from local files
             # data = pd.read_csv("s3_imports/" + args[0].split('/').pop(), **kwargs)
