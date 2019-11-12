@@ -6,7 +6,7 @@ class node_IFR_bl_Bear_Div_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        
+        # TODO Update Logic
         management = 'BAU'
         path = "Management/{mgt}/IFRs/IFRblBearDiv.csv".format(mgt=management)
         data = self.read_csv(path, usecols=[0,1,2,3,4,5], index_col=0, header=None, names=['week','1','2','3','4','5'], parse_dates=False)
