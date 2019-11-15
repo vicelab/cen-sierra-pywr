@@ -10,7 +10,10 @@ class node_IFR_bl_Browns_Creek_Ditch_Requirement(WaterLPParameter):
         year_type = self.model.parameters["WYT_SJValley"].values(timestep, scenario_index)
 
         if year_type in [1,2]:  # Critical or Dry WYT
-            return 3
+            return_val = 3
+            if self.model.mode == "planning":
+                return_val *= self.days_in_month()
+            return return_val
 
         # Get month
         month = self.datetime.month
