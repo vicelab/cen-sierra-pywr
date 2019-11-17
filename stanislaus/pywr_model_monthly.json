@@ -10452,22 +10452,22 @@
             "value": -1000
         },
         "IFR below NF Stanislaus Div Res/Requirement/1": {
-            "type": "IFR_below_NF_Stanislaus_Div_Res"
+            "type": "IFR_bl_NF_Stanislaus_Div_Res"
         },
         "IFR below NF Stanislaus Div Res/Requirement/2": {
-            "type": "IFR_below_NF_Stanislaus_Div_Res"
+            "type": "IFR_bl_NF_Stanislaus_Div_Res"
         },
         "IFR below NF Stanislaus Div Res/Requirement/3": {
-            "type": "IFR_below_NF_Stanislaus_Div_Res"
+            "type": "IFR_bl_NF_Stanislaus_Div_Res"
         },
         "IFR below NF Stanislaus Div Res/Requirement/4": {
-            "type": "IFR_below_NF_Stanislaus_Div_Res"
+            "type": "IFR_bl_NF_Stanislaus_Div_Res"
         },
         "IFR below NF Stanislaus Div Res/Requirement/5": {
-            "type": "IFR_below_NF_Stanislaus_Div_Res"
+            "type": "IFR_bl_NF_Stanislaus_Div_Res"
         },
         "IFR below NF Stanislaus Div Res/Requirement/6": {
-            "type": "IFR_below_NF_Stanislaus_Div_Res"
+            "type": "IFR_bl_NF_Stanislaus_Div_Res"
         },
         "IFR below Beaver Creek Diversion Dam/Violation Cost/1": {
             "type": "constant",
@@ -10494,22 +10494,22 @@
             "value": -1000
         },
         "IFR below Beaver Creek Diversion Dam/Requirement/1": {
-            "type": "IFR_below_Beaver_Creek_Diversion_Dam_Requirement"
+            "type": "IFR_bl_Beaver_Creek_Diversion_Dam_Requirement"
         },
         "IFR below Beaver Creek Diversion Dam/Requirement/2": {
-            "type": "IFR_below_Beaver_Creek_Diversion_Dam_Requirement"
+            "type": "IFR_bl_Beaver_Creek_Diversion_Dam_Requirement"
         },
         "IFR below Beaver Creek Diversion Dam/Requirement/3": {
-            "type": "IFR_below_Beaver_Creek_Diversion_Dam_Requirement"
+            "type": "IFR_bl_Beaver_Creek_Diversion_Dam_Requirement"
         },
         "IFR below Beaver Creek Diversion Dam/Requirement/4": {
-            "type": "IFR_below_Beaver_Creek_Diversion_Dam_Requirement"
+            "type": "IFR_bl_Beaver_Creek_Diversion_Dam_Requirement"
         },
         "IFR below Beaver Creek Diversion Dam/Requirement/5": {
-            "type": "IFR_below_Beaver_Creek_Diversion_Dam_Requirement"
+            "type": "IFR_bl_Beaver_Creek_Diversion_Dam_Requirement"
         },
         "IFR below Beaver Creek Diversion Dam/Requirement/6": {
-            "type": "IFR_below_Beaver_Creek_Diversion_Dam_Requirement"
+            "type": "IFR_bl_Beaver_Creek_Diversion_Dam_Requirement"
         },
         "IFR bl confluence of NF Stanislaus and Beaver Creek/Violation Cost/1": {
             "type": "constant",
@@ -10624,22 +10624,22 @@
             "value": -1000
         },
         "IFR below Pinecrest Lake/Requirement/1": {
-            "type": "IFR_below_Pinecrest_Lake_Requirement"
+            "type": "IFR_bl_Pinecrest_Lake_Requirement"
         },
         "IFR below Pinecrest Lake/Requirement/2": {
-            "type": "IFR_below_Pinecrest_Lake_Requirement"
+            "type": "IFR_bl_Pinecrest_Lake_Requirement"
         },
         "IFR below Pinecrest Lake/Requirement/3": {
-            "type": "IFR_below_Pinecrest_Lake_Requirement"
+            "type": "IFR_bl_Pinecrest_Lake_Requirement"
         },
         "IFR below Pinecrest Lake/Requirement/4": {
-            "type": "IFR_below_Pinecrest_Lake_Requirement"
+            "type": "IFR_bl_Pinecrest_Lake_Requirement"
         },
         "IFR below Pinecrest Lake/Requirement/5": {
-            "type": "IFR_below_Pinecrest_Lake_Requirement"
+            "type": "IFR_bl_Pinecrest_Lake_Requirement"
         },
         "IFR below Pinecrest Lake/Requirement/6": {
-            "type": "IFR_below_Pinecrest_Lake_Requirement"
+            "type": "IFR_bl_Pinecrest_Lake_Requirement"
         },
         "IFR below Utica Reservoir/Violation Cost/1": {
             "type": "constant",
@@ -10666,22 +10666,22 @@
             "value": -1000
         },
         "IFR below Utica Reservoir/Requirement/1": {
-            "type": "IFR_below_Utica_Reservoir_Requirement"
+            "type": "IFR_bl_Utica_Reservoir_Requirement"
         },
         "IFR below Utica Reservoir/Requirement/2": {
-            "type": "IFR_below_Utica_Reservoir_Requirement"
+            "type": "IFR_bl_Utica_Reservoir_Requirement"
         },
         "IFR below Utica Reservoir/Requirement/3": {
-            "type": "IFR_below_Utica_Reservoir_Requirement"
+            "type": "IFR_bl_Utica_Reservoir_Requirement"
         },
         "IFR below Utica Reservoir/Requirement/4": {
-            "type": "IFR_below_Utica_Reservoir_Requirement"
+            "type": "IFR_bl_Utica_Reservoir_Requirement"
         },
         "IFR below Utica Reservoir/Requirement/5": {
-            "type": "IFR_below_Utica_Reservoir_Requirement"
+            "type": "IFR_bl_Utica_Reservoir_Requirement"
         },
         "IFR below Utica Reservoir/Requirement/6": {
-            "type": "IFR_below_Utica_Reservoir_Requirement"
+            "type": "IFR_bl_Utica_Reservoir_Requirement"
         },
         "IFR below Beardsley Afterbay/Violation Cost/1": {
             "type": "constant",
@@ -10708,22 +10708,22 @@
             "value": -1000
         },
         "IFR below Beardsley Afterbay/Requirement/1": {
-            "type": "IFR_below_Beardsley_Afterbay_Requirement"
+            "type": "IFR_bl_Beardsley_Afterbay_Requirement"
         },
         "IFR below Beardsley Afterbay/Requirement/2": {
-            "type": "IFR_below_Beardsley_Afterbay_Requirement"
+            "type": "IFR_bl_Beardsley_Afterbay_Requirement"
         },
         "IFR below Beardsley Afterbay/Requirement/3": {
-            "type": "IFR_below_Beardsley_Afterbay_Requirement"
+            "type": "IFR_bl_Beardsley_Afterbay_Requirement"
         },
         "IFR below Beardsley Afterbay/Requirement/4": {
-            "type": "IFR_below_Beardsley_Afterbay_Requirement"
+            "type": "IFR_bl_Beardsley_Afterbay_Requirement"
         },
         "IFR below Beardsley Afterbay/Requirement/5": {
-            "type": "IFR_below_Beardsley_Afterbay_Requirement"
+            "type": "IFR_bl_Beardsley_Afterbay_Requirement"
         },
         "IFR below Beardsley Afterbay/Requirement/6": {
-            "type": "IFR_below_Beardsley_Afterbay_Requirement"
+            "type": "IFR_bl_Beardsley_Afterbay_Requirement"
         },
         "Lyons Reservoir/Storage Value/1": {
             "type": "constant",

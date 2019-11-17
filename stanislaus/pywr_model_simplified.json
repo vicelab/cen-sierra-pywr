@@ -1382,14 +1382,14 @@
             "value": -1000
         },
         "IFR below NF Stanislaus Div Res/Requirement": {
-            "type": "IFR_below_NF_Stanislaus_Div_Res"
+            "type": "IFR_bl_NF_Stanislaus_Div_Res"
         },
         "IFR below Beaver Creek Diversion Dam/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
         "IFR below Beaver Creek Diversion Dam/Requirement": {
-            "type": "IFR_below_Beaver_Creek_Diversion_Dam_Requirement"
+            "type": "IFR_bl_Beaver_Creek_Diversion_Dam_Requirement"
         },
         "IFR bl confluence of NF Stanislaus and Beaver Creek/Violation Cost": {
             "type": "constant",
@@ -1414,21 +1414,21 @@
             "value": -1000
         },
         "IFR below Pinecrest Lake/Requirement": {
-            "type": "IFR_below_Pinecrest_Lake_Requirement"
+            "type": "IFR_bl_Pinecrest_Lake_Requirement"
         },
         "IFR below Utica Reservoir/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
         "IFR below Utica Reservoir/Requirement": {
-            "type": "IFR_below_Utica_Reservoir_Requirement"
+            "type": "IFR_bl_Utica_Reservoir_Requirement"
         },
         "IFR below Beardsley Afterbay/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
         "IFR below Beardsley Afterbay/Requirement": {
-            "type": "IFR_below_Beardsley_Afterbay_Requirement"
+            "type": "IFR_bl_Beardsley_Afterbay_Requirement"
         },
         "Lyons Reservoir/Storage Value": {
             "type": "constant",

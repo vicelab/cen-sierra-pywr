@@ -33,4 +33,4 @@ class IFR_bl_Goodwin_Reservoir_Requirement(WaterLPParameter):
 
 
 IFR_bl_Goodwin_Reservoir_Requirement.register()
-print(" [*] IFR_below_Goodwin_Reservoir_Requirement successfully registered")
+print(" [*] IFR_bl_Goodwin_Reservoir_Requirement successfully registered")

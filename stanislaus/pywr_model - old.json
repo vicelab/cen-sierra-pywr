@@ -2330,7 +2330,7 @@
       "value": 10
     },
     "node/IFR below Beardsley Afterbay/Requirement": {
-      "type": "IFR_below_Beardsley_Afterbay_Requirement"
+      "type": "IFR_bl_Beardsley_Afterbay_Requirement"
     },
     "node/JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/Observed Flow": {
       "type": "dataframe",
