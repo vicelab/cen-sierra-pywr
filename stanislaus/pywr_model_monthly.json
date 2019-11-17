@@ -880,84 +880,180 @@
         {
             "name": "IFR bl Angels Div/1",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Angels Div/Violation Cost/1",
+            "mrf_cost": -5000,
+            "unconstrained_cost": 10000,
             "mrf": "IFR bl Angels Div/Requirement/1",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
         {
             "name": "IFR bl Angels Div/2",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Angels Div/Violation Cost/2",
+            "mrf_cost": -5000,
+            "unconstrained_cost": 10000,
             "mrf": "IFR bl Angels Div/Requirement/2",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
         {
             "name": "IFR bl Angels Div/3",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Angels Div/Violation Cost/3",
+            "mrf_cost": -5000,
+            "unconstrained_cost": 10000,
             "mrf": "IFR bl Angels Div/Requirement/3",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
         {
             "name": "IFR bl Angels Div/4",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Angels Div/Violation Cost/4",
+            "mrf_cost": -5000,
+            "unconstrained_cost": 10000,
             "mrf": "IFR bl Angels Div/Requirement/4",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
         {
             "name": "IFR bl Angels Div/5",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Angels Div/Violation Cost/5",
+            "mrf_cost": -5000,
+            "unconstrained_cost": 10000,
             "mrf": "IFR bl Angels Div/Requirement/5",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
         {
             "name": "IFR bl Angels Div/6",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Angels Div/Violation Cost/6",
+            "mrf_cost": -5000,
+            "unconstrained_cost": 10000,
             "mrf": "IFR bl Angels Div/Requirement/6",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
         {
+            "name": "IFR bl Collierville PH discharge/1",
+            "type": "PiecewiseInstreamFlowRequirement",
+            "cost": [
+                -5000,
+                0.0,
+                5000
+            ],
+            "max_flow": [
+                "IFR bl Collierville PH discharge/Min Requirement/1",
+                "IFR bl Collierville PH discharge/Max Requirement/1"
+            ],
+            "comment": "{\"resource_class\": \"node\", \"type\": \"PiecewiseInstreamFlowRequirement\"}"
+        },
+        {
+            "name": "IFR bl Collierville PH discharge/2",
+            "type": "PiecewiseInstreamFlowRequirement",
+            "cost": [
+                -5000,
+                0.0,
+                5000
+            ],
+            "max_flow": [
+                "IFR bl Collierville PH discharge/Min Requirement/2",
+                "IFR bl Collierville PH discharge/Max Requirement/2"
+            ],
+            "comment": "{\"resource_class\": \"node\", \"type\": \"PiecewiseInstreamFlowRequirement\"}"
+        },
+        {
+            "name": "IFR bl Collierville PH discharge/3",
+            "type": "PiecewiseInstreamFlowRequirement",
+            "cost": [
+                -5000,
+                0.0,
+                5000
+            ],
+            "max_flow": [
+                "IFR bl Collierville PH discharge/Min Requirement/3",
+                "IFR bl Collierville PH discharge/Max Requirement/3"
+            ],
+            "comment": "{\"resource_class\": \"node\", \"type\": \"PiecewiseInstreamFlowRequirement\"}"
+        },
+        {
+            "name": "IFR bl Collierville PH discharge/4",
+            "type": "PiecewiseInstreamFlowRequirement",
+            "cost": [
+                -5000,
+                0.0,
+                5000
+            ],
+            "max_flow": [
+                "IFR bl Collierville PH discharge/Min Requirement/4",
+                "IFR bl Collierville PH discharge/Max Requirement/4"
+            ],
+            "comment": "{\"resource_class\": \"node\", \"type\": \"PiecewiseInstreamFlowRequirement\"}"
+        },
+        {
+            "name": "IFR bl Collierville PH discharge/5",
+            "type": "PiecewiseInstreamFlowRequirement",
+            "cost": [
+                -5000,
+                0.0,
+                5000
+            ],
+            "max_flow": [
+                "IFR bl Collierville PH discharge/Min Requirement/5",
+                "IFR bl Collierville PH discharge/Max Requirement/5"
+            ],
+            "comment": "{\"resource_class\": \"node\", \"type\": \"PiecewiseInstreamFlowRequirement\"}"
+        },
+        {
+            "name": "IFR bl Collierville PH discharge/6",
+            "type": "PiecewiseInstreamFlowRequirement",
+            "cost": [
+                -5000,
+                0.0,
+                5000
+            ],
+            "max_flow": [
+                "IFR bl Collierville PH discharge/Min Requirement/6",
+                "IFR bl Collierville PH discharge/Max Requirement/6"
+            ],
+            "comment": "{\"resource_class\": \"node\", \"type\": \"PiecewiseInstreamFlowRequirement\"}"
+        },
+        {
             "name": "IFR at Murphys Park/1",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR at Murphys Park/Violation Cost/1",
+            "mrf_cost": -10000,
+            "unconstrained_cost": 10000,
             "mrf": "IFR at Murphys Park/Requirement/1",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
         {
             "name": "IFR at Murphys Park/2",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR at Murphys Park/Violation Cost/2",
+            "mrf_cost": -10000,
+            "unconstrained_cost": 10000,
             "mrf": "IFR at Murphys Park/Requirement/2",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
         {
             "name": "IFR at Murphys Park/3",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR at Murphys Park/Violation Cost/3",
+            "mrf_cost": -10000,
+            "unconstrained_cost": 10000,
             "mrf": "IFR at Murphys Park/Requirement/3",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
         {
             "name": "IFR at Murphys Park/4",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR at Murphys Park/Violation Cost/4",
+            "mrf_cost": -10000,
+            "unconstrained_cost": 10000,
             "mrf": "IFR at Murphys Park/Requirement/4",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
         {
             "name": "IFR at Murphys Park/5",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR at Murphys Park/Violation Cost/5",
+            "mrf_cost": -10000,
+            "unconstrained_cost": 10000,
             "mrf": "IFR at Murphys Park/Requirement/5",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
         {
             "name": "IFR at Murphys Park/6",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR at Murphys Park/Violation Cost/6",
+            "mrf_cost": -10000,
+            "unconstrained_cost": 10000,
             "mrf": "IFR at Murphys Park/Requirement/6",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
@@ -1091,6 +1187,7 @@
             "name": "IFR bl McKays Point Div/1",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "IFR bl McKays Point Div/Violation Cost/1",
+            "unconstrained_cost": 6000,
             "mrf": "IFR bl McKays Point Div/Requirement/1",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
@@ -1098,6 +1195,7 @@
             "name": "IFR bl McKays Point Div/2",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "IFR bl McKays Point Div/Violation Cost/2",
+            "unconstrained_cost": 6000,
             "mrf": "IFR bl McKays Point Div/Requirement/2",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
@@ -1105,6 +1203,7 @@
             "name": "IFR bl McKays Point Div/3",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "IFR bl McKays Point Div/Violation Cost/3",
+            "unconstrained_cost": 6000,
             "mrf": "IFR bl McKays Point Div/Requirement/3",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
@@ -1112,6 +1211,7 @@
             "name": "IFR bl McKays Point Div/4",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "IFR bl McKays Point Div/Violation Cost/4",
+            "unconstrained_cost": 6000,
             "mrf": "IFR bl McKays Point Div/Requirement/4",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
@@ -1119,6 +1219,7 @@
             "name": "IFR bl McKays Point Div/5",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "IFR bl McKays Point Div/Violation Cost/5",
+            "unconstrained_cost": 6000,
             "mrf": "IFR bl McKays Point Div/Requirement/5",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
@@ -1126,6 +1227,7 @@
             "name": "IFR bl McKays Point Div/6",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "IFR bl McKays Point Div/Violation Cost/6",
+            "unconstrained_cost": 6000,
             "mrf": "IFR bl McKays Point Div/Requirement/6",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
@@ -1298,51 +1400,52 @@
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
         {
-            "name": "IFR bl Utica Div/1",
+            "name": "IFR below NF Stanislaus Div Res/1",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Utica Div/Violation Cost/1",
-            "mrf": "IFR bl Utica Div/Requirement/1",
+            "mrf_cost": "IFR below NF Stanislaus Div Res/Violation Cost/1",
+            "mrf": "IFR below NF Stanislaus Div Res/Requirement/1",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
         {
-            "name": "IFR bl Utica Div/2",
+            "name": "IFR below NF Stanislaus Div Res/2",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Utica Div/Violation Cost/2",
-            "mrf": "IFR bl Utica Div/Requirement/2",
+            "mrf_cost": "IFR below NF Stanislaus Div Res/Violation Cost/2",
+            "mrf": "IFR below NF Stanislaus Div Res/Requirement/2",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
         {
-            "name": "IFR bl Utica Div/3",
+            "name": "IFR below NF Stanislaus Div Res/3",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Utica Div/Violation Cost/3",
-            "mrf": "IFR bl Utica Div/Requirement/3",
+            "mrf_cost": "IFR below NF Stanislaus Div Res/Violation Cost/3",
+            "mrf": "IFR below NF Stanislaus Div Res/Requirement/3",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
         {
-            "name": "IFR bl Utica Div/4",
+            "name": "IFR below NF Stanislaus Div Res/4",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Utica Div/Violation Cost/4",
-            "mrf": "IFR bl Utica Div/Requirement/4",
+            "mrf_cost": "IFR below NF Stanislaus Div Res/Violation Cost/4",
+            "mrf": "IFR below NF Stanislaus Div Res/Requirement/4",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
         {
-            "name": "IFR bl Utica Div/5",
+            "name": "IFR below NF Stanislaus Div Res/5",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Utica Div/Violation Cost/5",
-            "mrf": "IFR bl Utica Div/Requirement/5",
+            "mrf_cost": "IFR below NF Stanislaus Div Res/Violation Cost/5",
+            "mrf": "IFR below NF Stanislaus Div Res/Requirement/5",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
         {
-            "name": "IFR bl Utica Div/6",
+            "name": "IFR below NF Stanislaus Div Res/6",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Utica Div/Violation Cost/6",
-            "mrf": "IFR bl Utica Div/Requirement/6",
+            "mrf_cost": "IFR below NF Stanislaus Div Res/Violation Cost/6",
+            "mrf": "IFR below NF Stanislaus Div Res/Requirement/6",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
         {
             "name": "IFR below Beaver Creek Diversion Dam/1",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "IFR below Beaver Creek Diversion Dam/Violation Cost/1",
+            "unconstrained_cost": 7000,
             "mrf": "IFR below Beaver Creek Diversion Dam/Requirement/1",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
@@ -1350,6 +1453,7 @@
             "name": "IFR below Beaver Creek Diversion Dam/2",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "IFR below Beaver Creek Diversion Dam/Violation Cost/2",
+            "unconstrained_cost": 7000,
             "mrf": "IFR below Beaver Creek Diversion Dam/Requirement/2",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
@@ -1357,6 +1461,7 @@
             "name": "IFR below Beaver Creek Diversion Dam/3",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "IFR below Beaver Creek Diversion Dam/Violation Cost/3",
+            "unconstrained_cost": 7000,
             "mrf": "IFR below Beaver Creek Diversion Dam/Requirement/3",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
@@ -1364,6 +1469,7 @@
             "name": "IFR below Beaver Creek Diversion Dam/4",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "IFR below Beaver Creek Diversion Dam/Violation Cost/4",
+            "unconstrained_cost": 7000,
             "mrf": "IFR below Beaver Creek Diversion Dam/Requirement/4",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
@@ -1371,6 +1477,7 @@
             "name": "IFR below Beaver Creek Diversion Dam/5",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "IFR below Beaver Creek Diversion Dam/Violation Cost/5",
+            "unconstrained_cost": 7000,
             "mrf": "IFR below Beaver Creek Diversion Dam/Requirement/5",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
@@ -1378,6 +1485,7 @@
             "name": "IFR below Beaver Creek Diversion Dam/6",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "IFR below Beaver Creek Diversion Dam/Violation Cost/6",
+            "unconstrained_cost": 7000,
             "mrf": "IFR below Beaver Creek Diversion Dam/Requirement/6",
             "comment": "{\"resource_class\": \"node\", \"type\": \"InstreamFlowRequirement\"}"
         },
@@ -4968,37 +5076,37 @@
         {
             "name": "UPA Tunnel Tap/1",
             "type": "Link",
-            "max_flow": 0.6,
+            "max_flow": 2.28,
             "comment": "{\"resource_class\": \"link\", \"type\": \"Link\"}"
         },
         {
             "name": "UPA Tunnel Tap/2",
             "type": "Link",
-            "max_flow": 0.6,
+            "max_flow": 2.28,
             "comment": "{\"resource_class\": \"link\", \"type\": \"Link\"}"
         },
         {
             "name": "UPA Tunnel Tap/3",
             "type": "Link",
-            "max_flow": 0.6,
+            "max_flow": 2.28,
             "comment": "{\"resource_class\": \"link\", \"type\": \"Link\"}"
         },
         {
             "name": "UPA Tunnel Tap/4",
             "type": "Link",
-            "max_flow": 0.6,
+            "max_flow": 2.28,
             "comment": "{\"resource_class\": \"link\", \"type\": \"Link\"}"
         },
         {
             "name": "UPA Tunnel Tap/5",
             "type": "Link",
-            "max_flow": 0.6,
+            "max_flow": 2.28,
             "comment": "{\"resource_class\": \"link\", \"type\": \"Link\"}"
         },
         {
             "name": "UPA Tunnel Tap/6",
             "type": "Link",
-            "max_flow": 0.6,
+            "max_flow": 2.28,
             "comment": "{\"resource_class\": \"link\", \"type\": \"Link\"}"
         },
         {
@@ -5825,27 +5933,27 @@
         ],
         [
             "Upper Collierville Tunnel Outflow/1",
-            "IFR bl Utica Div/1"
+            "IFR below NF Stanislaus Div Res/1"
         ],
         [
             "Upper Collierville Tunnel Outflow/2",
-            "IFR bl Utica Div/2"
+            "IFR below NF Stanislaus Div Res/2"
         ],
         [
             "Upper Collierville Tunnel Outflow/3",
-            "IFR bl Utica Div/3"
+            "IFR below NF Stanislaus Div Res/3"
         ],
         [
             "Upper Collierville Tunnel Outflow/4",
-            "IFR bl Utica Div/4"
+            "IFR below NF Stanislaus Div Res/4"
         ],
         [
             "Upper Collierville Tunnel Outflow/5",
-            "IFR bl Utica Div/5"
+            "IFR below NF Stanislaus Div Res/5"
         ],
         [
             "Upper Collierville Tunnel Outflow/6",
-            "IFR bl Utica Div/6"
+            "IFR below NF Stanislaus Div Res/6"
         ],
         [
             "McKays Point Diversion/1",
@@ -6592,6 +6700,78 @@
             "IFR at Murphys Park/6"
         ],
         [
+            "IFR bl Sand Bar Div/1",
+            "IFR bl Collierville PH discharge/1"
+        ],
+        [
+            "IFR bl Sand Bar Div/2",
+            "IFR bl Collierville PH discharge/2"
+        ],
+        [
+            "IFR bl Sand Bar Div/3",
+            "IFR bl Collierville PH discharge/3"
+        ],
+        [
+            "IFR bl Sand Bar Div/4",
+            "IFR bl Collierville PH discharge/4"
+        ],
+        [
+            "IFR bl Sand Bar Div/5",
+            "IFR bl Collierville PH discharge/5"
+        ],
+        [
+            "IFR bl Sand Bar Div/6",
+            "IFR bl Collierville PH discharge/6"
+        ],
+        [
+            "IFR bl Hunter Reservoir/1",
+            "IFR bl Collierville PH discharge/1"
+        ],
+        [
+            "IFR bl Hunter Reservoir/2",
+            "IFR bl Collierville PH discharge/2"
+        ],
+        [
+            "IFR bl Hunter Reservoir/3",
+            "IFR bl Collierville PH discharge/3"
+        ],
+        [
+            "IFR bl Hunter Reservoir/4",
+            "IFR bl Collierville PH discharge/4"
+        ],
+        [
+            "IFR bl Hunter Reservoir/5",
+            "IFR bl Collierville PH discharge/5"
+        ],
+        [
+            "IFR bl Hunter Reservoir/6",
+            "IFR bl Collierville PH discharge/6"
+        ],
+        [
+            "IFR bl confluence of NF Stanislaus and Beaver Creek/1",
+            "IFR bl Collierville PH discharge/1"
+        ],
+        [
+            "IFR bl confluence of NF Stanislaus and Beaver Creek/2",
+            "IFR bl Collierville PH discharge/2"
+        ],
+        [
+            "IFR bl confluence of NF Stanislaus and Beaver Creek/3",
+            "IFR bl Collierville PH discharge/3"
+        ],
+        [
+            "IFR bl confluence of NF Stanislaus and Beaver Creek/4",
+            "IFR bl Collierville PH discharge/4"
+        ],
+        [
+            "IFR bl confluence of NF Stanislaus and Beaver Creek/5",
+            "IFR bl Collierville PH discharge/5"
+        ],
+        [
+            "IFR bl confluence of NF Stanislaus and Beaver Creek/6",
+            "IFR bl Collierville PH discharge/6"
+        ],
+        [
             "Sand Bar PH/1",
             "Stanislaus Tunnel Outflow/1"
         ],
@@ -6736,6 +6916,30 @@
             "Angels Canal Outflow/6"
         ],
         [
+            "IFR bl Collierville PH discharge/1",
+            "STN_01 Inflow/1"
+        ],
+        [
+            "IFR bl Collierville PH discharge/2",
+            "STN_01 Inflow/2"
+        ],
+        [
+            "IFR bl Collierville PH discharge/3",
+            "STN_01 Inflow/3"
+        ],
+        [
+            "IFR bl Collierville PH discharge/4",
+            "STN_01 Inflow/4"
+        ],
+        [
+            "IFR bl Collierville PH discharge/5",
+            "STN_01 Inflow/5"
+        ],
+        [
+            "IFR bl Collierville PH discharge/6",
+            "STN_01 Inflow/6"
+        ],
+        [
             "STN_03 Headflow/1",
             "STN_01 Inflow/1"
         ],
@@ -6757,78 +6961,6 @@
         ],
         [
             "STN_03 Headflow/6",
-            "STN_01 Inflow/6"
-        ],
-        [
-            "IFR bl Sand Bar Div/1",
-            "STN_01 Inflow/1"
-        ],
-        [
-            "IFR bl Sand Bar Div/2",
-            "STN_01 Inflow/2"
-        ],
-        [
-            "IFR bl Sand Bar Div/3",
-            "STN_01 Inflow/3"
-        ],
-        [
-            "IFR bl Sand Bar Div/4",
-            "STN_01 Inflow/4"
-        ],
-        [
-            "IFR bl Sand Bar Div/5",
-            "STN_01 Inflow/5"
-        ],
-        [
-            "IFR bl Sand Bar Div/6",
-            "STN_01 Inflow/6"
-        ],
-        [
-            "IFR bl Hunter Reservoir/1",
-            "STN_01 Inflow/1"
-        ],
-        [
-            "IFR bl Hunter Reservoir/2",
-            "STN_01 Inflow/2"
-        ],
-        [
-            "IFR bl Hunter Reservoir/3",
-            "STN_01 Inflow/3"
-        ],
-        [
-            "IFR bl Hunter Reservoir/4",
-            "STN_01 Inflow/4"
-        ],
-        [
-            "IFR bl Hunter Reservoir/5",
-            "STN_01 Inflow/5"
-        ],
-        [
-            "IFR bl Hunter Reservoir/6",
-            "STN_01 Inflow/6"
-        ],
-        [
-            "IFR bl confluence of NF Stanislaus and Beaver Creek/1",
-            "STN_01 Inflow/1"
-        ],
-        [
-            "IFR bl confluence of NF Stanislaus and Beaver Creek/2",
-            "STN_01 Inflow/2"
-        ],
-        [
-            "IFR bl confluence of NF Stanislaus and Beaver Creek/3",
-            "STN_01 Inflow/3"
-        ],
-        [
-            "IFR bl confluence of NF Stanislaus and Beaver Creek/4",
-            "STN_01 Inflow/4"
-        ],
-        [
-            "IFR bl confluence of NF Stanislaus and Beaver Creek/5",
-            "STN_01 Inflow/5"
-        ],
-        [
-            "IFR bl confluence of NF Stanislaus and Beaver Creek/6",
             "STN_01 Inflow/6"
         ],
         [
@@ -7000,27 +7132,27 @@
             "McKays Point Diversion/6"
         ],
         [
-            "IFR bl Utica Div/1",
+            "IFR below NF Stanislaus Div Res/1",
             "McKays Point Diversion/1"
         ],
         [
-            "IFR bl Utica Div/2",
+            "IFR below NF Stanislaus Div Res/2",
             "McKays Point Diversion/2"
         ],
         [
-            "IFR bl Utica Div/3",
+            "IFR below NF Stanislaus Div Res/3",
             "McKays Point Diversion/3"
         ],
         [
-            "IFR bl Utica Div/4",
+            "IFR below NF Stanislaus Div Res/4",
             "McKays Point Diversion/4"
         ],
         [
-            "IFR bl Utica Div/5",
+            "IFR below NF Stanislaus Div Res/5",
             "McKays Point Diversion/5"
         ],
         [
-            "IFR bl Utica Div/6",
+            "IFR below NF Stanislaus Div Res/6",
             "McKays Point Diversion/6"
         ],
         [
@@ -7721,27 +7853,27 @@
         ],
         [
             "Collierville PH/1",
-            "STN_01 Inflow/1"
+            "IFR bl Collierville PH discharge/1"
         ],
         [
             "Collierville PH/2",
-            "STN_01 Inflow/2"
+            "IFR bl Collierville PH discharge/2"
         ],
         [
             "Collierville PH/3",
-            "STN_01 Inflow/3"
+            "IFR bl Collierville PH discharge/3"
         ],
         [
             "Collierville PH/4",
-            "STN_01 Inflow/4"
+            "IFR bl Collierville PH discharge/4"
         ],
         [
             "Collierville PH/5",
-            "STN_01 Inflow/5"
+            "IFR bl Collierville PH discharge/5"
         ],
         [
             "Collierville PH/6",
-            "STN_01 Inflow/6"
+            "IFR bl Collierville PH discharge/6"
         ],
         [
             "Stanislaus PH/1",
@@ -9879,27 +10011,7 @@
             ],
             "kind": "cubic"
         },
-        "IFR bl Angels Div/Violation Cost/1": {
-            "type": "constant",
-            "value": -1000
-        },
-        "IFR bl Angels Div/Violation Cost/2": {
-            "type": "constant",
-            "value": -1000
-        },
-        "IFR bl Angels Div/Violation Cost/3": {
-            "type": "constant",
-            "value": -1000
-        },
-        "IFR bl Angels Div/Violation Cost/4": {
-            "type": "constant",
-            "value": -1000
-        },
-        "IFR bl Angels Div/Violation Cost/5": {
-            "type": "constant",
-            "value": -1000
-        },
-        "IFR bl Angels Div/Violation Cost/6": {
+        "IFR bl Angels Div/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
@@ -9921,27 +10033,43 @@
         "IFR bl Angels Div/Requirement/6": {
             "type": "IFR_bl_Angels_Div_Requirement"
         },
-        "IFR at Murphys Park/Violation Cost/1": {
-            "type": "constant",
-            "value": -2000
+        "IFR bl Collierville PH discharge/Min Requirement/1": {
+            "type": "IFR_bl_Collierville_PH_discharge_Min_Requirement"
         },
-        "IFR at Murphys Park/Violation Cost/2": {
-            "type": "constant",
-            "value": -2000
+        "IFR bl Collierville PH discharge/Min Requirement/2": {
+            "type": "IFR_bl_Collierville_PH_discharge_Min_Requirement"
         },
-        "IFR at Murphys Park/Violation Cost/3": {
-            "type": "constant",
-            "value": -2000
+        "IFR bl Collierville PH discharge/Min Requirement/3": {
+            "type": "IFR_bl_Collierville_PH_discharge_Min_Requirement"
         },
-        "IFR at Murphys Park/Violation Cost/4": {
-            "type": "constant",
-            "value": -2000
+        "IFR bl Collierville PH discharge/Min Requirement/4": {
+            "type": "IFR_bl_Collierville_PH_discharge_Min_Requirement"
         },
-        "IFR at Murphys Park/Violation Cost/5": {
-            "type": "constant",
-            "value": -2000
+        "IFR bl Collierville PH discharge/Min Requirement/5": {
+            "type": "IFR_bl_Collierville_PH_discharge_Min_Requirement"
         },
-        "IFR at Murphys Park/Violation Cost/6": {
+        "IFR bl Collierville PH discharge/Min Requirement/6": {
+            "type": "IFR_bl_Collierville_PH_discharge_Min_Requirement"
+        },
+        "IFR bl Collierville PH discharge/Max Requirement/1": {
+            "type": "IFR_bl_Collierville_PH_discharge_Max_Requirement"
+        },
+        "IFR bl Collierville PH discharge/Max Requirement/2": {
+            "type": "IFR_bl_Collierville_PH_discharge_Max_Requirement"
+        },
+        "IFR bl Collierville PH discharge/Max Requirement/3": {
+            "type": "IFR_bl_Collierville_PH_discharge_Max_Requirement"
+        },
+        "IFR bl Collierville PH discharge/Max Requirement/4": {
+            "type": "IFR_bl_Collierville_PH_discharge_Max_Requirement"
+        },
+        "IFR bl Collierville PH discharge/Max Requirement/5": {
+            "type": "IFR_bl_Collierville_PH_discharge_Max_Requirement"
+        },
+        "IFR bl Collierville PH discharge/Max Requirement/6": {
+            "type": "IFR_bl_Collierville_PH_discharge_Max_Requirement"
+        },
+        "IFR at Murphys Park/Violation Cost": {
             "type": "constant",
             "value": -2000
         },
@@ -10299,47 +10427,47 @@
         "IFR bl Sand Bar Div/Requirement/6": {
             "type": "IFR_bl_Sand_Bar_Div_Requirement"
         },
-        "IFR bl Utica Div/Violation Cost/1": {
+        "IFR below NF Stanislaus Div Res/Violation Cost/1": {
             "type": "constant",
             "value": -1000
         },
-        "IFR bl Utica Div/Violation Cost/2": {
+        "IFR below NF Stanislaus Div Res/Violation Cost/2": {
             "type": "constant",
             "value": -1000
         },
-        "IFR bl Utica Div/Violation Cost/3": {
+        "IFR below NF Stanislaus Div Res/Violation Cost/3": {
             "type": "constant",
             "value": -1000
         },
-        "IFR bl Utica Div/Violation Cost/4": {
+        "IFR below NF Stanislaus Div Res/Violation Cost/4": {
             "type": "constant",
             "value": -1000
         },
-        "IFR bl Utica Div/Violation Cost/5": {
+        "IFR below NF Stanislaus Div Res/Violation Cost/5": {
             "type": "constant",
             "value": -1000
         },
-        "IFR bl Utica Div/Violation Cost/6": {
+        "IFR below NF Stanislaus Div Res/Violation Cost/6": {
             "type": "constant",
             "value": -1000
         },
-        "IFR bl Utica Div/Requirement/1": {
-            "type": "IFR_bl_Utica_Div_Requirement"
+        "IFR below NF Stanislaus Div Res/Requirement/1": {
+            "type": "IFR_below_NF_Stanislaus_Div_Res"
         },
-        "IFR bl Utica Div/Requirement/2": {
-            "type": "IFR_bl_Utica_Div_Requirement"
+        "IFR below NF Stanislaus Div Res/Requirement/2": {
+            "type": "IFR_below_NF_Stanislaus_Div_Res"
         },
-        "IFR bl Utica Div/Requirement/3": {
-            "type": "IFR_bl_Utica_Div_Requirement"
+        "IFR below NF Stanislaus Div Res/Requirement/3": {
+            "type": "IFR_below_NF_Stanislaus_Div_Res"
         },
-        "IFR bl Utica Div/Requirement/4": {
-            "type": "IFR_bl_Utica_Div_Requirement"
+        "IFR below NF Stanislaus Div Res/Requirement/4": {
+            "type": "IFR_below_NF_Stanislaus_Div_Res"
         },
-        "IFR bl Utica Div/Requirement/5": {
-            "type": "IFR_bl_Utica_Div_Requirement"
+        "IFR below NF Stanislaus Div Res/Requirement/5": {
+            "type": "IFR_below_NF_Stanislaus_Div_Res"
         },
-        "IFR bl Utica Div/Requirement/6": {
-            "type": "IFR_bl_Utica_Div_Requirement"
+        "IFR below NF Stanislaus Div Res/Requirement/6": {
+            "type": "IFR_below_NF_Stanislaus_Div_Res"
         },
         "IFR below Beaver Creek Diversion Dam/Violation Cost/1": {
             "type": "constant",

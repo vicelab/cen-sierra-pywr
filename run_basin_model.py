@@ -293,12 +293,13 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
                             if type(v) == str:
                                 if v not in parameters_to_expand:
                                     parameters_to_expand.append(v)
-                                if j == 0:
-                                    parts = v.split('/')
+                                parts = v.split('/')
+                                if j == 0 or len(parts) == 2:
                                     for b in range(blocks):
                                         if len(parts) == 2:
                                             # no block-specific value, but still need to expand to number of blocks
                                             new_values.append(v + month)
+                                            break
                                         elif len(parts) == 3:
                                             # there are block-specific parameters
                                             attr = parts[-2]

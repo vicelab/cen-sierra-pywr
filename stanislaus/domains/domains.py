@@ -224,3 +224,31 @@ class PiecewiseHydropower(RiverDomainMixin, PiecewiseLink):
         del (data["type"])
         node = cls(model, head, max_flow=max_flow, cost=cost, **data)
         return node
+
+
+class PiecewiseInstreamFlowRequirement(RiverDomainMixin, PiecewiseLink):
+    """
+    A piecewise instream flow requirement, defined with:
+    N costs and N - 1 requirements
+    """
+
+    _type = 'piecewiseinstreamflowrequirement'
+
+    def __init__(self, model, **kwargs):
+        """Initialize
+        Parameters
+        ----------
+        """
+        kwargs['max_flow'] = kwargs.pop('max_flow', [])
+        kwargs['max_flow'].append(None)
+        kwargs['cost'] = kwargs.pop('cost', [0.0])
+        assert(len(kwargs['cost']) == len(kwargs['max_flow']))
+        super(PiecewiseInstreamFlowRequirement, self).__init__(model, **kwargs)
+
+    @classmethod
+    def load(cls, data, model):
+        max_flow = [load_parameter(model, c) for c in data.pop('max_flow', [])]
+        cost = [load_parameter(model, c) for c in data.pop('cost', [0.0])]
+        del (data["type"])
+        node = cls(model, max_flow=max_flow, cost=cost, **data)
+        return node

@@ -1,17 +1,24 @@
 import datetime
+import calendar
 from parameters import WaterLPParameter
 
 from utilities.converter import convert
 
 
-class IFR_bl_Utica_Div_Requirement(WaterLPParameter):
+class IFR_bl_Collierville_PH_discharge_Max_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        ifr_val = 0.467  # cms (16.5 cfs)
+
+        if self.mode == 'scheduling':
+            # get previous flow
+            Qp = self.model.nodes[self.res_name].flow[-1]
+            max_flow = Qp * 1.25
+            return max_flow
+
         if self.mode == 'planning':
-            ifr_val *= self.days_in_month()
-        return ifr_val
+            # no constraint
+            return 1e6
 
     def value(self, timestep, scenario_index):
         try:
@@ -27,5 +34,5 @@ class IFR_bl_Utica_Div_Requirement(WaterLPParameter):
         return cls(model, **data)
 
 
-IFR_bl_Utica_Div_Requirement.register()
-print(" [*] IFR_bl_Utica_Div_Requirement successfully registered")
+IFR_bl_Collierville_PH_discharge_Max_Requirement.register()
+print(" [*] IFR_bl_Angels_Div_Requirement successfully registered")
