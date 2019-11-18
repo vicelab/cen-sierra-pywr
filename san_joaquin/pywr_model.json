@@ -699,7 +699,7 @@
             "type": "InstreamFlowRequirement",
             "mrf_cost": "ifr_cost",
             "unconstrained_cost": "spill_cost",
-            "mrf": 0.004893177589039282
+            "mrf": "node/IFR bl Bass Lake/Requirement"
         },
         {
             "name": "IFR bl Bear Div [node]",
@@ -3364,6 +3364,9 @@
         },
         "node/Huntington Lake/Drawdown": {
             "type": "node_Huntington_Lake_Drawdown"
+        },
+        "node/IFR bl Bass Lake/Requirement": {
+            "type": "node_IFR_bl_Bass_Lake_Requirement"
         },
         "node/IFR bl Bear Div/Requirement": {
             "type": "node_IFR_bl_Bear_Div_Requirement"
