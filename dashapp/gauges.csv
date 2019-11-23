@@ -1,12 +1,13 @@
 facility,gauge
-Collierville PH,11295250
+Collierville PH,USGS 11295250 COLLIERVILLE PP NR MURPHYS CA
 Beardsley PH,11292820
 Stanislaus PH,11295505
 Donnells PH,11292610
 Sand Bar PH,11292860
 Spring Gap PH,11297000
+New Spicer Meadow PH,11293760
 IFR bl New Spicer Meadow Reservoir,11294000
-IFR below Beaver Creek Diversion Dam,11295230
+IFR bl Beaver Creek Diversion Dam,11295230
 IFR bl McKays Point Div,11295270
 IFR bl confluence of NF Stanislaus and Beaver Creek,11295300
 IFR bl Hunter Reservoir,USGS 11295340 MILL C BL HUNTER RES A HATHAWAY PINES CA
@@ -14,6 +15,15 @@ IFR bl Angels Div,11298700
 IFR bl Sand Bar Div,11293200
 IFR at Murphys Park,USGS 11298650 ANGELS C BL MURPHYS AFTERBAY NR MURPHYS CA
 IFR bl Relief Reservoir,11292000
-IFR below Beardsley Afterbay,11292900
-IFR below Pinecrest Lake,11296500
+IFR bl Beardsley Afterbay,11292900
+IFR bl Pinecrest Lake,11296500
 IFR bl Utica Div,11293600
+IFR bl Utica Reservoir,USGS 11293372 NF STANISLAUS R BL UTICA RES NR BEAR VALLEY CA
+IFR bl Lyons Res,11298000
+IFR bl Philadelphia Div,11297200
+IFR bl Goodwin Reservoir,USGS 11302000 STANISLAUS R BL GOODWIN DAM NR KNIGHTS FERRY CA
+IFR bl NF Stanislaus Div Res,11293600
+Oakdale Irrigation District,USGS 11301000 OAKDALE CN NR KNIGHTS FERRY CA
+South San Joaquin Irrigation District,USGS 11300500 S SAN JOAQUIN CN NR KNIGHTS FERRY CA
+Stanislaus River Outflow,USGS 11302000 STANISLAUS R BL GOODWIN DAM NR KNIGHTS FERRY CA
+Phoenix Canal Outflow,

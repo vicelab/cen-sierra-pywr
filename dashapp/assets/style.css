@@ -1,6 +1,11 @@
+.app-body {
+    display: flex !important;
+}
+
 .timeseries-collection {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .timeseries-metrics-box {
@@ -14,5 +19,10 @@
 
 .timeseries-chart {
     width: 600px;
+    height: 300px;
+}
+
+.flow-duration-chart {
+    width: 400px;
     height: 300px;
 }

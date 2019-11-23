@@ -1,0 +1,17 @@
+.app-body {
+    display: flex !important;
+}
+
+.sidebar-tabs {
+    display: inline-flex;
+    width: 100px;
+}
+
+.main-content {
+    display: inline-flex;
+    padding: 15px;
+}
+
+.nav-item {
+    cursor: pointer;
+}
