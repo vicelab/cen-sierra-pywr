@@ -140,7 +140,11 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
 
     gauges = {}
 
-    parameters_to_expand = []
+    parameters_to_expand = [
+        'New Melones Apr-Jul Runoff',
+        'San Joaquin Valley WYT',
+        'San Joaquin Valley WYI'
+    ]
     parameters_to_delete = []
     black_list = ['min_volume', 'max_volume']
     storage_recorders = {}
@@ -282,6 +286,8 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
                     if type(value) == str and value in m['parameters']:
                         if key not in black_list:
                             new_node[key] += month
+                            if value not in parameters_to_expand:
+                                parameters_to_expand.append(value)
 
                     elif type(value) in [float, int]:
                         if "max_flow" in key:
@@ -355,7 +361,9 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
         res_name = None
         attribute = None
         block = None
-        if len(parts) == 2:
+        if len(parts) == 1:
+            attribute = parts[0]
+        elif len(parts) == 2:
             res_name, attribute = parts
         elif len(parts) == 3:
             res_name, attribute, block = parts
@@ -380,6 +388,11 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
                     new_param['url'] = new_param['url'].replace('/runoff/', '/runoff_monthly_forecasts/')
                     new_param['column'] = '{:02}'.format(t)
                     # new_param['parse_dates'] = False
+                elif attribute == 'Turbine Capacity':
+                    if new_param['type'] == 'constant':
+                        # TODO: come up with a better method for converting PH capacity
+                        # should be in custom class or table lookup
+                        new_param['value'] *= 30
                 if 'node' in param:
                     new_param['node'] += month_suffix
                 if 'storage_node' in param:
@@ -394,7 +407,10 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
                         new_param_name = '/'.join([res_name, attribute, str(b + 1), str(t)])
                         new_parameters[new_param_name] = new_param
                 else:
-                    new_param_name = '/'.join([res_name, attribute, str(t)])
+                    if res_name and attribute:
+                        new_param_name = '/'.join([res_name, attribute, str(t)])
+                    else:
+                        new_param_name = '/'.join([attribute, str(t)])
                     new_parameters[new_param_name] = new_param
             continue
 
@@ -623,8 +639,9 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
         except Exception as err:
             print('\nFailed at step {}'.format(date))
             print(err)
+            raise
             # continue
-            break
+            # break
     total_seconds = (datetime.now() - now).total_seconds()
     print('Total run: {} seconds'.format(total_seconds))
     print(
@@ -656,7 +673,7 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
         else:
             columns[key] = [c]
     for (_type, attr), cols in columns.items():
-        tab_path = os.path.join(results_path, 'tables', '{}_{}'.format(_type, attr.title()))
+        tab_path = os.path.join(results_path, '{}_{}_mcm'.format(_type, attr.title()))
         # fig_path = os.path.join(results_path, 'figures', '{}_{}'.format(_type, attr.title()))
         # fig, ax = plt.subplots(figsize=(10, 6))
         df = results[cols]

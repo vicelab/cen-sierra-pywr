@@ -4,27 +4,35 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class IFR_bl_Relief_Reservoir_Requirement(WaterLPParameter):
+class IFR_bl_Relief_Reservoir_Min_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
 
-        WYT = int(self.get("WYI_SJValley"))
+        WYT = self.get("San Joaquin Valley WYT" + self.month_suffix)
         management = "BAU"
         path = "Management/{mgt}/IFRs/".format(mgt=management)
-        if self.mode == 'scheduling':
+        if self.model.mode == 'scheduling':
             fName = 'IFR_Below Relief Reservoir (MIF)_cfs_daily.csv'
         else:
             fName = 'IFR_Below Relief Reservoir (MIF)_cfs_monthly.csv'
-        if timestep.datetime.month >= 10:
-            dt = datetime.date(1999, timestep.month, timestep.day)
+        if self.datetime.month >= 10:
+            dt = datetime.date(1999, self.datetime.month, self.datetime.day)
         else:
-            dt = datetime.date(2000, timestep.month, timestep.day)
+            dt = datetime.date(2000, self.datetime.month, self.datetime.day)
 
         data = self.read_csv(path + fName, usecols=[0, 1, 2, 3, 4, 5, 6], index_col=None, header=0,
                              names=['start_date', 'end_date', '1', '2', '3', '4', '5'], parse_dates=[0, 1])
         # Critically Dry: 1,Dry: 2,Normal-Dry: 3,Normal-Wet: 4,Wet: 5
-        ifr_val = data[(data['start_date'] <= dt) & (data['end_date'] >= dt)][str(WYT)] / 35.314666
+        ifr_val = data[(data['start_date'] <= dt) & (data['end_date'] >= dt)][str(WYT)].values[-1] / 35.314666 # cfs to cms
+
+        # apply down ramp rate
+        if self.model.mode == 'scheduling':
+            ifr_val = self.get_down_ramp_ifr(timestep, ifr_val, initial_value=30/35.31, rate=0.25)
+
+        elif self.model.mode == 'planning':
+            ifr_val *= self.days_in_month()
+
         return ifr_val
 
     def value(self, timestep, scenario_index):
@@ -41,5 +49,5 @@ class IFR_bl_Relief_Reservoir_Requirement(WaterLPParameter):
         return cls(model, **data)
 
 
-IFR_bl_Relief_Reservoir_Requirement.register()
-print(" [*] IFR_bl_Relief_Reservoir_Requirement successfully registered")
+IFR_bl_Relief_Reservoir_Min_Requirement.register()
+print(" [*] IFR_bl_Relief_Reservoir_Min_Requirement successfully registered")

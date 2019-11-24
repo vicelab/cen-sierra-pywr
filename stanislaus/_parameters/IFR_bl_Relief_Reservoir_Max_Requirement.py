@@ -4,14 +4,15 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class IFR_bl_NF_Stanislaus_Div_Res(WaterLPParameter):
+class IFR_bl_Relief_Reservoir_Max_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        ifr_val = 0.467  # cms (16.5 cfs)
-        if self.mode == 'planning':
-            ifr_val *= self.days_in_month()
-        return ifr_val
+        if self.model.mode == 'scheduling':
+            ifr_max = self.get_up_ramp_ifr(timestep, initial_value=(30 / 35.31), rate=0.25)
+        else:
+            ifr_max = 1e6
+        return ifr_max
 
     def value(self, timestep, scenario_index):
         try:
@@ -27,5 +28,5 @@ class IFR_bl_NF_Stanislaus_Div_Res(WaterLPParameter):
         return cls(model, **data)
 
 
-IFR_bl_NF_Stanislaus_Div_Res.register()
-print(" [*] IFR_bl_NF_Stanislaus_Div_Res successfully registered")
+IFR_bl_Relief_Reservoir_Max_Requirement.register()
+print(" [*] IFR_bl_Relief_Reservoir_Requirement successfully registered")
