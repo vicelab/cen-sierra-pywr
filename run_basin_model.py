@@ -7,9 +7,10 @@ from importlib import import_module
 from tqdm import tqdm
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-from common.tests import test_planning_model, save_planning_results
+from common.tests import test_planning_model, get_planning_dataframe
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 SECONDS_IN_DAY = 3600 * 24
 
@@ -542,9 +543,10 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
         model_path = simplified_model_path
 
     # Area for testing monthly model
-    months = 6
+    months = 12
     save_results = True
     planning_model = None
+    df_planning = None
 
     if include_planning:
 
@@ -625,7 +627,11 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
                 # Step 1b: run planning model
                 m.planning.step()  # redundant with run, since only one timestep
                 if debug == 'dm' and save_results:
-                    save_planning_results(m.planning, months)
+                    df_month = get_planning_dataframe(m.planning)
+                    if df_planning is None:
+                        df_planning = df_month
+                    else:
+                        df_planning = pd.concat([df_planning, df_month])
 
                 # Step 1c: update daily model with planning model results
                 # print('Updating daily model')
@@ -648,6 +654,9 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
         'Monthly overhead: {} seconds ({:02}% of total)'.format(monthly_seconds, monthly_seconds / total_seconds * 100))
 
     # save results to CSV
+
+    if df_planning is not None:
+        df_planning.to_csv('./results/planning.csv')
 
     results = m.to_dataframe()
     results.index.name = 'Date'
