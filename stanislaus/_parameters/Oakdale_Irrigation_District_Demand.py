@@ -1,4 +1,5 @@
 from parameters import WaterLPParameter
+from dateutil.relativedelta import relativedelta
 
 
 class Oakdale_Irrigation_District_Demand(WaterLPParameter):
@@ -6,12 +7,17 @@ class Oakdale_Irrigation_District_Demand(WaterLPParameter):
     year_names = ["Critical", "Dry", "Below", "Above", "Wet"]
 
     def _value(self, timestep, scenario_index):
-        wyt_number = self.model.parameters['WYT_SJValley'].value(timestep, scenario_index)
-        wyt_name = self.year_names[wyt_number - 1]
+        WYT = self.get('San Joaquin Valley WYT' + self.month_suffix)
+        wyt_name = self.year_names[WYT - 1]
         demand_cms_df = self.read_csv("Management/BAU/Demand/Oakdale_IrrigationDistrict_Demand_cfs.csv",
                                       index_col=[0], parse_dates=False)
-        demand_cms = demand_cms_df.at[timestep.datetime.strftime('%b-%d'), wyt_name]
-        return demand_cms * self.cfs_to_mcm
+        if self.model.mode == 'scheduling':
+            demand_mcm = demand_cms_df[wyt_name][self.datetime.strftime('%b-%d')] * self.cfs_to_mcm
+        else:
+            start = self.datetime.strftime('%b-%d')
+            end = (self.datetime + relativedelta(days=+self.days_in_month())).strftime('%b-%d')
+            demand_mcm = demand_cms_df[wyt_name][start:end].sum() * self.cfs_to_mcm
+        return demand_mcm
 
     def value(self, timestep, scenario_index):
         try:

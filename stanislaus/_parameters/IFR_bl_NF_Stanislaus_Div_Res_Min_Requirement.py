@@ -1,20 +1,19 @@
 import datetime
 from parameters import WaterLPParameter
+
 from utilities.converter import convert
 
 
-class IFR_bl_Beardsley_Afterbay_Requirement(WaterLPParameter):
+class IFR_bl_NF_Stanislaus_Div_Res_Min_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        WYT = self.get("WYT_SJValley")
-        if WYT in [1, 2]:  # Critical or Dry years
-            ifr_val = 50  # cfs
-        else:
-            ifr_val = 135
-        if self.mode == 'planning':
+        ifr_val = 16.5 / 35.31  # cfs to cms (16.5 cfs)
+        if self.model.mode == 'scheduling':
+            ifr_val = self.get_down_ramp_ifr(timestep, ifr_val, initial_value=16.5/35.31, rate=0.25)
+        if self.model.mode == 'planning':
             ifr_val *= self.days_in_month()
-        return ifr_val / 35.31  # convert to cms
+        return ifr_val
 
     def value(self, timestep, scenario_index):
         try:
@@ -30,5 +29,5 @@ class IFR_bl_Beardsley_Afterbay_Requirement(WaterLPParameter):
         return cls(model, **data)
 
 
-IFR_bl_Beardsley_Afterbay_Requirement.register()
-print(" [*] IFR_bl_Beardsley_Afterbay_Requirement successfully registered")
+IFR_bl_NF_Stanislaus_Div_Res_Min_Requirement.register()
+print(" [*] IFR_bl_NF_Stanislaus_Div_Res_Min_Requirement successfully registered")

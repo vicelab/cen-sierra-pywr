@@ -5,16 +5,21 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class IFR_bl_Hunter_Reservoir_Requirement(WaterLPParameter):
+class IFR_bl_Angels_Div_Min_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        if 5 <= self.datetime.month <= 10:  # May-Oct
-            ifr_val = 1.5 / 35.31  # cfs to cms
-        else:
-            ifr_val = 0.5 / 35.31  # cfs to cms
-
-        if self.mode == 'planning':
+        ifr_val = 0.14158 * 1.1  # cms (5 cfs) w/ 10% factor of safety
+        # if self.model.mode == 'scheduling':
+        #     # IFR is max of 75% of previous flow Qp and IFR
+        #     if timestep.index == 0:
+        #         Qp = ifr_val
+        #     else:
+        #         Qp = self.model.nodes[self.res_name].prev_flow[-1] / 0.0864  # convert to cms
+        #     ifr_val = max(ifr_val, Qp * 0.75)
+        # else:
+        #     ifr_val *= self.days_in_month()
+        if self.model.mode == 'planning':
             ifr_val *= self.days_in_month()
         return ifr_val
 
@@ -32,5 +37,5 @@ class IFR_bl_Hunter_Reservoir_Requirement(WaterLPParameter):
         return cls(model, **data)
 
 
-IFR_bl_Hunter_Reservoir_Requirement.register()
-print(" [*] IFR_bl_Hunter_Reservoir_Requirement successfully registered")
+IFR_bl_Angels_Div_Min_Requirement.register()
+print(" [*] IFR_bl_Angels_Div_Min_Requirement successfully registered")

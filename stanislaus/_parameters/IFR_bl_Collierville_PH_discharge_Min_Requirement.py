@@ -12,21 +12,21 @@ class IFR_bl_Collierville_PH_discharge_Min_Requirement(WaterLPParameter):
 
         if self.mode == 'scheduling':
             # get previous flow
+            initial_value = 0
             if timestep.index == 0:
-                Qp = 0.4  # TODO: this needs to be from observed data
-            else:
-                Qp = self.model.nodes[self.res_name].flow[-1]
-            min_flow = Qp * 0.75
-            return min_flow
+                initial_value = 0.4 / 0.0846 # cms
+            min_ifr = self.get_down_ramp_ifr(timestep, 0.0, initial_value=initial_value, rate=0.25)
 
         if self.mode == 'planning':
             # no constraint
-            return 0.0
+            min_ifr = 0.0
+        return min_ifr
 
     def value(self, timestep, scenario_index):
         try:
             return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1,
                            scale_out=1000000.0)
+
         except Exception as err:
             print('\nERROR for parameter {}'.format(self.name))
             print('File where error occurred: {}'.format(__file__))

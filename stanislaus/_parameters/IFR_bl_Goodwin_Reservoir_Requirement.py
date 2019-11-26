@@ -3,20 +3,23 @@ from parameters import WaterLPParameter
 
 from utilities.converter import convert
 
+from dateutil.relativedelta import relativedelta
+
 
 class IFR_bl_Goodwin_Reservoir_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        wyt = self.model.parameters['WYT_SJValley'].value(timestep, scenario_index)
+        WYT = self.get('San Joaquin Valley WYT' + self.month_suffix)
         df = self.read_csv("Management/BAU/IFRs/IFR_Below Goodwin Dam_cfs_daily.csv", names=[1, 2, 3, 4, 5], header=0)
         start = self.datetime.strftime('%b-%d')
         if self.model.mode == 'scheduling':
-            return df.at[start, wyt] / 35.31  # convert cfs to mcm
+            min_ifr = df.at[start, WYT] / 35.31  # cfs to cms
         else:
-            days_in_month = self.days_in_month()
-            end = '{}-{:02}'.format(start.split('-')[0], days_in_month)
-            return df[wyt][start:end].sum() / 35.31
+            end = (self.datetime + relativedelta(days=self.days_in_month() - 1)).strftime('%b-%d')
+            min_ifr = df[WYT][start:end].sum() / 35.31  # cfs to cms
+
+        return min_ifr
 
     def value(self, timestep, scenario_index):
         try:

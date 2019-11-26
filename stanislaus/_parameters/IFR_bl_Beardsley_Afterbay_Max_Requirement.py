@@ -1,22 +1,17 @@
 import datetime
-import calendar
 from parameters import WaterLPParameter
-
 from utilities.converter import convert
 
 
-class IFR_bl_Hunter_Reservoir_Requirement(WaterLPParameter):
+class IFR_bl_Beardsley_Afterbay_Max_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        if 5 <= self.datetime.month <= 10:  # May-Oct
-            ifr_val = 1.5 / 35.31  # cfs to cms
+        if self.model.mode == 'scheduling':
+            ifr_range = self.get_ifr_range(timestep, scenario_index, initial_value=(140 / 35.31), rate=0.0)
         else:
-            ifr_val = 0.5 / 35.31  # cfs to cms
-
-        if self.mode == 'planning':
-            ifr_val *= self.days_in_month()
-        return ifr_val
+            ifr_range = 1e6  # no constraint
+        return ifr_range
 
     def value(self, timestep, scenario_index):
         try:
@@ -32,5 +27,5 @@ class IFR_bl_Hunter_Reservoir_Requirement(WaterLPParameter):
         return cls(model, **data)
 
 
-IFR_bl_Hunter_Reservoir_Requirement.register()
-print(" [*] IFR_bl_Hunter_Reservoir_Requirement successfully registered")
+IFR_bl_Beardsley_Afterbay_Max_Requirement.register()
+print(" [*] IFR_bl_Beardsley_Afterbay_Max_Requirement successfully registered")

@@ -1,16 +1,19 @@
+import datetime
 from parameters import WaterLPParameter
 
 from utilities.converter import convert
 
 
-class IFR_bl_Beaver_Creek_Diversion_Dam_Requirement(WaterLPParameter):
+class IFR_bl_NF_Stanislaus_Div_Res_Max_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        ifr_val = 0.566  # cms 16.5 cfs (but ~20 cfs in practice)
-        if self.mode == 'planning':
-            ifr_val *= self.days_in_month()
-        return ifr_val
+        ifr_val = 16.5 / 35.31  # cfs to cms (16.5 cfs)
+        if self.model.mode == 'scheduling':
+            ifr_range = self.get_ifr_range(timestep, scenario_index, initial_value=ifr_val, rate=0.20)
+        else:
+            ifr_range = 1e6
+        return ifr_range
 
     def value(self, timestep, scenario_index):
         try:
@@ -26,5 +29,5 @@ class IFR_bl_Beaver_Creek_Diversion_Dam_Requirement(WaterLPParameter):
         return cls(model, **data)
 
 
-IFR_bl_Beaver_Creek_Diversion_Dam_Requirement.register()
-print(" [*] IFR_bl_Beaver_Creek_Diversion_Dam_Requirement successfully registered")
+IFR_bl_NF_Stanislaus_Div_Res_Max_Requirement.register()
+print(" [*] IFR_bl_NF_Stanislaus_Div_Res_Max_Requirement successfully registered")

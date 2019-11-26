@@ -19,17 +19,8 @@ class IFR_at_Murphys_Park_Requirement(WaterLPParameter):
 
         # Calculate water year type based on Apr-Jul inflow forecast
         if month == 5 and self.datetime.day == 1:
-
-            start = '{:04}-04-01'.format(self.datetime.year)
-            end = '{:04}-07-31'.format(self.datetime.year)
-            total_runoff = 0
-            for j in range(1, 26):
-                if mode == 'scheduling':
-                    runoff = self.model.parameters['STN_{:02} Headflow/Runoff'.format(j)].dataframe[start:end].sum()
-                else:
-                    runoff = self.model.parameters['STN_{:02} Headflow/Runoff/1'.format(j)].dataframe[start:end].sum()
-                total_runoff += runoff / 1.2335 * 1000
-            self.year_type = len([x for x in self.year_type_thresholds if total_runoff >= x])
+            new_melones_runoff = self.model.parameters['New Melones Apr-Jul Runoff' + self.month_suffix].value(timestep, scenario_index)
+            self.year_type = len([x for x in self.year_type_thresholds if new_melones_runoff >= x])
 
         # Determine schedule based on time of year
         if 5 <= month <= 9:  # May-Sep

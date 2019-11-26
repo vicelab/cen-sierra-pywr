@@ -7,7 +7,7 @@ class IFR_bl_McKays_Point_Div_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        ifr_val = 0.4672  # cms 16.5 cfs
+        ifr_val = 16.5 / 35.31  # cfs to cms
         if self.mode == 'planning':
             ifr_val *= self.days_in_month()
         return ifr_val

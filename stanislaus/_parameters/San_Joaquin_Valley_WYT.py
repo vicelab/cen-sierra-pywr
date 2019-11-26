@@ -1,17 +1,17 @@
-import math
-import pandas as pd
-import numpy as np
 from parameters import WaterLPParameter
-from datetime import datetime, timedelta
+
+from utilities.converter import convert
 
 
-class Relief_Reservoir_Storage_Value(WaterLPParameter):
+class San_Joaquin_Valley_WYT(WaterLPParameter):
+    """"""
 
     def _value(self, timestep, scenario_index):
-        if timestep.month >= 11 or timestep.month <= 7:
-            return -3500
-        else:
-            return -60
+        kwargs = dict(timestep=timestep, scenario_index=scenario_index)
+        SJVI = self.get("San Joaquin Valley WYI" + self.month_suffix, **kwargs)
+        thresholds = [0, 2.1, 2.8, 3.1, 3.8]
+        WYT = len([x for x in thresholds if SJVI > x])
+        return WYT
 
     def value(self, timestep, scenario_index):
         try:
@@ -26,5 +26,5 @@ class Relief_Reservoir_Storage_Value(WaterLPParameter):
         return cls(model, **data)
 
 
-Relief_Reservoir_Storage_Value.register()
-print(" [*] Relief_Reservoir_Storage_Value successfully registered")
+San_Joaquin_Valley_WYT.register()
+print(" [*] San_Joaquin_Valley_WYT successfully registered")

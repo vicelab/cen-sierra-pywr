@@ -9,10 +9,10 @@ class IFR_bl_Relief_Reservoir_Max_Requirement(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         if self.model.mode == 'scheduling':
-            ifr_max = self.get_up_ramp_ifr(timestep, initial_value=(30 / 35.31), rate=0.25)
+            ifr_range = self.get_ifr_range(timestep, scenario_index, initial_value=(30 / 35.31), rate=0.25)
         else:
-            ifr_max = 1e6
-        return ifr_max
+            ifr_range = 1e6
+        return ifr_range
 
     def value(self, timestep, scenario_index):
         try:

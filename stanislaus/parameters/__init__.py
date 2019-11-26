@@ -59,7 +59,7 @@ class WaterLPParameter(Parameter):
             if len(name_parts) == 3:
                 self.block = int(name_parts[2])
         else:
-            if len(name_parts) >= 3:
+            if len(name_parts) >= 2:
                 self.month_offset = int(name_parts[-1]) - 1
             if len(name_parts) == 4:
                 self.block = int(name_parts[-2])
@@ -78,7 +78,7 @@ class WaterLPParameter(Parameter):
     def before(self):
         super(WaterLPParameter, self).before()
         self.datetime = self.model.timestepper.current.datetime
-        if self.mode == 'planning':
+        if self.model.mode == 'planning':
             if self.month_offset:
                 self.datetime += relativedelta(months=+self.month_offset)
 
@@ -157,3 +157,37 @@ class WaterLPParameter(Parameter):
             self.store[hashval] = data
 
         return data
+
+    def get_down_ramp_ifr(self, timestep, value, initial_value=None, rate=0.25):
+        if timestep.index == 0:
+            if initial_value is not None:
+                Qp = initial_value
+            else:
+                Qp = value
+        else:
+            Qp = self.model.nodes[self.res_name].prev_flow[-1] / 0.0864  # convert to cms
+        return max(value, Qp * (1 - rate))
+
+    def get_up_ramp_ifr(self, timestep, initial_value=None, rate=0.25, **kwargs):
+        if initial_value is None:
+            raise Exception('Initial maximum ramp up rate cannot be None')
+
+        if self.model.mode == 'scheduling':
+            if timestep.index == 0:
+                Qp = initial_value  # should be in cms
+            else:
+                Qp = self.model.nodes[self.res_name].prev_flow[-1] / 0.0864  # convert to cms
+            max_flow = Qp * (1 + rate)
+        else:
+            max_flow = 1e6
+
+        return max_flow
+
+    def get_ifr_range(self, timestep, scenario_index, **kwargs):
+        max_ifr = self.get_up_ramp_ifr(timestep, **kwargs)
+        min_ifr = self.model.parameters[self.res_name + '/Min Requirement' + self.month_suffix] \
+                      .value(timestep, scenario_index) / 0.0864  # convert to cms
+
+        ifr_range = max(max_ifr - min_ifr, 0.0)
+
+        return ifr_range

@@ -9,13 +9,20 @@ class IFR_bl_Lyons_Res_Requirement(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
 
-        WYT = self.get("WYT_SJValley")
+        WYT = self.get("San Joaquin Valley WYT" + self.month_suffix)
+        WYI = self.get("San Joaquin Valley WYI" + self.month_suffix)
 
-        # ifr is in cfs
-        if WYT == 1:
+        # IFR is in cfs
+
+        # Really dry year; PG&E has asked for temporary reductions in the past
+        if WYI < 2 and (self.datetime.month >= 8 or self.datetime.month <= 3):
+            ifr = 2.75
+
+        # regular IFR schedule
+        elif WYT == 1:
             ifr = 5
         else:
-            month = timestep.month  # not necessary, but a little easier to read
+            month = self.datetime.month  # not necessary, but a little easier to read
             if month == 10:  # Oct
                 ifr = 8
             elif month >= 11 or month <= 6:  # Nov-Jun

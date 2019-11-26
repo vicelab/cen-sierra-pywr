@@ -2,7 +2,7 @@ from parameters import WaterLPParameter
 
 from utilities.converter import convert
 from dateutil.relativedelta import relativedelta
-
+import random
 
 class PH_Water_Demand(WaterLPParameter):
     """"""
@@ -18,8 +18,9 @@ class PH_Water_Demand(WaterLPParameter):
     def _value(self, timestep, scenario_index, mode='scheduling'):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
         all_energy_prices = self.model.tables['All Energy Price Values']
-        turbine_capacity = self.model.parameters[self.res_name + '/Turbine Capacity'] \
-            .value(timestep, scenario_index)
+        param = self.res_name + '/Turbine Capacity' + self.month_suffix
+        # turbine capacity is already in mcm
+        turbine_capacity = self.model.parameters[param].value(timestep, scenario_index) / 0.0864
         # calculate the price threshold if needed
         if self.model.mode == 'planning':
             block = self.model.tables["Energy Price Blocks"].at[timestep.datetime, str(self.block)]
@@ -61,6 +62,10 @@ class PH_Water_Demand(WaterLPParameter):
 
         else:
             block = self.model.tables["Energy Price Blocks"].at[timestep.datetime, str(self.block)]
+
+        if self.res_name == 'Collierville PH' and self.block == 1:
+
+            block = max(block, 0.05 + random.random() * 0.05)
 
         demand_mcm = turbine_capacity * self.cms_to_mcm * block
 

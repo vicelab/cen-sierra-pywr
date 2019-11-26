@@ -1,25 +1,25 @@
 import datetime
-import calendar
 from parameters import WaterLPParameter
 
 from utilities.converter import convert
 
 
-class IFR_bl_Angels_Div_Requirement(WaterLPParameter):
+class IFR_bl_Donnell_Lake_Max_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        ifr_val = 0.14158  # cms (5 cfs)
-        if self.mode == 'planning':
-            ifr_val *= self.days_in_month()
-        return ifr_val
+        if self.model.mode == 'scheduling':
+            ifr_range = self.get_ifr_range(timestep, scenario_index, initial_value=25 / 35.31, rate=0.25)
+        else:
+            ifr_range = 1e6
+        return ifr_range
 
     def value(self, timestep, scenario_index):
         try:
             return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1,
                            scale_out=1000000.0)
         except Exception as err:
-            print('\nERROR for parameter {}'.format(self.name))
+            print('\nERROR for parameter "{}" in {} model'.format(self.name, self.model.mode))
             print('File where error occurred: {}'.format(__file__))
             print(err)
 
@@ -28,5 +28,5 @@ class IFR_bl_Angels_Div_Requirement(WaterLPParameter):
         return cls(model, **data)
 
 
-IFR_bl_Angels_Div_Requirement.register()
-print(" [*] IFR_bl_Angels_Div_Requirement successfully registered")
+IFR_bl_Donnell_Lake_Max_Requirement.register()
+print(" [*] IFR_bl_Donnell_Lake_Max_Requirement successfully registered")
