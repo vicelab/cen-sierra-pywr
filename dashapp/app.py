@@ -94,11 +94,13 @@ df_pw_min_ifr_reqt = pd.read_csv(
     parse_dates=True,
 ) * MCM_TO_CFS  # mcm to cfs
 
-df_pw_max_ifr_reqt = pd.read_csv(
+df_pw_ifr_range_reqt = pd.read_csv(
     rpath.format(basin=basin, res_type='PiecewiseInstreamFlowRequirement', res_attr='Max Requirement'),
     index_col=[0],
     parse_dates=True,
 ) * MCM_TO_CFS  # mcm to cfs
+
+df_pw_max_ifr_reqt = df_pw_min_ifr_reqt[df_pw_ifr_range_reqt.columns] + df_pw_ifr_range_reqt
 
 df_obs_storage = pd.read_csv(
     opath.format(basin=basin.replace('_', ' ').title() + ' River', attr='storage'),
@@ -146,6 +148,11 @@ def timeseries_component(attr, res_name, sim_vals, df_obs, **kwargs):
     ts_data = []
     fd_data = []
 
+    plot_max = False
+    max_reqt = kwargs.get('max_reqt')
+    if max_reqt is not None and res_name in max_reqt:
+        plot_max = True
+
     min_reqt = kwargs.get('min_reqt')
     if min_reqt is not None and res_name in min_reqt:
         ts_data.append(
@@ -155,22 +162,24 @@ def timeseries_component(attr, res_name, sim_vals, df_obs, **kwargs):
                 text='Min Requirement',
                 mode='lines',
                 opacity=0.7,
+                # opacity=0.7 if not plot_max else 0.0,
                 name='Min Requirement',
-                line=go.scatter.Line(color='red')
+                line_color='red'
             )
         )
 
-    max_reqt = kwargs.get('max_reqt')
-    if max_reqt is not None and res_name in max_reqt:
+    if plot_max:
         ts_data.append(
             go.Scatter(
                 x=max_reqt.index,
                 y=max_reqt[res_name],
                 text='Max Requirement',
                 mode='lines',
+                fill='tonexty',
                 opacity=0.7,
                 name='Max Requirement',
-                line=go.scatter.Line(color='orange')
+                line_color='grey',
+                line=dict(width=0.5)
             )
         )
 
@@ -266,9 +275,9 @@ def timeseries_component(attr, res_name, sim_vals, df_obs, **kwargs):
     gauges = [nse_gauge, pbias_gauge]
 
     if attr == 'storage':
-        ylabel = 'Storage (mcm)'
+        ylabel = 'Storage (TAF)'
     else:
-        ylabel = 'Flow (cms)'
+        ylabel = 'Flow (cfs)'
 
     timeseries_graph = dcc.Graph(
         id='timeseries-' + res_name_id,
