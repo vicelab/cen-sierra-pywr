@@ -484,7 +484,8 @@ def run_model(basin, scenario, start, end, network_key, run_name="default", incl
     # Set up model environment
     # ========================
 
-    root_dir = os.path.join(os.getcwd(), basin)
+    here = os.path.dirname(os.path.realpath(__file__))
+    root_dir = os.path.join(here, basin)
     os.chdir(root_dir)
 
     climate_scenario, price_year = scenario
@@ -569,7 +570,7 @@ def run_model(basin, scenario, start, end, network_key, run_name="default", incl
         model_path = simplified_model_path
 
     # Area for testing monthly model
-    months = 2
+    months = 12
     save_results = True
     planning_model = None
     df_planning = None
@@ -746,7 +747,9 @@ if debug:
 else:
     climate_scenarios = gcm_rcps
     price_years = [2030, 2060]
-# climate_scenarios = gcm_rcps[:1]
+
+climate_scenarios = [gcm_rcps[0], gcm_rcps[-1]]
+price_years = [2030, 2060]
 
 scenarios = product(climate_scenarios, price_years)
 
@@ -757,7 +760,7 @@ for scenario in scenarios:
         end_year = 2002
     else:
         start_year = 2030
-        end_year = 2032
+        end_year = 2045
     start = '{}-10-01'.format(start_year)
     end = '{}-09-30'.format(end_year)
     run_model(basin, scenario, start, end, network_key,
