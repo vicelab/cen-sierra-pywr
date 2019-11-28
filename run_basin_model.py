@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+from itertools import product
 from pywr.core import Model
 from pywr.timestepper import Timestepper
 from importlib import import_module
@@ -477,16 +478,45 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
     return
 
 
-def run_model(basin, network_key, run_name="default", include_planning=False, simplify=True, debug=False):
+def run_model(basin, scenario, start, end, network_key, run_name="default", include_planning=False, simplify=True,
+              debug=False):
     # ========================
     # Set up model environment
     # ========================
 
     root_dir = os.path.join(os.getcwd(), basin)
-    bucket = 'openagua-networks'
-    model_path = os.path.join(root_dir, 'pywr_model.json')
-
     os.chdir(root_dir)
+
+    climate_scenario, price_year = scenario
+
+    bucket = 'openagua-networks'
+    base_filename = 'pywr_model.json'
+    model_filename_base = 'pywr_model_{}'.format(climate_scenario)
+    model_filename = model_filename_base + '.json'
+
+    base_path = os.path.join(root_dir, base_filename)
+    model_path = os.path.join(root_dir, model_filename)
+
+    # first order of business: update file paths in json file
+    with open(base_path) as f:
+        base_model = json.load(f)
+
+    new_model_parts = {}
+    for model_part in ['tables', 'parameters']:
+        new_model_parts[model_part] = {}
+        for pname, param in base_model[model_part].items():
+            if 'observed' in pname.lower():
+                continue
+            url = param.get('url')
+            if url and climate_scenario != 'Livneh':
+                param['url'] = url.replace('Livneh', climate_scenario).replace('historical', 'future')
+            new_model_parts[model_part][pname] = param
+    new_model_parts['parameters']['Price Year']['value'] = price_year
+    base_model.update(new_model_parts)
+    base_model['timestepper']['start'] = start
+    base_model['timestepper']['end'] = end
+    with open(model_path, 'w') as f:
+        json.dump(base_model, f, indent=4)
 
     # needed when loading JSON file
     # root_path = 's3://{}/{}/'.format(bucket, network_key)
@@ -520,10 +550,6 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
             print(type(err))
             print(err)
 
-    # prepare paths
-    root, filename = os.path.split(model_path)
-    base, ext = os.path.splitext(filename)
-
     # prepare the model files
     if simplify or include_planning:
         with open(model_path, 'r') as f:
@@ -531,8 +557,8 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
 
     if simplify:
         # simplify model
-        simplified_filename = 'pywr_model_simplified.json'.format(base)
-        simplified_model_path = os.path.join(root, simplified_filename)
+        simplified_filename = model_filename_base + '_simplified.json'
+        simplified_model_path = os.path.join(root_dir, simplified_filename)
 
         m = simplify_network(m, delete_gauges=True, delete_observed=True)
         # with open(simplified_model_path, 'w') as f:
@@ -543,7 +569,7 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
         model_path = simplified_model_path
 
     # Area for testing monthly model
-    months = 12
+    months = 2
     save_results = True
     planning_model = None
     df_planning = None
@@ -553,8 +579,8 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
         print('Creating planning model (this may take a minute or two)')
 
         # create filenames, etc.
-        monthly_filename = 'pywr_model_monthly.json'.format(base)
-        planning_model_path = os.path.join(root, monthly_filename)
+        monthly_filename = model_filename_base + '_monthly.json'
+        planning_model_path = os.path.join(root_dir, monthly_filename)
 
         prepare_planning_model(m, planning_model_path, steps=months, debug=save_results)
 
@@ -660,18 +686,16 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
 
     results = m.to_dataframe()
     results.index.name = 'Date'
-    results_path = os.path.join('./results', run_name)
+    scenario_name = '{}_P{}'.format(climate_scenario, price_year)
+    results_path = os.path.join('../results', basin, run_name, scenario_name)
     if not os.path.exists(results_path):
         os.makedirs(results_path)
-    for part in ['tables', 'figures']:
-        subpath = os.path.join(results_path, part)
-        if not os.path.exists(subpath):
-            os.makedirs(subpath)
     results.columns = results.columns.droplevel(1)
     if not os.path.exists(results_path):
         os.makedirs(results_path)
-    results.to_csv(os.path.join(results_path, 'system.csv'))
+    results.to_csv(os.path.join(results_path, 'system_mcm.csv'))
     columns = {}
+    nodes_of_type = {}
     for c in results.columns:
         res_name, attr = c.split('/')
         node = m.nodes[res_name]
@@ -681,30 +705,20 @@ def run_model(basin, network_key, run_name="default", include_planning=False, si
             columns[key].append(c)
         else:
             columns[key] = [c]
+        nodes_of_type[_type] = nodes_of_type.get(_type, []) + [node]
     for (_type, attr), cols in columns.items():
         tab_path = os.path.join(results_path, '{}_{}_mcm'.format(_type, attr.title()))
-        # fig_path = os.path.join(results_path, 'figures', '{}_{}'.format(_type, attr.title()))
-        # fig, ax = plt.subplots(figsize=(10, 6))
         df = results[cols]
         df.columns = [c.split('/')[0] for c in cols]
         df.to_csv(tab_path + '.csv')
-        # if attr.lower() == 'storage':
-        #     # df *= 810 / 1000
-        #     ax.set_ylabel('Storage (mcm)')
-        # elif attr.lower() == 'cost':
-        #     ax.set_ylabel('Value ($/mcm)')
-        # else:
-        #     # df *= 1 / 0.0864 * 35.31
-        #     ax.set_ylabel('Flow (mcm)')
-        # # for col in df.columns:
-        # #     ax.plot(df.index.to_timestamp(), df[col], label=col)
-        # df.plot(ax=ax)
-        # ax.set_title('{}: {}'.format(_type, attr.title()))
-        # ax.legend(loc='upper right', ncol=2)
-        # plt.tight_layout()
-        # # plt.show()
-        # plt.close()
-        # fig.savefig(fig_path + '.png', dpi=300)
+
+        if _type in ['Hydropower', 'PiecewiseHydropower'] and attr == 'flow':
+            gen_df = df.copy()
+            gen_path = os.path.join(results_path, '{}_Generation_MWh.csv'.format(_type))
+            for c in df.columns:
+                node = m.nodes[c]
+                gen_df *= node.head * 0.9 * 9.81 * 1000 / 1e6
+                gen_df.to_csv(gen_path)
 
 
 import argparse
@@ -722,6 +736,31 @@ network_key = args.network_key or os.environ.get('NETWORK_KEY')
 debug = args.debug
 include_planning = args.include_planning
 
-run_model(basin, network_key, run_name=args.run_name, include_planning=include_planning, debug=debug)
+gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
+rcps = ['85']
+gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
+
+if debug:
+    climate_scenarios = ['Livneh']
+    price_years = [2009]
+else:
+    climate_scenarios = gcm_rcps
+    price_years = [2030, 2060]
+# climate_scenarios = gcm_rcps[:1]
+
+scenarios = product(climate_scenarios, price_years)
+
+for scenario in scenarios:
+    climate, price_year = scenario
+    if climate == 'Livneh':
+        start_year = 2000
+        end_year = 2002
+    else:
+        start_year = 2030
+        end_year = 2032
+    start = '{}-10-01'.format(start_year)
+    end = '{}-09-30'.format(end_year)
+    run_model(basin, scenario, start, end, network_key,
+              run_name=args.run_name, include_planning=include_planning, debug=debug)
 
 print('done!')

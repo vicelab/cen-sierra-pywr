@@ -14,9 +14,12 @@ class PH_Cost(WaterLPParameter):
         # 1. electricity price
         # 2. generating potential, a function of generating efficiency, head, etc.
 
+        price_year = int(self.model.parameters['Price Year'].value(timestep, scenario_index))
+        price_date = self.datetime.strftime('{}-%m-%d'.format(price_year))
+
         if self.model.mode == 'planning':
             price_per_kWh = self.model.tables["Energy Price Values"] \
-                .at[timestep.datetime, str(self.block)]
+                .at[price_date, str(self.block)]
             head = self.model.nodes[self.res_name + self.month_suffix].head
             eta = 0.9  # generation efficiency
             gamma = 9807  # specific weight of water = rho*g
@@ -35,7 +38,6 @@ class PH_Cost(WaterLPParameter):
 
         if self.res_name == 'Collierville PH' and self.block == 1 and pywr_cost < 0:
             pywr_cost = -600
-
 
         return pywr_cost
 

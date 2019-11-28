@@ -4,6 +4,7 @@ from utilities.converter import convert
 from dateutil.relativedelta import relativedelta
 import random
 
+
 class PH_Water_Demand(WaterLPParameter):
     """"""
 
@@ -21,9 +22,13 @@ class PH_Water_Demand(WaterLPParameter):
         param = self.res_name + '/Turbine Capacity' + self.month_suffix
         # turbine capacity is already in mcm
         turbine_capacity = self.model.parameters[param].value(timestep, scenario_index) / 0.0864
+
+        price_year = int(self.model.parameters['Price Year'].value(timestep, scenario_index))
+        price_date = self.datetime.strftime('{}-%m-%d'.format(price_year))
+
         # calculate the price threshold if needed
         if self.model.mode == 'planning':
-            block = self.model.tables["Energy Price Blocks"].at[timestep.datetime, str(self.block)]
+            block = self.model.tables["Energy Price Blocks"].at[price_date, str(self.block)]
             turbine_capacity *= self.days_in_month()
 
         elif self.model.planning:
@@ -31,15 +36,15 @@ class PH_Water_Demand(WaterLPParameter):
             # TODO: move as much of this as possible to a single parameter
 
             if timestep.day == 1:
-                start = timestep.datetime
-                end = start + relativedelta(months=+1) - relativedelta(days=+1)
-                energy_prices = all_energy_prices[start:end].values.flatten()
+                end = timestep.datetime + relativedelta(months=+1) - relativedelta(days=+1)
+                price_end = end.strftime('{}-%m-%d'.format(price_year))
+                energy_prices = all_energy_prices[price_date:price_end].values.flatten()
                 energy_prices[::-1].sort()  # sort in descending order
                 planning_release = self.model.planning.nodes[self.res_name + '/1'].flow[-1]
 
                 # for planning turbine capacity, note that the turbine capacities are the same
                 # in both models (i.e., cms)
-                planning_turbine_capacity = turbine_capacity * self.cms_to_mcm * (end - start).days
+                planning_turbine_capacity = turbine_capacity * self.cms_to_mcm * (price_end - price_date).days
                 planning_release_fraction = min(planning_release / planning_turbine_capacity, 1.0)
                 price_index = int(len(energy_prices) * planning_release_fraction) - 1
                 if price_index < 0:
@@ -48,7 +53,7 @@ class PH_Water_Demand(WaterLPParameter):
                     self.price_threshold = energy_prices[price_index]
 
             # calculate today's total release
-            energy_prices_today = all_energy_prices.loc[timestep.datetime].values
+            energy_prices_today = all_energy_prices.loc[price_date].values
             production_hours = len([1 for p in energy_prices_today if p >= self.price_threshold])
             max_flow_fraction = production_hours / 24
 
@@ -61,10 +66,9 @@ class PH_Water_Demand(WaterLPParameter):
             block = max_flow_fraction
 
         else:
-            block = self.model.tables["Energy Price Blocks"].at[timestep.datetime, str(self.block)]
+            block = self.model.tables["Energy Price Blocks"].at[price_date, str(self.block)]
 
         if self.res_name == 'Collierville PH' and self.block == 1:
-
             block = max(block, 0.05 + random.random() * 0.05)
 
         demand_mcm = turbine_capacity * self.cms_to_mcm * block
