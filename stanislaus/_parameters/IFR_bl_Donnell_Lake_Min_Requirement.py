@@ -37,13 +37,13 @@ class IFR_bl_Donnell_Lake_Min_Requirement(WaterLPParameter):
         data_supp = self.read_csv(path + 'IFR_Below Donnells Reservoir (Supp)_cfs_daily.csv',
                                   names=['Day_st', 'Day_end', '1', '2', '3', '4', '5'], header=0, index_col=None)
         if self.mode == 'scheduling':
-            if timestep.index == 0:
-                path = 'Scenarios/Livneh/preprocessed/peak_runoff_DonnellsRes_MarToMay_cms.csv'
-                self.peak_inflow_Donnells = self.read_csv(path, usecols=[0, 1], index_col=[0], parse_dates=[1],
-                                                          squeeze=True)  # cms
-
+            # if timestep.index == 0:
+            #     path = 'Scenarios/Livneh/preprocessed/peak_runoff_DonnellsRes_MarToMay_cms.csv'
+            #     self.peak_inflow_Donnells = self.read_csv(path, usecols=[0, 1], index_col=[0], parse_dates=[1],
+            #                                               squeeze=True)  # cms
             if self.datetime.month == 10 and self.datetime.day == 1:
-                self.peak_dt = self.peak_inflow_Donnells[timestep.year + 1]
+                # self.peak_dt = self.peak_inflow_Donnells[timestep.year + 1]
+                self.peak_dt = self.model.tables["Peak Donnells Runoff"][timestep.year + 1]
             diff_day = (timestep.datetime - self.peak_dt).days
             ifr_supp = 0
 

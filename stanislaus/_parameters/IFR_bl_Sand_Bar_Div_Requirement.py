@@ -30,11 +30,11 @@ class IFR_bl_Sand_Bar_Div_Requirement(WaterLPParameter):
                                   names=['Day_st', 'Day_end', '1', '2', '3', '4', '5'], header=0, index_col=None)
         if self.mode == 'scheduling':
             if self.datetime.month == 10 and self.datetime.day == 1:
-                peak_inflow_Donnells = self.read_csv(
-                    'Scenarios/Livneh/preprocessed/peak_runoff_DonnellsRes_MarToMay_cms.csv',
-                    usecols=[0, 1], index_col=[0], parse_dates=[1],
-                    squeeze=True)  # cms
-                self.peak_dt = peak_inflow_Donnells[self.datetime.year + 1]
+                # peak_inflow_Donnells = self.read_csv(
+                #     'Scenarios/Livneh/preprocessed/peak_runoff_DonnellsRes_MarToMay_cms.csv',
+                #     usecols=[0, 1], index_col=[0], parse_dates=[1],
+                #     squeeze=True)  # cms
+                self.peak_dt = self.model.tables["Peak Donnells Runoff"][timestep.year + 1]
             diff_day = (self.datetime - self.peak_dt).days
             ifr_supp = 0
             if 0 < diff_day <= 91:
