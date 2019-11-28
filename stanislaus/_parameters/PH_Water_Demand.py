@@ -2,6 +2,7 @@ from parameters import WaterLPParameter
 
 from utilities.converter import convert
 from dateutil.relativedelta import relativedelta
+from calendar import isleap
 import random
 
 
@@ -24,7 +25,11 @@ class PH_Water_Demand(WaterLPParameter):
         turbine_capacity = self.model.parameters[param].value(timestep, scenario_index) / 0.0864
 
         price_year = int(self.model.parameters['Price Year'].value(timestep, scenario_index))
-        price_date = self.datetime.strftime('{}-%m-%d'.format(price_year))
+
+        if self.datetime.month == 2 and self.datetime.day == 29:
+            price_date = self.datetime.strftime('{}-02-28'.format(price_year))
+        else:
+            price_date = self.datetime.strftime('{}-%m-%d'.format(price_year))
 
         # calculate the price threshold if needed
         if self.model.mode == 'planning':
@@ -37,14 +42,17 @@ class PH_Water_Demand(WaterLPParameter):
 
             if timestep.day == 1:
                 end = timestep.datetime + relativedelta(months=+1) - relativedelta(days=+1)
-                price_end = end.strftime('{}-%m-%d'.format(price_year))
+                if not isleap(price_year) and timestep.month == 2:
+                    price_end = '{}-02-28'.format(price_year)
+                else:
+                    price_end = end.strftime('{}-%m-%d'.format(price_year))
                 energy_prices = all_energy_prices[price_date:price_end].values.flatten()
                 energy_prices[::-1].sort()  # sort in descending order
                 planning_release = self.model.planning.nodes[self.res_name + '/1'].flow[-1]
 
                 # for planning turbine capacity, note that the turbine capacities are the same
                 # in both models (i.e., cms)
-                planning_turbine_capacity = turbine_capacity * self.cms_to_mcm * (price_end - price_date).days
+                planning_turbine_capacity = turbine_capacity * self.cms_to_mcm * (end - self.datetime).days
                 planning_release_fraction = min(planning_release / planning_turbine_capacity, 1.0)
                 price_index = int(len(energy_prices) * planning_release_fraction) - 1
                 if price_index < 0:
