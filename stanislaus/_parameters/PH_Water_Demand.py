@@ -76,6 +76,7 @@ class PH_Water_Demand(WaterLPParameter):
         else:
             block = self.model.tables["Energy Price Blocks"].at[price_date, str(self.block)]
 
+        # TODO: Extend the following to planning mode
         if self.res_name == 'Collierville PH' and self.block == 1:
             block = max(block, 0.05 + random.random() * 0.05)
 

@@ -1,5 +1,5 @@
 from parameters import WaterLPParameter
-
+from calendar import isleap
 
 class PH_Cost(WaterLPParameter):
     """"""
@@ -15,26 +15,39 @@ class PH_Cost(WaterLPParameter):
         # 2. generating potential, a function of generating efficiency, head, etc.
 
         price_year = int(self.model.parameters['Price Year'].value(timestep, scenario_index))
-        price_date = self.datetime.strftime('{}-%m-%d'.format(price_year))
+
+        if isleap(self.datetime.year) and self.datetime.month == 2 and self.datetime.day == 29:
+            price_date = self.datetime.strftime('{}-02-28'.format(price_year))
+        else:
+            price_date = self.datetime.strftime('{}-%m-%d'.format(price_year))
+
+        price_per_kWh = self.model.tables["Energy Price Values"] \
+            .at[price_date, str(self.block)]
+        head = self.model.nodes[self.res_name + self.month_suffix].head
+        eta = 0.9  # generation efficiency
+        gamma = 9807  # specific weight of water = rho*g
+        price_per_mcm = price_per_kWh * gamma * head * eta * 24 / 1e6
+
+        pywr_cost = - (abs(price_per_mcm) / 100 + 100) * price_per_mcm / abs(price_per_mcm)
 
         if self.model.mode == 'planning':
-            price_per_kWh = self.model.tables["Energy Price Values"] \
-                .at[price_date, str(self.block)]
-            head = self.model.nodes[self.res_name + self.month_suffix].head
-            eta = 0.9  # generation efficiency
-            gamma = 9807  # specific weight of water = rho*g
-            price_per_mcm = price_per_kWh * gamma * head * eta * 24 / 1e6
+            # price_per_kWh = self.model.tables["Energy Price Values"] \
+            #     .at[price_date, str(self.block)]
+            # head = self.model.nodes[self.res_name + self.month_suffix].head
+            # eta = 0.9  # generation efficiency
+            # gamma = 9807  # specific weight of water = rho*g
+            # price_per_mcm = price_per_kWh * gamma * head * eta * 24 / 1e6
 
             # We can add some conversion function here to go from price to Pywr cost
             # For now, divide by 100, which results in costs of about -5 to -170
             # E-flow costs can be set to less than this, or say -1000
-            pywr_cost = - (price_per_mcm / 100 + 100)
-
+            # pywr_cost = - (abs(price_per_mcm) / 100 + 100) * price_per_mcm / abs(price_per_mcm)
+            pass
         else:
             if 'Murphys' in self.name:
                 pywr_cost = -500
-            else:
-                pywr_cost = -250
+            # else:
+            #     pywr_cost = -250
 
         if self.res_name == 'Collierville PH' and self.block == 1 and pywr_cost < 0:
             pywr_cost = -600
