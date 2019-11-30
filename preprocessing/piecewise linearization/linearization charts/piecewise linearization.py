@@ -253,7 +253,8 @@ data_year = 2009 # default for historical; gets overwritten below
 if period == 'historical':
     years = range(2000, 2016)
 else:
-    years = range(2030, 2031)
+    # years = range(2030, 2031)
+    years = [2030, 2045, 2060]
     
 months = range(1,3)
 

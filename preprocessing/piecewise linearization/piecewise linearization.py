@@ -239,7 +239,6 @@ def get_splits(x, y, splits=None, record_len=None, k=1, max_k=1, debug=False, tr
 period = 'future'
 # period = 'historical'
 
-
 # In[7]:
 
 
@@ -249,12 +248,13 @@ if period == 'historical':
     data.index = pd.date_range(start='2009-01-01', periods=len(data), freq='H')
 else:
     data = pd.read_csv('input/Price - After ES.csv', index_col=[0], header=0, skiprows=[1])
-data.head()
+# data.head()
 
 # In[8]:
 
 
-step = 'daily'
+# step = 'daily'
+step = 'monthly'
 
 if step == 'daily':
     MAX_K = 2
@@ -264,15 +264,19 @@ else:
 data_year = 2009  # default for historical; gets overwritten below
 
 if period == 'historical':
-    years = range(2000, 2016)
+    py = 'PY2009'
+    # years = range(2000, 2016)
+    years = [2009]
 else:
+    py = 'PY2030-PY2060'
     #     years = range(2030, 2031)
-    years = range(2030, 2061)
+    # years = range(2030, 2061)
+    years = [2030, 2045, 2060]  # faster for reading in Pywr model
 
 months = range(1, 13)
 
-blocks = []
-prices = []
+blocks_dfs = []
+prices_dfs = []
 index_dates = []
 
 for year in years:
@@ -294,10 +298,15 @@ for year in years:
 
     print('Year: ', year)
 
+    year_blocks = []
+    year_prices = []
+    year_dates = []
+
     for date in dates:
 
         try:
             index_dates.append(date)
+            year_dates.append(date)
 
             if period == 'future':
                 data_year = date.year
@@ -341,24 +350,32 @@ for year in years:
                 _blocks.append(block)
                 _prices.append(price)
 
-            blocks.append(_blocks)
-            prices.append(_prices)
+            year_blocks.append(_blocks)
+            year_prices.append(_prices)
         except:
             print('Failed on: ', date)
             continue
+
+    _blocks_df = pd.DataFrame(data=year_blocks, index=year_dates, columns=range(1, len(_blocks) + 1))
+    _blocks_df.index.name = 'Date'
+    _blocks_df.to_csv('../../data/common/energy prices/piecewise_blocks_{}_PY{}.csv'.format(step, year))
+    _prices_df = pd.DataFrame(data=year_prices, index=year_dates, columns=range(1, len(_blocks) + 1))
+    _prices_df.index.name = 'Date'
+    _prices_df.to_csv('../../data/common/energy prices/piecewise_prices_DpMWh_{}_PY{}.csv'.format(step, year))
+
+    blocks_dfs.append(_blocks_df)
+    prices_dfs.append(_prices_df)
 
 # index
 # date_index = pd.DatetimeIndex(index_dates)
 
 # blocks
-df_blocks = pd.DataFrame(data=blocks, index=index_dates, columns=range(1, len(_blocks) + 1))
-df_blocks.index.name = 'Date'
-df_blocks.to_csv('output/piecewise_blocks_{}_{}.csv'.format(step, period))
+df_blocks = pd.concat(blocks_dfs, axis=0)
+df_blocks.to_csv('output/piecewise_blocks_{}_{}.csv'.format(step, py))
 
 # prices
-df_prices = pd.DataFrame(data=prices, index=index_dates, columns=range(1, len(_blocks) + 1))
-df_prices.index.name = 'Date'
-df_prices.to_csv('output/piecewise_prices_DpMWh_{}_{}.csv'.format(step, period))
+df_prices = pd.concat(prices_dfs, axis=0)
+df_prices.to_csv('output/piecewise_prices_DpMWh_{}_{}.csv'.format(step, py))
 
 print('{} {} done!'.format(period, step))
 
