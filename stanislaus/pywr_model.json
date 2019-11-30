@@ -2168,17 +2168,17 @@
             "index_col": "Reservoir"
         },
         "All Energy Price Values": {
-            "url": "../data/common/historical_prices_pivoted.csv",
+            "url": "../data/common/energy prices/prices_pivoted_PY2009.csv",
             "index_col": "Date",
             "parse_dates": true
         },
         "Energy Price Blocks": {
-            "url": "../data/common/piecewise_blocks_daily_historical.csv",
+            "url": "../data/common/energy prices/piecewise_blocks_daily_PY2009.csv",
             "index_col": "Date",
             "parse_dates": true
         },
         "Energy Price Values": {
-            "url": "../data/common/piecewise_prices_DpMWh_daily_historical.csv",
+            "url": "../data/common/energy prices/piecewise_prices_DpMWh_daily_PY2009.csv",
             "index_col": "Date",
             "parse_dates": true
         },
