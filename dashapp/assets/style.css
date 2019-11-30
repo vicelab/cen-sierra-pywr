@@ -26,3 +26,8 @@
     width: 400px;
     height: 300px;
 }
+
+#root .legend .bg {
+    stroke: rgba(68, 68, 68, 0.85) !important;
+    fill-opacity: 0.85 !important;
+}

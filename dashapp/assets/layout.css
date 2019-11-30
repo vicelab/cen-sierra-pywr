@@ -15,3 +15,11 @@
 .nav-item {
     cursor: pointer;
 }
+
+.select-climate {
+    min-width: 150px;
+}
+
+.select-price-year {
+    min-width: 100px;
+}
