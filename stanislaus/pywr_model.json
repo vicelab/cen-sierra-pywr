@@ -2579,8 +2579,11 @@
             "type": "constant",
             "value": -1000
         },
-        "IFR bl Pinecrest Lake/Requirement": {
-            "type": "IFR_bl_Pinecrest_Lake_Requirement"
+        "IFR bl Pinecrest Lake/Min Requirement": {
+            "type": "IFR_bl_Pinecrest_Lake_Min_Requirement"
+        },
+        "IFR bl Pinecrest Lake/Max Requirement": {
+            "type": "IFR_bl_Pinecrest_Lake_Max_Requirement"
         },
         "IFR bl Utica Reservoir/Violation Cost": {
             "type": "constant",
@@ -3433,9 +3436,13 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Pinecrest Lake"
         },
-        "IFR bl Pinecrest Lake/requirement": {
+        "IFR bl Pinecrest Lake/min requirement": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Pinecrest Lake/Requirement"
+            "parameter": "IFR bl Pinecrest Lake/Min Requirement"
+        },
+        "IFR bl Pinecrest Lake/max requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Pinecrest Lake/Max Requirement"
         },
         "IFR bl Utica Reservoir/flow": {
             "type": "NumpyArrayNodeRecorder",
