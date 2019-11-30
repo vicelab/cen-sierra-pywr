@@ -368,9 +368,16 @@
         },
         {
             "name": "IFR bl Philadelphia Div",
-            "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Philadelphia Div/Violation Cost",
-            "mrf": "IFR bl Philadelphia Div/Requirement",
+            "type": "PiecewiseInstreamFlowRequirement",
+            "cost": [
+                -1000,
+                0,
+                5000
+            ],
+            "max_flow": [
+                "IFR bl Philadelphia Div/Min Requirement",
+                "IFR bl Philadelphia Div/Max Requirement"
+            ],
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -438,9 +445,16 @@
         },
         {
             "name": "IFR bl Pinecrest Lake",
-            "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Pinecrest Lake/Violation Cost",
-            "mrf": "IFR bl Pinecrest Lake/Requirement",
+            "type": "PiecewiseInstreamFlowRequirement",
+            "cost": [
+                -1000,
+                0,
+                5000
+            ],
+            "max_flow": [
+                "IFR bl Pinecrest Lake/Min Requirement",
+                "IFR bl Pinecrest Lake/Max Requirement"
+            ],
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -2153,9 +2167,16 @@
     "tables": {
         "Peak Donnells Runoff": {
             "url": "../data/Stanislaus River/Scenarios/Livneh/preprocessed/peak_runoff_DonnellsRes_MarToMay_cms.csv",
-            "usecols": [0, 1],
-            "index_col": [0],
-            "parse_dates": [1],
+            "usecols": [
+                0,
+                1
+            ],
+            "index_col": [
+                0
+            ],
+            "parse_dates": [
+                1
+            ],
             "squeeze": true
         },
         "San Joaquin Valley Index": {
@@ -2493,8 +2514,11 @@
             "type": "constant",
             "value": -1000
         },
-        "IFR bl Philadelphia Div/Requirement": {
-            "type": "IFR_bl_Philadelphia_Div_Requirement"
+        "IFR bl Philadelphia Div/Min Requirement": {
+            "type": "IFR_bl_Philadelphia_Div_Min_Requirement"
+        },
+        "IFR bl Philadelphia Div/Max Requirement": {
+            "type": "IFR_bl_Philadelphia_Div_Max_Requirement"
         },
         "IFR bl Relief Reservoir/Violation Cost": {
             "type": "constant",
@@ -3325,9 +3349,13 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Philadelphia Div"
         },
-        "IFR bl Philadelphia Div/requirement": {
+        "IFR bl Philadelphia Div/min requirement": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Philadelphia Div/Requirement"
+            "parameter": "IFR bl Philadelphia Div/Min Requirement"
+        },
+        "IFR bl Philadelphia Div/max requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Philadelphia Div/Max Requirement"
         },
         "IFR bl Relief Reservoir/flow": {
             "type": "NumpyArrayNodeRecorder",
