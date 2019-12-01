@@ -23,3 +23,18 @@
 .select-price-year {
     min-width: 100px;
 }
+
+.timeseries-metrics-data {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.metrics-gauges {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-gauge {
+    display: flex;
+    align-items: center;
+}

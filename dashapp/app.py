@@ -200,6 +200,20 @@ def percentile_graphs(df, name, percentiles, color='black'):
     return lines
 
 
+def indicator(id, label, value, color):
+    return html.Div(
+        [
+            label + ': ', value,
+            daq.Indicator(
+                color=color,
+                value=True
+            )
+        ],
+        id=id,
+        style={'display': 'inline-block'}
+    )
+
+
 def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     res_name_id = res_name.lower().replace(' ', '_')
     ts_data = []
@@ -364,15 +378,23 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
         else:
             nse_color = 'green'
 
+        GAUGE_SIZE = 80
+
         nse_gauge = daq.Gauge(
             id='nse-gauge-' + res_name_id,
             label='NSE',
-            size=120,
+            size=GAUGE_SIZE,
             min=-1.0,
             value=nse,
             max=1.0,
             color=nse_color,
         )
+        # nse_gauge = indicator(
+        #     id='nse-gauge-' + res_name_id,
+        #     label='NSE',
+        #     value=round(nse, 2),
+        #     color=nse_color,
+        # )
 
         if abs(pbias) >= 20:
             pbias_color = 'red'
@@ -384,14 +406,22 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
         pbias_gauge = daq.Gauge(
             id='pbias-gauge-' + res_name_id,
             label='% bias',
-            size=120,
+            size=GAUGE_SIZE,
             min=min(pbias, -100.0),
             value=pbias,
             max=max(pbias, 100.0),
             color=pbias_color
         )
+        # pbias_gauge = indicator(
+        #     id='pbias-gauge-' + res_name_id,
+        #     label='% bias',
+        #     value=round(pbias, 2),
+        #     color=pbias_color
+        # )
 
-        gauges = [nse_gauge, pbias_gauge]
+        gauges = html.Div(
+            [nse_gauge, pbias_gauge]
+        )
 
     ylabel = AXIS_LABELS.get(attr, 'unknown')
 
@@ -432,14 +462,14 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
         },
     )
 
-    children = [timeseries_graph, flow_duration_graph] + gauges
+    children = [timeseries_graph, flow_duration_graph]
 
     div = html.Div(
         children=[
             html.H5(res_name),
             html.Div(
                 children=children,
-                className="timeseries-metrics-data"
+                className="timeseries-metrics-data",
             )
         ],
         className="timeseries-metrics-box"
