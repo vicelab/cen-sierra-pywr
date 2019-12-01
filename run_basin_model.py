@@ -479,7 +479,9 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
 
 
 def run_model(basin, scenario, start, end, network_key, run_name="default", include_planning=False, simplify=True,
-              debug=False):
+              debug=False, planning_months=12):
+    months = planning_months
+
     # ========================
     # Set up model environment
     # ========================
@@ -509,8 +511,12 @@ def run_model(basin, scenario, start, end, network_key, run_name="default", incl
             if 'observed' in pname.lower():
                 continue
             url = param.get('url')
-            if url and climate_scenario != 'Livneh':
-                param['url'] = url.replace('Livneh', climate_scenario).replace('historical', 'future')
+            if url:
+                if climate_scenario != 'Livneh':
+                    url = url.replace('Livneh', climate_scenario)
+                if price_year != 2009:
+                    url = url.replace('PY2009', 'PY{}'.format(price_year))
+                param['url'] = url
             new_model_parts[model_part][pname] = param
     new_model_parts['parameters']['Price Year']['value'] = price_year
     base_model.update(new_model_parts)
@@ -570,7 +576,6 @@ def run_model(basin, scenario, start, end, network_key, run_name="default", incl
         model_path = simplified_model_path
 
     # Area for testing monthly model
-    months = 12
     save_results = True
     planning_model = None
     df_planning = None
@@ -737,19 +742,23 @@ network_key = args.network_key or os.environ.get('NETWORK_KEY')
 debug = args.debug
 include_planning = args.include_planning
 
-gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
+# gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
+gcms = ['HadGEM2-ES', 'MIROC5']
 rcps = ['85']
 gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
 
 if debug:
+    planning_months = 12
     climate_scenarios = ['Livneh']
-    price_years = [2009]
+    price_years = [2009, 2030, 2060]
+    # price_years = [2009]
 else:
+    planning_months = 12
     climate_scenarios = gcm_rcps
     price_years = [2030, 2060]
 
-climate_scenarios = [gcm_rcps[0], gcm_rcps[-1]]
-price_years = [2030, 2060]
+# climate_scenarios = gcm_rcps
+# price_years = [2009]
 
 scenarios = product(climate_scenarios, price_years)
 
@@ -757,13 +766,18 @@ for scenario in scenarios:
     climate, price_year = scenario
     if climate == 'Livneh':
         start_year = 2000
-        end_year = 2002
+        end_year = 2012
     else:
         start_year = 2030
         end_year = 2045
     start = '{}-10-01'.format(start_year)
     end = '{}-09-30'.format(end_year)
-    run_model(basin, scenario, start, end, network_key,
-              run_name=args.run_name, include_planning=include_planning, debug=debug)
+    run_model(
+        basin, scenario, start, end, network_key,
+        run_name=args.run_name,
+        include_planning=include_planning,
+        debug=debug,
+        planning_months=planning_months
+    )
 
 print('done!')

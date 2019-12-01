@@ -419,9 +419,9 @@
             "name": "IFR bl Beaver Creek Diversion Dam",
             "type": "PiecewiseInstreamFlowRequirement",
             "cost": [
-                -1000,
+                -2000,
                 0,
-                5000
+                7500
             ],
             "max_flow": [
                 "IFR bl Beaver Creek Diversion Dam/Min Requirement",
@@ -447,7 +447,7 @@
             "name": "IFR bl Pinecrest Lake",
             "type": "PiecewiseInstreamFlowRequirement",
             "cost": [
-                -1000,
+                -2500,
                 0,
                 5000
             ],
