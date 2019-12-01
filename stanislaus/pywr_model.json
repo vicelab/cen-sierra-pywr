@@ -71,10 +71,13 @@
             "head": 135.3,
             "max_flow": "Angels PH/Turbine Capacity",
             "max_flows": [
-                "Angels PH/Water Demand/1"
+                "Angels PH/Water Demand/1",
+                "Angels PH/Water Demand/2"
             ],
             "costs": [
-                "Angels PH/Cost/1"
+                "Angels PH/Cost/1",
+                "Angels PH/Cost/2",
+                "Angels PH/Cost/3"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -177,10 +180,13 @@
             "head": 691.896,
             "max_flow": "Collierville PH/Turbine Capacity",
             "max_flows": [
-                "Collierville PH/Water Demand/1"
+                "Collierville PH/Water Demand/1",
+                "Collierville PH/Water Demand/2"
             ],
             "costs": [
-                "Collierville PH/Cost/1"
+                "Collierville PH/Cost/1",
+                "Collierville PH/Cost/2",
+                "Collierville PH/Cost/3"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -205,10 +211,13 @@
             "head": 350.8,
             "max_flow": "Donnells PH/Turbine Capacity",
             "max_flows": [
-                "Donnells PH/Water Demand/1"
+                "Donnells PH/Water Demand/1",
+                "Donnells PH/Water Demand/2"
             ],
             "costs": [
-                "Donnells PH/Cost/1"
+                "Donnells PH/Cost/1",
+                "Donnells PH/Cost/2",
+                "Donnells PH/Cost/3"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -678,10 +687,13 @@
             "max_flow": "Phoenix PH/Turbine Capacity",
             "head": 361.7976,
             "max_flows": [
-                "Phoenix PH/Water Demand/1"
+                "Phoenix PH/Water Demand/1",
+                "Phoenix PH/Water Demand/2"
             ],
             "costs": [
-                "Phoenix PH/Cost/1"
+                "Phoenix PH/Cost/1",
+                "Phoenix PH/Cost/2",
+                "Phoenix PH/Cost/3"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -719,10 +731,13 @@
             "head": 130,
             "max_flow": "Sand Bar PH/Turbine Capacity",
             "max_flows": [
-                "Sand Bar PH/Water Demand/1"
+                "Sand Bar PH/Water Demand/1",
+                "Sand Bar PH/Water Demand/2"
             ],
             "costs": [
-                "Sand Bar PH/Cost/1"
+                "Sand Bar PH/Cost/1",
+                "Sand Bar PH/Cost/2",
+                "Sand Bar PH/Cost/3"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -773,10 +788,13 @@
             "head": 568.452,
             "max_flow": "Spring Gap PH/Turbine Capacity",
             "max_flows": [
-                "Spring Gap PH/Water Demand/1"
+                "Spring Gap PH/Water Demand/1",
+                "Spring Gap PH/Water Demand/2"
             ],
             "costs": [
-                "Spring Gap PH/Cost/1"
+                "Spring Gap PH/Cost/1",
+                "Spring Gap PH/Cost/2",
+                "Spring Gap PH/Cost/3"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -806,10 +824,13 @@
             "head": 463.296,
             "max_flow": "Stanislaus PH/Turbine Capacity",
             "max_flows": [
-                "Stanislaus PH/Water Demand/1"
+                "Stanislaus PH/Water Demand/1",
+                "Stanislaus PH/Water Demand/2"
             ],
             "costs": [
-                "Stanislaus PH/Cost/1"
+                "Stanislaus PH/Cost/1",
+                "Stanislaus PH/Cost/2",
+                "Stanislaus PH/Cost/3"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -2272,7 +2293,16 @@
         "Angels PH/Water Demand/1": {
             "type": "PH_Water_Demand"
         },
+        "Angels PH/Water Demand/2": {
+            "type": "PH_Water_Demand"
+        },
         "Angels PH/Cost/1": {
+            "type": "PH_Cost"
+        },
+        "Angels PH/Cost/2": {
+            "type": "PH_Cost"
+        },
+        "Angels PH/Cost/3": {
             "type": "PH_Cost"
         },
         "AVERY_11294500/Observed Flow": {
@@ -2374,7 +2404,16 @@
         "Collierville PH/Water Demand/1": {
             "type": "PH_Water_Demand"
         },
+        "Collierville PH/Water Demand/2": {
+            "type": "PH_Water_Demand"
+        },
         "Collierville PH/Cost/1": {
+            "type": "PH_Cost"
+        },
+        "Collierville PH/Cost/2": {
+            "type": "PH_Cost"
+        },
+        "Collierville PH/Cost/3": {
             "type": "PH_Cost"
         },
         "Donnells PH/Fixed Head": {
@@ -2388,7 +2427,16 @@
         "Donnells PH/Water Demand/1": {
             "type": "PH_Water_Demand"
         },
+        "Donnells PH/Water Demand/2": {
+            "type": "PH_Water_Demand"
+        },
         "Donnells PH/Cost/1": {
+            "type": "PH_Cost"
+        },
+        "Donnells PH/Cost/2": {
+            "type": "PH_Cost"
+        },
+        "Donnells PH/Cost/3": {
             "type": "PH_Cost"
         },
         "Donnells Reservoir/Observed Storage": {
@@ -2766,7 +2814,16 @@
         "Phoenix PH/Water Demand/1": {
             "type": "PH_Water_Demand"
         },
+        "Phoenix PH/Water Demand/2": {
+            "type": "PH_Water_Demand"
+        },
         "Phoenix PH/Cost/1": {
+            "type": "PH_Cost"
+        },
+        "Phoenix PH/Cost/2": {
+            "type": "PH_Cost"
+        },
+        "Phoenix PH/Cost/3": {
             "type": "PH_Cost"
         },
         "Pinecrest Reservoir/Observed Storage": {
@@ -2866,7 +2923,16 @@
         "Sand Bar PH/Water Demand/1": {
             "type": "PH_Water_Demand"
         },
+        "Sand Bar PH/Water Demand/2": {
+            "type": "PH_Water_Demand"
+        },
         "Sand Bar PH/Cost/1": {
+            "type": "PH_Cost"
+        },
+        "Sand Bar PH/Cost/2": {
+            "type": "PH_Cost"
+        },
+        "Sand Bar PH/Cost/3": {
             "type": "PH_Cost"
         },
         "SF STANISLAUS R A STRAWBERRY CA_11296500/Observed Flow": {
@@ -2889,13 +2955,21 @@
             "value": 568.452
         },
         "Spring Gap PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 0.154
+            "type": "Spring_Gap_PH_Turbine_Capacity"
         },
         "Spring Gap PH/Water Demand/1": {
             "type": "PH_Water_Demand"
         },
+        "Spring Gap PH/Water Demand/2": {
+            "type": "PH_Water_Demand"
+        },
         "Spring Gap PH/Cost/1": {
+            "type": "PH_Cost"
+        },
+        "Spring Gap PH/Cost/2": {
+            "type": "PH_Cost"
+        },
+        "Spring Gap PH/Cost/3": {
             "type": "PH_Cost"
         },
         "Stanislaus PH/Fixed Head": {
@@ -2919,7 +2993,16 @@
         "Stanislaus PH/Water Demand/1": {
             "type": "PH_Water_Demand"
         },
+        "Stanislaus PH/Water Demand/2": {
+            "type": "PH_Water_Demand"
+        },
         "Stanislaus PH/Cost/1": {
+            "type": "PH_Cost"
+        },
+        "Stanislaus PH/Cost/2": {
+            "type": "PH_Cost"
+        },
+        "Stanislaus PH/Cost/3": {
             "type": "PH_Cost"
         },
         "STN_01 Headflow/Runoff": {

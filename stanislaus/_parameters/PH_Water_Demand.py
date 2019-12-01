@@ -62,9 +62,12 @@ class PH_Water_Demand(WaterLPParameter):
 
             # calculate today's total release
             energy_prices_today = all_energy_prices.loc[price_date].values
-            production_hours = len([1 for p in energy_prices_today if p >= self.price_threshold])
-            max_flow_fraction = production_hours / 24
+            if self.block == 1:
+                production_hours = len([1 for p in energy_prices_today if p >= self.price_threshold])
+            else:
+                production_hours = len([1 for p in energy_prices_today if p < self.price_threshold and p > 0.0])
 
+            max_flow_fraction = production_hours / 24
             # blocks = self.model.tables["Energy Price Blocks"].loc[timestep.datetime]
 
             # sum_of_previous_blocks = blocks[:str(self.block - 1)].sum()
