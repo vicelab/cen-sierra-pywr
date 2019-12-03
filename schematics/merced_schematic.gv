@@ -1,0 +1,160 @@
+// merced
+digraph merced {
+	"Below Maxwell Ck Headflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below Maxwell Ck Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below Merced River Headflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below MER_01 Headflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below MER_01 Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below MER_02 Headflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below MER_02 Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below MER_03 Headflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below MER_03 Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below MER_04 Headflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below MER_04 Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below MER_05 Headflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below MER_05 Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below MER_06 Headflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below MER_06 Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below South Fork Merced R Headflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below South Fork Merced R Inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"BlwMcClure.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"BlwMcClure.2.1.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"BlwMcClure.2.1.2 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"BlwMcClure.2.2 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Main Canal [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"MERCE-L-CON1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Merced River [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Merced River (1).1.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Merced River (1).1.2 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Merced River (2).2.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Merced River (2).2.2.1.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Merced River (2).2.2.1.2.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Merced River (2).2.2.1.2.2.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Merced River (2).2.2.1.2.2.2.1.1.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Merced River (2).2.2.1.2.2.2.1.1.2 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Merced River (2).2.2.1.2.2.2.2 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Merced River (2).2.2.2.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Merced River (2).2.2.2.2.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Merced River (2).2.2.2.2.2 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Merced River below Crocker-Huffman [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Northside Canal [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Valley_inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below Ex Chequer Dam [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below Merced Falls Dam [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"blwNewExchequerPH [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"Crocker-Huffman Diversion Reservoir [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Lake McClure [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Lake McClure Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Lake McSwain [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Maxwell Ck Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Maxwell Ck Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"McSwain PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"MERCE-N-JUN1 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"MERCE-N-JUN2 [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Merced Falls PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Merced Falls Res [node]" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Merced R below Crocker-Huffman Dam [node]" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"Merced River Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Merced River Outflow [node]" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"MER_01 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"MER_01 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"MER_02 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"MER_02 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"MER_03 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"MER_03 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"MER_04 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"MER_04 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"MER_05 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"MER_05 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"MER_06 Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"MER_06 Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"MID Main [node]" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"MID Northside [node]" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"Near Shaffer Bridge_11271290 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Near Stevinson_11272500 [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"New Exchequer PH [node]" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"South Fork Merced R Headflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"South Fork Merced R Inflow [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"USGS_11264500 MERCED R A HAPPY ISLES [node]" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Valley_Demand [node]" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"Valley_Inflow [node]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Maxwell Ck Headflow [node]" -> "Below Maxwell Ck Headflow [link]"
+	"Below Maxwell Ck Headflow [link]" -> "MER_02 Inflow [node]"
+	"South Fork Merced R Inflow [node]" -> "Below Maxwell Ck Inflow [link]"
+	"Below Maxwell Ck Inflow [link]" -> "MER_03 Inflow [node]"
+	"Merced River Headflow [node]" -> "Below Merced River Headflow [link]"
+	"Below Merced River Headflow [link]" -> "MER_06 Inflow [node]"
+	"MER_01 Headflow [node]" -> "Below MER_01 Headflow [link]"
+	"Below MER_01 Headflow [link]" -> "MER_01 Inflow [node]"
+	"MER_03 Inflow [node]" -> "Below MER_01 Inflow [link]"
+	"Below MER_01 Inflow [link]" -> "Maxwell Ck Inflow [node]"
+	"MER_02 Headflow [node]" -> "Below MER_02 Headflow [link]"
+	"Below MER_02 Headflow [link]" -> "MER_02 Inflow [node]"
+	"MER_02 Inflow [node]" -> "Below MER_02 Inflow [link]"
+	"Below MER_02 Inflow [link]" -> "Maxwell Ck Inflow [node]"
+	"MER_03 Headflow [node]" -> "Below MER_03 Headflow [link]"
+	"Below MER_03 Headflow [link]" -> "MER_03 Inflow [node]"
+	"MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500 [node]" -> "Below MER_03 Inflow [link]"
+	"Below MER_03 Inflow [link]" -> "South Fork Merced R Inflow [node]"
+	"MER_04 Headflow [node]" -> "Below MER_04 Headflow [link]"
+	"Below MER_04 Headflow [link]" -> "MER_04 Inflow [node]"
+	"MER_04 Inflow [node]" -> "Below MER_04 Inflow [link]"
+	"Below MER_04 Inflow [link]" -> "South Fork Merced R Inflow [node]"
+	"MER_05 Headflow [node]" -> "Below MER_05 Headflow [link]"
+	"Below MER_05 Headflow [link]" -> "MER_05 Inflow [node]"
+	"USGS_11264500 MERCED R A HAPPY ISLES [node]" -> "Below MER_05 Inflow [link]"
+	"Below MER_05 Inflow [link]" -> "MER_05 Inflow [node]"
+	"MER_06 Headflow [node]" -> "Below MER_06 Headflow [link]"
+	"Below MER_06 Headflow [link]" -> "MER_06 Inflow [node]"
+	"MER_06 Inflow [node]" -> "Below MER_06 Inflow [link]"
+	"Below MER_06 Inflow [link]" -> "USGS_11264500 MERCED R A HAPPY ISLES [node]"
+	"South Fork Merced R Headflow [node]" -> "Below South Fork Merced R Headflow [link]"
+	"Below South Fork Merced R Headflow [link]" -> "MER_04 Inflow [node]"
+	"MER_05 Inflow [node]" -> "Below South Fork Merced R Inflow [link]"
+	"Below South Fork Merced R Inflow [link]" -> "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500 [node]"
+	"Lake McClure [node]" -> "BlwMcClure.1 [link]"
+	"BlwMcClure.1 [link]" -> "New Exchequer PH [node]"
+	"New Exchequer PH [node]" -> "BlwMcClure.2.1.1 [link]"
+	"BlwMcClure.2.1.1 [link]" -> "Below Ex Chequer Dam [node]"
+	"Below Ex Chequer Dam [node]" -> "BlwMcClure.2.1.2 [link]"
+	"BlwMcClure.2.1.2 [link]" -> "blwNewExchequerPH [node]"
+	"blwNewExchequerPH [node]" -> "BlwMcClure.2.2 [link]"
+	"BlwMcClure.2.2 [link]" -> "Lake McSwain [node]"
+	"Crocker-Huffman Diversion Reservoir [node]" -> "Main Canal [link]"
+	"Main Canal [link]" -> "MID Main [node]"
+	"MERCE-N-JUN2 [node]" -> "MERCE-L-CON1 [link]"
+	"MERCE-L-CON1 [link]" -> "Valley_Demand [node]"
+	"Maxwell Ck Inflow [node]" -> "Merced River [link]"
+	"Merced River [link]" -> "MER_01 Inflow [node]"
+	"MER_01 Inflow [node]" -> "Merced River (1).1.1 [link]"
+	"Merced River (1).1.1 [link]" -> "Lake McClure Inflow [node]"
+	"Lake McClure Inflow [node]" -> "Merced River (1).1.2 [link]"
+	"Merced River (1).1.2 [link]" -> "Lake McClure [node]"
+	"Lake McSwain [node]" -> "Merced River (2).2.1 [link]"
+	"Merced River (2).2.1 [link]" -> "McSwain PH [node]"
+	"McSwain PH [node]" -> "Merced River (2).2.2.1.1 [link]"
+	"Merced River (2).2.2.1.1 [link]" -> "Merced Falls Res [node]"
+	"Merced Falls Res [node]" -> "Merced River (2).2.2.1.2.1 [link]"
+	"Merced River (2).2.2.1.2.1 [link]" -> "Merced Falls PH [node]"
+	"Merced Falls PH [node]" -> "Merced River (2).2.2.1.2.2.1 [link]"
+	"Merced River (2).2.2.1.2.2.1 [link]" -> "Below Merced Falls Dam [node]"
+	"Below Merced Falls Dam [node]" -> "Merced River (2).2.2.1.2.2.2.1.1.1 [link]"
+	"Merced River (2).2.2.1.2.2.2.1.1.1 [link]" -> "Crocker-Huffman Diversion Reservoir [node]"
+	"Crocker-Huffman Diversion Reservoir [node]" -> "Merced River (2).2.2.1.2.2.2.1.1.2 [link]"
+	"Merced River (2).2.2.1.2.2.2.1.1.2 [link]" -> "Merced R below Crocker-Huffman Dam [node]"
+	"Near Shaffer Bridge_11271290 [node]" -> "Merced River (2).2.2.1.2.2.2.2 [link]"
+	"Merced River (2).2.2.1.2.2.2.2 [link]" -> "MERCE-N-JUN1 [node]"
+	"MERCE-N-JUN1 [node]" -> "Merced River (2).2.2.2.1 [link]"
+	"Merced River (2).2.2.2.1 [link]" -> "MERCE-N-JUN2 [node]"
+	"MERCE-N-JUN2 [node]" -> "Merced River (2).2.2.2.2.1 [link]"
+	"Merced River (2).2.2.2.2.1 [link]" -> "Near Stevinson_11272500 [node]"
+	"Near Stevinson_11272500 [node]" -> "Merced River (2).2.2.2.2.2 [link]"
+	"Merced River (2).2.2.2.2.2 [link]" -> "Merced River Outflow [node]"
+	"Merced R below Crocker-Huffman Dam [node]" -> "Merced River below Crocker-Huffman [link]"
+	"Merced River below Crocker-Huffman [link]" -> "Near Shaffer Bridge_11271290 [node]"
+	"Merced Falls PH [node]" -> "Northside Canal [link]"
+	"Northside Canal [link]" -> "MID Northside [node]"
+	"Valley_Inflow [node]" -> "Valley_inflow [link]"
+	"Valley_inflow [link]" -> "MERCE-N-JUN1 [node]"
+}
