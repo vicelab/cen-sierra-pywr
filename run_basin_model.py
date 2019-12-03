@@ -148,7 +148,8 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
         'San Joaquin Valley WYI'
     ]
     parameters_to_delete = []
-    black_list = ['min_volume', 'max_volume']
+    # black_list = ['min_volume', 'max_volume']
+    black_list = ['max_volume']
     storage_recorders = {}
 
     for node in m['nodes']:
@@ -219,8 +220,13 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
                     'type': 'Link',
                 }
                 # Actually, we don't want to do the following, since it might cause an infeasibility
-                # if 'min_volume' in node:
-                #     storage_link['min_flow'] = node['min_volume']
+                if 'min_volume' in node:
+                    min_volume = node['min_volume']
+                    if type(min_volume) == str:
+                        if min_volume not in parameters_to_expand:
+                            parameters_to_expand.append(min_volume)
+                        min_volume += month
+                    storage_link['min_flow'] = min_volume
                 if 'max_volume' in node:
                     storage_link['max_flow'] = node['max_volume']
                 cost = node.pop('cost', None)
@@ -634,7 +640,7 @@ def run_model(basin, scenario, start, end, network_key, run_name="default", incl
     setattr(m, 'mode', 'scheduling')
     setattr(m, 'planning', planning_model if include_planning else None)
 
-    for date in tqdm(m.timestepper.datetime_index, ncols=80, disable=False):
+    for date in tqdm(m.timestepper.datetime_index, ncols=60, disable=False):
         step += 1
         try:
 
@@ -748,9 +754,9 @@ rcps = ['85']
 gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
 
 if debug:
-    planning_months = 12
+    planning_months = 8
     climate_scenarios = ['Livneh']
-    price_years = [2009, 2030, 2060]
+    price_years = [2009]
     # price_years = [2009]
 else:
     planning_months = 12
@@ -766,7 +772,10 @@ for scenario in scenarios:
     climate, price_year = scenario
     if climate == 'Livneh':
         start_year = 2000
-        end_year = 2012
+        if debug:
+            end_year = 2003
+        else:
+            end_year = 2012
     else:
         start_year = 2030
         end_year = 2045
