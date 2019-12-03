@@ -65,7 +65,7 @@ class PH_Water_Demand(WaterLPParameter):
             if self.block == 1:
                 production_hours = len([1 for p in energy_prices_today if p >= self.price_threshold])
             else:
-                production_hours = len([1 for p in energy_prices_today if p < self.price_threshold and p > 0.0])
+                production_hours = len([1 for p in energy_prices_today if 0.0 < p < self.price_threshold])
 
             max_flow_fraction = production_hours / 24
             # blocks = self.model.tables["Energy Price Blocks"].loc[timestep.datetime]
@@ -82,6 +82,13 @@ class PH_Water_Demand(WaterLPParameter):
         # TODO: Extend the following to planning mode
         if self.res_name == 'Collierville PH' and self.block == 1:
             block = max(block, 0.05 + random.random() * 0.05)
+
+        elif self.res_name in ['Sand Bar PH', 'Stanislaus PH']:
+            if self.model.mode == 'scheduling' \
+                    and (11, 1) <= (self.datetime.month, self.datetime.day) <= (11, 14):
+                turbine_capacity = 0.0
+            elif self.model.mode == 'planning' and self.datetime.month == 11:
+                turbine_capacity *= 0.5
 
         demand_mcm = turbine_capacity * self.cms_to_mcm * block
 

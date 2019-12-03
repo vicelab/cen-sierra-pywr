@@ -9,7 +9,9 @@ class IFR_bl_Donnell_Lake_Max_Requirement(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         if self.model.mode == 'scheduling':
-            ifr_range = self.get_ifr_range(timestep, scenario_index, initial_value=25 / 35.31, rate=0.25)
+            ifr_range = self.get_ifr_range(
+                timestep, scenario_index,
+                initial_value=25 / 35.31, rate=0.25, max_flow=60 / 35.31)
         else:
             ifr_range = 1e6
         return ifr_range

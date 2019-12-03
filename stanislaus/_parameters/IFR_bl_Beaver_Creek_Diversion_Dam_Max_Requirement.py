@@ -8,7 +8,7 @@ class IFR_bl_Beaver_Creek_Diversion_Dam_Max_Requirement(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         if self.model.mode == 'scheduling':
-            ifr_range = self.get_ifr_range(timestep, scenario_index, initial_value=(20 / 35.31), rate=0.25)
+            ifr_range = self.get_ifr_range(timestep, scenario_index, initial_value=(10 / 35.31), rate=0.1)
         else:
             ifr_range = 1e6  # no constraint
         return ifr_range

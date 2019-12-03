@@ -4,7 +4,7 @@ from utilities.converter import convert
 import pandas as pd
 
 
-class Tulloch_Lake_Storage_Demand(WaterLPParameter):
+class Tulloch_Lake_Min_Volume(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         path = "Management/BAU/Flood Control/LakeTulloch_FloodControl_Requirement.csv"
@@ -15,8 +15,7 @@ class Tulloch_Lake_Storage_Demand(WaterLPParameter):
         else:
             end = '{:02}-{:02}'.format(self.datetime.month, self.days_in_month())
             control_curve_target = flood_control_req[start:end].mean()
-        max_storage = self.model.nodes["Tulloch Lake" + self.month_suffix].max_volume
-        return control_curve_target / max_storage
+        return control_curve_target - 1.62  # subtract 2 TAF based on observations
 
     def value(self, timestep, scenario_index):
         try:
@@ -31,5 +30,5 @@ class Tulloch_Lake_Storage_Demand(WaterLPParameter):
         return cls(model, **data)
 
 
-Tulloch_Lake_Storage_Demand.register()
-print(" [*] Tulloch_Lake_Storage_Demand successfully registered")
+Tulloch_Lake_Min_Volume.register()
+print(" [*] Tulloch_Lake_Min_Volume successfully registered")

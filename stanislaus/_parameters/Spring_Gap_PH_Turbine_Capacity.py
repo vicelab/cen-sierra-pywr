@@ -10,7 +10,7 @@ class Spring_Gap_PH_Turbine_Capacity(WaterLPParameter):
     def _value(self, timestep, scenario_index):
         capacity_cms = 57 / 35.31  # cfs to cms
         if self.model.mode == 'scheduling':
-            if (6, 1) <= (timestep.month, timestep.day) <= (8, 15):
+            if (7, 1) <= (timestep.month, timestep.day) <= (8, 31):
                 capacity_cms = 12.5 / 35.31
             pinecrest_reservoir = self.model.nodes['Pinecrest Reservoir']
             if timestep.index == 0:
@@ -25,10 +25,10 @@ class Spring_Gap_PH_Turbine_Capacity(WaterLPParameter):
                 capacity_cms = 25 / 35.31  # curtail to 25 cfs
 
         else:
-            if self.datetime.month in [6, 7]:
+            if self.datetime.month in [7, 8]:
                 capacity_cms = 12.5 / 35.31
-            elif self.datetime.month == 8:
-                capacity_cms = (12.5 + 57) / 2 / 35.31  # average of 12.5 and 57
+            # elif self.datetime.month == 8:
+            #     capacity_cms = (12.5 + 57) / 2 / 35.31  # average of 12.5 and 57
             capacity_cms *= self.days_in_month()
 
         return capacity_cms
