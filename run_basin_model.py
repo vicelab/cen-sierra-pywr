@@ -9,7 +9,6 @@ from tqdm import tqdm
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from common.tests import test_planning_model, get_planning_dataframe
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
@@ -494,7 +493,7 @@ def run_model(basin, scenario, start, end, network_key, run_name="default", incl
 
     here = os.path.dirname(os.path.realpath(__file__))
     root_dir = os.path.join(here, basin)
-    os.chdir(root_dir)
+    os.chdir(here)
 
     climate_scenario, price_year = scenario
 
@@ -512,6 +511,8 @@ def run_model(basin, scenario, start, end, network_key, run_name="default", incl
 
     new_model_parts = {}
     for model_part in ['tables', 'parameters']:
+        if model_part not in base_model:
+            continue
         new_model_parts[model_part] = {}
         for pname, param in base_model[model_part].items():
             if 'observed' in pname.lower():
@@ -524,7 +525,11 @@ def run_model(basin, scenario, start, end, network_key, run_name="default", incl
                     url = url.replace('PY2009', 'PY{}'.format(price_year))
                 param['url'] = url
             new_model_parts[model_part][pname] = param
-    new_model_parts['parameters']['Price Year']['value'] = price_year
+
+    new_model_parts['parameters']['Price Year'] = {
+        "type": "constant",
+        "value": price_year
+    }
     base_model.update(new_model_parts)
     base_model['timestepper']['start'] = start
     base_model['timestepper']['end'] = end
@@ -541,27 +546,44 @@ def run_model(basin, scenario, start, end, network_key, run_name="default", incl
     # =========================================
 
     sys.path.insert(0, os.getcwd())
-    policy_folder = '_parameters'
+    policy_folder = os.path.join(basin, '_parameters')
     for filename in os.listdir(policy_folder):
         if '__init__' in filename:
             continue
         policy_name = os.path.splitext(filename)[0]
-        policy_module = '.{policy_name}'.format(policy_name=policy_name)
+        policy_module = '{basin}._parameters.{policy_name}'.format(basin=basin, policy_name=policy_name)
         # package = '.{}'.format(policy_folder)
         import_module(policy_module, policy_folder)
 
+    # modules = [
+    #     # ('IFRs', 'policies'),
+    #     # ('domains', 'domains')
+    # ]
+    # # from domains import domains
+    # for name, package in modules:
+    #     try:
+    #         import_module('{}.{}'.format(basin, name), package)
+    #     except Exception as err:
+    #         print(' [-] WARNING: {} could not be imported from {}'.format(name, package))
+    #         print(type(err))
+    #         print(err)
+
     modules = [
-        ('.IFRS', 'policies'),
-        ('.domains', 'domains')
+        # ('IFRs', 'policies'),
+        # ('domains', 'domains')
     ]
     # from domains import domains
-    for name, package in modules:
-        try:
-            import_module(name, package)
-        except Exception as err:
-            print(' [-] WARNING: {} could not be imported from {}'.format(name, package))
-            print(type(err))
-            print(err)
+
+    # import domains
+    import_module('.domains', 'domains')
+
+    # import custom policies
+    try:
+        import_module('{}.policies'.format(basin))
+    except Exception as err:
+        print(' [-] WARNING: Could not import {} policies.'.format(basin))
+        print(type(err))
+        print(err)
 
     # prepare the model files
     if simplify or include_planning:
