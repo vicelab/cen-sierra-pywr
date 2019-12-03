@@ -1,19 +1,32 @@
 from parameters import WaterLPParameter
 
 from utilities.converter import convert
+import datetime
 
 class node_IFR_bl_Big_Creek_5_Div_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        
-        management = 'BAU'
-        path = "Management/{mgt}/IFRs/IFRblBigCreek5Div.csv".format(mgt=management)
-        data = self.read_csv(path, usecols=[0,1,2,3,4,5], header=None, names=['week','1','2','3','4','5'], parse_dates=False)
-        WYT = self.model.parameters['WYT_SJValley'].value(timestep, scenario_index)
-        week = min(timestep.datetime.weekofyear, 52)
-        ifr = data[str(WYT)][week]
-        return convert(ifr, 'ft^3 s^-1', 'hm^3 day^-1')
+        year_type = self.model.parameters["WYT_SJValley"].values(timestep, scenario_index)
+        curr_date = self.datetime
+        start_date = datetime.date(curr_date.year, 4, 1)
+        end_date = datetime.date(curr_date.year, 11, 15)
+        return_val = 0
+        if year_type in [1, 2]:  # Critical or Dry WYT
+            if start_date <= curr_date <= end_date:
+                return_val = 2
+            else:
+                return_val = 1
+        else:
+            if start_date <= curr_date <= end_date:
+                return_val = 3
+            else:
+                return_val = 2
+
+        if self.model.mode == "planning":
+            return_val *= self.days_in_month()
+
+        return return_val
         
     def value(self, timestep, scenario_index):
         return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
