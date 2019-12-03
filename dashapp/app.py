@@ -3,9 +3,10 @@ import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 
 import os
+import json
 from itertools import product
 import numpy as np
 import pandas as pd
@@ -27,6 +28,9 @@ PATH_TEMPLATES = {
 }
 
 basin = 'stanislaus'
+
+OBSERVED_TEXT = 'Observed'
+OBSERVED_COLOR = 'lightgrey'
 
 MCM_TO_CFS = 1e6 / 24 / 3600 * 35.31
 MCM_TO_TAF = 1.2335
@@ -64,7 +68,8 @@ RCPS = ['rcp45', 'rcp85']
 def flow_to_energy(df_cfs, head):
     # df comes in as cfs...
     # MWh = Q[cms] * head[m] * eta * g[m/s^s] * rho[kg/m^3] * hours in day / 1e6
-    return df_cfs / 35.31 * head * 0.9 * 9.81 * 1000 * 24 / 1e6
+    df = df_cfs / 35.31 * head * 0.9 * 9.81 * 1000 * 24 / 1e6
+    return df
 
 
 def get_plot_kwargs(source):
@@ -74,6 +79,25 @@ def get_plot_kwargs(source):
         # line_color=source_color[source]
     )
 
+
+RES_OPTIONS = {}
+
+with open('../{}/pywr_model.json'.format(basin)) as f:
+    m = json.load(f)
+nodes = {n['name']: n for n in m['nodes']}
+for recorder in m['recorders']:
+    parts = recorder.split('/')
+    if len(parts) == 2:
+        res, attr = parts
+        node = nodes.get(res)
+        if not node:
+            continue
+        ta = (node['type'], attr)
+        option = {'label': res, 'value': res.replace(' ', '_')}
+        if ta in RES_OPTIONS:
+            RES_OPTIONS[ta].append(option)
+        else:
+            RES_OPTIONS[ta] = [option]
 
 df_obs_storage = pd.read_csv(
     opath.format(basin=basin.replace('_', ' ').title() + ' River', attr='storage'),
@@ -137,11 +161,16 @@ def consolidate_dataframe(df, resample):
         fmt = '%j'
     else:
         fmt = '%m'
-    new_index = [(date.strftime(fmt), str(date.year)) for date in df.index]
-
-    df.index = pd.MultiIndex.from_tuples(new_index)
-    df = df.unstack(level=-1)
-    return df
+    _df = df.copy()
+    _df.index = pd.MultiIndex.from_tuples([(date.strftime(fmt), str(date.year)) for date in df.index])
+    _df = _df.unstack(level=-1)
+    if not resample:
+        dates = pd.date_range(start='2000-01-01', periods=len(_df.index), freq='D')
+        _df.index = [d.strftime('%b-%d') for d in dates]
+    else:
+        dates = pd.date_range(start='2000-01-01', periods=len(_df.index), freq='MS')
+        _df.index = [d.strftime('%b') for d in dates]
+    return _df
 
 
 percentile_colors = {
@@ -151,7 +180,6 @@ percentile_colors = {
 
 
 def percentile_graphs(df, name, percentiles, color='black'):
-    percentiles = percentiles[1:]
     pcts = []
 
     if 'median' in percentiles:
@@ -174,23 +202,20 @@ def percentile_graphs(df, name, percentiles, color='black'):
 
     lines = []
     for i, q in enumerate(pcts):
-        opacity = 0.1
         fill = None
         width = 2
+        opacity = 0.0
         if len(pcts) > 1 and i in [0, len(pcts) - 1]:
             width = 0
-        if 0.25 < q < 0.75:
-            opacity = 0.75
         if q > pcts[0]:
             fill = 'tonexty'
         lines.append(
             go.Scatter(
                 x=df.index,
                 y=df.quantile(q, axis=1),
-                showlegend=i == 0,
+                showlegend=i == (1 if len(pcts) > 1 else 0),
                 mode='lines',
                 fill=fill,
-                opacity=opacity,
                 text='{}{}'.format(name, q),
                 name=name,
                 line=dict(color=color, width=width)
@@ -221,7 +246,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
 
     resample = kwargs.get('resample')
     percentiles = kwargs.get('percentiles')
-    consolidate = 'consolidate' in percentiles
+    consolidate = kwargs.get('consolidate')
     calibration = kwargs.get('calibration')
     head = kwargs.get('head')
 
@@ -241,9 +266,9 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
         if head is not None:
             sim_vals = flow_to_energy(sim_vals, head)
         if resample:
-            sim_resampled = sim_vals.resample(resample).mean()
+            sim_resampled = sim_vals.dropna().resample(resample).mean()
         else:
-            sim_resampled = sim_vals
+            sim_resampled = sim_vals.dropna()
 
         plot_max = False
         max_reqt = kwargs.get('max_reqt')
@@ -283,7 +308,11 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
             )
 
         if consolidate:
-            sim_cons = consolidate_dataframe(sim_resampled, resample)
+            try:
+                sim_cons = consolidate_dataframe(sim_resampled, resample)
+            except:
+                print('Failed to consolidate: ', scenario)
+                continue
             sim_vals = sim_cons.quantile(0.5, axis=1)
             sim_data = percentile_graphs(sim_cons, scenario, percentiles, color=sim_color)
             ts_data.extend(sim_data)
@@ -304,8 +333,8 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
         N = len(sim_resampled)
         fd_data.append(
             go.Scatter(
-                x=sorted(sim_resampled.values),
-                y=np.arange(0, N) / N * 100,
+                y=sorted(sim_resampled.values),
+                x=np.arange(0, N) / N * 100,
                 name=scenario,
                 text=scenario,
                 line=dict(color=sim_color),
@@ -342,9 +371,13 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
         N = len(obs_vals)
         fd_data.append(
             go.Scatter(
-                x=sorted(obs_vals.values),
-                y=np.arange(0, N) / N * 100,
-                **get_plot_kwargs('observed')
+                y=sorted(obs_vals.values),
+                x=np.arange(0, N) / N * 100,
+                name=OBSERVED_TEXT,
+                text=OBSERVED_TEXT,
+                mode='lines',
+                opacity=0.7,
+                line=dict(color=OBSERVED_COLOR)
             )
         )
 
@@ -360,13 +393,17 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
         nse = nash_sutcliffe_efficiency(predictions, targets)
 
         if consolidate:
-            obs_data = percentile_graphs(obs_cons, 'observed', percentiles, color='lightgrey')
+            obs_data = percentile_graphs(obs_cons, OBSERVED_TEXT, percentiles, color=OBSERVED_COLOR)
             ts_data.extend(obs_data)
         else:
             obs_graph = go.Scatter(
                 x=obs_resampled.index,
                 y=obs_resampled,
-                **get_plot_kwargs('observed')
+                text=OBSERVED_TEXT,
+                mode='lines',
+                opacity=0.7,
+                name=OBSERVED_TEXT,
+                line=dict(color=OBSERVED_COLOR)
             )
             ts_data.insert(0, obs_graph)
 
@@ -433,10 +470,10 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
             'data': ts_data,
             'layout': go.Layout(
                 title='Timeseries',
-                xaxis={'title': AXIS_LABELS.get(resample, "Date")},
+                xaxis={'title': AXIS_LABELS.get(resample, "Date"), 'tickangle': -45},
                 yaxis={'title': ylabel, 'rangemode': 'tozero'},
-                margin={'l': 40, 'b': 40, 't': 40, 'r': 10},
-                legend={'x': 0, 'y': 1},
+                margin={'l': 60, 'b': 80, 't': 40, 'r': 10},
+                legend={'x': 0.02, 'y': 0.98},
                 hovermode='closest',
                 yaxis_type=kwargs.get('transform', 'linear'),
             ),
@@ -452,12 +489,12 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
             'data': fd_data,
             'layout': go.Layout(
                 title='{}-duration'.format(attr.title()),
-                yaxis={'title': 'Duration (%)'},
-                xaxis={'title': ylabel},
-                margin={'l': 40, 'b': 40, 't': 40, 'r': 10},
-                legend={'x': 0, 'y': 1},
+                xaxis={'title': 'Duration (%)'},
+                yaxis={'title': ylabel},
+                margin={'l': 60, 'b': 80, 't': 40, 'r': 10},
+                legend={'x': 0.05, 'y': 0.95},
                 hovermode='closest',
-                xaxis_type=kwargs.get('transform', 'linear')
+                yaxis_type=kwargs.get('transform', 'linear')
             )
         },
     )
@@ -615,6 +652,24 @@ controls = dbc.Form(
     inline=False
 )
 
+top_bar = dbc.Form(
+    [
+        dbc.FormGroup([
+            dcc.Dropdown(
+                options=RES_OPTIONS.get('system', []),
+                id='select-resources',
+                className='select-resources',
+                style={'min-width': '300px'},
+                multi=True,
+                value=[]
+            ),
+            dbc.Button([
+                'Reload'
+            ], id='reload', style={'margin-left': 'auto'})
+        ], style={'display': 'inline-flex', 'margin-top': '5px', 'width': '100%'})
+    ]
+)
+
 
 def diagnostics_content(purpose):
     return dbc.Row([
@@ -630,6 +685,7 @@ def diagnostics_content(purpose):
                     dbc.Tab(label='IFR flow (range)', tab_id='ifr-range-flow'),
                     dbc.Tab(label='Outflow', tab_id='outflow')
                 ]),
+                top_bar,
                 html.Div(
                     id='{}-tabs-content'.format(purpose),
                     style={'padding': '10px'},
@@ -645,10 +701,19 @@ def diagnostics_content(purpose):
     ])
 
 
+def get_resources(df, filterby=None):
+    all_resources = sorted(set(df.columns.get_level_values(1)))
+    return [r for r in all_resources if not filterby or r.replace(' ', '_') in filterby]
+
+
 def render_timeseries_collection(tab, **kwargs):
     children = []
-
+    resources = kwargs.pop('resources', None)
     consolidate = "consolidate" in kwargs.get('percentiles', [])
+    if consolidate:
+        kwargs['consolidate'] = True
+        kwargs['percentiles'].pop(kwargs['percentiles'].index('consolidate'))
+
     resample = kwargs.get('resample')
 
     climates = kwargs.get('climates')
@@ -684,7 +749,7 @@ def render_timeseries_collection(tab, **kwargs):
             obs = df_obs_storage.resample(resample).mean()
         else:
             obs = df_obs_storage
-        for res in set(df_storage.columns.get_level_values(1)):
+        for res in get_resources(df_storage, filterby=resources):
             component = timeseries_component(attr, res, df_storage, obs, **kwargs)
             children.append(component)
 
@@ -695,95 +760,96 @@ def render_timeseries_collection(tab, **kwargs):
         else:
             obs = df_obs_streamflow
 
-    if tab in ['hydropower-generation', 'hydropower-flow', 'system']:
-        df_hp1 = load_timeseries(basin, scenarios, 'PiecewiseHydropower', 'Flow')
-        df_hp2 = load_timeseries(basin, scenarios, 'Hydropower', 'Flow')
-        df_hp_flow = pd.concat([df_hp1, df_hp2], axis=1) * MCM_TO_CFS
+        if tab in ['hydropower-generation', 'hydropower-flow', 'system']:
+            df_hp1 = load_timeseries(basin, scenarios, 'PiecewiseHydropower', 'Flow')
+            df_hp2 = load_timeseries(basin, scenarios, 'Hydropower', 'Flow')
+            df_hp_flow = pd.concat([df_hp1, df_hp2], axis=1) * MCM_TO_CFS
 
-    if tab in ['hydropower-generation', 'system']:
-        fixed_head = pd.read_csv('../data/{} River/fixed_head.csv'.format(basin.title()), index_col=0,
-                                 squeeze=True).to_dict()
+        if tab in ['hydropower-generation', 'system']:
+            fixed_head = pd.read_csv('../data/{} River/fixed_head.csv'.format(basin.title()), index_col=0,
+                                     squeeze=True).to_dict()
 
-    if tab == 'hydropower-flow':
-        attr = 'flow'
-        for res in set(df_hp_flow.columns.get_level_values(1)):
-            component = timeseries_component(attr, res, df_hp_flow, obs, **kwargs)
-            children.append(component)
+        if tab == 'hydropower-flow':
+            attr = 'flow'
+            for res in get_resources(df_hp_flow, filterby=resources):
+                component = timeseries_component(attr, res, df_hp_flow, obs, **kwargs)
+                children.append(component)
 
-    elif tab == 'hydropower-generation':
-        attr = 'generation'
-        for res in set(df_hp_flow.columns.get_level_values(1)):
-            if res not in fixed_head:
-                continue
-            head = fixed_head[res]
-            component = timeseries_component(attr, res, df_hp_flow, obs, head=head, **kwargs)
-            children.append(component)
+        elif tab == 'hydropower-generation':
+            attr = 'generation'
+            for res in get_resources(df_hp_flow, filterby=resources):
+                if res not in fixed_head:
+                    continue  # TODO: update to include non-fixed head
+                head = fixed_head[res]
+                component = timeseries_component(attr, res, df_hp_flow, obs, head=head, **kwargs)
+                children.append(component)
 
-    elif tab == 'outflow':
-        attr = 'flow'
-        df = load_timeseries(basin, scenarios, 'Output', 'Outflow', multiplier=MCM_TO_CFS)
-        for res in set(df.columns.get_level_values(1)):
-            component = timeseries_component(attr, res, df, obs, **kwargs)
-            children.append(component)
+        elif tab == 'outflow':
+            attr = 'flow'
+            df = load_timeseries(basin, scenarios, 'Output', 'Outflow', multiplier=MCM_TO_CFS)
+            for res in get_resources(df, filterby=resources):
+                component = timeseries_component(attr, res, df, obs, **kwargs)
+                children.append(component)
 
-    elif tab == 'ifr-flow':
-        attr = 'flow'
-        df = load_timeseries(basin, scenarios, 'InstreamFlowRequirement', 'Flow', multiplier=MCM_TO_CFS)
-        reqt = load_timeseries(basin, scenarios, 'InstreamFlowRequirement', 'Requirement', multiplier=MCM_TO_CFS)
-        for res in set(df.columns.get_level_values(1)):
-            component = timeseries_component(attr, res, df, obs, min_reqt=reqt, **kwargs)
-            children.append(component)
+        elif tab == 'ifr-flow':
+            attr = 'flow'
+            df = load_timeseries(basin, scenarios, 'InstreamFlowRequirement', 'Flow', multiplier=MCM_TO_CFS)
+            reqt = load_timeseries(basin, scenarios, 'InstreamFlowRequirement', 'Requirement', multiplier=MCM_TO_CFS)
+            for res in get_resources(df, filterby=resources):
+                component = timeseries_component(attr, res, df, obs, min_reqt=reqt, **kwargs)
+                children.append(component)
 
-    elif tab == 'ifr-range-flow':
-        attr = 'flow'
-        df = load_timeseries(basin, scenarios, 'PiecewiseInstreamFlowRequirement', 'Flow', multiplier=MCM_TO_CFS)
-        df_pw_min_ifr_reqt = load_timeseries(
-            basin, scenarios, 'PiecewiseInstreamFlowRequirement', 'Min Requirement',
-            multiplier=MCM_TO_CFS
-        )
-        df_pw_ifr_range_reqt = load_timeseries(
-            basin, scenarios, 'PiecewiseInstreamFlowRequirement', 'Max Requirement',
-            multiplier=MCM_TO_CFS
-        )
-
-        df_pw_max_ifr_reqt = df_pw_min_ifr_reqt[df_pw_ifr_range_reqt.columns] + df_pw_ifr_range_reqt
-
-        for res in set(df.columns.get_level_values(1)):
-            component = timeseries_component(
-                attr, res, df, obs,
-                min_reqt=df_pw_min_ifr_reqt,
-                max_reqt=df_pw_max_ifr_reqt,
-                **kwargs
+        elif tab == 'ifr-range-flow':
+            attr = 'flow'
+            df = load_timeseries(basin, scenarios, 'PiecewiseInstreamFlowRequirement', 'Flow', multiplier=MCM_TO_CFS)
+            df_pw_min_ifr_reqt = load_timeseries(
+                basin, scenarios, 'PiecewiseInstreamFlowRequirement', 'Min Requirement',
+                multiplier=MCM_TO_CFS
             )
-            children.append(component)
+            df_pw_ifr_range_reqt = load_timeseries(
+                basin, scenarios, 'PiecewiseInstreamFlowRequirement', 'Max Requirement',
+                multiplier=MCM_TO_CFS
+            )
 
-    elif tab == 'system':
+            df_pw_max_ifr_reqt = df_pw_min_ifr_reqt[df_pw_ifr_range_reqt.columns] + df_pw_ifr_range_reqt
 
-        # System generation
-        system_res = 'System generation'
-        gauged_hp = [c for c in df_hp_flow.columns if gauge_lookup.get(c) in obs]
-        gauge_lookup[system_res] = system_res
+            for res in get_resources(df, filterby=resources):
+                component = timeseries_component(
+                    attr, res, df, obs,
+                    min_reqt=df_pw_min_ifr_reqt,
+                    max_reqt=df_pw_max_ifr_reqt,
+                    **kwargs
+                )
+                children.append(component)
 
-        df_sim_scenarios = []
-        df_obs = []
-        for i, scenario in enumerate(scenarios):
-            dfs_sim = []
-            for res in set(df_hp_flow.columns.get_level_values(1)):
-                head = fixed_head.get(res)
-                hp_gauge = gauge_lookup.get(res)
-                if not head or not hp_gauge:
-                    continue
-                sim_energy = flow_to_energy(df_hp_flow[scenario, res], head)
-                dfs_sim.append(sim_energy)
-                if i == 0:
-                    obs_energy = flow_to_energy(obs[hp_gauge], head)
-                    df_obs.append(obs_energy)
-            df_sim_scenarios.append(pd.concat(dfs_sim, axis=1).sum(axis=1))
-        df_sim_system = pd.concat(df_sim_scenarios, axis=1, keys=scenarios)
-        df_sim_system.columns = pd.MultiIndex.from_product([scenarios, (system_res,)])
-        df_obs_system = pd.concat(df_obs, axis=1).sum(axis=1).to_frame(system_res)
-        hp_component = timeseries_component('generation', system_res, df_sim_system, df_obs_system, **kwargs)
-        children.append(hp_component)
+        elif tab == 'system':
+
+            # System generation
+            system_res = 'System generation'
+            gauged_hp = [c for c in df_hp_flow.columns if gauge_lookup.get(c) in obs]
+            gauge_lookup[system_res] = system_res
+
+            df_sim_scenarios = []
+            df_obs = []
+            for i, scenario in enumerate(scenarios):
+                dfs_sim = []
+                for res in set(df_hp_flow.columns.get_level_values(1)):
+                    head = fixed_head.get(res)
+                    hp_gauge = gauge_lookup.get(res)
+                    if not head or not hp_gauge:
+                        continue
+                    sim_energy = flow_to_energy(df_hp_flow[scenario, res], head)
+                    dfs_sim.append(sim_energy)
+                    if i == 0:
+                        obs_energy = flow_to_energy(obs[hp_gauge], head)
+                        df_obs.append(obs_energy)
+                concatenated_summed = pd.concat(dfs_sim, axis=1).dropna().sum(axis=1)
+                df_sim_scenarios.append(concatenated_summed)
+            df_sim_system = pd.concat(df_sim_scenarios, axis=1, keys=scenarios)
+            df_sim_system.columns = pd.MultiIndex.from_product([scenarios, (system_res,)])
+            df_obs_system = pd.concat(df_obs, axis=1).sum(axis=1).to_frame(system_res)
+            hp_component = timeseries_component('generation', system_res, df_sim_system, df_obs_system, **kwargs)
+            children.append(hp_component)
 
     return html.Div(
         children=children,
@@ -834,7 +900,14 @@ body = html.Div(
     ])
 
 app.title = 'SJ Dashboard'
-app.layout = html.Div(id="root", children=[dcc.Location(id="url"), navbar, body])
+app.layout = html.Div(
+    id="root",
+    children=[
+        dcc.Store(id='session-store', storage_type='session'),
+        dcc.Location(id="url"),
+        navbar,
+        body
+    ])
 
 
 @app.callback(Output("main-content", "children"), [Input("url", "pathname")])
@@ -875,18 +948,77 @@ def toggle_percentile_checkboxes(values):
     ]
 
 
+@app.callback(
+    Output('select-resources', 'value'),
+    [
+        # Input('url', 'pathname'),
+        Input('diagnostics-tabs', 'active_tab')
+    ],
+    [State('session-store', 'data')]
+)
+def update_selected_resources(tab, data):
+    # scope = pathname.split('/')[1]
+    data = data or {}
+    # scope_data = data.get(scope, {})
+    tab_data = data.get(tab, {})
+    return tab_data.get('resources', [])
+
+
+@app.callback(
+    Output('session-store', 'data'),
+    [
+        # Input('url', 'pathname'),
+        Input('diagnostics-tabs', 'active_tab'),
+        Input('select-resources', 'value')
+    ],
+    [State('session-store', 'data')]
+)
+def store_selected_resources(tab, resources, data):
+    data = data or {}
+    # scope = pathname.split('/')[1]
+    # scoped_data = data.get(scope, {})
+    tab_data = data.get(tab, {})
+    tab_data['resources'] = resources
+    # scoped_data[tab] = tab_data
+    data[tab] = tab_data
+    return data
+
+
+@app.callback(Output('select-resources', 'options'), [
+    Input('diagnostics-tabs', 'active_tab')
+])
+def update_select_resources(tab):
+    options = []
+    if tab == 'reservoir-storage':
+        options = RES_OPTIONS.get(('Storage', 'storage'))
+    elif tab in ['hydropower-flow', 'hydropower-generation']:
+        opts_npw = RES_OPTIONS.get(('Hydropower', 'flow'), [])
+        opts_pw = RES_OPTIONS.get(('PiecewiseHydropower', 'flow'), [])
+        options = opts_npw + opts_pw
+    elif tab == 'outflow':
+        options = RES_OPTIONS.get(('Output', 'outflow'))
+    elif tab == 'ifr-flow':
+        options = RES_OPTIONS.get(('InstreamFlowRequirement', 'flow'))
+    elif tab == 'ifr-range-flow':
+        options = RES_OPTIONS.get(('PiecewiseInstreamFlowRequirement', 'flow'))
+    return options or []
+
+
 @app.callback(Output('diagnostics-tabs-content', 'children'),
               [
                   Input('diagnostics-tabs', 'active_tab'),
                   Input('radio-transform', 'value'),
                   Input('radio-resample', 'value'),
                   Input('percentiles-checklist', 'value'),
+                  Input('select-resources', 'value'),
+                  Input('reload', 'n_clicks'),
               ])
-def render_diagnostics_content(tab, transform, resample, percentiles):
+def render_diagnostics_content(tab, transform, resample, percentiles, resources, n_clicks):
     kwargs = dict(
+        resources=resources,
         transform=transform,
         resample=resample,
-        percentiles=percentiles
+        percentiles=percentiles,
     )
     return render_timeseries_collection(tab, **kwargs)
 
@@ -898,15 +1030,18 @@ def render_diagnostics_content(tab, transform, resample, percentiles):
                   Input('radio-resample', 'value'),
                   Input('percentiles-checklist', 'value'),
                   Input('select-climate', 'value'),
-                  Input('select-price-year', 'value')
+                  Input('select-price-year', 'value'),
+                  Input('select-resources', 'value'),
+                  Input('reload', 'n_clicks')
               ])
-def render_diagnostics_content(tab, transform, resample, percentiles, climates, priceyears):
+def render_diagnostics_content(tab, transform, resample, percentiles, climates, priceyears, resources, n_clicks):
     kwargs = dict(
         climates=climates,
         priceyears=priceyears,
+        resources=resources,
         transform=transform,
         resample=resample,
-        percentiles=percentiles
+        percentiles=percentiles,
     )
     return render_timeseries_collection(tab, **kwargs)
 
