@@ -808,8 +808,9 @@ for scenario in scenarios:
             debug=debug,
             planning_months=planning_months
         )
-    except:
+    except Exception as err:
         print("Failed: ", scenario)
+        print(err)
         continue
 
 print('done!')
