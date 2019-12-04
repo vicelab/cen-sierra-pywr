@@ -538,7 +538,7 @@ def run_model(basin, scenario, start, end, network_key, run_name="default", incl
 
     # needed when loading JSON file
     # root_path = 's3://{}/{}/'.format(bucket, network_key)
-    root_path = '../data'
+    root_path = './data'
     os.environ['ROOT_S3_PATH'] = root_path
 
     # =========================================
@@ -721,7 +721,7 @@ def run_model(basin, scenario, start, end, network_key, run_name="default", incl
     results = m.to_dataframe()
     results.index.name = 'Date'
     scenario_name = '{}_P{}'.format(climate_scenario, price_year)
-    results_path = os.path.join('../results', basin, run_name, scenario_name)
+    results_path = os.path.join('./results', basin, run_name, scenario_name)
     if not os.path.exists(results_path):
         os.makedirs(results_path)
     results.columns = results.columns.droplevel(1)
