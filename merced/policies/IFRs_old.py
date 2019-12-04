@@ -79,7 +79,7 @@ class Requirement_Merced_R_below_Merced_Falls_PH(WaterLPParameter):
                 # Calculate for average flow in Nov and Dec of previous year at Shaffer Bridge on 1st Jan
                 st_date = date(yr - 1, 11, 1)
                 end_date = date(yr - 1, 12, 31)
-                gauge_Shafer_ts = self.model.recorders['node/Near Shaffer Bridge_11271290/flow'].to_dataframe()
+                gauge_Shafer_ts = self.model.recorders['Near Shaffer Bridge_11271290/flow'].to_dataframe()
                 self.nov_dec_mean = gauge_Shafer_ts[st_date:end_date].mean().values[0]
             if self.nov_dec_mean >= 4.25:  # If mean flow greater than eaual to 150 cfs, then atleast 100 cfs flow
                 ferc_lic_flow = 2.83
@@ -129,7 +129,7 @@ class Requirement_Merced_R_below_Merced_Falls_PH(WaterLPParameter):
             for j in range(1, 7):
                 # Note: the following two are about equivalent in time. Which to use seems to be arbitrary.
                 # flow_val += self.model.nodes['MER_0{} Headflow'.format(j)].max_flow.value(timestep, scenario_index)
-                flow_val += self.model.parameters['node/MER_0{} Headflow/Runoff'.format(j)].value(timestep, scenario_index)
+                flow_val += self.model.parameters['MER_0{} Headflow/Runoff'.format(j)].value(timestep, scenario_index)
 
             if mth in (10, 11, 12, 1, 2):
                 # Flow of 50 cfs (1.416 cms) -only from ExChequer flows
