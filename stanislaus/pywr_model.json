@@ -2307,8 +2307,13 @@
                 1
             ]
         },
+        "IFR bl Goodwin Dam schedule": {
+            "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Goodwin Dam_cfs.csv",
+            "names": [1, 2, 3, 4, 5],
+            "header": 0
+        },
         "Oakdale Irrigation District Demand": {
-            "url": "../data/Stanislaus River/Management/BAU/Demand/Oakdale Irrigation Canal demand by WYT mcm.csv",
+            "url": "../data/Stanislaus River/Management/BAU/Demand/Oakdale Canal demand by WYT mcm.csv",
             "index_col": 0,
             "header": 0,
             "names": [

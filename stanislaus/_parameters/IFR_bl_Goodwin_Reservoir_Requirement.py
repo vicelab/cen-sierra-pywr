@@ -11,13 +11,20 @@ class IFR_bl_Goodwin_Reservoir_Requirement(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         WYT = self.get('San Joaquin Valley WYT' + self.month_suffix)
-        df = self.read_csv("Management/BAU/IFRs/IFR_Below Goodwin Dam_cfs_daily.csv", names=[1, 2, 3, 4, 5], header=0)
+        schedule = self.model.tables["IFR bl Goodwin Dam schedule"]
         start = self.datetime.strftime('%b-%d')
         if self.model.mode == 'scheduling':
-            min_ifr = df.at[start, WYT] / 35.31  # cfs to cms
+            min_ifr = schedule.at[start, WYT] / 35.31  # cfs to cms
+            # min_ifr = self.get_down_ramp_ifr(timestep, min_ifr, initial_value=200 / 35.31, rate=0.02)
+            if self.datetime.day in (1, 15):
+                min_ifr = self.get_down_ramp_ifr(timestep, min_ifr, initial_value=200 / 35.31, rate=0.25)
+            elif timestep.index > 0:
+                min_ifr = self.model.nodes[self.res_name].prev_flow[-1] / 0.0864
+
         else:
             end = (self.datetime + relativedelta(days=self.days_in_month() - 1)).strftime('%b-%d')
-            min_ifr = df[WYT][start:end].sum() / 35.31  # cfs to cms
+            min_ifr = schedule[WYT][start:end].mean() / 35.31  # cfs to cms
+            # min_ifr = self.get_down_ramp_ifr(timestep, min_ifr, initial_value=200 / 35.31, rate=0.15)
 
         return min_ifr
 

@@ -779,7 +779,6 @@ if debug:
     planning_months = 2
     climate_scenarios = ['Livneh']
     price_years = [2009]
-    # price_years = [2009]
 else:
     planning_months = 12
     climate_scenarios = ['Livneh'] + gcm_rcps
@@ -801,12 +800,16 @@ for scenario in scenarios:
         end_year = 2045
     start = '{}-10-01'.format(start_year)
     end = '{}-09-30'.format(end_year)
-    run_model(
-        basin, scenario, start, end, network_key,
-        run_name=args.run_name,
-        include_planning=include_planning,
-        debug=debug,
-        planning_months=planning_months
-    )
+    try:
+        run_model(
+            basin, scenario, start, end, network_key,
+            run_name=args.run_name,
+            include_planning=include_planning,
+            debug=debug,
+            planning_months=planning_months
+        )
+    except:
+        print("Failed: ", scenario)
+        continue
 
 print('done!')
