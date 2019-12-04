@@ -698,6 +698,13 @@
             "url": "../data/common/Scenarios/Livneh/SJVI.csv",
             "index_col": "WY",
             "squeeze": true
+        },
+        "WYT for IFR Below Exchequer": {
+            "url": "../data/Merced River/Scenarios/Livneh/preprocessed/WYT.csv",
+            "index_col": 0,
+            "header": 0,
+            "parse_dates": false,
+            "squeeze": true
         }
     },
     "parameters": {

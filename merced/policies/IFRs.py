@@ -20,20 +20,14 @@ class Requirement_Merced_R_below_Crocker_Huffman_Dam(WaterLPParameter):
         # We should be able to add a "WYT" parameter as a general variable and save it to parameters in the JSON file.
         # It could be pre-processed, as currently, or calculated on-the-fly
         csv_kwargs = dict(index_col=0, header=0, parse_dates=False, squeeze=True)
-        self.wyts = self.read_csv('Scenarios/Livneh/WYT/WYT.csv', **csv_kwargs)
         self.fish_data = self.read_csv('policies/fishPulse_Merced.csv', **csv_kwargs)
         self.div_data = self.read_csv('policies/otherDiversions_Merced.csv', **csv_kwargs)
 
     def value(self, timestep, scenario_index):
         # All flow units are in cubic meters per second (cms)
 
-        if timestep.index == -1:
-            scenario_name = self.model.parameters['General_Scenario_Name'].value(timestep, scenario_index)
-            path = 'Scenarios/{scenario}/WYT/WYT.csv'.format(scenario=scenario_name)
-            self.wyts = self.read_csv(path, index_col=0, header=0, parse_dates=False, squeeze=True)
-
         # FERC REQUIREMENT
-        wyt = self.wyts[timestep.year]
+        wyt = self.model.tables['WYT for IFR Below Exchequer'][timestep.year]
         ferc_flow_req = self.ferc_req(timestep, wyt)
 
         # DAVIS-GRUNSKY AGREEMENT REQUIREMENT

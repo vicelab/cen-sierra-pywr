@@ -19,7 +19,7 @@ class Requirement_Merced_R_below_Merced_Falls_PH(WaterLPParameter):
         # TODO: this should be moved to real-time lookup to be scenario-dependent
         # We should be able to add a "WYT" parameter as a general variable and save it to parameters in the JSON file.
         # It could be pre-processed, as currently, or calculated on-the-fly
-        self.wyts = self.read_csv('Scenarios/Livneh/WYT/WYT.csv', index_col=0, header=None, parse_dates=False,
+        self.wyts = self.read_csv('Scenarios/Livneh/preprocessed/WYT.csv', index_col=0, header=None, parse_dates=False,
                                   squeeze=True)
 
     def value(self, timestep, scenario_index):
