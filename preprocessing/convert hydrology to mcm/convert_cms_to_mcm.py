@@ -2,13 +2,19 @@ import os
 import pandas as pd
 from itertools import product
 
-basins = ['stanislaus', 'merced', 'upper san joaquin', 'tuolumne']
-climates = ['Livneh']
+# basins = ['stanislaus', 'merced', 'upper san joaquin', 'tuolumne']
+basins = ['stanislaus', 'merced']
+scenarios = ['Livneh']
+gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
+rcps = ['45', '85']
+gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
+scenarios += gcm_rcps
 
-basin_climates = product(basins, climates)
+basin_scenarios = product(basins, scenarios)
 
-for basin, climate in basin_climates:
-    datadir = '../../data/{} River/Scenarios/{}/runoff'.format(basin.title(), climate)
+for basin, scenario in basin_scenarios:
+    print(basin, scenario)
+    datadir = '../../data/{} River/Scenarios/{}/runoff'.format(basin.title(), scenario)
     for filename in os.listdir(datadir):
         if '_cms.csv' in filename:
             print(filename)
