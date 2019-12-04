@@ -770,8 +770,8 @@ network_key = args.network_key or os.environ.get('NETWORK_KEY')
 debug = args.debug
 include_planning = args.include_planning
 
-# gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
-gcms = ['HadGEM2-ES', 'MIROC5']
+gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
+# gcms = ['HadGEM2-ES', 'MIROC5']
 rcps = ['85']
 gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
 
