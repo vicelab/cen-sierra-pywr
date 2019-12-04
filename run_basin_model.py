@@ -788,6 +788,7 @@ else:
 scenarios = product(climate_scenarios, price_years)
 
 for scenario in scenarios:
+    print('Running: ', scenario)
     climate, price_year = scenario
     if climate == 'Livneh':
         start_year = 2000
