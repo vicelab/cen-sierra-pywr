@@ -2222,11 +2222,13 @@
         },
         "WYT P2005 & P2130": {
             "url": "../data/Stanislaus River/Scenarios/preprocessed/Livneh/WYT_P2005_P2130.csv",
-            "index_col": "WY"
+            "index_col": "WY",
+            "squeeze": true
         },
         "WYT P2019": {
             "url": "../data/Stanislaus River/Scenarios/preprocessed/Livneh/WYT_P2019.csv",
-            "index_col": "WY"
+            "index_col": "WY",
+            "squeeze": true
         },
         "San Joaquin Valley Index": {
             "url": "../data/common/Scenarios/Livneh/SJVI.csv",
