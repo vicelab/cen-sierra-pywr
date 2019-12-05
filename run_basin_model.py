@@ -486,7 +486,7 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
 
 
 def run_model(basin, scenario, network_key=None, start=None, end=None, run_name="default", include_planning=False,
-              simplify=True,
+              simplify=True, use_multiprocessing=False,
               debug=False, planning_months=12):
     months = planning_months
 
@@ -679,7 +679,7 @@ def run_model(basin, scenario, network_key=None, start=None, end=None, run_name=
     setattr(m, 'mode', 'scheduling')
     setattr(m, 'planning', planning_model if include_planning else None)
 
-    for date in tqdm(m.timestepper.datetime_index, ncols=60, disable=kwargs.get('multiprocessing')):
+    for date in tqdm(m.timestepper.datetime_index, ncols=60, disable=use_multiprocessing):
         step += 1
         try:
 
@@ -812,7 +812,7 @@ kwargs = dict(
     include_planning=include_planning,
     debug=debug,
     planning_months=planning_months,
-    multiprocessing=multiprocessing
+    use_multiprocessing=multiprocessing
 )
 
 if not multiprocessing:  # serial processing for debugging
