@@ -21,7 +21,7 @@ rcps = ['45', '85']
 gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
 scenarios += gcm_rcps
 
-basins = ['merced', 'stanislaus']
+basins = ['stanislaus']
 
 
 # In[5]:
@@ -41,10 +41,10 @@ month_columns = ['{:02}'.format(i) for i in range(1,13)]
 basin_scenarios = list(product(basins, scenarios))
 for basin, scenario in basin_scenarios:
     print(basin, scenario)
-    runoff_dir = '../../data/{} River/Scenarios/{}/runoff'.format(basin.title(), scenario)
+    runoff_dir = '../../data/{} River/Scenarios/runoff/{}'.format(basin.title(), scenario)
 #         print(runoff_dir)
-    runoff_dir_monthly = runoff_dir + '_monthly'
-    runoff_dir_monthly_forecasts = runoff_dir_monthly + '_forecasts'
+    runoff_dir_monthly = runoff_dir.replace('runoff', 'runoff_monthly')
+    runoff_dir_monthly_forecasts = runoff_dir.replace('runoff', 'runoff_forecasts')
     if not os.path.exists(runoff_dir_monthly):
         os.makedirs(runoff_dir_monthly)
     if not os.path.exists(runoff_dir_monthly_forecasts):
