@@ -8,7 +8,13 @@ class IFR_bl_Sand_Bar_Div_Requirement(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
 
-        WYT = self.get("San Joaquin Valley WYT" + self.month_suffix)
+        WYT_table = self.model.tables["WYI_P2130"]
+        if 4 <= self.datetime.month <= 12:
+            operational_water_year = self.datetime.year
+        else:
+            operational_water_year = self.datetime.year - 1
+
+        WYT = WYT_table[operational_water_year]
         management = "BAU"
         path = "Management/{mgt}/IFRs/".format(mgt=management)
         if self.mode == 'scheduling':

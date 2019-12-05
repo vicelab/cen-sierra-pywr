@@ -17,6 +17,14 @@ class IFR_at_Murphys_Park_Requirement(WaterLPParameter):
         month = self.datetime.month
         mode = self.model.mode
 
+        WYT_table = self.model.tables["WYI_P2019"]
+        if 4 <= self.datetime.month <= 12:
+            operational_water_year = self.datetime.year
+        else:
+            operational_water_year = self.datetime.year - 1
+
+        self.year_type = WYT_table[operational_water_year]
+
         # Calculate water year type based on Apr-Jul inflow forecast
         if month == 5 and self.datetime.day == 1:
             new_melones_runoff = self.model.parameters['New Melones Apr-Jul Runoff' + self.month_suffix].value(timestep, scenario_index)
