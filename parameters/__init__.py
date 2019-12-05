@@ -168,25 +168,29 @@ class WaterLPParameter(Parameter):
             Qp = self.model.nodes[self.res_name].prev_flow[-1] / 0.0864  # convert to cms
         return max(value, Qp * (1 - rate))
 
-    def get_up_ramp_ifr(self, timestep, initial_value=None, rate=0.25, **kwargs):
-        if initial_value is None:
-            raise Exception('Initial maximum ramp up rate cannot be None')
+    def get_up_ramp_ifr(self, timestep, scenario_index, initial_value=None, rate=0.25, max_flow=None):
 
         if self.model.mode == 'scheduling':
+            if initial_value is None:
+                raise Exception('Initial maximum ramp up rate cannot be None')
             if timestep.index == 0:
                 Qp = initial_value  # should be in cms
             else:
                 Qp = self.model.nodes[self.res_name].prev_flow[-1] / 0.0864  # convert to cms
-            max_flow = Qp * (1 + rate)
+            qmax = Qp * (1 + rate)
         else:
-            max_flow = 1e6
+            qmax = 1e6
 
-        return max_flow
+        if max_flow is not None:
+            qmax = min(qmax, max_flow)
+
+        return qmax
 
     def get_ifr_range(self, timestep, scenario_index, **kwargs):
-        max_ifr = self.get_up_ramp_ifr(timestep, **kwargs)
         min_ifr = self.model.parameters[self.res_name + '/Min Requirement' + self.month_suffix] \
                       .value(timestep, scenario_index) / 0.0864  # convert to cms
+
+        max_ifr = self.get_up_ramp_ifr(timestep, scenario_index, **kwargs)
 
         ifr_range = max(max_ifr - min_ifr, 0.0)
 

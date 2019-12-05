@@ -254,11 +254,12 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
                 # the virtual storage node is not physically connected to the system,
                 # but is nonetheless "filled" by flows in the system
                 virtual_storage = node.copy()
-                level = virtual_storage.get('level')
-                if type(level) == str:
-                    if level not in parameters_to_expand:
-                        parameters_to_expand.append(level)
-                    virtual_storage['level'] += '/{}'.format(t)
+                virtual_storage.pop('level', None)
+                # level = virtual_storage.get('level')
+                # if type(level) == str:
+                #     if level not in parameters_to_expand:
+                #         parameters_to_expand.append(level)
+                #     virtual_storage['level'] += '/{}'.format(t)
                 virtual_storage.update({
                     'name': new_res_name,
                     'type': 'VirtualStorage',
@@ -660,6 +661,7 @@ def run_model(basin, scenario, network_key=None, start=None, end=None, run_name=
     from pywr.nodes import Storage
     m = Model.load(model_path, path=model_path)
     reservoirs = [n.name for n in m.nodes if type(n) == Storage and '(storage)' not in n.name]
+    # piecewise_ifrs = [n.name for n in m.nodes if type(n) == Storage and '(storage)' not in n.name]
     m.setup()
 
     # run model
@@ -795,11 +797,11 @@ rcps = ['85']
 gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
 
 if debug:
-    planning_months = 2
-    # climate_scenarios = ['Livneh']
-    # price_years = [2009]
-    climate_scenarios = ['CanESM2_rcp85']
-    price_years = [2060]
+    planning_months = 6
+    climate_scenarios = ['Livneh']
+    price_years = [2009]
+    # climate_scenarios = ['CanESM2_rcp85']
+    # price_years = [2060]
 else:
     planning_months = 12
     climate_scenarios = ['Livneh'] + gcm_rcps
