@@ -829,7 +829,7 @@ else:
     pool = mp.Pool(processes=mp.cpu_count() - 1)
     run_model_partial = partial(run_model, **kwargs)
     for scenario in scenarios:
-        pool.apply_async(run_model_partial, args=(basin, scenario))
+        pool.apply(run_model_partial, args=(basin, scenario))
 
     pool.close()
     pool.join()
