@@ -2207,7 +2207,7 @@
     ],
     "tables": {
         "Peak Donnells Runoff": {
-            "url": "../data/Stanislaus River/Scenarios/Livneh/preprocessed/peak_runoff_DonnellsRes_MarToMay_cms.csv",
+            "url": "../data/Stanislaus River/Scenarios/preprocessed/Livneh/peak_runoff_DonnellsRes_MarToMay_cms.csv",
             "usecols": [
                 0,
                 1
@@ -2220,12 +2220,12 @@
             ],
             "squeeze": true
         },
-        "WYI_P2130": {
-            "url": "./data/Stanislaus River//Scenarios//MIROC5_rcp85//preprocessed//WYT_P2005_P2130.csv",
+        "WYT P2005 & P2130": {
+            "url": "../data/Stanislaus River/Scenarios/preprocessed/Livneh/WYT_P2005_P2130.csv",
             "index_col": "WY"
         },
         "WYI_P2019": {
-            "url": "./data/Stanislaus River//Scenarios//MIROC5_rcp85//preprocessed//WYT_P2019.csv",
+            "url": "../data/Stanislaus River/Scenarios/preprocessed/Livneh/WYT_P2019.csv",
             "index_col": "WY"
         },
         "San Joaquin Valley Index": {
@@ -3151,175 +3151,175 @@
         },
         "STN_01 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb01_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb01_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_02 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb02_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb02_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_03 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb03_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb03_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_04 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb04_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb04_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_05 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb05_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb05_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_06 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb06_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb06_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_07 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb07_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb07_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_08 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb08_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb08_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_09 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb09_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb09_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_10 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb10_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb10_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_11 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb11_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb11_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_12 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb12_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb12_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_13 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb13_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb13_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_14 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb14_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb14_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_15 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb15_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb15_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_16 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb16_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb16_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_17 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb17_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb17_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_18 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb18_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb18_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_19 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb19_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb19_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_20 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb20_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb20_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_21 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb21_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb21_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_22 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb22_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb22_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_23 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb23_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb23_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_24 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb24_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb24_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "STN_25 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Stanislaus River/Scenarios/Livneh/runoff/tot_runoff_sb25_mcm.csv",
+            "url": "../data/Stanislaus River/Scenarios/runoff/Livneh/tot_runoff_sb25_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true

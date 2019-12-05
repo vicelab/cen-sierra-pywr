@@ -9,7 +9,7 @@ class IFR_bl_Relief_Reservoir_Min_Requirement(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
 
-        WYT_table = self.model.tables["WYI_P2130"]
+        WYT_table = self.model.tables["WYT P2005 & P2130"]
         if 4 <= self.datetime.month <= 12:
             operational_water_year = self.datetime.year
         else:
