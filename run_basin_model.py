@@ -679,7 +679,7 @@ def run_model(basin, scenario, network_key=None, start=None, end=None, run_name=
     setattr(m, 'mode', 'scheduling')
     setattr(m, 'planning', planning_model if include_planning else None)
 
-    for date in tqdm(m.timestepper.datetime_index, ncols=60, disable=False):
+    for date in tqdm(m.timestepper.datetime_index, ncols=60, disable=kwargs.get('multiprocessing')):
         step += 1
         try:
 
@@ -811,7 +811,8 @@ kwargs = dict(
     run_name=args.run_name,
     include_planning=include_planning,
     debug=debug,
-    planning_months=planning_months
+    planning_months=planning_months,
+    multiprocessing=multiprocessing
 )
 
 if not multiprocessing:  # serial processing for debugging
