@@ -1,7 +1,6 @@
 import os
 import sys
 import json
-from itertools import product
 from pywr.core import Model
 from pywr.timestepper import Timestepper
 from importlib import import_module
@@ -11,11 +10,8 @@ from dateutil.relativedelta import relativedelta
 from common.tests import test_planning_model, get_planning_dataframe
 import numpy as np
 import pandas as pd
-import multiprocessing as mp
-from functools import partial
 
 SECONDS_IN_DAY = 3600 * 24
-
 
 class PlanningTimestepper(Timestepper):
 
@@ -772,69 +768,3 @@ def run_model(basin, scenario, network_key=None, start=None, end=None, run_name=
                 node = m.nodes[c]
                 gen_df *= node.head * 0.9 * 9.81 * 1000 / 1e6
                 gen_df.to_csv(gen_path)
-
-
-import argparse
-
-parser = argparse.ArgumentParser()
-parser.add_argument("-b", "--basin", help="Basin to run")
-parser.add_argument("-nk", "--network_key", help="Network key")
-parser.add_argument("-d", "--debug", help="Debug ('m' or 'd' or 'dm')")
-parser.add_argument("-p", "--include_planning", help="Include planning model", action='store_true')
-parser.add_argument("-n", "--run_name", help="Run name")
-parser.add_argument("-mp", "--multiprocessing", help="Use multiprocessing", action='store_true')
-args = parser.parse_args()
-
-basin = args.basin
-network_key = args.network_key or os.environ.get('NETWORK_KEY')
-debug = args.debug
-include_planning = args.include_planning
-multiprocessing = args.multiprocessing
-
-gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
-# gcms = ['HadGEM2-ES', 'MIROC5']
-rcps = ['85']
-gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
-
-if debug:
-    planning_months = 6
-    climate_scenarios = ['Livneh']
-    price_years = [2009]
-    # climate_scenarios = ['CanESM2_rcp85']
-    # price_years = [2060]
-else:
-    planning_months = 12
-    climate_scenarios = ['Livneh'] + gcm_rcps
-    price_years = [2009, 2030, 2060]
-
-scenarios = product(climate_scenarios, price_years)
-
-kwargs = dict(
-    run_name=args.run_name,
-    include_planning=include_planning,
-    debug=debug,
-    planning_months=planning_months,
-    use_multiprocessing=multiprocessing
-)
-
-if not multiprocessing:  # serial processing for debugging
-    for scenario in scenarios:
-        print('Running: ', scenario)
-        try:
-            run_model(basin, scenario, **kwargs)
-        except Exception as err:
-            print("Failed: ", scenario)
-            print(err)
-            continue
-
-else:
-    pool = mp.Pool(processes=mp.cpu_count() - 1)
-    run_model_partial = partial(run_model, **kwargs)
-    for scenario in scenarios:
-        print('Adding ', scenario)
-        pool.apply_async(run_model_partial, args=(basin, scenario))
-
-    pool.close()
-    pool.join()
-
-print('done!')
