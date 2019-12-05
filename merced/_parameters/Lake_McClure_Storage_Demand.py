@@ -9,7 +9,7 @@ class Lake_McClure_Storage_Demand(WaterLPParameter):
         
         # read the San Joaquin Index
         if timestep.index == 0:
-            self.curves = self.read_csv("policies/LakeMcLure_FloodControl_Requirements.csv",
+            self.curves = self.read_csv("../../data/data/Merced River/Management/BAU/Demand/LakeMcLure_FloodControl_Requirements.csv",
                                         names=['date', 'dry', 'normal', 'wet'],
                                         index_col=0, parse_dates=False, header=0)
             # self.curves *= 1233.5 / 1e6 / 1294 # convert to million cubic meters

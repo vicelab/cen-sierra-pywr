@@ -2214,6 +2214,14 @@
             ],
             "squeeze": true
         },
+        "WYI_P2130": {
+            "url": "./data/Stanislaus River//Scenarios//MIROC5_rcp85//preprocessed//WYT_P2005_P2130.csv",
+            "index_col": "WY"
+        },
+        "WYI_P2019": {
+            "url": "./data/Stanislaus River//Scenarios//MIROC5_rcp85//preprocessed//WYT_P2019.csv",
+            "index_col": "WY"
+        },
         "San Joaquin Valley Index": {
             "url": "../data/common/Scenarios/Livneh/SJVI.csv",
             "index_col": "WY",
