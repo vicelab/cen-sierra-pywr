@@ -2224,7 +2224,7 @@
             "url": "../data/Stanislaus River/Scenarios/preprocessed/Livneh/WYT_P2005_P2130.csv",
             "index_col": "WY"
         },
-        "WYI_P2019": {
+        "WYT P2019": {
             "url": "../data/Stanislaus River/Scenarios/preprocessed/Livneh/WYT_P2019.csv",
             "index_col": "WY"
         },

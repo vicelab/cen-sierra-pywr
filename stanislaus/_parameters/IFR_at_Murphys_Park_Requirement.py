@@ -17,7 +17,7 @@ class IFR_at_Murphys_Park_Requirement(WaterLPParameter):
         month = self.datetime.month
         mode = self.model.mode
 
-        WYT_table = self.model.tables["WYI_P2019"]
+        WYT_table = self.model.tables["WYT P2019"]
         if 4 <= self.datetime.month <= 12:
             operational_water_year = self.datetime.year
         else:
