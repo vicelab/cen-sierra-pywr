@@ -2216,7 +2216,7 @@
         },
         "San Joaquin Valley Index": {
             "url": "../data/common/Scenarios/Livneh/SJVI.csv",
-            "index_col": "WY",
+            "index_col": "SJVI",
             "squeeze": true
         },
         "Storage Costs": {
