@@ -259,8 +259,11 @@ class PiecewiseInstreamFlowRequirement(RiverDomainMixin, PiecewiseLink):
         ----------
         """
         kwargs['max_flow'] = kwargs.pop('max_flow', [])
-        kwargs['max_flow'].append(None)
-        kwargs['cost'] = kwargs.pop('cost', [0.0])
+        kwargs['cost'] = kwargs.pop('cost', [])
+        if len(kwargs['cost']) == 0:
+            kwargs['cost'].append(0.0)
+        if len(kwargs['max_flow']) < len(kwargs['cost']):
+            kwargs['max_flow'].append(None)
         assert (len(kwargs['cost']) == len(kwargs['max_flow']))
         super(PiecewiseInstreamFlowRequirement, self).__init__(model, **kwargs)
 

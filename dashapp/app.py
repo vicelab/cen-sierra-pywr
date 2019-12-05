@@ -3,6 +3,7 @@ import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_cytoscape as cyto
 from dash.dependencies import Input, Output, State
 
 import os
@@ -181,23 +182,24 @@ percentile_colors = {
 
 def percentile_graphs(df, name, percentiles, color='black'):
     pcts = []
-
-    if 'median' in percentiles:
-        if len(percentiles) == 1:
-            pcts = [0.5]
-        elif len(percentiles) == 2:
-            if 'quartiles' in percentiles:
-                pcts = [0.25, 0.5, 0.75]
-            else:
-                pcts = [0.0, 0.5, 1.0]
-        else:
-            pcts = [0.0, 0.25, 0.5, 0.75, 1.0]
-    elif 'quartiles' in percentiles:
-        if len(percentiles) == 1:
-            pcts = [0.25, 0.75]
-        else:
-            pcts = [0.0, 0.25, 0.75, 1.0]
-    elif 'range' in percentiles:
+    show_mean = False
+    if 'mean' in percentiles:
+        show_mean = True
+        percentiles.pop(percentiles.index('mean'))
+    pct_set = set(percentiles)
+    if pct_set == {'median'}:
+        pcts = [0.5]
+    elif pct_set == {'median', 'quartiles'}:
+        pcts = [0.25, 0.5, 0.75]
+    elif pct_set == {'median', 'range'}:
+        pcts = [0.0, 0.5, 1.0]
+    elif pct_set == {'median', 'quartiles', 'range'}:
+        pcts = [0.0, 0.25, 0.5, 0.75, 1.0]
+    elif pct_set == {'quartiles'}:
+        pcts = [0.25, 0.75]
+    elif pct_set == {'quartiles', 'range'}:
+        pcts = [0.0, 0.25, 0.75, 1.0]
+    elif pct_set == {'range'}:
         pcts = [0.0, 1.0]
 
     lines = []
@@ -219,6 +221,18 @@ def percentile_graphs(df, name, percentiles, color='black'):
                 text='{}{}'.format(name, q),
                 name=name,
                 line=dict(color=color, width=width)
+            )
+        )
+    if show_mean:
+        lines.append(
+            go.Scatter(
+                x=df.index,
+                y=df.mean(axis=1),
+                showlegend=False,
+                mode='lines',
+                text='{} mean'.format(name),
+                name=name,
+                line=dict(color=color, width=3)
             )
         )
 
@@ -272,16 +286,16 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
 
         plot_max = False
         max_reqt = kwargs.get('max_reqt')
-        if max_reqt is not None and res_name in max_reqt:
+        if max_reqt is not None and res_name in max_reqt[scenario]:
             plot_max = True
 
         # Minimum flow requirement
         min_reqt = kwargs.get('min_reqt')
-        if not consolidate and min_reqt is not None and res_name in min_reqt:
+        if not consolidate and min_reqt is not None and res_name in min_reqt[scenario]:
             ts_data.append(
                 go.Scatter(
-                    x=min_reqt.index,
-                    y=min_reqt[res_name],
+                    x=min_reqt[scenario].index,
+                    y=min_reqt[scenario][res_name],
                     text='Min Requirement',
                     mode='lines',
                     opacity=0.7,
@@ -295,8 +309,8 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
         if not consolidate and plot_max:
             ts_data.append(
                 go.Scatter(
-                    x=max_reqt.index,
-                    y=max_reqt[res_name],
+                    x=max_reqt[scenario].index,
+                    y=max_reqt[scenario][res_name],
                     text='Max Requirement',
                     mode='lines',
                     fill='tonexty',
@@ -369,17 +383,17 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
 
         # flow-duration curve
         N = len(obs_vals)
-        fd_data.append(
-            go.Scatter(
-                y=sorted(obs_vals.values),
-                x=np.arange(0, N) / N * 100,
-                name=OBSERVED_TEXT,
-                text=OBSERVED_TEXT,
-                mode='lines',
-                opacity=0.7,
-                line=dict(color=OBSERVED_COLOR)
-            )
-        )
+        fd_data.insert(0,
+                       go.Scatter(
+                           y=sorted(obs_vals.values),
+                           x=np.arange(0, N) / N * 100,
+                           name=OBSERVED_TEXT,
+                           text=OBSERVED_TEXT,
+                           mode='lines',
+                           opacity=0.7,
+                           line=dict(color=OBSERVED_COLOR)
+                       )
+                       )
 
         if consolidate:
             predictions = sim_resampled.values
@@ -671,6 +685,65 @@ top_bar = dbc.Form(
 )
 
 
+def map_content():
+    with open('./Stanislaus River.json') as f:
+        oa_network = json.load(f)
+    with open('../stanislaus/pywr_model_Livneh_simplified.json') as f:
+        pywr_network = json.load(f)
+
+    oa_nodes = {}
+    xs = []
+    ys = []
+    for n in oa_network['network']['nodes']:
+        oa_nodes[n['name']] = n
+        xs.append(float(n['x']))
+        ys.append(float(n['y']))
+    minx = min(xs)
+    maxx = max(xs)
+    miny = min(ys)
+    maxy = max(ys)
+    xscale = 500 / (maxx - minx)
+    yscale = - 500 / (maxy - miny)
+    xb = -xscale * minx
+    yb = -yscale * miny
+
+    elements = []
+    for node in pywr_network['nodes']:
+        oa_node = oa_nodes.get(node['name'])
+        if not oa_node:
+            continue
+
+        x = float(oa_node['x']) * xscale + xb
+        y = float(oa_node['y']) * yscale + yb
+        elements.append({
+            'data': {
+                'id': node['name'].replace(' ', '-'),
+                'label': node['name'],
+            },
+            'position': {
+                'x': x,
+                'y': y
+            }
+        })
+    for n1, n2 in pywr_network['edges']:
+        elements.append(
+            {
+                'data': {
+                    'source': n1.replace(' ', '-'),
+                    'target': n2.replace(' ', '-')
+                }
+            }
+        )
+    return html.Div([
+        cyto.Cytoscape(
+            id='cytoscape-two-nodes',
+            layout={'name': 'preset'},
+            style={'width': '100%', 'height': '500px'},
+            elements=elements
+        )
+    ], style={"width": "100%"})
+
+
 def diagnostics_content(purpose):
     return dbc.Row([
         dbc.Col([
@@ -888,9 +961,10 @@ body = html.Div(
             pills=True,
             style=SIDEBAR_STYLE,
             children=[
-                dbc.NavItem(dbc.NavLink('Diagnostics', href='/diagnostics', id='diagnostics-tab')),
-                # dbc.NavItem(dbc.NavLink('Gauges', href='/gauges', id='gauges-tab')),
-                dbc.NavItem(dbc.NavLink('Analysis', href='/analysis', id='analysis-tab')),
+                # dbc.NavItem(dbc.NavLink('Map', href='/map', id='map-tab')),
+                # dbc.NavItem(dbc.NavLink('Diagnostics', href='/diagnostics', id='diagnostics-tab')),
+                # # dbc.NavItem(dbc.NavLink('Gauges', href='/gauges', id='gauges-tab')),
+                # dbc.NavItem(dbc.NavLink('Analysis', href='/analysis', id='analysis-tab')),
             ]),
         html.Div(
             className='main-content',
@@ -909,6 +983,40 @@ app.layout = html.Div(
         body
     ])
 
+SIDEBAR_TABS = [
+    {
+        'label': 'Map',
+        'href': '/map',
+        'id': 'map-tab'
+    },
+    {
+        'label': 'Diagnostics',
+        'href': '/diagnostics',
+        'id': 'diagnostics-tab'
+    },
+    {
+        'label': 'Analysis',
+        'href': '/analysis',
+        'id': 'analysis-tab'
+    }
+]
+
+
+@app.callback(Output("sidebar-tabs", "children"), [Input("url", "pathname")])
+def render_sidebar_tabs(pathname):
+    nav_items = [
+        dbc.NavItem(
+            dbc.NavLink(
+                t['label'],
+                href=t['href'],
+                id=t['id'],
+                active=t['href'] in pathname
+            )
+        )
+        for t in SIDEBAR_TABS
+    ]
+    return nav_items
+
 
 @app.callback(Output("main-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
@@ -920,6 +1028,8 @@ def render_page_content(pathname):
                 html.P("Select a tab..."),
             ]
         )
+    elif pathname == '/map':
+        return map_content()
     elif pathname == "/diagnostics":
         return diagnostics_content('diagnostics')
     elif pathname == "/gauges":
@@ -942,6 +1052,7 @@ def toggle_percentile_checkboxes(values):
     disabled = 'consolidate' not in values
     return [
         {"id": "percentiles-checkbox", "label": "Percentiles", "value": "consolidate"},
+        {"id": "percentiles-mean", "label": "Mean", "value": "mean", "disabled": disabled},
         {"id": "percentiles-median", "label": "Median", "value": "median", "disabled": disabled},
         {"id": "percentiles-quartiles", "label": "Quartiles", "value": "quartiles", "disabled": disabled},
         {"id": "percentiles-range", "label": "Range", "value": "range", "disabled": disabled}

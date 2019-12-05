@@ -8,11 +8,14 @@ class IFR_bl_Philadelphia_Div_Max_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-
+        max_flow = 50 / 35.31  # IFR max is 60 cfs; 50 cfs in practice
         if self.model.mode == 'scheduling':
-            ifr_range = self.get_ifr_range(timestep, scenario_index, initial_value=(10 / 35.31), rate=0.25)
+            ifr_range = self.get_ifr_range(
+                timestep, scenario_index,
+                initial_value=(10 / 35.31), max_flow=max_flow, rate=3.0)
         else:
-            ifr_range = 1e6
+            ifr_range = self.get_ifr_range(
+                timestep, scenario_index, max_flow=max_flow, rate=6.0)
         return ifr_range
 
     def value(self, timestep, scenario_index):

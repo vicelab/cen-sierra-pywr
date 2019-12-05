@@ -12,17 +12,18 @@ class Spring_Gap_PH_Turbine_Capacity(WaterLPParameter):
         if self.model.mode == 'scheduling':
             if (7, 1) <= (timestep.month, timestep.day) <= (8, 31):
                 capacity_cms = 12.5 / 35.31
-            pinecrest_reservoir = self.model.nodes['Pinecrest Reservoir']
-            if timestep.index == 0:
-                prev_storage = pinecrest_reservoir.initial_volume
-            else:
-                prev_storage = pinecrest_reservoir.volume[-1]
-            prev_storage_taf = prev_storage / 1.2335
+            elif timestep.month >= 9:
+                pinecrest_reservoir = self.model.nodes['Pinecrest Reservoir']
+                if timestep.index == 0:
+                    prev_storage = pinecrest_reservoir.initial_volume
+                else:
+                    prev_storage = pinecrest_reservoir.volume[-1]
+                prev_storage_taf = prev_storage / 1.2335
 
-            if prev_storage_taf <= 5:  # taf to mcm
-                capacity_cms = 12.5 / 35.31  # curtail to 12.5 cfs
-            elif prev_storage_taf <= 10:
-                capacity_cms = 25 / 35.31  # curtail to 25 cfs
+                if prev_storage_taf <= 5:  # taf to mcm
+                    capacity_cms *= 0.25  # curtail to 12.5 cfs
+                elif prev_storage_taf <= 10:
+                    capacity_cms *= 0.75  # curtail to 25 cfs
 
         else:
             if self.datetime.month in [7, 8]:

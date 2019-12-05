@@ -31,15 +31,18 @@ class IFR_at_Murphys_Park_Requirement(WaterLPParameter):
             self.year_type = len([x for x in self.year_type_thresholds if new_melones_runoff >= x])
 
         # Determine schedule based on time of year
+        additional = 0
         if 5 <= month <= 9:  # May-Sep
             schedule = self.may_sep
+            additional = 3
         elif month >= 10 or month <= 3:
             schedule = self.oct_mar
+            additional = 5
         else:
             schedule = self.apr
 
         # Get the IFR from the schedule based on year type
-        ifr_val = schedule[self.year_type - 1] / 35.31  # convert cfs to cms
+        ifr_val = (schedule[self.year_type - 1] + additional) / 35.31  # convert cfs to cms
 
         if self.model.mode == 'planning':
             ifr_val *= self.days_in_month()
