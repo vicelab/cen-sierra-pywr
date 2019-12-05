@@ -325,8 +325,7 @@
             "type": "PiecewiseInstreamFlowRequirement",
             "cost": [
                 -5000,
-                0,
-                6000
+                5000
             ],
             "max_flow": [
                 "IFR bl Donnell Lake/Min Requirement",
@@ -716,6 +715,7 @@
             "max_volume": 22.58,
             "min_volume": 0.57,
             "cost": "Pinecrest Reservoir/Storage Value",
+            "level": "Pinecrest Reservoir/Elevation",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -1174,9 +1174,15 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Donnell Lake Flood Control",
-            "type": "Link",
-            "cost": 5000
+            "name": "Donnell Lake Spill",
+            "type": "PiecewiseInstreamFlowRequirement",
+            "cost": [
+                -5000,
+                4000
+            ],
+            "max_flow": [
+                "Donnell Lake Spill/Min Requirement"
+            ]
         },
         {
             "name": "Goodwin Reservoir",
@@ -1456,10 +1462,10 @@
         ],
         [
             "Donnells Reservoir",
-            "Donnell Lake Flood Control"
+            "Donnell Lake Spill"
         ],
         [
-            "Donnell Lake Flood Control",
+            "Donnell Lake Spill",
             "Donnells Low Flow discharge"
         ],
         [
@@ -2288,6 +2294,38 @@
                 1
             ]
         },
+        "IFR Below Donnell Lake schedule": {
+            "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Donnells Reservoir (MIF)_cfs_daily.csv",
+            "usecols": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "index_col": null,
+            "header": 0,
+            "names": [
+                "start_date",
+                "end_date",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+            ],
+            "parse_dates": [
+                0,
+                1
+            ]
+        },
+        "Supplemental IFR below Donnell Lake": {
+            "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Donnells Reservoir (Supp)_cfs.csv",
+            "names": ["Day_st", "Day_end", "1", "2", "3", "4", "5"],
+            "header": 0
+        },
         "IFR Below Philadelphia Div Schedule": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Philadelphia Div. (MIF)_cfs_daily.csv",
             "usecols": [
@@ -2520,6 +2558,9 @@
         },
         "Collierville PH/Cost/3": {
             "type": "PH_Cost"
+        },
+        "Donnell Lake Spill/Min Requirement": {
+            "type": "Donnell_Lake_Spill_Min_Requirement"
         },
         "Donnells PH/Fixed Head": {
             "type": "constant",
@@ -2938,10 +2979,7 @@
             "column": "Pinecrest Reservoir"
         },
         "Pinecrest Reservoir/Storage Value": {
-            "type": "constant",
-            "table": "Storage Costs",
-            "index": "Pinecrest Reservoir",
-            "column": "Cost"
+            "type": "Pinecrest_Reservoir_Storage_Value"
         },
         "Pinecrest Reservoir/Elevation": {
             "type": "interpolatedvolume",
@@ -4014,6 +4052,14 @@
         "Beardsley PH/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Beardsley PH"
+        },
+        "Donnell Lake Spill/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Donnell Lake Spill"
+        },
+        "Donnell Lake Spill/min requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Donnell Lake Spill/Min Requirement"
         },
         "IFR at Murphys Park/flow": {
             "type": "NumpyArrayNodeRecorder",
