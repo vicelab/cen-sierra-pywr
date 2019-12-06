@@ -22,7 +22,7 @@ class MID_Main_Demand(WaterLPParameter):
         else:
             year_type = "Wet"
 
-        return self.read_csv("../../data/data/Merced River/Management/BAU/Demand/MID_WYT_average_diversion_Main.csv", index_col=0, header=0, squeeze=True).loc[
+        return self.read_csv("Management/BAU/Demand/MID_WYT_average_diversion_Main_cfs.csv", index_col=0, header=0, squeeze=True).loc[
                    ts, year_type] / m3_to_cfs
 
     def value(self, timestep, scenario_index):
