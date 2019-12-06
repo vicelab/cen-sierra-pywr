@@ -492,7 +492,7 @@ def run_model(basin, scenario, network_key=None, start=None, end=None, run_name=
         if climate == 'Livneh':
             start_year = 2000
             if debug:
-                end_year = 2003
+                end_year = 2012
             else:
                 end_year = 2012
         else:

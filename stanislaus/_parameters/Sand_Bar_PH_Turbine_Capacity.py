@@ -5,10 +5,10 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class Donnells_PH_Turbine_Capacity(WaterLPParameter):
+class Sand_Bar_PH_Turbine_Capacity(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
-        capacity_cms = 700 / 35.31  # cfs to cms
+        capacity_cms = 600 / 35.31  # cfs to cms
         if self.model.mode == 'scheduling':
             # pass
             # if (7, 1) <= (timestep.month, timestep.day) <= (8, 1):
@@ -50,5 +50,5 @@ class Donnells_PH_Turbine_Capacity(WaterLPParameter):
         return cls(model, **data)
 
 
-Donnells_PH_Turbine_Capacity.register()
-print(" [*] Donnells_PH_Turbine_Capacity successfully registered")
+Sand_Bar_PH_Turbine_Capacity.register()
+print(" [*] Sand_Bar_PH_Turbine_Capacity successfully registered")
