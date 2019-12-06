@@ -3,7 +3,6 @@ import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
-import dash_cytoscape as cyto
 from dash.dependencies import Input, Output, State
 
 import os
@@ -567,19 +566,29 @@ def gauges_content(**kwargs):
     )
 
 
+THEMES = [
+    'Bootstrap',
+    'Darkly'
+]
+
+
+def render_themes(selected=None):
+    return [dbc.RadioItems(
+        id="select-theme",
+        options=[{"label": theme, "value": theme} for theme in THEMES],
+        value=selected
+    )]
+
+
 navbar = dbc.NavbarSimple(
     children=[
         # dbc.NavItem(dbc.NavLink("Link", href="#")),
         # dbc.DropdownMenu(
         #     nav=True,
         #     in_navbar=True,
-        #     label="Menu",
-        #     children=[
-        #         dbc.DropdownMenuItem("Entry 1"),
-        #         dbc.DropdownMenuItem("Entry 2"),
-        #         dbc.DropdownMenuItem(divider=True),
-        #         dbc.DropdownMenuItem("Entry 3"),
-        #     ],
+        #     id='select-themes',
+        #     label="Theme",
+        #     children=render_themes(),
         # ),
     ],
     brand="San Joaquin Dashboard",
@@ -683,65 +692,6 @@ top_bar = dbc.Form(
         ], style={'display': 'inline-flex', 'margin-top': '5px', 'width': '100%'})
     ]
 )
-
-
-def map_content():
-    with open('./Stanislaus River.json') as f:
-        oa_network = json.load(f)
-    with open('../stanislaus/pywr_model_Livneh_simplified.json') as f:
-        pywr_network = json.load(f)
-
-    oa_nodes = {}
-    xs = []
-    ys = []
-    for n in oa_network['network']['nodes']:
-        oa_nodes[n['name']] = n
-        xs.append(float(n['x']))
-        ys.append(float(n['y']))
-    minx = min(xs)
-    maxx = max(xs)
-    miny = min(ys)
-    maxy = max(ys)
-    xscale = 500 / (maxx - minx)
-    yscale = - 500 / (maxy - miny)
-    xb = -xscale * minx
-    yb = -yscale * miny
-
-    elements = []
-    for node in pywr_network['nodes']:
-        oa_node = oa_nodes.get(node['name'])
-        if not oa_node:
-            continue
-
-        x = float(oa_node['x']) * xscale + xb
-        y = float(oa_node['y']) * yscale + yb
-        elements.append({
-            'data': {
-                'id': node['name'].replace(' ', '-'),
-                'label': node['name'],
-            },
-            'position': {
-                'x': x,
-                'y': y
-            }
-        })
-    for n1, n2 in pywr_network['edges']:
-        elements.append(
-            {
-                'data': {
-                    'source': n1.replace(' ', '-'),
-                    'target': n2.replace(' ', '-')
-                }
-            }
-        )
-    return html.Div([
-        cyto.Cytoscape(
-            id='cytoscape-two-nodes',
-            layout={'name': 'preset'},
-            style={'width': '100%', 'height': '500px'},
-            elements=elements
-        )
-    ], style={"width": "100%"})
 
 
 def diagnostics_content(purpose):
@@ -983,39 +933,46 @@ app.layout = html.Div(
         body
     ])
 
-SIDEBAR_TABS = [
-    {
-        'label': 'Map',
-        'href': '/map',
-        'id': 'map-tab'
-    },
-    {
-        'label': 'Diagnostics',
-        'href': '/diagnostics',
-        'id': 'diagnostics-tab'
-    },
-    {
-        'label': 'Analysis',
-        'href': '/analysis',
-        'id': 'analysis-tab'
-    }
-]
-
 
 @app.callback(Output("sidebar-tabs", "children"), [Input("url", "pathname")])
 def render_sidebar_tabs(pathname):
-    nav_items = [
-        dbc.NavItem(
+    SIDEBAR_TABS = [
+        {
+            'label': 'Map',
+            'href': '/map',
+            'id': 'map-tab'
+        },
+        {
+            'label': 'Diagnostics',
+            'href': '/diagnostics',
+            'id': 'diagnostics-tab'
+        },
+        {
+            'label': 'Analysis',
+            'href': '/analysis',
+            'id': 'analysis-tab'
+        }
+    ]
+
+    nav_items = []
+    for t in SIDEBAR_TABS:
+        nav_item = dbc.NavItem(
             dbc.NavLink(
                 t['label'],
                 href=t['href'],
                 id=t['id'],
-                active=t['href'] in pathname
+                active=pathname and t['href'] in pathname
             )
         )
-        for t in SIDEBAR_TABS
-    ]
+        nav_items.append(nav_item)
     return nav_items
+
+
+# @app.callback(Output('select-themes', 'children'), [
+#     Input('select-theme', 'value')
+# ])
+# def render_theme_selector(selected):
+#     return []
 
 
 @app.callback(Output("main-content", "children"), [Input("url", "pathname")])
@@ -1043,6 +1000,81 @@ def render_page_content(pathname):
             html.P(f"The pathname {pathname} was not recognised..."),
         ]
     )
+
+
+def map_content():
+    return html.Div([
+        html.Div(
+            [
+                dbc.Checklist(
+                    id="show-map-labels",
+                    options=[
+                        {"id": "show-all-labels", "label": "Show labels", "value": "show-all-labels"}
+                    ],
+                    value=["show-all-labels"],
+                )
+            ]
+        ),
+        html.Div(
+            id='map-content',
+            children=[]
+        )
+    ], style={"width": "100%"})
+
+
+@app.callback(Output('map-content', 'children'), [
+    Input('show-map-labels', 'value')
+])
+def render_map(show_labels):
+    show_labels = 'show-all-labels' in show_labels
+    with open('./Stanislaus River.json') as f:
+        oa_network = json.load(f)
+    with open('../stanislaus/pywr_model_Livneh_simplified.json') as f:
+        pywr_network = json.load(f)
+
+    nodes = [(n['x'], n['y'], n['name']) for n in oa_network['network']['nodes']]
+    lons, lats, names = list(zip(*nodes))
+
+    traces = [
+        go.Scattermapbox(
+            lat=lats,
+            lon=lons,
+            mode='markers',
+            marker=go.scattermapbox.Marker(
+                size=14
+            ),
+            text=names,
+        )
+    ]
+
+    token = open('./secrets/mapbox-token.txt').read()
+
+    layout = dict(
+        hovermode='closest',
+        mapbox=go.layout.Mapbox(
+            accesstoken=token,
+            bearing=0,
+            center=go.layout.mapbox.Center(
+                lat=37,
+                lon=-120
+            ),
+            pitch=0,
+            zoom=5
+        ),
+        margin={'l': 0, 'b': 0, 't': 0, 'r': 0},
+    )
+
+    return [
+        dcc.Graph(
+            id='mapbox-map',
+            className='project-map',
+            figure={
+                'data': traces,
+                'layout': layout,
+            },
+
+        )
+    ]
 
 
 @app.callback(Output('percentiles-checklist', 'options'), [
