@@ -11,3 +11,5 @@ results/
 
 *.lp
 *.mps
+
+*/secrets/*
