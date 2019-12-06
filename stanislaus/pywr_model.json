@@ -233,6 +233,7 @@
             "max_volume": 79.83,
             "min_volume": 6.2,
             "cost": "Donnells Reservoir/Storage Value",
+            "level": "Donnells Reservoir/Elevation",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -409,9 +410,16 @@
         },
         {
             "name": "IFR bl Sand Bar Div",
-            "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Sand Bar Div/Violation Cost",
-            "mrf": "IFR bl Sand Bar Div/Requirement",
+            "type": "PiecewiseInstreamFlowRequirement",
+            "cost": [
+                -2000,
+                0,
+                2000
+            ],
+            "max_flow": [
+                "IFR bl Sand Bar Div/Min Requirement",
+                "IFR bl Sand Bar Div/Max Requirement"
+            ],
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -730,6 +738,7 @@
             "max_volume": 18.5,
             "min_volume": 1.2,
             "cost": "Relief Reservoir/Storage Value",
+            "level": "Relief Reservoir/Elevation",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -1205,13 +1214,13 @@
         {
             "name": "Lower Utica Canal",
             "type": "Link",
-            "max_flow": 0.076,
+            "max_flow": 0.081,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "UPA Tunnel Tap",
             "type": "Link",
-            "max_flow": 0.076,
+            "max_flow": 0.081,
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
@@ -2212,12 +2221,8 @@
                 0,
                 1
             ],
-            "index_col": [
-                0
-            ],
-            "parse_dates": [
-                1
-            ],
+            "index_col": 0,
+            "parse_dates": [1],
             "squeeze": true
         },
         "WYT P2005 & P2130": {
@@ -2271,15 +2276,6 @@
         },
         "IFR Below Pinecrest Lake schedule": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Pinecrest Lake_cfs_daily.csv",
-            "usecols": [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6
-            ],
             "index_col": null,
             "header": 0,
             "names": [
@@ -2298,16 +2294,6 @@
         },
         "IFR Below Donnell Lake schedule": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Donnells Reservoir (MIF)_cfs_daily.csv",
-            "usecols": [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6
-            ],
-            "index_col": null,
             "header": 0,
             "names": [
                 "start_date",
@@ -2325,20 +2311,50 @@
         },
         "Supplemental IFR below Donnell Lake": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Donnells Reservoir (Supp)_cfs.csv",
-            "names": ["Day_st", "Day_end", "1", "2", "3", "4", "5"],
+            "names": [
+                "Day_st",
+                "Day_end",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+            ],
+            "header": 0
+        },
+        "IFR Below Sand Bar Div Schedule": {
+            "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Sand Bar Diversion (MIF)_cfs_daily.csv",
+            "index_col": null,
+            "header": 0,
+            "names": [
+                "start_date",
+                "end_date",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+            ],
+            "parse_dates": [
+                0,
+                1
+            ]
+        },
+        "Supplemental IFR below Sand Bar Div": {
+            "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Sand Bar Diversion (Supp)_cfs.csv",
+            "names": [
+                "Day_st",
+                "Day_end",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+            ],
             "header": 0
         },
         "IFR Below Philadelphia Div Schedule": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Philadelphia Div. (MIF)_cfs_daily.csv",
-            "usecols": [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6
-            ],
             "index_col": null,
             "header": 0,
             "names": [
@@ -2357,7 +2373,13 @@
         },
         "IFR bl Goodwin Dam schedule": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Goodwin Dam_cfs.csv",
-            "names": [1, 2, 3, 4, 5],
+            "names": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
             "header": 0
         },
         "Oakdale Irrigation District Demand": {
@@ -2715,10 +2737,6 @@
         "IFR bl Philadelphia Div/Max Requirement": {
             "type": "IFR_bl_Philadelphia_Div_Max_Requirement"
         },
-        "IFR bl Relief Reservoir/Violation Cost": {
-            "type": "constant",
-            "value": -10000
-        },
         "IFR bl Relief Reservoir/Min Requirement": {
             "type": "IFR_bl_Relief_Reservoir_Min_Requirement"
         },
@@ -2729,8 +2747,11 @@
             "type": "constant",
             "value": -1000
         },
-        "IFR bl Sand Bar Div/Requirement": {
-            "type": "IFR_bl_Sand_Bar_Div_Requirement"
+        "IFR bl Sand Bar Div/Min Requirement": {
+            "type": "IFR_bl_Sand_Bar_Div_Min_Requirement"
+        },
+        "IFR bl Sand Bar Div/Max Requirement": {
+            "type": "IFR_bl_Sand_Bar_Div_Max_Requirement"
         },
         "IFR bl NF Stanislaus Div Res/Violation Cost": {
             "type": "constant",
@@ -3611,9 +3632,13 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Sand Bar Div"
         },
-        "IFR bl Sand Bar Div/requirement": {
+        "IFR bl Sand Bar Div/min requirement": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Sand Bar Div/Requirement"
+            "parameter": "IFR bl Sand Bar Div/Min Requirement"
+        },
+        "IFR bl Sand Bar Div/max requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Sand Bar Div/Max Requirement"
         },
         "IFR bl NF Stanislaus Div Res/flow": {
             "type": "NumpyArrayNodeRecorder",

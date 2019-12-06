@@ -3,7 +3,7 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class IFR_bl_Sand_Bar_Div_Requirement(WaterLPParameter):
+class IFR_bl_Sand_Bar_Div_Min_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
@@ -16,38 +16,32 @@ class IFR_bl_Sand_Bar_Div_Requirement(WaterLPParameter):
 
         WYT = WYT_table[operational_water_year]
         management = "BAU"
-        path = "Management/{mgt}/IFRs/".format(mgt=management)
-        if self.mode == 'scheduling':
-            fName = 'IFR_Below Sand Bar Diversion (MIF)_cfs_daily.csv'
-        else:
-            fName = 'IFR_Below Sand Bar Diversion (MIF)_cfs_monthly.csv'
+
+        schedule = self.model.tables["IFR Below Sand Bar Div Schedule"]
+
         if self.datetime.month >= 10:
             dt = datetime.date(1999, self.datetime.month, self.datetime.day)
         else:
             dt = datetime.date(2000, self.datetime.month, self.datetime.day)
 
-        data = self.read_csv(path + fName, usecols=[0, 1, 2, 3, 4, 5, 6], index_col=None, header=0,
-                             names=['start_date', 'end_date', '1', '2', '3', '4', '5'], parse_dates=[0, 1])
         # Critically Dry: 1,Dry: 2,Normal-Dry: 3,Normal-Wet: 4,Wet: 5
-        ifr_val = (data[(data['start_date'] <= dt) & (data['end_date'] >= dt)][str(WYT)]) / 35.314666
+        ifr_val = float(schedule[(schedule['start_date'] <= dt) & (schedule['end_date'] >= dt)][str(WYT)]) / 35.314666
 
         # Calculate supp IFR
-        data_supp = self.read_csv(path + 'IFR_Below Sand Bar Diversion (Supp)_cfs_daily.csv',
-                                  names=['Day_st', 'Day_end', '1', '2', '3', '4', '5'], header=0, index_col=None)
+        ifr_supp = 0
+        data_supp = self.model.tables["Supplemental IFR below Sand Bar Div"]
         if self.mode == 'scheduling':
             if self.datetime.month == 10 and self.datetime.day == 1:
-                # peak_inflow_Donnells = self.read_csv(
-                #     'Scenarios/Livneh/preprocessed/peak_runoff_DonnellsRes_MarToMay_cms.csv',
-                #     usecols=[0, 1], index_col=[0], parse_dates=[1],
-                #     squeeze=True)  # cms
                 self.peak_dt = self.model.tables["Peak Donnells Runoff"][timestep.year + 1]
             diff_day = (self.datetime - self.peak_dt).days
-            ifr_supp = 0
             if 0 < diff_day <= 91:
                 ifr_supp = \
                     (data_supp[(data_supp['Day_st'] < diff_day) & (diff_day <= data_supp['Day_end'])][str(WYT)]) \
                         .values[-1] / 35.314666
-            return ifr_val + ifr_supp
+            ifr_val += ifr_supp
+
+            ifr_val = self.get_down_ramp_ifr(timestep, 0.0, initial_value=80 / 35.31, rate=0.25)
+
         else:
             if self.datetime.month == 5:
                 ifr_supp = data_supp[str(WYT)].loc[0:4].mean()
@@ -57,7 +51,8 @@ class IFR_bl_Sand_Bar_Div_Requirement(WaterLPParameter):
                 ifr_supp = data_supp[str(WYT)].loc[8:12].mean()
             else:
                 ifr_supp = 0
-        ifr_val += ifr_supp
+
+            ifr_val += ifr_supp
 
         return ifr_val
 
@@ -75,5 +70,5 @@ class IFR_bl_Sand_Bar_Div_Requirement(WaterLPParameter):
         return cls(model, **data)
 
 
-IFR_bl_Sand_Bar_Div_Requirement.register()
+IFR_bl_Sand_Bar_Div_Min_Requirement.register()
 print(" [*] IFR_bl_Sand_Bar_Div_Requirement successfully registered")
