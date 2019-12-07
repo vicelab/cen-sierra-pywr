@@ -77,7 +77,7 @@ digraph merced {
 	"South Fork Merced R Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"South Fork Merced R Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"USGS_11264500 MERCED R A HAPPY ISLES" [fillcolor=white fontcolor=black shape=oval style=filled]
-	Valley_Demand [fillcolor=black fontcolor=white shape=oval style=filled]
+	"Valley Demand" [fillcolor=black fontcolor=white shape=oval style=filled]
 	Valley_Inflow [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Maxwell Ck Headflow" -> "Below Maxwell Ck Headflow [link]"
 	"Below Maxwell Ck Headflow [link]" -> "MER_02 Inflow"
@@ -124,7 +124,7 @@ digraph merced {
 	"Crocker-Huffman Diversion Reservoir" -> "Main Canal [link]"
 	"Main Canal [link]" -> "MID Main"
 	"MERCE-N-JUN2" -> "MERCE-L-CON1 [link]"
-	"MERCE-L-CON1 [link]" -> Valley_Demand
+	"MERCE-L-CON1 [link]" -> "Valley Demand"
 	"Maxwell Ck Inflow" -> "Merced River [link]"
 	"Merced River [link]" -> "MER_01 Inflow"
 	"MER_01 Inflow" -> "Merced River (1).1.1 [link]"
