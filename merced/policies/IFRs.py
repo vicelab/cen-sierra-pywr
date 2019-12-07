@@ -89,7 +89,7 @@ class Requirement_Merced_R_below_Crocker_Huffman_Dam(WaterLPParameter):
                 # Calculate for average flow in Nov and Dec of previous year at Shaffer Bridge on 1st Jan
                 st_date = date(yr - 1, 11, 1)
                 end_date = date(yr - 1, 12, 31)
-                gauge_Shafer_ts = self.model.recorders['Merced R below Crocker-Huffman Dam/flow'].to_dataframe()
+                gauge_Shafer_ts = self.model.recorders['IFR bl Crocker-Huffman Dam/flow'].to_dataframe()
                 self.nov_dec_mean = gauge_Shafer_ts[st_date:end_date].mean().values[0]
             if self.nov_dec_mean >= 4.25:  # If mean flow greater than eaual to 150 cfs, then atleast 100 cfs flow
                 ferc_lic_flow = 2.83
