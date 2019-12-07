@@ -490,14 +490,14 @@ def run_model(basin, scenario, network_key=None, start=None, end=None, run_name=
     if start is None or end is None:
         climate, price_year = scenario
         if climate == 'Livneh':
-            start_year = 2000
+            start_year = 1980
             if debug:
                 end_year = 2012
             else:
                 end_year = 2012
         else:
             start_year = 2030
-            end_year = 2045
+            end_year = 2060
         start = '{}-10-01'.format(start_year)
         end = '{}-09-30'.format(end_year)
 
@@ -736,7 +736,7 @@ def run_model(basin, scenario, network_key=None, start=None, end=None, run_name=
     results = m.to_dataframe()
     results.index.name = 'Date'
     scenario_name = '{}_P{}'.format(climate_scenario, price_year)
-    results_path = os.path.join('./results', basin, run_name, scenario_name)
+    results_path = os.path.join('./results', run_name, basin, scenario_name)
     if not os.path.exists(results_path):
         os.makedirs(results_path)
     results.columns = results.columns.droplevel(1)

@@ -26,10 +26,10 @@ rcps = ['85']
 gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
 
 if debug:
-    planning_months = 12
-    climate_scenarios = ['Livneh']
+    planning_months = 2
+    # climate_scenarios = ['Livneh']
     price_years = [2009]
-    # climate_scenarios = ['CanESM2_rcp85']
+    climate_scenarios = ['CanESM2_rcp85']
     # price_years = [2060]
 else:
     planning_months = 12
