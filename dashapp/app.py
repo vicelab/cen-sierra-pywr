@@ -23,8 +23,8 @@ app.config.suppress_callback_exceptions = True
 
 opath = '../data/{basin}/gauges/{attr}.csv'
 PATH_TEMPLATES = {
-    'mcm': '../results/{basin}/with optimization/{scenario}/{res_type}_{res_attr}_mcm.csv',
-    'Variable Head': '../results/{basin}/with optimization/{scenario}/{res_type}_{res_attr}_m.csv',
+    'mcm': '../results/{run}/{basin}/{scenario}/{res_type}_{res_attr}_mcm.csv',
+    'Variable Head': '../results/{run}/{basin}/{scenario}/{res_type}_{res_attr}_m.csv',
 }
 
 basin = 'stanislaus'
@@ -142,12 +142,18 @@ def percent_bias(predictions, targets):
     return predictions.mean() / targets.mean() - 1
 
 
-def load_timeseries(basin, scenarios, res_type, res_attr, tpl='mcm', multiplier=1.0):
+def load_timeseries(basin, scenarios, res_type, res_attr, run='full run', tpl='mcm', multiplier=1.0):
     path_tpl = PATH_TEMPLATES[tpl]
     collection = []
     for scenario in scenarios:
         df = pd.read_csv(
-            path_tpl.format(basin=basin, scenario=scenario, res_type=res_type, res_attr=res_attr),
+            path_tpl.format(
+                basin=basin,
+                run=run,
+                scenario=scenario,
+                res_type=res_type,
+                res_attr=res_attr
+            ),
             index_col=[0],
             parse_dates=True,
         ) * multiplier
