@@ -34,7 +34,7 @@ if debug:
 else:
     planning_months = 12
     climate_scenarios = ['Livneh'] + gcm_rcps
-    price_years = [2009, 2030, 2060]
+    price_years = [2009, 2030, 2045, 2060]
 
 scenarios = product(climate_scenarios, price_years)
 
