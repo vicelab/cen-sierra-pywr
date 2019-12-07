@@ -110,10 +110,16 @@ class Hydropower(RiverDomainMixin, PiecewiseLink):
         #     excess_capacity = turbine_capacity - base_flow
         # if base_flow < 0.0:
         #     base_flow = max(base_flow, 0.0)
+
+        max_flow = kwargs.pop('max_flow', None)
+
         self.head = kwargs.pop('head', 0.0)
+
         kwargs['cost'] = [base_cost, excess_cost]
         kwargs['max_flow'] = [base_flow, None]
         super(Hydropower, self).__init__(*args, **kwargs)
+
+        self.output.max_flow = max_flow
 
     def base_flow():
         def fget(self):
@@ -193,10 +199,11 @@ class Hydropower(RiverDomainMixin, PiecewiseLink):
         base_flow = load_parameter(model, data.pop("base_flow", 0.0))
         base_cost = load_parameter(model, data.pop("base_cost", 0.0))
         excess_cost = load_parameter(model, data.pop("excess_cost", 0.0))
+        max_flow = load_parameter(model, data.pop("max_flow", None))
         # turbine_capacity = load_parameter(model, data.pop("turbine_capacity", 0.0))
         # unconstrained_cost = load_parameter(model, data.pop("unconstrained_cost", 0.0))
         del (data["type"])
-        node = cls(model, base_flow=base_flow, base_cost=base_cost, excess_cost=excess_cost, **data)
+        node = cls(model, max_flow=max_flow, base_flow=base_flow, base_cost=base_cost, excess_cost=excess_cost, **data)
         return node
 
 
