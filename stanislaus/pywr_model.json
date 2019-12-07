@@ -3832,7 +3832,7 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "NF STANISLAUS R BL SILVER C CA_11293500"
         },
-        "Phoenix Canal Outflow/outflow": {
+        "Phoenix Canal Outflow/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Phoenix Canal Outflow"
         },
@@ -3900,15 +3900,15 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Stanislaus PH"
         },
-        "South San Joaquin Irrigation District/outflow": {
+        "South San Joaquin Irrigation District/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "South San Joaquin Irrigation District"
         },
-        "Oakdale Irrigation District/outflow": {
+        "Oakdale Irrigation District/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Oakdale Irrigation District"
         },
-        "Stanislaus River Outflow/outflow": {
+        "Stanislaus River Outflow/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Stanislaus River Outflow"
         },
