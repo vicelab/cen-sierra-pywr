@@ -20,8 +20,8 @@ class Requirement_Merced_R_below_Crocker_Huffman_Dam(WaterLPParameter):
         # We should be able to add a "WYT" parameter as a general variable and save it to parameters in the JSON file.
         # It could be pre-processed, as currently, or calculated on-the-fly
         csv_kwargs = dict(index_col=0, header=0, parse_dates=False, squeeze=True)
-        self.fish_data = self.read_csv('policies/fishPulse_Merced.csv', **csv_kwargs)
-        self.div_data = self.read_csv('policies/otherDiversions_Merced.csv', **csv_kwargs)
+        self.fish_data = self.read_csv('Management/BAU/Demand/fishPulse_Merced_cfs.csv', **csv_kwargs)
+        self.div_data = self.read_csv('Management/BAU/Demand/otherDiversions_Merced_cfs.csv', **csv_kwargs)
 
     def value(self, timestep, scenario_index):
         # All flow units are in cubic meters per second (cms)
