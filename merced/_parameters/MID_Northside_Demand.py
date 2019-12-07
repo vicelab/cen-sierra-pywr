@@ -22,8 +22,7 @@ class MID_Northside_Demand(WaterLPParameter):
         else:
             year_type = "Wet"
 
-        return self.read_csv("Management/BAU/Demand/MID_WYT_average_diversion_Northside_cfs.csv",
-                             index_col=0, header=0, squeeze=True).loc[ts, year_type] / 35.31
+        return self.model.tables["MID Diversions"].at[ts, year_type] / 35.31
 
     def value(self, timestep, scenario_index):
         return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
