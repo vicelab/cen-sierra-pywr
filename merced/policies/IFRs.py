@@ -20,8 +20,10 @@ class Requirement_Merced_R_below_Crocker_Huffman_Dam(WaterLPParameter):
         # We should be able to add a "WYT" parameter as a general variable and save it to parameters in the JSON file.
         # It could be pre-processed, as currently, or calculated on-the-fly
         csv_kwargs = dict(index_col=0, header=0, parse_dates=False, squeeze=True)
-        self.fish_data = self.read_csv('Management/BAU/Demand/fishPulse_Merced_cfs.csv', **csv_kwargs)
-        self.div_data = self.read_csv('Management/BAU/Demand/otherDiversions_Merced_cfs.csv', **csv_kwargs)
+        self.fish_data = self.read_csv('Management/BAU/Demand/fishPulse_Merced_cfs.csv',
+                                       **csv_kwargs) / 35.3147  # Converting to cms
+        self.div_data = self.read_csv('Management/BAU/Demand/otherDiversions_Merced_cfs.csv',
+                                      **csv_kwargs) / 35.3147  # Converting to cms
 
     def value(self, timestep, scenario_index):
         # All flow units are in cubic meters per second (cms)
@@ -141,7 +143,7 @@ class Requirement_Merced_R_below_Crocker_Huffman_Dam(WaterLPParameter):
                 # Note: the following two are about equivalent in time. Which to use seems to be arbitrary.
                 # flow_val += self.model.nodes['MER_0{} Headflow'.format(j)].max_flow.value(timestep, scenario_index)
                 flow_val += self.model.parameters['MER_0{} Headflow/Runoff'.format(j)].value(timestep,
-                                                                                                  scenario_index)
+                                                                                             scenario_index)
 
             if mth in (10, 11, 12, 1, 2):
                 # Flow of 50 cfs (1.416 cms) -only from ExChequer flows
@@ -176,10 +178,10 @@ class Requirement_Merced_R_below_Crocker_Huffman_Dam(WaterLPParameter):
         return cowell_flow
 
     def fish_requirement(self, timestep):
-        return self.fish_data['1900-{:02}-{:02}'.format(timestep.month, timestep.day)] / 35.3147  # Converting to cms
+        return self.fish_data['1900-{:02}-{:02}'.format(timestep.month, timestep.day)]
 
     def dev_requirement(self, timestep):
-        return self.div_data['1900-{:02}-{:02}'.format(timestep.month, timestep.day)] / 35.3147  # Convering to cms
+        return self.div_data['1900-{:02}-{:02}'.format(timestep.month, timestep.day)]
 
     @classmethod
     def load(cls, model, data):
