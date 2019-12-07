@@ -766,5 +766,5 @@ def run_model(basin, scenario, network_key=None, start=None, end=None, run_name=
             gen_path = os.path.join(results_path, '{}_Generation_MWh.csv'.format(_type))
             for c in df.columns:
                 node = m.nodes[c]
-                gen_df *= node.head * 0.9 * 9.81 * 1000 / 1e6
+                gen_df *= node.head * 0.9 * 9.81 * 1000 / 1e6 * 24
                 gen_df.to_csv(gen_path)
