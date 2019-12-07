@@ -370,9 +370,9 @@
             "mrf_cost": 0.0
         },
         {
-            "name": "Valley_Demand",
+            "name": "Valley Demand",
             "type": "Output",
-            "max_flow": "Valley_Demand/Demand"
+            "max_flow": "Valley Demand/Demand"
         },
         {
             "name": "Valley_Inflow",
@@ -562,7 +562,7 @@
         ],
         [
             "MERCE-L-CON1 [link]",
-            "Valley_Demand"
+            "Valley Demand"
         ],
         [
             "Maxwell Ck Inflow",
@@ -924,37 +924,9 @@
         "USGS_11264500 MERCED R A HAPPY ISLES/Observed Flow": {
             "type": "USGS_11264500_MERCED_R_A_HAPPY_ISLES_Observed_Flow"
         },
-        "Valley_Demand/Demand": {
+        "Valley Demand/Demand": {
             "type": "constant",
             "value": 0
-        },
-        "Temperature": {
-            "type": "constant",
-            "value": 4.0
-        },
-        "cfs2cms": {
-            "type": "constant",
-            "value": 0.028317
-        },
-        "AF2cm": {
-            "type": "constant",
-            "value": 1233.5
-        },
-        "ToFlow": {
-            "type": "constant",
-            "value": 604800.0
-        },
-        "Af2cms": {
-            "type": "constant",
-            "value": 0.0020395171957671957
-        },
-        "IsSolar": {
-            "type": "constant",
-            "value": 1.0
-        },
-        "PrecipFactor": {
-            "type": "constant",
-            "value": 1.0
         }
     },
     "recorders": {
@@ -1090,7 +1062,7 @@
             "type": "NumpyArrayParameterRecorder",
             "parameter": "MID Main/Observed Delivery"
         },
-        "MID Main/flow": {
+        "MID Main/outflow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "MID Main"
         },
@@ -1106,7 +1078,7 @@
             "type": "NumpyArrayParameterRecorder",
             "parameter": "MID Northside/Observed Delivery"
         },
-        "MID Northside/flow": {
+        "MID Northside/outflow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "MID Northside"
         },
@@ -1146,9 +1118,9 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "USGS_11264500 MERCED R A HAPPY ISLES"
         },
-        "Valley_Demand/flow": {
+        "Valley Demand/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "Valley_Demand"
+            "node": "Valley Demand"
         }
     }
 }
