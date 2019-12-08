@@ -12,6 +12,16 @@
     "solver": {
         "name": "glpk"
     },
+    "scenarios": [
+        {
+            "name": "SWRCB 40",
+            "size": 5
+        },
+        {
+            "name": "District Reductions",
+            "size": 2
+        }
+    ],
     "nodes": [
         {
             "name": "Below Maxwell Ck Headflow [link]",
@@ -263,7 +273,7 @@
             "name": "IFR bl Crocker-Huffman Dam",
             "type": "InstreamFlowRequirement",
             "mrf_cost": "IFR bl Crocker-Huffman Dam/Violation Cost",
-            "mrf": "Requirement_Merced_R_below_Crocker_Huffman_Dam"
+            "mrf": "IFR bl Crocker-Huffman Dam/Requirement"
         },
         {
             "name": "Merced River Headflow",
@@ -718,9 +728,22 @@
             "parse_dates": false,
             "squeeze": true
         },
-        "MID Diversions": {
+        "MID Northside Diversions": {
             "url": "../data/Merced River/Management/BAU/Demand/MID_WYT_average_diversion_Northside_cfs.csv",
             "index_col": 0,
+            "header": 0,
+            "squeeze": true
+        },
+        "MID Main Diversions": {
+            "url": "../data/Merced River/Management/BAU/Demand/MID_WYT_average_diversion_Main_cfs.csv",
+            "index_col": 0,
+            "header": 0,
+            "squeeze": true
+        },
+        "Full Natural Flow": {
+            "url": "../data/Merced River/Scenarios/preprocessed/Livneh/full_natural_flow_daily_mcm.csv",
+            "index_col": 0,
+            "parse_dates": true,
             "header": 0,
             "squeeze": true
         }
@@ -830,8 +853,8 @@
             "type": "constant",
             "value": -1000
         },
-        "Requirement_Merced_R_below_Crocker_Huffman_Dam": {
-            "type": "Requirement_Merced_R_below_Crocker_Huffman_Dam"
+        "IFR bl Crocker-Huffman Dam/Requirement": {
+            "type": "IFR_bl_Crocker_Huffman_Dam_Requirement"
         },
         "MER_01 Headflow/Runoff": {
             "type": "dataframe",
@@ -1000,35 +1023,11 @@
         },
         "IFR bl Crocker-Huffman Dam/requirement": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "Requirement_Merced_R_below_Crocker_Huffman_Dam"
+            "parameter": "IFR bl Crocker-Huffman Dam/Requirement"
         },
         "Merced River Outflow/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Merced River Outflow"
-        },
-        "MER_01 Headflow/runoff": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "MER_01 Headflow"
-        },
-        "MER_02 Headflow/runoff": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "MER_02 Headflow"
-        },
-        "MER_03 Headflow/runoff": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "MER_03 Headflow"
-        },
-        "MER_04 Headflow/runoff": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "MER_04 Headflow"
-        },
-        "MER_05 Headflow/runoff": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "MER_05 Headflow"
-        },
-        "MER_06 Headflow/runoff": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "MER_06 Headflow"
         },
         "MID Main/demand": {
             "type": "NumpyArrayParameterRecorder",

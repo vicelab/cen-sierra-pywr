@@ -6,6 +6,8 @@ from utilities.converter import convert
 class MID_Northside_Demand(WaterLPParameter):
     """"""
 
+    reductions = [0, 0]
+
     def _value(self, timestep, scenario_index):
 
         type_value = self.model.tables['WYT for IFR Below Exchequer'][timestep.year]
@@ -22,7 +24,17 @@ class MID_Northside_Demand(WaterLPParameter):
         else:
             year_type = "Wet"
 
-        return self.model.tables["MID Diversions"].at[ts, year_type] / 35.31
+        demand_cms = self.model.tables["MID Northside Diversions"].at[ts, year_type] / 35.31
+
+        idx = scenario_index.indices[1]
+        if timestep.month == 1 and timestep.day == 1:
+            if idx == 1:
+                ifr_param = self.model.parameters["IFR bl Crocker-Huffman Dam/Requirement"]
+                reduction = ifr_param.swrcb_levels[scenario_index.indices[0]]
+                self.reductions[1] = reduction
+
+        demand_cms *= (1 - self.reductions[idx])
+        return demand_cms
 
     def value(self, timestep, scenario_index):
         return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
