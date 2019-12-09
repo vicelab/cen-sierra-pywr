@@ -13,6 +13,7 @@ import pandas as pd
 
 SECONDS_IN_DAY = 3600 * 24
 
+
 class PlanningTimestepper(Timestepper):
 
     def setup(self):
@@ -33,10 +34,17 @@ class PlanningTimestepper(Timestepper):
 # PlanningTimestepper.register()
 
 
-def simplify_network(m, delete_gauges=False, delete_observed=True):
+def simplify_network(m, delete_gauges=False, delete_observed=True, delete_scenarios=False):
     # simplify the network
     mission_complete = False
     obsolete_gauges = []
+
+    if delete_scenarios:
+        scenarios = []
+        for scen in m.get('scenarios', []):
+            scen['size'] = 1
+            scenarios.append(scen)
+        m['scenarios'] = scenarios
 
     while not mission_complete:
         mission_complete = True
@@ -126,7 +134,7 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
     # m['timestepper']['timestep'] = 'M'
     # m['metadata']['title'] += ' - planning'
 
-    m = simplify_network(m, delete_gauges=False, delete_observed=True)
+    m = simplify_network(m, delete_gauges=True, delete_observed=True, delete_scenarios=debug is not None)
 
     all_steps = range(steps)
 
@@ -482,7 +490,8 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
     return
 
 
-def run_model(basin, scenario, network_key=None, start=None, end=None, run_name="default", include_planning=False,
+def run_model(basin, scenario, network_key=None, start=None, end=None,
+              run_name="default", include_planning=False,
               simplify=True, use_multiprocessing=False,
               debug=False, planning_months=12):
     months = planning_months
@@ -491,10 +500,7 @@ def run_model(basin, scenario, network_key=None, start=None, end=None, run_name=
         climate, price_year = scenario
         if climate == 'Livneh':
             start_year = 1980
-            if debug:
-                end_year = 2012
-            else:
-                end_year = 2012
+            end_year = 2012
         else:
             start_year = 2030
             end_year = 2060
@@ -609,7 +615,7 @@ def run_model(basin, scenario, network_key=None, start=None, end=None, run_name=
         simplified_filename = model_filename_base + '_simplified.json'
         simplified_model_path = os.path.join(root_dir, simplified_filename)
 
-        m = simplify_network(m, delete_gauges=True, delete_observed=True)
+        m = simplify_network(m, delete_gauges=True, delete_observed=True, delete_scenarios=debug)
         # with open(simplified_model_path, 'w') as f:
         #     json.dump(f, m, indent=4)
         with open(simplified_model_path, 'w') as f:
@@ -736,17 +742,20 @@ def run_model(basin, scenario, network_key=None, start=None, end=None, run_name=
     results = m.to_dataframe()
     results.index.name = 'Date'
     scenario_name = '{}_P{}'.format(climate_scenario, price_year)
+    scenario_names = [s.name for s in m.scenarios.scenarios]
+    if not scenario_names:
+        scenario_names = [0]
     results_path = os.path.join('./results', run_name, basin, scenario_name)
     if not os.path.exists(results_path):
         os.makedirs(results_path)
-    results.columns = results.columns.droplevel(1)
+    # results.columns = results.columns.droplevel(1)
     if not os.path.exists(results_path):
         os.makedirs(results_path)
-    results.to_csv(os.path.join(results_path, 'system_mcm.csv'))
+    # results.to_csv(os.path.join(results_path, 'system_mcm.csv'))
     columns = {}
     nodes_of_type = {}
     for c in results.columns:
-        res_name, attr = c.split('/')
+        res_name, attr = c[0].split('/')
         node = m.nodes[res_name]
         _type = type(node).__name__
         key = (_type, attr)
@@ -756,15 +765,25 @@ def run_model(basin, scenario, network_key=None, start=None, end=None, run_name=
             columns[key] = [c]
         nodes_of_type[_type] = nodes_of_type.get(_type, []) + [node]
     for (_type, attr), cols in columns.items():
-        tab_path = os.path.join(results_path, '{}_{}_mcm'.format(_type, attr.title()))
+        if attr == 'elevation':
+            unit = 'm'
+        else:
+            unit = 'mcm'
+        tab_path = os.path.join(results_path, '{}_{}_{}'.format(_type, attr.title(), unit))
         df = results[cols]
-        df.columns = [c.split('/')[0] for c in cols]
+        if scenario_names:
+            new_cols = [tuple([col[0].split('/')[0]] + list(col[1:])) for col in cols]
+            df.columns = pd.MultiIndex.from_tuples(new_cols)
+            df.columns.names = ["node"] + scenario_names
+        else:
+            new_cols = [col[0].split('/')[0] for col in cols]
+            df.columns = new_cols
         df.to_csv(tab_path + '.csv')
 
         if _type in ['Hydropower', 'PiecewiseHydropower'] and attr == 'flow':
             gen_df = df.copy()
             gen_path = os.path.join(results_path, '{}_Generation_MWh.csv'.format(_type))
             for c in df.columns:
-                node = m.nodes[c]
+                node = m.nodes[c[0]]
                 gen_df *= node.head * 0.9 * 9.81 * 1000 / 1e6 * 24
                 gen_df.to_csv(gen_path)
