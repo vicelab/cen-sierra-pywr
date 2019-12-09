@@ -24,7 +24,8 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.config.suppress_callback_exceptions = True
 
 opath = '../data/{basin}/gauges/{attr}.csv'
-PROD_RESULTS_PATH = r'C:\Users\david\Box\CERC-WET\Task7_San_Joaquin_Model\Pywr models\results'
+# PROD_RESULTS_PATH = r'C:\Users\david\Box\CERC-WET\Task7_San_Joaquin_Model\Pywr models\results'
+PROD_RESULTS_PATH = '../results'
 DEV_RESULTS_PATH = '../results'
 PATH_TEMPLATES = {
     'mcm': '{run}/{basin}/{scenario}/{res_type}_{res_attr}_mcm.csv',
@@ -90,6 +91,43 @@ def get_plot_kwargs(source):
 
 
 RES_OPTIONS = {}
+SCENARIOS = {}
+
+
+# =================
+
+def register_basin_callbacks(basin, scenarios):
+    scenario_inputs = [Input(s['name'].replace(' ', '-'), 'value') for s in scenarios]
+
+    @app.callback(Output('{}-tabs-content'.format(basin), 'children'),
+                  [
+                      Input('development-tabs', 'active_tab'),
+                      Input('radio-transform', 'value'),
+                      Input('radio-resample', 'value'),
+                      Input('percentiles-checklist', 'value'),
+                      Input('select-basin', 'value'),
+                      Input('select-climate', 'value'),
+                      Input('select-price-year', 'value'),
+                      Input('select-resources', 'value'),
+                      Input('reload', 'n_clicks')
+                  ] + scenario_inputs)
+    def render_scenarios_content(tab, transform, resample, percentiles, basin, climates, priceyears, resources,
+                                 n_clicks,
+                                 *args):
+        selected_scenarios = args
+        kwargs = dict(
+            basin=basin,
+            climates=climates,
+            priceyears=priceyears,
+            resources=resources,
+            transform=transform,
+            resample=resample,
+            percentiles=percentiles,
+            run_name='full run',
+            selected_scenarios=selected_scenarios
+        )
+        return render_timeseries_collection(tab, **kwargs)
+
 
 obs_storage = []
 obs_streamflow = []
@@ -100,6 +138,11 @@ for basin in basins:
     with open('../{}/pywr_model.json'.format(basin_long)) as f:
         m = json.load(f)
     nodes = {n['name']: n for n in m['nodes']}
+
+    # load scenarios
+    basin_scenarios = m.get('scenarios', [])
+    SCENARIOS[basin] = basin_scenarios
+
     for recorder in m['recorders']:
         parts = recorder.split('/')
         if len(parts) == 2:
@@ -136,6 +179,9 @@ for basin in basins:
     ).ffill()  # already cfs, no need to concert
     obs_streamflow.append(df)
 
+    # register basin callbacks
+    register_basin_callbacks(basin, basin_scenarios)
+
 df_obs_storage = pd.concat(obs_storage, axis=1)
 df_obs_streamflow = pd.concat(obs_streamflow, axis=1)
 
@@ -164,7 +210,8 @@ def percent_bias(predictions, targets):
     return predictions.mean() / targets.mean() - 1
 
 
-def load_timeseries(results_path, basin, scenarios, res_type, res_attr, run='full run', tpl='mcm', multiplier=1.0):
+def load_timeseries(results_path, basin, scenarios, res_type, res_attr, nscenarios=1,
+                    run='full run', tpl='mcm', multiplier=1.0):
     path_tpl = os.path.join(results_path, PATH_TEMPLATES[tpl])
     collection = []
     for scenario in scenarios:
@@ -177,11 +224,15 @@ def load_timeseries(results_path, basin, scenarios, res_type, res_attr, run='ful
         )
         if not os.path.exists(path):
             continue
+        header = list(range(nscenarios + 1))
         df = pd.read_csv(
             path,
             index_col=[0],
             parse_dates=True,
+            header=header
         ) * multiplier
+        if run == 'development':
+            df.columns = df.columns.droplevel(header[1:])
         df.name = scenario
         collection.append(df)
     if collection:
@@ -295,104 +346,118 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     percentiles = kwargs.get('percentiles')
     consolidate = kwargs.get('consolidate')
     calibration = kwargs.get('calibration')
+    scenario_combos = kwargs.get('scenario_combos', [])
     head = kwargs.get('head')
 
-    for scenario in set(all_sim_vals.columns.get_level_values(0)):
-        parts = scenario.split('_')
+    for forcing in set(all_sim_vals.columns.get_level_values(0)):
+        parts = forcing.split('_')
         if len(parts) == 2:
             gcm, priceyear = parts
         else:
             gcm, rcp, priceyear = parts
 
         sim_color = sns.color_palette(PALETTES[priceyear]).as_hex()[GCMS.index(gcm)]
-        sim_vals = all_sim_vals[scenario, res_name]
-        if gcm == 'Livneh':
-            sim_vals = sim_vals[sim_vals.index.year < 2020]
-        else:
-            sim_vals = sim_vals[sim_vals.index.year >= 2020]
-        if head is not None:
-            sim_vals = flow_to_energy(sim_vals, head)
-        if resample:
-            sim_resampled = sim_vals.dropna().resample(resample).mean()
-        else:
-            sim_resampled = sim_vals.dropna()
+        resource_scenario_sim_vals = all_sim_vals[forcing, res_name]
+        # for multiindex in resource_scenario_sim_vals.columns:
+        #     sim_vals = resource_scenario_sim_vals[multiindex]
+        for scenario_combo in scenario_combos:
 
-        plot_max = False
-        max_reqt = kwargs.get('max_reqt')
-        if max_reqt is not None and res_name in max_reqt[scenario]:
-            plot_max = True
-
-        # Minimum flow requirement
-        min_reqt = kwargs.get('min_reqt')
-        if not consolidate and min_reqt is not None and res_name in min_reqt[scenario]:
-            if resample:
-                min_reqt_resampled = min_reqt.resample(resample).mean()
+            if scenario_combo:
+                scenario_name = '{} {}'.format(tuple(parts), scenario_combo)
             else:
-                min_reqt_resampled = min_reqt.copy()
-            ts_data.append(
+                scenario_name = '{}'.format(tuple(parts))
+
+            if not scenario_combo:
+                sim_vals = resource_scenario_sim_vals
+            else:
+                sim_vals = resource_scenario_sim_vals[scenario_combo]
+            if gcm == 'Livneh':
+                sim_vals = sim_vals[sim_vals.index.year < 2020]
+            else:
+                sim_vals = sim_vals[sim_vals.index.year >= 2020]
+            if head is not None:
+                sim_vals = flow_to_energy(sim_vals, head)
+            if resample:
+                sim_resampled = sim_vals.dropna().resample(resample).mean()
+            else:
+                sim_resampled = sim_vals.dropna()
+
+            plot_max = False
+            max_reqt = kwargs.get('max_reqt')
+            if max_reqt is not None and res_name in max_reqt[forcing]:
+                plot_max = True
+
+            # Minimum flow requirement
+            min_reqt = kwargs.get('min_reqt')
+            if not consolidate and min_reqt is not None and res_name in min_reqt[forcing]:
+                if resample:
+                    min_reqt_resampled = min_reqt.resample(resample).mean()
+                else:
+                    min_reqt_resampled = min_reqt.copy()
+                ts_data.append(
+                    go.Scatter(
+                        x=min_reqt_resampled[forcing].index,
+                        y=min_reqt_resampled[forcing][res_name],
+                        text='Min Requirement',
+                        mode='lines',
+                        opacity=0.7,
+                        # opacity=0.7 if not plot_max else 0.0,
+                        name='Min Requirement',
+                        line_color='red'
+                    )
+                )
+
+            # Maximum flow requirement
+            if not consolidate and plot_max:
+                ts_data.append(
+                    go.Scatter(
+                        x=max_reqt[forcing].index,
+                        y=max_reqt[forcing][res_name],
+                        text='Max Requirement',
+                        mode='lines',
+                        fill='tonexty',
+                        opacity=0.7,
+                        name='Max Requirement',
+                        line_color='lightblue',
+                        line=dict(width=0.5)
+                    )
+                )
+
+            if consolidate:
+                try:
+                    sim_cons = consolidate_dataframe(sim_resampled, resample)
+                except:
+                    print('Failed to consolidate: ', forcing)
+                    continue
+                sim_vals = sim_cons.quantile(0.5, axis=1)
+                sim_data = percentile_graphs(sim_cons, scenario_name, percentiles, color=sim_color)
+                ts_data.extend(sim_data)
+
+            else:
+                ts_data.append(
+                    go.Scatter(
+                        x=sim_resampled.index,
+                        y=sim_resampled,
+                        text=scenario_name,
+                        mode='lines',
+                        opacity=0.7,
+                        name=scenario_name,
+                        line=dict(color=sim_color)
+                    )
+                )
+
+            N = len(sim_resampled)
+            fd_data.append(
                 go.Scatter(
-                    x=min_reqt_resampled[scenario].index,
-                    y=min_reqt_resampled[scenario][res_name],
-                    text='Min Requirement',
+                    y=sorted(sim_resampled.values),
+                    x=np.arange(0, N) / N * 100,
+                    name=scenario_name,
+                    text=scenario_name,
+                    line=dict(color=sim_color),
                     mode='lines',
                     opacity=0.7,
-                    # opacity=0.7 if not plot_max else 0.0,
-                    name='Min Requirement',
-                    line_color='red'
                 )
             )
-
-        # Maximum flow requirement
-        if not consolidate and plot_max:
-            ts_data.append(
-                go.Scatter(
-                    x=max_reqt[scenario].index,
-                    y=max_reqt[scenario][res_name],
-                    text='Max Requirement',
-                    mode='lines',
-                    fill='tonexty',
-                    opacity=0.7,
-                    name='Max Requirement',
-                    line_color='lightblue',
-                    line=dict(width=0.5)
-                )
-            )
-
-        if consolidate:
-            try:
-                sim_cons = consolidate_dataframe(sim_resampled, resample)
-            except:
-                print('Failed to consolidate: ', scenario)
-                continue
-            sim_vals = sim_cons.quantile(0.5, axis=1)
-            sim_data = percentile_graphs(sim_cons, scenario, percentiles, color=sim_color)
-            ts_data.extend(sim_data)
-
-        else:
-            ts_data.append(
-                go.Scatter(
-                    x=sim_resampled.index,
-                    y=sim_resampled,
-                    text=scenario,
-                    mode='lines',
-                    opacity=0.7,
-                    name=scenario,
-                    line=dict(color=sim_color)
-                )
-            )
-
-        N = len(sim_resampled)
-        fd_data.append(
-            go.Scatter(
-                y=sorted(sim_resampled.values),
-                x=np.arange(0, N) / N * 100,
-                name=scenario,
-                text=scenario,
-                line=dict(color=sim_color),
-                mode='lines',
-                opacity=0.7,
-            )
-        )
 
     gauges = []
     gauge_name = gauge_lookup.get(res_name, res_name)
@@ -688,11 +753,12 @@ consolidation_checklist = dbc.FormGroup(
     ],
 )
 
-select_diagnostics_basin = dcc.Dropdown(
+select_development_basin = dcc.Dropdown(
     id="select-basin",
     options=[],
     value=None,
-    style={'min-width': '200px'}
+    style={'min-width': '200px'},
+    placeholder="Select a basin..."
 )
 
 select_climate = dcc.Dropdown(
@@ -722,15 +788,15 @@ select_price_year = dcc.Dropdown(
     value=["2009"]
 )
 
-analysis_selections = dbc.Form([
+scenarios_selections = dbc.Form([
     dbc.FormGroup([
-        select_diagnostics_basin, select_climate, select_price_year
+        select_development_basin, select_climate, select_price_year
     ])
 ], inline=True, style={"margin-bottom": "10px"})
 
-diagnostics_selections = dbc.Form([
+development_selections = dbc.Form([
     dbc.FormGroup([
-        select_diagnostics_basin
+        select_development_basin
     ])
 ], inline=True, style={"margin-bottom": "10px"})
 
@@ -748,7 +814,8 @@ top_bar = dbc.Form(
                 className='select-resources',
                 style={'min-width': '300px'},
                 multi=True,
-                value=[]
+                value=[],
+                placeholder='Select a resource...'
             ),
             dbc.Button([
                 'Reload'
@@ -758,16 +825,29 @@ top_bar = dbc.Form(
 )
 
 
-def diagnostics_content(purpose):
-    if purpose == "diagnostics":
-        selections = diagnostics_selections
+def development_content(purpose):
+    if purpose == "development":
+        selections = development_selections
+        scenario_selections = None
+        main_content = html.Div(
+            id='development-tabs-content',
+            style={'padding': '10px'},
+            children=[]
+        )
     else:
-        selections = analysis_selections
+        selections = scenarios_selections
+        main_content = html.Div(
+            id='tabs-content',
+            style={'padding': '10px'},
+            children=[]
+        )
+        scenario_selections = html.Div([], id='scenario-selections')
     return dbc.Row([
         dbc.Col([
             html.Div(children=[
                 selections,
-                dbc.Tabs(id="diagnostics-tabs", active_tab='system', children=[
+                scenario_selections,
+                dbc.Tabs(id="development-tabs", active_tab='system', children=[
                     dbc.Tab(label='System', tab_id='system'),
                     dbc.Tab(label='Reservoir storage', tab_id='reservoir-storage'),
                     dbc.Tab(label='HP flow', tab_id='hydropower-flow'),
@@ -777,10 +857,7 @@ def diagnostics_content(purpose):
                     dbc.Tab(label='Outflow', tab_id='outflow')
                 ]),
                 top_bar,
-                html.Div(
-                    id='{}-tabs-content'.format(purpose),
-                    style={'padding': '10px'},
-                )
+                main_content
             ])],
             width=11
         ),
@@ -800,6 +877,7 @@ def get_resources(df, filterby=None):
 def render_timeseries_collection(tab, **kwargs):
     children = []
     resources = kwargs.pop('resources', None)
+    selected_scenarios = kwargs.pop('selected_scenarios', [])
     consolidate = "consolidate" in kwargs.get('percentiles', [])
     if consolidate:
         kwargs['consolidate'] = True
@@ -815,6 +893,13 @@ def render_timeseries_collection(tab, **kwargs):
     calibration = climates is None
     run_name = kwargs.get('run_name', 'development')
 
+    load_data_kwargs = dict(
+        run=run_name,
+        nscenarios=max(len(SCENARIOS.get(basin, [])), 1)
+    )
+
+    kwargs['scenario_combos'] = list(product(*selected_scenarios))
+
     if run_name == 'development':
         results_path = DEV_RESULTS_PATH
     else:
@@ -823,28 +908,29 @@ def render_timeseries_collection(tab, **kwargs):
     kwargs['calibration'] = calibration
 
     if calibration:
-        scenarios = ['Livneh_P2009']
+        forcings = ['Livneh_P2009']
     else:
         rcp = 'rcp85'
-        scenarios = list(product(climates, priceyears))
-        scenario_names = []
-        for climate, py in scenarios:
+        forcings = list(product(climates, priceyears))
+        forcing_names = []
+        for climate, py in forcings:
             if climate == 'Livneh':
-                scenario_name = '{}_P{}'.format(climate, py)
+                forcing_name = '{}_P{}'.format(climate, py)
             else:
-                scenario_name = '{}_{}_P{}'.format(climate, rcp, py)
-            scenario_names.append(scenario_name)
-        if not scenarios:
+                forcing_name = '{}_{}_P{}'.format(climate, rcp, py)
+            forcing_names.append(forcing_name)
+        if not forcings:
             return "Please select at least one climate and price year"
         else:
-            scenarios = scenario_names
+            forcings = forcing_names
 
     if consolidate and resample == 'Y':
         return 'Sorry, you cannot consolidate annually resampled data.'
 
     if tab == 'reservoir-storage':
         attr = 'storage'
-        df_storage = load_timeseries(results_path, basin, scenarios, 'Storage', 'Storage', run=run_name, multiplier=MCM_TO_TAF)
+        df_storage = load_timeseries(results_path, basin, forcings, 'Storage', 'Storage',
+                                     multiplier=MCM_TO_TAF, **load_data_kwargs)
         kwargs.pop('transform', None)
         if resample:
             obs = df_obs_storage.resample(resample).mean()
@@ -863,10 +949,12 @@ def render_timeseries_collection(tab, **kwargs):
 
         if tab in ['hydropower-generation', 'hydropower-flow', 'system']:
             hp = []
-            df_hp1 = load_timeseries(results_path, basin, scenarios, 'PiecewiseHydropower', 'Flow', run=run_name)
+            df_hp1 = load_timeseries(results_path, basin, forcings, 'PiecewiseHydropower', 'Flow',
+                                     **load_data_kwargs)
             if df_hp1 is not None:
                 hp.append(df_hp1)
-            df_hp2 = load_timeseries(results_path, basin, scenarios, 'Hydropower', 'Flow', run=run_name)
+            df_hp2 = load_timeseries(results_path, basin, forcings, 'Hydropower', 'Flow',
+                                     **load_data_kwargs)
             if df_hp2 is not None:
                 hp.append(df_hp2)
             if hp:
@@ -900,32 +988,32 @@ def render_timeseries_collection(tab, **kwargs):
 
         elif tab == 'outflow':
             attr = 'flow'
-            df = load_timeseries(results_path, basin, scenarios, 'Output', 'Flow', run=run_name, multiplier=MCM_TO_CFS)
+            df = load_timeseries(results_path, basin, forcings, 'Output', 'Flow',
+                                 multiplier=MCM_TO_CFS, **load_data_kwargs)
             for res in get_resources(df, filterby=resources):
                 component = timeseries_component(attr, res, df, obs, **kwargs)
                 children.append(component)
 
         elif tab == 'ifr-flow':
             attr = 'flow'
-            df = load_timeseries(results_path, basin, scenarios, 'InstreamFlowRequirement', 'Flow', run=run_name,
-                                 multiplier=MCM_TO_CFS)
-            reqt = load_timeseries(results_path, basin, scenarios, 'InstreamFlowRequirement', 'Requirement', multiplier=MCM_TO_CFS)
+            df = load_timeseries(results_path, basin, forcings, 'InstreamFlowRequirement', 'Flow',
+                                 multiplier=MCM_TO_CFS, **load_data_kwargs)
+            reqt = load_timeseries(results_path, basin, forcings, 'InstreamFlowRequirement', 'Requirement',
+                                   multiplier=MCM_TO_CFS, **load_data_kwargs)
             for res in get_resources(df, filterby=resources):
                 component = timeseries_component(attr, res, df, obs, min_reqt=reqt, **kwargs)
                 children.append(component)
 
         elif tab == 'ifr-range-flow':
             attr = 'flow'
-            df = load_timeseries(results_path, basin, scenarios, 'PiecewiseInstreamFlowRequirement', 'Flow', run=run_name,
-                                 multiplier=MCM_TO_CFS)
+            df = load_timeseries(results_path, basin, forcings, 'PiecewiseInstreamFlowRequirement', 'Flow',
+                                 multiplier=MCM_TO_CFS, **load_data_kwargs)
             df_pw_min_ifr_reqt = load_timeseries(
-                results_path, basin, scenarios, 'PiecewiseInstreamFlowRequirement', 'Min Requirement',
-                multiplier=MCM_TO_CFS
-            )
+                results_path, basin, forcings, 'PiecewiseInstreamFlowRequirement', 'Min Requirement',
+                multiplier=MCM_TO_CFS, **load_data_kwargs)
             df_pw_ifr_range_reqt = load_timeseries(
-                results_path, basin, scenarios, 'PiecewiseInstreamFlowRequirement', 'Max Requirement',
-                run=run_name, multiplier=MCM_TO_CFS
-            )
+                results_path, basin, forcings, 'PiecewiseInstreamFlowRequirement', 'Max Requirement',
+                multiplier=MCM_TO_CFS, **load_data_kwargs)
 
             df_pw_max_ifr_reqt = df_pw_min_ifr_reqt[df_pw_ifr_range_reqt.columns] + df_pw_ifr_range_reqt
 
@@ -950,14 +1038,14 @@ def render_timeseries_collection(tab, **kwargs):
                 df_obs = []
                 df_sim_system = None
                 df_obs_system = None
-                for i, scenario in enumerate(scenarios):
+                for i, forcing in enumerate(forcings):
                     dfs_sim = []
                     for res in get_resources(df_hp_flow):
                         head = fixed_head.get(res)
                         hp_gauge = gauge_lookup.get(res)
                         if not head or not hp_gauge:
                             continue
-                        sim_energy = flow_to_energy(df_hp_flow[scenario, res], head)
+                        sim_energy = flow_to_energy(df_hp_flow[forcing, res], head)
                         dfs_sim.append(sim_energy)
                         if i == 0:
                             obs_energy = flow_to_energy(obs[hp_gauge], head)
@@ -966,8 +1054,8 @@ def render_timeseries_collection(tab, **kwargs):
                         concatenated_summed = pd.concat(dfs_sim, axis=1).dropna().sum(axis=1)
                         df_sim_scenarios.append(concatenated_summed)
                 if df_sim_scenarios:
-                    df_sim_system = pd.concat(df_sim_scenarios, axis=1, keys=scenarios)
-                    df_sim_system.columns = pd.MultiIndex.from_product([scenarios, (system_res,)])
+                    df_sim_system = pd.concat(df_sim_scenarios, axis=1, keys=forcings)
+                    df_sim_system.columns = pd.MultiIndex.from_product([forcings, (system_res,)])
 
                 if df_obs:
                     df_obs_system = pd.concat(df_obs, axis=1).sum(axis=1).to_frame(system_res)
@@ -1015,9 +1103,9 @@ body = html.Div(
             style=SIDEBAR_STYLE,
             children=[
                 # dbc.NavItem(dbc.NavLink('Map', href='/map', id='map-tab')),
-                # dbc.NavItem(dbc.NavLink('Diagnostics', href='/diagnostics', id='diagnostics-tab')),
+                # dbc.NavItem(dbc.NavLink('Diagnostics', href='/development', id='development-tab')),
                 # # dbc.NavItem(dbc.NavLink('Gauges', href='/gauges', id='gauges-tab')),
-                # dbc.NavItem(dbc.NavLink('Analysis', href='/analysis', id='analysis-tab')),
+                # dbc.NavItem(dbc.NavLink('Analysis', href='/scenarios', id='scenarios-tab')),
             ]),
         html.Div(
             className='main-content',
@@ -1037,17 +1125,54 @@ app.layout = html.Div(
     ])
 
 
+@app.callback(Output('tabs-content', 'children'),
+              [Input('select-basin', 'value')])
+def render_basin_tabs_content(basin):
+    return [
+        html.Div(
+            id='{}-tabs-content'.format(basin),
+            style={'padding': '10px'},
+        )
+    ]
+
+
+@app.callback(Output('scenario-selections', 'children'), [
+    Input('select-basin', 'value')
+])
+def render_scenario_selections(basin):
+    if not basin:
+        return []
+
+    children = []
+    for scenario in SCENARIOS.get(basin, []):
+        scenario_name = scenario['name']
+        ensembles = range(scenario['size'])
+        dropdown = dcc.Dropdown(
+            id=scenario_name.replace(' ', '-'),
+            options=[{'label': str(i), 'value': str(i)} for i in ensembles],
+            multi=True,
+            value=[str(i) for i in ensembles],
+            placeholder='Select a {} scenario'.format(scenario_name)
+        )
+        selector = html.Div([
+            html.P([scenario_name]),
+            dropdown,
+        ], className='scenario-selection')
+        children.append(selector)
+    return children
+
+
 @app.callback(Output("select-basin", "options"), [
     Input("select-basins-global", "value")
 ])
-def render_select_diagnostics_basin_options(basins):
+def render_select_development_basin_options(basins):
     return [{"label": BASINS[basin], "value": basin} for basin in basins]
 
 
 @app.callback(Output("select-basin", "value"), [
     Input("select-basins-global", "value")
 ])
-def render_select_diagnostics_basin_value(basins):
+def render_select_development_basin_value(basins):
     return basins[0]
 
 
@@ -1060,14 +1185,14 @@ def render_sidebar_tabs(pathname):
             'id': 'map-tab'
         },
         {
-            'label': 'Diagnostics',
-            'href': '/diagnostics',
-            'id': 'diagnostics-tab'
+            'label': 'Development',
+            'href': '/development',
+            'id': 'development-tab'
         },
         {
-            'label': 'Analysis',
-            'href': '/analysis',
-            'id': 'analysis-tab'
+            'label': 'Scenarios',
+            'href': '/scenarios',
+            'id': 'scenarios-tab'
         }
     ]
 
@@ -1104,12 +1229,12 @@ def render_page_content(pathname):
         )
     elif pathname == '/map':
         return map_content()
-    elif pathname == "/diagnostics":
-        return diagnostics_content('diagnostics')
+    elif pathname == "/development":
+        return development_content('development')
     elif pathname == "/gauges":
         return gauges_content()
-    elif pathname == '/analysis':
-        return diagnostics_content('analysis')
+    elif pathname == '/scenarios':
+        return development_content('scenarios')
     return dbc.Jumbotron(
         [
             html.H1("404: Not found", className="text-danger"),
@@ -1213,7 +1338,7 @@ def toggle_percentile_checkboxes(values):
     [
         # Input('url', 'pathname'),
         Input('select-basin', 'value'),
-        Input('diagnostics-tabs', 'active_tab')
+        Input('development-tabs', 'active_tab')
     ],
     [State('session-store', 'data')]
 )
@@ -1231,7 +1356,7 @@ def update_selected_resources(basin, tab, data):
     Output('session-store', 'data'),
     [
         # Input('url', 'pathname'),
-        Input('diagnostics-tabs', 'active_tab'),
+        Input('development-tabs', 'active_tab'),
         Input('select-resources', 'value')
     ],
     [State('session-store', 'data')]
@@ -1248,11 +1373,11 @@ def store_selected_resources(tab, resources, data):
 
 
 @app.callback(Output('select-resources', 'options'), [
-    Input('diagnostics-tabs', 'active_tab'),
+    Input('development-tabs', 'active_tab'),
     Input('select-basin', 'value')
 ])
 def update_select_resources(tab, basin):
-    res_options = RES_OPTIONS[basin]
+    res_options = RES_OPTIONS.get(basin, {})
     options = []
     if tab == 'reservoir-storage':
         options = res_options.get(('Storage', 'storage'))
@@ -1270,9 +1395,9 @@ def update_select_resources(tab, basin):
     return options or []
 
 
-@app.callback(Output('diagnostics-tabs-content', 'children'),
+@app.callback(Output('development-tabs-content', 'children'),
               [
-                  Input('diagnostics-tabs', 'active_tab'),
+                  Input('development-tabs', 'active_tab'),
                   Input('select-basin', 'value'),
                   Input('radio-transform', 'value'),
                   Input('radio-resample', 'value'),
@@ -1280,7 +1405,7 @@ def update_select_resources(tab, basin):
                   Input('select-resources', 'value'),
                   Input('reload', 'n_clicks'),
               ])
-def render_diagnostics_content(tab, basin, transform, resample, percentiles, resources, n_clicks):
+def render_development_content(tab, basin, transform, resample, percentiles, resources, n_clicks):
     kwargs = dict(
         basin=basin,
         resources=resources,
@@ -1288,32 +1413,6 @@ def render_diagnostics_content(tab, basin, transform, resample, percentiles, res
         resample=resample,
         percentiles=percentiles,
         run_name='development'
-    )
-    return render_timeseries_collection(tab, **kwargs)
-
-
-@app.callback(Output('analysis-tabs-content', 'children'),
-              [
-                  Input('diagnostics-tabs', 'active_tab'),
-                  Input('radio-transform', 'value'),
-                  Input('radio-resample', 'value'),
-                  Input('percentiles-checklist', 'value'),
-                  Input('select-basin', 'value'),
-                  Input('select-climate', 'value'),
-                  Input('select-price-year', 'value'),
-                  Input('select-resources', 'value'),
-                  Input('reload', 'n_clicks')
-              ])
-def render_analysis_content(tab, transform, resample, percentiles, basin, climates, priceyears, resources, n_clicks):
-    kwargs = dict(
-        basin=basin,
-        climates=climates,
-        priceyears=priceyears,
-        resources=resources,
-        transform=transform,
-        resample=resample,
-        percentiles=percentiles,
-        run_name='full run'
     )
     return render_timeseries_collection(tab, **kwargs)
 
