@@ -93,6 +93,11 @@ def get_plot_kwargs(source):
 RES_OPTIONS = {}
 SCENARIOS = {}
 
+ENSEMBLE_NAMES = {
+    'SWRCB 40': ['Baseline', '10%', '20%', '30%', '40%'],
+    'District Reductions': ['Baseline', 'Reduced']
+}
+
 
 # =================
 
@@ -105,15 +110,18 @@ def register_basin_callbacks(basin, scenarios):
                       Input('radio-transform', 'value'),
                       Input('radio-resample', 'value'),
                       Input('percentiles-checklist', 'value'),
+                      Input('percentiles-options', 'value'),
+                      Input('percentiles-type', 'value'),
                       Input('select-basin', 'value'),
                       Input('select-climate', 'value'),
                       Input('select-price-year', 'value'),
                       Input('select-resources', 'value'),
                       Input('reload', 'n_clicks')
                   ] + scenario_inputs)
-    def render_scenarios_content(tab, transform, resample, percentiles, basin, climates, priceyears, resources,
-                                 n_clicks,
-                                 *args):
+    def render_scenarios_content(
+            tab, transform, resample, consolidate, percentiles, percentiles_type, basin, climates, priceyears,
+            resources, n_clicks,
+            *args):
         selected_scenarios = args
         kwargs = dict(
             basin=basin,
@@ -122,7 +130,9 @@ def register_basin_callbacks(basin, scenarios):
             resources=resources,
             transform=transform,
             resample=resample,
+            consolidate=consolidate,
             percentiles=percentiles,
+            percentiles_type=percentiles_type,
             run_name='full run',
             selected_scenarios=selected_scenarios
         )
@@ -210,15 +220,15 @@ def percent_bias(predictions, targets):
     return predictions.mean() / targets.mean() - 1
 
 
-def load_timeseries(results_path, basin, scenarios, res_type, res_attr, nscenarios=1,
+def load_timeseries(results_path, basin, forcings, res_type, res_attr, nscenarios=1,
                     run='full run', tpl='mcm', multiplier=1.0):
     path_tpl = os.path.join(results_path, PATH_TEMPLATES[tpl])
     collection = []
-    for scenario in scenarios:
+    for forcing in forcings:
         path = path_tpl.format(
             basin=BASINS[basin].replace(' ', '_').lower(),
             run=run,
-            scenario=scenario,
+            scenario=forcing,
             res_type=res_type,
             res_attr=res_attr
         )
@@ -231,12 +241,14 @@ def load_timeseries(results_path, basin, scenarios, res_type, res_attr, nscenari
             parse_dates=True,
             header=header
         ) * multiplier
+        for i, scenario in enumerate(SCENARIOS[basin]):
+            df.columns.set_levels(ENSEMBLE_NAMES[scenario['name']], level=i + 1, inplace=True)
         if run == 'development':
             df.columns = df.columns.droplevel(header[1:])
-        df.name = scenario
+        df.name = forcing
         collection.append(df)
     if collection:
-        return pd.concat(collection, axis=1, keys=scenarios)
+        return pd.concat(collection, axis=1, keys=forcings)
     else:
         return None
 
@@ -264,7 +276,7 @@ percentile_colors = {
 }
 
 
-def percentile_graphs(df, name, percentiles, color='black'):
+def percentile_timeseries_graphs(df, name, percentiles, color='black'):
     pcts = []
     show_mean = False
     if 'mean' in percentiles:
@@ -323,6 +335,14 @@ def percentile_graphs(df, name, percentiles, color='black'):
     return lines
 
 
+def boxplots_graphs(df, name, percentiles, color='black'):
+    plot = go.Box(
+        y=df.values.flatten(),
+        name=name
+    )
+    return [plot]
+
+
 def indicator(id, label, value, color):
     return html.Div(
         [
@@ -346,6 +366,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     percentiles = kwargs.get('percentiles')
     consolidate = kwargs.get('consolidate')
     calibration = kwargs.get('calibration')
+    percentiles_type = kwargs.get('percentiles_type', 'timeseries')
     scenario_combos = kwargs.get('scenario_combos', [])
     head = kwargs.get('head')
 
@@ -356,7 +377,8 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
         else:
             gcm, rcp, priceyear = parts
 
-        sim_color = sns.color_palette(PALETTES[priceyear]).as_hex()[GCMS.index(gcm)]
+        # sim_color = sns.color_palette(PALETTES[priceyear]).as_hex()[GCMS.index(gcm)]
+        sim_color = None
         resource_scenario_sim_vals = all_sim_vals[forcing, res_name]
         # for multiindex in resource_scenario_sim_vals.columns:
         #     sim_vals = resource_scenario_sim_vals[multiindex]
@@ -429,8 +451,11 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
                 except:
                     print('Failed to consolidate: ', forcing)
                     continue
-                sim_vals = sim_cons.quantile(0.5, axis=1)
-                sim_data = percentile_graphs(sim_cons, scenario_name, percentiles, color=sim_color)
+                if percentiles_type == 'timeseries':
+                    sim_vals = sim_cons.quantile(0.5, axis=1)
+                    sim_data = percentile_timeseries_graphs(sim_cons, scenario_name, percentiles, color=sim_color)
+                else:
+                    sim_data = boxplots_graphs(sim_cons, scenario_name, percentiles, color=sim_color)
                 ts_data.extend(sim_data)
 
             else:
@@ -442,7 +467,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
                         mode='lines',
                         opacity=0.7,
                         name=scenario_name,
-                        line=dict(color=sim_color)
+                        # line=dict(color=sim_color)
                     )
                 )
 
@@ -453,7 +478,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
                     x=np.arange(0, N) / N * 100,
                     name=scenario_name,
                     text=scenario_name,
-                    line=dict(color=sim_color),
+                    # line=dict(color=sim_color),
                     mode='lines',
                     opacity=0.7,
                 )
@@ -509,7 +534,11 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
         nse = nash_sutcliffe_efficiency(predictions, targets)
 
         if consolidate:
-            obs_data = percentile_graphs(obs_cons, OBSERVED_TEXT, percentiles, color=OBSERVED_COLOR)
+            obs_data = None
+            if percentiles_type == 'timeseries':
+                obs_data = percentile_timeseries_graphs(obs_cons, OBSERVED_TEXT, percentiles, color=OBSERVED_COLOR)
+            elif percentiles_type == 'boxplot':
+                obs_data = boxplots_graphs(obs_cons, OBSERVED_TEXT, percentiles, color=OBSERVED_COLOR)
             ts_data.extend(obs_data)
         else:
             obs_graph = go.Scatter(
@@ -748,7 +777,17 @@ consolidation_checklist = dbc.FormGroup(
             options=[
                 {"id": "percentiles-checkbox", "label": "Percentiles", "value": "consolidate"}
             ],
-            value=["consolidate", "median", "quartiles"],
+            value=["consolidate"],
+        ),
+        dbc.RadioItems(
+            id="percentiles-type",
+            options=[],
+            value='timeseries'
+        ),
+        dbc.Checklist(
+            id="percentiles-options",
+            options=[],
+            value=["median", "quartiles"],
         ),
     ],
 )
@@ -878,10 +917,9 @@ def render_timeseries_collection(tab, **kwargs):
     children = []
     resources = kwargs.pop('resources', None)
     selected_scenarios = kwargs.pop('selected_scenarios', [])
-    consolidate = "consolidate" in kwargs.get('percentiles', [])
+    consolidate = "consolidate" in kwargs.get('consolidate', [])
     if consolidate:
         kwargs['consolidate'] = True
-        kwargs['percentiles'].pop(kwargs['percentiles'].index('consolidate'))
 
     resample = kwargs.get('resample')
     basin = kwargs.get('basin')
@@ -1146,10 +1184,10 @@ def render_scenario_selections(basin):
     children = []
     for scenario in SCENARIOS.get(basin, []):
         scenario_name = scenario['name']
-        ensembles = range(scenario['size'])
+        ensembles = ENSEMBLE_NAMES.get(scenario_name, range(scenario['size']))
         dropdown = dcc.Dropdown(
             id=scenario_name.replace(' ', '-'),
-            options=[{'label': str(i), 'value': str(i)} for i in ensembles],
+            options=[{'label': ensemble, 'value': ensemble} for ensemble in ensembles],
             multi=True,
             value=[str(i) for i in ensembles],
             placeholder='Select a {} scenario'.format(scenario_name)
@@ -1319,18 +1357,34 @@ def render_map(show_labels):
     ]
 
 
-@app.callback(Output('percentiles-checklist', 'options'), [
+@app.callback(Output('percentiles-options', 'options'), [
     Input('percentiles-checklist', 'value')
 ])
 def toggle_percentile_checkboxes(values):
     disabled = 'consolidate' not in values
-    return [
-        {"id": "percentiles-checkbox", "label": "Percentiles", "value": "consolidate"},
-        {"id": "percentiles-mean", "label": "Mean", "value": "mean", "disabled": disabled},
-        {"id": "percentiles-median", "label": "Median", "value": "median", "disabled": disabled},
-        {"id": "percentiles-quartiles", "label": "Quartiles", "value": "quartiles", "disabled": disabled},
-        {"id": "percentiles-range", "label": "Range", "value": "range", "disabled": disabled}
-    ]
+    if disabled:
+        return []
+    else:
+        return [
+            {"id": "percentiles-mean", "label": "Mean", "value": "mean", "disabled": disabled},
+            {"id": "percentiles-median", "label": "Median", "value": "median", "disabled": disabled},
+            {"id": "percentiles-quartiles", "label": "Quartiles", "value": "quartiles", "disabled": disabled},
+            {"id": "percentiles-range", "label": "Range", "value": "range", "disabled": disabled}
+        ]
+
+
+@app.callback(Output('percentiles-type', 'options'), [
+    Input('percentiles-checklist', 'value')
+])
+def toggle_percentile_checkboxes(values):
+    disabled = 'consolidate' not in values
+    if disabled:
+        return []
+    else:
+        return [
+            {"id": "percentiles-timeseries", "label": "Timeseries", "value": "timeseries", "disabled": disabled},
+            {"id": "percentiles-boxplots", "label": "Boxplots", "value": "boxplots", "disabled": disabled},
+        ]
 
 
 @app.callback(
@@ -1402,16 +1456,21 @@ def update_select_resources(tab, basin):
                   Input('radio-transform', 'value'),
                   Input('radio-resample', 'value'),
                   Input('percentiles-checklist', 'value'),
+                  Input('percentiles-options', 'value'),
+                  Input('percentiles-type', 'value'),
                   Input('select-resources', 'value'),
                   Input('reload', 'n_clicks'),
               ])
-def render_development_content(tab, basin, transform, resample, percentiles, resources, n_clicks):
+def render_development_content(tab, basin, transform, resample, consolidate, percentiles, percentiles_type, resources,
+                               n_clicks):
     kwargs = dict(
         basin=basin,
         resources=resources,
         transform=transform,
         resample=resample,
+        consolidate=consolidate,
         percentiles=percentiles,
+        percentiles_type=percentiles_type,
         run_name='development'
     )
     return render_timeseries_collection(tab, **kwargs)
