@@ -1,4 +1,5 @@
 import datetime
+import numpy as np
 from parameters import WaterLPParameter
 
 from utilities.converter import convert
@@ -8,6 +9,15 @@ from dateutil.relativedelta import relativedelta
 
 class IFR_bl_Goodwin_Reservoir_Requirement(WaterLPParameter):
     """"""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        swrcb_levels_count = self.model.scenarios['SWRCB 40'].size
+        if swrcb_levels_count == 1:
+            self.swrcb_levels = [0.0]  # baseline scenario only
+        else:
+            self.swrcb_levels = np.arange(0.0, 0.41, 0.4 / (swrcb_levels_count - 1))
 
     def _value(self, timestep, scenario_index):
         WYT = self.get('San Joaquin Valley WYT' + self.month_suffix)
@@ -25,6 +35,13 @@ class IFR_bl_Goodwin_Reservoir_Requirement(WaterLPParameter):
             end = (self.datetime + relativedelta(days=self.days_in_month() - 1)).strftime('%b-%d')
             min_ifr = schedule[WYT][start:end].mean() / 35.31  # cfs to cms
             # min_ifr = self.get_down_ramp_ifr(timestep, min_ifr, initial_value=200 / 35.31, rate=0.15)
+
+        # SCWRB 40 REQUIREMENT
+        if 2 <= timestep.month <= 7 and scenario_index:
+            fnf = self.model.tables['Full Natural Flow'][self.datetime]
+            swrcb_reqt_cms = fnf * self.swrcb_levels[scenario_index.indices[0]] / 0.0864 # mcm to cms
+
+            min_ifr = max(min_ifr, swrcb_reqt_cms)
 
         return min_ifr
 

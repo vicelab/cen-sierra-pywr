@@ -12,6 +12,12 @@
     "solver": {
         "name": "glpk"
     },
+    "scenarios": [
+        {
+            "name": "SWRCB 40",
+            "size": 2
+        }
+    ],
     "nodes": [
         {
             "name": "Donnells Diversion",
@@ -2215,6 +2221,13 @@
         ]
     ],
     "tables": {
+        "Full Natural Flow": {
+            "url": "../data/Stanislaus River/Scenarios/preprocessed/Livneh/full_natural_flow_daily_mcm.csv",
+            "index_col": 0,
+            "parse_dates": true,
+            "header": 0,
+            "squeeze": true
+        },
         "Peak Donnells Runoff": {
             "url": "../data/Stanislaus River/Scenarios/preprocessed/Livneh/peak_runoff_DonnellsRes_MarToMay_cms.csv",
             "usecols": [
@@ -2222,7 +2235,9 @@
                 1
             ],
             "index_col": 0,
-            "parse_dates": [1],
+            "parse_dates": [
+                1
+            ],
             "squeeze": true
         },
         "WYT P2005 & P2130": {

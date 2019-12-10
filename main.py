@@ -25,8 +25,8 @@ gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
 rcps = ['45', '85']
 gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
 
-start=None
-end=None
+start = None
+end = None
 if debug:
     planning_months = 2
     climate_scenarios = ['Livneh']
@@ -37,7 +37,7 @@ if debug:
     end = '2012-09-30'
 else:
     planning_months = 12
-    climate_scenarios = ['Livneh'] + gcm_rcps
+    climate_scenarios = ['Livneh']  # + gcm_rcps
     price_years = [2009, 2030, 2045, 2060]
 
 scenarios = product(climate_scenarios, price_years)
