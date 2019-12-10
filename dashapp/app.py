@@ -94,8 +94,8 @@ RES_OPTIONS = {}
 SCENARIOS = {}
 
 ENSEMBLE_NAMES = {
-    'SWRCB 40': ['Baseline', '10%', '20%', '30%', '40%'],
-    'District Reductions': ['Baseline', 'Reduced']
+    'SWRCB 40': ['Baseline', '40%'],
+    'District Reductions': ['Baseline']
 }
 
 
