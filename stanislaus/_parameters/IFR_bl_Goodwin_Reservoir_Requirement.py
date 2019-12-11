@@ -20,7 +20,8 @@ class IFR_bl_Goodwin_Reservoir_Requirement(WaterLPParameter):
             else:
                 self.swrcb_levels = np.arange(0.0, 0.41, 0.4 / (swrcb_levels_count - 1))
         except:
-            print("SWRCB 40 scenario doesn't exist.")
+            # print("SWRCB 40 scenario doesn't exist.")
+            pass
 
     def _value(self, timestep, scenario_index):
         WYT = self.get('San Joaquin Valley WYT' + self.month_suffix)
