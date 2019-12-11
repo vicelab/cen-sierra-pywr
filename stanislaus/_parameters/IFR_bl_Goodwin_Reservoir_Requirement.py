@@ -13,11 +13,14 @@ class IFR_bl_Goodwin_Reservoir_Requirement(WaterLPParameter):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        swrcb_levels_count = self.model.scenarios['SWRCB 40'].size
-        if swrcb_levels_count == 1:
-            self.swrcb_levels = [0.0]  # baseline scenario only
-        else:
-            self.swrcb_levels = np.arange(0.0, 0.41, 0.4 / (swrcb_levels_count - 1))
+        try:
+            swrcb_levels_count = self.model.scenarios['SWRCB 40'].size
+            if swrcb_levels_count == 1:
+                self.swrcb_levels = [0.0]  # baseline scenario only
+            else:
+                self.swrcb_levels = np.arange(0.0, 0.41, 0.4 / (swrcb_levels_count - 1))
+        except:
+            print("SWRCB 40 scenario doesn't exist.")
 
     def _value(self, timestep, scenario_index):
         WYT = self.get('San Joaquin Valley WYT' + self.month_suffix)
@@ -38,10 +41,12 @@ class IFR_bl_Goodwin_Reservoir_Requirement(WaterLPParameter):
 
         # SCWRB 40 REQUIREMENT
         if 2 <= timestep.month <= 7 and scenario_index:
-            fnf = self.model.tables['Full Natural Flow'][self.datetime]
-            swrcb_reqt_cms = fnf * self.swrcb_levels[scenario_index.indices[0]] / 0.0864 # mcm to cms
-
-            min_ifr = max(min_ifr, swrcb_reqt_cms)
+            try:
+                fnf = self.model.tables['Full Natural Flow'][self.datetime]
+                swrcb_reqt_cms = fnf * self.swrcb_levels[scenario_index.indices[0]] / 0.0864 # mcm to cms
+                min_ifr = max(min_ifr, swrcb_reqt_cms)
+            except:
+                pass
 
         return min_ifr
 
