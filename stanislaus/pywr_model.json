@@ -12,12 +12,6 @@
     "solver": {
         "name": "glpk"
     },
-    "scenarios": [
-        {
-            "name": "SWRCB 40",
-            "size": 2
-        }
-    ],
     "nodes": [
         {
             "name": "Donnells Diversion",
