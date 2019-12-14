@@ -24,8 +24,8 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.config.suppress_callback_exceptions = True
 
 opath = '../data/{basin}/gauges/{attr}.csv'
-# PROD_RESULTS_PATH = r'C:\Users\david\Box\CERC-WET\Task7_San_Joaquin_Model\Pywr models\results'
-PROD_RESULTS_PATH = '../results'
+PROD_RESULTS_PATH = r'C:\Users\david\Box\CERC-WET\Task7_San_Joaquin_Model\Pywr models\results'
+# PROD_RESULTS_PATH = '../results'
 DEV_RESULTS_PATH = '../results'
 PATH_TEMPLATES = {
     'mcm': '{run}/{basin}/{scenario}/{res_type}_{res_attr}_mcm.csv',
@@ -94,8 +94,13 @@ RES_OPTIONS = {}
 SCENARIOS = {}
 
 ENSEMBLE_NAMES = {
-    'SWRCB 40': ['Baseline', '40%'],
-    'District Reductions': ['Baseline']
+    'mer': {
+        'SWRCB 40': ['Baseline', '10%', '20%', '30%', '40%'],
+        'District Reductions': ['Baseline', 'Reductions']
+    },
+    'stn': {
+        'SWRCB 40': ['Baseline', '40%'],
+    }
 }
 
 
@@ -114,18 +119,20 @@ def register_basin_callbacks(basin, scenarios):
                       Input('percentiles-type', 'value'),
                       Input('select-basin', 'value'),
                       Input('select-climate', 'value'),
+                      Input('select-rcp', 'value'),
                       Input('select-price-year', 'value'),
                       Input('select-resources', 'value'),
                       Input('reload', 'n_clicks')
                   ] + scenario_inputs)
     def render_scenarios_content(
-            tab, transform, resample, consolidate, percentiles, percentiles_type, basin, climates, priceyears,
+            tab, transform, resample, consolidate, percentiles, percentiles_type, basin, climates, rcps, priceyears,
             resources, n_clicks,
             *args):
         selected_scenarios = args
         kwargs = dict(
             basin=basin,
             climates=climates,
+            rcps=rcps,
             priceyears=priceyears,
             resources=resources,
             transform=transform,
@@ -133,7 +140,7 @@ def register_basin_callbacks(basin, scenarios):
             consolidate=consolidate,
             percentiles=percentiles,
             percentiles_type=percentiles_type,
-            run_name='full run',
+            run_name='full run 2019-12-11',
             selected_scenarios=selected_scenarios
         )
         return render_timeseries_collection(tab, **kwargs)
@@ -220,8 +227,8 @@ def percent_bias(predictions, targets):
     return predictions.mean() / targets.mean() - 1
 
 
-def load_timeseries(results_path, basin, forcings, res_type, res_attr, nscenarios=1,
-                    run='full run', tpl='mcm', multiplier=1.0):
+def load_timeseries_old(results_path, basin, forcings, res_type, res_attr, nscenarios=1,
+                        run='full run', tpl='mcm', multiplier=1.0):
     path_tpl = os.path.join(results_path, PATH_TEMPLATES[tpl])
     collection = []
     for forcing in forcings:
@@ -242,7 +249,8 @@ def load_timeseries(results_path, basin, forcings, res_type, res_attr, nscenario
             header=header
         ) * multiplier
         for i, scenario in enumerate(SCENARIOS[basin]):
-            df.columns.set_levels(ENSEMBLE_NAMES[scenario['name']], level=i + 1, inplace=True)
+            ensemble_names = ENSEMBLE_NAMES[basin][scenario['name']]
+            df.columns.set_levels(ensemble_names, level=i + 1, inplace=True)
         if run == 'development':
             df.columns = df.columns.droplevel(header[1:])
         df.name = forcing
@@ -251,6 +259,28 @@ def load_timeseries(results_path, basin, forcings, res_type, res_attr, nscenario
         return pd.concat(collection, axis=1, keys=forcings)
     else:
         return None
+
+
+def load_timeseries(results_path, basin, forcings, res_type, res_attr, nscenarios=1,
+                    run='full run', tpl='mcm', multiplier=1.0):
+    path_tpl = os.path.join(results_path, PATH_TEMPLATES[tpl])
+    full_basin = BASINS[basin].replace(' ', '_').lower()
+    path = os.path.join(results_path, 'full run 2019-12-12', full_basin, 'results.h5')
+    key = '{}_{}_mcm'.format(res_type, res_attr).replace(' ', '_')
+    df = pd.read_hdf(path, key=key)
+    df.columns = pd.MultiIndex.from_tuples(list(df.columns))
+
+    for i, scenario in enumerate(SCENARIOS[basin]):
+        ensemble_names = ENSEMBLE_NAMES[basin][scenario['name']]
+        df.columns.set_levels(ensemble_names, level=i + 2, inplace=True)
+    # if run == 'development':
+    #     df.columns = df.columns.droplevel(header[1:])
+
+    df *= multiplier
+    # if run == 'development':
+    # df.columns = df.columns.droplevel(header[1:])
+
+    return df
 
 
 def consolidate_dataframe(df, resample):
@@ -276,12 +306,13 @@ percentile_colors = {
 }
 
 
-def percentile_timeseries_graphs(df, name, percentiles, color='black'):
+def percentile_timeseries_graphs(df, name, options, color='black'):
     pcts = []
     show_mean = False
-    if 'mean' in percentiles:
+    percentiles = options[:]
+    if 'mean' in options:
         show_mean = True
-        percentiles.pop(percentiles.index('mean'))
+        percentiles.pop(options.index('mean'))
     pct_set = set(percentiles)
     if pct_set == {'median'}:
         pcts = [0.5]
@@ -314,7 +345,7 @@ def percentile_timeseries_graphs(df, name, percentiles, color='black'):
                 showlegend=i == (1 if len(pcts) > 1 else 0),
                 mode='lines',
                 fill=fill,
-                text='{}{}'.format(name, q),
+                text='{}: {}'.format(name, q),
                 name=name,
                 line=dict(color=color, width=width)
             )
@@ -328,7 +359,7 @@ def percentile_timeseries_graphs(df, name, percentiles, color='black'):
                 mode='lines',
                 text='{} mean'.format(name),
                 name=name,
-                line=dict(color=color, width=3)
+                # line=dict(color=color, width=3)
             )
         )
 
@@ -338,7 +369,8 @@ def percentile_timeseries_graphs(df, name, percentiles, color='black'):
 def boxplots_graphs(df, name, percentiles, color='black'):
     plot = go.Box(
         y=df.values.flatten(),
-        name=name
+        name=name,
+        legend=False
     )
     return [plot]
 
@@ -366,16 +398,25 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     percentiles = kwargs.get('percentiles')
     consolidate = kwargs.get('consolidate')
     calibration = kwargs.get('calibration')
+    climates = kwargs.get('climates')
+    rcps = kwargs.get('rcps')
     percentiles_type = kwargs.get('percentiles_type', 'timeseries')
     scenario_combos = kwargs.get('scenario_combos', [])
     head = kwargs.get('head')
 
     for forcing in set(all_sim_vals.columns.get_level_values(0)):
         parts = forcing.split('_')
+        rcp = None
         if len(parts) == 2:
             gcm, priceyear = parts
         else:
             gcm, rcp, priceyear = parts
+
+        if climates and gcm not in climates:
+            continue
+
+        if 'Livneh' not in forcing and rcps and rcp not in rcps:
+            continue
 
         # sim_color = sns.color_palette(PALETTES[priceyear]).as_hex()[GCMS.index(gcm)]
         sim_color = None
@@ -392,7 +433,10 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
             if not scenario_combo:
                 sim_vals = resource_scenario_sim_vals
             else:
-                sim_vals = resource_scenario_sim_vals[scenario_combo]
+                if len(scenario_combo) == 1:
+                    sim_vals = resource_scenario_sim_vals[scenario_combo[0]]
+                else:
+                    sim_vals = resource_scenario_sim_vals[scenario_combo]
             if gcm == 'Livneh':
                 sim_vals = sim_vals[sim_vals.index.year < 2020]
             else:
@@ -462,7 +506,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
                 ts_data.append(
                     go.Scatter(
                         x=sim_resampled.index,
-                        y=sim_resampled,
+                        y=sim_resampled.values,
                         text=scenario_name,
                         mode='lines',
                         opacity=0.7,
@@ -647,6 +691,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     children = [timeseries_graph, flow_duration_graph]
 
     div = html.Div(
+        # key='{}'.format(consolidate),
         children=[
             html.H5(res_name),
             html.Div(
@@ -761,10 +806,10 @@ resample_radio = dbc.FormGroup(
             id="radio-resample",
             options=[
                 {"label": "None", "value": None},
-                {"label": "Monthly", "value": 'M'},
+                {"label": "Monthly", "value": 'MS'},
                 {"label": "Annual", "value": 'Y'},
             ],
-            value="M",
+            value="MS",
             # inline=True
         ),
     ],
@@ -805,13 +850,24 @@ select_climate = dcc.Dropdown(
     id="select-climate",
     options=[
         {"label": "Livneh", "value": "Livneh"},
-        {"label": "HadGEM2-ES", "value": "HadGEM2-ES"},
         {"label": "CanESM2", "value": "CanESM2"},
+        {"label": "CNRM-CM5", "value": "CNRM-CM5"},
         {"label": "HadGEM2-ES", "value": "HadGEM2-ES"},
         {"label": "MIROC5", "value": "MIROC5"},
     ],
     multi=True,
     value=["Livneh"]
+)
+
+select_rcp = dcc.Dropdown(
+    className="select-climate",
+    id="select-rcp",
+    options=[
+        {"label": "RCP 4.5", "value": "rcp45"},
+        {"label": "RCP 8.5", "value": "rcp85"}
+    ],
+    multi=True,
+    value=["rcp85"]
 )
 
 select_price_year = dcc.Dropdown(
@@ -829,7 +885,7 @@ select_price_year = dcc.Dropdown(
 
 scenarios_selections = dbc.Form([
     dbc.FormGroup([
-        select_development_basin, select_climate, select_price_year
+        select_development_basin, select_climate, select_rcp, select_price_year
     ])
 ], inline=True, style={"margin-bottom": "10px"})
 
@@ -908,6 +964,11 @@ def development_content(purpose):
     ])
 
 
+def get_resources_old(df, filterby=None):
+    all_resources = sorted(set(df.columns.get_level_values(1)))
+    return [r for r in all_resources if not filterby or r.replace(' ', '_') in filterby]
+
+
 def get_resources(df, filterby=None):
     all_resources = sorted(set(df.columns.get_level_values(1)))
     return [r for r in all_resources if not filterby or r.replace(' ', '_') in filterby]
@@ -918,8 +979,7 @@ def render_timeseries_collection(tab, **kwargs):
     resources = kwargs.pop('resources', None)
     selected_scenarios = kwargs.pop('selected_scenarios', [])
     consolidate = "consolidate" in kwargs.get('consolidate', [])
-    if consolidate:
-        kwargs['consolidate'] = True
+    kwargs['consolidate'] = consolidate
 
     resample = kwargs.get('resample')
     basin = kwargs.get('basin')
@@ -927,6 +987,7 @@ def render_timeseries_collection(tab, **kwargs):
         return ["Select a basin."]
 
     climates = kwargs.get('climates')
+    rcps = kwargs.get('rcps')
     priceyears = kwargs.get('priceyears')
     calibration = climates is None
     run_name = kwargs.get('run_name', 'development')
@@ -948,17 +1009,17 @@ def render_timeseries_collection(tab, **kwargs):
     if calibration:
         forcings = ['Livneh_P2009']
     else:
-        rcp = 'rcp85'
-        forcings = list(product(climates, priceyears))
+        # rcp = 'rcp85'
+        forcings = list(product(climates, rcps, priceyears))
         forcing_names = []
-        for climate, py in forcings:
+        for climate, rcp, py in forcings:
             if climate == 'Livneh':
                 forcing_name = '{}_P{}'.format(climate, py)
             else:
                 forcing_name = '{}_{}_P{}'.format(climate, rcp, py)
             forcing_names.append(forcing_name)
         if not forcings:
-            return "Please select at least one climate and price year"
+            return "Please select at least one climate, rcp and price year"
         else:
             forcings = forcing_names
 
@@ -1184,7 +1245,7 @@ def render_scenario_selections(basin):
     children = []
     for scenario in SCENARIOS.get(basin, []):
         scenario_name = scenario['name']
-        ensembles = ENSEMBLE_NAMES.get(scenario_name, range(scenario['size']))
+        ensembles = ENSEMBLE_NAMES.get(basin, {}).get(scenario_name, range(scenario['size']))
         dropdown = dcc.Dropdown(
             id=scenario_name.replace(' ', '-'),
             options=[{'label': ensemble, 'value': ensemble} for ensemble in ensembles],
@@ -1231,6 +1292,11 @@ def render_sidebar_tabs(pathname):
             'label': 'Scenarios',
             'href': '/scenarios',
             'id': 'scenarios-tab'
+        },
+        {
+            'label': 'Inter-basin trade-offs',
+            'href': '/interbasin',
+            'id': 'interbasin-tab'
         }
     ]
 
