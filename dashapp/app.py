@@ -305,6 +305,13 @@ percentile_colors = {
     'observed': 'grey'
 }
 
+percentiles_ordered = {
+    ('median', 'quartiles'): ['quartiles', 'median'],
+    ('median', 'quartiles', 'range'): ['range', 'quartiles', 'median'],
+    ('quartiles', 'range'): ['range', 'quartiles'],
+    ('median', 'range'): ['range', 'median']
+}
+
 
 def percentile_timeseries_graphs(df, name, options, color='black'):
     pcts = []
@@ -313,43 +320,41 @@ def percentile_timeseries_graphs(df, name, options, color='black'):
     if 'mean' in options:
         show_mean = True
         percentiles.pop(options.index('mean'))
-    pct_set = set(percentiles)
-    if pct_set == {'median'}:
-        pcts = [0.5]
-    elif pct_set == {'median', 'quartiles'}:
-        pcts = [0.25, 0.5, 0.75]
-    elif pct_set == {'median', 'range'}:
-        pcts = [0.0, 0.5, 1.0]
-    elif pct_set == {'median', 'quartiles', 'range'}:
-        pcts = [0.0, 0.25, 0.5, 0.75, 1.0]
-    elif pct_set == {'quartiles'}:
-        pcts = [0.25, 0.75]
-    elif pct_set == {'quartiles', 'range'}:
-        pcts = [0.0, 0.25, 0.75, 1.0]
-    elif pct_set == {'range'}:
-        pcts = [0.0, 1.0]
+
+    pct_set = tuple(set(percentiles))
+
+    span_pcts = {
+        'median': [0.5],
+        'quartiles': [0.25, 0.75],
+        'range': [0.0, 1.0]
+    }
 
     lines = []
-    for i, q in enumerate(pcts):
-        fill = None
-        width = 2
-        opacity = 0.0
-        if len(pcts) > 1 and i in [0, len(pcts) - 1]:
-            width = 0
-        if q > pcts[0]:
-            fill = 'tonexty'
-        lines.append(
-            go.Scatter(
-                x=df.index,
-                y=df.quantile(q, axis=1),
-                showlegend=i == (1 if len(pcts) > 1 else 0),
-                mode='lines',
-                fill=fill,
-                text='{}: {}'.format(name, q),
-                name=name,
-                line=dict(color=color, width=width)
+    for i, span in enumerate(percentiles_ordered.get(pct_set, list(pct_set))):
+        pcts = span_pcts[span]
+        for j, pct in enumerate(pcts):
+            fill = None
+            showlegend = i == 0
+            width = 2
+            opacity = 0.0
+            if len(pcts) > 1:
+                width = 0
+                if j == 0:
+                    showlegend = False
+                elif j == 1:
+                    fill = 'tonexty'
+            lines.append(
+                go.Scatter(
+                    x=df.index,
+                    y=df.quantile(pct, axis=1),
+                    showlegend=showlegend,
+                    mode='lines',
+                    fill=fill,
+                    text='{}: {}'.format(name, pct),
+                    name=name,
+                    line=dict(color=color, width=width)
+                )
             )
-        )
     if show_mean:
         lines.append(
             go.Scatter(
@@ -404,7 +409,9 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     scenario_combos = kwargs.get('scenario_combos', [])
     head = kwargs.get('head')
 
-    for forcing in set(all_sim_vals.columns.get_level_values(0)):
+    color_idx = -1
+
+    for i, forcing in enumerate(set(all_sim_vals.columns.get_level_values(0))):
         parts = forcing.split('_')
         rcp = None
         if len(parts) == 2:
@@ -419,11 +426,15 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
             continue
 
         # sim_color = sns.color_palette(PALETTES[priceyear]).as_hex()[GCMS.index(gcm)]
-        sim_color = None
+        # sim_color = sns.color_palette().as_hex()[i]
+        # sim_color = None
         resource_scenario_sim_vals = all_sim_vals[forcing, res_name]
         # for multiindex in resource_scenario_sim_vals.columns:
         #     sim_vals = resource_scenario_sim_vals[multiindex]
         for scenario_combo in scenario_combos:
+
+            color_idx += 1
+            sim_color = sns.color_palette().as_hex()[color_idx]
 
             if scenario_combo:
                 scenario_name = '{} {}'.format(tuple(parts), scenario_combo)
@@ -511,7 +522,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
                         mode='lines',
                         opacity=0.7,
                         name=scenario_name,
-                        # line=dict(color=sim_color)
+                        line=dict(color=sim_color)
                     )
                 )
 
