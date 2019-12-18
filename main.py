@@ -28,20 +28,22 @@ gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
 start = None
 end = None
 if debug:
-    planning_months = 12
+    planning_months = 6
     climate_scenarios = ['Livneh']
-    price_years = [2009]
+    price_years = [2009, 2060]
     # climate_scenarios = ['CanESM2_rcp85']
     # price_years = [2060]
-    # start = '1990-10-01'
-    # end = '2012-09-30'
+    start = '2003-10-01'
+    end = '2005-09-30'
 else:
     planning_months = 12
-    # climate_scenarios = ['Livneh']  # + gcm_rcps
-    climate_scenarios = ['HadGEM2-ES_rcp85']  # + gcm_rcps
-    price_years = [2030]
+    climate_scenarios = ['Livneh']  # + gcm_rcps
+    # climate_scenarios = ['HadGEM2-ES_rcp85']  # + gcm_rcps
+    price_years = [2009, 2060]
+    # start = '2003-10-01'
+    # end = '2005-09-30'
 
-scenarios = product(climate_scenarios, price_years)
+scenarios = climate_scenarios
 
 kwargs = dict(
     run_name=args.run_name,
@@ -57,7 +59,7 @@ if not multiprocessing:  # serial processing for debugging
     for scenario in scenarios:
         print('Running: ', scenario)
         try:
-            run_model(basin, scenario, **kwargs)
+            run_model(basin, scenario, price_years, **kwargs)
         except Exception as err:
             print("Failed: ", scenario)
             print(err)

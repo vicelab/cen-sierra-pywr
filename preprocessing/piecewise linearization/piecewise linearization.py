@@ -236,149 +236,158 @@ def get_splits(x, y, splits=None, record_len=None, k=1, max_k=1, debug=False, tr
 # In[6]:
 
 
-period = 'future'
+# period = 'future'
 # period = 'historical'
 
 # In[7]:
 
 
 # read data
-if period == 'historical':
-    data = pd.read_csv('input/historical-2009.csv', index_col=[0])
-    data.index = pd.date_range(start='2009-01-01', periods=len(data), freq='H')
-else:
-    data = pd.read_csv('input/Price - After ES.csv', index_col=[0], header=0, skiprows=[1])
 # data.head()
 
 # In[8]:
 
 
-# step = 'daily'
-step = 'monthly'
+steps = ['daily', 'monthly']
+periods = ['historical', 'future']
 
-if step == 'daily':
-    MAX_K = 2
-else:
-    MAX_K = 3
+for step in steps:
+    all_prices = []
+    all_blocks = []
+    for period in periods:
+        if period == 'historical':
+            data = pd.read_csv('input/historical-2009.csv', index_col=[0])
+            data.index = pd.date_range(start='2009-01-01', periods=len(data), freq='H')
+        else:
+            data = pd.read_csv('input/Price - After ES.csv', index_col=[0], header=0, skiprows=[1])
 
-data_year = 2009  # default for historical; gets overwritten below
+        if step == 'daily':
+            MAX_K = 2
+        else:
+            MAX_K = 3
 
-if period == 'historical':
-    py = 'PY2009'
-    # years = range(2000, 2016)
-    years = [2009]
-else:
-    py = 'PY2030-PY2060'
-    #     years = range(2030, 2031)
-    # years = range(2030, 2061)
-    years = [2030, 2045, 2060]  # faster for reading in Pywr model
+        data_year = 2009  # default for historical; gets overwritten below
 
-months = range(1, 13)
+        pys = ['PY2009', 'PY2030-PY2060']
+        if period == 'historical':
+            py = pys[0]
+            # years = range(2000, 2016)
+            years = [2009]
+        else:
+            py = pys[1]
+            #     years = range(2030, 2031)
+            # years = range(2030, 2061)
+            years = [2030, 2045, 2060]  # faster for reading in Pywr model
 
-blocks_dfs = []
-prices_dfs = []
-index_dates = []
+        months = range(1, 13)
 
-for year in years:
-    m1 = months[0]
-    m2 = months[-1]
-    start = dt.date(year, m1, 1)
-    end = dt.date(year, m2, days_in_month(year, m2))
-    if step == 'monthly':
-        freq = 'MS'
-    else:
-        freq = 'D'
-    dates = pd.date_range(start=start, end=end, freq=freq)
+        blocks_dfs = []
+        prices_dfs = []
+        index_dates = []
 
-    if period == 'historical':
-        s = data[(data.index.year == 2009)]
-    else:
-        s = data[str(year)]
-        s.index = pd.date_range(start=start, periods=len(s), freq='H')
-
-    print('Year: ', year)
-
-    year_blocks = []
-    year_prices = []
-    year_dates = []
-
-    for date in dates:
-
-        try:
-            index_dates.append(date)
-            year_dates.append(date)
-
-            if period == 'future':
-                data_year = date.year
-
-            # subset the data
+        for year in years:
+            m1 = months[0]
+            m2 = months[-1]
+            start = dt.date(year, m1, 1)
+            end = dt.date(year, m2, days_in_month(year, m2))
             if step == 'monthly':
-                _s = s[s.index.month == date.month]
-            else:  # note parentheses are important here
-                if isleap(year) and date.month == 12 and date.day == 31:
-                    data_day = 30
-                else:
-                    data_day = date.day
-                _s = s[(s.index.year == data_year) & (s.index.month == date.month) & (s.index.day == data_day)]
+                freq = 'MS'
+            else:
+                freq = 'D'
+            dates = pd.date_range(start=start, end=end, freq=freq)
 
-            y0 = np.array(sorted(_s.values, reverse=True))
-            x = np.arange(1, len(y0) + 1)
-            x0 = x / max(x)
+            if period == 'historical':
+                s = data[(data.index.year == 2009)]
+            else:
+                s = data[str(year)]
+                s.index = pd.date_range(start=start, periods=len(s), freq='H')
 
-            record_len = len(x0)  # TODO: make sure this is correct
-            splits = get_splits(x0, y0, record_len=record_len, debug=False, max_k=MAX_K, trial='K1')
-            splits = sorted(splits)
+            print(step, year)
 
-            split_indices = []
-            for split in splits:
-                split_indices.append(len([_x for _x in x0 if _x <= split]))
-            _blocks = []
-            _prices = []
-            all_indices = split_indices + [len(x0)]
-            for j, idx in enumerate(all_indices):
-                a = split_indices[j - 1] if j else 0
-                _x = x0[a:idx]
+            year_blocks = []
+            year_prices = []
+            year_dates = []
+
+            for date in dates:
+
                 try:
-                    if j == 0:
-                        block = max(_x)
-                    else:
-                        block = max(_x) - x0[last_idx - 1]
-                except Exception as err:
-                    raise
-                last_idx = idx
-                price = y0[a:idx].mean()
-                _blocks.append(block)
-                _prices.append(price)
+                    index_dates.append(date)
+                    year_dates.append(date)
 
-            year_blocks.append(_blocks)
-            year_prices.append(_prices)
-        except:
-            print('Failed on: ', date)
-            continue
+                    if period == 'future':
+                        data_year = date.year
 
-    _blocks_df = pd.DataFrame(data=year_blocks, index=year_dates, columns=range(1, len(_blocks) + 1))
-    _blocks_df.index.name = 'Date'
-    _blocks_df.to_csv('../../data/common/energy prices/piecewise_blocks_{}_PY{}.csv'.format(step, year))
-    _prices_df = pd.DataFrame(data=year_prices, index=year_dates, columns=range(1, len(_blocks) + 1))
-    _prices_df.index.name = 'Date'
-    _prices_df.to_csv('../../data/common/energy prices/piecewise_prices_DpMWh_{}_PY{}.csv'.format(step, year))
+                    # subset the data
+                    if step == 'monthly':
+                        _s = s[s.index.month == date.month]
+                    else:  # note parentheses are important here
+                        if isleap(year) and date.month == 12 and date.day == 31:
+                            data_day = 30
+                        else:
+                            data_day = date.day
+                        _s = s[(s.index.year == data_year) & (s.index.month == date.month) & (s.index.day == data_day)]
 
-    blocks_dfs.append(_blocks_df)
-    prices_dfs.append(_prices_df)
+                    y0 = np.array(sorted(_s.values, reverse=True))
+                    x = np.arange(1, len(y0) + 1)
+                    x0 = x / max(x)
 
-# index
-# date_index = pd.DatetimeIndex(index_dates)
+                    record_len = len(x0)  # TODO: make sure this is correct
+                    splits = get_splits(x0, y0, record_len=record_len, debug=False, max_k=MAX_K, trial='K1')
+                    splits = sorted(splits)
 
-# blocks
-df_blocks = pd.concat(blocks_dfs, axis=0)
-df_blocks.to_csv('output/piecewise_blocks_{}_{}.csv'.format(step, py))
+                    split_indices = []
+                    for split in splits:
+                        split_indices.append(len([_x for _x in x0 if _x <= split]))
+                    _blocks = []
+                    _prices = []
+                    all_indices = split_indices + [len(x0)]
+                    for j, idx in enumerate(all_indices):
+                        a = split_indices[j - 1] if j else 0
+                        _x = x0[a:idx]
+                        try:
+                            if j == 0:
+                                block = max(_x)
+                            else:
+                                block = max(_x) - x0[last_idx - 1]
+                        except Exception as err:
+                            raise
+                        last_idx = idx
+                        price = y0[a:idx].mean()
+                        _blocks.append(block)
+                        _prices.append(price)
 
-# prices
-df_prices = pd.concat(prices_dfs, axis=0)
-df_prices.to_csv('output/piecewise_prices_DpMWh_{}_{}.csv'.format(step, py))
+                    year_blocks.append(_blocks)
+                    year_prices.append(_prices)
+                except:
+                    print('Failed on: ', date)
+                    continue
 
-print('{} {} done!'.format(period, step))
+            _blocks_df = pd.DataFrame(data=year_blocks, index=year_dates, columns=range(1, len(_blocks) + 1))
+            _blocks_df.index.name = 'Date'
+            _blocks_df.to_csv('./output/piecewise_blocks_{}_PY{}.csv'.format(step, year))
+            _prices_df = pd.DataFrame(data=year_prices, index=year_dates, columns=range(1, len(_blocks) + 1))
+            _prices_df.index.name = 'Date'
+            _prices_df.to_csv('./output/piecewise_prices_DpMWh_{}_PY{}.csv'.format(step, year))
 
-df_blocks.tail()
+            blocks_dfs.append(_blocks_df)
+            prices_dfs.append(_prices_df)
 
-# In[ ]:
+        # index
+        # date_index = pd.DatetimeIndex(index_dates)
+
+        # blocks
+        df_blocks = pd.concat(blocks_dfs, axis=0)
+        df_blocks.to_csv('./output/piecewise_blocks_{}_{}.csv'.format(step, py))
+
+        # prices
+        df_prices = pd.concat(prices_dfs, axis=0)
+        df_prices.to_csv('./output/piecewise_prices_DpMWh_{}_{}.csv'.format(step, py))
+
+        all_prices.append(df_prices)
+        all_blocks.append(df_blocks)
+
+    all_prices = pd.concat(all_prices)
+    all_blocks = pd.concat(all_blocks)
+    all_prices.to_csv('../../data/common/energy prices/piecewise_prices_DpMWh_{}.csv'.format(step))
+    all_blocks.to_csv('../../data/common/energy prices/piecewise_blocks_{}.csv'.format(step))
+

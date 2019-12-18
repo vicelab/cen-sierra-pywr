@@ -42,9 +42,14 @@ def simplify_network(m, delete_gauges=False, delete_observed=True, delete_scenar
     if delete_scenarios:
         scenarios = []
         for scen in m.get('scenarios', []):
-            scen['size'] = 1
-            scenarios.append(scen)
+            if scen['name'] == 'Price Year':
+                scenarios.append(scen)
+            else:
+                scen['size'] = 1
+                scenarios.append(scen)
         m['scenarios'] = scenarios
+
+    obsolete_nodes = []
 
     while not mission_complete:
         mission_complete = True
@@ -56,12 +61,13 @@ def simplify_network(m, delete_gauges=False, delete_observed=True, delete_scenar
             a, b = edge
             up_nodes.append(a)
             down_nodes.append(b)
-            down_edges[a] = edge
+            down_edges[a] = [edge] if a not in down_edges else down_edges[a] + [edge]
             up_edges[b] = [edge] if b not in up_edges else up_edges[b] + [edge]
 
-        obsolete_nodes = []
         obsolete_edges = []
         new_edges = []
+
+        node_lookup = {n['name']: n for n in m['nodes']}
 
         for node in m['nodes']:
             # is the node a simple link? if so, we might be able to remove it
@@ -69,6 +75,24 @@ def simplify_network(m, delete_gauges=False, delete_observed=True, delete_scenar
             node_type = node['type'].lower()
             metadata = json.loads(node.get('comment', '{}'))
             keys_set = set(node.keys())
+
+            # delete links adjacent to hydropower facilities
+            if len({'cost', 'max_flow'} & keys_set) >= 1 and up_nodes.count(
+                node_name) == 1 and down_nodes.count(node_name) == 1 and 'hydropower' not in node_type:
+                up_edge = up_edges[node_name][0]
+                up_node = node_lookup[up_edge[0]]
+                up_type = up_node['type'].lower()
+                down_edge = down_edges[node_name][0]
+                down_node = node_lookup[down_edge[1]]
+                down_type = down_node['type'].lower()
+                # print(node_name, down_type)
+                if 'hydropower' in up_type or 'hydropower' in down_type:
+                    obsolete_nodes.append(node_name)
+                    obsolete_edges.extend([up_edge, down_edge])
+                    new_edges.append([up_node['name'], down_node['name']])
+                    mission_complete = False
+                    break
+
             if keys_set in [{'name', 'type'}, {'name', 'type', 'comment'}] and not metadata.get('keep') \
                     or delete_gauges and node_type == 'rivergauge' \
                     or node_type == 'storage' and not node.get('max_volume'):
@@ -76,13 +100,14 @@ def simplify_network(m, delete_gauges=False, delete_observed=True, delete_scenar
                     obsolete_gauges.append(node_name)
                 if down_nodes.count(node_name) == 0:
                     # upstream-most node
+                    down_edge = down_edges[node_name][0]
                     obsolete_nodes.append(node_name)
-                    obsolete_edges.append(down_edges[node_name])
+                    obsolete_edges.append(down_edge)
                     mission_complete = False
                     break
                 elif up_nodes.count(node_name) == 1:
+                    down_edge = down_edges[node_name][0]
                     obsolete_nodes.append(node_name)
-                    down_edge = down_edges[node_name]
                     obsolete_edges.append(down_edge)
                     for up_edge in up_edges[node_name]:
                         obsolete_edges.append(up_edge)
@@ -490,14 +515,13 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
     return
 
 
-def run_model(basin, scenario, network_key=None, start=None, end=None,
+def run_model(basin, climate, price_years, network_key=None, start=None, end=None,
               run_name="default", include_planning=False,
               simplify=True, use_multiprocessing=False,
               debug=False, planning_months=12):
     months = planning_months
 
     if start is None or end is None:
-        climate, price_year = scenario
         if climate == 'Livneh':
             start_year = 1980
             end_year = 2012
@@ -515,11 +539,9 @@ def run_model(basin, scenario, network_key=None, start=None, end=None,
     root_dir = os.path.join(here, basin)
     os.chdir(here)
 
-    climate_scenario, price_year = scenario
-
     bucket = 'openagua-networks'
     base_filename = 'pywr_model.json'
-    model_filename_base = 'pywr_model_{}'.format(climate_scenario)
+    model_filename_base = 'pywr_model_{}'.format(climate)
     model_filename = model_filename_base + '.json'
 
     base_path = os.path.join(root_dir, base_filename)
@@ -539,16 +561,20 @@ def run_model(basin, scenario, network_key=None, start=None, end=None,
                 continue
             url = param.get('url')
             if url:
-                if climate_scenario != 'Livneh':
-                    url = url.replace('Livneh', climate_scenario)
-                if price_year != 2009:
-                    url = url.replace('PY2009', 'PY{}'.format(price_year))
+                if climate != 'Livneh':
+                    url = url.replace('Livneh', climate)
                 param['url'] = url
             new_model_parts[model_part][pname] = param
 
+    new_model_parts['scenarios'] = base_model.get('scenarios', [])
+    new_model_parts['scenarios'].append({
+        "name": "Price Year",
+        "size": len(price_years)
+    })
     new_model_parts['parameters']['Price Year'] = {
-        "type": "constant",
-        "value": price_year
+        "type": "ConstantScenario",
+        "scenario": "Price Year",
+        "values": price_years
     }
     base_model.update(new_model_parts)
     base_model['timestepper']['start'] = start
@@ -624,7 +650,7 @@ def run_model(basin, scenario, network_key=None, start=None, end=None,
         model_path = simplified_model_path
 
     # Area for testing monthly model
-    save_results = True
+    save_results = debug and 'm' in debug
     planning_model = None
     df_planning = None
 
@@ -639,7 +665,11 @@ def run_model(basin, scenario, network_key=None, start=None, end=None,
         prepare_planning_model(m, planning_model_path, steps=months, debug=save_results)
 
         # create pywr model
-        planning_model = Model.load(planning_model_path, path=planning_model_path)
+        try:
+            planning_model = Model.load(planning_model_path, path=planning_model_path)
+        except Exception as err:
+            print("Planning model failed to load.")
+            raise
 
         # set model mode to planning
         setattr(planning_model, 'mode', 'planning')
@@ -741,7 +771,7 @@ def run_model(basin, scenario, network_key=None, start=None, end=None,
 
     results = m.to_dataframe()
     results.index.name = 'Date'
-    scenario_name = '{}_P{}'.format(climate_scenario, price_year)
+    scenario_name = climate
     scenario_names = [s.name for s in m.scenarios.scenarios]
     if not scenario_names:
         scenario_names = [0]
@@ -749,9 +779,6 @@ def run_model(basin, scenario, network_key=None, start=None, end=None,
     if not os.path.exists(results_path):
         os.makedirs(results_path)
     # results.columns = results.columns.droplevel(1)
-    if not os.path.exists(results_path):
-        os.makedirs(results_path)
-    # results.to_csv(os.path.join(results_path, 'system_mcm.csv'))
     columns = {}
     nodes_of_type = {}
     for c in results.columns:

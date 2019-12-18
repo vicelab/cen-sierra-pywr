@@ -27,9 +27,9 @@ class PH_Water_Demand(WaterLPParameter):
         price_year = int(self.model.parameters['Price Year'].value(timestep, scenario_index))
 
         if self.datetime.month == 2 and self.datetime.day == 29:
-            price_date = self.datetime.strftime('{}-02-28'.format(price_year))
+            price_date = '{}-02-28'.format(price_year)
         else:
-            price_date = self.datetime.strftime('{}-%m-%d'.format(price_year))
+            price_date = '{}-{:02}-{:02}'.format(price_year, self.datetime.month, self.datetime.day)
 
         # calculate the price threshold if needed
         if self.model.mode == 'planning':
@@ -45,7 +45,7 @@ class PH_Water_Demand(WaterLPParameter):
                 if not isleap(price_year) and timestep.month == 2:
                     price_end = '{}-02-28'.format(price_year)
                 else:
-                    price_end = end.strftime('{}-%m-%d'.format(price_year))
+                    price_end = '{}-{:2}-{:2}'.format(price_year, end.month, end.day)
                 energy_prices = all_energy_prices[price_date:price_end].values.flatten()
                 energy_prices[::-1].sort()  # sort in descending order
                 planning_release = self.model.planning.nodes[self.res_name + '/1'].flow[-1]
@@ -58,7 +58,7 @@ class PH_Water_Demand(WaterLPParameter):
                 if price_index < 0:
                     self.price_threshold = 1e6  # no production this month (unlikely)
                 else:
-                    self.price_threshold = energy_prices[price_index]
+                    self.price_threshold = max(energy_prices[price_index], 0.0)
 
             # calculate today's total release
             energy_prices_today = all_energy_prices.loc[price_date].values

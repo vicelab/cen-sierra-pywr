@@ -18,9 +18,9 @@ class PH_Cost(WaterLPParameter):
         price_year = int(self.model.parameters['Price Year'].value(timestep, scenario_index))
 
         if isleap(self.datetime.year) and self.datetime.month == 2 and self.datetime.day == 29:
-            price_date = self.datetime.strftime('{}-02-28'.format(price_year))
+            price_date = '{}-02-28'.format(price_year)
         else:
-            price_date = self.datetime.strftime('{}-%m-%d'.format(price_year))
+            price_date = '{}-{:02}-{:02}'.format(price_year, self.datetime.month, self.datetime.day)
 
         # price_per_kWh = self.model.tables["Energy Price Values"] \
         #     .at[price_date, str(self.block)]
@@ -43,7 +43,6 @@ class PH_Cost(WaterLPParameter):
             # For now, divide by 100, which results in costs of about -5 to -170
             # E-flow costs can be set to less than this, or say -1000
             pywr_cost = - (abs(price_per_mcm) / 100 + 100) * price_per_mcm / abs(price_per_mcm)
-            pass
         else:
             if 'Murphys' in self.name:
                 pywr_cost = -500
@@ -53,7 +52,7 @@ class PH_Cost(WaterLPParameter):
                 elif self.block == 2:
                     pywr_cost = -1  # more valuable than spill
                 else:
-                    pywr_cost = 1  # costs money to generate (negative prices)
+                    pywr_cost = 100  # costs money to generate (negative prices)
 
         if self.res_name == 'Collierville PH' and self.block == 1 and pywr_cost < 0:
             pywr_cost = -600

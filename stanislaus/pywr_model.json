@@ -2254,24 +2254,22 @@
             "index_col": "Reservoir"
         },
         "All Energy Price Values": {
-            "url": "../data/common/energy prices/prices_pivoted_PY2009.csv",
+            "url": "../data/common/energy prices/prices_pivoted_select_years.csv",
+            "header": 0,
             "index_col": "Date",
-            "parse_dates": true
+            "parse_dates": false
         },
         "Energy Price Blocks": {
-            "url": "../data/common/energy prices/piecewise_blocks_daily_PY2009.csv",
+            "url": "../data/common/energy prices/piecewise_blocks_daily.csv",
+            "header": 0,
             "index_col": "Date",
-            "parse_dates": true
+            "parse_dates": false
         },
         "Energy Price Values": {
-            "url": "../data/common/energy prices/piecewise_prices_DpMWh_daily_PY2009.csv",
+            "url": "../data/common/energy prices/piecewise_prices_DpMWh_daily.csv",
+            "header": 0,
             "index_col": "Date",
-            "parse_dates": true
-        },
-        "Observed Flow": {
-            "url": "../data/Stanislaus River/gauges/streamflow_cleaned.csv",
-            "index_col": "Date",
-            "parse_dates": true
+            "parse_dates": false
         },
         "Observed Storage": {
             "url": "../data/Stanislaus River/gauges/storage_mcm.csv",
@@ -2416,13 +2414,10 @@
             ]
         }
     },
+    "scenarios": [],
     "parameters": {
-        "Price Year": {
-            "type": "constant",
-            "value": 2030
-        },
         "Blocks": {
-            "type": "constant",
+            "type": "Constant",
             "value": 4
         },
         "South San Joaquin Irrigation District/Demand": {

@@ -1,7 +1,7 @@
 import os
 from shutil import copyfile
 
-for basin in ['stanislaus']:
+for basin in ['tuolumne']:
     basin_path = '../../data/{} River/Scenarios'.format(basin.title())
     scenarios = os.listdir(basin_path)
     for scenario in scenarios:

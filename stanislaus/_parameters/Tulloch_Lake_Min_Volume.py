@@ -9,7 +9,7 @@ class Tulloch_Lake_Min_Volume(WaterLPParameter):
     def _value(self, timestep, scenario_index):
         path = "Management/BAU/Flood Control/LakeTulloch_FloodControl_Requirement.csv"
         flood_control_req = self.read_csv(path, index_col=[0], parse_dates=False, squeeze=True)
-        start = self.datetime.strftime('%m-%d')
+        start = '{:02}-{:02}'.format(self.datetime.month, self.datetime.day)
         if self.model.mode == 'scheduling':
             control_curve_target = flood_control_req[start]
         else:
