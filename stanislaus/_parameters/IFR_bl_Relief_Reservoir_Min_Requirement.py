@@ -17,20 +17,25 @@ class IFR_bl_Relief_Reservoir_Min_Requirement(WaterLPParameter):
         WYT = self.model.tables["WYT P2005 & P2130"][operational_water_year]
 
         schedule = self.model.tables["IFR Below Relief Reservoir schedule"]
-        if self.datetime.month >= 10:
-            dt = datetime.date(1999, self.datetime.month, self.datetime.day)
+        if self.model.mode == "scheduling":
+            month = timestep.month
+            day = timestep.day
+            if (2, 10) <= (month, day) <= (5, 31):
+                start_day = 10
+            else:
+                start_day = 1
+            if 2 <= month <= 5 and day <= 9:
+                start_month = month - 1
+            else:
+                start_month = month
+            start_date = '{}-{}'.format(start_month, start_day)
+            ifr_val = schedule.at[start_date, WYT] / 35.31
+
+            # apply down ramp rate
+            ifr_val = self.get_down_ramp_ifr(timestep, ifr_val, initial_value=30 / 35.31, rate=0.25)
+
         else:
-            dt = datetime.date(2000, self.datetime.month, self.datetime.day)
-
-        # Critically Dry: 1,Dry: 2,Normal-Dry: 3,Normal-Wet: 4,Wet: 5
-        ifr_val = schedule[(schedule['start_date'] <= dt) & (schedule['end_date'] >= dt)][str(WYT)].values[-1] / 35.314666 # cfs to cms
-
-        # apply down ramp rate
-        if self.model.mode == 'scheduling':
-            ifr_val = self.get_down_ramp_ifr(timestep, ifr_val, initial_value=30/35.31, rate=0.25)
-
-        elif self.model.mode == 'planning':
-            ifr_val *= self.days_in_month()
+            ifr_val = schedule.at[self.datetime.month, WYT] / 35.31 * self.days_in_month()
 
         return ifr_val
 

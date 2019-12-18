@@ -14,7 +14,7 @@ class IFR_bl_Sand_Bar_Div_Min_Requirement(WaterLPParameter):
             operational_water_year = self.datetime.year
         else:
             operational_water_year = self.datetime.year - 1
-        WYT_str = str(WYT_table[operational_water_year])
+        WYT = WYT_table[operational_water_year]
 
         # IFR
         schedule = self.model.tables["IFR Below Sand Bar Div Schedule"]
@@ -32,38 +32,37 @@ class IFR_bl_Sand_Bar_Div_Min_Requirement(WaterLPParameter):
             else:
                 start_month = month
             start_date = '{}-{}'.format(start_month, start_day)
-            ifr_val = schedule.at[start_date, WYT_str]
+            ifr_val = schedule.at[start_date, WYT]
         else:
-            ifr_val = schedule.at[self.datetime.month, WYT_str]
+            ifr_val = schedule.at[self.datetime.month, WYT]
 
         ifr_val /= 35.31  # convert to cms
 
         # Calculate supp IFR
         ifr_supp = 0
         data_supp = self.model.tables["Supplemental IFR below Sand Bar Div"]
-        if self.mode == 'scheduling':
+        if self.model.mode == 'scheduling':
             if self.datetime.month == 10 and self.datetime.day == 1:
                 self.peak_dt = self.model.tables["Peak Donnells Runoff"][timestep.year + 1]
-            diff_day = (self.datetime - self.peak_dt).days
-            if 0 < diff_day <= 91:
-                ifr_supp = \
-                    (data_supp[(data_supp['Day_st'] < diff_day) & (diff_day <= data_supp['Day_end'])][WYT_str]) \
-                        .values[-1] / 35.314666
-            ifr_val += ifr_supp
+            diff_day = (self.datetime - self.peak_dt).days - 1
+            if 0 <= diff_day < 91:
+                days_idx = diff_day - diff_day % 7
+                ifr_supp = data_supp.at[days_idx, WYT]
+                ifr_val += ifr_supp / 35.315
 
             ifr_val = self.get_down_ramp_ifr(timestep, 0.0, initial_value=80 / 35.31, rate=0.25)
-
         else:
-            if self.datetime.month == 5:
-                ifr_supp = data_supp[WYT_str].loc[0:4].mean()
-            elif self.datetime.month == 6:
-                ifr_supp = data_supp[WYT_str].loc[5:8].mean()
-            elif self.datetime.month == 7:
-                ifr_supp = data_supp[WYT_str].loc[8:12].mean()
+            month = self.datetime.month
+            if month == 5:
+                ifr_supp = data_supp.loc[0:28, WYT].mean()
+            elif month == 6:
+                ifr_supp = data_supp.loc[35:56, WYT].mean()
+            elif month == 7:
+                ifr_supp = data_supp.loc[63:84, WYT].mean()
             else:
                 ifr_supp = 0
 
-            ifr_val += ifr_supp
+            ifr_val += ifr_supp / 35.31
 
         return ifr_val
 

@@ -26,7 +26,7 @@ class IFR_bl_Goodwin_Reservoir_Requirement(WaterLPParameter):
     def _value(self, timestep, scenario_index):
         WYT = self.get('San Joaquin Valley WYT' + self.month_suffix)
         schedule = self.model.tables["IFR bl Goodwin Dam schedule"]
-        start = self.datetime.strftime('%b-%d')
+        start = '{}-{}'.format(self.datetime.month, self.datetime.day)
         if self.model.mode == 'scheduling':
             min_ifr = schedule.at[start, WYT] / 35.31  # cfs to cms
             # min_ifr = self.get_down_ramp_ifr(timestep, min_ifr, initial_value=200 / 35.31, rate=0.02)
@@ -36,9 +36,8 @@ class IFR_bl_Goodwin_Reservoir_Requirement(WaterLPParameter):
                 min_ifr = self.model.nodes[self.res_name].prev_flow[-1] / 0.0864
 
         else:
-            end = (self.datetime + relativedelta(days=self.days_in_month() - 1)).strftime('%b-%d')
+            end = '{}-{}'.format(self.datetime.month, self.days_in_month())
             min_ifr = schedule[WYT][start:end].mean() / 35.31  # cfs to cms
-            # min_ifr = self.get_down_ramp_ifr(timestep, min_ifr, initial_value=200 / 35.31, rate=0.15)
 
         # SCWRB 40 REQUIREMENT
         if 2 <= timestep.month <= 7 and scenario_index:
