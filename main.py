@@ -37,7 +37,7 @@ if debug:
     end = '2005-09-30'
 else:
     planning_months = 12
-    climate_scenarios = ['Livneh']  # + gcm_rcps
+    climate_scenarios = ['Livneh'] + gcm_rcps
     # climate_scenarios = ['HadGEM2-ES_rcp85']  # + gcm_rcps
     price_years = [2009, 2060]
     # start = '2003-10-01'
