@@ -16,15 +16,14 @@ import seaborn as sns
 
 import dash_daq as daq
 
-basins = ['stn', 'mer']
-
 external_stylesheets = [dbc.themes.BOOTSTRAP]
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.config.suppress_callback_exceptions = True
 
 opath = '../data/{basin}/gauges/{attr}.csv'
-PROD_RESULTS_PATH = r'C:\Users\david\Box\CERC-WET\Task7_San_Joaquin_Model\Pywr models\results'
+# PROD_RESULTS_PATH = r'C:\Users\david\Box\CERC-WET\Task7_San_Joaquin_Model\Pywr models\results'
+PROD_RESULTS_PATH = r'C:\data'
 # PROD_RESULTS_PATH = '../results'
 DEV_RESULTS_PATH = '../results'
 PATH_TEMPLATES = {
@@ -149,7 +148,7 @@ def register_basin_callbacks(basin, scenarios):
 obs_storage = []
 obs_streamflow = []
 
-for basin in basins:
+for basin in ['stn', 'mer']:
     RES_OPTIONS[basin] = {}
     basin_long = BASINS[basin].replace(' ', '_').lower()
     with open('../{}/pywr_model.json'.format(basin_long)) as f:
@@ -263,12 +262,12 @@ def load_timeseries_old(results_path, basin, forcings, res_type, res_attr, nscen
 
 def load_timeseries(results_path, basin, forcings, res_type, res_attr, nscenarios=1,
                     run='full run', tpl='mcm', multiplier=1.0):
-    path_tpl = os.path.join(results_path, PATH_TEMPLATES[tpl])
+    # path_tpl = os.path.join(results_path, PATH_TEMPLATES[tpl])
     full_basin = BASINS[basin].replace(' ', '_').lower()
-    path = os.path.join(results_path, 'full run 2019-12-12', full_basin, 'results.h5')
+    path = os.path.join(results_path, '{}.h5'.format(full_basin))
     key = '{}_{}_mcm'.format(res_type, res_attr).replace(' ', '_')
     df = pd.read_hdf(path, key=key)
-    df.columns = pd.MultiIndex.from_tuples(list(df.columns))
+    # df.columns = pd.MultiIndex.from_tuples(list(df.columns))
 
     for i, scenario in enumerate(SCENARIOS[basin]):
         ensemble_names = ENSEMBLE_NAMES[basin][scenario['name']]
@@ -405,6 +404,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     calibration = kwargs.get('calibration')
     climates = kwargs.get('climates')
     rcps = kwargs.get('rcps')
+    priceyears = kwargs.get('priceyears')
     percentiles_type = kwargs.get('percentiles_type', 'timeseries')
     scenario_combos = kwargs.get('scenario_combos', [])
     head = kwargs.get('head')
@@ -420,6 +420,9 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
             gcm, rcp, priceyear = parts
 
         if climates and gcm not in climates:
+            continue
+
+        if priceyears and priceyear not in priceyears:
             continue
 
         if 'Livneh' not in forcing and rcps and rcp not in rcps:
@@ -885,13 +888,13 @@ select_price_year = dcc.Dropdown(
     id="select-price-year",
     className="select-price-year",
     options=[
-        {"label": "PY2009", "value": "2009"},
-        {"label": "PY2030", "value": "2030"},
-        {"label": "PY2045", "value": "2045"},
-        {"label": "PY2060", "value": "2060"},
+        {"label": "PY2009", "value": "P2009"},
+        {"label": "PY2030", "value": "P2030"},
+        {"label": "PY2045", "value": "P2045"},
+        {"label": "PY2060", "value": "P2060"},
     ],
     multi=True,
-    value=["2009"]
+    value=["P2009"]
 )
 
 scenarios_selections = dbc.Form([
@@ -1554,4 +1557,4 @@ def render_development_content(tab, basin, transform, resample, consolidate, per
 
 
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server(debug=True)
