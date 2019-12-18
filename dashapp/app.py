@@ -262,22 +262,35 @@ def load_timeseries_old(results_path, basin, forcings, res_type, res_attr, nscen
 
 def load_timeseries(results_path, basin, forcings, res_type, res_attr, nscenarios=1,
                     run='full run', tpl='mcm', multiplier=1.0):
-    # path_tpl = os.path.join(results_path, PATH_TEMPLATES[tpl])
     full_basin = BASINS[basin].replace(' ', '_').lower()
-    path = os.path.join(results_path, '{}.h5'.format(full_basin))
-    key = '{}_{}_mcm'.format(res_type, res_attr).replace(' ', '_')
-    df = pd.read_hdf(path, key=key)
-    # df.columns = pd.MultiIndex.from_tuples(list(df.columns))
+    if run == 'development':
+        path_tpl = os.path.join(results_path, PATH_TEMPLATES[tpl])
+        path = path_tpl.format(
+            run=run,
+            basin=full_basin,
+            scenario=forcings[0],
+            res_type=res_type,
+            res_attr=res_attr
+        )
+        header = [0, 1]
+        df = pd.read_csv(path, index_col=0, parse_dates=True, header=header)
+        levels = df.columns.levels[1]
+        for val in levels[1:]:
+            df.drop(val, axis=1, level=1, inplace=True)
+        df = df.droplevel(1, axis=1)
+        new_levels = [(forcings[0],col) for col in df.columns]
+        df.columns = pd.MultiIndex.from_tuples(new_levels)
 
-    for i, scenario in enumerate(SCENARIOS[basin]):
-        ensemble_names = ENSEMBLE_NAMES[basin][scenario['name']]
-        df.columns.set_levels(ensemble_names, level=i + 2, inplace=True)
-    # if run == 'development':
-    #     df.columns = df.columns.droplevel(header[1:])
+    else:
+        path = os.path.join(results_path, '{}.h5'.format(full_basin))
+        key = '{}_{}_mcm'.format(res_type, res_attr).replace(' ', '_')
+        df = pd.read_hdf(path, key=key)
+
+        for i, scenario in enumerate(SCENARIOS[basin]):
+            ensemble_names = ENSEMBLE_NAMES[basin][scenario['name']]
+            df.columns.set_levels(ensemble_names, level=i + 2, inplace=True)
 
     df *= multiplier
-    # if run == 'development':
-    # df.columns = df.columns.droplevel(header[1:])
 
     return df
 
@@ -414,16 +427,16 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     for i, forcing in enumerate(set(all_sim_vals.columns.get_level_values(0))):
         parts = forcing.split('_')
         rcp = None
-        if len(parts) == 2:
-            gcm, priceyear = parts
+        if len(parts) == 1:
+            gcm, = parts
         else:
-            gcm, rcp, priceyear = parts
+            gcm, rcp = parts
 
         if climates and gcm not in climates:
             continue
 
-        if priceyears and priceyear not in priceyears:
-            continue
+        # if priceyears and priceyear not in priceyears:
+        #     continue
 
         if 'Livneh' not in forcing and rcps and rcp not in rcps:
             continue
@@ -1021,10 +1034,10 @@ def render_timeseries_collection(tab, **kwargs):
     kwargs['calibration'] = calibration
 
     if calibration:
-        forcings = ['Livneh_P2009']
+        forcings = ['Livneh']
     else:
         # rcp = 'rcp85'
-        forcings = list(product(climates, rcps, priceyears))
+        forcings = list(product(climates, rcps))
         forcing_names = []
         for climate, rcp, py in forcings:
             if climate == 'Livneh':

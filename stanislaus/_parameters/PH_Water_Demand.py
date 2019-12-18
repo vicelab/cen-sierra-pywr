@@ -58,7 +58,8 @@ class PH_Water_Demand(WaterLPParameter):
                 if price_index < 0:
                     self.price_threshold = 1e6  # no production this month (unlikely)
                 else:
-                    self.price_threshold = max(energy_prices[price_index], 0.0)
+                    # self.price_threshold = max(energy_prices[price_index], 0.0)
+                    self.price_threshold = energy_prices[price_index]
 
             # calculate today's total release
             energy_prices_today = all_energy_prices.loc[price_date].values

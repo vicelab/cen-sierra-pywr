@@ -9,10 +9,6 @@ from hashlib import md5
 from pywr.parameters import Parameter
 
 
-def monthlen(year, month):
-    return monthrange(year, month)[1]
-
-
 class Timestep(object):
     step = None
     datetime = None
@@ -189,7 +185,8 @@ class WaterLPParameter(Parameter):
     def get_ifr_range(self, timestep, scenario_index, **kwargs):
 
         param_name = self.res_name + '/Min Requirement' + self.month_suffix
-        min_ifr = self.model.parameters[param_name].get_value(scenario_index) / 0.0864  # convert to cms
+        # min_ifr = self.model.parameters[param_name].get_value(scenario_index) / 0.0864  # convert to cms
+        min_ifr = self.model.parameters[param_name].value(timestep, scenario_index) / 0.0864  # convert to cms
         max_ifr = self.get_up_ramp_ifr(timestep, scenario_index, **kwargs)
 
         ifr_range = max(max_ifr - min_ifr, 0.0)
