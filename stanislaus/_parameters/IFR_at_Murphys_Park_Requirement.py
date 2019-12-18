@@ -8,9 +8,6 @@ from utilities.converter import convert
 class IFR_at_Murphys_Park_Requirement(WaterLPParameter):
     """"""
     year_type_thresholds = [100000, 140000, 320000, 400000, 500000]
-    may_sep = [12, 16, 22, 26, 30]
-    oct_mar = [12, 12, 16, 18, 18]
-    apr = [12, 16, 22, 26, 30]
     year_type = 5  # initial water year (for WY2009)
 
     def _value(self, timestep, scenario_index):
@@ -27,19 +24,16 @@ class IFR_at_Murphys_Park_Requirement(WaterLPParameter):
 
         # Calculate water year type based on Apr-Jul inflow forecast
         if month == 5 and self.datetime.day == 1:
-            new_melones_runoff = self.model.parameters['New Melones Apr-Jul Runoff' + self.month_suffix].value(timestep, scenario_index)
+            new_melones_runoff = self.get('New Melones Apr-Jul Runoff' + self.month_suffix)
             self.year_type = len([x for x in self.year_type_thresholds if new_melones_runoff >= x])
 
         # Determine schedule based on time of year
-        additional = 0
-        if 5 <= month <= 9:  # May-Sep
-            schedule = self.may_sep
+        if 4 <= month <= 9:  # Apr-Sep
+            schedule = [12, 16, 22, 26, 30]
             additional = 3
-        elif month >= 10 or month <= 3:
-            schedule = self.oct_mar
-            additional = 5
         else:
-            schedule = self.apr
+            schedule = [12, 12, 16, 18, 18]
+            additional = 5
 
         # Get the IFR from the schedule based on year type
         ifr_val = (schedule[self.year_type - 1] + additional) / 35.31  # convert cfs to cms

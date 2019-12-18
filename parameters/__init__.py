@@ -187,9 +187,9 @@ class WaterLPParameter(Parameter):
         return qmax
 
     def get_ifr_range(self, timestep, scenario_index, **kwargs):
-        min_ifr = self.model.parameters[self.res_name + '/Min Requirement' + self.month_suffix] \
-                      .value(timestep, scenario_index) / 0.0864  # convert to cms
 
+        param_name = self.res_name + '/Min Requirement' + self.month_suffix
+        min_ifr = self.model.parameters[param_name].get_value(scenario_index) / 0.0864  # convert to cms
         max_ifr = self.get_up_ramp_ifr(timestep, scenario_index, **kwargs)
 
         ifr_range = max(max_ifr - min_ifr, 0.0)

@@ -26,10 +26,6 @@ class IFR_bl_Pinecrest_Lake_Min_Requirement(WaterLPParameter):
             dt = datetime.date(1999, self.datetime.month, self.datetime.day)
         else:
             dt = datetime.date(2000, self.datetime.month, self.datetime.day)
-
-        # data = self.read_csv(path + fName, usecols=[0, 1, 2, 3, 4, 5, 6], index_col=None, header=0,
-        #                      names=['start_date', 'end_date', '1', '2', '3', '4', '5'], parse_dates=[0, 1])
-
         data = self.model.tables["IFR Below Pinecrest Lake schedule"]
 
         # Critically Dry: 1,Dry: 2,Normal-Dry: 3,Normal-Wet: 4,Wet: 5

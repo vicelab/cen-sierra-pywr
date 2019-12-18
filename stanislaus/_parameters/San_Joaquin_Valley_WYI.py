@@ -24,35 +24,6 @@ class San_Joaquin_Valley_WYI(WaterLPParameter):
         else:
             operational_water_year = self.datetime.year - 1
         return sjvi[operational_water_year]
-        # month = self.datetime.month
-        # day = self.datetime.day
-        # mode = self.model.mode
-        # WYI = self.WYI
-        #
-        # if day > 1:
-        #     WYI = self.WYI
-        #
-        # elif mode == 'scheduling':
-        #     if month > 5 or month < 4 or day > 1:
-        #         WYI = self.WYI
-        #
-        #     else:
-        #         oct1 = '{:04}-04-01'.format(self.datetime.year)
-        #         mar31 = '{:04}-04-01'.format(self.datetime.year)
-        #         apr1 = '{:04}-04-01'.format(self.datetime.year)
-        #         jul31 = '{:04}-07-31'.format(self.datetime.year)
-        #         oct_mar_af = 0
-        #         apr_jul_af = 0
-        #         for basin in self.basins:
-        #             for j in range(1, 26):
-        #                 path = '{}/Scenarios/{}/runoff'.format(basin, self.scenario)
-        #                 runoff = self.read_csv()
-        #                 runoff = self.model.parameters['STN_{:02} Headflow/Runoff'.format(j)].dataframe
-        #                 oct_mar_af += runoff[oct1:mar31].sum() / 1.2335 / 1e3  # mcm to maf
-        #                 # for Apr-Jul, assume perfect forecast for now
-        #                 apr_jul_af += runoff[apr1:jul31].sum() / 1.2335 / 1e3  # mcm to maf
-        #
-        # return WYI
 
     def value(self, timestep, scenario_index):
         try:

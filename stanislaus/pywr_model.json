@@ -2281,8 +2281,44 @@
             "index_col": "Date",
             "parse_dates": false
         },
+        "New Melones Flood Control": {
+            "url": "../data/Stanislaus River/Management/BAU/Flood Control/LakeMelones_FloodControl_Requirement.csv",
+            "index_col": [0],
+            "parse_dates": false,
+            "squeeze": true
+        },
+        "Tulloch Lake Flood Control": {
+            "url": "../data/Stanislaus River/Management/BAU/Flood Control/LakeTulloch_FloodControl_Requirement.csv",
+            "index_col": [0],
+            "parse_dates": false,
+            "squeeze": true
+        },
+        "District Demand below New Spicer Meadow": {
+            "url": "../data/Stanislaus River/Management/BAU/Demand/Release below New Spicer Meadow Dam cfs.csv",
+            "index_col": [0],
+            "parse_dates": false,
+            "squeeze": true
+        },
         "IFR Below Pinecrest Lake schedule": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Pinecrest Lake_cfs_daily.csv",
+            "index_col": null,
+            "header": 0,
+            "names": [
+                "start_date",
+                "end_date",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+            ],
+            "parse_dates": [
+                0,
+                1
+            ]
+        },
+        "IFR Below Relief Reservoir schedule": {
+            "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Relief Reservoir (MIF)_cfs_daily.csv",
             "index_col": null,
             "header": 0,
             "names": [
@@ -2331,20 +2367,14 @@
         },
         "IFR Below Sand Bar Div Schedule": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Sand Bar Diversion (MIF)_cfs_daily.csv",
-            "index_col": null,
+            "index_col": [0],
             "header": 0,
             "names": [
-                "start_date",
-                "end_date",
                 "1",
                 "2",
                 "3",
                 "4",
                 "5"
-            ],
-            "parse_dates": [
-                0,
-                1
             ]
         },
         "Supplemental IFR below Sand Bar Div": {
@@ -2359,24 +2389,6 @@
                 "5"
             ],
             "header": 0
-        },
-        "IFR Below Philadelphia Div Schedule": {
-            "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Philadelphia Div. (MIF)_cfs_daily.csv",
-            "index_col": null,
-            "header": 0,
-            "names": [
-                "start_date",
-                "end_date",
-                "1",
-                "2",
-                "3",
-                "4",
-                "5"
-            ],
-            "parse_dates": [
-                0,
-                1
-            ]
         },
         "IFR bl Goodwin Dam schedule": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Goodwin Dam_cfs.csv",

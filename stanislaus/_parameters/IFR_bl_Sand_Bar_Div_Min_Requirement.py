@@ -8,24 +8,35 @@ class IFR_bl_Sand_Bar_Div_Min_Requirement(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
 
+        # WYT
         WYT_table = self.model.tables["WYT P2005 & P2130"]
         if 4 <= self.datetime.month <= 12:
             operational_water_year = self.datetime.year
         else:
             operational_water_year = self.datetime.year - 1
+        WYT_str = str(WYT_table[operational_water_year])
 
-        WYT = WYT_table[operational_water_year]
-        management = "BAU"
-
+        # IFR
         schedule = self.model.tables["IFR Below Sand Bar Div Schedule"]
-
-        if self.datetime.month >= 10:
-            dt = datetime.date(1999, self.datetime.month, self.datetime.day)
-        else:
-            dt = datetime.date(2000, self.datetime.month, self.datetime.day)
-
         # Critically Dry: 1,Dry: 2,Normal-Dry: 3,Normal-Wet: 4,Wet: 5
-        ifr_val = float(schedule[(schedule['start_date'] <= dt) & (schedule['end_date'] >= dt)][str(WYT)]) / 35.314666
+
+        if self.model.mode == 'scheduling':
+            month = timestep.month
+            day = timestep.day
+            if (2, 10) <= (month, day) <= (5, 31):
+                start_day = 10
+            else:
+                start_day = 1
+            if 2 <= month <= 5 and day <= 9:
+                start_month = month - 1
+            else:
+                start_month = month
+            start_date = '{}-{}'.format(start_month, start_day)
+            ifr_val = schedule.at[start_date, WYT_str]
+        else:
+            ifr_val = schedule.at[self.datetime.month, WYT_str]
+
+        ifr_val /= 35.31  # convert to cms
 
         # Calculate supp IFR
         ifr_supp = 0
@@ -36,7 +47,7 @@ class IFR_bl_Sand_Bar_Div_Min_Requirement(WaterLPParameter):
             diff_day = (self.datetime - self.peak_dt).days
             if 0 < diff_day <= 91:
                 ifr_supp = \
-                    (data_supp[(data_supp['Day_st'] < diff_day) & (diff_day <= data_supp['Day_end'])][str(WYT)]) \
+                    (data_supp[(data_supp['Day_st'] < diff_day) & (diff_day <= data_supp['Day_end'])][WYT_str]) \
                         .values[-1] / 35.314666
             ifr_val += ifr_supp
 
@@ -44,11 +55,11 @@ class IFR_bl_Sand_Bar_Div_Min_Requirement(WaterLPParameter):
 
         else:
             if self.datetime.month == 5:
-                ifr_supp = data_supp[str(WYT)].loc[0:4].mean()
+                ifr_supp = data_supp[WYT_str].loc[0:4].mean()
             elif self.datetime.month == 6:
-                ifr_supp = data_supp[str(WYT)].loc[5:8].mean()
+                ifr_supp = data_supp[WYT_str].loc[5:8].mean()
             elif self.datetime.month == 7:
-                ifr_supp = data_supp[str(WYT)].loc[8:12].mean()
+                ifr_supp = data_supp[WYT_str].loc[8:12].mean()
             else:
                 ifr_supp = 0
 
