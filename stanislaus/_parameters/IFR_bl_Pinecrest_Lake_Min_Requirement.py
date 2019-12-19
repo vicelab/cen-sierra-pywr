@@ -16,28 +16,30 @@ class IFR_bl_Pinecrest_Lake_Min_Requirement(WaterLPParameter):
             operational_water_year = self.datetime.year - 1
 
         WYT = WYT_table[operational_water_year]
-
-        schedule = self.model.tables["IFR Below Pinecrest Lake schedule"]
-
-        if self.model.mode == "scheduling":
-            month = timestep.month
-            day = timestep.day
-            if (2, 10) <= (month, day) <= (5, 31):
-                start_day = 10
-            else:
-                start_day = 1
-            if 2 <= month <= 5 and day <= 9:
-                start_month = month - 1
-            else:
-                start_month = month
-            start_date = '{}-{}'.format(start_month, start_day)
-            ifr_val = schedule.at[start_date, WYT] / 35.31
-
-            # apply down ramp rate
-            ifr_val = self.get_down_ramp_ifr(timestep, ifr_val, initial_value=10 / 35.31, rate=0.25)
-
+        # management = "BAU"
+        # path = "Management/{mgt}/IFRs/".format(mgt=management)
+        # if self.mode == 'scheduling':
+        #     fName = 'IFR_Below Pinecrest Lake_cfs_daily.csv'
+        # else:
+        #     fName = 'IFR_Below Pinecrest Lake_cfs_monthly.csv'
+        if self.datetime.month >= 10:
+            dt = datetime.date(2000, self.datetime.month, self.datetime.day)
         else:
-            ifr_val = schedule.at[self.datetime.month, WYT] / 35.31 * self.days_in_month()
+            dt = datetime.date(2000, self.datetime.month, self.datetime.day)
+
+        # data = self.read_csv(path + fName, usecols=[0, 1, 2, 3, 4, 5, 6], index_col=None, header=0,
+        #                      names=['start_date', 'end_date', '1', '2', '3', '4', '5'], parse_dates=[0, 1])
+
+        data = self.model.tables["IFR Below Pinecrest Lake schedule"]
+
+        # Critically Dry: 1,Dry: 2,Normal-Dry: 3,Normal-Wet: 4,Wet: 5
+        ifr_val = float(data[(data['start_date'] <= dt) & (data['end_date'] >= dt)][str(WYT)]) / 35.314666
+
+        if self.model.mode == 'scheduling':
+            ifr_val = self.get_down_ramp_ifr(timestep, ifr_val, initial_value=10/35.31, rate=0.25)
+
+        elif self.model.mode == 'planning':
+            ifr_val *= self.days_in_month()
 
         return ifr_val
 

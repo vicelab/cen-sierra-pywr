@@ -7,7 +7,9 @@ import datetime as dt
 class New_Melones_Lake_Storage_Demand(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
-        flood_control_req = self.model.tables["New Melones Flood Control"]
+        path = "Management/BAU/Flood Control/LakeMelones_FloodControl_Requirement.csv"
+        flood_control_req = self.read_csv(path, index_col=[0], parse_dates=True, squeeze=True)
+        # start = self.datetime.strftime('%b-%d')
         start = '{:02}-{:02}'.format(self.datetime.month, self.datetime.day)
         if self.model.mode == 'scheduling':
             control_curve_target = flood_control_req[start]
