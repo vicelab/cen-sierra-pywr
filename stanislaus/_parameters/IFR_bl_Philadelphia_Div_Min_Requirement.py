@@ -28,7 +28,7 @@ class IFR_bl_Philadelphia_Div_Min_Requirement(WaterLPParameter):
             ifr_val = self.get_down_ramp_ifr(timestep, ifr_val, rate=0.25)
 
         else:
-            ifr_val = schedule.at[month, WYT] / 35.31 * self.days_in_month()
+            ifr_val = schedule.at[(month, 1), WYT] / 35.31 * self.days_in_month()
 
         return ifr_val
 

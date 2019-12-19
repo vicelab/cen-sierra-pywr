@@ -2301,18 +2301,13 @@
         "IFR Below Donnell Lake schedule": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Donnells Reservoir (MIF)_cfs_daily.csv",
             "header": 0,
+            "index_col": [0, 1],
             "names": [
-                "start_date",
-                "end_date",
-                "1",
-                "2",
-                "3",
-                "4",
-                "5"
-            ],
-            "parse_dates": [
-                0,
-                1
+                1,
+                2,
+                3,
+                4,
+                5
             ]
         },
         "Supplemental IFR below Donnell Lake": {

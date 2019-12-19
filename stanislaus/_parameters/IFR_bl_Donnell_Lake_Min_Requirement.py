@@ -9,20 +9,24 @@ class IFR_bl_Donnell_Lake_Min_Requirement(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
 
-        WYT = self.get("San Joaquin Valley WYT" + self.month_suffix)
-        WYT_str = str(WYT)
-        schedule = self.model.tables["IFR Below Donnell Lake schedule"]
+        # WYT = self.get("San Joaquin Valley WYT" + self.month_suffix)
+        WYT = self.model.tables["WYT P2005 & P2130"][self.operational_water_year]
+        schedule = self.model.tables["IFR Below Donnell Lake schedule"][WYT]
+        month = self.datetime.month
+        if self.model.mode == 'scheduling':
+            day = self.datetime.day
+            start_day = 1
+            start_month = month
+            if (2, 10) <= (month, day) <= (5, 31):
+                start_day = 10
+            if month in [2, 3, 4, 5] and day <= 9:
+                start_month -= 1
+            ifr_cms = schedule[(start_month, start_day)] / 35.31
 
-        if self.datetime.month >= 10:
-            dt = datetime.date(2000, self.datetime.month, self.datetime.day)
         else:
-            dt = datetime.date(2000, self.datetime.month, self.datetime.day)
+            ifr_cms = schedule[(month, 1)] / 35.31 * self.days_in_month()
 
-        # Critically Dry: 1,Dry: 2,Normal-Dry: 3,Normal-Wet: 4,Wet: 5
-        # Calculate regular IFR
-        ifr_val = schedule[(schedule['start_date'] <= dt) & (schedule['end_date'] >= dt)][WYT_str].values[-1] / 35.31
-
-        return ifr_val
+        return ifr_cms
 
     def value(self, timestep, scenario_index):
         try:

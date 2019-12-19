@@ -23,7 +23,7 @@ class IFR_bl_Sand_Bar_Div_Min_Requirement(WaterLPParameter):
             ifr_cms = schedule.at[(start_month, start_day), WYT] / 35.31
 
         else:
-            ifr_cms = schedule.at[month, WYT] / 35.31
+            ifr_cms = schedule.at[(month, 1), WYT] / 35.31
 
         # Calculate supp IFR
 
