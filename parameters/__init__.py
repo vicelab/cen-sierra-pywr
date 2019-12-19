@@ -85,6 +85,11 @@ class WaterLPParameter(Parameter):
             self.year = self.datetime.year
             self.month = self.datetime.month
 
+        if 4 <= self.datetime.month <= 12:
+            self.operational_water_year = self.datetime.year
+        else:
+            self.operational_water_year = self.datetime.year - 1
+
     def GET(self, *args, **kwargs):
         return self.get(*args, **kwargs)
 
