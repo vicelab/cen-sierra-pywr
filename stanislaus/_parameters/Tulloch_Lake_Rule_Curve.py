@@ -7,7 +7,7 @@ import pandas as pd
 class Tulloch_Lake_Rule_Curve(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
-        flood_control_req = self.model.tables["Lake Tulloch Flood Control"]
+        flood_control_req = self.model.tables["Tulloch Lake Flood Control"]
         start = '{:02}-{:02}'.format(self.datetime.month, self.datetime.day)
         if self.model.mode == 'scheduling':
             control_curve_target = flood_control_req[start]
