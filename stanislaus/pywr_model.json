@@ -2288,20 +2288,14 @@
         },
         "IFR Below Pinecrest Lake schedule": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Pinecrest Lake_cfs_daily.csv",
-            "index_col": null,
+            "index_col": [0, 1],
             "header": 0,
             "names": [
-                "start_date",
-                "end_date",
-                "1",
-                "2",
-                "3",
-                "4",
-                "5"
-            ],
-            "parse_dates": [
-                0,
-                1
+                1,
+                2,
+                3,
+                4,
+                5
             ]
         },
         "IFR Below Donnell Lake schedule": {

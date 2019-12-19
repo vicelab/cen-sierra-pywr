@@ -11,15 +11,12 @@ class Donnell_Lake_Spill_Min_Requirement(WaterLPParameter):
 
         # WYT = self.get("San Joaquin Valley WYT" + self.month_suffix)
         WYT = self.model.tables["WYT P2005 & P2130"][self.operational_water_year]
-        WYT_str = str(WYT)
 
         # Critically Dry: 1,Dry: 2,Normal-Dry: 3,Normal-Wet: 4,Wet: 5
         # Calculate regular IFR
         ifr_cms = 0.0
 
         # Calculate supp IFR
-        data_supp = self.model.tables["Supplemental IFR below Donnell Lake"]
-
         if self.mode == 'scheduling':
 
             if self.datetime.month == 10 and self.datetime.day == 1:
@@ -27,11 +24,13 @@ class Donnell_Lake_Spill_Min_Requirement(WaterLPParameter):
 
             diff_day = (timestep.datetime - self.peak_dt).days
             if 0 <= diff_day < 91:
+                data_supp = self.model.tables["Supplemental IFR below Donnell Lake"]
                 start_idx = diff_day - diff_day % 7
                 ifr_cms += data_supp.at[start_idx, WYT] / 35.31
             ifr_cms = self.get_down_ramp_ifr(timestep, ifr_cms, rate=0.25)
 
         else:
+            data_supp = self.model.tables["Supplemental IFR below Donnell Lake"]
             if self.datetime.month == 5:
                 ifr_cfs = data_supp[WYT].iloc[0:4].mean()
             elif self.datetime.month == 6:
@@ -41,7 +40,7 @@ class Donnell_Lake_Spill_Min_Requirement(WaterLPParameter):
             else:
                 ifr_cfs = 0
 
-            ifr_cms += ifr_cfs / 35.31
+            ifr_cms = (ifr_cms + ifr_cfs / 35.31) * self.days_in_month()
 
         return ifr_cms
 
