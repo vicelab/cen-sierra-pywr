@@ -2296,6 +2296,21 @@
             "index_col": 0,
             "squeeze": true
         },
+        "IFR Below Relief Reservoir schedule": {
+            "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Relief Reservoir (MIF)_cfs_daily.csv",
+            "index_col": [
+                0,
+                1
+            ],
+            "header": 0,
+            "names": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
         "IFR Below Pinecrest Lake schedule": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Pinecrest Lake_cfs_daily.csv",
             "index_col": [
