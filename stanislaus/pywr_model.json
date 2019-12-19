@@ -2382,11 +2382,11 @@
             "index_col": 0,
             "header": 0,
             "names": [
-                "1",
-                "2",
-                "3",
-                "4",
-                "5"
+                1,
+                2,
+                3,
+                4,
+                5
             ]
         },
         "South San Joaquin Irrigation District Demand": {
