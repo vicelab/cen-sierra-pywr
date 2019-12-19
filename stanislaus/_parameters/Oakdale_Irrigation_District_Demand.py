@@ -9,8 +9,8 @@ class Oakdale_Irrigation_District_Demand(WaterLPParameter):
         if not 3 <= self.datetime.month <= 10:
             return 0  # Only deliver Mar-Oct based on observed data
 
-        WYT_str = str(self.get('San Joaquin Valley WYT' + self.month_suffix))
-        demand_mcm_df = self.model.tables["Oakdale Irrigation District Demand"][WYT_str]
+        WYT = self.get('San Joaquin Valley WYT' + self.month_suffix)
+        demand_mcm_df = self.model.tables["Oakdale Irrigation District Demand"][WYT]
         start = int(self.datetime.strftime('%j'))
         if self.model.mode == 'scheduling':
             demand_mcm = demand_mcm_df[start]
