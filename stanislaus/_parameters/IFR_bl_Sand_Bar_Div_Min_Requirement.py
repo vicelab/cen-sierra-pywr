@@ -20,25 +20,25 @@ class IFR_bl_Sand_Bar_Div_Min_Requirement(WaterLPParameter):
                 start_day = 10
             if month in [2, 3, 4, 5] and day <= 9:
                 start_month -= 1
-
             ifr_cms = schedule.at[(start_month, start_day), WYT] / 35.31
 
         else:
             ifr_cms = schedule.at[month, WYT] / 35.31
 
         # Calculate supp IFR
-        supp_cms = 0
-        data_supp = self.model.tables["Supplemental IFR below Sand Bar Div"]
+
         if self.mode == 'scheduling':
             if self.datetime.month == 10 and self.datetime.day == 1:
                 self.peak_dt = self.model.tables["Peak Donnells Runoff"][timestep.year + 1]
             diff_day = (self.datetime - self.peak_dt).days
             if 0 <= diff_day < 91:
+                data_supp = self.model.tables["Supplemental IFR below Sand Bar Div"]
                 start_idx = diff_day - diff_day % 7
                 ifr_cms += data_supp.at[start_idx, WYT] / 35.31
             ifr_cms = self.get_down_ramp_ifr(timestep, ifr_cms, rate=0.25)
 
         else:
+            data_supp = self.model.tables["Supplemental IFR below Sand Bar Div"]
             if self.datetime.month == 5:
                 supp_cfs = data_supp[WYT].iloc[0:4].mean()
             elif self.datetime.month == 6:
@@ -48,7 +48,7 @@ class IFR_bl_Sand_Bar_Div_Min_Requirement(WaterLPParameter):
             else:
                 supp_cfs = 0
 
-            ifr_cms += supp_cfs / 35.31
+            ifr_cms = (ifr_cms + supp_cfs / 35.31) * self.days_in_month()
 
         return ifr_cms
 
