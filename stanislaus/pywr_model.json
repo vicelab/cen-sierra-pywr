@@ -2296,6 +2296,11 @@
             "index_col": 0,
             "squeeze": true
         },
+        "New Spicer Meadow District release": {
+            "url": "../data/Stanislaus River/Management/BAU/Demand/Release below New Spicer Meadow Dam cfs.csv",
+            "index_col": 0,
+            "squeeze": true
+        },
         "IFR Below Relief Reservoir schedule": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Relief Reservoir (MIF)_cfs_daily.csv",
             "index_col": [
