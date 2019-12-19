@@ -2286,7 +2286,7 @@
             "index_col": "Date",
             "parse_dates": false
         },
-        "Lake Tulloch Flood Control": {
+        "Tulloch Lake Flood Control": {
             "url": "../data/Stanislaus River/Management/BAU/Flood Control/LakeTulloch_FloodControl_Requirement.csv",
             "index_col": 0,
             "squeeze": true
