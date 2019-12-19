@@ -2286,9 +2286,22 @@
             "index_col": "Date",
             "parse_dates": false
         },
+        "Tulloch Lake Flood Control": {
+            "url": "../data/Stanislaus River/Management/BAU/Flood Control/LakeTulloch_FloodControl_Requirement.csv",
+            "index_col": 0,
+            "squeeze": true
+        },
+        "New Melones Lake Flood Control": {
+            "url": "../data/Stanislaus River/Management/BAU/Flood Control/LakeMelones_FloodControl_Requirement.csv",
+            "index_col": 0,
+            "squeeze": true
+        },
         "IFR Below Pinecrest Lake schedule": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Pinecrest Lake_cfs_daily.csv",
-            "index_col": [0, 1],
+            "index_col": [
+                0,
+                1
+            ],
             "header": 0,
             "names": [
                 1,
@@ -2301,7 +2314,10 @@
         "IFR Below Donnell Lake schedule": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Donnells Reservoir (MIF)_cfs_daily.csv",
             "header": 0,
-            "index_col": [0, 1],
+            "index_col": [
+                0,
+                1
+            ],
             "names": [
                 1,
                 2,
@@ -2324,7 +2340,10 @@
         },
         "IFR Below Sand Bar Div Schedule": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Sand Bar Diversion (MIF)_cfs_daily.csv",
-            "index_col": [0, 1],
+            "index_col": [
+                0,
+                1
+            ],
             "header": 0,
             "names": [
                 1,
