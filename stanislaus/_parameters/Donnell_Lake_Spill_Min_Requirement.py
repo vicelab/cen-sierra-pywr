@@ -9,46 +9,40 @@ class Donnell_Lake_Spill_Min_Requirement(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
 
-        WYT_table = self.model.tables["WYT P2005 & P2130"]
-        if 4 <= self.datetime.month <= 12:
-            operational_water_year = self.datetime.year
-        else:
-            operational_water_year = self.datetime.year - 1
-        WYT = WYT_table[operational_water_year]
+        # WYT = self.get("San Joaquin Valley WYT" + self.month_suffix)
+        WYT = self.model.tables["WYT P2005 & P2130"][self.operational_water_year]
 
         # Critically Dry: 1,Dry: 2,Normal-Dry: 3,Normal-Wet: 4,Wet: 5
         # Calculate regular IFR
-        ifr_val = 0.0
+        ifr_cms = 0.0
 
         # Calculate supp IFR
-        data_supp = self.model.tables["Supplemental IFR below Donnell Lake"]
+        if self.mode == 'scheduling':
 
-        month = self.datetime.month
-
-        if self.model.mode == 'scheduling':
-
-            if month == 10 and self.datetime.day == 1:
+            if self.datetime.month == 10 and self.datetime.day == 1:
                 self.peak_dt = self.model.tables["Peak Donnells Runoff"][timestep.year + 1]
-            diff_day = (self.datetime - self.peak_dt).days - 1
+
+            diff_day = (timestep.datetime - self.peak_dt).days
             if 0 <= diff_day < 91:
-                days_idx = diff_day - diff_day % 7
-                ifr_supp = data_supp.at[days_idx, WYT] / 35.315
-                ifr_val += ifr_supp
-                ifr_val = self.get_down_ramp_ifr(timestep, ifr_val, initial_value=ifr_val, rate=0.25)
+                data_supp = self.model.tables["Supplemental IFR below Donnell Lake"]
+                start_idx = diff_day - diff_day % 7
+                ifr_cms += data_supp.at[start_idx, WYT] / 35.31
+            ifr_cms = self.get_down_ramp_ifr(timestep, ifr_cms, rate=0.25)
 
-        elif WYT > 1:
-            if month == 5:
-                ifr_supp = data_supp.loc[0:28, WYT].mean()
-            elif month == 6:
-                ifr_supp = data_supp.loc[35:56, WYT].mean()
-            elif month == 7:
-                ifr_supp = data_supp.loc[63:84, WYT].mean()
+        else:
+            data_supp = self.model.tables["Supplemental IFR below Donnell Lake"]
+            if self.datetime.month == 5:
+                ifr_cfs = data_supp[WYT].iloc[0:4].mean()
+            elif self.datetime.month == 6:
+                ifr_cfs = data_supp[WYT].iloc[5:8].mean()
+            elif self.datetime.month == 7:
+                ifr_cfs = data_supp[WYT].iloc[8:12].mean()
             else:
-                ifr_supp = 0.0
+                ifr_cfs = 0
 
-            ifr_val += ifr_supp / 35.31
+            ifr_cms = (ifr_cms + ifr_cfs / 35.31) * self.days_in_month()
 
-        return ifr_val
+        return ifr_cms
 
     def value(self, timestep, scenario_index):
         try:

@@ -2236,17 +2236,17 @@
         },
         "WYT P2005 & P2130": {
             "url": "../data/Stanislaus River/Scenarios/preprocessed/Livneh/WYT_P2005_P2130.csv",
-            "index_col": "WY",
+            "index_col": 0,
             "squeeze": true
         },
         "WYT P2019": {
             "url": "../data/Stanislaus River/Scenarios/preprocessed/Livneh/WYT_P2019.csv",
-            "index_col": "WY",
+            "index_col": 0,
             "squeeze": true
         },
         "San Joaquin Valley Index": {
             "url": "../data/common/Scenarios/Livneh/SJVI.csv",
-            "index_col": "WY",
+            "index_col": 0,
             "squeeze": true
         },
         "Storage Costs": {
@@ -2271,6 +2271,11 @@
             "index_col": "Date",
             "parse_dates": false
         },
+        "Observed Flow": {
+            "url": "../data/Stanislaus River/gauges/streamflow_cleaned.csv",
+            "index_col": "Date",
+            "parse_dates": false
+        },
         "Observed Storage": {
             "url": "../data/Stanislaus River/gauges/storage_mcm.csv",
             "index_col": "Date",
@@ -2281,33 +2286,27 @@
             "index_col": "Date",
             "parse_dates": false
         },
-        "New Melones Flood Control": {
-            "url": "../data/Stanislaus River/Management/BAU/Flood Control/LakeMelones_FloodControl_Requirement.csv",
-            "index_col": [
-                0
-            ],
-            "parse_dates": false,
-            "squeeze": true
-        },
         "Tulloch Lake Flood Control": {
             "url": "../data/Stanislaus River/Management/BAU/Flood Control/LakeTulloch_FloodControl_Requirement.csv",
-            "index_col": [
-                0
-            ],
-            "parse_dates": false,
-            "squeeze": true
-        },
-        "District Demand below New Spicer Meadow": {
-            "url": "../data/Stanislaus River/Management/BAU/Demand/Release below New Spicer Meadow Dam cfs.csv",
-            "index_col": [
-                0
-            ],
-            "parse_dates": false,
-            "squeeze": true
-        },
-        "IFR Below Pinecrest Lake schedule": {
-            "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Pinecrest Lake_cfs_daily.csv",
             "index_col": 0,
+            "squeeze": true
+        },
+        "New Melones Lake Flood Control": {
+            "url": "../data/Stanislaus River/Management/BAU/Flood Control/LakeMelones_FloodControl_Requirement.csv",
+            "index_col": 0,
+            "squeeze": true
+        },
+        "New Spicer Meadow District release": {
+            "url": "../data/Stanislaus River/Management/BAU/Demand/Release below New Spicer Meadow Dam cfs.csv",
+            "index_col": 0,
+            "squeeze": true
+        },
+        "IFR Below Relief Reservoir schedule": {
+            "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Relief Reservoir (MIF)_cfs_daily.csv",
+            "index_col": [
+                0,
+                1
+            ],
             "header": 0,
             "names": [
                 1,
@@ -2317,9 +2316,12 @@
                 5
             ]
         },
-        "IFR Below Relief Reservoir schedule": {
-            "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Relief Reservoir (MIF)_cfs_daily.csv",
-            "index_col": 0,
+        "IFR Below Pinecrest Lake schedule": {
+            "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Pinecrest Lake_cfs_daily.csv",
+            "index_col": [
+                0,
+                1
+            ],
             "header": 0,
             "names": [
                 1,
@@ -2331,8 +2333,11 @@
         },
         "IFR Below Donnell Lake schedule": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Donnells Reservoir (MIF)_cfs_daily.csv",
-            "index_col": 0,
             "header": 0,
+            "index_col": [
+                0,
+                1
+            ],
             "names": [
                 1,
                 2,
@@ -2344,19 +2349,20 @@
         "Supplemental IFR below Donnell Lake": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Donnells Reservoir (Supp)_cfs.csv",
             "index_col": 0,
+            "header": 0,
             "names": [
                 1,
                 2,
                 3,
                 4,
                 5
-            ],
-            "header": 0
+            ]
         },
         "IFR Below Sand Bar Div Schedule": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Sand Bar Diversion (MIF)_cfs_daily.csv",
             "index_col": [
-                0
+                0,
+                1
             ],
             "header": 0,
             "names": [
@@ -2369,6 +2375,7 @@
         },
         "Supplemental IFR below Sand Bar Div": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Sand Bar Diversion (Supp)_cfs.csv",
+            "header": 0,
             "index_col": 0,
             "names": [
                 1,
@@ -2376,8 +2383,22 @@
                 3,
                 4,
                 5
+            ]
+        },
+        "IFR Below Philadelphia Div Schedule": {
+            "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Philadelphia Div. (MIF)_cfs_daily.csv",
+            "index_col": [
+                0,
+                1
             ],
-            "header": 0
+            "header": 0,
+            "names": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
         },
         "IFR bl Goodwin Dam schedule": {
             "url": "../data/Stanislaus River/Management/BAU/IFRs/IFR_Below Goodwin Dam_cfs.csv",
@@ -2395,11 +2416,11 @@
             "index_col": 0,
             "header": 0,
             "names": [
-                "1",
-                "2",
-                "3",
-                "4",
-                "5"
+                1,
+                2,
+                3,
+                4,
+                5
             ]
         },
         "South San Joaquin Irrigation District Demand": {
@@ -2407,11 +2428,11 @@
             "index_col": 0,
             "header": 0,
             "names": [
-                "1",
-                "2",
-                "3",
-                "4",
-                "5"
+                1,
+                2,
+                3,
+                4,
+                5
             ]
         }
     },

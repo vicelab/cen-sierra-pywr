@@ -9,31 +9,26 @@ class IFR_bl_Philadelphia_Div_Min_Requirement(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
 
-        WYT_table = self.model.tables["WYT P2005 & P2130"]
-        if 4 <= self.datetime.month <= 12:
-            operational_water_year = self.datetime.year
-        else:
-            operational_water_year = self.datetime.year - 1
+        year = self.datetime.year
+        month = self.datetime.month
 
-        WYT = WYT_table[operational_water_year]
-        ifr_val = {1: 0, 2: 10, 3: 10, 5: 15}.get(WYT)
-        if not ifr_val:
-            month = self.datetime.month
-            day = self.datetime.day
-            if (4, 10) <= (month, day) <= (11, 30):
-                ifr_val = 15
-            elif self.model.mode == 'planning' and (month, day) == (4, 1):
-                ifr_val = 13.5
-            else:
-                ifr_val = 10
-
-        ifr_val /= 35.31
+        WYT = self.model.tables["WYT P2005 & P2130"][self.operational_water_year]
+        schedule = self.model.tables["IFR Below Philadelphia Div Schedule"]
 
         if self.model.mode == 'scheduling':
-            ifr_val = self.get_down_ramp_ifr(timestep, ifr_val, initial_value=10 / 35.31, rate=0.25)
+            day = self.datetime.day
+            start_day = 1
+            start_month = month
+            if (2, 10) <= (month, day) <= (5, 31):
+                start_day = 10
+            if month in [2, 3, 4, 5] and day <= 9:
+                start_month -= 1
 
-        elif self.model.mode == 'planning':
-            ifr_val *= self.days_in_month()
+            ifr_val = schedule.at[(start_month, start_day), WYT] / 35.31
+            ifr_val = self.get_down_ramp_ifr(timestep, ifr_val, rate=0.25)
+
+        else:
+            ifr_val = schedule.at[(month, 1), WYT] / 35.31 * self.days_in_month()
 
         return ifr_val
 

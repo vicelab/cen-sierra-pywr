@@ -9,12 +9,14 @@ class Water_Supply_Release_bl_New_Spicer_Meadow_Reservoir(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        water_supply_reqt = self.model.tables["District Demand below New Spicer Meadow"]
-        start = '{}-{}'.format(self.datetime.month, self.datetime.day)
+        water_supply_reqt = self.model.tables["New Spicer Meadow District release"]  # cfs
+        # start = self.datetime.strftime('%d-%b')  # e.g.: 01-Jan
+        month = self.datetime.month
+        start = '{}/{}'.format(month, self.datetime.day)
         if self.model.mode == 'scheduling':
             max_flow = water_supply_reqt[start] / 35.31
         else:
-            end = '{}-{}'.format(self.datetime.month, self.days_in_month())
+            end = '{}/{}'.format(month, self.days_in_month())
             max_flow = water_supply_reqt[start:end].sum() / 35.31  # cfs to cms
 
         # modify max_flow up/down based on regression
