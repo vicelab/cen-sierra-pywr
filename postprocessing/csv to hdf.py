@@ -2,9 +2,9 @@ import os
 from os.path import join
 import pandas as pd
 
-run = 'full run 2019-12-12'
+run = 'full run 2019-12-17'
 resultsdir = r'C:\Users\david\Box\CERC-WET\Task7_San_Joaquin_Model\Pywr models\results'
-outdir = r'C:\data'
+outdir = os.path.join('C:', 'data', run)
 rundir = join(resultsdir, run)
 
 hdfpath = join(outdir, '{basin}.h5')
@@ -19,7 +19,7 @@ for basin in basins:
     print(basin)
     basindir = join(rundir, basin)
     header = headers[basin]
-    for result in os.listdir(join(basindir, 'Livneh_P2009')):
+    for result in os.listdir(join(basindir, 'Livneh')):
         print(result)
         dfs = []
         for scenario in os.listdir(basindir):

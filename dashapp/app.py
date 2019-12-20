@@ -98,6 +98,7 @@ ENSEMBLE_NAMES = {
         'District Reductions': ['Baseline', 'Reductions']
     },
     'stn': {
+        'Price Year': ['PY2009', 'PY2060'],
         'SWRCB 40': ['Baseline', '40%'],
     }
 }
@@ -119,12 +120,11 @@ def register_basin_callbacks(basin, scenarios):
                       Input('select-basin', 'value'),
                       Input('select-climate', 'value'),
                       Input('select-rcp', 'value'),
-                      Input('select-price-year', 'value'),
                       Input('select-resources', 'value'),
                       Input('reload', 'n_clicks')
                   ] + scenario_inputs)
     def render_scenarios_content(
-            tab, transform, resample, consolidate, percentiles, percentiles_type, basin, climates, rcps, priceyears,
+            tab, transform, resample, consolidate, percentiles, percentiles_type, basin, climates, rcps,
             resources, n_clicks,
             *args):
         selected_scenarios = args
@@ -132,14 +132,13 @@ def register_basin_callbacks(basin, scenarios):
             basin=basin,
             climates=climates,
             rcps=rcps,
-            priceyears=priceyears,
             resources=resources,
             transform=transform,
             resample=resample,
             consolidate=consolidate,
             percentiles=percentiles,
             percentiles_type=percentiles_type,
-            run_name='full run 2019-12-11',
+            run_name='full run 2019-12-17',
             selected_scenarios=selected_scenarios
         )
         return render_timeseries_collection(tab, **kwargs)
@@ -156,7 +155,11 @@ for basin in ['stn', 'mer']:
     nodes = {n['name']: n for n in m['nodes']}
 
     # load scenarios
-    basin_scenarios = m.get('scenarios', [])
+    price_scenario = {
+        'name': 'Price Year',
+        'size': 2
+    }
+    basin_scenarios = [price_scenario] + m.get('scenarios', [])
     SCENARIOS[basin] = basin_scenarios
 
     for recorder in m['recorders']:
@@ -417,7 +420,6 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     calibration = kwargs.get('calibration')
     climates = kwargs.get('climates')
     rcps = kwargs.get('rcps')
-    priceyears = kwargs.get('priceyears')
     percentiles_type = kwargs.get('percentiles_type', 'timeseries')
     scenario_combos = kwargs.get('scenario_combos', [])
     head = kwargs.get('head')
@@ -434,9 +436,6 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
 
         if climates and gcm not in climates:
             continue
-
-        # if priceyears and priceyear not in priceyears:
-        #     continue
 
         if 'Livneh' not in forcing and rcps and rcp not in rcps:
             continue
@@ -897,22 +896,9 @@ select_rcp = dcc.Dropdown(
     value=["rcp85"]
 )
 
-select_price_year = dcc.Dropdown(
-    id="select-price-year",
-    className="select-price-year",
-    options=[
-        {"label": "PY2009", "value": "P2009"},
-        {"label": "PY2030", "value": "P2030"},
-        {"label": "PY2045", "value": "P2045"},
-        {"label": "PY2060", "value": "P2060"},
-    ],
-    multi=True,
-    value=["P2009"]
-)
-
 scenarios_selections = dbc.Form([
     dbc.FormGroup([
-        select_development_basin, select_climate, select_rcp, select_price_year
+        select_development_basin, select_climate, select_rcp
     ])
 ], inline=True, style={"margin-bottom": "10px"})
 
@@ -1015,7 +1001,6 @@ def render_timeseries_collection(tab, **kwargs):
 
     climates = kwargs.get('climates')
     rcps = kwargs.get('rcps')
-    priceyears = kwargs.get('priceyears')
     calibration = climates is None
     run_name = kwargs.get('run_name', 'development')
 
@@ -1029,7 +1014,7 @@ def render_timeseries_collection(tab, **kwargs):
     if run_name == 'development':
         results_path = DEV_RESULTS_PATH
     else:
-        results_path = PROD_RESULTS_PATH
+        results_path = os.path.join(PROD_RESULTS_PATH, run_name)
 
     kwargs['calibration'] = calibration
 
@@ -1038,17 +1023,8 @@ def render_timeseries_collection(tab, **kwargs):
     else:
         # rcp = 'rcp85'
         forcings = list(product(climates, rcps))
-        forcing_names = []
-        for climate, rcp, py in forcings:
-            if climate == 'Livneh':
-                forcing_name = '{}_P{}'.format(climate, py)
-            else:
-                forcing_name = '{}_{}_P{}'.format(climate, rcp, py)
-            forcing_names.append(forcing_name)
         if not forcings:
-            return "Please select at least one climate, rcp and price year"
-        else:
-            forcings = forcing_names
+            return "Please select at least one climate and rcp"
 
     if consolidate and resample == 'Y':
         return 'Sorry, you cannot consolidate annually resampled data.'
