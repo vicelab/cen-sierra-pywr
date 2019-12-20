@@ -55,8 +55,8 @@ class PH_Cost(WaterLPParameter):
                 else:
                     pywr_cost = 1  # costs money to generate (negative prices)
 
-        if self.res_name == 'Collierville PH' and self.block == 1 and pywr_cost < 0:
-            pywr_cost = -600
+        # if self.res_name == 'Collierville PH' and self.block == 1 and pywr_cost < 0:
+        #     pywr_cost = -600
 
         return pywr_cost
 
