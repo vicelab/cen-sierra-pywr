@@ -350,10 +350,15 @@
         },
         {
             "name": "IFR bl McKays Point Div",
-            "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl McKays Point Div/Violation Cost",
-            "unconstrained_cost": 6000,
-            "mrf": "IFR bl McKays Point Div/Requirement",
+            "type": "PiecewiseInstreamFlowRequirement",
+            "cost": [
+                -5000,
+                5000
+            ],
+            "max_flow": [
+                "IFR bl McKays Point Div/Min Requirement",
+                "IFR bl McKays Point Div/Max Requirement"
+            ],
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -2740,8 +2745,11 @@
             "type": "constant",
             "value": -1000
         },
-        "IFR bl McKays Point Div/Requirement": {
-            "type": "IFR_bl_McKays_Point_Div_Requirement"
+        "IFR bl McKays Point Div/Min Requirement": {
+            "type": "IFR_bl_McKays_Point_Div_Min_Requirement"
+        },
+        "IFR bl McKays Point Div/Max Requirement": {
+            "type": "IFR_bl_McKays_Point_Div_Max_Requirement"
         },
         "IFR bl New Spicer Meadow Reservoir/Violation Cost": {
             "type": "constant",
@@ -3614,9 +3622,13 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl McKays Point Div"
         },
-        "IFR bl McKays Point Div/requirement": {
+        "IFR bl McKays Point Div/min requirement": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl McKays Point Div/Requirement"
+            "parameter": "IFR bl McKays Point Div/Min Requirement"
+        },
+        "IFR bl McKays Point Div/max requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl McKays Point Div/Max Requirement"
         },
         "IFR bl New Spicer Meadow Reservoir/flow": {
             "type": "NumpyArrayNodeRecorder",

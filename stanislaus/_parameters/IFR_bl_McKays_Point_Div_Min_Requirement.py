@@ -3,12 +3,14 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class IFR_bl_McKays_Point_Div_Requirement(WaterLPParameter):
+class IFR_bl_McKays_Point_Div_Min_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
         ifr_val = 18 / 35.31  # cfs to cms; 16.5 cfs req't, min 18 cfs in practice
-        if self.mode == 'planning':
+        if self.model.mode == 'scheduling':
+            ifr_val = self.get_down_ramp_ifr(timestep, ifr_val, rate=0.25)
+        else:
             ifr_val *= self.days_in_month()
         return ifr_val
 
@@ -26,5 +28,5 @@ class IFR_bl_McKays_Point_Div_Requirement(WaterLPParameter):
         return cls(model, **data)
 
 
-IFR_bl_McKays_Point_Div_Requirement.register()
-print(" [*] IFR_bl_McKays_Point_Div_Requirement successfully registered")
+IFR_bl_McKays_Point_Div_Min_Requirement.register()
+print(" [*] IFR_bl_McKays_Point_Div_Min_Requirement successfully registered")
