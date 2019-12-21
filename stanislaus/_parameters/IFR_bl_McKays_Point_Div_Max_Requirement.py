@@ -9,7 +9,7 @@ class IFR_bl_McKays_Point_Div_Max_Requirement(WaterLPParameter):
     def _value(self, timestep, scenario_index):
         ifr_val = 18 / 35.31  # cfs to cms; 16.5 cfs req't, min 18 cfs in practice
         if self.model.mode == 'scheduling':
-            ifr_range = self.get_ifr_range(timestep, scenario_index, initial_value=ifr_val, rate=0.25)
+            ifr_range = self.get_ifr_range(timestep, scenario_index, initial_value=ifr_val, rate=0.75)
         else:
             ifr_range = 1e6
         return ifr_range

@@ -43,7 +43,8 @@ class PH_Cost(WaterLPParameter):
             # For now, divide by 100, which results in costs of about -5 to -170
             # E-flow costs can be set to less than this, or say -1000
             pywr_cost = - (abs(price_per_mcm) / 100 + 100) * price_per_mcm / abs(price_per_mcm)
-            pass
+            # if pywr_cost > 0 and self.res_name == 'Collierville PH':
+            #     pywr_cost *= 1000
         else:
             if 'Murphys' in self.name:
                 pywr_cost = -500

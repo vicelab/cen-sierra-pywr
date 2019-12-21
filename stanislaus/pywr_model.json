@@ -326,6 +326,7 @@
             "type": "PiecewiseInstreamFlowRequirement",
             "cost": [
                 -5000,
+                0.0,
                 5000
             ],
             "max_flow": [
@@ -353,6 +354,7 @@
             "type": "PiecewiseInstreamFlowRequirement",
             "cost": [
                 -5000,
+                0.0,
                 5000
             ],
             "max_flow": [
