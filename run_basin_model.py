@@ -456,7 +456,7 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
         new_parameters[param_name] = param
 
     new_tables = {}
-    for table_name, table in m['tables'].items():
+    for table_name, table in m.get('tables', {}).items():
         if 'observed' in table_name.lower():
             continue
         if 'url' in table:
