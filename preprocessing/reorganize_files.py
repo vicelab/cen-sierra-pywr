@@ -1,8 +1,8 @@
 import os
 from shutil import copyfile
 
-for basin in ['tuolumne']:
-    basin_path = '../../data/{} River/Scenarios'.format(basin.title())
+for basin in ['upper san joaquin']:
+    basin_path = '../data/{} River/Scenarios'.format(basin.title())
     scenarios = os.listdir(basin_path)
     for scenario in scenarios:
         scenario_path = os.path.join(basin_path, scenario)

@@ -37,7 +37,7 @@ def create_forcasted_hydrology(root_dir, basins=None):
         runoff_dir = os.path.join(root_dir, '{} River/Scenarios/runoff/{}'.format(basin.title(), scenario))
         #         print(runoff_dir)
         runoff_dir_monthly = runoff_dir.replace('runoff', 'runoff_monthly')
-        runoff_dir_monthly_forecasts = runoff_dir.replace('runoff', 'runoff_forecasts')
+        runoff_dir_monthly_forecasts = runoff_dir.replace('runoff', 'runoff_monthly_forecasts')
         if not os.path.exists(runoff_dir_monthly):
             os.makedirs(runoff_dir_monthly)
         if not os.path.exists(runoff_dir_monthly_forecasts):
