@@ -114,6 +114,7 @@ def register_basin_callbacks(basin, scenarios):
                       Input('development-tabs', 'active_tab'),
                       Input('radio-transform', 'value'),
                       Input('radio-resample', 'value'),
+                      Input('radio-aggregate', 'value'),
                       Input('percentiles-checklist', 'value'),
                       Input('percentiles-options', 'value'),
                       Input('percentiles-type', 'value'),
@@ -124,7 +125,7 @@ def register_basin_callbacks(basin, scenarios):
                       Input('reload', 'n_clicks')
                   ] + scenario_inputs)
     def render_scenarios_content(
-            tab, transform, resample, consolidate, percentiles, percentiles_type, basin, climates, rcps,
+            tab, transform, resample, aggregate, consolidate, percentiles, percentiles_type, basin, climates, rcps,
             resources, n_clicks,
             *args):
         selected_scenarios = args
@@ -135,10 +136,11 @@ def register_basin_callbacks(basin, scenarios):
             resources=resources,
             transform=transform,
             resample=resample,
+            aggregate=aggregate,
             consolidate=consolidate,
             percentiles=percentiles,
             percentiles_type=percentiles_type,
-            run_name='full run 2019-12-17',
+            run_name='full run 2019-12-19',
             selected_scenarios=selected_scenarios
         )
         return render_timeseries_collection(tab, **kwargs)
@@ -264,7 +266,7 @@ def load_timeseries_old(results_path, basin, forcings, res_type, res_attr, nscen
 
 
 def load_timeseries(results_path, basin, forcings, res_type, res_attr, nscenarios=1,
-                    run='full run', tpl='mcm', multiplier=1.0):
+                    run='full run', tpl='mcm', multiplier=1.0, aggregate=None, filterby=None):
     full_basin = BASINS[basin].replace(' ', '_').lower()
     if run == 'development':
         path_tpl = os.path.join(results_path, PATH_TEMPLATES[tpl])
@@ -281,7 +283,7 @@ def load_timeseries(results_path, basin, forcings, res_type, res_attr, nscenario
         for val in levels[1:]:
             df.drop(val, axis=1, level=1, inplace=True)
         df = df.droplevel(1, axis=1)
-        new_levels = [(forcings[0],col) for col in df.columns]
+        new_levels = [(forcings[0], col) for col in df.columns]
         df.columns = pd.MultiIndex.from_tuples(new_levels)
 
     else:
@@ -292,6 +294,17 @@ def load_timeseries(results_path, basin, forcings, res_type, res_attr, nscenario
         for i, scenario in enumerate(SCENARIOS[basin]):
             ensemble_names = ENSEMBLE_NAMES[basin][scenario['name']]
             df.columns.set_levels(ensemble_names, level=i + 2, inplace=True)
+
+    if filterby:
+        resources = [s.replace('_', ' ') for s in filterby]
+        idx = pd.IndexSlice
+        df = df.loc[:, idx[:, resources]]
+
+    if df.empty:
+        return None
+
+    if aggregate:
+        df = agg_by_resources(df, aggregate)
 
     df *= multiplier
 
@@ -390,7 +403,6 @@ def boxplots_graphs(df, name, percentiles, color='black'):
     plot = go.Box(
         y=df.values.flatten(),
         name=name,
-        legend=False
     )
     return [plot]
 
@@ -841,6 +853,21 @@ resample_radio = dbc.FormGroup(
     ],
 )
 
+aggregate_radio = dbc.FormGroup(
+    [
+        dbc.Label("Aggregation", html_for="radio-aggregate", width=2),
+        dbc.RadioItems(
+            id="radio-aggregate",
+            options=[
+                {"label": "None", "value": None},
+                {"label": "Mean", "value": 'mean'},
+                {"label": "Sum", "value": 'sum'},
+            ],
+            value=None,
+        ),
+    ],
+)
+
 consolidation_checklist = dbc.FormGroup(
     [
         dbc.Checklist(
@@ -909,7 +936,7 @@ development_selections = dbc.Form([
 ], inline=True, style={"margin-bottom": "10px"})
 
 controls = dbc.Form(
-    [transform_radio, resample_radio, consolidation_checklist],
+    [transform_radio, resample_radio, aggregate_radio, consolidation_checklist],
     inline=False
 )
 
@@ -984,8 +1011,17 @@ def get_resources_old(df, filterby=None):
 
 def get_resources(df, filterby=None):
     all_resources = sorted(set(df.columns.get_level_values(1)))
-    return [r for r in all_resources if not filterby or r.replace(' ', '_') in filterby]
+    # return [r for r in all_resources if not filterby or r.replace(' ', '_') in filterby]
+    return all_resources
 
+
+def agg_by_resources(df, agg):
+    levels = list(range(len(df.columns.levels)))
+    levels.pop(1)
+    df = df.groupby(axis=1, level=levels).agg(agg)
+    new_cols = [(c[0], agg) + tuple(c[1:]) for c in df.columns]
+    df.columns = pd.MultiIndex.from_tuples(new_cols)
+    return df
 
 def render_timeseries_collection(tab, **kwargs):
     children = []
@@ -995,6 +1031,7 @@ def render_timeseries_collection(tab, **kwargs):
     kwargs['consolidate'] = consolidate
 
     resample = kwargs.get('resample')
+    aggregate = kwargs.get('aggregate')
     basin = kwargs.get('basin')
     if not basin:
         return ["Select a basin."]
@@ -1006,7 +1043,9 @@ def render_timeseries_collection(tab, **kwargs):
 
     load_data_kwargs = dict(
         run=run_name,
-        nscenarios=max(len(SCENARIOS.get(basin, [])), 1)
+        nscenarios=max(len(SCENARIOS.get(basin, [])), 1),
+        aggregate=aggregate,
+        filterby=resources
     )
 
     kwargs['scenario_combos'] = list(product(*selected_scenarios))
@@ -1038,7 +1077,7 @@ def render_timeseries_collection(tab, **kwargs):
             obs = df_obs_storage.resample(resample).mean()
         else:
             obs = df_obs_storage
-        for res in get_resources(df_storage, filterby=resources):
+        for res in get_resources(df_storage, filterby=aggregate or resources):
             component = timeseries_component(attr, res, df_storage, obs, **kwargs)
             children.append(component)
 
@@ -1061,6 +1100,11 @@ def render_timeseries_collection(tab, **kwargs):
                 hp.append(df_hp2)
             if hp:
                 df_hp_flow = pd.concat([df_hp1, df_hp2], axis=1) * MCM_TO_CFS
+
+                if aggregate:
+                    df_hp_flow = agg_by_resources(df_hp_flow, aggregate)
+
+
             else:
                 df_hp_flow = None
 
@@ -1074,7 +1118,7 @@ def render_timeseries_collection(tab, **kwargs):
         if tab == 'hydropower-flow':
             attr = 'flow'
             if df_hp_flow is not None:
-                for res in get_resources(df_hp_flow, filterby=resources):
+                for res in get_resources(df_hp_flow, filterby=aggregate or resources):
                     component = timeseries_component(attr, res, df_hp_flow, obs, **kwargs)
                     children.append(component)
 
@@ -1524,19 +1568,22 @@ def update_select_resources(tab, basin):
                   Input('select-basin', 'value'),
                   Input('radio-transform', 'value'),
                   Input('radio-resample', 'value'),
+                  Input('radio-aggregate', 'value'),
                   Input('percentiles-checklist', 'value'),
                   Input('percentiles-options', 'value'),
                   Input('percentiles-type', 'value'),
                   Input('select-resources', 'value'),
                   Input('reload', 'n_clicks'),
               ])
-def render_development_content(tab, basin, transform, resample, consolidate, percentiles, percentiles_type, resources,
+def render_development_content(tab, basin, transform, resample, aggregate, consolidate, percentiles, percentiles_type,
+                               resources,
                                n_clicks):
     kwargs = dict(
         basin=basin,
         resources=resources,
         transform=transform,
         resample=resample,
+        aggregate=aggregate,
         consolidate=consolidate,
         percentiles=percentiles,
         percentiles_type=percentiles_type,
@@ -1546,4 +1593,4 @@ def render_development_content(tab, basin, transform, resample, consolidate, per
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)
