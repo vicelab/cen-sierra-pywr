@@ -2,11 +2,13 @@ import os
 from os.path import join
 import pandas as pd
 
-run = 'full run 2019-12-17'
+run = 'full run 2019-12-19'
 resultsdir = r'C:\Users\david\Box\CERC-WET\Task7_San_Joaquin_Model\Pywr models\results'
-outdir = os.path.join('C:', 'data', run)
 rundir = join(resultsdir, run)
 
+outdir = os.path.join('C:/', 'data', run)
+if not os.path.exists(outdir):
+    os.makedirs(outdir)
 hdfpath = join(outdir, '{basin}.h5')
 
 headers = {
