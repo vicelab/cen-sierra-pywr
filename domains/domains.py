@@ -1,19 +1,8 @@
 from pywr.nodes import Domain, PiecewiseLink
 from pywr.parameters import load_parameter
 
-DEFAULT_RIVER_DOMAIN = Domain(name='river', color='#33CCFF')
 
-
-class RiverDomainMixin(object):
-    def __init__(self, *args, **kwargs):
-        # if 'domain' not in kwargs:
-        #     kwargs['domain'] = DEFAULT_RIVER_DOMAIN
-        # if 'color' not in kwargs:
-        #     self.color = '#6ECFF6'  # blue
-        super(RiverDomainMixin, self).__init__(*args, **kwargs)
-
-
-class InstreamFlowRequirement(RiverDomainMixin, PiecewiseLink):
+class InstreamFlowRequirement(PiecewiseLink):
     """A river gauging station, with a minimum residual flow (MRF)
     """
 
@@ -21,62 +10,48 @@ class InstreamFlowRequirement(RiverDomainMixin, PiecewiseLink):
         """Initialise a new RiverGauge instance
         Parameters
         ----------
-        mrf : float
-            The minimum residual flow (MRF) at the gauge
-        mrf_cost : float
-            The cost of the route via the MRF
-        unconstrained_cost : float
-            The cost of the other (unconstrained) route
         """
         # create keyword arguments for PiecewiseLink
-        kwargs['cost'] = [kwargs.pop('mrf_cost', 0.0), kwargs.pop('unconstrained_cost', 0.0)]
-        kwargs['max_flow'] = [kwargs.pop('mrf', 0.0), None]
+        kwargs['cost'] = kwargs.pop('cost', [0.0, 0.0, 0.0])
+        # kwargs['cost'].extend([0.0] * (3 - len(kwargs['cost'])))
+        kwargs['max_flow'] = kwargs.pop('max_flow', [0.0, 0.0, 0.0])
+        kwargs['max_flow'].append(None)
+        try:
+            assert (len(kwargs['cost']) == len(kwargs['max_flow']))
+        except:
+            raise
+
         super(InstreamFlowRequirement, self).__init__(*args, **kwargs)
-
-    def mrf():
-        def fget(self):
-            return self.sublinks[0].max_flow
-
-        def fset(self, value):
-            self.sublinks[0].max_flow = value
-
-        return locals()
-
-    mrf = property(**mrf())
-
-    def mrf_cost():
-        def fget(self):
-            return self.sublinks[0].cost
-
-        def fset(self, value):
-            self.sublinks[0].cost = value
-
-        return locals()
-
-    mrf_cost = property(**mrf_cost())
-
-    def unconstrained_cost():
-        def fget(self):
-            return self.sublinks[0].cost
-
-        def fset(self, value):
-            self.sublinks[0].cost = value
-
-        return locals()
-
-    unconstrained_cost = property(**unconstrained_cost())
 
     @classmethod
     def load(cls, data, model):
-        mrf = load_parameter(model, data.pop("mrf", 0.0))
-        mrf_cost = load_parameter(model, data.pop("mrf_cost", 0.0))
-        unconstrained_cost = load_parameter(model, data.pop("unconstrained_cost", 0.0))
+        cost = data.pop("cost", 0.0)
+        min_flow = data.pop("min_flow", 0.0)
+        min_flow_cost = data.pop("min_flow_cost", 0.0)
+        max_flow = data.pop("max_flow", 0.0)
+        max_flow_cost = data.pop("max_flow_cost", 0.0)
+
+        if type(max_flow) == list:
+            max_flow = [load_parameter(model, x) for x in max_flow]
+        else:
+            max_flow = [load_parameter(model, min_flow), load_parameter(model, max_flow)]
+
+        if type(cost) == list:
+            cost = [load_parameter(model, x) for x in cost]
+        else:
+            cost = [load_parameter(model, min_flow_cost),
+                    load_parameter(model, 0.0),
+                    load_parameter(model, max_flow_cost)]
+
+        data['max_flow'] = max_flow
+        data['cost'] = cost
+
         del data["type"]
-        node = cls(model, mrf=mrf, mrf_cost=mrf_cost, unconstrained_cost=unconstrained_cost, **data)
+        node = cls(model, **data)
         return node
 
 
-class Hydropower(RiverDomainMixin, PiecewiseLink):
+class Hydropower(PiecewiseLink):
     """A river gauging station, with a minimum residual flow (MRF)
     """
 
@@ -252,7 +227,7 @@ class PiecewiseHydropower(PiecewiseLink):
         return node
 
 
-class PiecewiseInstreamFlowRequirement(RiverDomainMixin, PiecewiseLink):
+class PiecewiseInstreamFlowRequirement(PiecewiseLink):
     """
     A piecewise instream flow requirement, defined with:
     N costs and N - 1 requirements
