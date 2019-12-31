@@ -123,24 +123,27 @@ def simplify_network(m, delete_gauges=False, delete_observed=True, delete_scenar
                 edges_set.append(edge)
         m['edges'] = edges_set
 
-    for gauge in obsolete_gauges:
-        for p in list(m['parameters']):
-            parts = p.split('/')
-            if gauge in parts:
-                m['parameters'].pop(p, None)
+    # delete obsolete parameters and recorders
+    obsolete_gauges_set = set(obsolete_gauges)
+    obsolete_nodes_set = set(obsolete_nodes)
+    for p in list(m['parameters']):
+        parts = p.split('/')
+        if parts[0] in obsolete_gauges:
+            m['parameters'].pop(p, None)
+        elif delete_observed and '/observed' in p.lower():
+            m['parameters'].pop(p, None)
+        elif parts[0] in obsolete_nodes:
+            m['parameters'].pop(p, None)
 
-            if delete_observed and '/observed' in p.lower():
-                m['parameters'].pop(p, None)
-
-        for r in list(m['recorders']):
-            name_parts = r.split('/')
-            node_parts = m['recorders'][r].get('node', '').split('/')
-            parameter_parts = m['recorders'][r].get('parameter', '').split('/')
-            if gauge in name_parts + node_parts + parameter_parts:
-                m['recorders'].pop(r, None)
-
-            if delete_observed and '/observed' in r:
-                m['recorders'].pop(r, None)
+    for r in list(m['recorders']):
+        name_parts = r.split('/')[0:1]
+        node_parts = m['recorders'][r].get('node', '').split('/')
+        parameter_parts = m['recorders'][r].get('parameter', '').split('/')
+        names_set = set(name_parts + node_parts + parameter_parts)
+        if names_set & obsolete_gauges_set or names_set & obsolete_nodes_set:
+            m['recorders'].pop(r, None)
+        elif delete_observed and '/observed' in r:
+            m['recorders'].pop(r, None)
 
     return m
 

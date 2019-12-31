@@ -1466,11 +1466,9 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Balsam Meadows Forebay",
-            "type": "Storage",
-            "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 0.0,
-            "max_volume": 0.0
+            "name": "Balsam Forebay",
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Balsam Meadows Tunnel Outflow",
@@ -1510,6 +1508,8 @@
             "name": "Big Creek 1 PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
+            "head": 586.0,
+            "turbine_capacity": 1.693254031891053,
             "excess_cost": 2,
             "base_cost": -10,
             "max_flow": "Big Creek 1 PH/Water Demand"
@@ -1518,6 +1518,8 @@
             "name": "Big Creek 2 PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
+            "head": 499.4,
+            "turbine_capacity": 1.4852676262396953,
             "excess_cost": 2,
             "base_cost": -15,
             "max_flow": "Big Creek 2 PH/Water Demand"
@@ -1536,6 +1538,8 @@
             "name": "Big Creek 2A PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
+            "head": 670.6,
+            "turbine_capacity": 1.5293118062599829,
             "excess_cost": 2,
             "base_cost": -66,
             "max_flow": "Big Creek 2A PH/Water Demand"
@@ -1554,6 +1558,8 @@
             "name": "Big Creek 3 PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
+            "head": 232.9,
+            "turbine_capacity": 7.830076448051113,
             "excess_cost": 2,
             "base_cost": -16,
             "max_flow": "Big Creek 3 PH/Water Demand"
@@ -1567,6 +1573,8 @@
             "name": "Big Creek 4 PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
+            "head": 118.2,
+            "turbine_capacity": 9.0535258930591,
             "excess_cost": 2,
             "base_cost": -10,
             "max_flow": "Big Creek 4 PH/Water Demand"
@@ -1585,6 +1593,8 @@
             "name": "Big Creek 8 PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
+            "head": 208.8,
+            "turbine_capacity": 3.259269321501275,
             "excess_cost": 2,
             "base_cost": -25,
             "max_flow": "Big Creek 8 PH/Water Demand"
@@ -1688,6 +1698,8 @@
             "name": "Eastwood PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
+            "head": 400.0,
+            "turbine_capacity": 5.618079851476674,
             "excess_cost": 2,
             "base_cost": -12,
             "max_flow": "Eastwood PH/Water Demand"
@@ -1737,7 +1749,7 @@
             "min_flow_cost": 5000
         },
         {
-            "name": "IFR bl Balsam Meadows Forebay",
+            "name": "IFR bl Balsam Forebay",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow_cost": 5000
@@ -1902,6 +1914,8 @@
             "name": "Kerckhoff 1 PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
+            "head": 106.7,
+            "turbine_capacity": 4.245369574177712,
             "excess_cost": 2,
             "base_cost": -12,
             "max_flow": "Kerckhoff 1 PH/Water Demand"
@@ -1915,6 +1929,8 @@
             "name": "Kerckhoff 2 PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
+            "head": 128.3,
+            "turbine_capacity": 12.47918433908146,
             "excess_cost": 2,
             "base_cost": -11,
             "max_flow": "Kerckhoff 2 PH/Water Demand"
@@ -1946,6 +1962,8 @@
             "name": "Mammoth Pool PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
+            "head": 306.0,
+            "turbine_capacity": 6.1172472250399315,
             "excess_cost": 2,
             "base_cost": -11,
             "max_flow": "Mammoth Pool PH/Water Demand"
@@ -2075,6 +2093,8 @@
             "name": "Portal PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
+            "head": 54.864000000000004,
+            "turbine_capacity": 1.771554796371564,
             "excess_cost": 2,
             "base_cost": -95,
             "max_flow": "Portal PH/Water Demand"
@@ -2152,6 +2172,8 @@
             "name": "San Joaquin 1 PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
+            "head": 397.8,
+            "turbine_capacity": 0.5750212391537536,
             "excess_cost": 2,
             "base_cost": -25,
             "max_flow": "San Joaquin 1 PH/Water Demand"
@@ -2170,6 +2192,8 @@
             "name": "San Joaquin 1A PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
+            "head": 12.2,
+            "turbine_capacity": 0.4086321146326674,
             "excess_cost": 2,
             "base_cost": -10,
             "max_flow": "San Joaquin 1A PH/Water Demand"
@@ -2178,6 +2202,8 @@
             "name": "San Joaquin 2 PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
+            "head": 89.0,
+            "turbine_capacity": 0.010276975338067084,
             "excess_cost": 2,
             "base_cost": -11,
             "max_flow": "San Joaquin 2 PH/Water Demand"
@@ -2186,6 +2212,7 @@
             "name": "San Joaquin 3 PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
+            "turbine_capacity": 0.3670348335023959,
             "excess_cost": 2,
             "base_cost": -10,
             "max_flow": "San Joaquin 3 PH/Water Demand"
@@ -2948,7 +2975,7 @@
         ],
         [
             "Below Balsam Creek Headflow",
-            "Balsam Meadows Forebay"
+            "Balsam Forebay"
         ],
         [
             "Balsam Creek Inflow",
@@ -2964,18 +2991,18 @@
         ],
         [
             "Below Balsam Diversion Tunnel Diverted Inflow",
-            "Balsam Meadows Forebay"
+            "Balsam Forebay"
         ],
         [
-            "Balsam Meadows Forebay",
+            "Balsam Forebay",
             "Below Balsam Diversion Tunnel Inflow.1"
         ],
         [
             "Below Balsam Diversion Tunnel Inflow.1",
-            "IFR bl Balsam Meadows Forebay"
+            "IFR bl Balsam Forebay"
         ],
         [
-            "IFR bl Balsam Meadows Forebay",
+            "IFR bl Balsam Forebay",
             "Below Balsam Diversion Tunnel Inflow.2.1"
         ],
         [
@@ -4767,7 +4794,7 @@
             "SAN J-N-JUN8"
         ],
         [
-            "Balsam Meadows Forebay",
+            "Balsam Forebay",
             "Eastwood Tunnel.1"
         ],
         [
@@ -5211,102 +5238,32 @@
             "type": "Bass_Lake_Storage_Value",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
-        "Big Creek 1 PH/Fixed Head": {
-            "type": "constant",
-            "value": 586.0,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "Big Creek 1 PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 19.59784763523081,
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
         "Big Creek 1 PH/Water Demand": {
-            "type": "Big_Creek_1_PH_Water_Demand",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Big Creek 2 PH/Fixed Head": {
-            "type": "constant",
-            "value": 499.4,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "Big Creek 2 PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 17.19059756442934,
+            "type": "PH_Water_Demand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Big Creek 2 PH/Water Demand": {
-            "type": "Big_Creek_2_PH_Water_Demand",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Big Creek 2A PH/Fixed Head": {
-            "type": "constant",
-            "value": 670.6,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "Big Creek 2A PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 17.700368167657885,
+            "type": "PH_Water_Demand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Big Creek 2A PH/Water Demand": {
-            "type": "Big_Creek_2A_PH_Water_Demand",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Big Creek 3 PH/Fixed Head": {
-            "type": "constant",
-            "value": 232.9,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "Big Creek 3 PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 90.62588501840838,
+            "type": "PH_Water_Demand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Big Creek 3 PH/Water Demand": {
-            "type": "Big_Creek_3_PH_Water_Demand",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Big Creek 4 PH/Fixed Head": {
-            "type": "constant",
-            "value": 118.2,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "Big Creek 4 PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 104.78617955253469,
+            "type": "PH_Water_Demand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Big Creek 4 PH/Water Demand": {
-            "type": "Big_Creek_4_PH_Water_Demand",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Big Creek 8 PH/Fixed Head": {
-            "type": "constant",
-            "value": 208.8,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "Big Creek 8 PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 37.723024638912484,
+            "type": "PH_Water_Demand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Big Creek 8 PH/Water Demand": {
-            "type": "Big_Creek_8_PH_Water_Demand",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Eastwood PH/Fixed Head": {
-            "type": "constant",
-            "value": 400.0,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "Eastwood PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 65.02407250070802,
+            "type": "PH_Water_Demand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Eastwood PH/Water Demand": {
-            "type": "Eastwood_PH_Water_Demand",
+            "type": "PH_Water_Demand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Florence Lake/Maximum Outflow": {
@@ -5476,32 +5433,12 @@
             "type": "IFR_bl_Shaver_Lake_Min_Flow",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
-        "Kerckhoff 1 PH/Fixed Head": {
-            "type": "constant",
-            "value": 106.7,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "Kerckhoff 1 PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 49.13622203341829,
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
         "Kerckhoff 1 PH/Water Demand": {
-            "type": "Kerckhoff_1_PH_Water_Demand",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Kerckhoff 2 PH/Fixed Head": {
-            "type": "constant",
-            "value": 128.3,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "Kerckhoff 2 PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 144.43500424808835,
+            "type": "PH_Water_Demand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Kerckhoff 2 PH/Water Demand": {
-            "type": "Kerckhoff_2_PH_Water_Demand",
+            "type": "PH_Water_Demand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Kerckhoff Lake/Volume Elevation Curve": {
@@ -5586,18 +5523,8 @@
             "type": "Lake_Thomas_A_Edison_Storage_Value",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
-        "Mammoth Pool PH/Fixed Head": {
-            "type": "constant",
-            "value": 306.0,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "Mammoth Pool PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 70.80147267063154,
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
         "Mammoth Pool PH/Water Demand": {
-            "type": "Mammoth_Pool_PH_Water_Demand",
+            "type": "PH_Water_Demand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Mammoth Pool Reservoir/Volume Elevation Curve": {
@@ -5659,18 +5586,8 @@
             "value": 1,
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         },
-        "Portal PH/Fixed Head": {
-            "type": "constant",
-            "value": 54.864000000000004,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "Portal PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 20.504106485414894,
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
         "Portal PH/Water Demand": {
-            "type": "Portal_PH_Water_Demand",
+            "type": "PH_Water_Demand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Redinger Lake/Volume Elevation Curve": {
@@ -5710,60 +5627,20 @@
             "value": 1,
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         },
-        "San Joaquin 1 PH/Fixed Head": {
-            "type": "constant",
-            "value": 397.8,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "San Joaquin 1 PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 6.6553384310393655,
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
         "San Joaquin 1 PH/Water Demand": {
-            "type": "San_Joaquin_1_PH_Water_Demand",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "San Joaquin 1A PH/Fixed Head": {
-            "type": "constant",
-            "value": 12.2,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "San Joaquin 1A PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 4.729538374398187,
+            "type": "PH_Water_Demand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "San Joaquin 1A PH/Water Demand": {
-            "type": "San_Joaquin_1A_PH_Water_Demand",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "San Joaquin 2 PH/Fixed Head": {
-            "type": "constant",
-            "value": 89.0,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "San Joaquin 2 PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 0.118946474086661,
+            "type": "PH_Water_Demand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "San Joaquin 2 PH/Water Demand": {
-            "type": "San_Joaquin_2_PH_Water_Demand",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "San Joaquin 3 PH/Fixed Head": {
-            "type": "constant",
-            "value": 115.2,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "San Joaquin 3 PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 4.248088360237893,
+            "type": "PH_Water_Demand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "San Joaquin 3 PH/Water Demand": {
-            "type": "San_Joaquin_3_PH_Water_Demand",
+            "type": "PH_Water_Demand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Shaver Lake/Volume Elevation Curve": {
@@ -6218,13 +6095,17 @@
             "type": "constant",
             "value": 0.0020395171957671957,
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
+        },
+        "San Joaquin Valley WYI": {
+            "type": "San_Joaquin_Valley_WYI",
+            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"ac-ft\"}"
+        },
+        "San Joaquin Valley WYT": {
+            "type": "San_Joaquin_Valley_WYT",
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         }
     },
     "recorders": {
-        "Balsam Meadows Forebay/storage": {
-            "type": "NumpyArrayStorageRecorder",
-            "node": "Balsam Meadows Forebay"
-        },
         "Bass Lake/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Bass Lake"
@@ -6317,9 +6198,9 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR above Shakeflat Creek"
         },
-        "IFR bl Balsam Meadows Forebay/flow": {
+        "IFR bl Balsam Forebay/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "IFR bl Balsam Meadows Forebay"
+            "node": "IFR bl Balsam Forebay"
         },
         "IFR bl Bass Lake/flow": {
             "type": "NumpyArrayNodeRecorder",
