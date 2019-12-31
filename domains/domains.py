@@ -227,6 +227,51 @@ class PiecewiseHydropower(PiecewiseLink):
         return node
 
 
+class PeakingHydropower(PiecewiseLink):
+    """
+    A piecewise hydropower plant.
+    """
+
+    _type = 'piecewisehydropower'
+
+    def __init__(self, model, max_flow, **kwargs):
+        """Initialise a new Hydropower instance
+        Parameters
+        ----------
+        """
+
+        if max_flow is None:
+            raise ValueError("Hydropower max_flow must be provided.")
+
+        head = kwargs.pop('head', None)  # Fixed head
+
+        max_flows = kwargs.pop('max_flows', [])
+        costs = kwargs.pop('costs', [])
+
+        # Add an unconstrained block with a default cost of zero
+        max_flows.append(None)
+        if len(costs) < len(max_flows):
+            costs.append(0.0)  # PiecewiseLink will raise an error if not same length
+
+        kwargs['max_flow'] = max_flows
+        kwargs['cost'] = costs
+
+        super(PiecewiseHydropower, self).__init__(model, **kwargs)
+
+        self.output.max_flow = max_flow
+        self.head = head
+
+    @classmethod
+    def load(cls, data, model):
+        max_flows = [load_parameter(model, c) for c in data.pop('max_flows', [])]
+        costs = [load_parameter(model, c) for c in data.pop('costs', [])]
+        max_flow = load_parameter(model, data.pop('max_flow', None))
+        head = data.pop('head', 0.0)
+        del (data["type"])
+        node = cls(model, max_flow, max_flows=max_flows, costs=costs, head=head, **data)
+        return node
+
+
 class PiecewiseInstreamFlowRequirement(PiecewiseLink):
     """
     A piecewise instream flow requirement, defined with:
