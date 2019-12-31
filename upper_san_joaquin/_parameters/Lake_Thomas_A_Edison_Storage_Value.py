@@ -8,7 +8,7 @@ class Lake_Thomas_A_Edison_Storage_Value(WaterLPParameter):
     def _value(self, timestep, scenario_index):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
         return -90
-        x=self.get("WYT_SJValley", **kwargs)
+        x = self.model.tables['San Joaquin Valley Index'][self.operational_water_year]
         if x <=2:
             return -77
         else:

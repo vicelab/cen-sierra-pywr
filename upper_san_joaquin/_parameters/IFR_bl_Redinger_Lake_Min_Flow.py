@@ -8,7 +8,7 @@ class IFR_bl_Redinger_Lake_Min_Flow(WaterLPParameter):
     def _value(self, timestep, scenario_index):
         
         month = self.datetime.month
-        year_type = self.model.parameters["WYT_SJValley" + self.month_suffix].values(timestep, scenario_index)
+        year_type = self.model.parameters["San Joaquin Valley WYT" + self.month_suffix].value(timestep, scenario_index)
         return_val = 0
         
         if month in [10, 11, 12, 1, 2, 3, 4] and year_type in [1,2]: # October - April and Dry or Critical

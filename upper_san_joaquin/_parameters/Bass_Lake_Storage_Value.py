@@ -2,18 +2,20 @@ from parameters import WaterLPParameter
 
 from utilities.converter import convert
 
+
 class Bass_Lake_Storage_Value(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
-        x=self.get("WYT_SJValley", **kwargs)
-        y=-15.5
-        if x<=2:
-            return y*3.35
+        # x = self.get("San Joaquin Valley WYT", **kwargs)
+        x = self.model.tables['San Joaquin Valley Index'][self.operational_water_year]
+        y = -15.5
+        if x <= 2:
+            return y * 3.35
         else:
             return y
-        
+
     def value(self, timestep, scenario_index):
         try:
             return self._value(timestep, scenario_index)
@@ -31,6 +33,7 @@ class Bass_Lake_Storage_Value(WaterLPParameter):
             print('File where error occurred: {}'.format(__file__))
             print(err)
             raise
-        
+
+
 Bass_Lake_Storage_Value.register()
 print(" [*] Bass_Lake_Storage_Value successfully registered")

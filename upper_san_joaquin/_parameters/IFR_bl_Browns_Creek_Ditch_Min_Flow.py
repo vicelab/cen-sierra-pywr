@@ -8,7 +8,7 @@ class IFR_bl_Browns_Creek_Ditch_Min_Flow(WaterLPParameter):
     def _value(self, timestep, scenario_index):
         
         # Get Year Type
-        year_type = self.model.parameters["WYT_SJValley" + self.month_suffix].values(timestep, scenario_index)
+        year_type = self.model.parameters["San Joaquin Valley WYT" + self.month_suffix].value(timestep, scenario_index)
         
         if year_type in [1,2]:  # Critical or Dry WYT
             return_val = 3
