@@ -12,16 +12,6 @@
     "solver": {
         "name": "glpk"
     },
-    "scenarios": [
-        {
-            "name": "SWRCB 40",
-            "size": 5
-        },
-        {
-            "name": "District Reductions",
-            "size": 2
-        }
-    ],
     "nodes": [
         {
             "name": "Below Maxwell Ck Headflow [link]",
@@ -180,10 +170,10 @@
             "type": "Link"
         },
         {
-            "name": "Below Exchequer Dam",
+            "name": "Below Ex Chequer Dam",
             "type": "RiverGauge",
-            "mrf_cost": "Below Exchequer Dam/Violation Cost",
-            "mrf": "Below Exchequer Dam/Requirement"
+            "mrf_cost": "Below Ex Chequer Dam/Violation Cost",
+            "mrf": "Below Ex Chequer Dam/Requirement"
         },
         {
             "name": "Below Merced Falls Dam",
@@ -192,10 +182,10 @@
             "mrf_cost": 0.0
         },
         {
-            "name": "IFR bl New Exchequer Dam",
+            "name": "blwNewExchequerPH",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl New Exchequer Dam/Violation Cost",
-            "mrf": "IFR bl New Exchequer Dam/Requirement"
+            "mrf_cost": "blwNewExchequerPH/Violation Cost",
+            "mrf": "blwNewExchequerPH/Requirement"
         },
         {
             "name": "Crocker-Huffman Diversion Reservoir",
@@ -209,13 +199,7 @@
             "initial_volume": 841.0,
             "max_volume": "Lake McClure/Storage Capacity",
             "min_volume": "Lake McClure/Inactive Pool",
-            "cost": "Lake McClure/Storage Value",
-            "level": "Lake McClure/Elevation"
-        },
-        {
-            "name": "Lake McClure Spill",
-            "type": "Link",
-            "cost": 100
+            "cost": "Lake McClure/Storage Value"
         },
         {
             "name": "Lake McClure Inflow",
@@ -226,10 +210,9 @@
         {
             "name": "Lake McSwain",
             "type": "Storage",
-            "initial_volume": 11,
+            "initial_volume": 10.4,
             "max_volume": "Lake McSwain/Storage Capacity",
-            "min_volume": "Lake McSwain/Inactive Pool",
-            "cost": -100
+            "min_volume": "Lake McSwain/Inactive Pool"
         },
         {
             "name": "Maxwell Ck Headflow",
@@ -261,8 +244,11 @@
             "base_cost": "Merced Falls PH/Base Value"
         },
         {
-            "name": "Merced Falls Reservoir",
-            "type": "BreakLink"
+            "name": "Merced Falls Res",
+            "type": "Storage",
+            "initial_volume": 0.37,
+            "max_volume": "Merced Falls Res/Storage Capacity",
+            "min_volume": "Merced Falls Res/Inactive Pool"
         },
         {
             "name": "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500",
@@ -271,10 +257,10 @@
             "mrf_cost": 0.0
         },
         {
-            "name": "IFR bl Crocker-Huffman Dam",
+            "name": "Merced R below Crocker-Huffman Dam",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Crocker-Huffman Dam/Violation Cost",
-            "mrf": "IFR bl Crocker-Huffman Dam/Requirement"
+            "mrf_cost": "Merced R below Crocker-Huffman Dam/Violation Cost",
+            "mrf": "Requirement_Merced_R_below_Crocker_Huffman_Dam"
         },
         {
             "name": "Merced River Headflow",
@@ -365,7 +351,6 @@
         {
             "name": "New Exchequer PH",
             "type": "Hydropower",
-            "max_flow": "New Exchequer PH/Turbine Capacity",
             "excess_cost": "New Exchequer PH/Excess Value",
             "base_cost": "New Exchequer PH/Base Value",
             "base_flow": "New Exchequer PH/Water Demand"
@@ -385,9 +370,9 @@
             "mrf_cost": 0.0
         },
         {
-            "name": "Valley Demand",
+            "name": "Valley_Demand",
             "type": "Output",
-            "max_flow": "Valley Demand/Demand"
+            "max_flow": "Valley_Demand/Demand"
         },
         {
             "name": "Valley_Inflow",
@@ -540,31 +525,23 @@
             "New Exchequer PH"
         ],
         [
-            "Lake McClure",
-            "Lake McClure Spill"
-        ],
-        [
             "New Exchequer PH",
             "BlwMcClure.2.1.1 [link]"
         ],
         [
             "BlwMcClure.2.1.1 [link]",
-            "Below Exchequer Dam"
+            "Below Ex Chequer Dam"
         ],
         [
-            "Lake McClure Spill",
-            "Below Exchequer Dam"
-        ],
-        [
-            "Below Exchequer Dam",
+            "Below Ex Chequer Dam",
             "BlwMcClure.2.1.2 [link]"
         ],
         [
             "BlwMcClure.2.1.2 [link]",
-            "IFR bl New Exchequer Dam"
+            "blwNewExchequerPH"
         ],
         [
-            "IFR bl New Exchequer Dam",
+            "blwNewExchequerPH",
             "BlwMcClure.2.2 [link]"
         ],
         [
@@ -585,7 +562,7 @@
         ],
         [
             "MERCE-L-CON1 [link]",
-            "Valley Demand"
+            "Valley_Demand"
         ],
         [
             "Maxwell Ck Inflow",
@@ -625,10 +602,10 @@
         ],
         [
             "Merced River (2).2.2.1.1 [link]",
-            "Merced Falls Reservoir"
+            "Merced Falls Res"
         ],
         [
-            "Merced Falls Reservoir",
+            "Merced Falls Res",
             "Merced River (2).2.2.1.2.1 [link]"
         ],
         [
@@ -657,7 +634,7 @@
         ],
         [
             "Merced River (2).2.2.1.2.2.2.1.1.2 [link]",
-            "IFR bl Crocker-Huffman Dam"
+            "Merced R below Crocker-Huffman Dam"
         ],
         [
             "Near Shaffer Bridge_11271290",
@@ -692,7 +669,7 @@
             "Merced River Outflow"
         ],
         [
-            "IFR bl Crocker-Huffman Dam",
+            "Merced R below Crocker-Huffman Dam",
             "Merced River below Crocker-Huffman [link]"
         ],
         [
@@ -723,67 +700,15 @@
             "squeeze": true
         },
         "WYT for IFR Below Exchequer": {
-            "url": "../data/Merced River/Scenarios/preprocessed/Livneh/WYT.csv",
+            "url": "../data/Merced River/Scenarios/preprocessed/Livneh/Exchequer_WYT.csv",
             "index_col": 0,
             "header": 0,
             "parse_dates": false,
             "squeeze": true
-        },
-        "MID Northside Diversions": {
-            "url": "../data/Merced River/Management/BAU/Demand/MID_WYT_average_diversion_Northside_cfs.csv",
-            "index_col": 0,
-            "header": 0,
-            "squeeze": true
-        },
-        "MID Main Diversions": {
-            "url": "../data/Merced River/Management/BAU/Demand/MID_WYT_average_diversion_Main_cfs.csv",
-            "index_col": 0,
-            "header": 0,
-            "squeeze": true
-        },
-        "Full Natural Flow": {
-            "url": "../data/Merced River/Scenarios/preprocessed/Livneh/full_natural_flow_daily_mcm.csv",
-            "index_col": 0,
-            "parse_dates": true,
-            "header": 0,
-            "squeeze": true
         }
     },
     "parameters": {
-        "Lake McClure/Elevation": {
-            "type": "interpolatedvolume",
-            "node": "Lake McClure",
-            "values": [
-                184.3,
-                210.8,
-                216.0,
-                225.6,
-                229.0,
-                232.6,
-                239.8,
-                246.4,
-                247.8,
-                251.3,
-                255.0,
-                263.7
-            ],
-            "volumes": [
-                0.0,
-                286.1,
-                348.4,
-                474.0,
-                522.4,
-                574.2,
-                687.4,
-                805.2,
-                832.1,
-                902.4,
-                985.8,
-                1238.6
-            ],
-            "kind": "cubic"
-        },
-        "Below Exchequer Dam/Violation Cost": {
+        "Below Ex Chequer Dam/Violation Cost": {
             "type": "controlcurveinterpolated",
             "storage_node": "Lake McClure",
             "control_curves": [
@@ -795,7 +720,7 @@
                 0.0
             ]
         },
-        "Below Exchequer Dam/Requirement": {
+        "Below Ex Chequer Dam/Requirement": {
             "type": "controlcurveinterpolated",
             "storage_node": "Lake McClure",
             "control_curves": [
@@ -810,17 +735,17 @@
         "Below Merced Falls Dam/Observed Flow": {
             "type": "Below_Merced_Falls_Dam_Observed_Flow"
         },
-        "IFR bl New Exchequer Dam/Violation Cost": {
+        "blwNewExchequerPH/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
-        "IFR bl New Exchequer Dam/Requirement": {
+        "blwNewExchequerPH/Requirement": {
             "type": "constant",
             "value": 0.7080147267063155
         },
         "Lake McClure/Storage Capacity": {
             "type": "constant",
-            "value": 1238.6
+            "value": 1293.9435056124337
         },
         "Lake McClure/Inactive Pool": {
             "type": "constant",
@@ -838,11 +763,11 @@
         },
         "Lake McSwain/Storage Capacity": {
             "type": "constant",
-            "value": 11.5
+            "value": 12
         },
         "Lake McSwain/Inactive Pool": {
             "type": "constant",
-            "value": 9.8
+            "value": 4
         },
         "McSwain PH/Fixed Head": {
             "type": "constant",
@@ -880,15 +805,23 @@
             "type": "constant",
             "value": 1
         },
+        "Merced Falls Res/Storage Capacity": {
+            "type": "constant",
+            "value": 0.37
+        },
+        "Merced Falls Res/Inactive Pool": {
+            "type": "constant",
+            "value": 0
+        },
         "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500/Observed Flow": {
             "type": "MERCED_R_A_POHONO_BRIDGE_NR_YOSEMITE_CA_11266500_Observed_Flow"
         },
-        "IFR bl Crocker-Huffman Dam/Violation Cost": {
+        "Merced R below Crocker-Huffman Dam/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
-        "IFR bl Crocker-Huffman Dam/Requirement": {
-            "type": "IFR_bl_Crocker_Huffman_Dam_Requirement"
+        "Requirement_Merced_R_below_Crocker_Huffman_Dam": {
+            "type": "Requirement_Merced_R_below_Crocker_Huffman_Dam"
         },
         "MER_01 Headflow/Runoff": {
             "type": "dataframe",
@@ -964,7 +897,7 @@
         },
         "New Exchequer PH/Turbine Capacity": {
             "type": "constant",
-            "value": 8.12
+            "value": 42.92
         },
         "New Exchequer PH/Excess Value": {
             "type": "constant",
@@ -985,23 +918,51 @@
         "USGS_11264500 MERCED R A HAPPY ISLES/Observed Flow": {
             "type": "USGS_11264500_MERCED_R_A_HAPPY_ISLES_Observed_Flow"
         },
-        "Valley Demand/Demand": {
+        "Valley_Demand/Demand": {
             "type": "constant",
             "value": 0
+        },
+        "Temperature": {
+            "type": "constant",
+            "value": 4.0
+        },
+        "cfs2cms": {
+            "type": "constant",
+            "value": 0.028317
+        },
+        "AF2cm": {
+            "type": "constant",
+            "value": 1233.5
+        },
+        "ToFlow": {
+            "type": "constant",
+            "value": 604800.0
+        },
+        "Af2cms": {
+            "type": "constant",
+            "value": 0.0020395171957671957
+        },
+        "IsSolar": {
+            "type": "constant",
+            "value": 1.0
+        },
+        "PrecipFactor": {
+            "type": "constant",
+            "value": 1.0
         }
     },
     "recorders": {
-        "Below Exchequer Dam/flow": {
+        "Below Ex Chequer Dam/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "Below Exchequer Dam"
+            "node": "Below Ex Chequer Dam"
         },
-        "Below Exchequer Dam/violation cost": {
+        "Below Ex Chequer Dam/violation cost": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "Below Exchequer Dam/Violation Cost"
+            "parameter": "Below Ex Chequer Dam/Violation Cost"
         },
-        "Below Exchequer Dam/requirement": {
+        "Below Ex Chequer Dam/requirement": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "Below Exchequer Dam/Requirement"
+            "parameter": "Below Ex Chequer Dam/Requirement"
         },
         "Below Merced Falls Dam/observed flow": {
             "type": "NumpyArrayParameterRecorder",
@@ -1011,13 +972,13 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Below Merced Falls Dam"
         },
-        "IFR bl New Exchequer Dam/flow": {
+        "blwNewExchequerPH/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "IFR bl New Exchequer Dam"
+            "node": "blwNewExchequerPH"
         },
-        "IFR bl New Exchequer Dam/requirement": {
+        "blwNewExchequerPH/requirement": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl New Exchequer Dam/Requirement"
+            "parameter": "blwNewExchequerPH/Requirement"
         },
         "Lake McClure/storage": {
             "type": "NumpyArrayStorageRecorder",
@@ -1026,10 +987,6 @@
         "Lake McClure/observed storage": {
             "type": "NumpyArrayParameterRecorder",
             "parameter": "Lake McClure/Observed Storage"
-        },
-        "Lake McClure/elevation": {
-            "type": "NumpyArrayLevelRecorder",
-            "node": "Lake McClure"
         },
         "Lake McClure Inflow/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -1047,6 +1004,10 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Merced Falls PH"
         },
+        "Merced Falls Res/storage": {
+            "type": "NumpyArrayStorageRecorder",
+            "node": "Merced Falls Res"
+        },
         "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500/observed flow": {
             "type": "NumpyArrayParameterRecorder",
             "parameter": "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500/Observed Flow"
@@ -1055,17 +1016,65 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500"
         },
-        "IFR bl Crocker-Huffman Dam/flow": {
+        "Merced R below Crocker-Huffman Dam/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "IFR bl Crocker-Huffman Dam"
+            "node": "Merced R below Crocker-Huffman Dam"
         },
-        "IFR bl Crocker-Huffman Dam/requirement": {
+        "Merced R below Crocker-Huffman Dam/requirement": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Crocker-Huffman Dam/Requirement"
+            "parameter": "Requirement_Merced_R_below_Crocker_Huffman_Dam"
         },
-        "Merced River Outflow/flow": {
+        "Merced River Outflow/outflow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Merced River Outflow"
+        },
+        "MER_01 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "MER_01 Headflow"
+        },
+        "MER_01 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "MER_01 Headflow"
+        },
+        "MER_02 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "MER_02 Headflow"
+        },
+        "MER_02 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "MER_02 Headflow"
+        },
+        "MER_03 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "MER_03 Headflow"
+        },
+        "MER_03 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "MER_03 Headflow"
+        },
+        "MER_04 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "MER_04 Headflow"
+        },
+        "MER_04 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "MER_04 Headflow"
+        },
+        "MER_05 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "MER_05 Headflow"
+        },
+        "MER_05 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "MER_05 Headflow"
+        },
+        "MER_06 Headflow/runoff": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "MER_06 Headflow"
+        },
+        "MER_06 Headflow/outflow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "MER_06 Headflow"
         },
         "MID Main/demand": {
             "type": "NumpyArrayParameterRecorder",
@@ -1131,9 +1140,9 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "USGS_11264500 MERCED R A HAPPY ISLES"
         },
-        "Valley Demand/flow": {
+        "Valley_Demand/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "Valley Demand"
+            "node": "Valley_Demand"
         }
     }
 }
