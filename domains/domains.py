@@ -51,135 +51,62 @@ class InstreamFlowRequirement(PiecewiseLink):
         return node
 
 
-class Hydropower(PiecewiseLink):
-    """A river gauging station, with a minimum residual flow (MRF)
-    """
-
-    type = 'hydropower'
-    head = 0.0
-
-    def __init__(self, *args, **kwargs):
-        """Initialise a new Hydropower instance
-        Parameters
-        ----------
-        mrf : float
-            The minimum residual flow (MRF) at the gauge
-        mrf_cost : float
-            The cost of the route via the MRF
-        excess_cost : float
-            The cost of the other (constrained) route
-        unconstrained_cost : float
-            The cost of unconstrained flows (for RoR hydropower in a river)
-        turbine_capacity : float
-            The total capacity of the hydropower turbine
-        """
-        # create keyword arguments for PiecewiseLink
-        base_flow = kwargs.pop('base_flow', 0.0)
-        base_cost = kwargs.pop('base_cost', 0.0)
-        excess_cost = kwargs.pop('excess_cost', 0.0)
-        # turbine_capacity = kwargs.pop('turbine_capacity', None)
-        # unconstrained_cost = kwargs.pop('unconstrained_cost', 0.0)
-        # excess_capacity = None
-        # if turbine_capacity is not None:
-        #     base_flow = min(base_flow, turbine_capacity)
-        #     excess_capacity = turbine_capacity - base_flow
-        # if base_flow < 0.0:
-        #     base_flow = max(base_flow, 0.0)
-
-        max_flow = kwargs.pop('max_flow', None)
-
-        self.head = kwargs.pop('head', 0.0)
-
-        kwargs['cost'] = [base_cost, excess_cost]
-        kwargs['max_flow'] = [base_flow, None]
-        super(Hydropower, self).__init__(*args, **kwargs)
-
-        self.output.max_flow = max_flow
-
-    def base_flow():
-        def fget(self):
-            if self.sublinks[1].max_flow is None:
-                return self.sublinks[0].max_flow
-            else:
-                return min(self.sublinks[1].max_flow, self.sublinks[0].max_flow)
-
-        def fset(self, value):
-            if self.sublinks[1].max_flow is None:
-                self.sublinks[0].max_flow = value
-            else:
-                if self.sublinks[0].max_flow is None:
-                    capacity = self.sublinks[1].max_flow
-                else:
-                    capacity = self.sublinks[0].max_flow + self.sublinks[1].max_flow
-                self.sublinks[0].max_flow = min(capacity, value)
-                self.sublinks[1].max_flow = capacity - self.sublinks[0].max_flow
-                if self.sublinks[0].max_flow < 0:
-                    raise Exception("Hydropower base flow cannot be negative.")
-
-        return locals()
-
-    base_flow = property(**base_flow())
-
-    def base_cost():
-        def fget(self):
-            return self.sublinks[0].cost
-
-        def fset(self, value):
-            self.sublinks[0].cost = value
-
-        return locals()
-
-    base_cost = property(**base_cost())
-
-    def turbine_capacity():
-        def fget(self):
-            return self.sublinks[0].max_flow + self.sublinks[1].max_flow
-
-        def fset(self, value):
-            if self.sublinks[0].max_flow is None:
-                self.sublinks[0].max_flow = 0.0
-                self.sublinks[1].max_flow = value
-            else:
-                self.sublinks[0].max_flow = min(self.sublinks[0].max_flow, value) if value in [int, float] else value
-                self.sublinks[1].max_flow = max(value - self.sublinks[0].max_flow, 0.0)
-
-        return locals()
-
-    turbine_capacity = property(**turbine_capacity())
-
-    def excess_cost():
-        def fget(self):
-            return self.sublinks[1].cost
-
-        def fset(self, value):
-            self.sublinks[1].cost = value
-
-        return locals()
-
-    excess_cost = property(**excess_cost())
-
-    def unconstrained_cost():
-        def fget(self):
-            return self.sublinks[2].cost
-
-        def fset(self, value):
-            self.sublinks[2].cost = value
-
-        return locals()
-
-    unconstrained_cost = property(**unconstrained_cost())
-
-    @classmethod
-    def load(cls, data, model):
-        base_flow = load_parameter(model, data.pop("base_flow", 0.0))
-        base_cost = load_parameter(model, data.pop("base_cost", 0.0))
-        excess_cost = load_parameter(model, data.pop("excess_cost", 0.0))
-        max_flow = load_parameter(model, data.pop("max_flow", None))
-        # turbine_capacity = load_parameter(model, data.pop("turbine_capacity", 0.0))
-        # unconstrained_cost = load_parameter(model, data.pop("unconstrained_cost", 0.0))
-        del (data["type"])
-        node = cls(model, max_flow=max_flow, base_flow=base_flow, base_cost=base_cost, excess_cost=excess_cost, **data)
-        return node
+# class Hydropower(PiecewiseLink):
+#     """A river gauging station, with a minimum residual flow (MRF)
+#     """
+#
+#     type = 'hydropower'
+#     head = 0.0
+#
+#     def __init__(self, *args, **kwargs):
+#         """Initialise a new Hydropower instance
+#         Parameters
+#         ----------
+#         mrf : float
+#             The minimum residual flow (MRF) at the gauge
+#         mrf_cost : float
+#             The cost of the route via the MRF
+#         excess_cost : float
+#             The cost of the other (constrained) route
+#         unconstrained_cost : float
+#             The cost of unconstrained flows (for RoR hydropower in a river)
+#         turbine_capacity : float
+#             The total capacity of the hydropower turbine
+#         """
+#         # create keyword arguments for PiecewiseLink
+#         base_flow = kwargs.pop('base_flow', 0.0)
+#         base_cost = kwargs.pop('base_cost', 0.0)
+#         excess_cost = kwargs.pop('excess_cost', 0.0)
+#         # turbine_capacity = kwargs.pop('turbine_capacity', None)
+#         # unconstrained_cost = kwargs.pop('unconstrained_cost', 0.0)
+#         # excess_capacity = None
+#         # if turbine_capacity is not None:
+#         #     base_flow = min(base_flow, turbine_capacity)
+#         #     excess_capacity = turbine_capacity - base_flow
+#         # if base_flow < 0.0:
+#         #     base_flow = max(base_flow, 0.0)
+#
+#         max_flow = kwargs.pop('max_flow', None)
+#
+#         self.head = kwargs.pop('head', 0.0)
+#
+#         kwargs['cost'] = [base_cost, excess_cost]
+#         kwargs['max_flow'] = [base_flow, None]
+#         super(Hydropower, self).__init__(*args, **kwargs)
+#
+#         self.output.max_flow = max_flow
+#
+#     @classmethod
+#     def load(cls, data, model):
+#         base_flow = load_parameter(model, data.pop("base_flow", 0.0))
+#         base_cost = load_parameter(model, data.pop("base_cost", 0.0))
+#         excess_cost = load_parameter(model, data.pop("excess_cost", 0.0))
+#         max_flow = load_parameter(model, data.pop("max_flow", None))
+#         # turbine_capacity = load_parameter(model, data.pop("turbine_capacity", 0.0))
+#         # unconstrained_cost = load_parameter(model, data.pop("unconstrained_cost", 0.0))
+#         del (data["type"])
+#         node = cls(model, max_flow=max_flow, base_flow=base_flow, base_cost=base_cost, excess_cost=excess_cost, **data)
+#         return node
 
 
 class PiecewiseHydropower(PiecewiseLink):
@@ -227,21 +154,22 @@ class PiecewiseHydropower(PiecewiseLink):
         return node
 
 
-class PeakingHydropower(PiecewiseLink):
+class Hydropower(PiecewiseLink):
     """
-    A piecewise hydropower plant.
+    A hydropower plant.
     """
 
-    _type = 'piecewisehydropower'
+    _type = 'hydropower'
 
-    def __init__(self, model, max_flow, **kwargs):
+    def __init__(self, model, turbine_capacity=None, **kwargs):
         """Initialise a new Hydropower instance
         Parameters
         ----------
         """
 
-        if max_flow is None:
-            raise ValueError("Hydropower max_flow must be provided.")
+        # if turbine_capacity is None:
+        #     res_name = kwargs.get('name', '').split('/')[0]
+        #     raise ValueError("Hydropower turbine_capacity must be provided for {}".format(res_name))
 
         head = kwargs.pop('head', None)  # Fixed head
 
@@ -256,19 +184,33 @@ class PeakingHydropower(PiecewiseLink):
         kwargs['max_flow'] = max_flows
         kwargs['cost'] = costs
 
-        super(PiecewiseHydropower, self).__init__(model, **kwargs)
+        super(Hydropower, self).__init__(model, **kwargs)
 
-        self.output.max_flow = max_flow
+        self.output.max_flow = turbine_capacity
+        self.turbine_capacity = turbine_capacity
         self.head = head
 
     @classmethod
     def load(cls, data, model):
-        max_flows = [load_parameter(model, c) for c in data.pop('max_flows', [])]
-        costs = [load_parameter(model, c) for c in data.pop('costs', [])]
-        max_flow = load_parameter(model, data.pop('max_flow', None))
+        max_flow = data.pop('max_flow', data.pop('max_flows', None))
+        if type(max_flow) == list:
+            max_flows = max_flow
+        else:
+            max_flows = [max_flow]
+        max_flows = [load_parameter(model, x) for x in max_flows]
+        cost = data.pop('cost', data.pop('costs', None))
+        if type(cost) == list:
+            costs = cost
+        else:
+            costs = [cost]
+        costs = [load_parameter(model, c) for c in costs]
+        turbine_capacity = load_parameter(model, data.pop('turbine_capacity', None))
         head = data.pop('head', 0.0)
-        del (data["type"])
-        node = cls(model, max_flow, max_flows=max_flows, costs=costs, head=head, **data)
+        param_type = data.pop('type')
+        try:
+            node = cls(model, turbine_capacity, max_flows=max_flows, costs=costs, head=head, **data)
+        except:
+            raise Exception('{} {} failed to load'.format(param_type, data['name']))
         return node
 
 

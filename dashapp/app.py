@@ -803,9 +803,9 @@ navbar = dbc.NavbarSimple(
                 {'label': 'Stanislaus', 'value': 'stn'},
                 {'label': 'Tuolumne', 'value': 'tuo', 'disabled': True},
                 {'label': 'Merced', 'value': 'mer'},
-                {'label': 'Upper San Joaquin', 'value': 'usj', 'disabled': True},
+                {'label': 'Upper San Joaquin', 'value': 'usj'},
             ],
-            value=['stn', 'mer'],
+            value=['stn', 'mer', 'usj'],
             multi=True
         )
         # dbc.NavItem(dbc.NavLink("Link", href="#")),

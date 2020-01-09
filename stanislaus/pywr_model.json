@@ -67,7 +67,7 @@
         },
         {
             "name": "Angels PH",
-            "type": "PiecewiseHydropower",
+            "type": "Hydropower",
             "head": 135.3,
             "max_flow": "Angels PH/Turbine Capacity",
             "max_flows": [
@@ -116,7 +116,7 @@
         },
         {
             "name": "Beardsley PH",
-            "type": "Link",
+            "type": "Hydropower",
             "max_flow": "Beardsley PH/Turbine Capacity",
             "cost": -1,
             "comment": "{\"resource_class\": \"node\"}"
@@ -176,7 +176,7 @@
         },
         {
             "name": "Collierville PH",
-            "type": "PiecewiseHydropower",
+            "type": "Hydropower",
             "head": 691.896,
             "max_flow": "Collierville PH/Turbine Capacity",
             "max_flows": [
@@ -207,7 +207,7 @@
         },
         {
             "name": "Donnells PH",
-            "type": "PiecewiseHydropower",
+            "type": "Hydropower",
             "head": 350.8,
             "max_flow": "Donnells PH/Turbine Capacity",
             "max_flows": [
@@ -611,11 +611,9 @@
         },
         {
             "name": "New Melones PH",
-            "type": "PiecewiseHydropower",
+            "type": "Hydropower",
             "max_flow": "New Melones PH/Turbine Capacity",
-            "costs": [
-                -1
-            ],
+            "cost": -1,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -634,7 +632,7 @@
         },
         {
             "name": "New Spicer Meadow PH",
-            "type": "Link",
+            "type": "Hydropower",
             "max_flow": "New Spicer Meadow PH/Turbine Capacity",
             "cost": -1,
             "comment": "{\"resource_class\": \"node\"}"
@@ -689,14 +687,14 @@
         },
         {
             "name": "Phoenix PH",
-            "type": "PiecewiseHydropower",
-            "max_flow": "Phoenix PH/Turbine Capacity",
+            "type": "Hydropower",
+            "turbine_capacity": "Phoenix PH/Turbine Capacity",
             "head": 361.7976,
-            "max_flows": [
+            "max_flow": [
                 "Phoenix PH/Water Demand/1",
                 "Phoenix PH/Water Demand/2"
             ],
-            "costs": [
+            "cost": [
                 "Phoenix PH/Cost/1",
                 "Phoenix PH/Cost/2",
                 "Phoenix PH/Cost/3"
@@ -735,7 +733,7 @@
         },
         {
             "name": "Sand Bar PH",
-            "type": "PiecewiseHydropower",
+            "type": "Hydropower",
             "head": 130,
             "max_flow": "Sand Bar PH/Turbine Capacity",
             "max_flows": [
@@ -792,7 +790,7 @@
         },
         {
             "name": "Spring Gap PH",
-            "type": "PiecewiseHydropower",
+            "type": "Hydropower",
             "head": 568.452,
             "max_flow": "Spring Gap PH/Turbine Capacity",
             "max_flows": [
@@ -828,7 +826,7 @@
         },
         {
             "name": "Stanislaus PH",
-            "type": "PiecewiseHydropower",
+            "type": "Hydropower",
             "head": 463.296,
             "max_flow": "Stanislaus PH/Turbine Capacity",
             "max_flows": [
