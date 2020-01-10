@@ -522,7 +522,7 @@
             "name": "Hunter Reservoir",
             "type": "Storage",
             "initial_volume": 0.1,
-            "max_volume": 0.31,
+            "max_volume": 0.1,
             "min_volume": 0.1,
             "cost": -60,
             "comment": "{\"resource_class\": \"node\"}"
@@ -1214,11 +1214,6 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "UPA Tunnel Tap Inflow",
-            "type": "River",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
             "name": "Lower Utica Canal",
             "type": "Link",
             "max_flow": 0.081,
@@ -1227,7 +1222,7 @@
         {
             "name": "UPA Tunnel Tap",
             "type": "Link",
-            "max_flow": 0.081,
+            "max_flow": 1,
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
@@ -1554,7 +1549,7 @@
         ],
         [
             "Hunter Reservoir",
-            "UPA Tunnel Tap Inflow"
+            "Lower Utica Canal"
         ],
         [
             "Lower Utica Canal Inflow",
@@ -1934,11 +1929,7 @@
         ],
         [
             "UPA Tunnel Tap",
-            "UPA Tunnel Tap Inflow"
-        ],
-        [
-            "UPA Tunnel Tap Inflow",
-            "Lower Utica Canal"
+            "Hunter Reservoir"
         ],
         [
             "Lower Utica Canal",
@@ -2731,7 +2722,7 @@
         },
         "IFR bl Hunter Reservoir/Violation Cost": {
             "type": "constant",
-            "value": -1000
+            "value": -5000
         },
         "IFR bl Hunter Reservoir/Requirement": {
             "type": "IFR_bl_Hunter_Reservoir_Requirement"

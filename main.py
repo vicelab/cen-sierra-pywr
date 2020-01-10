@@ -34,7 +34,7 @@ if debug:
     # climate_scenarios = ['CanESM2_rcp85']
     # price_years = [2060]
     start = '2000-10-01'
-    end = '2005-09-30'
+    end = '2003-09-30'
 else:
     planning_months = 12
     climate_scenarios = ['Livneh'] + gcm_rcps
