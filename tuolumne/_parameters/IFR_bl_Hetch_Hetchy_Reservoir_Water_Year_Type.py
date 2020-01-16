@@ -1,22 +1,20 @@
 from parameters import WaterLPParameter
-from datetime import datetime
-from utilities.converter import convert
 
+from utilities.converter import convert
 
 class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        kwargs = dict(timestep=timestep, scenario_index=scenario_index)
-
+        
         # initial IFR
         if timestep.index == 0:
             WYT = 2  # default
-
+        
         # These are monthly values, so only calculate values in the first time step of each month
         elif timestep.month >= 9:
             WYT = self.WYT
-
+        
         # Jan-June:
         else:
             schedule = self.model.parameters["IFR bl Hetch Hetchy Reservoir/IFR Schedule"].array()
@@ -25,7 +23,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
             else:
                 row = timestep.month + 2
             criteria = (schedule[row, 2], schedule[row, 4])
-
+        
             if timestep.month <= 6:
                 # precip = self.get("Hetch Hetchy Reservoir/Precipitation").dataframe
                 # total_precip = precip[datetime(timestep.year - 1, 10, 1):timestep.datetime].sum()
@@ -36,7 +34,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
                     WYT = 2
                 else:
                     WYT = 1
-
+        
             # July-Aug:
             else:
                 runoff = self.get("TUO_13 Headflow/Runoff").dataframe
@@ -48,11 +46,11 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
                     WYT = 2
                 else:
                     WYT = 1
-
+        
         self.WYT = WYT
-
+        
         return WYT
-
+        
     def value(self, timestep, scenario_index):
         try:
             return self._value(timestep, scenario_index)
@@ -62,7 +60,6 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
             print(err)
             raise
 
-
     @classmethod
     def load(cls, model, data):
         try:
@@ -71,7 +68,6 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
             print('File where error occurred: {}'.format(__file__))
             print(err)
             raise
-
-
+        
 IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type.register()
 print(" [*] IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type successfully registered")
