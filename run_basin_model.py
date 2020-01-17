@@ -332,8 +332,9 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
                                 parameters_to_expand.append(value)
 
                     elif type(value) in [float, int]:
-                        if "max_flow" in key:
-                            new_node[key] *= 30  # TODO: figure out some scheme to get actual days
+                        if key in ["max_flow", "turbine_capacity"]:
+                            # TODO: convert capacities to formulas w/ day-month conversion
+                            new_node[key] *= 30
 
                     elif type(value) == list:
                         new_values = []
@@ -591,6 +592,20 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
     os.environ['ROOT_S3_PATH'] = root_path
 
     # =========================================
+    # Load and register global model parameters
+    # =========================================
+
+    # sys.path.insert(0, os.getcwd())
+    policy_folder = 'parameters'
+    for filename in os.listdir(policy_folder):
+        if '__init__' in filename:
+            continue
+        policy_name = os.path.splitext(filename)[0]
+        policy_module = 'parameters.{policy_name}'.format(policy_name=policy_name)
+        # package = '.{}'.format(policy_folder)
+        import_module(policy_module, policy_folder)
+
+    # =========================================
     # Load and register custom model parameters
     # =========================================
 
@@ -694,8 +709,9 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
     # ==================
     print('Loading daily model')
     from pywr.nodes import Storage
+    from domains import Reservoir
     m = Model.load(model_path, path=model_path)
-    reservoirs = [n.name for n in m.nodes if type(n) == Storage and '(storage)' not in n.name]
+    reservoirs = [n.name for n in m.nodes if type(n) in [Storage, Reservoir] and '(storage)' not in n.name]
     # piecewise_ifrs = [n.name for n in m.nodes if type(n) == Storage and '(storage)' not in n.name]
     m.setup()
 
