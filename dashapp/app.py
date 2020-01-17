@@ -149,7 +149,7 @@ def register_basin_callbacks(basin, scenarios):
 obs_storage = []
 obs_streamflow = []
 
-for basin in ['stn', 'mer']:
+for basin in ['stn', 'tuo', 'mer', 'usj']:
     RES_OPTIONS[basin] = {}
     basin_long = BASINS[basin].replace(' ', '_').lower()
     with open('../{}/pywr_model.json'.format(basin_long)) as f:
@@ -182,16 +182,19 @@ for basin in ['stn', 'mer']:
     attr = 'usgs_storage_af'
     if basin == 'stn':
         attr = 'storage_mcm'
-    df = pd.read_csv(
-        opath.format(basin=basin_long.replace('_', ' ').title() + ' River', attr=attr),
-        index_col=[0],
-        parse_dates=True
-    ).ffill()
-    if basin == 'stn':
-        df *= MCM_TO_TAF
-    else:
-        df /= 1000
-    obs_storage.append(df)
+    try:
+        df = pd.read_csv(
+            opath.format(basin=basin_long.replace('_', ' ').title() + ' River', attr=attr),
+            index_col=[0],
+            parse_dates=True
+        ).ffill()
+        if basin == 'stn':
+            df *= MCM_TO_TAF
+        else:
+            df /= 1000
+        obs_storage.append(df)
+    except:
+        pass
 
     df = pd.read_csv(
         opath.format(basin=basin_long.replace('_', ' ').title() + ' River', attr='usgs_streamflow_cfs'),
@@ -278,6 +281,8 @@ def load_timeseries(results_path, basin, forcings, res_type, res_attr, nscenario
             res_attr=res_attr
         )
         header = [0, 1]
+        if not os.path.exists(path):
+            return None
         df = pd.read_csv(path, index_col=0, parse_dates=True, header=header)
         levels = df.columns.levels[1]
         for val in levels[1:]:
@@ -378,7 +383,7 @@ def percentile_timeseries_graphs(df, name, options, color='black'):
                     showlegend=showlegend,
                     mode='lines',
                     fill=fill,
-                    text='{}: {}'.format(name, pct),
+                    text='{}: {}%'.format(name, pct*100),
                     name=name,
                     line=dict(color=color, width=width)
                 )
@@ -801,11 +806,11 @@ navbar = dbc.NavbarSimple(
             id='select-basins-global',
             options=[
                 {'label': 'Stanislaus', 'value': 'stn'},
-                {'label': 'Tuolumne', 'value': 'tuo', 'disabled': True},
+                {'label': 'Tuolumne', 'value': 'tuo'},
                 {'label': 'Merced', 'value': 'mer'},
                 {'label': 'Upper San Joaquin', 'value': 'usj'},
             ],
-            value=['stn', 'mer', 'usj'],
+            value=['stn', 'tuo', 'mer', 'usj'],
             multi=True
         )
         # dbc.NavItem(dbc.NavLink("Link", href="#")),
@@ -987,8 +992,8 @@ def development_content(purpose):
                     dbc.Tab(label='Reservoir storage', tab_id='reservoir-storage'),
                     dbc.Tab(label='HP flow', tab_id='hydropower-flow'),
                     dbc.Tab(label='HP generation', tab_id='hydropower-generation'),
-                    dbc.Tab(label='IFR flow (min)', tab_id='ifr-flow'),
-                    dbc.Tab(label='IFR flow (range)', tab_id='ifr-range-flow'),
+                    dbc.Tab(label='IFR flow', tab_id='ifr-flow'),
+                    # dbc.Tab(label='IFR flow (range)', tab_id='ifr-range-flow'),
                     dbc.Tab(label='Outflow', tab_id='outflow')
                 ]),
                 top_bar,
@@ -1022,6 +1027,7 @@ def agg_by_resources(df, agg):
     new_cols = [(c[0], agg) + tuple(c[1:]) for c in df.columns]
     df.columns = pd.MultiIndex.from_tuples(new_cols)
     return df
+
 
 def render_timeseries_collection(tab, **kwargs):
     children = []
@@ -1082,6 +1088,7 @@ def render_timeseries_collection(tab, **kwargs):
             children.append(component)
 
     else:
+        df_hp_flow = None
         # df_obs = df_obs_streamflow.loc[df_hydropower.index]
         if resample:
             obs = df_obs_streamflow.resample(resample).mean()
@@ -1090,23 +1097,29 @@ def render_timeseries_collection(tab, **kwargs):
 
         if tab in ['hydropower-generation', 'hydropower-flow', 'system']:
             hp = []
-            df_hp1 = load_timeseries(results_path, basin, forcings, 'PiecewiseHydropower', 'Flow',
-                                     **load_data_kwargs)
+            df_hp1 = None
+            df_hp2 = None
+
+            try:
+                df_hp1 = load_timeseries(results_path, basin, forcings, 'PiecewiseHydropower', 'Flow',
+                                         **load_data_kwargs) * MCM_TO_CFS
+            except:
+                pass
             if df_hp1 is not None:
                 hp.append(df_hp1)
-            df_hp2 = load_timeseries(results_path, basin, forcings, 'Hydropower', 'Flow',
-                                     **load_data_kwargs)
+
+            try:
+                df_hp2 = load_timeseries(results_path, basin, forcings, 'Hydropower', 'Flow',
+                                         **load_data_kwargs) * MCM_TO_CFS
+            except:
+                pass
             if df_hp2 is not None:
                 hp.append(df_hp2)
             if hp:
-                df_hp_flow = pd.concat([df_hp1, df_hp2], axis=1) * MCM_TO_CFS
+                df_hp_flow = pd.concat(hp, axis=1)
 
-                if aggregate:
-                    df_hp_flow = agg_by_resources(df_hp_flow, aggregate)
-
-
-            else:
-                df_hp_flow = None
+            if aggregate and df_hp_flow is not None:
+                df_hp_flow = agg_by_resources(df_hp_flow, aggregate)
 
         if tab in ['hydropower-generation', 'system']:
             path = '../data/{} River/fixed_head.csv'.format(basin.title())
@@ -1140,28 +1153,35 @@ def render_timeseries_collection(tab, **kwargs):
                 component = timeseries_component(attr, res, df, obs, **kwargs)
                 children.append(component)
 
+        # elif tab == 'ifr-flow':
+        #     attr = 'flow'
+        #     df = load_timeseries(results_path, basin, forcings, 'InstreamFlowRequirement', 'Flow',
+        #                          multiplier=MCM_TO_CFS, **load_data_kwargs)
+        #     reqt = load_timeseries(results_path, basin, forcings, 'InstreamFlowRequirement', 'Requirement',
+        #                            multiplier=MCM_TO_CFS, **load_data_kwargs)
+        #     for res in get_resources(df, filterby=resources):
+        #         component = timeseries_component(attr, res, df, obs, min_reqt=reqt, **kwargs)
+        #         children.append(component)
+
         elif tab == 'ifr-flow':
             attr = 'flow'
-            df = load_timeseries(results_path, basin, forcings, 'InstreamFlowRequirement', 'Flow',
-                                 multiplier=MCM_TO_CFS, **load_data_kwargs)
-            reqt = load_timeseries(results_path, basin, forcings, 'InstreamFlowRequirement', 'Requirement',
-                                   multiplier=MCM_TO_CFS, **load_data_kwargs)
-            for res in get_resources(df, filterby=resources):
-                component = timeseries_component(attr, res, df, obs, min_reqt=reqt, **kwargs)
-                children.append(component)
-
-        elif tab == 'ifr-range-flow':
-            attr = 'flow'
-            df = load_timeseries(results_path, basin, forcings, 'PiecewiseInstreamFlowRequirement', 'Flow',
+            if basin == 'stn':
+                pywr_param_name = 'PiecewiseInstreamFlowRequirement'
+            else:
+                pywr_param_name = 'InstreamFlowRequirement'
+            df = load_timeseries(results_path, basin, forcings, pywr_param_name, 'Flow',
                                  multiplier=MCM_TO_CFS, **load_data_kwargs)
             df_pw_min_ifr_reqt = load_timeseries(
-                results_path, basin, forcings, 'PiecewiseInstreamFlowRequirement', 'Min Requirement',
+                results_path, basin, forcings, pywr_param_name, 'Min Requirement',
                 multiplier=MCM_TO_CFS, **load_data_kwargs)
             df_pw_ifr_range_reqt = load_timeseries(
-                results_path, basin, forcings, 'PiecewiseInstreamFlowRequirement', 'Max Requirement',
+                results_path, basin, forcings, pywr_param_name, 'Max Requirement',
                 multiplier=MCM_TO_CFS, **load_data_kwargs)
 
-            df_pw_max_ifr_reqt = df_pw_min_ifr_reqt[df_pw_ifr_range_reqt.columns] + df_pw_ifr_range_reqt
+            if df_pw_min_ifr_reqt is not None and df_pw_ifr_range_reqt is not None:
+                df_pw_max_ifr_reqt = df_pw_min_ifr_reqt[df_pw_ifr_range_reqt.columns] + df_pw_ifr_range_reqt
+            else:
+                df_pw_max_ifr_reqt = None
 
             for res in get_resources(df, filterby=resources):
                 component = timeseries_component(
@@ -1556,8 +1576,8 @@ def update_select_resources(tab, basin):
         options = res_options.get(('Output', 'flow'))
     elif tab == 'ifr-flow':
         options = res_options.get(('InstreamFlowRequirement', 'flow'))
-    elif tab == 'ifr-range-flow':
-        options = res_options.get(('PiecewiseInstreamFlowRequirement', 'flow'))
+    # elif tab == 'ifr-range-flow':
+    #     options = res_options.get(('PiecewiseInstreamFlowRequirement', 'flow'))
 
     return options or []
 
