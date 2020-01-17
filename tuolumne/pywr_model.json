@@ -2451,7 +2451,7 @@
         },
         "IFR bl Hetch Hetchy Reservoir/IFR Schedule": {
             "url": "../data/Tuolumne River/_tables/IFR_bl_Hetch_Hetchy_Reservoir_IFR_Schedule.csv",
-            "header": 0,
+            "header": [0,1],
             "index_col": 0,
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
         },
