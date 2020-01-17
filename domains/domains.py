@@ -1,5 +1,15 @@
-from pywr.nodes import Domain, PiecewiseLink
+from pywr.nodes import Domain, PiecewiseLink, Storage
 from pywr.parameters import load_parameter
+
+
+class Reservoir(Storage):
+    """
+    Like a storage node, only better
+    """
+
+    def __init__(self, *args, **kwargs):
+        self.gauge = kwargs.pop("gauge", None)
+        super(Reservoir, self).__init__(*args, **kwargs)
 
 
 class InstreamFlowRequirement(PiecewiseLink):
