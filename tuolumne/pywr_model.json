@@ -807,7 +807,7 @@
             "type": "Output",
             "comment": "{\"resource_class\": \"node\"}",
             "max_flow": 0.0018178559959280028,
-            "cost": -300
+            "cost": -30000
         },
         {
             "name": "Hetch Hetchy Aquaduct Outflow",
@@ -830,35 +830,35 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Cherry Lake/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Don Pedro Reservoir",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Don Pedro Reservoir/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Hetch Hetchy Reservoir",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Hetch Hetchy Reservoir/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Lake Eleanor",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Lake Eleanor/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Moccasin Reservoir",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": 0.03915038224025556,
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "Kirkwood PH",
@@ -932,6 +932,7 @@
             "name": "Modesto Irrigation District",
             "type": "Output",
             "comment": "{\"resource_class\": \"node\"}",
+            "max_flow": "Modesto Irrigation District/Demand",
             "cost": -500
         },
         {
@@ -1258,6 +1259,7 @@
             "name": "Turlock Irrigation District",
             "type": "Output",
             "comment": "{\"resource_class\": \"node\"}",
+            "max_flow": "Turlock Irrigation District/Demand",
             "cost": -500
         },
         {
@@ -2435,6 +2437,16 @@
             "index_col": 0,
             "squeeze": true
         },
+        "Modesto Irrigation District/Demand Table": {
+            "url": "../data/Tuolumne River/Management/BAU/Demand/Modesto Irrigation District demand cfs.csv",
+            "index_col": [0, 1],
+            "header": 0
+        },
+        "Turlock Irrigation District/Demand Table": {
+            "url": "../data/Tuolumne River/Management/BAU/Demand/Turlock Irrigation District demand cfs.csv",
+            "index_col": [0, 1],
+            "header": 0
+        },
         "Preferred Storage": {
             "url": "../data/Tuolumne River/Management/BAU/Reservoirs/Preferred Storage Curves - af.csv",
             "index_col": [
@@ -2791,6 +2803,12 @@
             "type": "Lake_Eleanor_Storage_Demand",
             "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
         },
+        "Modesto Irrigation District/Demand": {
+            "type": "Modesto_Irrigation_District_Demand"
+        },
+        "Turlock Irrigation District/Demand": {
+            "type": "Turlock_Irrigation_District_Demand"
+        },
         "TUO_01 Headflow/Runoff": {
             "type": "dataframe",
             "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb01_mcm.csv",
@@ -3031,6 +3049,10 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Gauge Moccasin PH"
         },
+        "Groveland/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Groveland"
+        },
         "Hetch Hetchy Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Hetch Hetchy Reservoir"
@@ -3075,7 +3097,7 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "SFPUC"
         },
-        "Tuolumne River Outflow/outflow": {
+        "Tuolumne River Outflow/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Tuolumne River Outflow"
         },

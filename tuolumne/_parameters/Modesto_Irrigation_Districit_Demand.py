@@ -3,20 +3,21 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class TID_Demand(WaterLPParameter):
+class Modesto_Irrigation_District_Demand(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-
         WYT_names = ["Critical", "Dry", "Below", "Above", "Wet"]
-        WYT = WYT_names[self.model.parameters["WYT_SJValley"].value(timestep, scenario_index) - 1]
-        date = timestep.datetime.strftime("%#m/%#d/") + "1900"
+        SJV_WYT = self.model.parameters["San Joaquin Valley WYT"].value(timestep, scenario_index)
+        dm = (timestep.month, timestep.day)
+        demand_cfs = self.model.tables["Modesto Irrigation District/Demand Table"].at[dm, WYT_names[SJV_WYT - 1]]
 
-        return self.model.tables["TID_Demand"][WYT][date]
+        return demand_cfs / 35.315
 
     def value(self, timestep, scenario_index):
         try:
-            return convert(self._value(timestep, scenario_index), "ac-ft", "m^3", scale_in=1, scale_out=1000000)
+            return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1,
+                           scale_out=1000000)
         except Exception as err:
             print('ERROR for parameter {}'.format(self.name))
             print('File where error occurred: {}'.format(__file__))
@@ -33,5 +34,5 @@ class TID_Demand(WaterLPParameter):
             raise
 
 
-TID_Demand.register()
-print(" [*] TID_Demand successfully registered")
+Modesto_Irrigation_District_Demand.register()
+print(" [*] Modesto_Irrigation_District_Demand successfully registered")
