@@ -7,13 +7,7 @@ class Florence_Lake_Storage_Value(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
-        return 85
-        x = self.model.tables['San Joaquin Valley Index'][self.operational_water_year]
-        if self.get("node/87408/1612", **kwargs) == 1:
-            y=10
-        else:
-            y=78
-        return -y
+        return -85
         
     def value(self, timestep, scenario_index):
         try:

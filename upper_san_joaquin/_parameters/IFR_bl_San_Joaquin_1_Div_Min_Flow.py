@@ -7,10 +7,10 @@ class IFR_bl_San_Joaquin_1_Div_Min_Flow(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         
-        return_val = 0.5
+        ifr_cfs = 0.5
         if self.model.mode == "planning":
-            return_val *= self.days_in_month()
-        return return_val
+            ifr_cfs *= self.days_in_month()
+        return ifr_cfs / 35.31
         
     def value(self, timestep, scenario_index):
         try:

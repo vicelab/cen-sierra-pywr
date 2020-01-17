@@ -7,12 +7,12 @@ class IFR_bl_Bolsillo_Creek_Div_Min_Flow(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         
-        return_val = 0.4
+        ifr_cfs = 0.4
         
         if self.model.mode == "planning":
-            return_val *= self.days_in_month()
+            ifr_cfs *= self.days_in_month()
         
-        return return_val
+        return ifr_cfs / 35.31
         
     def value(self, timestep, scenario_index):
         try:

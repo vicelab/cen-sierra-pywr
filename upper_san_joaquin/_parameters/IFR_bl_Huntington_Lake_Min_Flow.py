@@ -8,14 +8,14 @@ class IFR_bl_Huntington_Lake_Min_Flow(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
 
-        return_val = 0
+        ifr_cfs = 0
 
         if (4, 15) <= (self.datetime.month, self.datetime.day) <= (12, 15):
-            return_val = 2
+            ifr_cfs = 2
 
         if self.model.mode == "planning":
-            return_val *= self.days_in_month()
-        return return_val
+            ifr_cfs *= self.days_in_month()
+        return ifr_cfs / 35.31
 
     def value(self, timestep, scenario_index):
         try:

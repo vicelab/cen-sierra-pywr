@@ -16,7 +16,7 @@ class IFR_bl_Chinquapin_Creek_Div_Min_Flow(WaterLPParameter):
         
         if self.model.mode == "planning":
             return_val *= self.days_in_month()
-        return return_val
+        return return_val / 35.31
         
     def value(self, timestep, scenario_index):
         try:

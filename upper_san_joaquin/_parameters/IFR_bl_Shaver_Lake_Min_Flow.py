@@ -8,18 +8,18 @@ class IFR_bl_Shaver_Lake_Min_Flow(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
 
-        return_val = 0
+        ifr_cfs = 0
         current_date = (self.datetime.month, self.datetime.day)
 
         if (4, 1) <= current_date <= (11, 15):
-            return_val = 3
+            ifr_cfs = 3
         elif (11, 16) <= current_date or current_date <= (3, 31):
-            return_val = 2
+            ifr_cfs = 2
 
         if self.model.mode == "planning":
-            return_val *= self.days_in_month()
+            ifr_cfs *= self.days_in_month()
 
-        return return_val
+        return ifr_cfs / 35.31
 
     def value(self, timestep, scenario_index):
         try:

@@ -7,12 +7,12 @@ class IFR_bl_Kerckhoff_Lake_Min_Flow(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         
-        return_val = 25
+        ifr_cfs = 25
         
         if self.model.mode == "planning":
-            return_val *= self.days_in_month()
+            ifr_cfs *= self.days_in_month()
         
-        return return_val
+        return ifr_cfs / 35.31
         
     def value(self, timestep, scenario_index):
         try:
