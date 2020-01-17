@@ -703,12 +703,14 @@
         },
         {
             "name": "Cherry Lake",
-            "type": "Storage",
+            "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 0.0,
+            "min_volume": 100,
+            "initial_volume": 250,
             "max_volume": 338.2,
             "level": "Cherry Lake/Volume Elevation Curve",
-            "cost": "Cherry Lake/Cost"
+            "cost": "Cherry Lake/Cost",
+            "gauge": "USGS 11277200 CHERRY LK NR HETCH HETCHY CA"
         },
         {
             "name": "Clavey R Headflow",
@@ -739,7 +741,8 @@
         {
             "name": "Don Pedro Flood Control",
             "type": "InstreamFlowRequirement",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "min_flow_cost": -1000
         },
         {
             "name": "Don Pedro PH",
@@ -759,13 +762,14 @@
         },
         {
             "name": "Don Pedro Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
             "initial_volume": 1000.0,
             "max_volume": 2504.0,
             "min_volume": 616.75,
             "level": "Don Pedro Reservoir/Volume Elevation Curve",
-            "cost": "Don Pedro Reservoir/Cost"
+            "cost": "Don Pedro Reservoir/Cost",
+            "gauge": "USGS 11287500 DON PEDRO RES NR LA GRANGE CA"
         },
         {
             "name": "Eleanor Ck Headflow",
@@ -801,7 +805,9 @@
         {
             "name": "Groveland",
             "type": "Output",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "max_flow": 0.0018178559959280028,
+            "cost": -300
         },
         {
             "name": "Hetch Hetchy Aquaduct Outflow",
@@ -810,38 +816,49 @@
         },
         {
             "name": "Hetch Hetchy Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
             "initial_volume": 308.37547798199085,
             "max_volume": 444.6,
             "min_volume": 123.3,
             "level": "Hetch Hetchy Reservoir/Volume Elevation Curve",
-            "cost": "Hetch Hetchy Reservoir/Cost"
+            "cost": "Hetch Hetchy Reservoir/Cost",
+            "gauge": "USGS 11275500 HETCH HETCHY RES A HETCH HETCHY CA"
         },
         {
             "name": "IFR bl Cherry Lake",
             "type": "InstreamFlowRequirement",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "min_flow": "IFR bl Cherry Lake/Min Flow",
+            "min_flow_cost": -5000
         },
         {
             "name": "IFR bl Don Pedro Reservoir",
             "type": "InstreamFlowRequirement",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "min_flow": "IFR bl Don Pedro Reservoir/Min Flow",
+            "min_flow_cost": -5000
         },
         {
             "name": "IFR bl Hetch Hetchy Reservoir",
             "type": "InstreamFlowRequirement",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "min_flow": "IFR bl Hetch Hetchy Reservoir/Min Flow",
+            "min_flow_cost": -5000
         },
         {
             "name": "IFR bl Lake Eleanor",
             "type": "InstreamFlowRequirement",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "min_flow": "IFR bl Lake Eleanor/Min Flow",
+            "min_flow_cost": -5000
         },
         {
             "name": "IFR bl Moccasin Reservoir",
             "type": "InstreamFlowRequirement",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "min_flow": 0.03915038224025556,
+            "min_flow_cost": -5000
         },
         {
             "name": "Kirkwood PH",
@@ -861,13 +878,14 @@
         },
         {
             "name": "Lake Eleanor",
-            "type": "Storage",
+            "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
             "initial_volume": 24.67003823855927,
             "max_volume": 32.2,
             "min_volume": 12.335019119279634,
             "level": "Lake Eleanor/Volume Elevation Curve",
-            "cost": "Lake Eleanor/Cost"
+            "cost": "Lake Eleanor/Cost",
+            "gauge": "USGS 11277500 LK ELEANOR NR HETCH HETCHY CA"
         },
         {
             "name": "Middle Tuol R Headflow",
@@ -913,7 +931,8 @@
         {
             "name": "Modesto Irrigation District",
             "type": "Output",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "cost": -500
         },
         {
             "name": "North Fk Toul R Headflow",
@@ -963,7 +982,8 @@
         {
             "name": "SFPUC",
             "type": "Output",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "cost": -400
         },
         {
             "name": "Sullivan Ck Headflow",
@@ -1237,7 +1257,8 @@
         {
             "name": "Turlock Irrigation District",
             "type": "Output",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "cost": -500
         },
         {
             "name": "Upper Hetch Hetchy Tunnel Inflow",
@@ -2409,6 +2430,11 @@
         ]
     ],
     "tables": {
+        "San Joaquin Valley Index": {
+            "url": "../data/common/Scenarios/Livneh/SJVI.csv",
+            "index_col": 0,
+            "squeeze": true
+        },
         "Preferred Storage": {
             "url": "../data/Tuolumne River/Management/BAU/Reservoirs/Preferred Storage Curves - af.csv",
             "index_col": [
@@ -2416,6 +2442,24 @@
                 1
             ],
             "header": 0
+        },
+        "IFR bl Don Pedro Reservoir/IFR Schedule": {
+            "url": "../data/Tuolumne River/_tables/IFR_bl_Don_Pedro_Reservoir_IFR_Schedule.csv",
+            "header": 0,
+            "index_col": 0,
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
+        },
+        "IFR bl Hetch Hetchy Reservoir/IFR Schedule": {
+            "url": "../data/Tuolumne River/_tables/IFR_bl_Hetch_Hetchy_Reservoir_IFR_Schedule.csv",
+            "header": 0,
+            "index_col": 0,
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
+        },
+        "IFR bl Lake Eleanor/IFR Schedule": {
+            "url": "../data/Tuolumne River/_tables/IFR_bl_Lake_Eleanor_IFR_Schedule.csv",
+            "header": 0,
+            "index_col": 0,
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
         }
     },
     "parameters": {
@@ -2660,276 +2704,29 @@
             "type": "Hetch_Hetchy_Reservoir_Storage_Demand",
             "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
         },
-        "IFR bl Don Pedro Reservoir/IFR Schedule": {
-            "type": "numpyarray",
-            "value": [
-                [
-                    "",
-                    "Critical and Below",
-                    "Median Critical",
-                    "Intermed Critical / Dry",
-                    "Median Dry",
-                    "Intermed Dry / Below Normal",
-                    "Median Below Normal",
-                    "Intermed Below Normal / Above Normal and Above"
-                ],
-                [
-                    "October 1-15",
-                    100,
-                    100,
-                    150,
-                    150,
-                    180,
-                    200,
-                    300
-                ],
-                [
-                    "October 16 - May 31",
-                    150,
-                    150,
-                    150,
-                    150,
-                    180,
-                    175,
-                    300
-                ],
-                [
-                    "June 1 - Sept. 30",
-                    50,
-                    50,
-                    50,
-                    75,
-                    75,
-                    75,
-                    250
-                ]
-            ],
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
+        "IFR bl Cherry Lake/Min Flow": {
+            "type": "IFR_bl_Cherry_Lake_Min_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "IFR bl Don Pedro Reservoir/Water Year Type": {
             "type": "IFR_bl_Don_Pedro_Reservoir_Water_Year_Type",
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         },
-        "IFR bl Hetch Hetchy Reservoir/IFR Schedule": {
-            "type": "numpyarray",
-            "value": [
-                [
-                    "",
-                    "Year Type A",
-                    "Year Type A",
-                    "Year Type B",
-                    "Year Type B",
-                    "Year Type C"
-                ],
-                [
-                    "",
-                    "Criteria",
-                    "cfs",
-                    "Criteria",
-                    "cfs",
-                    "cfs"
-                ],
-                [
-                    "January",
-                    8.8,
-                    50,
-                    6.1,
-                    40,
-                    35
-                ],
-                [
-                    "February",
-                    14,
-                    60,
-                    9.5,
-                    50,
-                    35
-                ],
-                [
-                    "March",
-                    18.6,
-                    60,
-                    14.2,
-                    50,
-                    35
-                ],
-                [
-                    "April",
-                    26,
-                    75,
-                    18,
-                    65,
-                    35
-                ],
-                [
-                    "May",
-                    26.6,
-                    100,
-                    19.5,
-                    80,
-                    50
-                ],
-                [
-                    "June",
-                    28.45,
-                    125,
-                    21.25,
-                    110,
-                    75
-                ],
-                [
-                    "July",
-                    575,
-                    125,
-                    390,
-                    110,
-                    75
-                ],
-                [
-                    "August",
-                    640,
-                    125,
-                    400,
-                    110,
-                    75
-                ],
-                [
-                    "Sept. 1-15",
-                    "",
-                    100,
-                    "",
-                    80,
-                    75
-                ],
-                [
-                    "Sept. 15-30",
-                    "",
-                    80,
-                    "o",
-                    65,
-                    50
-                ],
-                [
-                    "October",
-                    "",
-                    60,
-                    "p",
-                    50,
-                    35
-                ],
-                [
-                    "November",
-                    "",
-                    60,
-                    "",
-                    50,
-                    35
-                ],
-                [
-                    "December",
-                    "",
-                    50,
-                    "",
-                    40,
-                    35
-                ]
-            ],
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
+        "IFR bl Don Pedro Reservoir/Min Flow": {
+            "type": "IFR_bl_Don_Pedro_Reservoir_Min_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "IFR bl Hetch Hetchy Reservoir/Water Year Type": {
             "type": "IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type",
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         },
-        "IFR bl Lake Eleanor/IFR Schedule": {
-            "type": "numpyarray",
-            "value": [
-                [
-                    "Date",
-                    "Pumping",
-                    "Not pumping"
-                ],
-                [
-                    "January",
-                    5,
-                    5
-                ],
-                [
-                    "February",
-                    5,
-                    5
-                ],
-                [
-                    "March",
-                    10,
-                    5
-                ],
-                [
-                    "April_10",
-                    10,
-                    5
-                ],
-                [
-                    "April_20",
-                    15,
-                    5
-                ],
-                [
-                    "April_30",
-                    20,
-                    5
-                ],
-                [
-                    "May",
-                    20,
-                    5
-                ],
-                [
-                    "June",
-                    20,
-                    5
-                ],
-                [
-                    "July",
-                    20,
-                    16
-                ],
-                [
-                    "August",
-                    20,
-                    16
-                ],
-                [
-                    "September_10",
-                    20,
-                    16
-                ],
-                [
-                    "September_20",
-                    15,
-                    16
-                ],
-                [
-                    "September_30",
-                    10,
-                    16
-                ],
-                [
-                    "October",
-                    10,
-                    5
-                ],
-                [
-                    "November",
-                    5,
-                    5
-                ],
-                [
-                    "December",
-                    5,
-                    5
-                ]
-            ],
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
+        "IFR bl Hetch Hetchy Reservoir/Min Flow": {
+            "type": "IFR_bl_Hetch_Hetchy_Reservoir_Min_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "IFR bl Lake Eleanor/Min Flow": {
+            "type": "IFR_bl_Lake_Eleanor_Min_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Lake Eleanor/Cost": {
             "type": "controlcurveinterpolated",
@@ -3190,6 +2987,14 @@
         "cfs2cms": {
             "type": "constant",
             "value": 0.02832058906825262,
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
+        },
+        "San Joaquin Valley WYI": {
+            "type": "San_Joaquin_Valley_WYI",
+            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"ac-ft\"}"
+        },
+        "San Joaquin Valley WYT": {
+            "type": "San_Joaquin_Valley_WYT",
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         }
     },
