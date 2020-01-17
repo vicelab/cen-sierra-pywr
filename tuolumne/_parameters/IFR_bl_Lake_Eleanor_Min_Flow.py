@@ -7,22 +7,25 @@ class IFR_bl_Lake_Eleanor_Min_Flow(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
-        schedule = self.get("node/92041/1054", **kwargs)
-        
+
         is_pumping = True
-        
-        # convert the schedule to a dictionary to lookup values
-        ifr_lookup = {row[0]: row[1:] for row in schedule[1:]}
-        
-        month_name = date.format("MMMM") # e.g., "January"
-        if date.month in [4, 9]:
-            ifr_period = '{}_{}'.format(month_name, date.day)
+
+        if is_pumping:
+            md = (self.datetime.month, self.datetime.day)
+            if (4, 1) <= md <= (5, 14) or (9, 16) <= md <= (10, 31):
+                ifr = 10
+            elif (5, 15) <= md <= (9, 15):
+                ifr = 20
+            else:
+                ifr = 5
+
         else:
-            ifr_period = month_name
-        
-        ifr = ifr_lookup[ifr_period][0 if is_pumping else 1]
-        
-        return ifr
+            if 7 <= self.datetime.month <= 9:
+                ifr = 15.5
+            else:
+                ifr = 5
+
+        return ifr / 35.315
         
     def value(self, timestep, scenario_index):
         try:

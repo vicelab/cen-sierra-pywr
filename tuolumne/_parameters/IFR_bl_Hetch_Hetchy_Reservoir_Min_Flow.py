@@ -23,7 +23,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Min_Flow(WaterLPParameter):
 
         date = self.datetime
         # get row & column
-        lookup_row = date.month + 1
+        lookup_row = date.month - 1
         month_day = (date.month, date.day)
         if month_day >= (9, 15):
             lookup_row += 1
