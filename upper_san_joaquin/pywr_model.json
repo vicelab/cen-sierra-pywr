@@ -641,12 +641,6 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Below Portal Aqueduct Diverted Inflow",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 1.5906239964370021
-        },
-        {
             "name": "Below Portal Aqueduct Inflow",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
@@ -664,12 +658,12 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Below Portal Penstock Inflow.2.2",
+            "name": "Below Portal Penstock Outflow.1",
             "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Below Portal Penstock Outflow",
+            "name": "Below Portal Penstock Outflow.2",
             "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
         },
@@ -1214,7 +1208,12 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Friant-Kern Canal",
+            "name": "Friant-Kern Canal.1",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "Friant-Kern Canal.2",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}"
         },
@@ -1340,27 +1339,12 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "San Joaquin River Below Friant Dam.1.2",
-            "type": "River",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
-            "name": "San Joaquin River Below Friant Dam.2",
-            "type": "River",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
             "name": "SAN-L-CON1",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
             "name": "SAN-L-CON2",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
-            "name": "SAN-L-CON3",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}"
         },
@@ -1382,11 +1366,6 @@
         {
             "name": "SAN-L-CON5",
             "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
-            "name": "SAN-L-RIV1",
-            "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
@@ -1447,8 +1426,7 @@
         {
             "name": "Ward Tunnel",
             "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 4.306175990354166
+            "comment": "{\"resource_class\": \"link\"}"
         },
         {
             "name": "Willow Creek",
@@ -1482,12 +1460,18 @@
         },
         {
             "name": "Bass Lake",
-            "type": "Storage",
+            "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 27.0,
+            "initial_volume": {
+                "type": "constant",
+                "table": "Initial Storage",
+                "index": "2000-09-30",
+                "column": "USGS 11243400 BASS LK NR BASS LAKE CA"
+            },
             "max_volume": 55.61,
             "min_volume": 27.0,
-            "cost": -15.5
+            "cost": -15.5,
+            "gauge": "USGS 11243400 BASS LK NR BASS LAKE CA"
         },
         {
             "name": "Bear Creek Headflow",
@@ -1497,11 +1481,6 @@
         {
             "name": "Bear Creek Inflow",
             "type": "River",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
-            "name": "Bear Diversion Tunnel Inflow",
-            "type": "Link",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -1711,16 +1690,6 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Central Valley Project Friant-Kern Canal",
-            "type": "Output",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
-            "name": "Central Valley Project Madera Canal",
-            "type": "Output",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
             "name": "Chinquapin Cr. Div. Inflow",
             "type": "River",
             "comment": "{\"resource_class\": \"node\"}"
@@ -1741,6 +1710,20 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
+            "name": "CVP Friant-Kern Canal",
+            "type": "Output",
+            "comment": "{\"resource_class\": \"node\"}",
+            "max_flow": "CVP Friant-Kern Canal/Demand",
+            "cost": -400
+        },
+        {
+            "name": "CVP Madera Canal",
+            "type": "Output",
+            "comment": "{\"resource_class\": \"node\"}",
+            "max_flow": "CVP Madera Canal/Demand",
+            "cost": -400
+        },
+        {
             "name": "Eastwood PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
@@ -1758,12 +1741,18 @@
         },
         {
             "name": "Florence Lake",
-            "type": "Storage",
+            "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 50.0,
+            "initial_volume": {
+                "type": "constant",
+                "table": "Initial Storage",
+                "index": "2000-09-30",
+                "column": "USGS 11229600 FLORENCE LK NR BIG C CA"
+            },
             "max_volume": 79.41,
             "min_volume": 1.25,
-            "cost": -85
+            "cost": -85,
+            "gauge": "USGS 11229600 FLORENCE LK NR BIG C CA"
         },
         {
             "name": "Friant Dam Flood Release",
@@ -1787,165 +1776,181 @@
         },
         {
             "name": "Huntington Lake",
-            "type": "Storage",
+            "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 108.49,
+            "initial_volume": {
+                "type": "constant",
+                "table": "Initial Storage",
+                "index": "2000-09-30",
+                "column": "USGS 11236000 HUNTINGTON LK NR BIG CREEK CA"
+            },
             "max_volume": 109.94,
             "min_volume": 37.0,
-            "cost": -80
+            "cost": -80,
+            "gauge": "USGS 11236000 HUNTINGTON LK NR BIG CREEK CA"
         },
         {
             "name": "IFR above Shakeflat Creek",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Balsam Forebay",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Bass Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Bass Lake/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Bear Div",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Bear Div/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Big Creek 5 Div",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Big Creek 5 Div/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Big Creek 6 Div",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Big Creek 6 Div/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Bolsillo Creek Div",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Bolsillo Creek Div/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Browns Creek Ditch",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Browns Creek Ditch/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Camp 62 Creek Div",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Camp 62 Creek Div/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Chinquapin Creek Div",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Chinquapin Creek Div/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Hooper Creek",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_flow_cost": -5000
+            "min_flow": 0,
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Huntington Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Huntington Lake/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Kerckhoff Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Kerckhoff Lake/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Lake Thomas A Edison",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_flow_cost": -5000
+            "min_flow": 0,
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Manzanita Div",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Manzanita Div/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Millerton Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_flow_cost": -5000
+            "min_flow": 0,
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Mono Creek Div",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_flow_cost": -5000
+            "min_flow": 0,
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Pitman Creek Div",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Pitman Creek Div/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
+        },
+        {
+            "name": "IFR bl Portal Forebay",
+            "type": "InstreamFlowRequirement",
+            "comment": "{\"resource_class\": \"node\"}",
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Redinger Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Redinger Lake/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl San Joaquin 1 Div",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl San Joaquin 1 Div/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl San Joaquin R and Willow Cr confluence",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Shaver Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Shaver Lake/Min Flow",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR No. Fk. Stevenson Creek above Shaver Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_flow_cost": -5000
+            "min_flow_cost": -10000
         },
         {
             "name": "Jose Cr Headflow",
@@ -2001,21 +2006,33 @@
         },
         {
             "name": "Kerckhoff Lake",
-            "type": "Storage",
+            "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 4.55,
+            "initial_volume": {
+                "type": "constant",
+                "table": "Initial Storage",
+                "index": "2000-09-30",
+                "column": "USGS 11246650 KERCKHOFF RES NR AUBERRY CA"
+            },
             "max_volume": 4.6,
             "min_volume": 4.1,
-            "cost": -12
+            "cost": -12,
+            "gauge": "USGS 11246650 KERCKHOFF RES NR AUBERRY CA"
         },
         {
             "name": "Lake Thomas A Edison",
-            "type": "Storage",
+            "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 153.26,
+            "initial_volume": {
+                "type": "constant",
+                "table": "Initial Storage",
+                "index": "2000-09-30",
+                "column": "USGS 11231000 LK THOMAS A. EDISON NR BIG C CA"
+            },
             "max_volume": 154.17,
             "min_volume": 8.0,
-            "cost": "Lake Thomas A Edison/Storage Value"
+            "cost": "Lake Thomas A Edison/Storage Value",
+            "gauge": "USGS 11231000 LK THOMAS A. EDISON NR BIG C CA"
         },
         {
             "name": "Mammoth Pool PH",
@@ -2035,12 +2052,18 @@
         },
         {
             "name": "Mammoth Pool Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 44.54,
+            "initial_volume": {
+                "type": "constant",
+                "table": "Initial Storage",
+                "index": "2000-09-30",
+                "column": "USGS 11234700 MAMMOTH POOL RE NR BIG CREEK CA"
+            },
             "max_volume": 147.89,
             "min_volume": 5.0,
-            "cost": -42.5
+            "cost": -42.5,
+            "gauge": "USGS 11234700 MAMMOTH POOL RE NR BIG CREEK CA"
         },
         {
             "name": "Mammoth Pool Tunnel Inflow",
@@ -2054,10 +2077,16 @@
         },
         {
             "name": "Millerton Lake",
-            "type": "Storage",
+            "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 0.0,
-            "max_volume": 46.33711665999021
+            "initial_volume": {
+                "type": "constant",
+                "table": "Initial Storage",
+                "index": "2000-09-30",
+                "column": "USGS 11250100 MILLERTON LK A FRIANT CA"
+            },
+            "max_volume": 46.33711665999021,
+            "gauge": "USGS 11250100 MILLERTON LK A FRIANT CA"
         },
         {
             "name": "Mono Creek Headflow",
@@ -2070,13 +2099,13 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Mono Tunnel Inflow",
-            "type": "River",
+            "name": "Mono Diversion Reservoir",
+            "type": "BreakLink",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Mono Tunnel Outflow",
-            "type": "BreakLink",
+            "name": "Mono Tunnel Inflow",
+            "type": "River",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -2145,13 +2174,13 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Portal Penstock Inflow",
-            "type": "River",
+            "name": "Portal Forebay",
+            "type": "BreakLink",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Portal Penstock Outflow",
-            "type": "BreakLink",
+            "name": "Portal Penstock Inflow",
+            "type": "River",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -2172,12 +2201,18 @@
         },
         {
             "name": "Redinger Lake",
-            "type": "Storage",
+            "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 31.15,
+            "initial_volume": {
+                "type": "constant",
+                "table": "Initial Storage",
+                "index": "2000-09-30",
+                "column": "USGS 11241950 REDINGER LK NR AUBERRY CA"
+            },
             "max_volume": 32.21,
             "min_volume": 5.28,
-            "cost": -20
+            "cost": -20,
+            "gauge": "USGS 11241950 REDINGER LK NR AUBERRY CA"
         },
         {
             "name": "S Fk San Joaquin Headflow",
@@ -2207,16 +2242,6 @@
         {
             "name": "SAN J-N-JUN3",
             "type": "River",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
-            "name": "SAN J-N-JUN4",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
-            "name": "SAN J-N-JUN5",
-            "type": "Link",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -2324,28 +2349,24 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "SAN-N-INF2",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
             "name": "SAN-N-OUT1",
             "type": "Link",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "SAN-N-OUT2",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
             "name": "Shaver Lake",
-            "type": "Storage",
+            "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 91.45,
+            "initial_volume": {
+                "type": "constant",
+                "table": "Initial Storage",
+                "index": "2000-09-30",
+                "column": "USGS 11239500 SHAVER LK NR BIG C CA"
+            },
             "max_volume": 167.16,
             "min_volume": 0.47,
-            "cost": -65
+            "cost": -65,
+            "gauge": "USGS 11239500 SHAVER LK NR BIG C CA"
         },
         {
             "name": "SJN_01 Headflow",
@@ -2996,13 +3017,13 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "USGS 11251000 SAN JOAQUIN R BL FRIANT CA",
+            "name": "USGS 11250000 FRIANT-KERN CN A FRIANT CA",
             "type": "RiverGauge",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Ward Tunnel Inflow",
-            "type": "River",
+            "name": "USGS 11251000 SAN JOAQUIN R BL FRIANT CA",
+            "type": "RiverGauge",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -3031,7 +3052,7 @@
             "USGS 11230520 BEAR C CONDUIT NR LAKE THOMAS A EDISON CA"
         ],
         [
-            "Mono Tunnel Outflow",
+            "Mono Diversion Reservoir",
             "above USGS_11231550_MONO C COND"
         ],
         [
@@ -3068,7 +3089,7 @@
         ],
         [
             "Bear Diversion Tunnel",
-            "Bear Diversion Tunnel Inflow"
+            "Mono Tunnel Inflow"
         ],
         [
             "Balsam Creek Headflow",
@@ -3663,7 +3684,7 @@
             "Manzanita Diversion Dam"
         ],
         [
-            "Mono Tunnel Outflow",
+            "Mono Diversion Reservoir",
             "Below IFR bl Mono Creek Div"
         ],
         [
@@ -3852,7 +3873,7 @@
         ],
         [
             "Below Mono Tunnel Outflow",
-            "Mono Tunnel Outflow"
+            "Mono Diversion Reservoir"
         ],
         [
             "N Fk Stevenson Creek Headflow",
@@ -3991,14 +4012,6 @@
             "SJN_26 Inflow"
         ],
         [
-            "Bear Diversion Tunnel Inflow",
-            "Below Portal Aqueduct Diverted Inflow"
-        ],
-        [
-            "Below Portal Aqueduct Diverted Inflow",
-            "Mono Tunnel Inflow"
-        ],
-        [
             "Chinquapin Cr. Div. Inflow",
             "Below Portal Aqueduct Inflow"
         ],
@@ -4007,12 +4020,12 @@
             "Portal Aqueduct Inflow"
         ],
         [
-            "Portal Penstock Outflow",
+            "Portal Forebay",
             "Below Portal Penstock Diverted Inflow"
         ],
         [
             "Below Portal Penstock Diverted Inflow",
-            "Ward Tunnel Inflow"
+            "Portal PH"
         ],
         [
             "Portal Penstock Inflow",
@@ -4020,22 +4033,22 @@
         ],
         [
             "Below Portal Penstock Inflow.1",
-            "SAN-N-OUT2"
-        ],
-        [
-            "SAN-N-INF2",
-            "Below Portal Penstock Inflow.2.2"
-        ],
-        [
-            "Below Portal Penstock Inflow.2.2",
             "SJN_29 Inflow"
         ],
         [
-            "Portal Penstock Outflow",
-            "Below Portal Penstock Outflow"
+            "Portal Forebay",
+            "Below Portal Penstock Outflow.1"
         ],
         [
-            "Below Portal Penstock Outflow",
+            "Below Portal Penstock Outflow.1",
+            "IFR bl Portal Forebay"
+        ],
+        [
+            "IFR bl Portal Forebay",
+            "Below Portal Penstock Outflow.2"
+        ],
+        [
+            "Below Portal Penstock Outflow.2",
             "Camp 61 Creek Inflow"
         ],
         [
@@ -4660,7 +4673,7 @@
         ],
         [
             "Below SJN_32 Inflow",
-            "Portal Penstock Outflow"
+            "Portal Forebay"
         ],
         [
             "SJN_33 Headflow",
@@ -4896,11 +4909,19 @@
         ],
         [
             "Millerton Lake",
-            "Friant-Kern Canal"
+            "Friant-Kern Canal.1"
         ],
         [
-            "Friant-Kern Canal",
-            "Central Valley Project Friant-Kern Canal"
+            "Friant-Kern Canal.1",
+            "USGS 11250000 FRIANT-KERN CN A FRIANT CA"
+        ],
+        [
+            "USGS 11250000 FRIANT-KERN CN A FRIANT CA",
+            "Friant-Kern Canal.2"
+        ],
+        [
+            "Friant-Kern Canal.2",
+            "CVP Friant-Kern Canal"
         ],
         [
             "USGS 11246950 KERCKHOFF PH NR AUBERRY CA",
@@ -4932,7 +4953,7 @@
         ],
         [
             "Madera Canal.2",
-            "Central Valley Project Madera Canal"
+            "CVP Madera Canal"
         ],
         [
             "USGS 11235100 MAMMOTH POOL PP NR BIG CREEK CA",
@@ -5092,22 +5113,6 @@
         ],
         [
             "San Joaquin River Below Friant Dam.1.1.2",
-            "SAN J-N-JUN5"
-        ],
-        [
-            "SAN J-N-JUN5",
-            "San Joaquin River Below Friant Dam.1.2"
-        ],
-        [
-            "San Joaquin River Below Friant Dam.1.2",
-            "SAN J-N-JUN4"
-        ],
-        [
-            "SAN J-N-JUN4",
-            "San Joaquin River Below Friant Dam.2"
-        ],
-        [
-            "San Joaquin River Below Friant Dam.2",
             "San Joaquin River Outflow"
         ],
         [
@@ -5125,14 +5130,6 @@
         [
             "SAN-L-CON2",
             "SAN J-N-JUN7"
-        ],
-        [
-            "Ward Tunnel Inflow",
-            "SAN-L-CON3"
-        ],
-        [
-            "SAN-L-CON3",
-            "Portal PH"
         ],
         [
             "Millerton Lake",
@@ -5165,14 +5162,6 @@
         [
             "SAN-L-CON5",
             "San Joaquin 3 PH"
-        ],
-        [
-            "SAN-N-OUT2",
-            "SAN-L-RIV1"
-        ],
-        [
-            "SAN-L-RIV1",
-            "SAN-N-INF2"
         ],
         [
             "SAN-N-OUT1",
@@ -5268,7 +5257,7 @@
         ],
         [
             "Ward Tunnel",
-            "Ward Tunnel Inflow"
+            "Portal Forebay"
         ],
         [
             "USGS 11246500 WILLOW C A MOUTH NR AUBERRY CA",
@@ -5292,6 +5281,28 @@
             "url": "../data/common/Scenarios/Livneh/SJVI.csv",
             "index_col": 0,
             "squeeze": true
+        },
+        "Initial Storage": {
+            "url": "../data/Upper San Joaquin River/gauges/usgs_storage_mcm.csv",
+            "index_col": 0,
+            "header": 0,
+            "parse_dates": true
+        },
+        "CVP Friant-Kern Canal Demand": {
+            "url": "../data/Upper San Joaquin River/Management/BAU/Demand/CVP Friant-Kern Canal - cfs.csv",
+            "index_col": [
+                0,
+                1
+            ],
+            "header": 0
+        },
+        "CVP Madera Canal Demand": {
+            "url": "../data/Upper San Joaquin River/Management/BAU/Demand/CVP Madera Canal - cfs.csv",
+            "index_col": [
+                0,
+                1
+            ],
+            "header": 0
         },
         "All Energy Price Values": {
             "url": "../data/common/energy prices/prices_pivoted_select_years.csv",
@@ -5479,6 +5490,14 @@
         },
         "Big Creek 8 PH/Water Demand/2": {
             "type": "PH_Water_Demand",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "CVP Friant-Kern Canal/Demand": {
+            "type": "CVP_Friant_Kern_Canal_Demand",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "CVP Madera Canal/Demand": {
+            "type": "CVP_Madera_Canal_Demand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Eastwood PH/Cost/1": {
@@ -6497,13 +6516,21 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Big Creek 8 PH"
         },
-        "Central Valley Project Friant-Kern Canal/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "Central Valley Project Friant-Kern Canal"
+        "CVP Friant-Kern Canal/demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "CVP Friant-Kern Canal/Demand"
         },
-        "Central Valley Project Madera Canal/flow": {
+        "CVP Friant-Kern Canal/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "Central Valley Project Madera Canal"
+            "node": "CVP Friant-Kern Canal"
+        },
+        "CVP Madera Canal/demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "CVP Madera Canal/Demand"
+        },
+        "CVP Madera Canal/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "CVP Madera Canal"
         },
         "Eastwood PH/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -6604,6 +6631,10 @@
         "IFR bl Pitman Creek Div/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Pitman Creek Div"
+        },
+        "IFR bl Portal Forebay/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl Portal Forebay"
         },
         "IFR bl Redinger Lake/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -7300,6 +7331,10 @@
         "USGS 11249500 MADERA CN A FRIANT CA/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "USGS 11249500 MADERA CN A FRIANT CA"
+        },
+        "USGS 11250000 FRIANT-KERN CN A FRIANT CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11250000 FRIANT-KERN CN A FRIANT CA"
         }
     }
 }
