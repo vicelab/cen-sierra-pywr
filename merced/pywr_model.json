@@ -15,11 +15,11 @@
     "scenarios": [
         {
             "name": "SWRCB 40",
-            "size": 5
+            "size": 1
         },
         {
             "name": "District Reductions",
-            "size": 2
+            "size": 1
         }
     ],
     "nodes": [
@@ -112,10 +112,6 @@
             "type": "Link"
         },
         {
-            "name": "MERCE-L-CON1 [link]",
-            "type": "Link"
-        },
-        {
             "name": "Merced River [link]",
             "type": "River"
         },
@@ -194,23 +190,24 @@
         {
             "name": "IFR bl New Exchequer Dam",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl New Exchequer Dam/Violation Cost",
-            "mrf": "IFR bl New Exchequer Dam/Requirement"
+            "min_flow_cost": "IFR bl New Exchequer Dam/Violation Cost",
+            "min_flow": "IFR bl New Exchequer Dam/Requirement"
         },
         {
             "name": "Crocker-Huffman Diversion Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": 0.0,
             "max_volume": 0.0
         },
         {
             "name": "Lake McClure",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": 841.0,
             "max_volume": "Lake McClure/Storage Capacity",
             "min_volume": "Lake McClure/Inactive Pool",
-            "cost": "Lake McClure/Storage Value",
-            "level": "Lake McClure/Elevation"
+            "cost": "Lake McClure/Cost",
+            "level": "Lake McClure/Elevation",
+            "gauge": "USGS 11269500 LK MCCLURE A EXCHEQUER CA"
         },
         {
             "name": "Lake McClure Spill",
@@ -225,11 +222,12 @@
         },
         {
             "name": "Lake McSwain",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": 11,
             "max_volume": "Lake McSwain/Storage Capacity",
             "min_volume": "Lake McSwain/Inactive Pool",
-            "cost": -100
+            "cost": -100,
+            "gauge": "USGS 11270600 MCSWAIN RES NR SNELLING CA"
         },
         {
             "name": "Maxwell Ck Headflow",
@@ -242,7 +240,7 @@
         {
             "name": "McSwain PH",
             "type": "Hydropower",
-            "excess_cost": "McSwain PH/Excess Value"
+            "cost": [0, "McSwain PH/Excess Value"]
         },
         {
             "name": "MERCE-N-JUN1",
@@ -250,15 +248,12 @@
         },
         {
             "name": "MERCE-N-JUN2",
-            "type": "Storage",
-            "initial_volume": 0.0,
-            "max_volume": 0.0
+            "type": "BreakLink"
         },
         {
             "name": "Merced Falls PH",
             "type": "Hydropower",
-            "excess_cost": "Merced Falls PH/Excess Value",
-            "base_cost": "Merced Falls PH/Base Value"
+            "cost": ["Merced Falls PH/Base Value", "Merced Falls PH/Excess Value"]
         },
         {
             "name": "Merced Falls Reservoir",
@@ -273,8 +268,8 @@
         {
             "name": "IFR bl Crocker-Huffman Dam",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Crocker-Huffman Dam/Violation Cost",
-            "mrf": "IFR bl Crocker-Huffman Dam/Requirement"
+            "min_flow_cost": "IFR bl Crocker-Huffman Dam/Violation Cost",
+            "min_flow": "IFR bl Crocker-Huffman Dam/Requirement"
         },
         {
             "name": "Merced River Headflow",
@@ -365,10 +360,8 @@
         {
             "name": "New Exchequer PH",
             "type": "Hydropower",
-            "max_flow": "New Exchequer PH/Turbine Capacity",
-            "excess_cost": "New Exchequer PH/Excess Value",
-            "base_cost": "New Exchequer PH/Base Value",
-            "base_flow": "New Exchequer PH/Water Demand"
+            "turbine_capacity": "New Exchequer PH/Turbine Capacity",
+            "cost": [-1]
         },
         {
             "name": "South Fork Merced R Headflow",
@@ -383,11 +376,6 @@
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0
-        },
-        {
-            "name": "Valley Demand",
-            "type": "Output",
-            "max_flow": "Valley Demand/Demand"
         },
         {
             "name": "Valley_Inflow",
@@ -580,14 +568,6 @@
             "MID Main"
         ],
         [
-            "MERCE-N-JUN2",
-            "MERCE-L-CON1 [link]"
-        ],
-        [
-            "MERCE-L-CON1 [link]",
-            "Valley Demand"
-        ],
-        [
             "Maxwell Ck Inflow",
             "Merced River [link]"
         ],
@@ -729,6 +709,13 @@
             "parse_dates": false,
             "squeeze": true
         },
+        "Lake McClure/Guide Curve": {
+            "url": "../data/Merced River/Management/BAU/Demand/LakeMcLure_FloodControl_Requirements.csv",
+            "names": ["dry", "normal", "wet"],
+            "index_col": 0,
+            "parse_dates": false,
+            "header": 0
+        },
         "MID Northside Diversions": {
             "url": "../data/Merced River/Management/BAU/Demand/MID_WYT_average_diversion_Northside_cfs.csv",
             "index_col": 0,
@@ -829,12 +816,24 @@
         "Lake McClure/Observed Storage": {
             "type": "Lake_McClure_Observed_Storage"
         },
-        "Lake McClure/Storage Demand": {
-            "type": "Lake_McClure_Storage_Demand"
+        "Lake McClure/Cost": {
+            "type": "controlcurveinterpolated",
+            "storage_node": "Lake McClure",
+            "control_curves": [
+                "Lake McClure/Water Demand",
+                0.5,
+                0.1
+            ],
+            "values": [
+                0.0,
+                0.0,
+                -20.0,
+                -50.0,
+                -1000000.0
+            ]
         },
-        "Lake McClure/Storage Value": {
-            "type": "constant",
-            "value": -10
+        "Lake McClure/Water Demand": {
+            "type": "Lake_McClure_Water_Demand"
         },
         "Lake McSwain/Storage Capacity": {
             "type": "constant",
@@ -966,28 +965,8 @@
             "type": "constant",
             "value": 8.12
         },
-        "New Exchequer PH/Excess Value": {
-            "type": "constant",
-            "value": -1
-        },
-        "New Exchequer PH/Base Value": {
-            "type": "constant",
-            "value": 0
-        },
-        "New Exchequer PH/Water Demand": {
-            "type": "constant",
-            "value": 0
-        },
-        "New Exchequer PH/Unconstrained Cost": {
-            "type": "constant",
-            "value": 10
-        },
         "USGS_11264500 MERCED R A HAPPY ISLES/Observed Flow": {
             "type": "USGS_11264500_MERCED_R_A_HAPPY_ISLES_Observed_Flow"
-        },
-        "Valley Demand/Demand": {
-            "type": "constant",
-            "value": 0
         }
     },
     "recorders": {
@@ -1119,10 +1098,6 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "New Exchequer PH"
         },
-        "New Exchequer PH/water demand": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "New Exchequer PH/Water Demand"
-        },
         "USGS_11264500 MERCED R A HAPPY ISLES/observed flow": {
             "type": "NumpyArrayParameterRecorder",
             "parameter": "USGS_11264500 MERCED R A HAPPY ISLES/Observed Flow"
@@ -1130,10 +1105,6 @@
         "USGS_11264500 MERCED R A HAPPY ISLES/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "USGS_11264500 MERCED R A HAPPY ISLES"
-        },
-        "Valley Demand/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "Valley Demand"
         }
     }
 }
