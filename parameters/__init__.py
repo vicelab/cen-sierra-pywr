@@ -184,7 +184,7 @@ class WaterLPParameter(Parameter):
             if timestep.index == 0:
                 Qp = initial_value  # should be in cms
             else:
-                Qp = self.model.nodes[self.res_name].prev_flow[-1] / 0.0864  # convert to cms
+                Qp = self.model.nodes[self.res_name].prev_flow[scenario_index.global_id] / 0.0864  # convert to cms
             qmax = Qp * (1 + rate)
         else:
             qmax = 1e6

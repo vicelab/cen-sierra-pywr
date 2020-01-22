@@ -26,10 +26,14 @@ for basin in basins:
         if node['type'] != 'RiverGauge':
             continue
         gauge_name = node['name']
-        gauged_node = up_nodes[up_nodes[gauge_name][0]][0]
+        up_node = nodes[up_nodes[gauge_name][0]]
+        metadata = json.loads(up_node.get('comment', '{}'))
+        gauged_node = up_nodes[up_node['name']][0] if metadata.get('resource_class') == 'link' else up_node['name']
         if gauged_node in included:
             # maybe it's a reservoir, so we should look down instead
-            gauged_node = down_nodes[down_nodes[gauge_name][0]][0]
+            down_node = nodes[down_nodes[gauge_name][0]]
+            metadata = json.loads(down_node.get('comment', '{}'))
+            gauged_node = down_nodes[down_node['name']][0] if metadata.get('resource_class') == 'link' else down_node['name']
             if gauged_node in included:
                 continue
         included.append(gauged_node)

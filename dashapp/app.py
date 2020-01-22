@@ -179,9 +179,7 @@ for basin in ['stn', 'tuo', 'mer', 'usj']:
                 RES_OPTIONS[basin][ta] = [option]
 
     # load observed data
-    attr = 'storage_af'
-    if basin in ['stn', 'usj']:
-        attr = 'storage_mcm'
+    attr = 'storage_mcm'
     try:
         df = pd.read_csv(
             opath.format(basin=basin_long.replace('_', ' ').title() + ' River', attr=attr),
@@ -209,14 +207,7 @@ for basin in ['stn', 'tuo', 'mer', 'usj']:
 df_obs_storage = pd.concat(obs_storage, axis=1)
 df_obs_streamflow = pd.concat(obs_streamflow, axis=1)
 
-gauge_lookup = pd.read_csv('gauges.csv', index_col=[0], squeeze=True, dtype=(str)).to_dict()
-gauge_number_to_name = {}
-for gauge in df_obs_streamflow.columns:
-    if 'USGS' in gauge:
-        gauge_number_to_name[gauge.split(' ')[1]] = gauge
-for loc, gauge in gauge_lookup.items():
-    if gauge in gauge_number_to_name:
-        gauge_lookup[loc] = gauge_number_to_name[gauge]
+gauge_lookup = pd.read_csv('gauges.csv', header=None, index_col=0, squeeze=True, dtype=(str)).to_dict()
 
 
 def root_mean_square_error(predictions, targets):
@@ -1026,8 +1017,8 @@ def get_resources_old(df, filterby=None):
 
 def get_resources(df, filterby=None):
     all_resources = sorted(set(df.columns.get_level_values(1)))
-    # return [r for r in all_resources if not filterby or r.replace(' ', '_') in filterby]
-    return all_resources
+    return [r for r in all_resources if not filterby or r.replace(' ', '_') in filterby]
+    # return all_resources
 
 
 def agg_by_resources(df, agg):
@@ -1175,10 +1166,10 @@ def render_timeseries_collection(tab, **kwargs):
 
         elif tab == 'ifr-flow':
             attr = 'flow'
-            if basin == 'stn':
-                pywr_param_name = 'PiecewiseInstreamFlowRequirement'
-            else:
-                pywr_param_name = 'InstreamFlowRequirement'
+            # if basin == 'stn':
+            #     pywr_param_name = 'PiecewiseInstreamFlowRequirement'
+            # else:
+            pywr_param_name = 'InstreamFlowRequirement'
             df = load_timeseries(results_path, basin, forcings, pywr_param_name, 'Flow',
                                  multiplier=MCM_TO_CFS, **load_data_kwargs)
             df_pw_min_ifr_reqt = load_timeseries(

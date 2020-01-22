@@ -69,12 +69,12 @@
             "name": "Angels PH",
             "type": "Hydropower",
             "head": 135.3,
-            "max_flow": "Angels PH/Turbine Capacity",
-            "max_flows": [
+            "turbine_capacity": "Angels PH/Turbine Capacity",
+            "max_flow": [
                 "Angels PH/Water Demand/1",
                 "Angels PH/Water Demand/2"
             ],
-            "costs": [
+            "cost": [
                 "Angels PH/Cost/1",
                 "Angels PH/Cost/2",
                 "Angels PH/Cost/3"
@@ -102,7 +102,7 @@
         },
         {
             "name": "Beardsley Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
@@ -112,12 +112,13 @@
             "max_volume": 121.45,
             "min_volume": 25,
             "cost": "Beardsley Reservoir/Storage Value",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "gauge": "USGS 11292800 BEARDSLEY LAKE NEAR STRAWBERRY CA"
         },
         {
             "name": "Beardsley PH",
             "type": "Hydropower",
-            "max_flow": "Beardsley PH/Turbine Capacity",
+            "turbine_capacity": "Beardsley PH/Turbine Capacity",
             "cost": -1,
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -178,12 +179,12 @@
             "name": "Collierville PH",
             "type": "Hydropower",
             "head": 691.896,
-            "max_flow": "Collierville PH/Turbine Capacity",
-            "max_flows": [
+            "turbine_capacity": "Collierville PH/Turbine Capacity",
+            "max_flow": [
                 "Collierville PH/Water Demand/1",
                 "Collierville PH/Water Demand/2"
             ],
-            "costs": [
+            "cost": [
                 "Collierville PH/Cost/1",
                 "Collierville PH/Cost/2",
                 "Collierville PH/Cost/3"
@@ -209,12 +210,12 @@
             "name": "Donnells PH",
             "type": "Hydropower",
             "head": 350.8,
-            "max_flow": "Donnells PH/Turbine Capacity",
-            "max_flows": [
+            "turbine_capacity": "Donnells PH/Turbine Capacity",
+            "max_flow": [
                 "Donnells PH/Water Demand/1",
                 "Donnells PH/Water Demand/2"
             ],
-            "costs": [
+            "cost": [
                 "Donnells PH/Cost/1",
                 "Donnells PH/Cost/2",
                 "Donnells PH/Cost/3"
@@ -223,7 +224,7 @@
         },
         {
             "name": "Donnells Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
@@ -234,7 +235,8 @@
             "min_volume": 6.2,
             "cost": "Donnells Reservoir/Storage Value",
             "level": "Donnells Reservoir/Elevation",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "gauge": "USGS 11292600 DONNELL LK NR DARDANELLE CA"
         },
         {
             "name": "Donnell Lake Low Flow Release",
@@ -505,7 +507,7 @@
         },
         {
             "name": "Hunter Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": 0.1,
             "max_volume": 0.31,
             "min_volume": 0.1,
@@ -514,7 +516,7 @@
         },
         {
             "name": "Lyons Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
@@ -524,7 +526,8 @@
             "max_volume": 7.5,
             "min_volume": 1.25,
             "cost": "Lyons Reservoir/Storage Value",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "gauge": "USGS 11297700 LYONS RES NR LONG BARN CA"
         },
         {
             "name": "McKays Point Diversion",
@@ -597,7 +600,7 @@
         },
         {
             "name": "New Melones Lake",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
@@ -607,18 +610,19 @@
             "max_volume": 2960.35,
             "min_volume": 500,
             "cost": "New Melones Lake/Storage Value",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "gauge": "USGS 11299000 NEW MELONES RES NR SONORA CA"
         },
         {
             "name": "New Melones PH",
             "type": "Hydropower",
-            "max_flow": "New Melones PH/Turbine Capacity",
+            "turbine_capacity": "New Melones PH/Turbine Capacity",
             "cost": -1,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "New Spicer Meadow Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
@@ -628,12 +632,13 @@
             "max_volume": 227.24,
             "min_volume": 50,
             "cost": "New Spicer Meadow Reservoir/Storage Value",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "gauge": "USGS 11293770 NEW SPICER MEADOW RES NR BIG MEADOW CA"
         },
         {
             "name": "New Spicer Meadow PH",
             "type": "Hydropower",
-            "max_flow": "New Spicer Meadow PH/Turbine Capacity",
+            "turbine_capacity": "New Spicer Meadow PH/Turbine Capacity",
             "cost": -1,
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -703,7 +708,7 @@
         },
         {
             "name": "Pinecrest Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
@@ -714,11 +719,12 @@
             "min_volume": 0.57,
             "cost": "Pinecrest Reservoir/Storage Value",
             "level": "Pinecrest Reservoir/Elevation",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "gauge": "USGS 11295900 PINECREST LK NR STRAWBERRY CA"
         },
         {
             "name": "Relief Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
@@ -729,18 +735,19 @@
             "min_volume": 1.2,
             "cost": "Relief Reservoir/Storage Value",
             "level": "Relief Reservoir/Elevation",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "gauge": "USGS 11291000 RELIEF RES NR BAKER STATION CA"
         },
         {
             "name": "Sand Bar PH",
             "type": "Hydropower",
             "head": 130,
-            "max_flow": "Sand Bar PH/Turbine Capacity",
-            "max_flows": [
+            "turbine_capacity": "Sand Bar PH/Turbine Capacity",
+            "max_flow": [
                 "Sand Bar PH/Water Demand/1",
                 "Sand Bar PH/Water Demand/2"
             ],
-            "costs": [
+            "cost": [
                 "Sand Bar PH/Cost/1",
                 "Sand Bar PH/Cost/2",
                 "Sand Bar PH/Cost/3"
@@ -792,12 +799,12 @@
             "name": "Spring Gap PH",
             "type": "Hydropower",
             "head": 568.452,
-            "max_flow": "Spring Gap PH/Turbine Capacity",
-            "max_flows": [
+            "turbine_capacity": "Spring Gap PH/Turbine Capacity",
+            "max_flow": [
                 "Spring Gap PH/Water Demand/1",
                 "Spring Gap PH/Water Demand/2"
             ],
-            "costs": [
+            "cost": [
                 "Spring Gap PH/Cost/1",
                 "Spring Gap PH/Cost/2",
                 "Spring Gap PH/Cost/3"
@@ -828,12 +835,12 @@
             "name": "Stanislaus PH",
             "type": "Hydropower",
             "head": 463.296,
-            "max_flow": "Stanislaus PH/Turbine Capacity",
-            "max_flows": [
+            "turbine_capacity": "Stanislaus PH/Turbine Capacity",
+            "max_flow": [
                 "Stanislaus PH/Water Demand/1",
                 "Stanislaus PH/Water Demand/2"
             ],
-            "costs": [
+            "cost": [
                 "Stanislaus PH/Cost/1",
                 "Stanislaus PH/Cost/2",
                 "Stanislaus PH/Cost/3"
@@ -1152,12 +1159,13 @@
         },
         {
             "name": "Tulloch Lake",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": 81.02,
             "max_volume": 81.02,
             "min_volume": "Tulloch Lake/Min Volume",
             "cost": "Tulloch Lake/Storage Value",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "gauge": "USGS 11299995 TULLOCH RES NR KNIGHTS FERRY CA"
         },
         {
             "name": "Tulloch Lake Flood Control",
@@ -1190,11 +1198,12 @@
         },
         {
             "name": "Union-Utica Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": 6.0,
             "max_volume": 6.76,
             "cost": "Union-Utica Reservoir/Storage Value",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "gauge": "USGS UNION-UTICA"
         },
         {
             "name": "UPA Tunnel Tap Inflow",

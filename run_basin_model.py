@@ -543,9 +543,12 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
     # ========================
 
     here = os.path.dirname(os.path.realpath(__file__))
+    os.chdir(here)
+
     root_dir = os.path.join(here, basin)
     temp_dir = os.path.join(root_dir, 'temp')
-    os.chdir(here)
+    if not os.path.exists(temp_dir):
+        os.makedirs(temp_dir)
 
     bucket = 'openagua-networks'
     base_filename = 'pywr_model.json'

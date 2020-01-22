@@ -1470,7 +1470,7 @@
             },
             "max_volume": 55.61,
             "min_volume": 27.0,
-            "cost": -15.5,
+            "cost": -50,
             "gauge": "USGS 11243400 BASS LK NR BASS LAKE CA"
         },
         {
@@ -1751,7 +1751,7 @@
             },
             "max_volume": 79.41,
             "min_volume": 1.25,
-            "cost": -85,
+            "cost": -50,
             "gauge": "USGS 11229600 FLORENCE LK NR BIG C CA"
         },
         {
@@ -1786,19 +1786,21 @@
             },
             "max_volume": 109.94,
             "min_volume": 37.0,
-            "cost": -80,
+            "cost": -45,
             "gauge": "USGS 11236000 HUNTINGTON LK NR BIG CREEK CA"
         },
         {
             "name": "IFR above Shakeflat Creek",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Balsam Forebay",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
@@ -1806,6 +1808,7 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Bass Lake/Min Flow",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
@@ -1813,6 +1816,7 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Bear Div/Min Flow",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
@@ -1820,6 +1824,7 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Big Creek 5 Div/Min Flow",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
@@ -1827,6 +1832,7 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Big Creek 6 Div/Min Flow",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
@@ -1834,6 +1840,7 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Bolsillo Creek Div/Min Flow",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
@@ -1841,6 +1848,7 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Browns Creek Ditch/Min Flow",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
@@ -1848,6 +1856,7 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Camp 62 Creek Div/Min Flow",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
@@ -1855,13 +1864,14 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Chinquapin Creek Div/Min Flow",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Hooper Creek",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_flow": 0,
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
@@ -1869,6 +1879,7 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Huntington Lake/Min Flow",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
@@ -1876,13 +1887,14 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Kerckhoff Lake/Min Flow",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Lake Thomas A Edison",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_flow": 0,
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
@@ -1890,20 +1902,21 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Manzanita Div/Min Flow",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Millerton Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_flow": 0,
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Mono Creek Div",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_flow": 0,
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
@@ -1911,12 +1924,14 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Pitman Creek Div/Min Flow",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Portal Forebay",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
@@ -1924,6 +1939,7 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Redinger Lake/Min Flow",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
@@ -1931,12 +1947,14 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl San Joaquin 1 Div/Min Flow",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
             "name": "IFR bl San Joaquin R and Willow Cr confluence",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
@@ -1944,12 +1962,14 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Shaver Lake/Min Flow",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
             "name": "IFR No. Fk. Stevenson Creek above Shaver Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
@@ -2016,7 +2036,7 @@
             },
             "max_volume": 4.6,
             "min_volume": 4.1,
-            "cost": -12,
+            "cost": -65,
             "gauge": "USGS 11246650 KERCKHOFF RES NR AUBERRY CA"
         },
         {
@@ -2031,7 +2051,7 @@
             },
             "max_volume": 154.17,
             "min_volume": 8.0,
-            "cost": "Lake Thomas A Edison/Storage Value",
+            "cost": -10,
             "gauge": "USGS 11231000 LK THOMAS A. EDISON NR BIG C CA"
         },
         {
@@ -2062,7 +2082,7 @@
             },
             "max_volume": 147.89,
             "min_volume": 5.0,
-            "cost": -42.5,
+            "cost": -35,
             "gauge": "USGS 11234700 MAMMOTH POOL RE NR BIG CREEK CA"
         },
         {
@@ -2085,6 +2105,7 @@
                 "index": "2000-09-30",
                 "column": "USGS 11250100 MILLERTON LK A FRIANT CA"
             },
+            "cost": "Millerton Lake/Cost",
             "max_volume": 46.33711665999021,
             "gauge": "USGS 11250100 MILLERTON LK A FRIANT CA"
         },
@@ -2211,7 +2232,7 @@
             },
             "max_volume": 32.21,
             "min_volume": 5.28,
-            "cost": -20,
+            "cost": -70,
             "gauge": "USGS 11241950 REDINGER LK NR AUBERRY CA"
         },
         {
@@ -2365,7 +2386,7 @@
             },
             "max_volume": 167.16,
             "min_volume": 0.47,
-            "cost": -65,
+            "cost": -40,
             "gauge": "USGS 11239500 SHAVER LK NR BIG C CA"
         },
         {
@@ -5283,7 +5304,7 @@
             "squeeze": true
         },
         "Initial Storage": {
-            "url": "../data/Upper San Joaquin River/gauges/usgs_storage_mcm.csv",
+            "url": "../data/Upper San Joaquin River/gauges/storage_mcm.csv",
             "index_col": 0,
             "header": 0,
             "parse_dates": true
@@ -5801,9 +5822,9 @@
             "value": 1,
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         },
-        "Lake Thomas A Edison/Storage Value": {
-            "type": "Lake_Thomas_A_Edison_Storage_Value",
-            "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
+        "Lake Thomas A Edison/Cost": {
+            "type": "constant",
+            "value": -45
         },
         "Mammoth Pool PH/Cost/1": {
             "type": "PH_Cost",
@@ -5883,6 +5904,10 @@
             "type": "constant",
             "value": 1,
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
+        },
+        "Millerton Lake/Cost": {
+            "type": "constant",
+            "value": -30
         },
         "Portal PH/Cost/1": {
             "type": "PH_Cost",
