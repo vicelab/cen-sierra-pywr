@@ -157,14 +157,14 @@ class WaterLPParameter(Parameter):
 
         return data
 
-    def get_down_ramp_ifr(self, timestep, value, initial_value=None, rate=0.25):
+    def get_down_ramp_ifr(self, timestep, scenario_index, value, initial_value=None, rate=0.25):
         if timestep.index == 0:
             if initial_value is not None:
                 Qp = initial_value
             else:
                 Qp = value
         else:
-            Qp = self.model.nodes[self.res_name].prev_flow[-1] / 0.0864  # convert to cms
+            Qp = self.model.nodes[self.res_name].prev_flow[scenario_index.global_id] / 0.0864  # convert to cms
         return max(value, Qp * (1 - rate))
 
     def get_up_ramp_ifr(self, timestep, scenario_index, initial_value=None, rate=0.25, max_flow=None):
