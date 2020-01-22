@@ -158,6 +158,15 @@ class WaterLPParameter(Parameter):
         return data
 
     def get_down_ramp_ifr(self, timestep, scenario_index, value, initial_value=None, rate=0.25):
+        """
+
+        :param timestep:
+        :param scenario_index:
+        :param value: cubic meters per second
+        :param initial_value: cubic meters per second
+        :param rate:
+        :return:
+        """
         if timestep.index == 0:
             if initial_value is not None:
                 Qp = initial_value
