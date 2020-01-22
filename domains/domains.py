@@ -8,6 +8,7 @@ class Reservoir(Storage):
     """
 
     def __init__(self, *args, **kwargs):
+
         self.gauge = kwargs.pop("gauge", None)
         super(Reservoir, self).__init__(*args, **kwargs)
 
