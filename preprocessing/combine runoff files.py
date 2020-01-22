@@ -26,7 +26,7 @@ for basin in os.listdir(root_dir):
         all_subwats_df = pd.concat(subwats, axis=1)
 
         # save to file
-        outdir = os.path.join(basin_dir, 'Scenarios', 'postprocessed', scenario)
+        outdir = os.path.join(basin_dir, 'Scenarios', 'preprocessed', scenario)
         if not os.path.exists(outdir):
             os.makedirs(outdir)
         all_subwats_df.to_csv(os.path.join(outdir, 'runoff_mcm.csv'))
