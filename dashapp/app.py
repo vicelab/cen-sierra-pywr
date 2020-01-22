@@ -179,8 +179,8 @@ for basin in ['stn', 'tuo', 'mer', 'usj']:
                 RES_OPTIONS[basin][ta] = [option]
 
     # load observed data
-    attr = 'usgs_storage_af'
-    if basin == 'stn':
+    attr = 'storage_af'
+    if basin in ['stn', 'usj']:
         attr = 'storage_mcm'
     try:
         df = pd.read_csv(
@@ -188,7 +188,7 @@ for basin in ['stn', 'tuo', 'mer', 'usj']:
             index_col=[0],
             parse_dates=True
         ).ffill()
-        if basin == 'stn':
+        if '_mcm' in attr:
             df *= MCM_TO_TAF
         else:
             df /= 1000
@@ -197,7 +197,7 @@ for basin in ['stn', 'tuo', 'mer', 'usj']:
         pass
 
     df = pd.read_csv(
-        opath.format(basin=basin_long.replace('_', ' ').title() + ' River', attr='usgs_streamflow_cfs'),
+        opath.format(basin=basin_long.replace('_', ' ').title() + ' River', attr='streamflow_cfs'),
         index_col=[0],
         parse_dates=True
     ).ffill()  # already cfs, no need to concert
@@ -268,8 +268,8 @@ def load_timeseries_old(results_path, basin, forcings, res_type, res_attr, nscen
         return None
 
 
-def load_timeseries(results_path, basin, forcings, res_type, res_attr, nscenarios=1,
-                    run='full run', tpl='mcm', multiplier=1.0, aggregate=None, filterby=None):
+def load_timeseries_new(results_path, basin, forcings, res_type, res_attr, nscenarios=1,
+                        run='full run', tpl='mcm', multiplier=1.0, aggregate=None, filterby=None):
     full_basin = BASINS[basin].replace(' ', '_').lower()
     if run == 'development':
         path_tpl = os.path.join(results_path, PATH_TEMPLATES[tpl])
@@ -280,14 +280,20 @@ def load_timeseries(results_path, basin, forcings, res_type, res_attr, nscenario
             res_type=res_type,
             res_attr=res_attr
         )
-        header = [0, 1]
         if not os.path.exists(path):
             return None
+
+        scenarios = SCENARIOS[basin]
+        header = list(range(len(scenarios) + 1))
+
         df = pd.read_csv(path, index_col=0, parse_dates=True, header=header)
-        levels = df.columns.levels[1]
-        for val in levels[1:]:
-            df.drop(val, axis=1, level=1, inplace=True)
-        df = df.droplevel(1, axis=1)
+
+        start = 1
+        end = start + len(df.columns.names[1:-1])
+        levelvals = df.columns.levels[start:end+1]
+        for i, val in enumerate(levelvals):
+            df.drop(val[1:], axis=1, level=1, inplace=True)
+            df = df.droplevel(1, axis=1)
         new_levels = [(forcings[0], col) for col in df.columns]
         df.columns = pd.MultiIndex.from_tuples(new_levels)
 
@@ -314,6 +320,10 @@ def load_timeseries(results_path, basin, forcings, res_type, res_attr, nscenario
     df *= multiplier
 
     return df
+
+
+def load_timeseries(*args, **kwargs):
+    return load_timeseries_new(*args, **kwargs)
 
 
 def consolidate_dataframe(df, resample):
@@ -383,7 +393,7 @@ def percentile_timeseries_graphs(df, name, options, color='black'):
                     showlegend=showlegend,
                     mode='lines',
                     fill=fill,
-                    text='{}: {}%'.format(name, pct*100),
+                    text='{}: {}%'.format(name, pct * 100),
                     name=name,
                     line=dict(color=color, width=width)
                 )
@@ -1076,7 +1086,7 @@ def render_timeseries_collection(tab, **kwargs):
 
     if tab == 'reservoir-storage':
         attr = 'storage'
-        df_storage = load_timeseries(results_path, basin, forcings, 'Storage', 'Storage',
+        df_storage = load_timeseries(results_path, basin, forcings, 'Reservoir', 'Storage',
                                      multiplier=MCM_TO_TAF, **load_data_kwargs)
         kwargs.pop('transform', None)
         if resample:
@@ -1567,7 +1577,7 @@ def update_select_resources(tab, basin):
     res_options = RES_OPTIONS.get(basin, {})
     options = []
     if tab == 'reservoir-storage':
-        options = res_options.get(('Storage', 'storage'))
+        options = res_options.get(('Reservoir', 'storage'))
     elif tab in ['hydropower-flow', 'hydropower-generation']:
         opts_npw = res_options.get(('Hydropower', 'flow'), [])
         opts_pw = res_options.get(('PiecewiseHydropower', 'flow'), [])
