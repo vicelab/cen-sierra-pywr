@@ -3,7 +3,7 @@ from datetime import date
 import numpy as np
 
 
-class IFR_bl_Crocker_Huffman_Dam_Requirement(WaterLPParameter):
+class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
     """
     This policy calculates instream flow requirements in the Merced River below the Merced Falls powerhouse.
     """
@@ -61,7 +61,10 @@ class IFR_bl_Crocker_Huffman_Dam_Requirement(WaterLPParameter):
         requirement_mcm = requirement_cms * 0.0864  # convert to mcm
 
         requirement_mcm = max(requirement_mcm, swrcb_reqt_mcm)
-        return requirement_mcm
+
+        final_reqt_cms = self.get_down_ramp_ifr(timestep, scenario_index, requirement_mcm, rate=0.25)
+
+        return final_reqt_cms * 0.0864
 
     def ferc_req(self, timestep, scenario_index, wyt):
         mth = timestep.month
@@ -103,7 +106,7 @@ class IFR_bl_Crocker_Huffman_Dam_Requirement(WaterLPParameter):
                 # Calculate for average flow in Nov and Dec of previous year at Shaffer Bridge on 1st Jan
                 st_date = date(yr - 1, 11, 1)
                 end_date = date(yr - 1, 12, 31)
-                gauge_Shafer_ts = self.model.recorders['IFR bl Crocker-Huffman Dam/flow'].to_dataframe()
+                gauge_Shafer_ts = self.model.recorders['IFR at Shaffer Bridge/flow'].to_dataframe()
                 self.nov_dec_mean = gauge_Shafer_ts[tuple(scenario_index.indices)][st_date:end_date].mean()
             if self.nov_dec_mean >= 4.25:  # If mean flow greater than eaual to 150 cfs, then atleast 100 cfs flow
                 ferc_lic_flow = 2.83
@@ -199,5 +202,5 @@ class IFR_bl_Crocker_Huffman_Dam_Requirement(WaterLPParameter):
         return cls(model, **data)
 
 
-IFR_bl_Crocker_Huffman_Dam_Requirement.register()
-print(" [*] IFR_bl_Crocker_Huffman_Dam_Requirement successfully registered")
+IFR_at_Shaffer_Bridge_Min_Flow.register()
+print(" [*] IFR_at_Shaffer_Bridge_Min_Flow successfully registered")
