@@ -705,8 +705,8 @@
             "name": "Cherry Lake",
             "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_volume": 100,
-            "initial_volume": 250,
+            "min_volume": 1.2335,
+            "initial_volume": 145.7,
             "max_volume": 338.2,
             "level": "Cherry Lake/Volume Elevation Curve",
             "cost": "Cherry Lake/Cost",
@@ -764,7 +764,7 @@
             "name": "Don Pedro Reservoir",
             "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 1000.0,
+            "initial_volume": 2082.0,
             "max_volume": 2504.0,
             "min_volume": 616.75,
             "level": "Don Pedro Reservoir/Volume Elevation Curve",
@@ -818,7 +818,7 @@
             "name": "Hetch Hetchy Reservoir",
             "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 308.37547798199085,
+            "initial_volume": 353,
             "max_volume": 444.6,
             "min_volume": 123.3,
             "level": "Hetch Hetchy Reservoir/Volume Elevation Curve",
@@ -829,6 +829,7 @@
             "name": "IFR bl Cherry Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
+            "max_flow_cost": 10000,
             "min_flow": "IFR bl Cherry Lake/Min Flow",
             "min_flow_cost": -10000
         },
@@ -844,14 +845,16 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Hetch Hetchy Reservoir/Min Flow",
-            "min_flow_cost": -10000
+            "min_flow_cost": -10000,
+            "max_flow_cost": 10000
         },
         {
             "name": "IFR bl Lake Eleanor",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Lake Eleanor/Min Flow",
-            "min_flow_cost": -10000
+            "min_flow_cost": -10000,
+            "max_flow_cost": 10000
         },
         {
             "name": "IFR bl Moccasin Reservoir",
@@ -880,9 +883,9 @@
             "name": "Lake Eleanor",
             "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 24.67003823855927,
+            "initial_volume": 18.13,
             "max_volume": 32.2,
-            "min_volume": 12.335019119279634,
+            "min_volume": 0,
             "level": "Lake Eleanor/Volume Elevation Curve",
             "cost": "Lake Eleanor/Cost",
             "gauge": "USGS 11277500 LK ELEANOR NR HETCH HETCHY CA"
@@ -984,7 +987,8 @@
             "name": "SFPUC",
             "type": "Output",
             "comment": "{\"resource_class\": \"node\"}",
-            "cost": -400
+            "max_flow": "SFPUC/Demand",
+            "cost": -500
         },
         {
             "name": "Sullivan Ck Headflow",
@@ -2659,6 +2663,13 @@
                 -1000000.0
             ]
         },
+        "Hetch Hetchy Reservoir/Precipitation": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/precipitation/Livneh/rainfall_HetchHetchy_mm.csv",
+            "index_col": "dates",
+            "column": "Rain_mm",
+            "parse_dates": true
+        },
         "Hetch Hetchy Reservoir/Rule Curve": {
             "type": "Preferred_Storage"
         },
@@ -2805,6 +2816,13 @@
         },
         "Modesto Irrigation District/Demand": {
             "type": "Modesto_Irrigation_District_Demand"
+        },
+        "SFPUC/Demand": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/temp/SJPL mcm.csv",
+            "header": 0,
+            "index_col": 0,
+            "parse_dates": true
         },
         "Turlock Irrigation District/Demand": {
             "type": "Turlock_Irrigation_District_Demand"
