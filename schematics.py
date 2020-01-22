@@ -13,7 +13,7 @@ import json
 
 
 fillcolors = {
-    'storage': 'blue',
+    'reservoir': 'blue',
     'virtualstorage': 'blue',
     'hydropower': 'red',
     'piecewisehydropower': 'red',
@@ -25,7 +25,7 @@ fillcolors = {
 }
 
 fontcolors = {
-    'storage': 'white',
+    'reservoir': 'white',
     'virtualstorage': 'white',
     'hydropower': 'white',
     'piecewisehydropower': 'white',
@@ -35,10 +35,10 @@ fontcolors = {
 
 # dot = Digraph(comment='System')
 
-basins = ['stanislaus', 'merced', 'upper_san_joaquin']
-basins = ['upper_san_joaquin']
+# basins = ['stanislaus', 'merced', 'upper_san_joaquin']
+# basins = ['upper_san_joaquin']
 # basins = ['stanislaus']
-# basins = ['merced']
+basins = ['merced']
 # version = None
 # version = 'cleaned'
 version = 'simplified'
@@ -49,7 +49,7 @@ for basin in basins:
     if version:
         filename += '_' + version
     filename += '.json'
-    with open(os.path.join(basin, filename)) as f:
+    with open(os.path.join(basin, 'temp', filename)) as f:
         model = json.load(f)
     _dot = Digraph(name=basin, comment=basin)
     for node in model['nodes']:
@@ -67,7 +67,7 @@ for basin in basins:
         ntype = node['type'].lower()
         fillcolor = fillcolors.get(ntype, 'white')
         fontcolor = fontcolors.get(ntype, 'black')
-        shape = 'rect' if ntype in ['storage', 'virtualstorage'] else 'oval'
+        shape = 'rect' if ntype in ['reservoir', 'virtualstorage'] else 'oval'
         style = 'filled' if fillcolor else ''
         
         if ntype == 'virtualstorage':
@@ -75,12 +75,12 @@ for basin in basins:
         
         if version == 'monthly':
             shape = 'oval'
-            if ntype == 'storage' or month == 2:
+            if ntype == 'reservoir' or month == 2:
                 fillcolor = fillcolors.get('breaklink')
                 fontcolor = 'black'
 #             if '[link]' in node_name:
-#                 fillcolor = fillcolors.get('storage')
-#                 fontcolor = fontcolors.get('storage')
+#                 fillcolor = fillcolors.get('reservoir')
+#                 fontcolor = fontcolors.get('reservoir')
         
         _dot.node(node_name, shape=shape, style=style, fillcolor=fillcolor, fontcolor=fontcolor)
         
