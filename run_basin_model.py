@@ -95,7 +95,7 @@ def simplify_network(m, delete_gauges=False, delete_observed=True, delete_scenar
 
             if keys_set in [{'name', 'type'}, {'name', 'type', 'comment'}] and not metadata.get('keep') \
                     or delete_gauges and node_type == 'rivergauge' \
-                    or node_type == 'storage' and not node.get('max_volume'):
+                    or node_type == 'reservoir' and not node.get('max_volume'):
                 if delete_gauges and node_type == 'rivergauge':
                     obsolete_gauges.append(node_name)
                 if down_nodes.count(node_name) == 0:
@@ -189,10 +189,13 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
         old_name = node['name']
         node_type = node['type']
 
+        # delete gauge
+        node.pop('gauge', None)
+
         for key, value in node.items():
             if key in black_list:
                 continue
-            if node_type == 'Storage' and key == 'cost':
+            if node_type == 'Reservoir' and key == 'cost':
                 continue
             if type(value) == str and value in m['parameters']:
                 if value not in parameters_to_expand:
@@ -216,7 +219,7 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
 
             month = '/{}'.format(t)
 
-            if node_type == 'Storage' and node.get('max_volume'):
+            if node_type == 'Reservoir' and node.get('max_volume'):
                 # 1. rename and empty storage for original storage node
                 # for key in ['cost', 'min_volume', 'max_volume', 'initial_volume']:
                 #     new_node.pop(key, None)
@@ -541,6 +544,7 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
 
     here = os.path.dirname(os.path.realpath(__file__))
     root_dir = os.path.join(here, basin)
+    temp_dir = os.path.join(root_dir, 'temp')
     os.chdir(here)
 
     bucket = 'openagua-networks'
@@ -549,7 +553,7 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
     model_filename = model_filename_base + '.json'
 
     base_path = os.path.join(root_dir, base_filename)
-    model_path = os.path.join(root_dir, model_filename)
+    model_path = os.path.join(temp_dir, model_filename)
 
     # first order of business: update file paths in json file
     with open(base_path) as f:
@@ -565,6 +569,7 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
                 continue
             url = param.get('url')
             if url:
+                url = url.replace('../data', '../../data')
                 if climate != 'Livneh':
                     url = url.replace('Livneh', climate)
                 param['url'] = url
@@ -657,7 +662,7 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
     if simplify:
         # simplify model
         simplified_filename = model_filename_base + '_simplified.json'
-        simplified_model_path = os.path.join(root_dir, simplified_filename)
+        simplified_model_path = os.path.join(temp_dir, simplified_filename)
 
         m = simplify_network(m, delete_gauges=True, delete_observed=True, delete_scenarios=debug)
         # with open(simplified_model_path, 'w') as f:
@@ -678,7 +683,7 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
 
         # create filenames, etc.
         monthly_filename = model_filename_base + '_monthly.json'
-        planning_model_path = os.path.join(root_dir, monthly_filename)
+        planning_model_path = os.path.join(temp_dir, monthly_filename)
 
         prepare_planning_model(m, planning_model_path, steps=months, debug=save_results)
 
