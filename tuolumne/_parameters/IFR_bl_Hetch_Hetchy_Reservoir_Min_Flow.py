@@ -27,7 +27,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Min_Flow(WaterLPParameter):
         month_day = (date.month, date.day)
         if month_day >= (9, 15):
             lookup_row += 1
-        lookup_col = max([3, 2, 1].index(wyt) * 2 + 1, 4)
+        lookup_col = min([3, 2, 1].index(wyt) * 2 + 1, 4)
 
         base_ifr = schedule.iat[lookup_row, lookup_col] + 5  # factor of safety based on practice
 
