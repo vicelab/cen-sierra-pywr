@@ -1,5 +1,5 @@
 from pywr.nodes import Domain, PiecewiseLink, Storage
-from pywr.parameters import load_parameter
+from pywr.parameters import load_parameter, load_parameter_values
 
 
 class Reservoir(Storage):
@@ -11,6 +11,71 @@ class Reservoir(Storage):
 
         self.gauge = kwargs.pop("gauge", None)
         super(Reservoir, self).__init__(*args, **kwargs)
+
+class PiecewiseReservoir(Storage):
+    """
+    Like a storage node, only better
+    """
+
+    def __init__(self, *args, **kwargs):
+
+        self.gauge = kwargs.pop("gauge", None)
+        super(PiecewiseReservoir, self).__init__(*args, **kwargs)
+
+    @classmethod
+    def load(cls, data, model):
+        name = data.pop('name')
+        num_inputs = int(data.pop('inputs', 1))
+        num_outputs = int(data.pop('outputs', 1))
+
+        if 'initial_volume' not in data and 'initial_volume_pc' not in data:
+            raise ValueError('Initial volume must be specified in absolute or relative terms.')
+
+        initial_volume = data.pop('initial_volume', 0.0)
+        initial_volume_pc = data.pop('initial_volume_pc', None)
+        max_volume = data.pop('max_volume')
+        min_volume = data.pop('min_volume', 0.0)
+        level = data.pop('level', None)
+        area = data.pop('area', None)
+        cost = data.pop('cost', 0.0)
+
+        data.pop('type', None)
+        # Create the instance
+        node = cls(model=model, name=name, num_inputs=num_inputs, num_outputs=num_outputs, **data)
+
+        # Load the parameters after the instance has been created to prevent circular
+        # loading errors
+
+        # Try to coerce initial volume to float.
+        try:
+            initial_volume = float(initial_volume)
+        except TypeError:
+            initial_volume = load_parameter_values(model, initial_volume)
+        node.initial_volume = initial_volume
+        node.initial_volume_pc = initial_volume_pc
+
+        max_volume = load_parameter(model, max_volume)
+        if max_volume is not None:
+            node.max_volume = max_volume
+
+        min_volume = load_parameter(model, min_volume)
+        if min_volume is not None:
+            node.min_volume = min_volume
+
+        cost = load_parameter(model, cost)
+        if cost is None:
+            cost = 0.0
+        node.cost = cost
+
+        if level is not None:
+            level = load_parameter(model, level)
+        node.level = level
+
+        if area is not None:
+            area = load_parameter(model, area)
+        node.area = area
+
+        return node
 
 
 class InstreamFlowRequirement(PiecewiseLink):
