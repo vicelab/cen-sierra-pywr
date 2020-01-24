@@ -1470,7 +1470,7 @@
             },
             "max_volume": 55.61,
             "min_volume": 27.0,
-            "cost": -50,
+            "cost": -90,
             "gauge": "USGS 11243400 BASS LK NR BASS LAKE CA"
         },
         {
@@ -1751,7 +1751,7 @@
             },
             "max_volume": 79.41,
             "min_volume": 1.25,
-            "cost": -50,
+            "cost": -90,
             "gauge": "USGS 11229600 FLORENCE LK NR BIG C CA"
         },
         {
@@ -1786,7 +1786,7 @@
             },
             "max_volume": 109.94,
             "min_volume": 37.0,
-            "cost": -45,
+            "cost": -90,
             "gauge": "USGS 11236000 HUNTINGTON LK NR BIG CREEK CA"
         },
         {
@@ -2036,7 +2036,7 @@
             },
             "max_volume": 4.6,
             "min_volume": 4.1,
-            "cost": -65,
+            "cost": -50,
             "gauge": "USGS 11246650 KERCKHOFF RES NR AUBERRY CA"
         },
         {
@@ -2051,7 +2051,7 @@
             },
             "max_volume": 154.17,
             "min_volume": 8.0,
-            "cost": -10,
+            "cost": -90,
             "gauge": "USGS 11231000 LK THOMAS A. EDISON NR BIG C CA"
         },
         {
@@ -2082,7 +2082,7 @@
             },
             "max_volume": 147.89,
             "min_volume": 5.0,
-            "cost": -35,
+            "cost": -70,
             "gauge": "USGS 11234700 MAMMOTH POOL RE NR BIG CREEK CA"
         },
         {
@@ -2105,7 +2105,7 @@
                 "index": "2000-09-30",
                 "column": "USGS 11250100 MILLERTON LK A FRIANT CA"
             },
-            "cost": "Millerton Lake/Cost",
+            "cost": -40,
             "max_volume": 46.33711665999021,
             "gauge": "USGS 11250100 MILLERTON LK A FRIANT CA"
         },
@@ -2232,7 +2232,7 @@
             },
             "max_volume": 32.21,
             "min_volume": 5.28,
-            "cost": -70,
+            "cost": -60,
             "gauge": "USGS 11241950 REDINGER LK NR AUBERRY CA"
         },
         {
@@ -2385,8 +2385,8 @@
                 "column": "USGS 11239500 SHAVER LK NR BIG C CA"
             },
             "max_volume": 167.16,
-            "min_volume": 0.47,
-            "cost": -40,
+            "min_volume": 92.5,
+            "cost": -80,
             "gauge": "USGS 11239500 SHAVER LK NR BIG C CA"
         },
         {
@@ -6724,6 +6724,10 @@
         "Portal PH/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Portal PH"
+        },
+        "Portal PH/cost": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Portal PH/Cost/1"
         },
         "Redinger Lake/storage": {
             "type": "NumpyArrayStorageRecorder",
