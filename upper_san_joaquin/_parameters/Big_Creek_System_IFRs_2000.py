@@ -3,31 +3,31 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class IFR_bl_Big_Creek_5_Div_Min_Flow(WaterLPParameter):
+class Big_Creek_System_IFRs_2000(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
 
-        year_type = self.model.parameters["San Joaquin Valley WYT" + self.month_suffix].value(timestep, scenario_index)
-        curr_date = (self.datetime.month, self.datetime.day)
-        start_date = (4, 1)
-        end_date = (11, 15)
-        ifr_cfs = 0
-        if year_type in [1, 2]:  # Critical or Dry WYT
-            if start_date <= curr_date <= end_date:
-                ifr_cfs = 2
-            else:
-                ifr_cfs = 1
+        month = self.datetime.month
+
+        Friant_Apr_Jul_runoff_af = self.model.tables['Seasonal Inflow at Friant'][self.operational_water_year]
+        if Friant_Apr_Jul_runoff_af <= 900000:
+            ifr_table = self.model.tables['Big Creek System IFRs 2000 dry']
         else:
-            if start_date <= curr_date <= end_date:
-                ifr_cfs = 3
-            else:
-                ifr_cfs = 2
+            ifr_table = self.model.tables['Big Creek System IFRs 2000 normal']
+
+        col_name = month
+        if self.model.mode == 'scheduling':
+            if month in [11, 12, 4, 9]:
+                day = self.datetime.day
+                col_name = '{}-{}'.format(month, min(day - day % 15 + 1, 16))
+
+        ifr_cfs = ifr_table.at[self.res_name, col_name]
 
         if self.model.mode == "planning":
             ifr_cfs *= self.days_in_month()
 
-        return ifr_cfs / 35.31
+        return ifr_cfs / 35.315
 
     def value(self, timestep, scenario_index):
         try:
@@ -49,5 +49,5 @@ class IFR_bl_Big_Creek_5_Div_Min_Flow(WaterLPParameter):
             raise
 
 
-IFR_bl_Big_Creek_5_Div_Min_Flow.register()
-print(" [*] IFR_bl_Big_Creek_5_Div_Min_Flow successfully registered")
+Big_Creek_System_IFRs_2000.register()
+print(" [*] Big_Creek_System_IFRs_2000 successfully registered")

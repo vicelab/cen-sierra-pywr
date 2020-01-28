@@ -51,8 +51,8 @@ class PH_Cost(WaterLPParameter):
             else:
                 if self.block == 1:
                     pywr_cost = -250
-                elif self.block == 2:
-                    pywr_cost = -1  # more valuable than spill
+                # elif self.block == 2:
+                #     pywr_cost = -1  # more valuable than spill
                 else:
                     pywr_cost = 1  # costs money to generate (negative prices)
 

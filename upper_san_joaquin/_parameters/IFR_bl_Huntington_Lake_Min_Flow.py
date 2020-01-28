@@ -8,7 +8,7 @@ class IFR_bl_Huntington_Lake_Min_Flow(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
 
-        ifr_cfs = 0
+        ifr_cfs = 2  # TODO: find out what the actual practice is for this IFR. No IFR in winter doesn't make sense.
 
         if (4, 15) <= (self.datetime.month, self.datetime.day) <= (12, 15):
             ifr_cfs = 2

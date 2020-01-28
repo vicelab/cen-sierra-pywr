@@ -2,21 +2,23 @@ from parameters import WaterLPParameter
 
 from utilities.converter import convert
 
-class IFR_bl_Camp_62_Creek_Div_Min_Flow(WaterLPParameter):
+
+class IFR_bl_Lake_Thomas_A_Edison_Min_Flow(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        
-        ifr_cfs = 0.3
-        
+
+        ifr_cfs = 10 * 2  # double based on observations
+
         if self.model.mode == "planning":
             ifr_cfs *= self.days_in_month()
-        
-        return ifr_cfs
-        
+
+        return ifr_cfs / 35.31
+
     def value(self, timestep, scenario_index):
         try:
-            return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
+            return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1,
+                           scale_out=1000000.0)
         except Exception as err:
             print('ERROR for parameter {}'.format(self.name))
             print('File where error occurred: {}'.format(__file__))
@@ -31,6 +33,7 @@ class IFR_bl_Camp_62_Creek_Div_Min_Flow(WaterLPParameter):
             print('File where error occurred: {}'.format(__file__))
             print(err)
             raise
-        
-IFR_bl_Camp_62_Creek_Div_Min_Flow.register()
-print(" [*] IFR_bl_Camp_62_Creek_Div_Min_Flow successfully registered")
+
+
+IFR_bl_Lake_Thomas_A_Edison_Min_Flow.register()
+print(" [*] IFR_bl_Lake_Thomas_A_Edison_Min_Flow successfully registered")

@@ -7,7 +7,7 @@ class IFR_bl_Pitman_Creek_Div_Min_Flow(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         
-        ifr_cfs = 0.3
+        ifr_cfs = 1.0  # actual ifr is 0.3 cfs
         if self.model.mode == "planning":
             ifr_cfs *= self.days_in_month()
         return ifr_cfs / 35.31

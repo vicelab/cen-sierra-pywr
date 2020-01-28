@@ -20,9 +20,9 @@ class CVP_Friant_Kern_Canal_Demand(WaterLPParameter):
             end = (self.datetime.month, self.days_in_month())
             demand_cfs = demand_cfs[today:end].sum()
         
-        demand_mcm = demand_cfs / 35.315 * 0.0864
+        demand_cms = demand_cfs / 35.315
         
-        return demand_mcm
+        return demand_cms
         
     def value(self, timestep, scenario_index):
         try:
