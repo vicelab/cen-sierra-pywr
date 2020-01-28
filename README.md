@@ -53,9 +53,3 @@ or
 * **Lorenzo Scaturchio** - [gr8monk3ys](https://gr8monk3ys)
 
 See also the list of [contributors](https://github.com/vicelab/sierra-pywr/contributors) who participated in this project.
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
