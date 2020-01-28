@@ -107,7 +107,7 @@
                 "type": "constant",
                 "table": "Initial Storage",
                 "index": "2000-09-30",
-                "column": "Beardsley Reservoir"
+                "column": "USGS 11292800 BEARDSLEY LAKE NEAR STRAWBERRY CA"
             },
             "max_volume": 121.45,
             "min_volume": 25,
@@ -229,7 +229,7 @@
                 "type": "constant",
                 "table": "Initial Storage",
                 "index": "2000-09-30",
-                "column": "Donnells Reservoir"
+                "column": "USGS 11292600 DONNELL LK NR DARDANELLE CA"
             },
             "max_volume": 79.83,
             "min_volume": 6.2,
@@ -521,7 +521,7 @@
                 "type": "constant",
                 "table": "Initial Storage",
                 "index": "2000-09-30",
-                "column": "Lyons Reservoir"
+                "column": "USGS 11297700 LYONS RES NR LONG BARN CA"
             },
             "max_volume": 7.5,
             "min_volume": 1.25,
@@ -605,7 +605,7 @@
                 "type": "constant",
                 "table": "Initial Storage",
                 "index": "2000-09-30",
-                "column": "New Melones Lake"
+                "column": "USGS 11299000 NEW MELONES RES NR SONORA CA"
             },
             "max_volume": 2960.35,
             "min_volume": 500,
@@ -627,7 +627,7 @@
                 "type": "constant",
                 "table": "Initial Storage",
                 "index": "2000-09-30",
-                "column": "New Spicer Meadow Reservoir"
+                "column": "USGS 11293770 NEW SPICER MEADOW RES NR BIG MEADOW CA"
             },
             "max_volume": 227.24,
             "min_volume": 50,
@@ -713,7 +713,7 @@
                 "type": "constant",
                 "table": "Initial Storage",
                 "index": "2000-09-30",
-                "column": "Pinecrest Reservoir"
+                "column": "USGS 11295900 PINECREST LK NR STRAWBERRY CA"
             },
             "max_volume": 22.58,
             "min_volume": 0.57,
@@ -729,7 +729,7 @@
                 "type": "constant",
                 "table": "Initial Storage",
                 "index": "2000-09-30",
-                "column": "Relief Reservoir"
+                "column": "USGS 11291000 RELIEF RES NR BAKER STATION CA"
             },
             "max_volume": 18.5,
             "min_volume": 1.2,
