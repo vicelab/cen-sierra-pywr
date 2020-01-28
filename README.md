@@ -34,11 +34,11 @@ Windows:
 
 ```
 conda activate *environment_name*
--b *network* -n "development" -d d
+python main.py -b *network* -n "development" -d d
 
 or
 
--b *network* -p -n "development" -d dm
+python main.py -b *network* -p -n "development" -d dm
 ```
 
 ## Built With
