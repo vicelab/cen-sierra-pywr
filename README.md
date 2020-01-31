@@ -50,6 +50,7 @@ python main.py -b *network* -p -n "development" -d dm
 
 * **David Rheinheimer** - [rheinheimer](https://github.com/rheinheimer)
 * **Aditya Sood** - [asood12](https://github.com/asood12)
-* **Lorenzo Scaturchio** - [gr8monk3ys](https://gr8monk3ys)
+* **Dan Tran** - [GateauXD](https://github.com/GateauXD)
+* **Lorenzo Scaturchio** - [gr8monk3ys](https://github.com/gr8monk3ys)
 
 See also the list of [contributors](https://github.com/vicelab/sierra-pywr/contributors) who participated in this project.
