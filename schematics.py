@@ -36,9 +36,9 @@ fontcolors = {
 # dot = Digraph(comment='System')
 
 # basins = ['stanislaus', 'merced', 'upper_san_joaquin']
-# basins = ['upper_san_joaquin']
+basins = ['upper_san_joaquin']
 # basins = ['stanislaus']
-basins = ['merced']
+# basins = ['merced']
 # version = None
 # version = 'cleaned'
 version = 'simplified'
