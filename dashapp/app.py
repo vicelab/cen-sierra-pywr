@@ -16,6 +16,8 @@ import seaborn as sns
 
 import dash_daq as daq
 
+import constants as c
+
 external_stylesheets = [dbc.themes.BOOTSTRAP]
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
@@ -281,7 +283,7 @@ def load_timeseries_new(results_path, basin, forcings, res_type, res_attr, nscen
 
         start = 1
         end = start + len(df.columns.names[1:-1])
-        levelvals = df.columns.levels[start:end+1]
+        levelvals = df.columns.levels[start:end + 1]
         for i, val in enumerate(levelvals):
             df.drop(val[1:], axis=1, level=1, inplace=True)
             df = df.droplevel(1, axis=1)
@@ -432,6 +434,8 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     ts_data = []
     fd_data = []
 
+    metric = kwargs.get('metric')
+    metric = metric != 'default' and metric
     resample = kwargs.get('resample')
     percentiles = kwargs.get('percentiles')
     consolidate = kwargs.get('consolidate')
@@ -443,6 +447,11 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     head = kwargs.get('head')
 
     color_idx = -1
+
+    # Variables for observed data
+    obs_vals = None
+    gauges = []
+    gauge_name = gauge_lookup.get(res_name, res_name)
 
     for i, forcing in enumerate(set(all_sim_vals.columns.get_level_values(0))):
         parts = forcing.split('_')
@@ -464,7 +473,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
         resource_scenario_sim_vals = all_sim_vals[forcing, res_name]
         # for multiindex in resource_scenario_sim_vals.columns:
         #     sim_vals = resource_scenario_sim_vals[multiindex]
-        for scenario_combo in scenario_combos:
+        for i, scenario_combo in enumerate(scenario_combos):
 
             color_idx += 1
             sim_color = sns.color_palette().as_hex()[color_idx]
@@ -491,6 +500,32 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
                 sim_resampled = sim_vals.dropna().resample(resample).mean()
             else:
                 sim_resampled = sim_vals.dropna()
+
+            # Prepare observed data
+            if i == 0:
+                if calibration and gauge_name in df_obs:
+                    obs_vals = df_obs[gauge_name]
+
+                    head = kwargs.get('head')
+                    if head:
+                        obs_vals = flow_to_energy(obs_vals, head)
+
+                    if not consolidate:  # percentiles values will use the whole record
+                        obs_vals = obs_vals.loc[sim_vals.index]
+
+                    if resample:
+                        obs_resampled = obs_vals.resample(resample, axis=0).mean()
+                    else:
+                        obs_resampled = obs_vals
+
+                    if consolidate:  # use original values
+                        obs_cons = consolidate_dataframe(obs_resampled, resample)
+                        obs_vals = obs_cons.quantile(0.5, axis=1)  # for use in flow-duration curve
+
+            if metric == c.ABS_DIFF:
+                sim_resampled -= obs_resampled
+            elif metric == c.PCT_DIFF:
+                sim_resampled = (sim_resampled / obs_resampled - 1.0) * 100.0
 
             plot_max = False
             max_reqt = kwargs.get('max_reqt')
@@ -572,29 +607,10 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
                 )
             )
 
-    gauges = []
-    gauge_name = gauge_lookup.get(res_name, res_name)
     pbias = 100
     nse = -1
 
-    if calibration and gauge_name in df_obs:
-        obs_vals = df_obs[gauge_name]
-
-        head = kwargs.get('head')
-        if head:
-            obs_vals = flow_to_energy(obs_vals, head)
-
-        if not consolidate:  # percentiles values will use the whole record
-            obs_vals = obs_vals.loc[sim_vals.index]
-
-        if resample:
-            obs_resampled = obs_vals.resample(resample, axis=0).mean()
-        else:
-            obs_resampled = obs_vals
-
-        if consolidate:  # use original values
-            obs_cons = consolidate_dataframe(obs_resampled, resample)
-            obs_vals = obs_cons.quantile(0.5, axis=1)  # for use in flow-duration curve
+    if calibration and obs_vals is not None and not metric:
 
         # flow-duration curve
         N = len(obs_vals)
@@ -843,6 +859,31 @@ transform_radio = dbc.FormGroup(
     ],
 )
 
+select_metric = dbc.FormGroup(
+    [
+        dbc.Label("Metric", html_for="select-metric", width=2),
+        # dbc.RadioItems(
+        #     id="radio-metric",
+        #     options=[
+        #         {"label": "None", "value": None},
+        #         {"label": "Percent difference", "value": c.PCT_DIFF},
+        #         {"label": "Absolute difference", "value": c.ABS_DIFF},
+        #     ],
+        #     value=None,
+        #     # inline=True
+        # ),
+        dcc.Dropdown(
+            id="select-metric",
+            options=[
+                {"label": "None", "value": "default"},
+                {"label": "Percent difference", "value": c.PCT_DIFF},
+                {"label": "Absolute difference", "value": c.ABS_DIFF},
+            ],
+            value="default"
+        )
+    ],
+)
+
 resample_radio = dbc.FormGroup(
     [
         dbc.Label("Resampling", html_for="radio-resample", width=2),
@@ -941,10 +982,13 @@ development_selections = dbc.Form([
     ])
 ], inline=True, style={"margin-bottom": "10px"})
 
-controls = dbc.Form(
-    [transform_radio, resample_radio, aggregate_radio, consolidation_checklist],
-    inline=False
-)
+
+def make_controls(mode='production'):
+    controls = [transform_radio, resample_radio, aggregate_radio, consolidation_checklist]
+    if mode == 'development':
+        controls = [select_metric] + controls
+    return dbc.Form(controls, inline=False)
+
 
 top_bar = dbc.Form(
     [
@@ -1003,9 +1047,10 @@ def development_content(purpose):
             width=11
         ),
         dbc.Col([
-            html.Div([
-                controls
-            ])
+            html.Div(
+                [make_controls(mode=purpose)],
+                style={'min-width': "200px"}
+            )
         ], width=1)
     ])
 
@@ -1587,6 +1632,7 @@ def update_select_resources(tab, basin):
               [
                   Input('development-tabs', 'active_tab'),
                   Input('select-basin', 'value'),
+                  Input('select-metric', 'value'),
                   Input('radio-transform', 'value'),
                   Input('radio-resample', 'value'),
                   Input('radio-aggregate', 'value'),
@@ -1596,12 +1642,13 @@ def update_select_resources(tab, basin):
                   Input('select-resources', 'value'),
                   Input('reload', 'n_clicks'),
               ])
-def render_development_content(tab, basin, transform, resample, aggregate, consolidate, percentiles, percentiles_type,
+def render_development_content(tab, basin, metric, transform, resample, aggregate, consolidate, percentiles, percentiles_type,
                                resources,
                                n_clicks):
     kwargs = dict(
         basin=basin,
         resources=resources,
+        metric=metric,
         transform=transform,
         resample=resample,
         aggregate=aggregate,
