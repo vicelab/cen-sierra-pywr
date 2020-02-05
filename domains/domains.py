@@ -237,7 +237,7 @@ class Hydropower(PiecewiseLink):
 
     _type = 'hydropower'
 
-    def __init__(self, model, turbine_capacity=None, **kwargs):
+    def __init__(self, model, turbine_capacity=None, spinning_flow=0.0, spinning_cost=0.0, **kwargs):
         """Initialise a new Hydropower instance
         Parameters
         ----------
@@ -265,6 +265,8 @@ class Hydropower(PiecewiseLink):
         self.output.max_flow = turbine_capacity
         self.turbine_capacity = turbine_capacity
         self.head = head
+        self.spinning_flow = spinning_flow
+        self.spinning_cost = spinning_cost
 
     @classmethod
     def load(cls, data, model):
@@ -282,9 +284,11 @@ class Hydropower(PiecewiseLink):
         costs = [load_parameter(model, c) for c in costs]
         turbine_capacity = load_parameter(model, data.pop('turbine_capacity', None))
         head = data.pop('head', 0.0)
+        spinning_flow = data.pop('spinning_flow', 0.0)
+        spinning_cost = data.pop('spinning_cost', 0.0)
         param_type = data.pop('type')
         try:
-            node = cls(model, turbine_capacity, max_flows=max_flows, costs=costs, head=head, **data)
+            node = cls(model, turbine_capacity, spinning_flow, spinning_cost, max_flows=max_flows, costs=costs, head=head, **data)
         except:
             raise Exception('{} {} failed to load'.format(param_type, data['name']))
         return node
