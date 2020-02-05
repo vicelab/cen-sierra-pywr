@@ -57,8 +57,7 @@
         {
             "name": "Below Balsam Diversion Tunnel Diverted Inflow",
             "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 6.117119986297651
+            "comment": "{\"resource_class\": \"link\"}"
         },
         {
             "name": "Below Balsam Diversion Tunnel Inflow.1",
@@ -78,8 +77,8 @@
         {
             "name": "Below Balsam Meadows Tunnel Outflow",
             "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 5.9676479866324685
+            "max_flow": 0.012,
+            "comment": "{\"resource_class\": \"link\"}"
         },
         {
             "name": "Below Bass Lake",
@@ -150,7 +149,12 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Below Big Creek 3 Conduit Outflow",
+            "name": "Below Big Creek 3 Conduit Outflow.1",
+            "type": "River",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "Below Big Creek 3 Conduit Outflow.2",
             "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
         },
@@ -182,12 +186,12 @@
             "max_flow": 2.870207993570734
         },
         {
-            "name": "Below Big Creek 8 Penstock Inflow",
+            "name": "Below Big Creek 8 Penstock Outflow.1",
             "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Below Big Creek 8 Penstock Outflow",
+            "name": "Below Big Creek 8 Penstock Outflow.2",
             "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
         },
@@ -541,11 +545,6 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Below Mono Creek Inflow.2",
-            "type": "River",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
             "name": "Below Mono Tunnel Outflow",
             "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
@@ -619,11 +618,6 @@
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
             "max_flow": 1.5292799965744128
-        },
-        {
-            "name": "Below PH 2A Aqueduct Inflow",
-            "type": "River",
-            "comment": "{\"resource_class\": \"link\"}"
         },
         {
             "name": "Below Pitman Cr Div Outflow",
@@ -966,16 +960,6 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Below SJN_24 Headflow",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
-            "name": "Below SJN_24 Inflow.1",
-            "type": "River",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
             "name": "Below SJN_24 Inflow.2",
             "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
@@ -1136,11 +1120,6 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Below Tunnel No. 1 Inflow",
-            "type": "River",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
             "name": "Below Tunnel No. 7 Inflow",
             "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
@@ -1183,11 +1162,6 @@
         },
         {
             "name": "Big Creek 4 Aqueduct",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
-            "name": "Big Creek 8 Penstock",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}"
         },
@@ -1369,11 +1343,6 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "SAN-L-RIV2",
-            "type": "River",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
             "name": "SAN-L-RIV3",
             "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
@@ -1409,17 +1378,29 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Tunnel No. 1",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
             "name": "Tunnel No. 7.1",
             "type": "Link",
+            "max_flow": 5.2,
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
             "name": "Tunnel No. 7.2",
+            "type": "Link",
+            "max_flow": 5.2,
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "UPPER-L-CON1",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "UPPER-L-CON2",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "UPPER-L-RUN1",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}"
         },
@@ -1470,7 +1451,7 @@
             },
             "max_volume": 55.61,
             "min_volume": 27.0,
-            "cost": -90,
+            "cost": -95,
             "gauge": "USGS 11243400 BASS LK NR BASS LAKE CA"
         },
         {
@@ -1494,6 +1475,8 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 586.0,
             "turbine_capacity": 1.693254031891053,
+            "spinning_flow": 0.2,
+            "spinning_cost": -1500,
             "cost": [
                 "Big Creek 1 PH/Cost/1",
                 "Big Creek 1 PH/Cost/2",
@@ -1536,6 +1519,8 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 670.6,
             "turbine_capacity": 1.5293118062599829,
+            "spinning_flow": 0.2,
+            "spinning_cost": -1000,
             "cost": [
                 "Big Creek 2A PH/Cost/1",
                 "Big Creek 2A PH/Cost/2",
@@ -1592,11 +1577,6 @@
                 "Big Creek 4 PH/Water Demand/1",
                 "Big Creek 4 PH/Water Demand/2"
             ]
-        },
-        {
-            "name": "Big Creek 8 Penstock Inflow",
-            "type": "River",
-            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Big Creek 8 Penstock Outflow",
@@ -1714,14 +1694,14 @@
             "type": "Output",
             "comment": "{\"resource_class\": \"node\"}",
             "max_flow": "CVP Friant-Kern Canal/Demand",
-            "cost": -5000
+            "cost": -2000
         },
         {
             "name": "CVP Madera Canal",
             "type": "Output",
             "comment": "{\"resource_class\": \"node\"}",
             "max_flow": "CVP Madera Canal/Demand",
-            "cost": -5000
+            "cost": -2000
         },
         {
             "name": "Eastwood PH",
@@ -1729,6 +1709,8 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 400.0,
             "turbine_capacity": 5.618079851476674,
+            "spinning_flow": 0.15,
+            "spinning_cost": -2500,
             "cost": [
                 "Eastwood PH/Cost/1",
                 "Eastwood PH/Cost/2",
@@ -1751,7 +1733,7 @@
             },
             "max_volume": 79.41,
             "min_volume": 1.25,
-            "cost": -15,
+            "cost": -90,
             "gauge": "USGS 11229600 FLORENCE LK NR BIG C CA"
         },
         {
@@ -1803,7 +1785,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Balsam Forebay/Min Flow",
             "max_flow_cost": 2000,
-            "min_flow_cost": -10000
+            "min_flow_cost": -50000
         },
         {
             "name": "IFR bl Bass Lake",
@@ -1826,7 +1808,7 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Big Creek 5 Div/Min Flow",
-            "max_flow_cost": 2000,
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
@@ -1834,7 +1816,7 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Big Creek 6 Div/Min Flow",
-            "max_flow_cost": 2000,
+            "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
         {
@@ -1883,7 +1865,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Huntington Lake/Min Flow",
             "max_flow_cost": 2000,
-            "min_flow_cost": -10000
+            "min_flow_cost": -50000
         },
         {
             "name": "IFR bl Kerckhoff Lake",
@@ -1976,9 +1958,9 @@
             "name": "IFR No. Fk. Stevenson Creek above Shaver Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "max_flow": "IFR No. Fk. Stevenson Creek above Shaver Lake/Min Flow",
+            "min_flow": "IFR No. Fk. Stevenson Creek above Shaver Lake/Min Flow",
             "max_flow_cost": 2000,
-            "min_flow_cost": -10000
+            "min_flow_cost": -9000
         },
         {
             "name": "Jose Cr Headflow",
@@ -2059,7 +2041,7 @@
             },
             "max_volume": 154.17,
             "min_volume": 49.3,
-            "cost": -15,
+            "cost": -84,
             "gauge": "USGS 11231000 LK THOMAS A. EDISON NR BIG C CA"
         },
         {
@@ -2068,6 +2050,8 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 306.0,
             "turbine_capacity": 6.1172472250399315,
+            "spinning_flow": 0.1,
+            "spinning_cost": -1000,
             "cost": [
                 "Mammoth Pool PH/Cost/1",
                 "Mammoth Pool PH/Cost/2",
@@ -2090,7 +2074,7 @@
             },
             "max_volume": 147.89,
             "min_volume": 5.0,
-            "cost": 0.0,
+            "cost": -10,
             "gauge": "USGS 11234700 MAMMOTH POOL RE NR BIG CREEK CA"
         },
         {
@@ -2113,7 +2097,7 @@
                 "index": "2000-09-30",
                 "column": "USGS 11250100 MILLERTON LK A FRIANT CA"
             },
-            "cost": -10,
+            "cost": -5,
             "max_volume": 632,
             "gauge": "USGS 11250100 MILLERTON LK A FRIANT CA"
         },
@@ -2178,11 +2162,6 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "PH 2A Aqueduct Inflow",
-            "type": "River",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
             "name": "Pitman Creek Diversion Dam",
             "type": "BreakLink",
             "comment": "{\"resource_class\": \"node\"}"
@@ -2218,6 +2197,8 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 54.864000000000004,
             "turbine_capacity": 4.23,
+            "spinning_flow": 0.15,
+            "spinning_cost": -9000,
             "cost": [
                 "Portal PH/Cost/1",
                 "Portal PH/Cost/2",
@@ -2370,17 +2351,6 @@
         {
             "name": "San Joaquin River Outflow",
             "type": "Output",
-            "comment": "{\"resource_class\": \"node\"}",
-            "cost": 1
-        },
-        {
-            "name": "SAN-N-INF1",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
-            "name": "SAN-N-OUT1",
-            "type": "Link",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -2648,11 +2618,6 @@
             "flow": "SJN_24 Headflow/Runoff"
         },
         {
-            "name": "SJN_24 Inflow",
-            "type": "River",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
             "name": "SJN_25 Headflow",
             "type": "Catchment",
             "comment": "{\"resource_class\": \"node\"}",
@@ -2817,12 +2782,17 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Tunnel No. 1 Inflow",
+            "name": "Tunnel No. 7 Inflow",
             "type": "River",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Tunnel No. 7 Inflow",
+            "name": "UPPER-N-JUN1",
+            "type": "River",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "UPPER-N-JUN2",
             "type": "River",
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -3283,10 +3253,18 @@
         ],
         [
             "Big Creek Inflow",
-            "Below Big Creek 3 Conduit Outflow"
+            "Below Big Creek 3 Conduit Outflow.1"
         ],
         [
-            "Below Big Creek 3 Conduit Outflow",
+            "Below Big Creek 3 Conduit Outflow.1",
+            "UPPER-N-JUN1"
+        ],
+        [
+            "UPPER-N-JUN1",
+            "Below Big Creek 3 Conduit Outflow.2"
+        ],
+        [
+            "Below Big Creek 3 Conduit Outflow.2",
             "SJN_18 Inflow"
         ],
         [
@@ -3330,19 +3308,19 @@
             "Big Creek 8 PH"
         ],
         [
-            "Big Creek 8 Penstock Inflow",
-            "Below Big Creek 8 Penstock Inflow"
-        ],
-        [
-            "Below Big Creek 8 Penstock Inflow",
-            "Big Creek Inflow"
-        ],
-        [
             "Big Creek 8 Penstock Outflow",
-            "Below Big Creek 8 Penstock Outflow"
+            "Below Big Creek 8 Penstock Outflow.1"
         ],
         [
-            "Below Big Creek 8 Penstock Outflow",
+            "Below Big Creek 8 Penstock Outflow.1",
+            "UPPER-N-JUN2"
+        ],
+        [
+            "UPPER-N-JUN2",
+            "Below Big Creek 8 Penstock Outflow.2"
+        ],
+        [
+            "Below Big Creek 8 Penstock Outflow.2",
             "IFR bl Big Creek 5 Div"
         ],
         [
@@ -3599,7 +3577,7 @@
         ],
         [
             "Below IFR bl Big Creek 5 Div",
-            "SJN_24 Inflow"
+            "USGS 11238500 BIG C NR MOUTH NR BIG CREEK CA"
         ],
         [
             "SJN_18 Inflow",
@@ -3887,14 +3865,6 @@
         ],
         [
             "Below Mono Creek Inflow.1.1",
-            "SAN-N-OUT1"
-        ],
-        [
-            "SAN-N-INF1",
-            "Below Mono Creek Inflow.2"
-        ],
-        [
-            "Below Mono Creek Inflow.2",
             "S Fk San Joaquin Inflow"
         ],
         [
@@ -4008,14 +3978,6 @@
         [
             "Below PH 2A Aqueduct Diverted Inflow",
             "Big Creek 2A PH"
-        ],
-        [
-            "PH 2A Aqueduct Inflow",
-            "Below PH 2A Aqueduct Inflow"
-        ],
-        [
-            "Below PH 2A Aqueduct Inflow",
-            "Big Creek 2 Tunnel Inflow"
         ],
         [
             "USGS 11237500 PITMAN C BL TAMARACK C CA",
@@ -4554,28 +4516,12 @@
             "USGS 11226500 SAN JOAQUIN R A MILLER CROSSING CA"
         ],
         [
-            "SJN_24 Headflow",
-            "Below SJN_24 Headflow"
-        ],
-        [
-            "Below SJN_24 Headflow",
-            "SJN_24 Inflow"
-        ],
-        [
-            "SJN_24 Inflow",
-            "Below SJN_24 Inflow.1"
-        ],
-        [
-            "Below SJN_24 Inflow.1",
-            "USGS 11238500 BIG C NR MOUTH NR BIG CREEK CA"
-        ],
-        [
             "USGS 11238500 BIG C NR MOUTH NR BIG CREEK CA",
             "Below SJN_24 Inflow.2"
         ],
         [
             "Below SJN_24 Inflow.2",
-            "Big Creek 8 Penstock Inflow"
+            "Big Creek Inflow"
         ],
         [
             "SJN_25 Headflow",
@@ -4591,7 +4537,7 @@
         ],
         [
             "Below SJN_25 Inflow",
-            "PH 2A Aqueduct Inflow"
+            "Big Creek 2 Tunnel Inflow"
         ],
         [
             "SJN_26 Headflow",
@@ -4607,7 +4553,7 @@
         ],
         [
             "Below SJN_26 Inflow",
-            "Tunnel No. 1 Inflow"
+            "Big Creek 2 Tunnel Outflow"
         ],
         [
             "SJN_27 Headflow",
@@ -4826,14 +4772,6 @@
             "IFR bl Big Creek 6 Div"
         ],
         [
-            "Tunnel No. 1 Inflow",
-            "Below Tunnel No. 1 Inflow"
-        ],
-        [
-            "Below Tunnel No. 1 Inflow",
-            "Big Creek 2 Tunnel Outflow"
-        ],
-        [
             "Tunnel No. 7 Inflow",
             "Below Tunnel No. 7 Inflow"
         ],
@@ -4904,14 +4842,6 @@
         [
             "Big Creek 4 Aqueduct",
             "Big Creek 4 Aqueduct Inflow"
-        ],
-        [
-            "USGS 11238550 BIG C PH NO 8 NR BIG CREEK CA",
-            "Big Creek 8 Penstock"
-        ],
-        [
-            "Big Creek 8 Penstock",
-            "Big Creek 8 Penstock Inflow"
         ],
         [
             "USGS 11243300 BROWNS C CN AT BASS LAKE CA",
@@ -5087,7 +5017,7 @@
         ],
         [
             "PH 2A Aqueduct",
-            "PH 2A Aqueduct Inflow"
+            "Big Creek 2 Tunnel Inflow"
         ],
         [
             "Pitman Creek Diversion Dam",
@@ -5194,14 +5124,6 @@
             "San Joaquin 3 PH"
         ],
         [
-            "SAN-N-OUT1",
-            "SAN-L-RIV2"
-        ],
-        [
-            "SAN-L-RIV2",
-            "SAN-N-INF1"
-        ],
-        [
             "SAN J-N-JUN3",
             "SAN-L-RIV3"
         ],
@@ -5258,14 +5180,6 @@
             "SAN J-N-JUN3"
         ],
         [
-            "USGS 11238100 BIG C PH NO 1 AT BIG CREEK CA",
-            "Tunnel No. 1"
-        ],
-        [
-            "Tunnel No. 1",
-            "Tunnel No. 1 Inflow"
-        ],
-        [
             "Huntington Lake",
             "Tunnel No. 7.1"
         ],
@@ -5280,6 +5194,30 @@
         [
             "Tunnel No. 7.2",
             "Balsam Meadows Tunnel Outflow"
+        ],
+        [
+            "USGS 11238100 BIG C PH NO 1 AT BIG CREEK CA",
+            "UPPER-L-CON1"
+        ],
+        [
+            "UPPER-L-CON1",
+            "Big Creek 2 Tunnel Outflow"
+        ],
+        [
+            "USGS 11238550 BIG C PH NO 8 NR BIG CREEK CA",
+            "UPPER-L-CON2"
+        ],
+        [
+            "UPPER-L-CON2",
+            "UPPER-N-JUN1"
+        ],
+        [
+            "SJN_24 Headflow",
+            "UPPER-L-RUN1"
+        ],
+        [
+            "UPPER-L-RUN1",
+            "UPPER-N-JUN2"
         ],
         [
             "Bolsillo Cr. Div. Inflow",
@@ -5361,16 +5299,31 @@
         "Big Creek System IFRs 2000 normal": {
             "url": "../data/Upper San Joaquin River/Management/BAU/IFRs/Big Creek 2000 IFRs daily cfs.xlsx",
             "sheet_name": "normal",
-            "skiprows": [0],
+            "skiprows": [
+                0
+            ],
             "index_col": 0,
             "header": 0
         },
         "Big Creek System IFRs 2000 dry": {
             "url": "../data/Upper San Joaquin River/Management/BAU/IFRs/Big Creek 2000 IFRs daily cfs.xlsx",
-            "sheet_name": "normal",
-            "skiprows": 0,
+            "sheet_name": "dry",
+            "skiprows": [
+                0
+            ],
             "index_col": 0,
             "header": 0
+        },
+        "IFR Schedule below Friant Dam": {
+            "url": "../data/Upper San Joaquin River/Management/BAU/IFRs/IFR Below Friant Dam cfs daily.csv",
+            "index_col": [0, 1],
+            "header": 0
+        },
+        "WYT below Friant Dam": {
+            "url": "../data/Upper San Joaquin River/Scenarios/preprocessed/Livneh/SJ restoration flows WYT.csv",
+            "index_col": 0,
+            "header": 0,
+            "squeeze": true
         }
     },
     "parameters": {
@@ -5712,7 +5665,7 @@
             "type": "IFR_bl_Chinquapin_Creek_Div_Min_Flow",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
-        "IFR bl Hooper Creek": {
+        "IFR bl Hooper Creek/Min Flow": {
             "type": "Big_Creek_System_IFRs_2000"
         },
         "IFR bl Huntington Lake/Min Flow": {
@@ -5756,7 +5709,7 @@
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "IFR bl San Joaquin R and Willow Cr confluence/Min Flow": {
-            "type": ""
+            "type": "Big_Creek_System_IFRs_2000"
         },
         "IFR bl Shaver Lake/Min Flow": {
             "type": "IFR_bl_Shaver_Lake_Min_Flow",
@@ -5969,6 +5922,9 @@
         "Millerton Lake/Cost": {
             "type": "constant",
             "value": -30
+        },
+        "Millerton Lake/Storage Demand": {
+            "type": "Millerton_Lake_Storage_Demand"
         },
         "Portal PH/Cost/1": {
             "type": "PH_Cost",

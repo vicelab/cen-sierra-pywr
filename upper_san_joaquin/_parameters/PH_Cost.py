@@ -32,12 +32,12 @@ class PH_Cost(WaterLPParameter):
         # pywr_cost = - (abs(price_per_mcm) / 100 + 100) * price_per_mcm / abs(price_per_mcm)
 
         if self.model.mode == 'planning':
+            powerhouse = self.model.nodes[self.res_name + self.month_suffix]
             price_per_kWh = self.model.tables["Energy Price Values"] \
                 .at[price_date, str(self.block)]
-            head = self.model.nodes[self.res_name + self.month_suffix].head
             eta = 0.9  # generation efficiency
             gamma = 9807  # specific weight of water = rho*g
-            price_per_mcm = price_per_kWh * gamma * head * eta * 24 / 1e6
+            price_per_mcm = price_per_kWh * gamma * powerhouse.head * eta * 24 / 1e6
 
             # We can add some conversion function here to go from price to Pywr cost
             # For now, divide by 100, which results in costs of about -5 to -170
@@ -45,12 +45,14 @@ class PH_Cost(WaterLPParameter):
             pywr_cost = - (abs(price_per_mcm) / 100 + 100) * price_per_mcm / abs(price_per_mcm)
             # if pywr_cost > 0 and self.res_name == 'Collierville PH':
             #     pywr_cost *= 1000
+            if self.block == 1:
+                pywr_cost = min(pywr_cost, powerhouse.spinning_cost)
         else:
             if 'Murphys' in self.name:
                 pywr_cost = -500
             else:
                 if self.block == 1:
-                    pywr_cost = -250
+                    pywr_cost = -500
                 # elif self.block == 2:
                 #     pywr_cost = -1  # more valuable than spill
                 else:

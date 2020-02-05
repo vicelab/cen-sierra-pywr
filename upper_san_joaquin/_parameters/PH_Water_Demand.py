@@ -21,10 +21,8 @@ class PH_Water_Demand(WaterLPParameter):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
         all_energy_prices = self.model.tables['All Energy Price Values']
         param = self.res_name + '/Turbine Capacity' + self.month_suffix
-        # turbine capacity is already in mcm
-        # turbine_capacity = self.model.parameters[param].value(timestep, scenario_index) / 0.0864
-        turbine_capacity = \
-            self.model.nodes[self.res_name + self.month_suffix].turbine_capacity / 0.0864  # convert to cms
+        powerhouse = self.model.nodes[self.res_name + self.month_suffix]  # powerhouse
+        turbine_capacity_mcm = powerhouse.turbine_capacity
 
         price_year = int(self.model.parameters['Price Year'].value(timestep, scenario_index))
 
@@ -36,7 +34,11 @@ class PH_Water_Demand(WaterLPParameter):
         # calculate the price threshold if needed
         if self.model.mode == 'planning':
             block = self.model.tables["Energy Price Blocks"].at[price_date, str(self.block)]
-            turbine_capacity *= self.days_in_month()
+            if self.block == 1:
+                spinning_flow_fraction = powerhouse.spinning_flow
+                block = max(spinning_flow_fraction, block)
+
+            # turbine_capacity *= self.days_in_month()
 
         elif self.model.planning:
 
@@ -54,7 +56,7 @@ class PH_Water_Demand(WaterLPParameter):
 
                 # for planning turbine capacity, note that the turbine capacities are the same
                 # in both models (i.e., cms)
-                planning_turbine_capacity = turbine_capacity * self.cms_to_mcm * (end - self.datetime).days
+                planning_turbine_capacity = turbine_capacity_mcm * (end - self.datetime).days
                 planning_release_fraction = min(planning_release / planning_turbine_capacity, 1.0)
                 price_index = int(len(energy_prices) * planning_release_fraction) - 1
                 if price_index < 0:
@@ -88,11 +90,11 @@ class PH_Water_Demand(WaterLPParameter):
         elif self.res_name in ['Sand Bar PH', 'Stanislaus PH']:
             if self.model.mode == 'scheduling' \
                     and (11, 1) <= (self.datetime.month, self.datetime.day) <= (11, 14):
-                turbine_capacity = 0.0
+                turbine_capacity_mcm = 0.0
             elif self.model.mode == 'planning' and self.datetime.month == 11:
-                turbine_capacity *= 0.5
+                turbine_capacity_mcm *= 0.5
 
-        demand_mcm = turbine_capacity * self.cms_to_mcm * block
+        demand_mcm = turbine_capacity_mcm * block
 
         return demand_mcm
 

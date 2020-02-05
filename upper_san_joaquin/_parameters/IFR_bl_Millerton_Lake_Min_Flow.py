@@ -6,9 +6,25 @@ class IFR_bl_Millerton_Lake_Min_Flow(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        
-        ifr_cfs = 90
-        
+
+        # get WYT index
+        if 3 >= self.datetime.month:
+            restoration_year = self.datetime.year
+        else:
+            restoration_year = self.datetime.year - 1
+        wyt_index = self.model.tables["WYT below Friant Dam"][restoration_year]
+
+        # get date index
+        ifr_schedule_cfs = self.model.tables["IFR Schedule below Friant Dam"]
+        day_month = (self.datetime.year, self.datetime.month)
+        if self.model.mode == 'planning':
+            date_index = self.datetime.month - 1
+        else:
+            date_index = sum([1 for dm in ifr_schedule_cfs.index if day_month >= dm]) - 1
+
+        # get IFR from schedule
+        ifr_cfs = ifr_schedule_cfs.iat[date_index, wyt_index]
+
         if self.model.mode == "planning":
             ifr_cfs *= self.days_in_month()
         
