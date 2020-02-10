@@ -820,12 +820,12 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Below SJN_09 Headflow",
+            "name": "Below SJN_09a Headflow",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Below SJN_09 Inflow",
+            "name": "Below SJN_09a Inflow",
             "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
         },
@@ -1182,7 +1182,18 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
+            "name": "Friant-Kern Canal Demand",
+            "type": "Link",
+            "max_flow": "Friant-Kern Canal Demand/Demand",
+            "cost": -2000
+        },
+        {
             "name": "Friant-Kern Canal.1",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "Friant-Kern Canal.1.1",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}"
         },
@@ -1692,9 +1703,7 @@
         {
             "name": "CVP Friant-Kern Canal",
             "type": "Output",
-            "comment": "{\"resource_class\": \"node\"}",
-            "max_flow": "CVP Friant-Kern Canal/Demand",
-            "cost": -2000
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "CVP Madera Canal",
@@ -1737,13 +1746,32 @@
             "gauge": "USGS 11229600 FLORENCE LK NR BIG C CA"
         },
         {
-            "name": "Friant Dam Flood Release",
-            "type": "InstreamFlowRequirement",
+            "name": "Friant Dam Spillway",
+            "type": "Link",
+            "cost": 100,
             "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "Friant Dam Flood Release",
+            "type": "PiecewiseLink",
+            "max_flow": [
+                "Friant Dam Flood Release/Requirement",
+                null
+            ],
+            "cost": [
+                -5000,
+                1500
+            ]
         },
         {
             "name": "Friant PH",
             "type": "Hydropower",
+            "cost": [
+                5
+            ],
+            "max_flow": [
+                null
+            ],
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -2099,6 +2127,7 @@
             },
             "cost": -5,
             "max_volume": 632,
+            "min_volume": 185,
             "gauge": "USGS 11250100 MILLERTON LK A FRIANT CA"
         },
         {
@@ -2452,13 +2481,31 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "SJN_09 Headflow",
+            "name": "SJN_09a Headflow",
             "type": "Catchment",
             "comment": "{\"resource_class\": \"node\"}",
-            "flow": "SJN_09 Headflow/Runoff"
+            "flow": "SJN_09a Headflow/Runoff"
         },
         {
-            "name": "SJN_09 Inflow",
+            "name": "SJN_09b Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "SJN_09b Headflow/Runoff"
+        },
+        {
+            "name": "SJN_09c Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "SJN_09c Headflow/Runoff"
+        },
+        {
+            "name": "SJN_09d Headflow",
+            "type": "Catchment",
+            "comment": "{\"resource_class\": \"node\"}",
+            "flow": "SJN_09d Headflow/Runoff"
+        },
+        {
+            "name": "SJN_09a Inflow",
             "type": "River",
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -3612,6 +3659,10 @@
             "No. 1A Conduit Outflow"
         ],
         [
+            "SJN_09c Headflow",
+            "No. 1A Conduit Outflow"
+        ],
+        [
             "IFR bl Camp 62 Creek Div",
             "Below IFR bl Camp 62 Creek Div.1"
         ],
@@ -3689,6 +3740,10 @@
         ],
         [
             "Below IFR bl Manzanita Div",
+            "Manzanita Diversion Dam"
+        ],
+        [
+            "SJN_09b Headflow",
             "Manzanita Diversion Dam"
         ],
         [
@@ -3969,6 +4024,10 @@
         ],
         [
             "Below No.1A Conduit Outflow.2",
+            "N Fk Willow Creek Inflow"
+        ],
+        [
+            "SJN_09d Headflow",
             "N Fk Willow Creek Inflow"
         ],
         [
@@ -4292,19 +4351,19 @@
             "USGS 11246500 WILLOW C A MOUTH NR AUBERRY CA"
         ],
         [
-            "SJN_09 Headflow",
-            "Below SJN_09 Headflow"
+            "SJN_09a Headflow",
+            "Below SJN_09a Headflow"
         ],
         [
-            "Below SJN_09 Headflow",
-            "SJN_09 Inflow"
+            "Below SJN_09a Headflow",
+            "SJN_09a Inflow"
         ],
         [
-            "SJN_09 Inflow",
-            "Below SJN_09 Inflow"
+            "SJN_09a Inflow",
+            "Below SJN_09a Inflow"
         ],
         [
-            "Below SJN_09 Inflow",
+            "Below SJN_09a Inflow",
             "Browns Creek Outflow"
         ],
         [
@@ -4793,7 +4852,7 @@
         ],
         [
             "Below Willow Creek Headflow",
-            "SJN_09 Inflow"
+            "SJN_09a Inflow"
         ],
         [
             "Redinger Lake",
@@ -4873,6 +4932,14 @@
         ],
         [
             "Friant-Kern Canal.1",
+            "Friant-Kern Canal Demand"
+        ],
+        [
+            "Friant-Kern Canal Demand",
+            "Friant-Kern Canal.1.1"
+        ],
+        [
+            "Friant-Kern Canal.1.1",
             "USGS 11250000 FRIANT-KERN CN A FRIANT CA"
         ],
         [
@@ -5097,10 +5164,10 @@
         ],
         [
             "SAN-L-CON3.1",
-            "Friant Dam Flood Release"
+            "Friant Dam Spillway"
         ],
         [
-            "Friant Dam Flood Release",
+            "Friant Dam Spillway",
             "SAN-L-CON3.2"
         ],
         [
@@ -5149,6 +5216,10 @@
         ],
         [
             "SAN J-N-JUN7",
+            "Friant Dam Flood Release"
+        ],
+        [
+            "Friant Dam Flood Release",
             "SAN-L-RIV4.2"
         ],
         [
@@ -5316,12 +5387,29 @@
         },
         "IFR Schedule below Friant Dam": {
             "url": "../data/Upper San Joaquin River/Management/BAU/IFRs/IFR Below Friant Dam cfs daily.csv",
-            "index_col": [0, 1],
+            "index_col": [
+                0,
+                1
+            ],
             "header": 0
         },
-        "WYT below Friant Dam": {
-            "url": "../data/Upper San Joaquin River/Scenarios/preprocessed/Livneh/SJ restoration flows WYT.csv",
+        "SJ restoration flows": {
+            "url": "../data/Upper San Joaquin River/Scenarios/preprocessed/Livneh/SJ restoration flows.csv",
             "index_col": 0,
+            "header": 0
+        },
+        "WY Full Natural Flow at Friant Dam": {
+            "url": "../data/Upper San Joaquin River/Scenarios/preprocessed/Livneh/full_natural_flow_annual_mcm.csv",
+            "index_col": 0,
+            "header": 0,
+            "squeeze": true
+        },
+        "Millerton Lake rule curve": {
+            "url": "../data/Upper San Joaquin River/Management/BAU/Flood Control/Millerton Lake rule curve - mcm.csv",
+            "index_col": [
+                0,
+                1
+            ],
             "header": 0,
             "squeeze": true
         }
@@ -5495,8 +5583,8 @@
             "type": "PH_Water_Demand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
-        "CVP Friant-Kern Canal/Demand": {
-            "type": "CVP_Friant_Kern_Canal_Demand",
+        "Friant-Kern Canal Demand/Demand": {
+            "type": "Friant_Kern_Canal_Demand_Demand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "CVP Madera Canal/Demand": {
@@ -5572,6 +5660,18 @@
             "type": "constant",
             "value": 1,
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
+        },
+        "Friant Dam Flood Release/Requirement": {
+            "type": "controlcurveinterpolated",
+            "storage_node": "Millerton Lake",
+            "control_curves": [
+                "Millerton Lake/Storage Demand"
+            ],
+            "values": [
+                19.5,
+                0,
+                0
+            ]
         },
         "Huntington Lake/Cost": {
             "type": "Huntington_Lake_Cost"
@@ -6170,9 +6270,30 @@
             "index_col": "Date",
             "parse_dates": true
         },
-        "SJN_09 Headflow/Runoff": {
+        "SJN_09a Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/Scenarios/runoff/Livneh/tot_runoff_sb09_mcm.csv",
+            "url": "../data/Upper San Joaquin River/Scenarios/runoff/Livneh/tot_runoff_sb09a_mcm.csv",
+            "column": "tot_runoff_sb09",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "SJN_09b Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Upper San Joaquin River/Scenarios/runoff/Livneh/tot_runoff_sb09b_mcm.csv",
+            "column": "tot_runoff_sb09",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "SJN_09c Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Upper San Joaquin River/Scenarios/runoff/Livneh/tot_runoff_sb09c_mcm.csv",
+            "column": "tot_runoff_sb09",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "SJN_09d Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Upper San Joaquin River/Scenarios/runoff/Livneh/tot_runoff_sb09d_mcm.csv",
             "column": "tot_runoff_sb09",
             "index_col": "Date",
             "parse_dates": true
@@ -6558,9 +6679,9 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Big Creek 8 PH"
         },
-        "CVP Friant-Kern Canal/demand": {
+        "Friant-Kern Canal Demand/demand": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "CVP Friant-Kern Canal/Demand"
+            "parameter": "Friant-Kern Canal Demand/Demand"
         },
         "CVP Friant-Kern Canal/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -6586,9 +6707,9 @@
             "type": "NumpyArrayParameterRecorder",
             "parameter": "Florence Lake/Observed Storage"
         },
-        "Friant Dam Flood Release/flow": {
+        "Friant Dam Spillway/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "Friant Dam Flood Release"
+            "node": "Friant Dam Spillway"
         },
         "Friant PH/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -6850,13 +6971,13 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "SJN_08 Headflow"
         },
-        "SJN_09 Headflow/runoff": {
+        "SJN_09a Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "SJN_09 Headflow"
+            "node": "SJN_09a Headflow"
         },
-        "SJN_09 Headflow/outflow": {
+        "SJN_09a Headflow/outflow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "SJN_09 Headflow"
+            "node": "SJN_09a Headflow"
         },
         "SJN_10 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
