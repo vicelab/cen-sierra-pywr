@@ -433,16 +433,6 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Below Withdrawal Node 1",
-            "type": "River",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
-            "name": "Below Withdrawal Node 2",
-            "type": "River",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
             "name": "Below Withdrawal Node 3.1",
             "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
@@ -499,11 +489,6 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Delivery link to TID",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
             "name": "Dion R Holm Tunnel",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
@@ -515,10 +500,20 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Hetch Hetch Aquaduct.1",
+            "name": "Groveland Pipeline",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "Hetch Hetch Aquaduct.1.1",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
             "max_flow": 2.2022063950670576
+        },
+        {
+            "name": "Hetch Hetch Aquaduct.1.2",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
         },
         {
             "name": "Hetch Hetch Aquaduct.2",
@@ -572,6 +567,16 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
+            "name": "Modesto Canal.1",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "Modesto Canal.2",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
             "name": "North Fk Toul R",
             "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
@@ -587,16 +592,6 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Transmission Link from Withdrawal Node 1 to Algerine",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
-            "name": "Transmission Link from Withdrawal Node 2 to Tuolumne Utility District",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
             "name": "Transmission Link from Withdrawal Node 3 to SFPUC.1",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}"
@@ -607,28 +602,8 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "TUO-L-CON1",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
-            "name": "TUO-L-CON2",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
-            "name": "TUO-L-DEL1",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
             "name": "TUO-L-DEL2",
             "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
-            "name": "TUO-L-RIV1",
-            "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
@@ -637,12 +612,47 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "TUO-L-RIV1.2.1.1.1",
+            "name": "TUO-L-RIV1.2",
             "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
             "name": "TUO-L-RIV1.2.1.1.2",
+            "type": "River",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "TUOLU-L-CON1",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "TUOLU-L-CON2",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "TUOLU-L-CON3",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "TUOLU-L-CON4",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "TUOLU-L-CON5",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "TUOLU-L-CON6",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
+            "name": "TUOLU-L-RIV1",
             "type": "River",
             "comment": "{\"resource_class\": \"link\"}"
         },
@@ -662,16 +672,14 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Algerine",
-            "type": "Output",
-            "comment": "{\"resource_class\": \"node\"}"
+            "name": "Turlock Canal.1",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "BIG C AB WHITES GULCH NR GROVELAND CA_11284400",
-            "type": "RiverGauge",
-            "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.0,
-            "mrf_cost": 0.0
+            "name": "Turlock Canal.2",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"link\"}"
         },
         {
             "name": "Big Ck Headflow",
@@ -689,37 +697,20 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "CHERRY C BL DION R HOLM PH NR MATHER CA_11278400",
-            "type": "RiverGauge",
-            "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.0,
-            "mrf_cost": 0.0
-        },
-        {
-            "name": "CHERRY C BL VALLEY DAM NR HETCH HETCHY CA_11277300",
-            "type": "RiverGauge",
-            "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.0,
-            "mrf_cost": 0.0
-        },
-        {
-            "name": "CHERRY C NR EARLY INTAKE CA_11278300",
-            "type": "RiverGauge",
-            "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.0,
-            "mrf_cost": 0.0
-        },
-        {
             "name": "Cherry Ck Headflow",
             "type": "Catchment",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Cherry Lake",
-            "type": "Storage",
+            "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 230.80547674848896,
-            "max_volume": 338.2
+            "min_volume": 1.2335,
+            "initial_volume": 145.7,
+            "max_volume": 338.2,
+            "level": "Cherry Lake/Volume Elevation Curve",
+            "cost": "Cherry Lake/Cost",
+            "gauge": "USGS 11277200 CHERRY LK NR HETCH HETCHY CA"
         },
         {
             "name": "Clavey R Headflow",
@@ -732,24 +723,15 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "CLAVEY R NR BUCK MEADOWS CA_11283500",
-            "type": "RiverGauge",
-            "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.0,
-            "mrf_cost": 0.0
-        },
-        {
-            "name": "CLAVEY R NR LONG BARN CA_11283250",
-            "type": "RiverGauge",
-            "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.0,
-            "mrf_cost": 0.0
-        },
-        {
             "name": "Dion R Holm PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
-            "max_flow": "Dion R Holm PH/Water Demand"
+            "head": 640.1,
+            "turbine_capacity": 2.3242248284338327,
+            "cost": [
+                -1
+            ],
+            "max_flow": []
         },
         {
             "name": "Dion R Holm Tunnel Inflow",
@@ -757,30 +739,37 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Diversion bl Don Pedro Reservoir",
-            "type": "BreakLink",
-            "comment": "{\"resource_class\": \"node\"}"
+            "name": "Don Pedro Flood Control",
+            "type": "InstreamFlowRequirement",
+            "comment": "{\"resource_class\": \"node\"}",
+            "min_flow_cost": -1000
         },
         {
             "name": "Don Pedro PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
-            "max_flow": "Don Pedro PH/Water Demand"
+            "head": 170.0,
+            "turbine_capacity": 2.2018972058846833,
+            "cost": [
+                -1
+            ],
+            "max_flow": []
+        },
+        {
+            "name": "Don Pedro Release Req",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Don Pedro Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 1000.0,
+            "initial_volume": 2082.0,
             "max_volume": 2504.0,
-            "min_volume": 616.75
-        },
-        {
-            "name": "ELEANOR C NR HETCH HETCHY CA_11278000",
-            "type": "RiverGauge",
-            "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.0,
-            "mrf_cost": 0.0
+            "min_volume": 616.75,
+            "level": "Don Pedro Reservoir/Volume Elevation Curve",
+            "cost": "Don Pedro Reservoir/Cost",
+            "gauge": "USGS 11287500 DON PEDRO RES NR LA GRANGE CA"
         },
         {
             "name": "Eleanor Ck Headflow",
@@ -801,21 +790,24 @@
         {
             "name": "Gauge Dion R Holm PH",
             "type": "RiverGauge",
-            "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.0,
-            "mrf_cost": 0.0
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Gauge Moccasin PH",
             "type": "RiverGauge",
-            "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.0,
-            "mrf_cost": 0.0
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Granite Ck Inflow",
             "type": "River",
             "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "Groveland",
+            "type": "Output",
+            "comment": "{\"resource_class\": \"node\"}",
+            "max_flow": 0.0018178559959280028,
+            "cost": -30000
         },
         {
             "name": "Hetch Hetchy Aquaduct Outflow",
@@ -824,65 +816,79 @@
         },
         {
             "name": "Hetch Hetchy Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 308.37547798199085,
-            "max_volume": 444.55408905883803,
-            "min_volume": 123.3
+            "initial_volume": 353,
+            "max_volume": 444.6,
+            "min_volume": 123.3,
+            "level": "Hetch Hetchy Reservoir/Volume Elevation Curve",
+            "cost": "Hetch Hetchy Reservoir/Cost",
+            "gauge": "USGS 11275500 HETCH HETCHY RES A HETCH HETCHY CA"
         },
         {
             "name": "IFR bl Cherry Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "mrf_cost": 195,
-            "mrf": "IFR bl Cherry Lake/Requirement"
+            "max_flow_cost": 10000,
+            "min_flow": "IFR bl Cherry Lake/Min Flow",
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Don Pedro Reservoir",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "mrf_cost": 196,
-            "mrf": "IFR bl Don Pedro Reservoir/Requirement"
+            "min_flow": "IFR bl Don Pedro Reservoir/Min Flow",
+            "min_flow_cost": -10000
         },
         {
             "name": "IFR bl Hetch Hetchy Reservoir",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "mrf_cost": 195,
-            "mrf": "IFR bl Hetch Hetchy Reservoir/Requirement"
+            "min_flow": "IFR bl Hetch Hetchy Reservoir/Min Flow",
+            "min_flow_cost": -10000,
+            "max_flow_cost": 10000
         },
         {
             "name": "IFR bl Lake Eleanor",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "mrf": "IFR bl Lake Eleanor/Requirement"
+            "min_flow": "IFR bl Lake Eleanor/Min Flow",
+            "min_flow_cost": -10000,
+            "max_flow_cost": 10000
         },
         {
             "name": "IFR bl Moccasin Reservoir",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.03915038224025556
+            "min_flow": 0.03915038224025556,
+            "min_flow_cost": -10000
         },
         {
             "name": "Kirkwood PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
-            "max_flow": "Kirkwood PH/Water Demand"
+            "head": 335.3,
+            "turbine_capacity": 3.3028458088270254,
+            "cost": [
+                -1
+            ],
+            "max_flow": []
+        },
+        {
+            "name": "La Grange Reservoir",
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Lake Eleanor",
-            "type": "Storage",
+            "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 24.67003823855927,
+            "initial_volume": 18.13,
             "max_volume": 32.2,
-            "min_volume": 12.335019119279634
-        },
-        {
-            "name": "M TUOLUMNE R A OAKLAND RECREATION CAMP CA_11282000",
-            "type": "RiverGauge",
-            "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.0,
-            "mrf_cost": 0.0
+            "min_volume": 0,
+            "level": "Lake Eleanor/Volume Elevation Curve",
+            "cost": "Lake Eleanor/Cost",
+            "gauge": "USGS 11277500 LK ELEANOR NR HETCH HETCHY CA"
         },
         {
             "name": "Middle Tuol R Headflow",
@@ -913,19 +919,24 @@
             "name": "Moccasin PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
-            "max_flow": "Moccasin PH/Water Demand"
+            "head": 377.952,
+            "turbine_capacity": 2.2018972058846833,
+            "cost": [
+                -1
+            ],
+            "max_flow": []
+        },
+        {
+            "name": "Moccasin Reservoir",
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Modesto Irrigation District",
             "type": "Output",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
-            "name": "NF TUOL LONG BARN CA_11284700",
-            "type": "RiverGauge",
             "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.0,
-            "mrf_cost": 0.0
+            "max_flow": "Modesto Irrigation District/Demand",
+            "cost": -500
         },
         {
             "name": "North Fk Toul R Headflow",
@@ -953,13 +964,6 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "REED C NR LONG BARN CA_11283350",
-            "type": "RiverGauge",
-            "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.0,
-            "mrf_cost": 0.0
-        },
-        {
             "name": "Reed Ck Headflow",
             "type": "Catchment",
             "comment": "{\"resource_class\": \"node\"}"
@@ -980,16 +984,11 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "SF TUOLUMNE R NR OAKLAND RECREATION CAMP_11281000",
-            "type": "RiverGauge",
-            "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.0,
-            "mrf_cost": 0.0
-        },
-        {
             "name": "SFPUC",
             "type": "Output",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "max_flow": "SFPUC/Demand",
+            "cost": -500
         },
         {
             "name": "Sullivan Ck Headflow",
@@ -1012,25 +1011,14 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "TUOLUMNE R AB EARLY INTAKE NR MATHER CA_11276600",
-            "type": "RiverGauge",
-            "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.0,
-            "mrf_cost": 0.0
+            "name": "TUOLU-N-JUN1",
+            "type": "BreakLink",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "TUOLUMNE R BL EARLY INTAKE NR MATHER CA_11276900",
-            "type": "RiverGauge",
-            "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.0,
-            "mrf_cost": 0.0
-        },
-        {
-            "name": "TUOLUMNE R NR HETCH HETCHY CA_11276500",
-            "type": "RiverGauge",
-            "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.0,
-            "mrf_cost": 0.0
+            "name": "TUOLU-N-JUN2",
+            "type": "River",
+            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Tuolumne River Headflow",
@@ -1039,11 +1027,6 @@
         },
         {
             "name": "Tuolumne River Outflow",
-            "type": "Output",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
-            "name": "Tuolumne Utility District",
             "type": "Output",
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -1272,11 +1255,6 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "TUO_R-N-JUN3",
-            "type": "River",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
             "name": "TUO_R-N-JUN4",
             "type": "River",
             "comment": "{\"resource_class\": \"node\"}"
@@ -1284,7 +1262,9 @@
         {
             "name": "Turlock Irrigation District",
             "type": "Output",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "max_flow": "Turlock Irrigation District/Demand",
+            "cost": -500
         },
         {
             "name": "Upper Hetch Hetchy Tunnel Inflow",
@@ -1297,25 +1277,93 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "USGS_11278200_CHERRY CR CN",
+            "name": "USGS 11276500 TUOLUMNE R NR HETCH HETCHY CA",
             "type": "RiverGauge",
-            "comment": "{\"resource_class\": \"node\"}",
-            "mrf": 0.0,
-            "mrf_cost": 0.0
-        },
-        {
-            "name": "Withdrawal Node 1",
-            "type": "BreakLink",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Withdrawal Node 2",
-            "type": "BreakLink",
+            "name": "USGS 11276600 TUOLUMNE R AB EARLY INTAKE NR MATHER CA",
+            "type": "RiverGauge",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Withdrawal Node 3",
-            "type": "BreakLink",
+            "name": "USGS 11276900 TUOLUMNE R BL EARLY INTAKE NR MATHER CA",
+            "type": "RiverGauge",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "USGS 11277300 CHERRY C BL VALLEY DAM NR HETCH HETCHY CA",
+            "type": "RiverGauge",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "USGS 11278000 ELEANOR C NR HETCH HETCHY CA",
+            "type": "RiverGauge",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "USGS 11278200 CHERRY C CN NR EARLY INTAKE CA",
+            "type": "RiverGauge",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "USGS 11278300 CHERRY C NR EARLY INTAKE CA",
+            "type": "RiverGauge",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "USGS 11278400 CHERRY C BL DION R HOLM PH NR MATHER CA",
+            "type": "RiverGauge",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "USGS 11281000 SF TUOLUMNE R NR OAKLAND RECREATION CAMP CA",
+            "type": "RiverGauge",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "USGS 11282000 M TUOLUMNE R A OAKLAND RECREATION CAMP CA",
+            "type": "RiverGauge",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "USGS 11283250 CLAVEY R NR LONG BARN CA",
+            "type": "RiverGauge",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "USGS 11283350 REED C NR LONG BARN CA",
+            "type": "RiverGauge",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "USGS 11283500 CLAVEY R NR BUCK MEADOWS CA",
+            "type": "RiverGauge",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "USGS 11284400 BIG C AB WHITES GULCH NR GROVELAND CA",
+            "type": "RiverGauge",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "USGS 11284700 NF TUOLUMNE R NR LONG BARN CA",
+            "type": "RiverGauge",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "USGS 11289000 MODESTO CN NR LA GRANGE CA",
+            "type": "RiverGauge",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "USGS 11289500 TURLOCK CN NR LA GRANGE CA",
+            "type": "RiverGauge",
+            "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "USGS 11289650 TUOLUMNE R BL LAGRANGE DAM NR LAGRANGE CA",
+            "type": "RiverGauge",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -1352,7 +1400,7 @@
         ],
         [
             "Below Canyon Power Tunnel Inflow",
-            "TUOLUMNE R AB EARLY INTAKE NR MATHER CA_11276600"
+            "USGS 11276600 TUOLUMNE R AB EARLY INTAKE NR MATHER CA"
         ],
         [
             "Cherry Ck Headflow",
@@ -1379,7 +1427,7 @@
             "TUO_06 Inflow"
         ],
         [
-            "TUOLUMNE R BL EARLY INTAKE NR MATHER CA_11276900",
+            "USGS 11276900 TUOLUMNE R BL EARLY INTAKE NR MATHER CA",
             "Below Clavey R Inflow"
         ],
         [
@@ -1403,7 +1451,7 @@
             "Dion R Holm PH"
         ],
         [
-            "CHERRY C NR EARLY INTAKE CA_11278300",
+            "USGS 11278300 CHERRY C NR EARLY INTAKE CA",
             "Below Dion R Holm Tunnel Inflow"
         ],
         [
@@ -1419,7 +1467,7 @@
             "TUO_11 Inflow"
         ],
         [
-            "CHERRY C BL VALLEY DAM NR HETCH HETCHY CA_11277300",
+            "USGS 11277300 CHERRY C BL VALLEY DAM NR HETCH HETCHY CA",
             "Below Eleanor Ck Inflow"
         ],
         [
@@ -1443,7 +1491,7 @@
             "Upper Hetch Hetchy Tunnel Inflow"
         ],
         [
-            "TUOLUMNE R AB EARLY INTAKE NR MATHER CA_11276600",
+            "USGS 11276600 TUOLUMNE R AB EARLY INTAKE NR MATHER CA",
             "Below Hetch Hetchy Aquaduct Outflow"
         ],
         [
@@ -1464,7 +1512,7 @@
         ],
         [
             "Below IFR bl Cherry Lake",
-            "CHERRY C BL VALLEY DAM NR HETCH HETCHY CA_11277300"
+            "USGS 11277300 CHERRY C BL VALLEY DAM NR HETCH HETCHY CA"
         ],
         [
             "IFR bl Hetch Hetchy Reservoir",
@@ -1472,7 +1520,7 @@
         ],
         [
             "Below IFR bl Hetch Hetchy Reservoir",
-            "TUOLUMNE R NR HETCH HETCHY CA_11276500"
+            "USGS 11276500 TUOLUMNE R NR HETCH HETCHY CA"
         ],
         [
             "IFR bl Lake Eleanor",
@@ -1480,7 +1528,7 @@
         ],
         [
             "Below IFR bl Lake Eleanor",
-            "ELEANOR C NR HETCH HETCHY CA_11278000"
+            "USGS 11278000 ELEANOR C NR HETCH HETCHY CA"
         ],
         [
             "Lake Eleanor",
@@ -1515,7 +1563,7 @@
             "TUO_14 Inflow"
         ],
         [
-            "SF TUOLUMNE R NR OAKLAND RECREATION CAMP_11281000",
+            "USGS 11281000 SF TUOLUMNE R NR OAKLAND RECREATION CAMP CA",
             "Below Middle Tuol R Inflow"
         ],
         [
@@ -1544,7 +1592,7 @@
         ],
         [
             "Below Moccasin Aquaduct Inflow",
-            "Withdrawal Node 3"
+            "Moccasin Reservoir"
         ],
         [
             "Priest Reservoir",
@@ -1608,7 +1656,7 @@
         ],
         [
             "Below Phoenix Aqueduct Inflow",
-            "Withdrawal Node 1"
+            "Sullivan Ck Inflow"
         ],
         [
             "Reed Ck Headflow",
@@ -1619,7 +1667,7 @@
             "TUO_07 Inflow"
         ],
         [
-            "CLAVEY R NR LONG BARN CA_11283250",
+            "USGS 11283250 CLAVEY R NR LONG BARN CA",
             "Below Reed Ck Inflow"
         ],
         [
@@ -1640,7 +1688,7 @@
         ],
         [
             "Below S Fk Tuol R Inflow",
-            "TUOLUMNE R BL EARLY INTAKE NR MATHER CA_11276900"
+            "USGS 11276900 TUOLUMNE R BL EARLY INTAKE NR MATHER CA"
         ],
         [
             "Sullivan Ck Headflow",
@@ -1744,7 +1792,7 @@
         ],
         [
             "Below TUO_04 Inflow",
-            "NF TUOL LONG BARN CA_11284700"
+            "USGS 11284700 NF TUOLUMNE R NR LONG BARN CA"
         ],
         [
             "TUO_05 Headflow",
@@ -1776,7 +1824,7 @@
         ],
         [
             "Below TUO_06 Inflow",
-            "CLAVEY R NR LONG BARN CA_11283250"
+            "USGS 11283250 CLAVEY R NR LONG BARN CA"
         ],
         [
             "TUO_07 Headflow",
@@ -1792,7 +1840,7 @@
         ],
         [
             "Below TUO_07 Inflow",
-            "REED C NR LONG BARN CA_11283350"
+            "USGS 11283350 REED C NR LONG BARN CA"
         ],
         [
             "TUO_08 Headflow",
@@ -1808,7 +1856,7 @@
         ],
         [
             "Below TUO_08 Inflow",
-            "CHERRY C NR EARLY INTAKE CA_11278300"
+            "USGS 11278300 CHERRY C NR EARLY INTAKE CA"
         ],
         [
             "TUO_09 Headflow",
@@ -1867,7 +1915,7 @@
             "TUO_12 Inflow"
         ],
         [
-            "TUOLUMNE R NR HETCH HETCHY CA_11276500",
+            "USGS 11276500 TUOLUMNE R NR HETCH HETCHY CA",
             "Below TUO_12 Inflow"
         ],
         [
@@ -1904,7 +1952,7 @@
         ],
         [
             "Below TUO_14 Inflow",
-            "M TUOLUMNE R A OAKLAND RECREATION CAMP CA_11282000"
+            "USGS 11282000 M TUOLUMNE R A OAKLAND RECREATION CAMP CA"
         ],
         [
             "TUO_15 Headflow",
@@ -1920,7 +1968,7 @@
         ],
         [
             "Below TUO_15 Inflow",
-            "SF TUOLUMNE R NR OAKLAND RECREATION CAMP_11281000"
+            "USGS 11281000 SF TUOLUMNE R NR OAKLAND RECREATION CAMP CA"
         ],
         [
             "TUO_16 Headflow",
@@ -1931,7 +1979,7 @@
             "TUO_16 Inflow"
         ],
         [
-            "BIG C AB WHITES GULCH NR GROVELAND CA_11284400",
+            "USGS 11284400 BIG C AB WHITES GULCH NR GROVELAND CA",
             "Below TUO_16 Inflow"
         ],
         [
@@ -1952,7 +2000,7 @@
         ],
         [
             "Below TUO_17 Inflow",
-            "BIG C AB WHITES GULCH NR GROVELAND CA_11284400"
+            "USGS 11284400 BIG C AB WHITES GULCH NR GROVELAND CA"
         ],
         [
             "TUO_18 Headflow",
@@ -1995,23 +2043,7 @@
             "Upper Hetch Hetchy Tunnel Outflow"
         ],
         [
-            "Withdrawal Node 1",
-            "Below Withdrawal Node 1"
-        ],
-        [
-            "Below Withdrawal Node 1",
-            "Withdrawal Node 2"
-        ],
-        [
-            "Withdrawal Node 2",
-            "Below Withdrawal Node 2"
-        ],
-        [
-            "Below Withdrawal Node 2",
-            "Sullivan Ck Inflow"
-        ],
-        [
-            "Withdrawal Node 3",
+            "Moccasin Reservoir",
             "Below Withdrawal Node 3.1"
         ],
         [
@@ -2072,10 +2104,10 @@
         ],
         [
             "Cherry Ck (1)",
-            "CHERRY C BL DION R HOLM PH NR MATHER CA_11278400"
+            "USGS 11278400 CHERRY C BL DION R HOLM PH NR MATHER CA"
         ],
         [
-            "CHERRY C BL DION R HOLM PH NR MATHER CA_11278400",
+            "USGS 11278400 CHERRY C BL DION R HOLM PH NR MATHER CA",
             "Cherry Ck (2)"
         ],
         [
@@ -2088,23 +2120,15 @@
         ],
         [
             "Clavey R",
-            "CLAVEY R NR BUCK MEADOWS CA_11283500"
+            "USGS 11283500 CLAVEY R NR BUCK MEADOWS CA"
         ],
         [
-            "CLAVEY R NR BUCK MEADOWS CA_11283500",
+            "USGS 11283500 CLAVEY R NR BUCK MEADOWS CA",
             "Clavey R (1)"
         ],
         [
             "Clavey R (1)",
             "Clavey R Inflow"
-        ],
-        [
-            "Diversion bl Don Pedro Reservoir",
-            "Delivery link to TID"
-        ],
-        [
-            "Delivery link to TID",
-            "Turlock Irrigation District"
         ],
         [
             "Gauge Dion R Holm PH",
@@ -2115,7 +2139,7 @@
             "Dion R Holm Tunnel Inflow"
         ],
         [
-            "ELEANOR C NR HETCH HETCHY CA_11278000",
+            "USGS 11278000 ELEANOR C NR HETCH HETCHY CA",
             "Eleanor Ck"
         ],
         [
@@ -2123,11 +2147,27 @@
             "Eleanor Ck Inflow"
         ],
         [
-            "Upper Hetch Hetchy Tunnel Inflow",
-            "Hetch Hetch Aquaduct.1"
+            "TUOLU-N-JUN1",
+            "Groveland Pipeline"
         ],
         [
-            "Hetch Hetch Aquaduct.1",
+            "Groveland Pipeline",
+            "Groveland"
+        ],
+        [
+            "Upper Hetch Hetchy Tunnel Inflow",
+            "Hetch Hetch Aquaduct.1.1"
+        ],
+        [
+            "Hetch Hetch Aquaduct.1.1",
+            "TUOLU-N-JUN1"
+        ],
+        [
+            "TUOLU-N-JUN1",
+            "Hetch Hetch Aquaduct.1.2"
+        ],
+        [
+            "Hetch Hetch Aquaduct.1.2",
             "TUO_R-N-JUN12"
         ],
         [
@@ -2168,10 +2208,10 @@
         ],
         [
             "Lower Cherry Aqueduct 1",
-            "USGS_11278200_CHERRY CR CN"
+            "USGS 11278200 CHERRY C CN NR EARLY INTAKE CA"
         ],
         [
-            "USGS_11278200_CHERRY CR CN",
+            "USGS 11278200 CHERRY C CN NR EARLY INTAKE CA",
             "Lower Cherry Aqueduct 2"
         ],
         [
@@ -2179,7 +2219,7 @@
             "Hetch Hetchy Aquaduct Outflow"
         ],
         [
-            "M TUOLUMNE R A OAKLAND RECREATION CAMP CA_11282000",
+            "USGS 11282000 M TUOLUMNE R A OAKLAND RECREATION CAMP CA",
             "Middle Tuol R"
         ],
         [
@@ -2195,7 +2235,7 @@
             "Moccasin Aquaduct Inflow"
         ],
         [
-            "Withdrawal Node 3",
+            "Moccasin Reservoir",
             "Moccasin Aquaduct.1.1"
         ],
         [
@@ -2211,7 +2251,23 @@
             "TUO_R-N-JUN4"
         ],
         [
-            "NF TUOL LONG BARN CA_11284700",
+            "La Grange Reservoir",
+            "Modesto Canal.1"
+        ],
+        [
+            "Modesto Canal.1",
+            "USGS 11289000 MODESTO CN NR LA GRANGE CA"
+        ],
+        [
+            "USGS 11289000 MODESTO CN NR LA GRANGE CA",
+            "Modesto Canal.2"
+        ],
+        [
+            "Modesto Canal.2",
+            "Modesto Irrigation District"
+        ],
+        [
+            "USGS 11284700 NF TUOLUMNE R NR LONG BARN CA",
             "North Fk Toul R"
         ],
         [
@@ -2219,7 +2275,7 @@
             "North Fk Toul R Inflow"
         ],
         [
-            "REED C NR LONG BARN CA_11283350",
+            "USGS 11283350 REED C NR LONG BARN CA",
             "Reed Ck"
         ],
         [
@@ -2235,23 +2291,7 @@
             "S Fk Tuol R Inflow"
         ],
         [
-            "Withdrawal Node 1",
-            "Transmission Link from Withdrawal Node 1 to Algerine"
-        ],
-        [
-            "Transmission Link from Withdrawal Node 1 to Algerine",
-            "Algerine"
-        ],
-        [
-            "Withdrawal Node 2",
-            "Transmission Link from Withdrawal Node 2 to Tuolumne Utility District"
-        ],
-        [
-            "Transmission Link from Withdrawal Node 2 to Tuolumne Utility District",
-            "Tuolumne Utility District"
-        ],
-        [
-            "Withdrawal Node 3",
+            "Moccasin Reservoir",
             "Transmission Link from Withdrawal Node 3 to SFPUC.1"
         ],
         [
@@ -2267,30 +2307,6 @@
             "SFPUC"
         ],
         [
-            "Don Pedro Reservoir",
-            "TUO-L-CON1"
-        ],
-        [
-            "TUO-L-CON1",
-            "Don Pedro PH"
-        ],
-        [
-            "Don Pedro PH",
-            "TUO-L-CON2"
-        ],
-        [
-            "TUO-L-CON2",
-            "TUO_R-N-JUN3"
-        ],
-        [
-            "Diversion bl Don Pedro Reservoir",
-            "TUO-L-DEL1"
-        ],
-        [
-            "TUO-L-DEL1",
-            "Modesto Irrigation District"
-        ],
-        [
             "Moccasin PH",
             "TUO-L-DEL2"
         ],
@@ -2300,35 +2316,83 @@
         ],
         [
             "IFR bl Don Pedro Reservoir",
-            "TUO-L-RIV1"
-        ],
-        [
-            "TUO-L-RIV1",
-            "Tuolumne River Outflow"
-        ],
-        [
-            "Don Pedro Reservoir",
             "TUO-L-RIV1.1"
         ],
         [
             "TUO-L-RIV1.1",
-            "TUO_R-N-JUN3"
+            "USGS 11289650 TUOLUMNE R BL LAGRANGE DAM NR LAGRANGE CA"
         ],
         [
-            "TUO_R-N-JUN3",
-            "TUO-L-RIV1.2.1.1.1"
+            "USGS 11289650 TUOLUMNE R BL LAGRANGE DAM NR LAGRANGE CA",
+            "TUO-L-RIV1.2"
         ],
         [
-            "TUO-L-RIV1.2.1.1.1",
-            "Diversion bl Don Pedro Reservoir"
+            "TUO-L-RIV1.2",
+            "Tuolumne River Outflow"
         ],
         [
-            "Diversion bl Don Pedro Reservoir",
+            "La Grange Reservoir",
             "TUO-L-RIV1.2.1.1.2"
         ],
         [
             "TUO-L-RIV1.2.1.1.2",
             "IFR bl Don Pedro Reservoir"
+        ],
+        [
+            "Don Pedro Reservoir",
+            "TUOLU-L-CON1"
+        ],
+        [
+            "TUOLU-L-CON1",
+            "Don Pedro Release Req"
+        ],
+        [
+            "Don Pedro Reservoir",
+            "TUOLU-L-CON2"
+        ],
+        [
+            "TUOLU-L-CON2",
+            "Don Pedro Flood Control"
+        ],
+        [
+            "Don Pedro Release Req",
+            "TUOLU-L-CON3"
+        ],
+        [
+            "TUOLU-L-CON3",
+            "TUOLU-N-JUN2"
+        ],
+        [
+            "Don Pedro Flood Control",
+            "TUOLU-L-CON4"
+        ],
+        [
+            "TUOLU-L-CON4",
+            "TUOLU-N-JUN2"
+        ],
+        [
+            "Don Pedro Reservoir",
+            "TUOLU-L-CON5"
+        ],
+        [
+            "TUOLU-L-CON5",
+            "Don Pedro PH"
+        ],
+        [
+            "Don Pedro PH",
+            "TUOLU-L-CON6"
+        ],
+        [
+            "TUOLU-L-CON6",
+            "TUOLU-N-JUN2"
+        ],
+        [
+            "TUOLU-N-JUN2",
+            "TUOLU-L-RIV1"
+        ],
+        [
+            "TUOLU-L-RIV1",
+            "La Grange Reservoir"
         ],
         [
             "Moccasin Ck Inflow",
@@ -2353,8 +2417,67 @@
         [
             "Tuolumne River (2).1",
             "Don Pedro Reservoir"
+        ],
+        [
+            "La Grange Reservoir",
+            "Turlock Canal.1"
+        ],
+        [
+            "Turlock Canal.1",
+            "USGS 11289500 TURLOCK CN NR LA GRANGE CA"
+        ],
+        [
+            "USGS 11289500 TURLOCK CN NR LA GRANGE CA",
+            "Turlock Canal.2"
+        ],
+        [
+            "Turlock Canal.2",
+            "Turlock Irrigation District"
         ]
     ],
+    "tables": {
+        "San Joaquin Valley Index": {
+            "url": "../data/common/Scenarios/Livneh/SJVI.csv",
+            "index_col": 0,
+            "squeeze": true
+        },
+        "Modesto Irrigation District/Demand Table": {
+            "url": "../data/Tuolumne River/Management/BAU/Demand/Modesto Irrigation District demand cfs.csv",
+            "index_col": [0, 1],
+            "header": 0
+        },
+        "Turlock Irrigation District/Demand Table": {
+            "url": "../data/Tuolumne River/Management/BAU/Demand/Turlock Irrigation District demand cfs.csv",
+            "index_col": [0, 1],
+            "header": 0
+        },
+        "Preferred Storage": {
+            "url": "../data/Tuolumne River/Management/BAU/Reservoirs/Preferred Storage Curves - af.csv",
+            "index_col": [
+                0,
+                1
+            ],
+            "header": 0
+        },
+        "IFR bl Don Pedro Reservoir/IFR Schedule": {
+            "url": "../data/Tuolumne River/_tables/IFR_bl_Don_Pedro_Reservoir_IFR_Schedule.csv",
+            "header": 0,
+            "index_col": 0,
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
+        },
+        "IFR bl Hetch Hetchy Reservoir/IFR Schedule": {
+            "url": "../data/Tuolumne River/_tables/IFR_bl_Hetch_Hetchy_Reservoir_IFR_Schedule.csv",
+            "header": [0,1],
+            "index_col": 0,
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
+        },
+        "IFR bl Lake Eleanor/IFR Schedule": {
+            "url": "../data/Tuolumne River/_tables/IFR_bl_Lake_Eleanor_IFR_Schedule.csv",
+            "header": 0,
+            "index_col": 0,
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
+        }
+    },
     "parameters": {
         "Dion R Holm Tunnel/Flow Capacity": {
             "type": "Dion_R_Holm_Tunnel_Flow_Capacity",
@@ -2364,25 +2487,24 @@
             "type": "Moccasin_Aquaduct_Flow_Capacity",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
-        "Algerine/Delivery": {
-            "type": "Algerine_Delivery",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        "Cherry Lake/Cost": {
+            "type": "controlcurveinterpolated",
+            "storage_node": "Cherry Lake",
+            "control_curves": [
+                "Cherry Lake/Rule Curve",
+                0.5,
+                0.1
+            ],
+            "values": [
+                0.0,
+                0.0,
+                -20.0,
+                -50.0,
+                -1000000.0
+            ]
         },
-        "BIG C AB WHITES GULCH NR GROVELAND CA_11284400/Observed Flow": {
-            "type": "BIG_C_AB_WHITES_GULCH_NR_GROVELAND_CA_11284400_Observed_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "CHERRY C BL DION R HOLM PH NR MATHER CA_11278400/Observed Flow": {
-            "type": "CHERRY_C_BL_DION_R_HOLM_PH_NR_MATHER_CA_11278400_Observed_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "CHERRY C BL VALLEY DAM NR HETCH HETCHY CA_11277300/Observed Flow": {
-            "type": "CHERRY_C_BL_VALLEY_DAM_NR_HETCH_HETCHY_CA_11277300_Observed_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "CHERRY C NR EARLY INTAKE CA_11278300/Observed Flow": {
-            "type": "CHERRY_C_NR_EARLY_INTAKE_CA_11278300_Observed_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        "Cherry Lake/Rule Curve": {
+            "type": "Preferred_Storage"
         },
         "Cherry Lake/Volume Elevation Curve": {
             "type": "interpolatedvolume",
@@ -2432,59 +2554,24 @@
             "kind": "cubic",
             "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
         },
-        "Cherry Lake/Observed Storage": {
-            "type": "Cherry_Lake_Observed_Storage",
-            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
+        "Don Pedro Reservoir/Cost": {
+            "type": "controlcurveinterpolated",
+            "storage_node": "Don Pedro Reservoir",
+            "control_curves": [
+                "Don Pedro Reservoir/Rule Curve",
+                0.5,
+                0.1
+            ],
+            "values": [
+                0.0,
+                0.0,
+                -20.0,
+                -50.0,
+                -1000000.0
+            ]
         },
-        "Cherry Lake/Storage Demand": {
-            "type": "Cherry_Lake_Storage_Demand",
-            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
-        },
-        "CLAVEY R NR BUCK MEADOWS CA_11283500/Observed Flow": {
-            "type": "CLAVEY_R_NR_BUCK_MEADOWS_CA_11283500_Observed_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "CLAVEY R NR LONG BARN CA_11283250/Observed Flow": {
-            "type": "CLAVEY_R_NR_LONG_BARN_CA_11283250_Observed_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Dion R Holm PH/Fixed Head": {
-            "type": "constant",
-            "value": 640.1,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "Dion R Holm PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 26.900750389352968,
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Dion R Holm PH/Water Demand": {
-            "type": "Dion_R_Holm_PH_Water_Demand",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Dion R Holm PH/Unconstrained Cost": {
-            "type": "constant",
-            "value": -1,
-            "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
-        },
-        "Don Pedro PH/Fixed Head": {
-            "type": "constant",
-            "value": 170.0,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "Don Pedro PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 25.484921421492285,
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Don Pedro PH/Water Demand": {
-            "type": "Don_Pedro_PH_Water_Demand",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Don Pedro PH/Unconstrained Cost": {
-            "type": "constant",
-            "value": -1,
-            "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
+        "Don Pedro Reservoir/Rule Curve": {
+            "type": "Preferred_Storage"
         },
         "Don Pedro Reservoir/Volume Elevation Curve": {
             "type": "interpolatedvolume",
@@ -2560,9 +2647,31 @@
             "type": "Don_Pedro_Reservoir_Storage_Demand",
             "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
         },
-        "ELEANOR C NR HETCH HETCHY CA_11278000/Observed Flow": {
-            "type": "ELEANOR_C_NR_HETCH_HETCHY_CA_11278000_Observed_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        "Hetch Hetchy Reservoir/Cost": {
+            "type": "controlcurveinterpolated",
+            "storage_node": "Hetch Hetchy Reservoir",
+            "control_curves": [
+                "Hetch Hetchy Reservoir/Rule Curve",
+                0.5,
+                0.1
+            ],
+            "values": [
+                0.0,
+                0.0,
+                -20.0,
+                -50.0,
+                -1000000.0
+            ]
+        },
+        "Hetch Hetchy Reservoir/Precipitation": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/Scenarios/precipitation/Livneh/rainfall_HetchHetchy_mm.csv",
+            "index_col": "dates",
+            "column": "Rain_mm",
+            "parse_dates": true
+        },
+        "Hetch Hetchy Reservoir/Rule Curve": {
+            "type": "Preferred_Storage"
         },
         "Hetch Hetchy Reservoir/Volume Elevation Curve": {
             "type": "interpolatedvolume",
@@ -2587,7 +2696,7 @@
                 337.5,
                 382.7,
                 429.8,
-                444.4
+                444.6
             ],
             "values": [
                 1070.5,
@@ -2614,319 +2723,52 @@
             "kind": "cubic",
             "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
         },
-        "Hetch Hetchy Reservoir/Observed Storage": {
-            "type": "Hetch_Hetchy_Reservoir_Observed_Storage",
-            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
-        },
         "Hetch Hetchy Reservoir/Storage Demand": {
             "type": "Hetch_Hetchy_Reservoir_Storage_Demand",
             "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
         },
-        "IFR bl Cherry Lake/Requirement": {
-            "type": "IFR_bl_Cherry_Lake_Requirement",
+        "IFR bl Cherry Lake/Min Flow": {
+            "type": "IFR_bl_Cherry_Lake_Min_Flow",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "IFR bl Don Pedro Reservoir/IFR Schedule": {
-            "type": "numpyarray",
-            "value": [
-                [
-                    "",
-                    "Critical and Below",
-                    "Median Critical",
-                    "Intermed Critical / Dry",
-                    "Median Dry",
-                    "Intermed Dry / Below Normal",
-                    "Median Below Normal",
-                    "Intermed Below Normal / Above Normal and Above"
-                ],
-                [
-                    "October 1-15",
-                    100,
-                    100,
-                    150,
-                    150,
-                    180,
-                    200,
-                    300
-                ],
-                [
-                    "October 16 - May 31",
-                    150,
-                    150,
-                    150,
-                    150,
-                    180,
-                    175,
-                    300
-                ],
-                [
-                    "June 1 - Sept. 30",
-                    50,
-                    50,
-                    50,
-                    75,
-                    75,
-                    75,
-                    250
-                ]
-            ],
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
         },
         "IFR bl Don Pedro Reservoir/Water Year Type": {
             "type": "IFR_bl_Don_Pedro_Reservoir_Water_Year_Type",
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         },
-        "IFR bl Don Pedro Reservoir/Requirement": {
-            "type": "IFR_bl_Don_Pedro_Reservoir_Requirement",
+        "IFR bl Don Pedro Reservoir/Min Flow": {
+            "type": "IFR_bl_Don_Pedro_Reservoir_Min_Flow",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "IFR bl Hetch Hetchy Reservoir/IFR Schedule": {
-            "type": "numpyarray",
-            "value": [
-                [
-                    "",
-                    "Year Type A",
-                    "Year Type A",
-                    "Year Type B",
-                    "Year Type B",
-                    "Year Type C"
-                ],
-                [
-                    "",
-                    "Criteria",
-                    "cfs",
-                    "Criteria",
-                    "cfs",
-                    "cfs"
-                ],
-                [
-                    "January",
-                    8.8,
-                    50,
-                    6.1,
-                    40,
-                    35
-                ],
-                [
-                    "February",
-                    14,
-                    60,
-                    9.5,
-                    50,
-                    35
-                ],
-                [
-                    "March",
-                    18.6,
-                    60,
-                    14.2,
-                    50,
-                    35
-                ],
-                [
-                    "April",
-                    26,
-                    75,
-                    18,
-                    65,
-                    35
-                ],
-                [
-                    "May",
-                    26.6,
-                    100,
-                    19.5,
-                    80,
-                    50
-                ],
-                [
-                    "June",
-                    28.45,
-                    125,
-                    21.25,
-                    110,
-                    75
-                ],
-                [
-                    "July",
-                    575,
-                    125,
-                    390,
-                    110,
-                    75
-                ],
-                [
-                    "August",
-                    640,
-                    125,
-                    400,
-                    110,
-                    75
-                ],
-                [
-                    "Sept. 1-15",
-                    "",
-                    100,
-                    "",
-                    80,
-                    75
-                ],
-                [
-                    "Sept. 15-30",
-                    "",
-                    80,
-                    "o",
-                    65,
-                    50
-                ],
-                [
-                    "October",
-                    "",
-                    60,
-                    "p",
-                    50,
-                    35
-                ],
-                [
-                    "November",
-                    "",
-                    60,
-                    "",
-                    50,
-                    35
-                ],
-                [
-                    "December",
-                    "",
-                    50,
-                    "",
-                    40,
-                    35
-                ]
-            ],
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
         },
         "IFR bl Hetch Hetchy Reservoir/Water Year Type": {
             "type": "IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type",
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         },
-        "IFR bl Hetch Hetchy Reservoir/Requirement": {
-            "type": "IFR_bl_Hetch_Hetchy_Reservoir_Requirement",
+        "IFR bl Hetch Hetchy Reservoir/Min Flow": {
+            "type": "IFR_bl_Hetch_Hetchy_Reservoir_Min_Flow",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
-        "IFR bl Lake Eleanor/IFR Schedule": {
-            "type": "numpyarray",
-            "value": [
-                [
-                    "Date",
-                    "Pumping",
-                    "Not pumping"
-                ],
-                [
-                    "January",
-                    5,
-                    5
-                ],
-                [
-                    "February",
-                    5,
-                    5
-                ],
-                [
-                    "March",
-                    10,
-                    5
-                ],
-                [
-                    "April_10",
-                    10,
-                    5
-                ],
-                [
-                    "April_20",
-                    15,
-                    5
-                ],
-                [
-                    "April_30",
-                    20,
-                    5
-                ],
-                [
-                    "May",
-                    20,
-                    5
-                ],
-                [
-                    "June",
-                    20,
-                    5
-                ],
-                [
-                    "July",
-                    20,
-                    16
-                ],
-                [
-                    "August",
-                    20,
-                    16
-                ],
-                [
-                    "September_10",
-                    20,
-                    16
-                ],
-                [
-                    "September_20",
-                    15,
-                    16
-                ],
-                [
-                    "September_30",
-                    10,
-                    16
-                ],
-                [
-                    "October",
-                    10,
-                    5
-                ],
-                [
-                    "November",
-                    5,
-                    5
-                ],
-                [
-                    "December",
-                    5,
-                    5
-                ]
+        "IFR bl Lake Eleanor/Min Flow": {
+            "type": "IFR_bl_Lake_Eleanor_Min_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "Lake Eleanor/Cost": {
+            "type": "controlcurveinterpolated",
+            "storage_node": "Lake Eleanor",
+            "control_curves": [
+                "Lake Eleanor/Rule Curve",
+                0.5,
+                0.1
             ],
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
+            "values": [
+                0.0,
+                0.0,
+                -20.0,
+                -50.0,
+                -1000000.0
+            ]
         },
-        "IFR bl Lake Eleanor/Requirement": {
-            "type": "IFR_bl_Lake_Eleanor_Requirement",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Kirkwood PH/Fixed Head": {
-            "type": "constant",
-            "value": 335.3,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "Kirkwood PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 38.227382132238425,
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Kirkwood PH/Water Demand": {
-            "type": "Kirkwood_PH_Water_Demand",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Kirkwood PH/Unconstrained Cost": {
-            "type": "constant",
-            "value": -1,
-            "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
+        "Lake Eleanor/Rule Curve": {
+            "type": "Preferred_Storage"
         },
         "Lake Eleanor/Volume Elevation Curve": {
             "type": "interpolatedvolume",
@@ -2946,8 +2788,7 @@
                 16.6,
                 21.0,
                 26.5,
-                32.2,
-                35.9
+                32.2
             ],
             "values": [
                 1404.5,
@@ -2964,326 +2805,259 @@
                 1416.1,
                 1417.3,
                 1418.8,
-                1420.4,
-                1421.3
+                1420.4
             ],
             "kind": "cubic",
             "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "Lake Eleanor/Observed Storage": {
-            "type": "Lake_Eleanor_Observed_Storage",
-            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
         },
         "Lake Eleanor/Storage Demand": {
             "type": "Lake_Eleanor_Storage_Demand",
             "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
         },
-        "M TUOLUMNE R A OAKLAND RECREATION CAMP CA_11282000/Observed Flow": {
-            "type": "M_TUOLUMNE_R_A_OAKLAND_RECREATION_CAMP_CA_11282000_Observed_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        "Modesto Irrigation District/Demand": {
+            "type": "Modesto_Irrigation_District_Demand"
         },
-        "Moccasin PH/Fixed Head": {
-            "type": "constant",
-            "value": 377.952,
-            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
+        "SFPUC/Demand": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/temp/SJPL mcm.csv",
+            "header": 0,
+            "index_col": 0,
+            "parse_dates": true
         },
-        "Moccasin PH/Turbine Capacity": {
-            "type": "constant",
-            "value": 25.484921421492285,
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Moccasin PH/Water Demand": {
-            "type": "Moccasin_PH_Water_Demand",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "Moccasin PH/Unconstrained Cost": {
-            "type": "constant",
-            "value": -1,
-            "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
-        },
-        "NF TUOL LONG BARN CA_11284700/Observed Flow": {
-            "type": "NF_TUOL_LONG_BARN_CA_11284700_Observed_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "REED C NR LONG BARN CA_11283350/Observed Flow": {
-            "type": "REED_C_NR_LONG_BARN_CA_11283350_Observed_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "SF TUOLUMNE R NR OAKLAND RECREATION CAMP_11281000/Observed Flow": {
-            "type": "SF_TUOLUMNE_R_NR_OAKLAND_RECREATION_CAMP_11281000_Observed_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "TUOLUMNE R AB EARLY INTAKE NR MATHER CA_11276600/Observed Flow": {
-            "type": "TUOLUMNE_R_AB_EARLY_INTAKE_NR_MATHER_CA_11276600_Observed_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "TUOLUMNE R BL EARLY INTAKE NR MATHER CA_11276900/Observed Flow": {
-            "type": "TUOLUMNE_R_BL_EARLY_INTAKE_NR_MATHER_CA_11276900_Observed_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "TUOLUMNE R NR HETCH HETCHY CA_11276500/Observed Flow": {
-            "type": "TUOLUMNE_R_NR_HETCH_HETCHY_CA_11276500_Observed_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        "Turlock Irrigation District/Demand": {
+            "type": "Turlock_Irrigation_District_Demand"
         },
         "TUO_01 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb01.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb01_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_02 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb02.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb02_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_03 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb03.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb03_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_04 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb04.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb04_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_05 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb05.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb05_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_06 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb06.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb06_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_07 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb07.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb07_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_08 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb08.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb08_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_09 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb09.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb09_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_10 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb10.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb10_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_11 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb11.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb11_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_12 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb12.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb12_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_13 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb13.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb13_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_14 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb14.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb14_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_15 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb15.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb15_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_16 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb16.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb16_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_17 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb17.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb17_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_18 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb18.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb18_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_19 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/Scenarios/Livneh/Runoff/tot_runoff_sb19.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb19_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
-        "USGS_11278200_CHERRY CR CN/Observed Flow": {
-            "type": "USGS_11278200_CHERRY_CR_CN_Observed_Flow",
+        "USGS 11276500 TUOLUMNE R NR HETCH HETCHY CA/Observed Flow": {
+            "type": "USGS_11276500_TUOLUMNE_R_NR_HETCH_HETCHY_CA_Observed_Flow",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
-        "MID Demand": {
-            "type": "MID_Demand"
+        "USGS 11276600 TUOLUMNE R AB EARLY INTAKE NR MATHER CA/Observed Flow": {
+            "type": "USGS_11276600_TUOLUMNE_R_AB_EARLY_INTAKE_NR_MATHER_CA_Observed_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
-        "TID Demand": {
-            "type": "TID_Demand"
+        "USGS 11276900 TUOLUMNE R BL EARLY INTAKE NR MATHER CA/Observed Flow": {
+            "type": "USGS_11276900_TUOLUMNE_R_BL_EARLY_INTAKE_NR_MATHER_CA_Observed_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "USGS 11277300 CHERRY C BL VALLEY DAM NR HETCH HETCHY CA/Observed Flow": {
+            "type": "USGS_11277300_CHERRY_C_BL_VALLEY_DAM_NR_HETCH_HETCHY_CA_Observed_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "USGS 11278000 ELEANOR C NR HETCH HETCHY CA/Observed Flow": {
+            "type": "USGS_11278000_ELEANOR_C_NR_HETCH_HETCHY_CA_Observed_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "USGS 11278200 CHERRY C CN NR EARLY INTAKE CA/Observed Flow": {
+            "type": "USGS_11278200_CHERRY_C_CN_NR_EARLY_INTAKE_CA_Observed_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "USGS 11278300 CHERRY C NR EARLY INTAKE CA/Observed Flow": {
+            "type": "USGS_11278300_CHERRY_C_NR_EARLY_INTAKE_CA_Observed_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "USGS 11278400 CHERRY C BL DION R HOLM PH NR MATHER CA/Observed Flow": {
+            "type": "USGS_11278400_CHERRY_C_BL_DION_R_HOLM_PH_NR_MATHER_CA_Observed_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "USGS 11281000 SF TUOLUMNE R NR OAKLAND RECREATION CAMP CA/Observed Flow": {
+            "type": "USGS_11281000_SF_TUOLUMNE_R_NR_OAKLAND_RECREATION_CAMP_CA_Observed_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "USGS 11282000 M TUOLUMNE R A OAKLAND RECREATION CAMP CA/Observed Flow": {
+            "type": "USGS_11282000_M_TUOLUMNE_R_A_OAKLAND_RECREATION_CAMP_CA_Observed_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "USGS 11283250 CLAVEY R NR LONG BARN CA/Observed Flow": {
+            "type": "USGS_11283250_CLAVEY_R_NR_LONG_BARN_CA_Observed_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "USGS 11283350 REED C NR LONG BARN CA/Observed Flow": {
+            "type": "USGS_11283350_REED_C_NR_LONG_BARN_CA_Observed_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "USGS 11283500 CLAVEY R NR BUCK MEADOWS CA/Observed Flow": {
+            "type": "USGS_11283500_CLAVEY_R_NR_BUCK_MEADOWS_CA_Observed_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "USGS 11284400 BIG C AB WHITES GULCH NR GROVELAND CA/Observed Flow": {
+            "type": "USGS_11284400_BIG_C_AB_WHITES_GULCH_NR_GROVELAND_CA_Observed_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "USGS 11284700 NF TUOLUMNE R NR LONG BARN CA/Observed Flow": {
+            "type": "USGS_11284700_NF_TUOLUMNE_R_NR_LONG_BARN_CA_Observed_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "cfs2cms": {
             "type": "constant",
             "value": 0.02832058906825262,
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         },
-        "WYT_SJValley": {
-            "type": "WYT_SJValley",
-            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
-        },
-        "WYI_SJValley": {
-            "type": "WYI_SJValley",
+        "San Joaquin Valley WYI": {
+            "type": "San_Joaquin_Valley_WYI",
             "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"ac-ft\"}"
-        }
-    },
-    "tables": {
-        "MID_Demand": {
-            "url": "../data/Tuolumne River/Management/BAU/Demand/ModestoIrrigationDistrict_Demand_cfs.csv",
-            "index_col": "Date"
         },
-        "TID_Demand": {
-            "url": "../data/Tuolumne River/Management/BAU/Demand/TerlockIrrigationDistrict_Demand_cfs.csv",
-            "index_col": "Date"
+        "San Joaquin Valley WYT": {
+            "type": "San_Joaquin_Valley_WYT",
+            "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         }
     },
     "recorders": {
-        "Algerine/delivery": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "Algerine/Delivery"
-        },
-        "Algerine/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "Algerine"
-        },
-        "BIG C AB WHITES GULCH NR GROVELAND CA_11284400/observed flow": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "BIG C AB WHITES GULCH NR GROVELAND CA_11284400/Observed Flow"
-        },
-        "BIG C AB WHITES GULCH NR GROVELAND CA_11284400/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "BIG C AB WHITES GULCH NR GROVELAND CA_11284400"
-        },
-        "CHERRY C BL DION R HOLM PH NR MATHER CA_11278400/observed flow": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "CHERRY C BL DION R HOLM PH NR MATHER CA_11278400/Observed Flow"
-        },
-        "CHERRY C BL DION R HOLM PH NR MATHER CA_11278400/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "CHERRY C BL DION R HOLM PH NR MATHER CA_11278400"
-        },
-        "CHERRY C BL VALLEY DAM NR HETCH HETCHY CA_11277300/observed flow": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "CHERRY C BL VALLEY DAM NR HETCH HETCHY CA_11277300/Observed Flow"
-        },
-        "CHERRY C BL VALLEY DAM NR HETCH HETCHY CA_11277300/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "CHERRY C BL VALLEY DAM NR HETCH HETCHY CA_11277300"
-        },
-        "CHERRY C NR EARLY INTAKE CA_11278300/observed flow": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "CHERRY C NR EARLY INTAKE CA_11278300/Observed Flow"
-        },
-        "CHERRY C NR EARLY INTAKE CA_11278300/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "CHERRY C NR EARLY INTAKE CA_11278300"
-        },
         "Cherry Lake/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Cherry Lake"
-        },
-        "Cherry Lake/observed storage": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "Cherry Lake/Observed Storage"
-        },
-        "CLAVEY R NR BUCK MEADOWS CA_11283500/observed flow": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "CLAVEY R NR BUCK MEADOWS CA_11283500/Observed Flow"
-        },
-        "CLAVEY R NR BUCK MEADOWS CA_11283500/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "CLAVEY R NR BUCK MEADOWS CA_11283500"
-        },
-        "CLAVEY R NR LONG BARN CA_11283250/observed flow": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "CLAVEY R NR LONG BARN CA_11283250/Observed Flow"
-        },
-        "CLAVEY R NR LONG BARN CA_11283250/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "CLAVEY R NR LONG BARN CA_11283250"
         },
         "Dion R Holm PH/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Dion R Holm PH"
         },
-        "Dion R Holm PH/water demand": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "Dion R Holm PH/Water Demand"
+        "Don Pedro Flood Control/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Don Pedro Flood Control"
         },
         "Don Pedro PH/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Don Pedro PH"
         },
-        "Don Pedro PH/water demand": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "Don Pedro PH/Water Demand"
+        "Don Pedro Release Req/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Don Pedro Release Req"
         },
         "Don Pedro Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Don Pedro Reservoir"
-        },
-        "ELEANOR C NR HETCH HETCHY CA_11278000/observed flow": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "ELEANOR C NR HETCH HETCHY CA_11278000/Observed Flow"
-        },
-        "ELEANOR C NR HETCH HETCHY CA_11278000/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "ELEANOR C NR HETCH HETCHY CA_11278000"
         },
         "Gauge Dion R Holm PH/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -3293,45 +3067,29 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Gauge Moccasin PH"
         },
+        "Groveland/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Groveland"
+        },
         "Hetch Hetchy Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Hetch Hetchy Reservoir"
-        },
-        "Hetch Hetchy Reservoir/observed storage": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "Hetch Hetchy Reservoir/Observed Storage"
         },
         "IFR bl Cherry Lake/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Cherry Lake"
         },
-        "IFR bl Cherry Lake/requirement": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Cherry Lake/Requirement"
-        },
         "IFR bl Don Pedro Reservoir/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Don Pedro Reservoir"
-        },
-        "IFR bl Don Pedro Reservoir/requirement": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Don Pedro Reservoir/Requirement"
         },
         "IFR bl Hetch Hetchy Reservoir/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Hetch Hetchy Reservoir"
         },
-        "IFR bl Hetch Hetchy Reservoir/requirement": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Hetch Hetchy Reservoir/Requirement"
-        },
         "IFR bl Lake Eleanor/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Lake Eleanor"
-        },
-        "IFR bl Lake Eleanor/requirement": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Lake Eleanor/Requirement"
         },
         "IFR bl Moccasin Reservoir/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -3341,97 +3099,25 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Kirkwood PH"
         },
-        "Kirkwood PH/water demand": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "Kirkwood PH/Water Demand"
-        },
         "Lake Eleanor/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Lake Eleanor"
-        },
-        "Lake Eleanor/observed storage": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "Lake Eleanor/Observed Storage"
-        },
-        "M TUOLUMNE R A OAKLAND RECREATION CAMP CA_11282000/observed flow": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "M TUOLUMNE R A OAKLAND RECREATION CAMP CA_11282000/Observed Flow"
-        },
-        "M TUOLUMNE R A OAKLAND RECREATION CAMP CA_11282000/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "M TUOLUMNE R A OAKLAND RECREATION CAMP CA_11282000"
         },
         "Moccasin PH/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Moccasin PH"
         },
-        "Moccasin PH/water demand": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "Moccasin PH/Water Demand"
-        },
         "Modesto Irrigation District/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Modesto Irrigation District"
-        },
-        "NF TUOL LONG BARN CA_11284700/observed flow": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "NF TUOL LONG BARN CA_11284700/Observed Flow"
-        },
-        "NF TUOL LONG BARN CA_11284700/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "NF TUOL LONG BARN CA_11284700"
-        },
-        "REED C NR LONG BARN CA_11283350/observed flow": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "REED C NR LONG BARN CA_11283350/Observed Flow"
-        },
-        "REED C NR LONG BARN CA_11283350/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "REED C NR LONG BARN CA_11283350"
-        },
-        "SF TUOLUMNE R NR OAKLAND RECREATION CAMP_11281000/observed flow": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "SF TUOLUMNE R NR OAKLAND RECREATION CAMP_11281000/Observed Flow"
-        },
-        "SF TUOLUMNE R NR OAKLAND RECREATION CAMP_11281000/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "SF TUOLUMNE R NR OAKLAND RECREATION CAMP_11281000"
         },
         "SFPUC/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "SFPUC"
         },
-        "TUOLUMNE R AB EARLY INTAKE NR MATHER CA_11276600/observed flow": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "TUOLUMNE R AB EARLY INTAKE NR MATHER CA_11276600/Observed Flow"
-        },
-        "TUOLUMNE R AB EARLY INTAKE NR MATHER CA_11276600/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "TUOLUMNE R AB EARLY INTAKE NR MATHER CA_11276600"
-        },
-        "TUOLUMNE R BL EARLY INTAKE NR MATHER CA_11276900/observed flow": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "TUOLUMNE R BL EARLY INTAKE NR MATHER CA_11276900/Observed Flow"
-        },
-        "TUOLUMNE R BL EARLY INTAKE NR MATHER CA_11276900/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "TUOLUMNE R BL EARLY INTAKE NR MATHER CA_11276900"
-        },
-        "TUOLUMNE R NR HETCH HETCHY CA_11276500/observed flow": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "TUOLUMNE R NR HETCH HETCHY CA_11276500/Observed Flow"
-        },
-        "TUOLUMNE R NR HETCH HETCHY CA_11276500/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "TUOLUMNE R NR HETCH HETCHY CA_11276500"
-        },
-        "Tuolumne River Outflow/outflow": {
+        "Tuolumne River Outflow/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Tuolumne River Outflow"
-        },
-        "Tuolumne Utility District/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "Tuolumne Utility District"
         },
         "TUO_01 Headflow/runoff": {
             "type": "NumpyArrayNodeRecorder",
@@ -3589,13 +3275,137 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Turlock Irrigation District"
         },
-        "USGS_11278200_CHERRY CR CN/observed flow": {
+        "USGS 11276500 TUOLUMNE R NR HETCH HETCHY CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "USGS_11278200_CHERRY CR CN/Observed Flow"
+            "parameter": "USGS 11276500 TUOLUMNE R NR HETCH HETCHY CA/Observed Flow"
         },
-        "USGS_11278200_CHERRY CR CN/flow": {
+        "USGS 11276500 TUOLUMNE R NR HETCH HETCHY CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "USGS_11278200_CHERRY CR CN"
+            "node": "USGS 11276500 TUOLUMNE R NR HETCH HETCHY CA"
+        },
+        "USGS 11276600 TUOLUMNE R AB EARLY INTAKE NR MATHER CA/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "USGS 11276600 TUOLUMNE R AB EARLY INTAKE NR MATHER CA/Observed Flow"
+        },
+        "USGS 11276600 TUOLUMNE R AB EARLY INTAKE NR MATHER CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11276600 TUOLUMNE R AB EARLY INTAKE NR MATHER CA"
+        },
+        "USGS 11276900 TUOLUMNE R BL EARLY INTAKE NR MATHER CA/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "USGS 11276900 TUOLUMNE R BL EARLY INTAKE NR MATHER CA/Observed Flow"
+        },
+        "USGS 11276900 TUOLUMNE R BL EARLY INTAKE NR MATHER CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11276900 TUOLUMNE R BL EARLY INTAKE NR MATHER CA"
+        },
+        "USGS 11277300 CHERRY C BL VALLEY DAM NR HETCH HETCHY CA/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "USGS 11277300 CHERRY C BL VALLEY DAM NR HETCH HETCHY CA/Observed Flow"
+        },
+        "USGS 11277300 CHERRY C BL VALLEY DAM NR HETCH HETCHY CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11277300 CHERRY C BL VALLEY DAM NR HETCH HETCHY CA"
+        },
+        "USGS 11278000 ELEANOR C NR HETCH HETCHY CA/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "USGS 11278000 ELEANOR C NR HETCH HETCHY CA/Observed Flow"
+        },
+        "USGS 11278000 ELEANOR C NR HETCH HETCHY CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11278000 ELEANOR C NR HETCH HETCHY CA"
+        },
+        "USGS 11278200 CHERRY C CN NR EARLY INTAKE CA/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "USGS 11278200 CHERRY C CN NR EARLY INTAKE CA/Observed Flow"
+        },
+        "USGS 11278200 CHERRY C CN NR EARLY INTAKE CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11278200 CHERRY C CN NR EARLY INTAKE CA"
+        },
+        "USGS 11278300 CHERRY C NR EARLY INTAKE CA/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "USGS 11278300 CHERRY C NR EARLY INTAKE CA/Observed Flow"
+        },
+        "USGS 11278300 CHERRY C NR EARLY INTAKE CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11278300 CHERRY C NR EARLY INTAKE CA"
+        },
+        "USGS 11278400 CHERRY C BL DION R HOLM PH NR MATHER CA/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "USGS 11278400 CHERRY C BL DION R HOLM PH NR MATHER CA/Observed Flow"
+        },
+        "USGS 11278400 CHERRY C BL DION R HOLM PH NR MATHER CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11278400 CHERRY C BL DION R HOLM PH NR MATHER CA"
+        },
+        "USGS 11281000 SF TUOLUMNE R NR OAKLAND RECREATION CAMP CA/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "USGS 11281000 SF TUOLUMNE R NR OAKLAND RECREATION CAMP CA/Observed Flow"
+        },
+        "USGS 11281000 SF TUOLUMNE R NR OAKLAND RECREATION CAMP CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11281000 SF TUOLUMNE R NR OAKLAND RECREATION CAMP CA"
+        },
+        "USGS 11282000 M TUOLUMNE R A OAKLAND RECREATION CAMP CA/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "USGS 11282000 M TUOLUMNE R A OAKLAND RECREATION CAMP CA/Observed Flow"
+        },
+        "USGS 11282000 M TUOLUMNE R A OAKLAND RECREATION CAMP CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11282000 M TUOLUMNE R A OAKLAND RECREATION CAMP CA"
+        },
+        "USGS 11283250 CLAVEY R NR LONG BARN CA/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "USGS 11283250 CLAVEY R NR LONG BARN CA/Observed Flow"
+        },
+        "USGS 11283250 CLAVEY R NR LONG BARN CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11283250 CLAVEY R NR LONG BARN CA"
+        },
+        "USGS 11283350 REED C NR LONG BARN CA/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "USGS 11283350 REED C NR LONG BARN CA/Observed Flow"
+        },
+        "USGS 11283350 REED C NR LONG BARN CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11283350 REED C NR LONG BARN CA"
+        },
+        "USGS 11283500 CLAVEY R NR BUCK MEADOWS CA/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "USGS 11283500 CLAVEY R NR BUCK MEADOWS CA/Observed Flow"
+        },
+        "USGS 11283500 CLAVEY R NR BUCK MEADOWS CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11283500 CLAVEY R NR BUCK MEADOWS CA"
+        },
+        "USGS 11284400 BIG C AB WHITES GULCH NR GROVELAND CA/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "USGS 11284400 BIG C AB WHITES GULCH NR GROVELAND CA/Observed Flow"
+        },
+        "USGS 11284400 BIG C AB WHITES GULCH NR GROVELAND CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11284400 BIG C AB WHITES GULCH NR GROVELAND CA"
+        },
+        "USGS 11284700 NF TUOLUMNE R NR LONG BARN CA/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "USGS 11284700 NF TUOLUMNE R NR LONG BARN CA/Observed Flow"
+        },
+        "USGS 11284700 NF TUOLUMNE R NR LONG BARN CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11284700 NF TUOLUMNE R NR LONG BARN CA"
+        },
+        "USGS 11289000 MODESTO CN NR LA GRANGE CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11289000 MODESTO CN NR LA GRANGE CA"
+        },
+        "USGS 11289500 TURLOCK CN NR LA GRANGE CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11289500 TURLOCK CN NR LA GRANGE CA"
+        },
+        "USGS 11289650 TUOLUMNE R BL LAGRANGE DAM NR LAGRANGE CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11289650 TUOLUMNE R BL LAGRANGE DAM NR LAGRANGE CA"
         }
     }
 }

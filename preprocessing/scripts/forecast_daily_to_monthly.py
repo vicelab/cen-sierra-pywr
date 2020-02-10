@@ -9,24 +9,21 @@ import pandas as pd
 from itertools import product
 
 
-def create_forcasted_hydrology(root_dir, basins=None):
-    scenarios = ['Livneh']
-    gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
-    rcps = ['45', '85']
-    gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
-    scenarios += gcm_rcps
+def create_forecasted_hydrology(root_dir, basins=None, scenarios=None):
 
     basins = basins or ['stanislaus', 'upper san joaquin']
 
     # In[5]:
 
-    alphas = {}
+    DEFAULT_ALPHA = 0.2
+    YEARS_OF_RECORD = 30
+
+    alphas = {}  # Note: default is zero
     for m in range(1, 13):
         alphas[m] = {}
-
-        if m >= 3 and m <= 9:
+        if 3 >= m <= 9:  # Mar-Sep
             for m2 in range(m, 9 + 1):
-                alphas[m][m2] = 0.5 if m == 3 else 1
+                alphas[m][m2] = 0.5 if m == 3 else 0.9
 
     # Initial pre-processing
     debug = False
@@ -37,7 +34,7 @@ def create_forcasted_hydrology(root_dir, basins=None):
         runoff_dir = os.path.join(root_dir, '{} River/Scenarios/runoff/{}'.format(basin.title(), scenario))
         #         print(runoff_dir)
         runoff_dir_monthly = runoff_dir.replace('runoff', 'runoff_monthly')
-        runoff_dir_monthly_forecasts = runoff_dir.replace('runoff', 'runoff_forecasts')
+        runoff_dir_monthly_forecasts = runoff_dir.replace('runoff', 'runoff_monthly_forecasts')
         if not os.path.exists(runoff_dir_monthly):
             os.makedirs(runoff_dir_monthly)
         if not os.path.exists(runoff_dir_monthly_forecasts):
@@ -56,33 +53,39 @@ def create_forcasted_hydrology(root_dir, basins=None):
             df2 = df.groupby([lambda x: x.year, lambda x: x.month]).sum()
             df2.index.names = ['year', 'month']
 
-            # Monthly mean
-            df_mean = df2.groupby('month').mean()
-            #             print(df_mean)
+            years = list(set(df2.index.get_level_values('year')))
 
             vals = []
             for i, (year, month) in enumerate(df2.index):
-                qnext = df2[col].iloc[i:i + 12].values
-                if len(qnext) < 12:
+
+                # Monthly median
+                start_year = max(year - YEARS_OF_RECORD, years[0])
+                end_year = start_year + YEARS_OF_RECORD
+                years_of_record = list(range(start_year, end_year + 1))
+                df3 = df2.loc[pd.IndexSlice[years_of_record, :]]
+                df_median = df3.groupby('month').median()
+
+                q_next = df2[col].iloc[i:i + 12].values
+                if len(q_next) < 12:
                     break
 
                 next_months = [i + month for i in range(12)]
                 next_months = [m if m < 13 else m - 12 for m in next_months]
-                qnext_avg = [df_mean[col].loc[m] for m in next_months]
+                q_next_median = [df_median[col].loc[m] for m in next_months]
 
                 # CORE FORECASTING ROUTINE
                 next_months_qfcst = []
                 for j, m in enumerate(next_months):
-                    alpha = alphas[month].get(m, 0)
-                    fcst = alpha * qnext[j] + (1 - alpha) * qnext_avg[j]
+                    alpha = alphas[month].get(m, DEFAULT_ALPHA)
+                    fcst = alpha * q_next[j] + (1 - alpha) * q_next_median[j]
                     next_months_qfcst.append(fcst)
 
                 vals.append(next_months_qfcst)
 
             index = pd.to_datetime(['{}-{}-01'.format(i[0], i[1]) for i in df2.index[:len(vals)]])
-            df3 = pd.DataFrame(index=index, data=vals, columns=month_columns)
-            df3.index.name = 'Date'
-            df3.to_csv(os.path.join(runoff_dir_monthly_forecasts, filename))
+            df_final = pd.DataFrame(index=index, data=vals, columns=month_columns)
+            df_final.index.name = 'Date'
+            df_final.to_csv(os.path.join(runoff_dir_monthly_forecasts, filename))
 
             if debug:
                 #             print(df3.head())
@@ -94,5 +97,6 @@ def create_forcasted_hydrology(root_dir, basins=None):
 
 if __name__ == '__main__':
     # basins = ['stanislaus', 'upper san joaquin']
-    basins = ['upper san joaquin']
+    # basins = ['upper san joaquin']
+    basins = ['stanislaus']
     create_forcasted_hydrology(basins=basins)

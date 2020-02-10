@@ -1,8 +1,6 @@
-import json
 import os
 import pandas as pd
 from calendar import monthrange
-from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 from hashlib import md5
 
@@ -159,14 +157,23 @@ class WaterLPParameter(Parameter):
 
         return data
 
-    def get_down_ramp_ifr(self, timestep, value, initial_value=None, rate=0.25):
+    def get_down_ramp_ifr(self, timestep, scenario_index, value, initial_value=None, rate=0.25):
+        """
+
+        :param timestep:
+        :param scenario_index:
+        :param value: cubic meters per second
+        :param initial_value: cubic meters per second
+        :param rate:
+        :return:
+        """
         if timestep.index == 0:
             if initial_value is not None:
                 Qp = initial_value
             else:
                 Qp = value
         else:
-            Qp = self.model.nodes[self.res_name].prev_flow[-1] / 0.0864  # convert to cms
+            Qp = self.model.nodes[self.res_name].prev_flow[scenario_index.global_id] / 0.0864  # convert to cms
         return max(value, Qp * (1 - rate))
 
     def get_up_ramp_ifr(self, timestep, scenario_index, initial_value=None, rate=0.25, max_flow=None):
@@ -177,7 +184,7 @@ class WaterLPParameter(Parameter):
             if timestep.index == 0:
                 Qp = initial_value  # should be in cms
             else:
-                Qp = self.model.nodes[self.res_name].prev_flow[-1] / 0.0864  # convert to cms
+                Qp = self.model.nodes[self.res_name].prev_flow[scenario_index.global_id] / 0.0864  # convert to cms
             qmax = Qp * (1 + rate)
         else:
             qmax = 1e6

@@ -14,7 +14,7 @@ class IFR_bl_Beardsley_Afterbay_Min_Requirement(WaterLPParameter):
             ifr_val = 135
         ifr_val += 5  # 5 cfs safety buffer based on observations
         if self.model.mode == 'scheduling':
-            ifr_val = self.get_down_ramp_ifr(timestep, ifr_val, initial_value=140/35.31, rate=0.25)
+            ifr_val = self.get_down_ramp_ifr(timestep, scenario_index, ifr_val, initial_value=140/35.31, rate=0.25)
         else:
             ifr_val *= self.days_in_month()
         return ifr_val / 35.31  # convert to cms

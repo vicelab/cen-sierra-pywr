@@ -67,14 +67,14 @@
         },
         {
             "name": "Angels PH",
-            "type": "PiecewiseHydropower",
+            "type": "Hydropower",
             "head": 135.3,
-            "max_flow": "Angels PH/Turbine Capacity",
-            "max_flows": [
+            "turbine_capacity": "Angels PH/Turbine Capacity",
+            "max_flow": [
                 "Angels PH/Water Demand/1",
                 "Angels PH/Water Demand/2"
             ],
-            "costs": [
+            "cost": [
                 "Angels PH/Cost/1",
                 "Angels PH/Cost/2",
                 "Angels PH/Cost/3"
@@ -102,22 +102,23 @@
         },
         {
             "name": "Beardsley Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
                 "index": "2000-09-30",
-                "column": "Beardsley Reservoir"
+                "column": "USGS 11292800 BEARDSLEY LAKE NEAR STRAWBERRY CA"
             },
             "max_volume": 121.45,
             "min_volume": 25,
             "cost": "Beardsley Reservoir/Storage Value",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "gauge": "USGS 11292800 BEARDSLEY LAKE NEAR STRAWBERRY CA"
         },
         {
             "name": "Beardsley PH",
-            "type": "Link",
-            "max_flow": "Beardsley PH/Turbine Capacity",
+            "type": "Hydropower",
+            "turbine_capacity": "Beardsley PH/Turbine Capacity",
             "cost": -1,
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -176,14 +177,14 @@
         },
         {
             "name": "Collierville PH",
-            "type": "PiecewiseHydropower",
+            "type": "Hydropower",
             "head": 691.896,
-            "max_flow": "Collierville PH/Turbine Capacity",
-            "max_flows": [
+            "turbine_capacity": "Collierville PH/Turbine Capacity",
+            "max_flow": [
                 "Collierville PH/Water Demand/1",
                 "Collierville PH/Water Demand/2"
             ],
-            "costs": [
+            "cost": [
                 "Collierville PH/Cost/1",
                 "Collierville PH/Cost/2",
                 "Collierville PH/Cost/3"
@@ -207,14 +208,14 @@
         },
         {
             "name": "Donnells PH",
-            "type": "PiecewiseHydropower",
+            "type": "Hydropower",
             "head": 350.8,
-            "max_flow": "Donnells PH/Turbine Capacity",
-            "max_flows": [
+            "turbine_capacity": "Donnells PH/Turbine Capacity",
+            "max_flow": [
                 "Donnells PH/Water Demand/1",
                 "Donnells PH/Water Demand/2"
             ],
-            "costs": [
+            "cost": [
                 "Donnells PH/Cost/1",
                 "Donnells PH/Cost/2",
                 "Donnells PH/Cost/3"
@@ -223,18 +224,19 @@
         },
         {
             "name": "Donnells Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
                 "index": "2000-09-30",
-                "column": "Donnells Reservoir"
+                "column": "USGS 11292600 DONNELL LK NR DARDANELLE CA"
             },
             "max_volume": 79.83,
             "min_volume": 6.2,
             "cost": "Donnells Reservoir/Storage Value",
             "level": "Donnells Reservoir/Elevation",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "gauge": "USGS 11292600 DONNELL LK NR DARDANELLE CA"
         },
         {
             "name": "Donnell Lake Low Flow Release",
@@ -289,19 +291,14 @@
         },
         {
             "name": "IFR bl Angels Div",
-            "type": "PiecewiseInstreamFlowRequirement",
-            "cost": [
-                -5000,
-                0.0
-            ],
-            "max_flow": [
-                "IFR bl Angels Div/Min Requirement"
-            ],
+            "type": "InstreamFlowRequirement",
+            "min_flow_cost": -5000,
+            "min_flow": "IFR bl Angels Div/Min Requirement",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl Collierville PH discharge",
-            "type": "PiecewiseInstreamFlowRequirement",
+            "type": "InstreamFlowRequirement",
             "cost": [
                 -5000,
                 0.0,
@@ -316,62 +313,52 @@
         {
             "name": "IFR at Murphys Park",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": -10000,
-            "unconstrained_cost": 10000,
-            "mrf": "IFR at Murphys Park/Requirement",
+            "min_flow_cost": -10000,
+            "max_flow_cost": 10000,
+            "min_flow": "IFR at Murphys Park/Requirement",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl Donnell Lake",
-            "type": "PiecewiseInstreamFlowRequirement",
-            "cost": [
-                -5000,
-                0.0,
-                5000
-            ],
-            "max_flow": [
-                "IFR bl Donnell Lake/Min Requirement",
-                "IFR bl Donnell Lake/Max Requirement"
-            ],
+            "type": "InstreamFlowRequirement",
+            "min_flow_cost": -5000,
+            "max_flow_cost": 5000,
+            "min_flow": "IFR bl Donnell Lake/Min Requirement",
+            "max_flow": "IFR bl Donnell Lake/Max Requirement",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl Hunter Reservoir",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Hunter Reservoir/Violation Cost",
-            "mrf": "IFR bl Hunter Reservoir/Requirement",
+            "min_flow_cost": "IFR bl Hunter Reservoir/Violation Cost",
+            "min_flow": "IFR bl Hunter Reservoir/Requirement",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl Lyons Res",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Lyons Res/Violation Cost",
-            "mrf": "IFR bl Lyons Res/Requirement",
+            "min_flow_cost": "IFR bl Lyons Res/Violation Cost",
+            "min_flow": "IFR bl Lyons Res/Requirement",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl McKays Point Div",
-            "type": "PiecewiseInstreamFlowRequirement",
-            "cost": [
-                -5000,
-                0.0,
-                5000
-            ],
-            "max_flow": [
-                "IFR bl McKays Point Div/Min Requirement",
-                "IFR bl McKays Point Div/Max Requirement"
-            ],
+            "type": "InstreamFlowRequirement",
+            "min_flow_cost": -5000,
+            "max_flow_cost": 5000,
+            "min_flow": "IFR bl McKays Point Div/Min Requirement",
+            "max_flow": "IFR bl McKays Point Div/Max Requirement",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Water Supply Release bl New Spicer Meadow Reservoir",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": -500,
-            "mrf": "Water Supply Release bl New Spicer Meadow Reservoir/Requirement"
+            "min_flow_cost": -500,
+            "min_flow": "Water Supply Release bl New Spicer Meadow Reservoir/Requirement"
         },
         {
             "name": "IFR bl New Spicer Meadow Reservoir",
-            "type": "PiecewiseInstreamFlowRequirement",
+            "type": "InstreamFlowRequirement",
             "cost": [
                 -1000,
                 0,
@@ -389,7 +376,7 @@
         },
         {
             "name": "IFR bl Philadelphia Div",
-            "type": "PiecewiseInstreamFlowRequirement",
+            "type": "InstreamFlowRequirement",
             "cost": [
                 -1000,
                 0,
@@ -403,7 +390,7 @@
         },
         {
             "name": "IFR bl Relief Reservoir",
-            "type": "PiecewiseInstreamFlowRequirement",
+            "type": "InstreamFlowRequirement",
             "cost": [
                 -1000,
                 0,
@@ -417,7 +404,7 @@
         },
         {
             "name": "IFR bl Sand Bar Div",
-            "type": "PiecewiseInstreamFlowRequirement",
+            "type": "InstreamFlowRequirement",
             "cost": [
                 -2000,
                 0,
@@ -431,7 +418,7 @@
         },
         {
             "name": "IFR bl NF Stanislaus Div Res",
-            "type": "PiecewiseInstreamFlowRequirement",
+            "type": "InstreamFlowRequirement",
             "cost": [
                 -10000,
                 0,
@@ -445,7 +432,7 @@
         },
         {
             "name": "IFR bl Beaver Creek Diversion Dam",
-            "type": "PiecewiseInstreamFlowRequirement",
+            "type": "InstreamFlowRequirement",
             "cost": [
                 -2000,
                 0,
@@ -460,20 +447,20 @@
         {
             "name": "IFR bl confluence of NF Stanislaus and Beaver Creek",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl confluence of NF Stanislaus and Beaver Creek/Violation Cost",
-            "mrf": "IFR bl confluence of NF Stanislaus and Beaver Creek/Requirement",
+            "min_flow_cost": "IFR bl confluence of NF Stanislaus and Beaver Creek/Violation Cost",
+            "min_flow": "IFR bl confluence of NF Stanislaus and Beaver Creek/Requirement",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl Goodwin Reservoir",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Goodwin Reservoir/Violation Cost",
-            "mrf": "IFR bl Goodwin Reservoir/Requirement",
+            "min_flow_cost": "IFR bl Goodwin Reservoir/Violation Cost",
+            "min_flow": "IFR bl Goodwin Reservoir/Requirement",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl Pinecrest Lake",
-            "type": "PiecewiseInstreamFlowRequirement",
+            "type": "InstreamFlowRequirement",
             "cost": [
                 -2500,
                 0,
@@ -488,13 +475,13 @@
         {
             "name": "IFR bl Utica Reservoir",
             "type": "InstreamFlowRequirement",
-            "mrf_cost": "IFR bl Utica Reservoir/Violation Cost",
-            "mrf": "IFR bl Utica Reservoir/Requirement",
+            "min_flow_cost": "IFR bl Utica Reservoir/Violation Cost",
+            "min_flow": "IFR bl Utica Reservoir/Requirement",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl Beardsley Afterbay",
-            "type": "PiecewiseInstreamFlowRequirement",
+            "type": "InstreamFlowRequirement",
             "cost": [
                 -1000,
                 0,
@@ -520,7 +507,7 @@
         },
         {
             "name": "Hunter Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": 0.1,
             "max_volume": 0.1,
             "min_volume": 0.1,
@@ -529,17 +516,18 @@
         },
         {
             "name": "Lyons Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
                 "index": "2000-09-30",
-                "column": "Lyons Reservoir"
+                "column": "USGS 11297700 LYONS RES NR LONG BARN CA"
             },
             "max_volume": 7.5,
             "min_volume": 1.25,
             "cost": "Lyons Reservoir/Storage Value",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "gauge": "USGS 11297700 LYONS RES NR LONG BARN CA"
         },
         {
             "name": "McKays Point Diversion",
@@ -612,45 +600,45 @@
         },
         {
             "name": "New Melones Lake",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
                 "index": "2000-09-30",
-                "column": "New Melones Lake"
+                "column": "USGS 11299000 NEW MELONES RES NR SONORA CA"
             },
             "max_volume": 2960.35,
             "min_volume": 500,
             "cost": "New Melones Lake/Storage Value",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "gauge": "USGS 11299000 NEW MELONES RES NR SONORA CA"
         },
         {
             "name": "New Melones PH",
-            "type": "PiecewiseHydropower",
-            "max_flow": "New Melones PH/Turbine Capacity",
-            "costs": [
-                -1
-            ],
+            "type": "Hydropower",
+            "turbine_capacity": "New Melones PH/Turbine Capacity",
+            "cost": -1,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "New Spicer Meadow Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
                 "index": "2000-09-30",
-                "column": "New Spicer Meadow Reservoir"
+                "column": "USGS 11293770 NEW SPICER MEADOW RES NR BIG MEADOW CA"
             },
             "max_volume": 227.24,
             "min_volume": 50,
             "cost": "New Spicer Meadow Reservoir/Storage Value",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "gauge": "USGS 11293770 NEW SPICER MEADOW RES NR BIG MEADOW CA"
         },
         {
             "name": "New Spicer Meadow PH",
-            "type": "Link",
-            "max_flow": "New Spicer Meadow PH/Turbine Capacity",
+            "type": "Hydropower",
+            "turbine_capacity": "New Spicer Meadow PH/Turbine Capacity",
             "cost": -1,
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -704,14 +692,14 @@
         },
         {
             "name": "Phoenix PH",
-            "type": "PiecewiseHydropower",
-            "max_flow": "Phoenix PH/Turbine Capacity",
+            "type": "Hydropower",
+            "turbine_capacity": "Phoenix PH/Turbine Capacity",
             "head": 361.7976,
-            "max_flows": [
+            "max_flow": [
                 "Phoenix PH/Water Demand/1",
                 "Phoenix PH/Water Demand/2"
             ],
-            "costs": [
+            "cost": [
                 "Phoenix PH/Cost/1",
                 "Phoenix PH/Cost/2",
                 "Phoenix PH/Cost/3"
@@ -720,44 +708,46 @@
         },
         {
             "name": "Pinecrest Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
                 "index": "2000-09-30",
-                "column": "Pinecrest Reservoir"
+                "column": "USGS 11295900 PINECREST LK NR STRAWBERRY CA"
             },
             "max_volume": 22.58,
             "min_volume": 0.57,
             "cost": "Pinecrest Reservoir/Storage Value",
             "level": "Pinecrest Reservoir/Elevation",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "gauge": "USGS 11295900 PINECREST LK NR STRAWBERRY CA"
         },
         {
             "name": "Relief Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": {
                 "type": "constant",
                 "table": "Initial Storage",
                 "index": "2000-09-30",
-                "column": "Relief Reservoir"
+                "column": "USGS 11291000 RELIEF RES NR BAKER STATION CA"
             },
             "max_volume": 18.5,
             "min_volume": 1.2,
             "cost": "Relief Reservoir/Storage Value",
             "level": "Relief Reservoir/Elevation",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "gauge": "USGS 11291000 RELIEF RES NR BAKER STATION CA"
         },
         {
             "name": "Sand Bar PH",
-            "type": "PiecewiseHydropower",
+            "type": "Hydropower",
             "head": 130,
-            "max_flow": "Sand Bar PH/Turbine Capacity",
-            "max_flows": [
+            "turbine_capacity": "Sand Bar PH/Turbine Capacity",
+            "max_flow": [
                 "Sand Bar PH/Water Demand/1",
                 "Sand Bar PH/Water Demand/2"
             ],
-            "costs": [
+            "cost": [
                 "Sand Bar PH/Cost/1",
                 "Sand Bar PH/Cost/2",
                 "Sand Bar PH/Cost/3"
@@ -807,14 +797,14 @@
         },
         {
             "name": "Spring Gap PH",
-            "type": "PiecewiseHydropower",
+            "type": "Hydropower",
             "head": 568.452,
-            "max_flow": "Spring Gap PH/Turbine Capacity",
-            "max_flows": [
+            "turbine_capacity": "Spring Gap PH/Turbine Capacity",
+            "max_flow": [
                 "Spring Gap PH/Water Demand/1",
                 "Spring Gap PH/Water Demand/2"
             ],
-            "costs": [
+            "cost": [
                 "Spring Gap PH/Cost/1",
                 "Spring Gap PH/Cost/2",
                 "Spring Gap PH/Cost/3"
@@ -843,14 +833,14 @@
         },
         {
             "name": "Stanislaus PH",
-            "type": "PiecewiseHydropower",
+            "type": "Hydropower",
             "head": 463.296,
-            "max_flow": "Stanislaus PH/Turbine Capacity",
-            "max_flows": [
+            "turbine_capacity": "Stanislaus PH/Turbine Capacity",
+            "max_flow": [
                 "Stanislaus PH/Water Demand/1",
                 "Stanislaus PH/Water Demand/2"
             ],
-            "costs": [
+            "cost": [
                 "Stanislaus PH/Cost/1",
                 "Stanislaus PH/Cost/2",
                 "Stanislaus PH/Cost/3"
@@ -1169,12 +1159,13 @@
         },
         {
             "name": "Tulloch Lake",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": 81.02,
             "max_volume": 81.02,
             "min_volume": "Tulloch Lake/Min Volume",
             "cost": "Tulloch Lake/Storage Value",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "gauge": "USGS 11299995 TULLOCH RES NR KNIGHTS FERRY CA"
         },
         {
             "name": "Tulloch Lake Flood Control",
@@ -1191,7 +1182,7 @@
         },
         {
             "name": "Donnell Lake Spill",
-            "type": "PiecewiseInstreamFlowRequirement",
+            "type": "InstreamFlowRequirement",
             "cost": [
                 -5000,
                 4000
@@ -1207,11 +1198,12 @@
         },
         {
             "name": "Union-Utica Reservoir",
-            "type": "Storage",
+            "type": "Reservoir",
             "initial_volume": 6.0,
             "max_volume": 6.76,
             "cost": "Union-Utica Reservoir/Storage Value",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "gauge": "USGS UNION-UTICA"
         },
         {
             "name": "Lower Utica Canal",
@@ -1296,7 +1288,7 @@
         },
         {
             "name": "New Melones Flood Control",
-            "type": "PiecewiseInstreamFlowRequirement",
+            "type": "InstreamFlowRequirement",
             "max_flow": [
                 "New Melones Flood Control/Requirement"
             ],
