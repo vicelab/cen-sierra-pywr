@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 
-def create_full_natural_flow(root_dir, basins=None):
+def create_full_natural_flow(root_dir, basins=None, scenarios=None):
     basins = basins or ['merced', 'stanislaus', 'upper san joaquin', 'tuolumne']
     for basin in basins:
         basin_full = basin.title() + " River"
@@ -11,7 +11,7 @@ def create_full_natural_flow(root_dir, basins=None):
         if not os.path.exists(basin_runoff_dir):
             continue
         print(basin)
-        for scenario in os.listdir(basin_runoff_dir):
+        for scenario in scenarios:
             scenario_dir = os.path.join(basin_runoff_dir, scenario)
             subwats = []
             if not os.path.exists(scenario_dir):
