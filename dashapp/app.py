@@ -445,7 +445,9 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     percentiles_type = kwargs.get('percentiles_type', 'timeseries')
     scenario_combos = kwargs.get('scenario_combos', [])
     head = kwargs.get('head')
-
+    layout = kwargs.get('layout_options', [])
+    compact = kwargs.get('compact', False)
+    show_fd = 'flow-duration' in layout and not compact
     color_idx = -1
 
     # Variables for observed data
@@ -595,17 +597,18 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
                 )
 
             N = len(sim_resampled)
-            fd_data.append(
-                go.Scatter(
-                    y=sorted(sim_resampled.values),
-                    x=np.arange(0, N) / N * 100,
-                    name=scenario_name,
-                    text=scenario_name,
-                    # line=dict(color=sim_color),
-                    mode='lines',
-                    opacity=0.7,
+            if show_fd:
+                fd_data.append(
+                    go.Scatter(
+                        y=sorted(sim_resampled.values),
+                        x=np.arange(0, N) / N * 100,
+                        name=scenario_name,
+                        text=scenario_name,
+                        # line=dict(color=sim_color),
+                        mode='lines',
+                        opacity=0.7,
+                    )
                 )
-            )
 
     pbias = 100
     nse = -1
@@ -614,17 +617,18 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
 
         # flow-duration curve
         N = len(obs_vals)
-        fd_data.insert(0,
-                       go.Scatter(
-                           y=sorted(obs_vals.values),
-                           x=np.arange(0, N) / N * 100,
-                           name=OBSERVED_TEXT,
-                           text=OBSERVED_TEXT,
-                           mode='lines',
-                           opacity=0.7,
-                           line=dict(color=OBSERVED_COLOR)
-                       )
-                       )
+        if show_fd:
+            fd_data.insert(0,
+                           go.Scatter(
+                               y=sorted(obs_vals.values),
+                               x=np.arange(0, N) / N * 100,
+                               name=OBSERVED_TEXT,
+                               text=OBSERVED_TEXT,
+                               mode='lines',
+                               opacity=0.7,
+                               line=dict(color=OBSERVED_COLOR)
+                           )
+                           )
 
         if consolidate:
             predictions = sim_resampled.values
@@ -711,55 +715,82 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
 
     ylabel = AXIS_LABELS.get(attr, 'unknown')
 
+    CLASS_NAME = 'timeseries-chart'
+    PLOTLY_CONFIG['displayModeBar'] = not compact
+
+    if compact:
+        style = {
+            'height': 200,
+            'width': 400
+        }
+    else:
+        style = {
+            'height': 300,
+            'width': 600
+        }
+
+    layout_kwargs = dict(
+        title='Timeseries' if not compact else res_name,
+        xaxis={'title': AXIS_LABELS.get(resample, "Date"), 'tickangle': -45},
+        yaxis={'title': ylabel, 'rangemode': 'tozero'},
+        margin={'l': 60, 'b': 80, 't': 40, 'r': 10},
+        showlegend=not compact,
+        legend={'x': 0.02, 'y': 0.98},
+        hovermode='closest',
+        yaxis_type=kwargs.get('transform', 'linear'),
+    )
+    if compact:
+        del layout_kwargs['xaxis']['title']
+        layout_kwargs['margin'].update(b=60, t=30)
+
     timeseries_graph = dcc.Graph(
-        id='timeseries-' + res_name_id,
-        className='timeseries-chart',
+        id='timeseries-{}'.format(res_name_id),
+        # className=CLASS_NAME,
+        style=style,
         config=PLOTLY_CONFIG,
         figure={
             'data': ts_data,
             'layout': go.Layout(
-                title='Timeseries',
-                xaxis={'title': AXIS_LABELS.get(resample, "Date"), 'tickangle': -45},
-                yaxis={'title': ylabel, 'rangemode': 'tozero'},
-                margin={'l': 60, 'b': 80, 't': 40, 'r': 10},
-                legend={'x': 0.02, 'y': 0.98},
-                hovermode='closest',
-                yaxis_type=kwargs.get('transform', 'linear'),
+                **layout_kwargs
             ),
-        },
-
+        }
     )
 
-    flow_duration_graph = dcc.Graph(
-        id='flow-duration-' + res_name_id,
-        className='flow-duration-chart',
-        config=PLOTLY_CONFIG,
-        figure={
-            'data': fd_data,
-            'layout': go.Layout(
-                title='{}-duration'.format(attr.title()),
-                xaxis={'title': 'Duration (%)'},
-                yaxis={'title': ylabel},
-                margin={'l': 60, 'b': 80, 't': 40, 'r': 10},
-                legend={'x': 0.05, 'y': 0.95},
-                hovermode='closest',
-                yaxis_type=kwargs.get('transform', 'linear')
-            )
-        },
-    )
+    children = [timeseries_graph]
 
-    children = [timeseries_graph, flow_duration_graph]
+    if show_fd:
+        flow_duration_graph = dcc.Graph(
+            id='flow-duration-' + res_name_id,
+            className='flow-duration-chart',
+            config=PLOTLY_CONFIG,
+            figure={
+                'data': fd_data,
+                'layout': go.Layout(
+                    title='{}-duration'.format(attr.title()),
+                    xaxis={'title': 'Duration (%)'},
+                    yaxis={'title': ylabel},
+                    margin={'l': 60, 'b': 80, 't': 40, 'r': 10},
+                    legend={'x': 0.05, 'y': 0.95},
+                    hovermode='closest',
+                    yaxis_type=kwargs.get('transform', 'linear')
+                )
+            },
+        )
+        children.append(flow_duration_graph)
 
     div = html.Div(
         # key='{}'.format(consolidate),
         children=[
-            html.H5(res_name),
+            not compact and html.H5(res_name),
             html.Div(
                 children=children,
                 className="timeseries-metrics-data",
             )
         ],
-        className="timeseries-metrics-box"
+        className="timeseries-metrics-box",
+        style={
+            'margin': 10 if compact else 'initial'
+        }
     )
 
     return div
@@ -941,7 +972,7 @@ select_development_basin = dcc.Dropdown(
     id="select-basin",
     options=[],
     value=None,
-    style={'min-width': '200px'},
+    style={'minWidth': '200px'},
     placeholder="Select a basin..."
 )
 
@@ -974,20 +1005,41 @@ scenarios_selections = dbc.Form([
     dbc.FormGroup([
         select_development_basin, select_climate, select_rcp
     ])
-], inline=True, style={"margin-bottom": "10px"})
+], inline=True, style={"marginBottom": "10px"})
 
 development_selections = dbc.Form([
     dbc.FormGroup([
         select_development_basin
     ])
-], inline=True, style={"margin-bottom": "10px"})
+], inline=True, style={"marginBottom": "10px"})
+
+layout_switches = dbc.FormGroup(
+    [
+        dbc.Label("Layout"),
+        dbc.Checklist(
+            id="layout-options",
+            options=[
+                {"label": "Compact", "value": "compact"},
+                {"label": "FD curves", "value": "flow-duration"},
+                # {"label": "Disabled Option", "value": 3, "disabled": True},
+            ],
+            value=["flow-duration"],
+            switch=True,
+        ),
+    ]
+)
 
 
 def make_controls(mode='production'):
-    controls = [transform_radio, resample_radio, aggregate_radio, consolidation_checklist]
+    controls = [layout_switches, transform_radio, resample_radio, aggregate_radio, consolidation_checklist]
     if mode == 'development':
         controls = [select_metric] + controls
-    return dbc.Form(controls, inline=False)
+    return dbc.Form(
+        controls,
+        id='sidebar-controls',
+        className='sidebar-controls',
+        inline=False
+    )
 
 
 top_bar = dbc.Form(
@@ -997,15 +1049,15 @@ top_bar = dbc.Form(
                 options=[],
                 id='select-resources',
                 className='select-resources',
-                style={'min-width': '300px'},
+                style={'minWidth': '300px'},
                 multi=True,
                 value=[],
                 placeholder='Select a resource...'
             ),
             dbc.Button([
                 'Reload'
-            ], id='reload', style={'margin-left': 'auto'})
-        ], style={'display': 'inline-flex', 'margin-top': '5px', 'width': '100%'})
+            ], id='reload', style={'marginLeft': 'auto'})
+        ], style={'display': 'inline-flex', 'marginTop': '5px', 'width': '100%'})
     ]
 )
 
@@ -1027,32 +1079,32 @@ def development_content(purpose):
             children=[]
         )
         scenario_selections = html.Div([], id='scenario-selections')
-    return dbc.Row([
-        dbc.Col([
-            html.Div(children=[
-                selections,
-                scenario_selections,
-                dbc.Tabs(id="development-tabs", active_tab='system', children=[
-                    dbc.Tab(label='System', tab_id='system'),
-                    dbc.Tab(label='Reservoir storage', tab_id='reservoir-storage'),
-                    dbc.Tab(label='HP flow', tab_id='hydropower-flow'),
-                    dbc.Tab(label='HP generation', tab_id='hydropower-generation'),
-                    dbc.Tab(label='IFR flow', tab_id='ifr-flow'),
-                    # dbc.Tab(label='IFR flow (range)', tab_id='ifr-range-flow'),
-                    dbc.Tab(label='Outflow', tab_id='outflow')
-                ]),
-                top_bar,
-                main_content
-            ])],
-            width=11
-        ),
-        dbc.Col([
-            html.Div(
-                [make_controls(mode=purpose)],
-                style={'min-width': "200px"}
-            )
-        ], width=1)
-    ])
+    return html.Div(
+        [
+            dbc.Row([
+                dbc.Col([
+                    html.Div(children=[
+                        selections,
+                        scenario_selections,
+                        dbc.Tabs(id="development-tabs", active_tab='reservoir-storage', children=[
+                            # dbc.Tab(label='System', tab_id='system'),
+                            dbc.Tab(label='Reservoir storage', tab_id='reservoir-storage'),
+                            dbc.Tab(label='HP flow', tab_id='hydropower-flow'),
+                            # dbc.Tab(label='HP generation', tab_id='hydropower-generation'),
+                            dbc.Tab(label='IFR flow', tab_id='ifr-flow'),
+                            # dbc.Tab(label='IFR flow (range)', tab_id='ifr-range-flow'),
+                            dbc.Tab(label='Outflow', tab_id='outflow')
+                        ]),
+                        top_bar,
+                        main_content
+                    ])],
+                    width=12
+                )
+            ]),
+            make_controls(mode=purpose)
+        ],
+        style={'width': '100%'}
+    )
 
 
 def get_resources_old(df, filterby=None):
@@ -1081,6 +1133,7 @@ def render_timeseries_collection(tab, **kwargs):
     selected_scenarios = kwargs.pop('selected_scenarios', [])
     consolidate = "consolidate" in kwargs.get('consolidate', [])
     kwargs['consolidate'] = consolidate
+    kwargs['compact'] = compact = 'compact' in kwargs.get('layout_options', [])
 
     resample = kwargs.get('resample')
     aggregate = kwargs.get('aggregate')
@@ -1279,7 +1332,12 @@ def render_timeseries_collection(tab, **kwargs):
 
     return html.Div(
         children=children,
-        className="timeseries-collection"
+        className="timeseries-collection",
+        style={
+            'display': 'flex',
+            'flexWrap': 'wrap',
+            'flexDirection': 'column' if not compact else None
+        }
     )
 
 
@@ -1298,7 +1356,7 @@ SIDEBAR_STYLE = {
 }
 
 CONTENT_STYLE = {
-    # "margin-left": "5rem",
+    # "marginLeft": "5rem",
     # "margin-right": "2rem",
     "padding": "2rem 1rem",
 }
@@ -1639,12 +1697,12 @@ def update_select_resources(tab, basin):
                   Input('percentiles-checklist', 'value'),
                   Input('percentiles-options', 'value'),
                   Input('percentiles-type', 'value'),
+                  Input('layout-options', 'value'),
                   Input('select-resources', 'value'),
                   Input('reload', 'n_clicks'),
               ])
-def render_development_content(tab, basin, metric, transform, resample, aggregate, consolidate, percentiles, percentiles_type,
-                               resources,
-                               n_clicks):
+def render_development_content(tab, basin, metric, transform, resample, aggregate, consolidate, percentiles,
+                               percentiles_type, layout_options, resources, n_clicks):
     kwargs = dict(
         basin=basin,
         resources=resources,
@@ -1655,10 +1713,11 @@ def render_development_content(tab, basin, metric, transform, resample, aggregat
         consolidate=consolidate,
         percentiles=percentiles,
         percentiles_type=percentiles_type,
+        layout_options=layout_options,
         run_name='development'
     )
     return render_timeseries_collection(tab, **kwargs)
 
 
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server(debug=True)

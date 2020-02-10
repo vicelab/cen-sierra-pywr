@@ -1,11 +1,30 @@
-.app-body {
+.navbar {
+    position: fixed;
+    width: 100%;
+}
+
+#app-body {
     display: flex !important;
+    position: fixed;
+    top: 55px !important;
+    right: 230px;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+#sidebar-controls {
+    position: fixed;
+    right: 10px;
+    width: 210px;
+    top: 60px;
+    bottom: 0;
 }
 
 .timeseries-collection {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    /*flex-direction: column;*/
 }
 
 .timeseries-metrics-box {
@@ -20,6 +39,11 @@
 .timeseries-chart {
     width: 600px;
     height: 300px;
+}
+
+.timeseries-chart.compact {
+    width: 300px;
+    height: 200px;
 }
 
 .flow-duration-chart {
