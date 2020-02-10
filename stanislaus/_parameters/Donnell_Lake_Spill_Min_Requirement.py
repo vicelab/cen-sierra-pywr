@@ -27,7 +27,7 @@ class Donnell_Lake_Spill_Min_Requirement(WaterLPParameter):
                 data_supp = self.model.tables["Supplemental IFR below Donnell Lake"]
                 start_idx = diff_day - diff_day % 7
                 ifr_cms += data_supp.at[start_idx, WYT] / 35.31
-            ifr_cms = self.get_down_ramp_ifr(timestep, ifr_cms, rate=0.25)
+            ifr_cms = self.get_down_ramp_ifr(timestep, scenario_index, ifr_cms, rate=0.25)
 
         else:
             data_supp = self.model.tables["Supplemental IFR below Donnell Lake"]

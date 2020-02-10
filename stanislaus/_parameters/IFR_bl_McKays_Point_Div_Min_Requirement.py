@@ -9,7 +9,7 @@ class IFR_bl_McKays_Point_Div_Min_Requirement(WaterLPParameter):
     def _value(self, timestep, scenario_index):
         ifr_val = 18 / 35.31  # cfs to cms; 16.5 cfs req't, min 18 cfs in practice
         if self.model.mode == 'scheduling':
-            ifr_val = self.get_down_ramp_ifr(timestep, ifr_val, rate=0.25)
+            ifr_val = self.get_down_ramp_ifr(timestep, scenario_index, ifr_val, rate=0.25)
         else:
             ifr_val *= self.days_in_month()
         return ifr_val

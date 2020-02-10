@@ -1,5 +1,5 @@
 from parameters import WaterLPParameter
-from datetime import datetime
+
 from utilities.converter import convert
 
 
@@ -7,29 +7,32 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        kwargs = dict(timestep=timestep, scenario_index=scenario_index)
 
         # initial IFR
         if timestep.index == 0:
-            WYT = 2  # default
+            self.WYT = 2  # default
+
+        date = self.datetime
 
         # These are monthly values, so only calculate values in the first time step of each month
-        elif timestep.month >= 9:
+        if date.month >= 9:
             WYT = self.WYT
 
         # Jan-June:
         else:
-            schedule = self.model.parameters["IFR bl Hetch Hetchy Reservoir/IFR Schedule"].array()
-            if timestep.month < 9 or timestep.month == 9 and timestep.day <= 15:
-                row = timestep.month + 1
-            else:
-                row = timestep.month + 2
-            criteria = (schedule[row, 2], schedule[row, 4])
+            schedule = self.model.tables["IFR bl Hetch Hetchy Reservoir/IFR Schedule"]
 
-            if timestep.month <= 6:
-                # precip = self.get("Hetch Hetchy Reservoir/Precipitation").dataframe
-                # total_precip = precip[datetime(timestep.year - 1, 10, 1):timestep.datetime].sum()
-                total_precip = 1000
+            lookup_row = timestep.month - 1
+            if (date.month, date.day) > (9, 15):
+                lookup_row += 1
+
+            criteria = (schedule.iat[lookup_row, 1], schedule.iat[lookup_row, 3])
+
+            oct_1 = '{:04}-10-01'.format(date.year - 1)
+
+            if date.month <= 6:
+                precip = self.model.parameters["Hetch Hetchy Reservoir/Precipitation"].dataframe
+                total_precip = precip[oct_1:date].sum() / 25.4  # sum & convert mm to inches
                 if total_precip >= criteria[0]:
                     WYT = 3
                 elif total_precip >= criteria[1]:
@@ -39,9 +42,9 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
 
             # July-Aug:
             else:
-                runoff = self.get("TUO_13 Headflow/Runoff").dataframe
-                cumulative_runoff = runoff[datetime(timestep.year - 1, 10, 1):timestep.datetime].sum()
-                cumulative_runoff *= 810.7  # convert mcm to af
+                runoff = self.model.parameters["TUO_13 Headflow/Runoff"].dataframe
+                cumulative_runoff = runoff[oct_1:date].sum()
+                cumulative_runoff *= 810.7 / 1000  # convert mcm to taf
                 if cumulative_runoff >= criteria[0]:
                     WYT = 3
                 elif cumulative_runoff >= criteria[1]:
@@ -61,7 +64,6 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
             print('File where error occurred: {}'.format(__file__))
             print(err)
             raise
-
 
     @classmethod
     def load(cls, model, data):

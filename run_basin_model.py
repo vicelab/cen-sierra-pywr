@@ -95,7 +95,7 @@ def simplify_network(m, delete_gauges=False, delete_observed=True, delete_scenar
 
             if keys_set in [{'name', 'type'}, {'name', 'type', 'comment'}] and not metadata.get('keep') \
                     or delete_gauges and node_type == 'rivergauge' \
-                    or node_type == 'storage' and not node.get('max_volume'):
+                    or node_type == 'reservoir' and not node.get('max_volume'):
                 if delete_gauges and node_type == 'rivergauge':
                     obsolete_gauges.append(node_name)
                 if down_nodes.count(node_name) == 0:
@@ -123,24 +123,27 @@ def simplify_network(m, delete_gauges=False, delete_observed=True, delete_scenar
                 edges_set.append(edge)
         m['edges'] = edges_set
 
-    for gauge in obsolete_gauges:
-        for p in list(m['parameters']):
-            parts = p.split('/')
-            if gauge in parts:
-                m['parameters'].pop(p, None)
+    # delete obsolete parameters and recorders
+    obsolete_gauges_set = set(obsolete_gauges)
+    obsolete_nodes_set = set(obsolete_nodes)
+    for p in list(m['parameters']):
+        parts = p.split('/')
+        if parts[0] in obsolete_gauges:
+            m['parameters'].pop(p, None)
+        elif delete_observed and '/observed' in p.lower():
+            m['parameters'].pop(p, None)
+        elif parts[0] in obsolete_nodes:
+            m['parameters'].pop(p, None)
 
-            if delete_observed and '/observed' in p.lower():
-                m['parameters'].pop(p, None)
-
-        for r in list(m['recorders']):
-            name_parts = r.split('/')
-            node_parts = m['recorders'][r].get('node', '').split('/')
-            parameter_parts = m['recorders'][r].get('parameter', '').split('/')
-            if gauge in name_parts + node_parts + parameter_parts:
-                m['recorders'].pop(r, None)
-
-            if delete_observed and '/observed' in r:
-                m['recorders'].pop(r, None)
+    for r in list(m['recorders']):
+        name_parts = r.split('/')[0:1]
+        node_parts = m['recorders'][r].get('node', '').split('/')
+        parameter_parts = m['recorders'][r].get('parameter', '').split('/')
+        names_set = set(name_parts + node_parts + parameter_parts)
+        if names_set & obsolete_gauges_set or names_set & obsolete_nodes_set:
+            m['recorders'].pop(r, None)
+        elif delete_observed and '/observed' in r:
+            m['recorders'].pop(r, None)
 
     return m
 
@@ -186,10 +189,13 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
         old_name = node['name']
         node_type = node['type']
 
+        # delete gauge
+        node.pop('gauge', None)
+
         for key, value in node.items():
             if key in black_list:
                 continue
-            if node_type == 'Storage' and key == 'cost':
+            if node_type == 'Reservoir' and key == 'cost':
                 continue
             if type(value) == str and value in m['parameters']:
                 if value not in parameters_to_expand:
@@ -213,7 +219,7 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
 
             month = '/{}'.format(t)
 
-            if node_type == 'Storage' and node.get('max_volume'):
+            if node_type == 'Reservoir' and node.get('max_volume'):
                 # 1. rename and empty storage for original storage node
                 # for key in ['cost', 'min_volume', 'max_volume', 'initial_volume']:
                 #     new_node.pop(key, None)
@@ -259,7 +265,7 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
                     storage_link['min_flow'] = min_volume
                 if 'max_volume' in node:
                     storage_link['max_flow'] = node['max_volume']
-                cost = node.pop('cost', None)
+                cost = node.get('cost', None)
                 if cost:
                     if type(cost) == str:
                         if cost not in parameters_to_expand:
@@ -284,6 +290,7 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
                 # but is nonetheless "filled" by flows in the system
                 virtual_storage = node.copy()
                 virtual_storage.pop('level', None)
+                virtual_storage.pop('cost', None)
                 # level = virtual_storage.get('level')
                 # if type(level) == str:
                 #     if level not in parameters_to_expand:
@@ -329,8 +336,9 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
                                 parameters_to_expand.append(value)
 
                     elif type(value) in [float, int]:
-                        if "max_flow" in key:
-                            new_node[key] *= 30  # TODO: figure out some scheme to get actual days
+                        if key in ["max_flow", "turbine_capacity"]:
+                            # TODO: convert capacities to formulas w/ day-month conversion
+                            new_node[key] *= 30
 
                     elif type(value) == list:
                         new_values = []
@@ -438,8 +446,11 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
                     new_param['storage_node'] += month_suffix
                 if 'control_curves' in param:
                     new_param['control_curves'] = []
-                    for cc in param['control_curves']:
-                        new_param['control_curves'].append(cc + month_suffix)
+                    for control_curve in param['control_curves']:
+                        if isinstance(control_curve, str):
+                            new_param['control_curves'].append(control_curve + month_suffix)
+                        else:
+                            new_param['control_curves'].append(control_curve)
 
                 if block:
                     for b in range(blocks):
@@ -456,7 +467,7 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
         new_parameters[param_name] = param
 
     new_tables = {}
-    for table_name, table in m['tables'].items():
+    for table_name, table in m.get('tables', {}).items():
         if 'observed' in table_name.lower():
             continue
         if 'url' in table:
@@ -476,12 +487,27 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
                     # 'comment': node_type
                 }
             elif 'hydropower' in node_type.lower():
+
+                # flow
                 recorder_name = node_name.replace('/', '/{}/'.format('flow'))
                 new_recorders[recorder_name] = {
                     'type': 'NumpyArrayNodeRecorder',
                     'node': node_name,
                     # 'comment': node_type
                 }
+
+                # cost
+                # for block in range(blocks):
+                #     recorder_name = node_name.replace('/', '/{}/{}/'.format('cost', block+1))
+                #     parameter_name = recorder_name.replace('cost', 'Cost')
+                #     if parameter_name in new_parameters:
+                #         new_recorders[recorder_name] = {
+                #             'type': 'NumpyArrayParameterRecorder',
+                #             'parameter': parameter_name,
+                #             # 'comment': node_type
+                #         }
+                #     else:
+                #         continue
 
     # for recorder_name in m['recorders']:
     #     recorder = m['recorders'][recorder_name]
@@ -502,6 +528,39 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
     #                 new_recorder = recorder.copy()
     #                 new_recorder['node'] += '/{}'.format(t)
     #                 new_recorders['{}/{}'.format(recorder_name, t)] = new_recorder
+
+    # # Fix a Pywr bug that prevents loading a control curve parameter defined by a virtual reservoir
+    # virtual_storages = [n['name'] for n in new_nodes if n['type'].lower() == 'virtualstorage']
+    # parameters_to_move = {}
+    # for param_name, param in new_parameters.items():
+    #     if param.get('storage_node') in virtual_storages:
+    #         parameters_to_move[param_name] = param
+    #
+    # # embed param directly in node
+    # for node in new_nodes:
+    #     for k, v in node.items():
+    #         if isinstance(v, str) and v in parameters_to_move:
+    #             node[k] = parameters_to_move[v]
+    #         elif isinstance(v, list):
+    #             for j, item in enumerate(v):
+    #                 if item in parameters_to_move:
+    #                     node[k][j] = parameters_to_move[item]
+    #
+    # # embed param directly in param
+    # for param_name, param in new_parameters.items():
+    #     for k, v in param.items():
+    #         if isinstance(v, str) and v in parameters_to_move:
+    #             new_parameters[param_name][k] = parameters_to_move[v]
+    #         elif isinstance(v, list):
+    #             for j, item in enumerate(v):
+    #                 if item in parameters_to_move:
+    #                     new_parameters[param_name][k][j] = parameters_to_move[item]
+    #
+    # for param_name in parameters_to_move:
+    #     del new_parameters[param_name]
+    #
+    # del parameters_to_move
+    # # ...end fix bug
 
     # update the model
     m['nodes'] = new_nodes
@@ -536,8 +595,12 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
     # ========================
 
     here = os.path.dirname(os.path.realpath(__file__))
-    root_dir = os.path.join(here, basin)
     os.chdir(here)
+
+    root_dir = os.path.join(here, basin)
+    temp_dir = os.path.join(root_dir, 'temp')
+    if not os.path.exists(temp_dir):
+        os.makedirs(temp_dir)
 
     bucket = 'openagua-networks'
     base_filename = 'pywr_model.json'
@@ -545,7 +608,7 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
     model_filename = model_filename_base + '.json'
 
     base_path = os.path.join(root_dir, base_filename)
-    model_path = os.path.join(root_dir, model_filename)
+    model_path = os.path.join(temp_dir, model_filename)
 
     # first order of business: update file paths in json file
     with open(base_path) as f:
@@ -561,6 +624,7 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
                 continue
             url = param.get('url')
             if url:
+                url = url.replace('../data', '../../data')
                 if climate != 'Livneh':
                     url = url.replace('Livneh', climate)
                 param['url'] = url
@@ -586,6 +650,20 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
     # root_path = 's3://{}/{}/'.format(bucket, network_key)
     root_path = './data'
     os.environ['ROOT_S3_PATH'] = root_path
+
+    # =========================================
+    # Load and register global model parameters
+    # =========================================
+
+    # sys.path.insert(0, os.getcwd())
+    policy_folder = 'parameters'
+    for filename in os.listdir(policy_folder):
+        if '__init__' in filename:
+            continue
+        policy_name = os.path.splitext(filename)[0]
+        policy_module = 'parameters.{policy_name}'.format(policy_name=policy_name)
+        # package = '.{}'.format(policy_folder)
+        import_module(policy_module, policy_folder)
 
     # =========================================
     # Load and register custom model parameters
@@ -639,7 +717,7 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
     if simplify:
         # simplify model
         simplified_filename = model_filename_base + '_simplified.json'
-        simplified_model_path = os.path.join(root_dir, simplified_filename)
+        simplified_model_path = os.path.join(temp_dir, simplified_filename)
 
         m = simplify_network(m, delete_gauges=True, delete_observed=True, delete_scenarios=debug)
         # with open(simplified_model_path, 'w') as f:
@@ -660,7 +738,7 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
 
         # create filenames, etc.
         monthly_filename = model_filename_base + '_monthly.json'
-        planning_model_path = os.path.join(root_dir, monthly_filename)
+        planning_model_path = os.path.join(temp_dir, monthly_filename)
 
         prepare_planning_model(m, planning_model_path, steps=months, debug=save_results)
 
@@ -668,7 +746,7 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
         try:
             planning_model = Model.load(planning_model_path, path=planning_model_path)
         except Exception as err:
-            print("Planning model failed to load.")
+            print("Planning model failed to load")
             raise
 
         # set model mode to planning
@@ -691,8 +769,9 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
     # ==================
     print('Loading daily model')
     from pywr.nodes import Storage
+    from domains import Reservoir
     m = Model.load(model_path, path=model_path)
-    reservoirs = [n.name for n in m.nodes if type(n) == Storage and '(storage)' not in n.name]
+    reservoirs = [n.name for n in m.nodes if type(n) in [Storage, Reservoir] and '(storage)' not in n.name]
     # piecewise_ifrs = [n.name for n in m.nodes if type(n) == Storage and '(storage)' not in n.name]
     m.setup()
 
@@ -765,10 +844,6 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
         'Monthly overhead: {} seconds ({:02}% of total)'.format(monthly_seconds, monthly_seconds / total_seconds * 100))
 
     # save results to CSV
-
-    if df_planning is not None:
-        df_planning.to_csv('./results/planning.csv')
-
     results = m.to_dataframe()
     results.index.name = 'Date'
     scenario_name = climate
@@ -778,6 +853,10 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
     results_path = os.path.join('./results', run_name, basin, scenario_name)
     if not os.path.exists(results_path):
         os.makedirs(results_path)
+
+    if df_planning is not None:
+        df_planning.to_csv(os.path.join(results_path, 'planning_debug.csv'))
+
     # results.columns = results.columns.droplevel(1)
     columns = {}
     nodes_of_type = {}

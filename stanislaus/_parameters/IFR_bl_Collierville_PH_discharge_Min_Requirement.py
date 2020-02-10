@@ -15,7 +15,7 @@ class IFR_bl_Collierville_PH_discharge_Min_Requirement(WaterLPParameter):
             initial_value = 0
             if timestep.index == 0:
                 initial_value = 0.4 / 0.0846 # cms
-            min_ifr = self.get_down_ramp_ifr(timestep, 0.0, initial_value=initial_value, rate=0.25)
+            min_ifr = self.get_down_ramp_ifr(timestep, scenario_index, 0.0, initial_value=initial_value, rate=0.25)
 
         if self.mode == 'planning':
             # no constraint

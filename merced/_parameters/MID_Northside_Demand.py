@@ -29,7 +29,7 @@ class MID_Northside_Demand(WaterLPParameter):
         idx = scenario_index.indices[1]
         if timestep.month == 1 and timestep.day == 1:
             if idx == 1:
-                ifr_param = self.model.parameters["IFR bl Crocker-Huffman Dam/Requirement"]
+                ifr_param = self.model.parameters["IFR at Shaffer Bridge/Min Requirement"]
                 reduction = ifr_param.swrcb_levels[scenario_index.indices[0]]
                 self.reductions[1] = reduction
 

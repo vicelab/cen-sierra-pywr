@@ -29,7 +29,7 @@ class MID_Main_Demand(WaterLPParameter):
         idx = scenario_index.indices[1]
         reduction = 0.0
         if idx == 1:
-            ifr_param = self.model.parameters["IFR bl Crocker-Huffman Dam/Requirement"]
+            ifr_param = self.model.parameters["IFR at Shaffer Bridge/Min Requirement"]
             reduction = ifr_param.swrcb_levels[scenario_index.indices[0]]
 
         demand_cms *= (1 - reduction)

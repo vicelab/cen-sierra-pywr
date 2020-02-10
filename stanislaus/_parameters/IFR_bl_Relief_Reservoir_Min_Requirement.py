@@ -22,7 +22,7 @@ class IFR_bl_Relief_Reservoir_Min_Requirement(WaterLPParameter):
             if month in [2, 3, 4, 5] and day <= 9:
                 start_month -= 1
             ifr_cms = schedule.at[(start_month, start_day), WYT] / 35.31
-            ifr_cms = self.get_down_ramp_ifr(timestep, ifr_cms, rate=0.25)
+            ifr_cms = self.get_down_ramp_ifr(timestep, scenario_index, ifr_cms, rate=0.25)
 
         else:
             ifr_cms = schedule.at[(month, 1), WYT] / 35.31 * self.days_in_month()

@@ -14,9 +14,6 @@ class San_Joaquin_Valley_WYI(WaterLPParameter):
    on the May 1 75% exceedence forecast.
     """
 
-    WYI = 1.8  # 2009
-    basins = ['Stanislaus River', 'Merced River', 'Tuolumne River', 'Merced River']
-
     def _value(self, timestep, scenario_index):
         sjvi = self.model.tables['San Joaquin Valley Index']
         if 4 <= self.datetime.month <= 12:

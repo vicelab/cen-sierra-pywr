@@ -36,9 +36,17 @@ def get_planning_dataframe(model):
 
     col_tuples = []
     for c in df.columns:
-        res_name, variable, month_str = c[0].split('/')
+        parts = c[0].split('/')
+        if len(parts) == 4:
+            res_name, variable, block, month_str = parts
+            res_name = '{}/{}'.format(res_name, block)
+        elif len(parts) == 3:
+            res_name, variable, month_str = parts
+        else:
+            continue
         month = date + relativedelta(months=int(month_str) - 1)
-        col_tuples.append(tuple([res_name, month]) + c[1:])
+        var_name = '{}/{}'.format(res_name, variable)
+        col_tuples.append(tuple([var_name, month]) + c[1:])
     df = pd.DataFrame(data=[series], index=[date])
     df.columns = pd.MultiIndex.from_tuples(col_tuples)
     # df0 = df_filtered.stack(level=0)

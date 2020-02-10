@@ -36,7 +36,7 @@ class PH_Water_Demand(WaterLPParameter):
             block = self.model.tables["Energy Price Blocks"].at[price_date, str(self.block)]
             turbine_capacity *= self.days_in_month()
 
-        elif self.model.planning:
+        else:
 
             # TODO: move as much of this as possible to a single parameter
 
@@ -75,9 +75,6 @@ class PH_Water_Demand(WaterLPParameter):
             # allocation_to_this_block = min(allocation_remaining, blocks[str(self.block)])
             # block = max(allocation_to_this_block, 0.0)
             block = max_flow_fraction
-
-        else:
-            block = self.model.tables["Energy Price Blocks"].at[price_date, str(self.block)]
 
         # TODO: Extend the following to planning mode
         if self.res_name == 'Collierville PH' and self.block == 1:
