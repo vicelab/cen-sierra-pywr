@@ -7,15 +7,15 @@ import datetime as dt
 class Millerton_Lake_Storage_Demand(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
-        flood_control_req = self.model.tables["New Melones Lake Flood Control"]
+        rule_curve_mcm = self.model.tables["Millerton Lake rule curve"]
         # start = self.datetime.strftime('%b-%d')
-        start = '{:02}-{:02}'.format(self.datetime.month, self.datetime.day)
+        start = (self.datetime.month, self.datetime.day)
         if self.model.mode == 'scheduling':
-            control_curve_target = flood_control_req[start]
+            control_curve_target = rule_curve_mcm[start]
         else:
-            end = '{:02}-{:02}'.format(self.datetime.month, self.days_in_month())
-            control_curve_target = flood_control_req[start:end].mean()
-        max_storage = self.model.nodes["New Melones Lake" + self.month_suffix].max_volume
+            end = (self.datetime.month, self.days_in_month())
+            control_curve_target = rule_curve_mcm[start:end].mean()
+        max_storage = self.model.nodes["Millerton Lake" + self.month_suffix].max_volume
         return control_curve_target / max_storage
         # return control_curve_target
 
@@ -32,5 +32,5 @@ class Millerton_Lake_Storage_Demand(WaterLPParameter):
         return cls(model, **data)
 
 
-New_Melones_Lake_Storage_Demand.register()
-print(" [*] New_Melones_Lake_Storage_Demand successfully registered")
+Millerton_Lake_Storage_Demand.register()
+print(" [*] Millerton_Lake_Storage_Demand successfully registered")
