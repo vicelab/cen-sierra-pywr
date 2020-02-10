@@ -2,7 +2,7 @@ from parameters import WaterLPParameter
 
 from utilities.converter import convert
 
-class CVP_Friant_Kern_Canal_Demand(WaterLPParameter):
+class Friant_Kern_Canal_Demand_Demand(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
@@ -15,12 +15,11 @@ class CVP_Friant_Kern_Canal_Demand(WaterLPParameter):
         today = (self.datetime.month, self.datetime.day)
 
         if self.model.mode == 'scheduling':
-            demand_cfs = demand_cfs[today]
+            demand_cms = demand_cfs[today] / 35.31
+
         else:
             end = (self.datetime.month, self.days_in_month())
-            demand_cfs = demand_cfs[today:end].sum()
-        
-        demand_cms = demand_cfs / 35.315
+            demand_cms = demand_cfs[today:end].sum() / 35.31
         
         return demand_cms
         
@@ -42,5 +41,5 @@ class CVP_Friant_Kern_Canal_Demand(WaterLPParameter):
             print(err)
             raise
         
-CVP_Friant_Kern_Canal_Demand.register()
-print(" [*] CVP_Friant_Kern_Canal_Demand successfully registered")
+Friant_Kern_Canal_Demand_Demand.register()
+print(" [*] Friant_Kern_Canal_Demand_Demand successfully registered")
