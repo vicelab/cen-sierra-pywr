@@ -26,28 +26,31 @@ A step by step series of examples that tell you how to get a development env run
 1. If you choose to use Anaconda environment for OS X or Linux and remove the installation file:
 
 ```sh
-$ wget https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh
-$ rm Anaconda3-2019.03-Linux-x86_64.sh
+$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+$ bash Miniconda3-latest-Linux-x86_64.sh
+
+$ source ~/.bashrc
+$ rm Miniconda3-latest-Linux-x86_64.sh
 ```
 2. Check the version of Conda you have installed
 ```sh
-conda --version
-conda update conda
+$ conda --version
+$ conda update conda
 ```
 
 2. Create and activate new environment
 
 ```sh
-conda create --name *environment_name*
-conda activate *environment_name*
+$ conda create --name *environment_name*
+$ conda activate *environment_name*
 ```
 
 3. Add channels and install packages
 
 ```sh
-conda config --add channels conda-forge
-conda config --add channels pywr
-conda install pywr
+$ conda config --add channels conda-forge
+$ conda config --add channels pywr
+$ conda install pywr
 ```
 4. Once on the repository, install the requirements
 ```sh
