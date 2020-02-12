@@ -1944,13 +1944,6 @@
             "min_flow_cost": -10000
         },
         {
-            "name": "IFR bl Portal Forebay",
-            "type": "InstreamFlowRequirement",
-            "comment": "{\"resource_class\": \"node\"}",
-            "max_flow_cost": 2000,
-            "min_flow_cost": -10000
-        },
-        {
             "name": "IFR bl Redinger Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
@@ -4092,10 +4085,6 @@
         ],
         [
             "Below Portal Penstock Outflow.1",
-            "IFR bl Portal Forebay"
-        ],
-        [
-            "IFR bl Portal Forebay",
             "Below Portal Penstock Outflow.2"
         ],
         [
@@ -6794,10 +6783,6 @@
         "IFR bl Pitman Creek Div/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Pitman Creek Div"
-        },
-        "IFR bl Portal Forebay/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "IFR bl Portal Forebay"
         },
         "IFR bl Redinger Lake/flow": {
             "type": "NumpyArrayNodeRecorder",
