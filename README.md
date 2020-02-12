@@ -9,61 +9,107 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Get your environment set up, depending on your Operating System, as well as IDE, we advise installing 
+Get your environment set up, depending on your Operating System, as well as IDE, install 
 [Pywr](https://pywr.github.io/pywr-docs/master/index.html)
-
-
-### Installation
-
-A step by step series of examples that tell you how to get a development env running
-
-#OS X & Linux:
 
 ```sh
 $ sudo apt-get install libgmp3-dev libglpk-dev glpk
-$ sudo apt-get install liblpsolve55-dev lp-solve
 ```
 
-If you choose to use Anaconda environment for OS X or Linux:
+
+## Installation
+
+A step by step series of examples that tell you how to get a development env running
+
+#### Linux:
+
+1. If you choose to use Anaconda environment for OS X or Linux and remove the installation file:
 
 ```sh
-$ wget https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh
+$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+$ bash Miniconda3-latest-Linux-x86_64.sh
+
+$ source ~/.bashrc
+$ rm Miniconda3-latest-Linux-x86_64.sh
 ```
-Remove the installation file:
+2. Check the version of Conda you have installed
 ```sh
-$ rm Anaconda3-2019.03-Linux-x86_64.sh
+$ conda --version
+$ conda update conda
 ```
-Update Anaconda:
+
+2. Create and activate new environment
 
 ```sh
-$ source ~anaconda3/bin/activate
-$ conda update --all
+$ conda create --name *environment_name*
+$ conda activate *environment_name*
 ```
 
-#Windows:
+3. Add channels and install packages
 
-1. Install Anaconda Environment [here](https://www.anaconda.com/distribution/#download-section)
-2. Create new environment
-3. Install the necessary packages (Pywr)
-4. Setup $PATH under environment manager
-5. Import your environment into your IDE
+```sh
+$ conda config --add channels conda-forge
+$ conda config --add channels pywr
+$ conda install pywr
+```
+4. Once on the repository, install the requirements
+```sh
+$ pip install -r requirements.txt
+```
+
+#### Windows:
+
+1. Install Anaconda Environment [here](https://www.anaconda.com/distribution/#download-section) and check what version
+
+```cmd
+conda --version
+conda update conda
+```
+
+2. Create and activate new environment
+
+```cmd
+conda create --name *environment_name*
+conda activate *environment_name*
+```
+
+3. Add channels and install packages
+
+```cmd
+conda config --add channels conda-forge
+conda config --add channels pywr
+conda install pywr
+```
 
 ## Running the Models 
 
-For only daily models:
-
 ```
 conda activate *environment_name*
+```
+
+### Flags
+
+* "-b", "--basin"
+* "-nk", "--network_key"
+* "-d", "--debug"
+* "-p", "--include_planning"
+* "-n", "--run_name"
+* "-mp", "--multiprocessing"
+
+For only daily models (Merced & Tuolomne):
+
+```
 python main.py -b *network* -n "development" -d d
 ```
 For both daily and monthly models
 
-```
-conda activate *environment_name*
+``` 
 python main.py -b *network* -p -n "development" -d dm
 ```
 
-## Setting Up Models in Merced Cluster
+## Setting up models in Merced Cluster
+
+We are going to be looking at the Merced Cluster implementing the user Manual. For more information, check the [Merced Cluster User Manual](http://hpcwiki.ucmerced.edu/knowledgebase/merced-cluster-user-manual/)
 
 1. Request an account [here](http://hpcwiki.ucmerced.edu/knowledgebase/getting-a-merced-account) for access to the cluster
 2. Access the UC Merced VPN via Cisco Anyconnect, 
@@ -124,8 +170,6 @@ $ cp ~/help/sample.sub ~/
 * module list - provides a list of all modules currently loaded into the user environment. 
 * module unload <mod_name> - unloads the environment corresponding to <mod_name>.
 * module swap <mod_1> <mod_2> - unloads the environment corresponding to <mod_1> and loads that corresponding to <mod_2>.
-
-For more information, check the [Merced Cluster User Manual](http://hpcwiki.ucmerced.edu/knowledgebase/merced-cluster-user-manual/)
 
 ## Built With
 
