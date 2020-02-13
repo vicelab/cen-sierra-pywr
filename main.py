@@ -12,6 +12,8 @@ parser.add_argument("-d", "--debug", help="Debug ('m' or 'd' or 'dm')")
 parser.add_argument("-p", "--include_planning", help="Include planning model", action='store_true')
 parser.add_argument("-n", "--run_name", help="Run name")
 parser.add_argument("-mp", "--multiprocessing", help="Use multiprocessing", action='store_true')
+parser.add_argument("-s", "--start_date", help="Start date")
+parser.add_argument("-e", "--end_date", help="End date")
 args = parser.parse_args()
 
 basin = args.basin
@@ -25,6 +27,9 @@ gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
 rcps = ['45', '85']
 gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
 
+
+data_path = os.environ.get('SIERRA_DATA_PATH')
+
 start = None
 end = None
 if debug:
@@ -33,8 +38,8 @@ if debug:
     price_years = [2009]
     # climate_scenarios = ['CanESM2_rcp85']
     # price_years = [2060]
-    start = '2000-10-01'
-    end = '2010-09-30'
+    start = args.start_date or '2000-10-01'
+    end = args.end_date or '2003-09-30'
 else:
     planning_months = 12
     climate_scenarios = ['Livneh'] + gcm_rcps
@@ -52,7 +57,8 @@ kwargs = dict(
     planning_months=planning_months,
     use_multiprocessing=multiprocessing,
     start=start,
-    end=end
+    end=end,
+    data_path=data_path
 )
 
 if not multiprocessing:  # serial processing for debugging
