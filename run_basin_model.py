@@ -704,10 +704,8 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
     # import custom policies
     try:
         import_module('{}.policies'.format(basin))
-    except Exception as err:
-        print(' [-] WARNING: Could not import {} policies.'.format(basin))
-        print(type(err))
-        print(err)
+    except:
+        pass
 
     # prepare the model files
     if simplify or include_planning:
