@@ -577,7 +577,7 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, debug=False):
 def run_model(basin, climate, price_years, network_key=None, start=None, end=None,
               run_name="default", include_planning=False,
               simplify=True, use_multiprocessing=False,
-              debug=False, planning_months=12):
+              debug=False, planning_months=12, data_path=None):
     months = planning_months
 
     if start is None or end is None:
@@ -624,7 +624,8 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
                 continue
             url = param.get('url')
             if url:
-                url = url.replace('../data', '../../data')
+                if data_path:
+                    url = url.replace('../data', data_path)
                 if climate != 'Livneh':
                     url = url.replace('Livneh', climate)
                 param['url'] = url
@@ -704,10 +705,8 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
     # import custom policies
     try:
         import_module('{}.policies'.format(basin))
-    except Exception as err:
-        print(' [-] WARNING: Could not import {} policies.'.format(basin))
-        print(type(err))
-        print(err)
+    except:
+        pass
 
     # prepare the model files
     if simplify or include_planning:

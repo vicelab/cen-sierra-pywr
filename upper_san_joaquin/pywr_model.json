@@ -1504,6 +1504,8 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 499.4,
             "turbine_capacity": 1.4852676262396953,
+            "spinning_flow": 0.2,
+            "spinning_cost": -1500,
             "cost": [
                 "Big Creek 2 PH/Cost/1",
                 "Big Creek 2 PH/Cost/2",
@@ -1892,7 +1894,7 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Huntington Lake/Min Flow",
-            "max_flow_cost": 2000,
+            "max_flow_cost": 100,
             "min_flow_cost": -50000
         },
         {
@@ -1940,13 +1942,6 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Pitman Creek Div/Min Flow",
-            "max_flow_cost": 2000,
-            "min_flow_cost": -10000
-        },
-        {
-            "name": "IFR bl Portal Forebay",
-            "type": "InstreamFlowRequirement",
-            "comment": "{\"resource_class\": \"node\"}",
             "max_flow_cost": 2000,
             "min_flow_cost": -10000
         },
@@ -4092,10 +4087,6 @@
         ],
         [
             "Below Portal Penstock Outflow.1",
-            "IFR bl Portal Forebay"
-        ],
-        [
-            "IFR bl Portal Forebay",
             "Below Portal Penstock Outflow.2"
         ],
         [
@@ -6771,6 +6762,10 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Huntington Lake"
         },
+        "IFR bl Huntington Lake/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Huntington Lake/Min Flow"
+        },
         "IFR bl Kerckhoff Lake/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Kerckhoff Lake"
@@ -6794,10 +6789,6 @@
         "IFR bl Pitman Creek Div/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Pitman Creek Div"
-        },
-        "IFR bl Portal Forebay/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "IFR bl Portal Forebay"
         },
         "IFR bl Redinger Lake/flow": {
             "type": "NumpyArrayNodeRecorder",

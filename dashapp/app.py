@@ -1271,10 +1271,10 @@ def render_timeseries_collection(tab, **kwargs):
             df = load_timeseries(results_path, basin, forcings, pywr_param_name, 'Flow',
                                  multiplier=MCM_TO_CFS, **load_data_kwargs)
             df_pw_min_ifr_reqt = load_timeseries(
-                results_path, basin, forcings, pywr_param_name, 'Min Requirement',
+                results_path, basin, forcings, pywr_param_name, 'Min Flow',
                 multiplier=MCM_TO_CFS, **load_data_kwargs)
             df_pw_ifr_range_reqt = load_timeseries(
-                results_path, basin, forcings, pywr_param_name, 'Max Requirement',
+                results_path, basin, forcings, pywr_param_name, 'Max Flow',
                 multiplier=MCM_TO_CFS, **load_data_kwargs)
 
             if df_pw_min_ifr_reqt is not None and df_pw_ifr_range_reqt is not None:

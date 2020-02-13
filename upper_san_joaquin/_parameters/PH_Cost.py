@@ -48,18 +48,10 @@ class PH_Cost(WaterLPParameter):
             if self.block == 1:
                 pywr_cost = min(pywr_cost, powerhouse.spinning_cost)
         else:
-            if 'Murphys' in self.name:
-                pywr_cost = -500
+            if self.block == 1:
+                pywr_cost = -100
             else:
-                if self.block == 1:
-                    pywr_cost = -500
-                # elif self.block == 2:
-                #     pywr_cost = -1  # more valuable than spill
-                else:
-                    pywr_cost = 1  # costs money to generate (negative prices)
-
-        # if self.res_name == 'Collierville PH' and self.block == 1 and pywr_cost < 0:
-        #     pywr_cost = -600
+                pywr_cost = 1  # costs money to generate (negative prices)
 
         return pywr_cost
 
