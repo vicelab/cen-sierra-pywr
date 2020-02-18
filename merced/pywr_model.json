@@ -191,7 +191,7 @@
             "name": "IFR bl New Exchequer Dam",
             "type": "InstreamFlowRequirement",
             "min_flow_cost": "IFR bl New Exchequer Dam/Violation Cost",
-            "min_flow": "IFR bl New Exchequer Dam/Min Requirement"
+            "min_flow": "IFR bl New Exchequer Dam/Min Flow"
         },
         {
             "name": "Crocker-Huffman Diversion Reservoir",
@@ -281,10 +281,10 @@
         {
             "name": "IFR at Shaffer Bridge",
             "type": "InstreamFlowRequirement",
-            "min_flow_cost": "IFR at Shaffer Bridge/Min Requirement Cost",
-            "max_flow_cost": "IFR at Shaffer Bridge/Max Requirement Cost",
-            "min_flow": "IFR at Shaffer Bridge/Min Requirement",
-            "max_flow": "IFR at Shaffer Bridge/Max Requirement"
+            "min_flow_cost": "IFR at Shaffer Bridge/Min Flow Cost",
+            "max_flow_cost": "IFR at Shaffer Bridge/Max Flow Cost",
+            "min_flow": "IFR at Shaffer Bridge/Min Flow",
+            "max_flow": "IFR at Shaffer Bridge/Max Flow"
         },
         {
             "name": "Merced River Headflow",
@@ -833,7 +833,7 @@
             "type": "constant",
             "value": -5000
         },
-        "IFR bl New Exchequer Dam/Min Requirement": {
+        "IFR bl New Exchequer Dam/Min Flow": {
             "type": "constant",
             "value": 0.7080147267063155
         },
@@ -915,18 +915,18 @@
         "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500/Observed Flow": {
             "type": "MERCED_R_A_POHONO_BRIDGE_NR_YOSEMITE_CA_11266500_Observed_Flow"
         },
-        "IFR at Shaffer Bridge/Min Requirement Cost": {
+        "IFR at Shaffer Bridge/Min Flow Cost": {
             "type": "constant",
             "value": -5000
         },
-        "IFR at Shaffer Bridge/Max Requirement Cost": {
+        "IFR at Shaffer Bridge/Max Flow Cost": {
             "type": "constant",
             "value": 1
         },
-        "IFR at Shaffer Bridge/Min Requirement": {
+        "IFR at Shaffer Bridge/Min Flow": {
             "type": "IFR_at_Shaffer_Bridge_Min_Flow"
         },
-        "IFR at Shaffer Bridge/Max Requirement": {
+        "IFR at Shaffer Bridge/Max Flow": {
             "type": "IFR_at_Shaffer_Bridge_Max_Flow"
         },
         "MER_01 Headflow/Runoff": {
@@ -1034,9 +1034,9 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl New Exchequer Dam"
         },
-        "IFR bl New Exchequer Dam/min requirement": {
+        "IFR bl New Exchequer Dam/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl New Exchequer Dam/Min Requirement"
+            "parameter": "IFR bl New Exchequer Dam/Min Flow"
         },
         "Lake McClure/storage": {
             "type": "NumpyArrayStorageRecorder",
@@ -1078,13 +1078,13 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR at Shaffer Bridge"
         },
-        "IFR at Shaffer Bridge/min requirement": {
+        "IFR at Shaffer Bridge/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR at Shaffer Bridge/Min Requirement"
+            "parameter": "IFR at Shaffer Bridge/Min Flow"
         },
-        "IFR at Shaffer Bridge/max requirement": {
+        "IFR at Shaffer Bridge/max flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR at Shaffer Bridge/Max Requirement"
+            "parameter": "IFR at Shaffer Bridge/Max Flow"
         },
         "Merced River Outflow/flow": {
             "type": "NumpyArrayNodeRecorder",
