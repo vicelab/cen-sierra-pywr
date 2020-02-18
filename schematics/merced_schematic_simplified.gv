@@ -6,7 +6,7 @@ digraph merced {
 	"Lake McClure Spill" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"McSwain PH" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"Merced Falls PH" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"IFR bl Crocker-Huffman Dam" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR at Shaffer Bridge" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"Merced River Outflow" [fillcolor=black fontcolor=white shape=oval style=filled]
 	"MER_01 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"MER_02 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
@@ -20,7 +20,7 @@ digraph merced {
 	"Lake McClure" -> "Lake McClure Spill"
 	"Lake McClure" -> "New Exchequer PH"
 	"Crocker-Huffman Diversion Reservoir" -> "MID Main"
-	"Crocker-Huffman Diversion Reservoir" -> "IFR bl Crocker-Huffman Dam"
+	"Crocker-Huffman Diversion Reservoir" -> "IFR at Shaffer Bridge"
 	"Merced Falls PH" -> "MID Northside"
 	"Lake McClure Spill" -> "IFR bl New Exchequer Dam"
 	"New Exchequer PH" -> "IFR bl New Exchequer Dam"
@@ -30,7 +30,7 @@ digraph merced {
 	"MER_01 Headflow" -> "Lake McClure"
 	"MER_02 Headflow" -> "Lake McClure"
 	"MER_03 Headflow" -> "Lake McClure"
-	"IFR bl Crocker-Huffman Dam" -> "Merced River Outflow"
+	"IFR at Shaffer Bridge" -> "Merced River Outflow"
 	"MER_04 Headflow" -> "Lake McClure"
 	"MER_05 Headflow" -> "Lake McClure"
 	"MER_06 Headflow" -> "Lake McClure"
