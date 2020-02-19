@@ -293,7 +293,7 @@
             "name": "IFR bl Angels Div",
             "type": "InstreamFlowRequirement",
             "min_flow_cost": -5000,
-            "min_flow": "IFR bl Angels Div/Min Requirement",
+            "min_flow": "IFR bl Angels Div/Min Flow",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -305,8 +305,8 @@
                 5000
             ],
             "max_flow": [
-                "IFR bl Collierville PH discharge/Min Requirement",
-                "IFR bl Collierville PH discharge/Max Requirement"
+                "IFR bl Collierville PH discharge/Min Flow",
+                "IFR bl Collierville PH discharge/Max Flow"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -323,8 +323,8 @@
             "type": "InstreamFlowRequirement",
             "min_flow_cost": -5000,
             "max_flow_cost": 5000,
-            "min_flow": "IFR bl Donnell Lake/Min Requirement",
-            "max_flow": "IFR bl Donnell Lake/Max Requirement",
+            "min_flow": "IFR bl Donnell Lake/Min Flow",
+            "max_flow": "IFR bl Donnell Lake/Max Flow",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -346,8 +346,8 @@
             "type": "InstreamFlowRequirement",
             "min_flow_cost": -5000,
             "max_flow_cost": 5000,
-            "min_flow": "IFR bl McKays Point Div/Min Requirement",
-            "max_flow": "IFR bl McKays Point Div/Max Requirement",
+            "min_flow": "IFR bl McKays Point Div/Min Flow",
+            "max_flow": "IFR bl McKays Point Div/Max Flow",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -365,8 +365,8 @@
                 5000
             ],
             "max_flow": [
-                "IFR bl New Spicer Meadow Reservoir/Min Requirement",
-                "IFR bl New Spicer Meadow Reservoir/Max Requirement"
+                "IFR bl New Spicer Meadow Reservoir/Min Flow",
+                "IFR bl New Spicer Meadow Reservoir/Max Flow"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -383,8 +383,8 @@
                 5000
             ],
             "max_flow": [
-                "IFR bl Philadelphia Div/Min Requirement",
-                "IFR bl Philadelphia Div/Max Requirement"
+                "IFR bl Philadelphia Div/Min Flow",
+                "IFR bl Philadelphia Div/Max Flow"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -397,8 +397,8 @@
                 5000
             ],
             "max_flow": [
-                "IFR bl Relief Reservoir/Min Requirement",
-                "IFR bl Relief Reservoir/Max Requirement"
+                "IFR bl Relief Reservoir/Min Flow",
+                "IFR bl Relief Reservoir/Max Flow"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -411,8 +411,8 @@
                 2000
             ],
             "max_flow": [
-                "IFR bl Sand Bar Div/Min Requirement",
-                "IFR bl Sand Bar Div/Max Requirement"
+                "IFR bl Sand Bar Div/Min Flow",
+                "IFR bl Sand Bar Div/Max Flow"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -425,8 +425,8 @@
                 5000
             ],
             "max_flow": [
-                "IFR bl NF Stanislaus Div Res/Min Requirement",
-                "IFR bl NF Stanislaus Div Res/Max Requirement"
+                "IFR bl NF Stanislaus Div Res/Min Flow",
+                "IFR bl NF Stanislaus Div Res/Max Flow"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -439,8 +439,8 @@
                 10000
             ],
             "max_flow": [
-                "IFR bl Beaver Creek Diversion Dam/Min Requirement",
-                "IFR bl Beaver Creek Diversion Dam/Max Requirement"
+                "IFR bl Beaver Creek Diversion Dam/Min Flow",
+                "IFR bl Beaver Creek Diversion Dam/Max Flow"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -467,8 +467,8 @@
                 5000
             ],
             "max_flow": [
-                "IFR bl Pinecrest Lake/Min Requirement",
-                "IFR bl Pinecrest Lake/Max Requirement"
+                "IFR bl Pinecrest Lake/Min Flow",
+                "IFR bl Pinecrest Lake/Max Flow"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -488,8 +488,8 @@
                 10000
             ],
             "max_flow": [
-                "IFR bl Beardsley Afterbay/Min Requirement",
-                "IFR bl Beardsley Afterbay/Max Requirement"
+                "IFR bl Beardsley Afterbay/Min Flow",
+                "IFR bl Beardsley Afterbay/Max Flow"
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -1188,7 +1188,7 @@
                 4000
             ],
             "max_flow": [
-                "Donnell Lake Spill/Min Requirement"
+                "Donnell Lake Spill/Min Flow"
             ]
         },
         {
@@ -1283,7 +1283,7 @@
             "name": "New Melones Release Requirement",
             "type": "Link",
             "cost": -500,
-            "max_flow": "New Melones Release Requirement/Min Requirement",
+            "max_flow": "New Melones Release Requirement/Min Flow",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -2599,7 +2599,7 @@
         "Collierville PH/Cost/3": {
             "type": "PH_Cost"
         },
-        "Donnell Lake Spill/Min Requirement": {
+        "Donnell Lake Spill/Min Flow": {
             "type": "Donnell_Lake_Spill_Min_Requirement"
         },
         "Donnells PH/Fixed Head": {
@@ -2686,13 +2686,13 @@
             "table": "Observed Flow",
             "column": "11293700"
         },
-        "IFR bl Angels Div/Min Requirement": {
+        "IFR bl Angels Div/Min Flow": {
             "type": "IFR_bl_Angels_Div_Min_Requirement"
         },
-        "IFR bl Collierville PH discharge/Min Requirement": {
+        "IFR bl Collierville PH discharge/Min Flow": {
             "type": "IFR_bl_Collierville_PH_discharge_Min_Requirement"
         },
-        "IFR bl Collierville PH discharge/Max Requirement": {
+        "IFR bl Collierville PH discharge/Max Flow": {
             "type": "IFR_bl_Collierville_PH_discharge_Max_Requirement"
         },
         "IFR at Murphys Park/Violation Cost": {
@@ -2706,10 +2706,10 @@
             "type": "constant",
             "value": -1000
         },
-        "IFR bl Donnell Lake/Min Requirement": {
+        "IFR bl Donnell Lake/Min Flow": {
             "type": "IFR_bl_Donnell_Lake_Min_Requirement"
         },
-        "IFR bl Donnell Lake/Max Requirement": {
+        "IFR bl Donnell Lake/Max Flow": {
             "type": "IFR_bl_Donnell_Lake_Max_Requirement"
         },
         "IFR bl Hunter Reservoir/Violation Cost": {
@@ -2730,66 +2730,66 @@
             "type": "constant",
             "value": -1000
         },
-        "IFR bl McKays Point Div/Min Requirement": {
+        "IFR bl McKays Point Div/Min Flow": {
             "type": "IFR_bl_McKays_Point_Div_Min_Requirement"
         },
-        "IFR bl McKays Point Div/Max Requirement": {
+        "IFR bl McKays Point Div/Max Flow": {
             "type": "IFR_bl_McKays_Point_Div_Max_Requirement"
         },
         "IFR bl New Spicer Meadow Reservoir/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
-        "IFR bl New Spicer Meadow Reservoir/Min Requirement": {
+        "IFR bl New Spicer Meadow Reservoir/Min Flow": {
             "type": "IFR_bl_New_Spicer_Meadow_Reservoir_Min_Requirement"
         },
-        "IFR bl New Spicer Meadow Reservoir/Max Requirement": {
+        "IFR bl New Spicer Meadow Reservoir/Max Flow": {
             "type": "IFR_bl_New_Spicer_Meadow_Reservoir_Max_Requirement"
         },
         "IFR bl Philadelphia Div/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
-        "IFR bl Philadelphia Div/Min Requirement": {
+        "IFR bl Philadelphia Div/Min Flow": {
             "type": "IFR_bl_Philadelphia_Div_Min_Requirement"
         },
-        "IFR bl Philadelphia Div/Max Requirement": {
+        "IFR bl Philadelphia Div/Max Flow": {
             "type": "IFR_bl_Philadelphia_Div_Max_Requirement"
         },
-        "IFR bl Relief Reservoir/Min Requirement": {
+        "IFR bl Relief Reservoir/Min Flow": {
             "type": "IFR_bl_Relief_Reservoir_Min_Requirement"
         },
-        "IFR bl Relief Reservoir/Max Requirement": {
+        "IFR bl Relief Reservoir/Max Flow": {
             "type": "IFR_bl_Relief_Reservoir_Max_Requirement"
         },
         "IFR bl Sand Bar Div/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
-        "IFR bl Sand Bar Div/Min Requirement": {
+        "IFR bl Sand Bar Div/Min Flow": {
             "type": "IFR_bl_Sand_Bar_Div_Min_Requirement"
         },
-        "IFR bl Sand Bar Div/Max Requirement": {
+        "IFR bl Sand Bar Div/Max Flow": {
             "type": "IFR_bl_Sand_Bar_Div_Max_Requirement"
         },
         "IFR bl NF Stanislaus Div Res/Violation Cost": {
             "type": "constant",
             "value": -10000
         },
-        "IFR bl NF Stanislaus Div Res/Min Requirement": {
+        "IFR bl NF Stanislaus Div Res/Min Flow": {
             "type": "IFR_bl_NF_Stanislaus_Div_Res_Min_Requirement"
         },
-        "IFR bl NF Stanislaus Div Res/Max Requirement": {
+        "IFR bl NF Stanislaus Div Res/Max Flow": {
             "type": "IFR_bl_NF_Stanislaus_Div_Res_Max_Requirement"
         },
         "IFR bl Beaver Creek Diversion Dam/Violation Cost": {
             "type": "constant",
             "value": -1000
         },
-        "IFR bl Beaver Creek Diversion Dam/Min Requirement": {
+        "IFR bl Beaver Creek Diversion Dam/Min Flow": {
             "type": "IFR_bl_Beaver_Creek_Diversion_Dam_Min_Requirement"
         },
-        "IFR bl Beaver Creek Diversion Dam/Max Requirement": {
+        "IFR bl Beaver Creek Diversion Dam/Max Flow": {
             "type": "IFR_bl_Beaver_Creek_Diversion_Dam_Max_Requirement"
         },
         "IFR bl confluence of NF Stanislaus and Beaver Creek/Violation Cost": {
@@ -2805,7 +2805,7 @@
         },
         "IFR bl Goodwin Reservoir/Violation Cost": {
             "type": "constant",
-            "value": -5000
+            "value": -50000
         },
         "IFR bl Goodwin Reservoir/Requirement": {
             "type": "IFR_bl_Goodwin_Reservoir_Requirement"
@@ -2814,10 +2814,10 @@
             "type": "constant",
             "value": -1000
         },
-        "IFR bl Pinecrest Lake/Min Requirement": {
+        "IFR bl Pinecrest Lake/Min Flow": {
             "type": "IFR_bl_Pinecrest_Lake_Min_Requirement"
         },
-        "IFR bl Pinecrest Lake/Max Requirement": {
+        "IFR bl Pinecrest Lake/Max Flow": {
             "type": "IFR_bl_Pinecrest_Lake_Max_Requirement"
         },
         "IFR bl Utica Reservoir/Violation Cost": {
@@ -2831,10 +2831,10 @@
             "type": "constant",
             "value": -1000
         },
-        "IFR bl Beardsley Afterbay/Min Requirement": {
+        "IFR bl Beardsley Afterbay/Min Flow": {
             "type": "IFR_bl_Beardsley_Afterbay_Min_Requirement"
         },
-        "IFR bl Beardsley Afterbay/Max Requirement": {
+        "IFR bl Beardsley Afterbay/Max Flow": {
             "type": "IFR_bl_Beardsley_Afterbay_Max_Requirement"
         },
         "JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/Observed Flow": {
@@ -3396,7 +3396,7 @@
         "Tulloch Lake/Storage Demand": {
             "type": "Tulloch_Lake_Storage_Demand"
         },
-        "New Melones Release Requirement/Min Requirement": {
+        "New Melones Release Requirement/Min Flow": {
             "type": "New_Melones_Release_Requirement_Min_Requirement"
         },
         "Upper Collierville Tunnel 1/Capacity": {
@@ -3559,33 +3559,33 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Angels Div"
         },
-        "IFR bl Angels Div/min requirement": {
+        "IFR bl Angels Div/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Angels Div/Min Requirement"
+            "parameter": "IFR bl Angels Div/Min Flow"
         },
         "IFR bl Collierville PH discharge/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Collierville PH discharge"
         },
-        "IFR bl Collierville PH discharge/min requirement": {
+        "IFR bl Collierville PH discharge/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Collierville PH discharge/Min Requirement"
+            "parameter": "IFR bl Collierville PH discharge/Min Flow"
         },
-        "IFR bl Collierville PH discharge/max requirement": {
+        "IFR bl Collierville PH discharge/max flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Collierville PH discharge/Max Requirement"
+            "parameter": "IFR bl Collierville PH discharge/Max Flow"
         },
         "IFR bl Donnell Lake/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Donnell Lake"
         },
-        "IFR bl Donnell Lake/min requirement": {
+        "IFR bl Donnell Lake/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Donnell Lake/Min Requirement"
+            "parameter": "IFR bl Donnell Lake/Min Flow"
         },
-        "IFR bl Donnell Lake/max requirement": {
+        "IFR bl Donnell Lake/max flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Donnell Lake/Max Requirement"
+            "parameter": "IFR bl Donnell Lake/Max Flow"
         },
         "IFR bl Hunter Reservoir/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -3607,73 +3607,73 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl McKays Point Div"
         },
-        "IFR bl McKays Point Div/min requirement": {
+        "IFR bl McKays Point Div/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl McKays Point Div/Min Requirement"
+            "parameter": "IFR bl McKays Point Div/Min Flow"
         },
-        "IFR bl McKays Point Div/max requirement": {
+        "IFR bl McKays Point Div/max flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl McKays Point Div/Max Requirement"
+            "parameter": "IFR bl McKays Point Div/Max Flow"
         },
         "IFR bl New Spicer Meadow Reservoir/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl New Spicer Meadow Reservoir"
         },
-        "IFR bl New Spicer Meadow Reservoir/min requirement": {
+        "IFR bl New Spicer Meadow Reservoir/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl New Spicer Meadow Reservoir/Min Requirement"
+            "parameter": "IFR bl New Spicer Meadow Reservoir/Min Flow"
         },
-        "IFR bl New Spicer Meadow Reservoir/max requirement": {
+        "IFR bl New Spicer Meadow Reservoir/max flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl New Spicer Meadow Reservoir/Max Requirement"
+            "parameter": "IFR bl New Spicer Meadow Reservoir/Max Flow"
         },
         "IFR bl Philadelphia Div/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Philadelphia Div"
         },
-        "IFR bl Philadelphia Div/min requirement": {
+        "IFR bl Philadelphia Div/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Philadelphia Div/Min Requirement"
+            "parameter": "IFR bl Philadelphia Div/Min Flow"
         },
-        "IFR bl Philadelphia Div/max requirement": {
+        "IFR bl Philadelphia Div/max flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Philadelphia Div/Max Requirement"
+            "parameter": "IFR bl Philadelphia Div/Max Flow"
         },
         "IFR bl Relief Reservoir/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Relief Reservoir"
         },
-        "IFR bl Relief Reservoir/min requirement": {
+        "IFR bl Relief Reservoir/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Relief Reservoir/Min Requirement"
+            "parameter": "IFR bl Relief Reservoir/Min Flow"
         },
-        "IFR bl Relief Reservoir/max requirement": {
+        "IFR bl Relief Reservoir/max flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Relief Reservoir/Max Requirement"
+            "parameter": "IFR bl Relief Reservoir/Max Flow"
         },
         "IFR bl Sand Bar Div/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Sand Bar Div"
         },
-        "IFR bl Sand Bar Div/min requirement": {
+        "IFR bl Sand Bar Div/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Sand Bar Div/Min Requirement"
+            "parameter": "IFR bl Sand Bar Div/Min Flow"
         },
-        "IFR bl Sand Bar Div/max requirement": {
+        "IFR bl Sand Bar Div/max flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Sand Bar Div/Max Requirement"
+            "parameter": "IFR bl Sand Bar Div/Max Flow"
         },
         "IFR bl NF Stanislaus Div Res/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl NF Stanislaus Div Res"
         },
-        "IFR bl NF Stanislaus Div Res/min requirement": {
+        "IFR bl NF Stanislaus Div Res/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl NF Stanislaus Div Res/Min Requirement"
+            "parameter": "IFR bl NF Stanislaus Div Res/Min Flow"
         },
-        "IFR bl NF Stanislaus Div Res/max requirement": {
+        "IFR bl NF Stanislaus Div Res/max flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl NF Stanislaus Div Res/Max Requirement"
+            "parameter": "IFR bl NF Stanislaus Div Res/Max Flow"
         },
         "IFR bl Goodwin Reservoir/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -3687,25 +3687,25 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Beardsley Afterbay"
         },
-        "IFR bl Beardsley Afterbay/min requirement": {
+        "IFR bl Beardsley Afterbay/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Beardsley Afterbay/Min Requirement"
+            "parameter": "IFR bl Beardsley Afterbay/Min Flow"
         },
-        "IFR bl Beardsley Afterbay/max requirement": {
+        "IFR bl Beardsley Afterbay/max flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Beardsley Afterbay/Max Requirement"
+            "parameter": "IFR bl Beardsley Afterbay/Max Flow"
         },
         "IFR bl Beaver Creek Diversion Dam/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Beaver Creek Diversion Dam"
         },
-        "IFR bl Beaver Creek Diversion Dam/min requirement": {
+        "IFR bl Beaver Creek Diversion Dam/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Beaver Creek Diversion Dam/Min Requirement"
+            "parameter": "IFR bl Beaver Creek Diversion Dam/Min Flow"
         },
-        "IFR bl Beaver Creek Diversion Dam/max requirement": {
+        "IFR bl Beaver Creek Diversion Dam/max flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Beaver Creek Diversion Dam/Max Requirement"
+            "parameter": "IFR bl Beaver Creek Diversion Dam/Max Flow"
         },
         "IFR bl confluence of NF Stanislaus and Beaver Creek/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -3719,13 +3719,13 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Pinecrest Lake"
         },
-        "IFR bl Pinecrest Lake/min requirement": {
+        "IFR bl Pinecrest Lake/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Pinecrest Lake/Min Requirement"
+            "parameter": "IFR bl Pinecrest Lake/Min Flow"
         },
-        "IFR bl Pinecrest Lake/max requirement": {
+        "IFR bl Pinecrest Lake/max flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Pinecrest Lake/Max Requirement"
+            "parameter": "IFR bl Pinecrest Lake/Max Flow"
         },
         "IFR bl Utica Reservoir/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -4007,9 +4007,9 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Donnell Lake Spill"
         },
-        "Donnell Lake Spill/min requirement": {
+        "Donnell Lake Spill/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "Donnell Lake Spill/Min Requirement"
+            "parameter": "Donnell Lake Spill/Min Flow"
         },
         "IFR at Murphys Park/flow": {
             "type": "NumpyArrayNodeRecorder",
