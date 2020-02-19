@@ -30,10 +30,10 @@ class IFR_bl_Goodwin_Reservoir_Requirement(WaterLPParameter):
         if self.model.mode == 'scheduling':
             min_ifr = schedule.at[start, WYT] / 35.31  # cfs to cms
             # min_ifr = self.get_down_ramp_ifr(timestep, scenario_index, min_ifr, initial_value=200 / 35.31, rate=0.02)
-            if self.datetime.day in (1, 15):
-                min_ifr = self.get_down_ramp_ifr(timestep, scenario_index, min_ifr, initial_value=200 / 35.31, rate=0.25)
-            elif timestep.index > 0:
-                min_ifr = self.model.nodes[self.res_name].prev_flow[-1] / 0.0864
+            # if self.datetime.day in (1, 15):
+            #     min_ifr = self.get_down_ramp_ifr(timestep, scenario_index, min_ifr, initial_value=200 / 35.31, rate=0.25)
+            # elif timestep.index > 0:
+            #     min_ifr = self.model.nodes[self.res_name].prev_flow[-1] / 0.0864
 
         else:
             end = '{}-{}'.format(self.datetime.month, self.days_in_month())
