@@ -545,11 +545,11 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
                     go.Scatter(
                         x=min_reqt_resampled[forcing].index,
                         y=min_reqt_resampled[forcing][res_name],
-                        text='Min Requirement',
+                        text='Min Flow',
                         mode='lines',
                         opacity=0.7,
                         # opacity=0.7 if not plot_max else 0.0,
-                        name='Min Requirement',
+                        name='Min Flow',
                         line_color='red'
                     )
                 )
@@ -1113,6 +1113,8 @@ def get_resources_old(df, filterby=None):
 
 
 def get_resources(df, filterby=None):
+    if not filterby:
+        return []
     all_resources = sorted(set(df.columns.get_level_values(1)))
     return [r for r in all_resources if not filterby or r.replace(' ', '_') in filterby]
     # return all_resources
@@ -1544,25 +1546,27 @@ def map_content():
 ])
 def render_map(show_labels):
     show_labels = 'show-all-labels' in show_labels
-    with open('./Stanislaus River.json') as f:
-        oa_network = json.load(f)
-    with open('../stanislaus/pywr_model_Livneh_simplified.json') as f:
-        pywr_network = json.load(f)
 
-    nodes = [(n['x'], n['y'], n['name']) for n in oa_network['network']['nodes']]
-    lons, lats, names = list(zip(*nodes))
+    traces = []
+    for abbr, full_name in BASINS.items():
+        with open('../openagua_networks/{} River.json'.format(full_name)) as f:
+            oa_network = json.load(f)
+        with open('../{}/temp/pywr_model_Livneh_simplified.json'.format(full_name.replace(' ', '_').lower())) as f:
+            pywr_network = json.load(f)
 
-    traces = [
-        go.Scattermapbox(
-            lat=lats,
-            lon=lons,
-            mode='markers',
-            marker=go.scattermapbox.Marker(
-                size=14
-            ),
-            text=names,
-        )
-    ]
+        nodes = [(n['x'], n['y'], n['name']) for n in oa_network['network']['nodes']]
+        lons, lats, names = list(zip(*nodes))
+
+        trace = go.Scattermapbox(
+                lat=lats,
+                lon=lons,
+                mode='markers',
+                marker=go.scattermapbox.Marker(
+                    size=14
+                ),
+                text=names,
+            )
+        traces.append(trace)
 
     token = open('./secrets/mapbox-token.txt').read()
 
@@ -1720,4 +1724,4 @@ def render_development_content(tab, basin, metric, transform, resample, aggregat
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)
