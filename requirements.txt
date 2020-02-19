@@ -46,7 +46,7 @@ pyparsing==2.4.5
 PySocks==1.7.1
 python-dateutil==2.8.0
 pytz==2019.3
-pywr==1.4.1.dev27+g1fd1322
+pywr==1.5.0
 redis==3.3.11
 requests==2.22.0
 retrying==1.3.3

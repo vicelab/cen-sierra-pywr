@@ -769,8 +769,11 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
     print('Loading daily model')
     from pywr.nodes import Storage
     from domains import Reservoir
-    m = Model.load(model_path, path=model_path)
-    reservoirs = [n.name for n in m.nodes if type(n) in [Storage, Reservoir] and '(storage)' not in n.name]
+    try:
+        m = Model.load(model_path, path=model_path)
+        reservoirs = [n.name for n in m.nodes if type(n) in [Storage, Reservoir] and '(storage)' not in n.name]
+    except Exception as err:
+        print(err)
     # piecewise_ifrs = [n.name for n in m.nodes if type(n) == Storage and '(storage)' not in n.name]
     m.setup()
 

@@ -176,10 +176,16 @@
             "type": "Link"
         },
         {
-            "name": "Below Exchequer Dam",
-            "type": "RiverGauge",
-            "mrf_cost": "Below Exchequer Dam/Violation Cost",
-            "mrf": "Below Exchequer Dam/Requirement"
+            "name": "Exchequer Dam Flood Release",
+            "type": "PiecewiseLink",
+            "max_flow": [
+                "Exchequer Dam Flood Release/Requirement",
+                null
+            ],
+            "cost": [
+                -5000,
+                1500
+            ]
         },
         {
             "name": "USGS 11270900 MERCED R BL MERCED FALLS DAM NR SNELL CA",
@@ -554,14 +560,18 @@
         ],
         [
             "BlwMcClure.2.1.1 [link]",
-            "Below Exchequer Dam"
+            "Exchequer Dam Flood Release"
         ],
         [
             "Lake McClure Spill",
-            "Below Exchequer Dam"
+            "Exchequer Dam Flood Release"
         ],
         [
-            "Below Exchequer Dam",
+            "Lake McClure",
+            "Exchequer Dam Flood Release"
+        ],
+        [
+            "Exchequer Dam Flood Release",
             "BlwMcClure.2.1.2 [link]"
         ],
         [
@@ -802,19 +812,7 @@
             ],
             "kind": "cubic"
         },
-        "Below Exchequer Dam/Violation Cost": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Lake McClure",
-            "control_curves": [
-                "Lake McClure/Storage Demand"
-            ],
-            "values": [
-                -5000.0,
-                0.0,
-                0.0
-            ]
-        },
-        "Below Exchequer Dam/Requirement": {
+        "Exchequer Dam Flood Release/Requirement": {
             "type": "controlcurveinterpolated",
             "storage_node": "Lake McClure",
             "control_curves": [
@@ -825,6 +823,9 @@
                 0.0,
                 0.0
             ]
+        },
+        "Lake McClure/Storage Demand": {
+            "type": "Lake_McClure_Water_Demand"
         },
         "USGS 11270900 MERCED R BL MERCED FALLS DAM NR SNELL CA/Observed Flow": {
             "type": "Below_Merced_Falls_Dam_Observed_Flow"
@@ -1010,17 +1011,13 @@
         }
     },
     "recorders": {
-        "Below Exchequer Dam/flow": {
+        "Exchequer Dam Flood Release/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "Below Exchequer Dam"
+            "node": "Exchequer Dam Flood Release"
         },
-        "Below Exchequer Dam/violation cost": {
+        "Exchequer Dam Flood Release/requirement": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "Below Exchequer Dam/Violation Cost"
-        },
-        "Below Exchequer Dam/requirement": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "Below Exchequer Dam/Requirement"
+            "parameter": "Exchequer Dam Flood Release/Requirement"
         },
         "USGS 11270900 MERCED R BL MERCED FALLS DAM NR SNELL CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
