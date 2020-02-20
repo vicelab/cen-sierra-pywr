@@ -78,7 +78,10 @@ def simplify_network(m, delete_gauges=False, delete_observed=True, delete_scenar
 
             # delete links adjacent to hydropower facilities
             if len({'cost', 'max_flow'} & keys_set) >= 1 and up_nodes.count(
-                node_name) == 1 and down_nodes.count(node_name) == 1 and 'hydropower' not in node_type:
+                node_name) == 1 \
+                    and down_nodes.count(node_name) == 1 \
+                    and 'hydropower' not in node_type \
+                    and 'reservoir' not in node_type:
                 up_edge = up_edges[node_name][0]
                 up_node = node_lookup[up_edge[0]]
                 up_type = up_node['type'].lower()
@@ -746,6 +749,7 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
             planning_model = Model.load(planning_model_path, path=planning_model_path)
         except Exception as err:
             print("Planning model failed to load")
+            print(err)
             raise
 
         # set model mode to planning
@@ -769,7 +773,11 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
     print('Loading daily model')
     from pywr.nodes import Storage
     from domains import Reservoir
-    m = Model.load(model_path, path=model_path)
+    try:
+        m = Model.load(model_path, path=model_path)
+    except Exception as err:
+        print(err)
+        raise
     reservoirs = [n.name for n in m.nodes if type(n) in [Storage, Reservoir] and '(storage)' not in n.name]
     # piecewise_ifrs = [n.name for n in m.nodes if type(n) == Storage and '(storage)' not in n.name]
     m.setup()
