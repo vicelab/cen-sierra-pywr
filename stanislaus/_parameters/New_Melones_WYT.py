@@ -23,12 +23,13 @@ class New_Melones_WYT(WaterLPParameter):
         # Estimate end-of-Feb (Mar 1) storage
         # TODO: update regression to go to Feb 28/29, not Mar 1; okay for now
         if self.model.mode == 'scheduling':
-            NML_Mar1_storage_mcm = self.model.nodes["New Melones Lake"].volume(timestep, scenario_index)
+            NML_Mar1_storage_mcm = self.model.nodes["New Melones Lake"].volume[scenario_index.global_id]
         else:
             if timestep.month >= 3 and month <= 6 and year == timestep.year:
                 # we should already know the end-of-Feb storage
+                # TODO: figure out how to make this more efficient. This is going to slow things down a bit.
                 NML_storage = self.model.scheduling.recorders["New Melones Lake/storage"].to_dataframe()
-                NML_Mar1_storage_mcm = NML_storage.to_dataframe().at['{}-02-28'.format(year), tuple(scenario_index.indices)]
+                NML_Mar1_storage_mcm = NML_storage.at['{}-02-28'.format(year), tuple(scenario_index.indices)]
             else:
                 NML_initial_storage = self.model.nodes["New Melones Lake [input]"].prev_flow[scenario_index.global_id]
                 regr = self.model.tables["New Melones Storage Regression"]
