@@ -24,11 +24,11 @@ class IFR_bl_Goodwin_Reservoir_Requirement(WaterLPParameter):
             pass
 
     def _value(self, timestep, scenario_index):
-        WYT = self.get('San Joaquin Valley WYT' + self.month_suffix)
+        WYT = self.get('New Melones WYT' + self.month_suffix, timestep, scenario_index)
         schedule = self.model.tables["IFR bl Goodwin Dam schedule"]
         start = '{}-{}'.format(self.datetime.month, self.datetime.day)
         if self.model.mode == 'scheduling':
-            min_ifr = schedule.at[start, WYT] / 35.31  # cfs to cms
+            min_ifr_cms = schedule.at[start, WYT] / 35.31  # cfs to cms
             # min_ifr = self.get_down_ramp_ifr(timestep, scenario_index, min_ifr, initial_value=200 / 35.31, rate=0.02)
             # if self.datetime.day in (1, 15):
             #     min_ifr = self.get_down_ramp_ifr(timestep, scenario_index, min_ifr, initial_value=200 / 35.31, rate=0.25)
@@ -37,18 +37,18 @@ class IFR_bl_Goodwin_Reservoir_Requirement(WaterLPParameter):
 
         else:
             end = '{}-{}'.format(self.datetime.month, self.days_in_month())
-            min_ifr = schedule[WYT][start:end].mean() / 35.31  # cfs to cms
+            min_ifr_cms = schedule[WYT][start:end].mean() / 35.31  # cfs to cms
 
         # SCWRB 40 REQUIREMENT
         if 2 <= timestep.month <= 7 and scenario_index:
             try:
                 fnf = self.model.tables['Full Natural Flow'][self.datetime]
                 swrcb_reqt_cms = fnf * self.swrcb_levels[scenario_index.indices[0]] / 0.0864 # mcm to cms
-                min_ifr = max(min_ifr, swrcb_reqt_cms)
+                min_ifr_cms = max(min_ifr_cms, swrcb_reqt_cms)
             except:
                 pass
 
-        return min_ifr
+        return min_ifr_cms
 
     def value(self, timestep, scenario_index):
         try:
