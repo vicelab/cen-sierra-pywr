@@ -13,7 +13,7 @@ class New_Melones_Release_Requirement_Min_Requirement(WaterLPParameter):
         IFR = self.get("IFR bl Goodwin Reservoir/Requirement" + self.month_suffix, timestep, scenario_index)
 
         # Flood release below Tulloch
-        # reqt += self.get("Tulloch Lake Flood Control/Requirement" + self.month_suffix) / 0.0864  # mcm to cms
+        # reqt += self.get("Tulloch Lake Flood Control/Requirement" + self.month_suffix, timestep, scenario_index) / 0.0864  # mcm to cms
 
         SSJID = self.get("South San Joaquin Irrigation District/Demand" + self.month_suffix, timestep, scenario_index)
         OID = self.get("Oakdale Irrigation District/Demand" + self.month_suffix, timestep, scenario_index)
