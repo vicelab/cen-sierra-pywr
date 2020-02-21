@@ -27,13 +27,12 @@ gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
 rcps = ['45', '85']
 gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
 
-
 data_path = os.environ.get('SIERRA_DATA_PATH')
 
 start = None
 end = None
 if debug:
-    planning_months = 6
+    planning_months = 3
     climate_scenarios = ['Livneh']
     price_years = [2009]
     # climate_scenarios = ['CanESM2_rcp85']
