@@ -11,6 +11,8 @@ from common.tests import test_planning_model, get_planning_dataframe
 import numpy as np
 import pandas as pd
 
+from utilities import simplify_network, prepare_planning_model
+
 SECONDS_IN_DAY = 3600 * 24
 
 
