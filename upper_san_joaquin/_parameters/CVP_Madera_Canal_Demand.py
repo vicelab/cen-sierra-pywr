@@ -12,7 +12,7 @@ class CVP_Madera_Canal_Demand(WaterLPParameter):
         if today <= (4, 1) or (11, 1) <= today:
             return 0
         
-        WYT = self.get('San Joaquin Valley WYT' + self.month_suffix)
+        WYT = self.get('San Joaquin Valley WYT' + self.month_suffix, timestep, scenario_index)
         df = self.model.tables["CVP Madera Canal Demand"]
         col = df.columns[WYT - 1]
         demand_cfs = df[col]  # data is currently in cfs

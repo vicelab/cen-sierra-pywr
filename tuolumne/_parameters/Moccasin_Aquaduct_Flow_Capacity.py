@@ -6,8 +6,7 @@ class Moccasin_Aquaduct_Flow_Capacity(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        kwargs = dict(timestep=timestep, scenario_index=scenario_index)
-        return 900*self.get("cfs2cms", **kwargs)
+        return 900*self.get("cfs2cms", timestep, scenario_index)
         
     def value(self, timestep, scenario_index):
         try:

@@ -84,9 +84,6 @@ class WaterLPParameter(Parameter):
         else:
             self.operational_water_year = self.datetime.year - 1
 
-    def GET(self, *args, **kwargs):
-        return self.get(*args, **kwargs)
-
     def get(self, param, timestep, scenario_index):
         return self.model.parameters[param].value(timestep, scenario_index)
 

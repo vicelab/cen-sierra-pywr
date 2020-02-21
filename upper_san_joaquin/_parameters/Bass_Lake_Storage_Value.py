@@ -8,7 +8,6 @@ class Bass_Lake_Storage_Value(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
-        # x = self.get("San Joaquin Valley WYT", **kwargs)
         x = self.model.tables['San Joaquin Valley Index'][self.operational_water_year]
         y = -15.5
         if x <= 2:
