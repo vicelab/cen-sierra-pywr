@@ -9,7 +9,6 @@ class Donnell_Lake_Spill_Min_Requirement(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
 
-        # WYT = self.get("San Joaquin Valley WYT" + self.month_suffix)
         WYT = self.model.tables["WYT P2005 & P2130"][self.operational_water_year]
 
         # Critically Dry: 1,Dry: 2,Normal-Dry: 3,Normal-Wet: 4,Wet: 5

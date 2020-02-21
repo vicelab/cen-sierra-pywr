@@ -7,7 +7,7 @@ class IFR_bl_Beardsley_Afterbay_Min_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        WYT = self.get("San Joaquin Valley WYT" + self.month_suffix)
+        WYT = self.get("San Joaquin Valley WYT" + self.month_suffix, timestep, scenario_index)
         if WYT in [1, 2]:  # Critical or Dry years
             ifr_val = 50  # cfs
         else:

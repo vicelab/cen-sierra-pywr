@@ -1,5 +1,5 @@
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 from itertools import product
 import pandas as pd
 
@@ -20,7 +20,7 @@ def full_natural_flow_exceedance_forecast(basin_preprocessed_path, scenario):
     fnf_path = os.path.join(basin_preprocessed_path, scenario, 'full_natural_flow_daily_mcm.csv')
     fnf_df = pd.read_csv(fnf_path, index_col=0, header=0, parse_dates=True)
 
-    months = list(range(2, 9 + 1))
+    months = list(range(3, 9 + 1))
     years = sorted(list(set([dt.year for dt in fnf_df.index])))[1:]
     exceedances = [50]
     months_exceedances = list(product(months, exceedances))
@@ -33,7 +33,6 @@ def full_natural_flow_exceedance_forecast(basin_preprocessed_path, scenario):
     for exceedance in exceedances:
         for year, month in years_months:
 
-            ytg_monthly = []
             ytd_monthly = []
 
             # forecast year-to-go
@@ -49,8 +48,8 @@ def full_natural_flow_exceedance_forecast(basin_preprocessed_path, scenario):
                 ytg_monthly = fnf_df[ytg_start:ytg_end].resample('MS').sum()['flow'].values
 
             # actual to-date
-            if month > 2:
-                ytd_start = '{:04}-02-01'.format(year)
+            if month > 3:
+                ytd_start = '{:04}-03-01'.format(year)
                 ytd_end = (datetime(year, month, 1) - timedelta(days=1)).strftime('%Y-%m-%d')
                 ytd_monthly = fnf_df[ytd_start:ytd_end].resample('MS').sum()['flow'].values
 

@@ -2212,6 +2212,11 @@
             "header": 0,
             "squeeze": true
         },
+        "Full Natural Flow Forecast": {
+            "url": "../data/Stanislaus River/Scenarios/preprocessed/Livneh/fnf_forecast_mcm.csv",
+            "index_col": [0, 1],
+            "header": [0, 1]
+        },
         "Peak Donnells Runoff": {
             "url": "../data/Stanislaus River/Scenarios/preprocessed/Livneh/peak_runoff_DonnellsRes_MarToMay_cms.csv",
             "usecols": [
@@ -2233,6 +2238,11 @@
             "url": "../data/Stanislaus River/Scenarios/preprocessed/Livneh/WYT_P2019.csv",
             "index_col": 0,
             "squeeze": true
+        },
+        "New Melones Storage Regression": {
+            "url": "../data/Stanislaus River/New Melones March 1 regression mcm.csv",
+            "header": 0,
+            "index_col": 0
         },
         "San Joaquin Valley Index": {
             "url": "../data/common/Scenarios/Livneh/SJVI.csv",
@@ -2397,9 +2407,11 @@
                 2,
                 3,
                 4,
-                5
+                5,
+                6
             ],
-            "header": 0
+            "header": 0,
+            "index_col": 0
         },
         "Oakdale Irrigation District Demand": {
             "url": "../data/Stanislaus River/Management/BAU/Demand/Oakdale Canal demand by WYT mcm.csv",
@@ -2431,6 +2443,9 @@
         "Blocks": {
             "type": "Constant",
             "value": 4
+        },
+        "New Melones WYT": {
+            "type": "New_Melones_WYT"
         },
         "South San Joaquin Irrigation District/Demand": {
             "type": "South_San_Joaquin_Irrigation_District_Demand"

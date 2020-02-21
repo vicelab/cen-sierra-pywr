@@ -21,7 +21,7 @@ class Water_Supply_Release_bl_New_Spicer_Meadow_Reservoir(WaterLPParameter):
 
         # modify max_flow up/down based on regression
         # y = -0.0299x2 + 0.5624x where x = SJVI and y = % of mean.
-        SJVI = self.get("San Joaquin Valley WYI" + self.month_suffix)
+        SJVI = self.get("San Joaquin Valley WYI" + self.month_suffix, timestep, scenario_index)
         scaling_factor = -0.0299 * SJVI ** 2 + 0.5624 * SJVI
         max_flow = max_flow * scaling_factor
         return max_flow
