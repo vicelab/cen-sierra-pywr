@@ -2407,9 +2407,11 @@
                 2,
                 3,
                 4,
-                5
+                5,
+                6
             ],
-            "header": 0
+            "header": 0,
+            "index_col": 0
         },
         "Oakdale Irrigation District Demand": {
             "url": "../data/Stanislaus River/Management/BAU/Demand/Oakdale Canal demand by WYT mcm.csv",
