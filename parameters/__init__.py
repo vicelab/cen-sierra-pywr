@@ -87,8 +87,8 @@ class WaterLPParameter(Parameter):
     def GET(self, *args, **kwargs):
         return self.get(*args, **kwargs)
 
-    def get(self, param, timestep=None, scenario_index=None):
-        return self.model.parameters[param].value(timestep or self.model.timestep, scenario_index)
+    def get(self, param, timestep, scenario_index):
+        return self.model.parameters[param].value(timestep, scenario_index)
 
     def days_in_month(self, year=None, month=None):
         if year is None:
