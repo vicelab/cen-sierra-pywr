@@ -15,26 +15,6 @@ from utilities import simplify_network, prepare_planning_model
 
 SECONDS_IN_DAY = 3600 * 24
 
-
-class PlanningTimestepper(Timestepper):
-
-    def setup(self):
-        periods = self.datetime_index
-
-        # Compute length of each period
-        deltas = periods.to_timestamp(how='e') - periods.to_timestamp(how='s')
-        # Round to nearest second
-        deltas = np.round(deltas.total_seconds())
-        # Convert to days
-        deltas = deltas / SECONDS_IN_DAY
-        self._periods = periods
-        self._deltas = deltas
-        self.reset()
-        self._dirty = False
-
-
-# PlanningTimestepper.register()
-
 PARAMETERS_TO_EXPAND = {
     'stanislaus': [
         'New Melones Apr-Jul Runoff',
