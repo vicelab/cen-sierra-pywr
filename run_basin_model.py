@@ -268,8 +268,11 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
     step = -1
     now = datetime.now()
     monthly_seconds = 0
-    setattr(m, 'mode', 'scheduling')
-    setattr(m, 'planning', planning_model if include_planning else None)
+    m.mode = 'scheduling'
+    m.planning = None
+    if include_planning:
+        m.planning = planning_model
+        m.planning.scheduling = m
 
     for date in tqdm(m.timestepper.datetime_index, ncols=60, disable=use_multiprocessing):
         step += 1
@@ -289,9 +292,20 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
                     if step == 0:
                         initial_volume = m.nodes[res].initial_volume
                     else:
+                        # TODO: fix the following to get from correct scenario
                         initial_volume = m.nodes[res].volume[-1]
                     m.planning.nodes[res + ' [input]'].min_flow = initial_volume
                     m.planning.nodes[res + ' [input]'].max_flow = initial_volume
+
+                    # Other misc. updates from scheduling to daily model
+
+                # # Store March 1 (end-of-Feb) storage in Stanislaus model
+                # # This is used in New Melones WYT parameter (New_Melones_WYT.py)
+                # if basin == 'stanislaus' and date.month == 3 and date.day == 1:
+                #     # Note: this is before the daily model has run, so technically we are still on Feb. 28/29
+                #     # TODO: update this to get from correct scenario and change New Melones Mar 1 storage
+                #     #  to be a scenario constant
+                #     m.planning.parameters["New Melones Mar 1 storage"] = m.nodes["New Melones Lake"].volume[-1]
 
                 # Step 1b: run planning model
                 m.planning.step()  # redundant with run, since only one timestep
