@@ -39,9 +39,9 @@ fontcolors = {
 #basins = ['upper_san_joaquin']
 # basins = ['stanislaus']
 basins = ['merced']
-version = None
+#version = None
 # version = 'cleaned'
-#version = 'simplified'
+version = 'simplified'
 #version = 'monthly'
 
 for basin in basins:

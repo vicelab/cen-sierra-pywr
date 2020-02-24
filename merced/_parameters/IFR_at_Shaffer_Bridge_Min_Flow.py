@@ -43,7 +43,7 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
         dga_flow_req = self.dga_requirement(timestep)
 
         # COWELL AGREEMENT REQUIREMENT
-        ca_flow_req = self.ca_requirement(timestep)
+        ca_flow_req = self.ca_requirement(timestep,scenario_index)
 
         # FISH PULSE REQUIREMENT
         fish_req = self.fish_requirement(timestep)
@@ -126,7 +126,7 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
 
         return davis_grunsky_flow
 
-    def ca_requirement(self, timestep):
+    def ca_requirement(self, timestep, scenario_index):
         # Cowell Agreement
         mth = timestep.month
 
@@ -152,8 +152,8 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
             # Calculate the natural flow
             # Because this should depend on the current timestep's inflow, inflow data should be
             # loaded all at once, then replace prev_flow with flow                                                                                             scenario_index)
-
-            flow_val = self.model.tables["Full Natural Flow"][timestep.datetime] / 0.0864 # mcm to cms
+            flow_val = self.model.parameters["Full Natural Flow"].value(timestep, scenario_index)
+            #flow_val = self.model.tables["Full Natural Flow"][timestep.datetime] / 0.0864 # mcm to cms
 
             if mth in (10, 11, 12, 1, 2):
                 # Flow of 50 cfs (1.416 cms) -only from ExChequer flows
@@ -194,7 +194,8 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
         return self.div_data['1900-{:02}-{:02}'.format(timestep.month, timestep.day)]
 
     def swrcb_40_requirement(self, timestep, scenario_index):
-        fnf = self.model.tables['Full Natural Flow'][timestep.datetime]
+        fnf = self.model.parameters["Full Natural Flow"].value(timestep, scenario_index)
+        #fnf = self.model.tables['Full Natural Flow'][timestep.datetime]
         return fnf * self.swrcb_levels[scenario_index.indices[0]]
 
     @classmethod

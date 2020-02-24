@@ -183,8 +183,8 @@
                 null
             ],
             "cost": [
-                -5000,
-                1500
+                -1000,
+                1
             ]
         },
         {
@@ -208,7 +208,12 @@
         {
             "name": "Lake McClure",
             "type": "Reservoir",
-            "initial_volume": 841.0,
+            "initial_volume": {
+                "type": "constant",
+                "table": "Initial Storage",
+                "index": "2000-09-30",
+                "column": "USGS 11269500 LK MCCLURE A EXCHEQUER CA"
+            },
             "max_volume": "Lake McClure/Storage Capacity",
             "min_volume": "Lake McClure/Inactive Pool",
             "cost": "Lake McClure/Cost",
@@ -217,15 +222,7 @@
         },
         {
             "name": "Lake McClure Spill",
-            "type": "PiecewiseLink",
-            "cost": [
-                -100,
-                100
-            ],
-            "max_flow": [
-                "Lake McClure Spill/Max Flow",
-                null
-            ]
+            "type": "Link"
         },
         {
             "name": "Lake McClure Inflow",
@@ -567,10 +564,6 @@
             "Exchequer Dam Flood Release"
         ],
         [
-            "Lake McClure",
-            "Exchequer Dam Flood Release"
-        ],
-        [
             "Exchequer Dam Flood Release",
             "BlwMcClure.2.1.2 [link]"
         ],
@@ -763,16 +756,14 @@
             "header": 0,
             "squeeze": true
         },
-        "Full Natural Flow": {
-            "url": "../data/Merced River/Scenarios/preprocessed/Livneh/full_natural_flow_daily_mcm.csv",
-            "index_col": 0,
-            "parse_dates": true,
-            "header": 0,
-            "squeeze": true
+        "Initial Storage": {
+            "url": "../data/Merced River/gauges/storage_mcm.csv",
+            "index_col": "Date",
+            "parse_dates": false
         }
     },
     "parameters": {
-        "Merced River/Full Natural Flow": {
+        "Full Natural Flow": {
             "type": "dataframe",
             "url": "../data/Merced River/Scenarios/preprocessed/Livneh/full_natural_flow_daily_mcm.csv",
             "index_col": 0,
@@ -813,16 +804,7 @@
             "kind": "cubic"
         },
         "Exchequer Dam Flood Release/Requirement": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Lake McClure",
-            "control_curves": [
-                "Lake McClure/Storage Demand"
-            ],
-            "values": [
-                2.5,
-                0.0,
-                0.0
-            ]
+            "type": "Exchequer_Dam_Flood_Release_Requirement"
         },
         "Lake McClure/Storage Demand": {
             "type": "Lake_McClure_Water_Demand"
@@ -850,24 +832,8 @@
             "type": "Lake_McClure_Observed_Storage"
         },
         "Lake McClure/Cost": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Lake McClure",
-            "control_curves": [
-                "Lake McClure/Water Demand",
-                0.1
-            ],
-            "values": [
-                0.0,
-                0.0,
-                -50.0,
-                -1000.0
-            ]
-        },
-        "Lake McClure/Water Demand": {
-            "type": "Lake_McClure_Water_Demand"
-        },
-        "Lake McClure Spill/Max Flow": {
-            "type": "Lake_McClure_Spill_Max_Flow"
+            "type": "constant",
+            "value": -10
         },
         "Lake McSwain/Storage Capacity": {
             "type": "constant",
@@ -1054,6 +1020,10 @@
         "Lake McSwain/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Lake McSwain"
+        },
+        "Lake McSwain/observed storage": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Lake McSwain/Observed Storage"
         },
         "McSwain PH/flow": {
             "type": "NumpyArrayNodeRecorder",

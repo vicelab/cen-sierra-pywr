@@ -23,7 +23,8 @@ external_stylesheets = [dbc.themes.BOOTSTRAP]
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.config.suppress_callback_exceptions = True
 
-opath = '../data/{basin}/gauges/{attr}.csv'
+data_path = os.environ.get('SIERRA_DATA_PATH')
+opath = data_path + '/{basin}/gauges/{attr}.csv'
 # PROD_RESULTS_PATH = r'C:\Users\david\Box\CERC-WET\Task7_San_Joaquin_Model\Pywr models\results'
 PROD_RESULTS_PATH = r'C:\data'
 # PROD_RESULTS_PATH = '../results'
