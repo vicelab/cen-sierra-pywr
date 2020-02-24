@@ -2,13 +2,11 @@ import os
 import sys
 import json
 from pywr.core import Model
-from pywr.timestepper import Timestepper
 from importlib import import_module
 from tqdm import tqdm
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from common.tests import test_planning_model, get_planning_dataframe
-import numpy as np
 import pandas as pd
 
 from utilities import simplify_network, prepare_planning_model
@@ -18,7 +16,8 @@ SECONDS_IN_DAY = 3600 * 24
 PARAMETERS_TO_EXPAND = {
     'stanislaus': [
         'New Melones Apr-Jul Runoff',
-        'New Melones WYT'
+        'New Melones WYT',
+        'New Melones Lake/Storage Demand'
     ],
     'common': [
         'San Joaquin Valley WYT',
@@ -205,7 +204,7 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
             raise
 
         # set model mode to planning
-        setattr(planning_model, 'mode', 'planning')
+        planning_model.mode = 'planning'
 
         # set time steps
         start = planning_model.timestepper.start
