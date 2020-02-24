@@ -1281,9 +1281,15 @@
         },
         {
             "name": "New Melones Release Requirement",
-            "type": "Link",
-            "cost": -500,
-            "max_flow": "New Melones Release Requirement/Min Flow",
+            "type": "PiecewiseLink",
+            "cost": [
+                -500,
+                500
+            ],
+            "max_flow": [
+                "New Melones Release Requirement/Min Flow",
+                null
+            ],
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -1293,10 +1299,15 @@
                 "New Melones Flood Control/Requirement"
             ],
             "cost": [
-                "New Melones Flood Control/Violation Cost",
+                -500,
                 500
             ],
             "comment": "{\"resource_class\": \"node\"}"
+        },
+        {
+            "name": "New Melones Spillway",
+            "type": "Link",
+            "cost": 5000
         },
         {
             "name": "STAN-L-CON 2",
@@ -2101,11 +2112,11 @@
         ],
         [
             "New Melones Lake",
-            "New Melones Release Requirement"
+            "New Melones PH"
         ],
         [
-            "New Melones Release Requirement",
-            "STAN-L-CON 3"
+            "New Melones PH",
+            "STAN-L-CON 4"
         ],
         [
             "STAN-L-CON 3",
@@ -2117,14 +2128,18 @@
         ],
         [
             "STAN-L-CON 2",
-            "New Melones Flood Control"
+            "New Melones Spillway"
         ],
         [
-            "New Melones Flood Control",
+            "New Melones Spillway",
             "STAN-L-CON 4"
         ],
         [
             "STAN-L-CON 4",
+            "New Melones Flood Control"
+        ],
+        [
+            "New Melones Flood Control",
             "STANI-N-JUN4"
         ],
         [
@@ -2133,22 +2148,14 @@
         ],
         [
             "STAN-L-CON 5",
-            "New Melones PH"
+            "New Melones Release Requirement"
         ],
         [
-            "New Melones PH",
+            "New Melones Release Requirement",
             "STAN-L-CON 6"
         ],
         [
             "STAN-L-CON 6",
-            "STANI-N-JUN5"
-        ],
-        [
-            "STANI-N-JUN4",
-            "STN_below_Melons.2.1"
-        ],
-        [
-            "STN_below_Melons.2.1",
             "STANI-N-JUN5"
         ],
         [
@@ -2214,8 +2221,14 @@
         },
         "Full Natural Flow Forecast": {
             "url": "../data/Stanislaus River/Scenarios/preprocessed/Livneh/fnf_forecast_mcm.csv",
-            "index_col": [0, 1],
-            "header": [0, 1]
+            "index_col": [
+                0,
+                1
+            ],
+            "header": [
+                0,
+                1
+            ]
         },
         "Peak Donnells Runoff": {
             "url": "../data/Stanislaus River/Scenarios/preprocessed/Livneh/peak_runoff_DonnellsRes_MarToMay_cms.csv",
@@ -2456,29 +2469,8 @@
         "Water Supply Release bl New Spicer Meadow Reservoir/Requirement": {
             "type": "Water_Supply_Release_bl_New_Spicer_Meadow_Reservoir"
         },
-        "New Melones Flood Control/Violation Cost": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "New Melones Lake",
-            "control_curves": [
-                "New Melones Lake/Storage Demand"
-            ],
-            "values": [
-                -5000.0,
-                0.0,
-                0.0
-            ]
-        },
         "New Melones Flood Control/Requirement": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "New Melones Lake",
-            "control_curves": [
-                "New Melones Lake/Storage Demand"
-            ],
-            "values": [
-                25,
-                0.0,
-                0.0
-            ]
+            "type": "New_Melones_Flood_Control_Requirement"
         },
         "Angels PH/Fixed Head": {
             "type": "constant",

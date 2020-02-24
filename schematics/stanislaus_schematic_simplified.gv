@@ -86,9 +86,9 @@ digraph stanislaus {
 	"Upper Collierville Tunnel 1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"New Melones Release Requirement" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"New Melones Flood Control" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"New Melones Spillway" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"STN_below_Melons.2.1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"STN_below_Melons.2.2" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STANI-N-JUN4" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Angels Canal Outflow" -> "Angels PH"
 	"Angels Canal Outflow" -> "IFR bl Angels Div"
 	"Donnells Reservoir" -> "Donnells PH"
@@ -119,8 +119,7 @@ digraph stanislaus {
 	"Goodwin Reservoir" -> "South San Joaquin Irrigation District"
 	"Goodwin Reservoir" -> "Tulloch Lake Flood Control"
 	"Tulloch Lake Flood Control" -> "IFR bl Goodwin Reservoir"
-	"New Melones Lake" -> "New Melones Release Requirement"
-	"STANI-N-JUN4" -> "STN_below_Melons.2.1"
+	"New Melones Lake" -> "New Melones PH"
 	"STN_01 Inflow" -> "New Melones Lake"
 	"Upper Collierville Tunnel Outflow" -> "Upper Collierville Tunnel 1"
 	"Angels PH" -> "STN_01 Inflow"
@@ -184,12 +183,11 @@ digraph stanislaus {
 	"Stanislaus PH" -> "STN_01 Inflow"
 	"Spring Gap PH" -> "Stanislaus Tunnel Outflow"
 	"Lyons Reservoir" -> "Phoenix PH"
-	"New Melones Lake" -> "New Melones Flood Control"
-	"New Melones Release Requirement" -> "STANI-N-JUN4"
-	"New Melones Flood Control" -> "STANI-N-JUN4"
-	"STANI-N-JUN4" -> "New Melones PH"
+	"New Melones Lake" -> "New Melones Spillway"
+	"New Melones PH" -> "New Melones Flood Control"
+	"New Melones Spillway" -> "New Melones Flood Control"
 	"Tulloch Lake" -> "Goodwin Reservoir"
 	"STN_below_Melons.2.2" -> "Tulloch Lake"
-	"STN_below_Melons.2.1" -> "STN_below_Melons.2.2"
-	"New Melones PH" -> "STN_below_Melons.2.2"
+	"New Melones Flood Control" -> "New Melones Release Requirement"
+	"New Melones Release Requirement" -> "STN_below_Melons.2.2"
 }
