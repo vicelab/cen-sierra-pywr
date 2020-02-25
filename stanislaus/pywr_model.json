@@ -607,7 +607,7 @@
                 "index": "2000-09-30",
                 "column": "USGS 11299000 NEW MELONES RES NR SONORA CA"
             },
-            "max_volume": 2960.35,
+            "max_volume": 2900,
             "min_volume": 500,
             "cost": "New Melones Lake/Storage Value",
             "comment": "{\"resource_class\": \"node\"}",
@@ -1175,8 +1175,8 @@
                 null
             ],
             "cost": [
-                -5000,
-                1500
+                -40,
+                1
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -1281,15 +1281,7 @@
         },
         {
             "name": "New Melones Release Requirement",
-            "type": "PiecewiseLink",
-            "cost": [
-                -500,
-                500
-            ],
-            "max_flow": [
-                "New Melones Release Requirement/Min Flow",
-                null
-            ],
+            "type": "Link",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -1299,15 +1291,15 @@
                 "New Melones Flood Control/Requirement"
             ],
             "cost": [
-                -500,
-                500
+                -50,
+                1
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "New Melones Spillway",
             "type": "Link",
-            "cost": 5000
+            "cost": 5
         },
         {
             "name": "STAN-L-CON 2",
@@ -2300,12 +2292,12 @@
             "parse_dates": false
         },
         "Tulloch Lake Flood Control": {
-            "url": "../data/Stanislaus River/Management/BAU/Flood Control/LakeTulloch_FloodControl_Requirement.csv",
+            "url": "../data/Stanislaus River/Management/BAU/Flood Control/LakeTulloch_FloodControl_Requirement_mcm.csv",
             "index_col": 0,
             "squeeze": true
         },
         "New Melones Lake Flood Control": {
-            "url": "../data/Stanislaus River/Management/BAU/Flood Control/LakeMelones_FloodControl_Requirement.csv",
+            "url": "../data/Stanislaus River/Management/BAU/Flood Control/LakeMelones_FloodControl_Requirement_mcm.csv",
             "index_col": 0,
             "squeeze": true
         },
@@ -2428,7 +2420,7 @@
         },
         "Oakdale Irrigation District Demand": {
             "url": "../data/Stanislaus River/Management/BAU/Demand/Oakdale Canal demand by WYT mcm.csv",
-            "index_col": 0,
+            "index_col": [0, 1],
             "header": 0,
             "names": [
                 1,
@@ -2440,7 +2432,7 @@
         },
         "South San Joaquin Irrigation District Demand": {
             "url": "../data/Stanislaus River/Management/BAU/Demand/South San Joaquin Canal demand by WYT mcm.csv",
-            "index_col": 0,
+            "index_col": [0, 1],
             "header": 0,
             "names": [
                 1,
@@ -2468,9 +2460,6 @@
         },
         "Water Supply Release bl New Spicer Meadow Reservoir/Requirement": {
             "type": "Water_Supply_Release_bl_New_Spicer_Meadow_Reservoir"
-        },
-        "New Melones Flood Control/Requirement": {
-            "type": "New_Melones_Flood_Control_Requirement"
         },
         "Angels PH/Fixed Head": {
             "type": "constant",
@@ -2912,6 +2901,9 @@
         "Murphys PH/Turbine Capacity": {
             "type": "constant",
             "value": 0.24
+        },
+        "New Melones Flood Control/Requirement": {
+            "type": "New_Melones_Flood_Control_Requirement"
         },
         "New Melones Lake/Observed Storage": {
             "type": "dataframe",
@@ -3375,7 +3367,7 @@
         },
         "Tulloch Lake Flood Control/Violation Cost": {
             "type": "constant",
-            "value": -10000.0
+            "value": -50.0
         },
         "Tulloch Lake Flood Control/Requirement": {
             "type": "controlcurveinterpolated",
@@ -3813,6 +3805,10 @@
         "New Melones PH/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "New Melones PH"
+        },
+        "New Melones Flood Control/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "New Melones Flood Control"
         },
         "New Spicer Meadow PH/flow": {
             "type": "NumpyArrayNodeRecorder",
