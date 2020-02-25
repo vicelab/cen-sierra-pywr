@@ -9,11 +9,10 @@ import json
 import pandas as pd
 import plotly.graph_objs as go
 
-
 import dash_daq as daq
 
 import dashapp.constants as c
-from dashapp.constants import BASINS, MCM_TO_CFS, MCM_TO_TAF
+from dashapp.constants import BASINS, ENSEMBLE_NAMES, MCM_TO_TAF
 from dashapp.components import timeseries_collection
 
 external_stylesheets = [dbc.themes.BOOTSTRAP]
@@ -164,7 +163,6 @@ df_obs_storage = pd.concat(obs_storage, axis=1)
 df_obs_streamflow = pd.concat(obs_streamflow, axis=1)
 
 gauge_lookup = pd.read_csv('gauges.csv', header=None, index_col=0, squeeze=True, dtype=(str)).to_dict()
-
 
 percentile_colors = {
     'simulated': 'blue',
@@ -469,7 +467,8 @@ def development_content(purpose):
                             # dbc.Tab(label='HP generation', tab_id='hydropower-generation'),
                             dbc.Tab(label='IFR flow', tab_id='ifr-flow'),
                             # dbc.Tab(label='IFR flow (range)', tab_id='ifr-range-flow'),
-                            dbc.Tab(label='Outflow', tab_id='outflow')
+                            dbc.Tab(label='Outflow', tab_id='outflow'),
+                            dbc.Tab(label='Mixed', tab_id='mixed')
                         ]),
                         top_bar,
                         main_content
@@ -481,7 +480,6 @@ def development_content(purpose):
         ],
         style={'width': '100%'}
     )
-
 
 
 body = html.Div(

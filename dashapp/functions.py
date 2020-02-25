@@ -67,7 +67,8 @@ def load_timeseries(results_path, basin, forcings, res_type, res_attr, basin_sce
         end = start + len(df.columns.names[1:-1])
         levelvals = df.columns.levels[start:end + 1]
         for i, val in enumerate(levelvals):
-            df.drop(val[1:], axis=1, level=1, inplace=True)
+            if len(val) > 1:
+                df.drop(val[1:], axis=1, level=1, inplace=True)
             df = df.droplevel(1, axis=1)
         new_levels = [(forcings[0], col) for col in df.columns]
         df.columns = pd.MultiIndex.from_tuples(new_levels)

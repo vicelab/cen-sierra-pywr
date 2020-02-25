@@ -547,7 +547,8 @@ def timeseries_collection(tab, **kwargs):
             obs = df_obs_storage.resample(resample).mean()
         else:
             obs = df_obs_storage
-        for res in get_resources(df_storage, filterby=aggregate or resources):
+        filtered_resources = get_resources(df_storage, filterby=aggregate or resources)
+        for res in filtered_resources:
             component = timeseries_component(attr, res, df_storage, obs, **kwargs)
             children.append(component)
 
