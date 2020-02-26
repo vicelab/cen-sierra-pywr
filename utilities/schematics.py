@@ -1,16 +1,6 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[2]:
-
-
 import os
 from graphviz import Digraph
 import json
-
-
-# In[3]:
-
 
 fillcolors = {
     'reservoir': 'blue',
@@ -33,27 +23,19 @@ fontcolors = {
     'output': 'white'
 }
 
+
 # dot = Digraph(comment='System')
 
-# basins = ['stanislaus', 'merced', 'upper_san_joaquin', 'tuolumne']
-# basins = ['upper_san_joaquin']
-basins = ['stanislaus']
-# basins = ['merced']
-# version = None
-# version = 'cleaned'
-version = 'simplified'
-# version = 'monthly'
-
-for basin in basins:
+def create_schematic(basin, version, format='pdf', view=False):
     filename = 'pywr_model_Livneh'
     if version:
         filename += '_' + version
     filename += '.json'
     with open(os.path.join(basin, 'temp', filename)) as f:
         model = json.load(f)
-    _dot = Digraph(name=basin, comment=basin)
+    _dot = Digraph(name=basin, comment=basin, format=format)
     for node in model['nodes']:
-        
+
         node_name = node['name']
         if version == 'monthly':
             if ' [output]' in node_name:
@@ -63,32 +45,32 @@ for basin in basins:
                 base_node_name, month = parts
                 if int(month) > 1 and not ('[original]' in node_name and int(month) == 2):
                     continue
-        
+
         ntype = node['type'].lower()
         fillcolor = fillcolors.get(ntype, 'white')
         fontcolor = fontcolors.get(ntype, 'black')
         shape = 'rect' if ntype in ['reservoir', 'virtualstorage'] else 'oval'
         style = 'filled' if fillcolor else ''
-        
+
         if ntype == 'virtualstorage':
             style += ',dashed'
-        
+
         if version == 'monthly':
             shape = 'oval'
             if ntype == 'reservoir' or month == 2:
                 fillcolor = fillcolors.get('breaklink')
                 fontcolor = 'black'
-#             if '[link]' in node_name:
-#                 fillcolor = fillcolors.get('reservoir')
-#                 fontcolor = fontcolors.get('reservoir')
-        
+        #             if '[link]' in node_name:
+        #                 fillcolor = fillcolors.get('reservoir')
+        #                 fontcolor = fontcolors.get('reservoir')
+
         _dot.node(node_name, shape=shape, style=style, fillcolor=fillcolor, fontcolor=fontcolor)
-        
+
         if version == 'monthly' and ntype == 'virtualstorage':
             _dot.edge(node_name.replace('/', ' [link]/'), node_name, style='dashed')
-#         dot.node(node['name'], shape='shape', style=style, fillcolor=fillcolor, fontcolor=fontcolor)
+    #         dot.node(node['name'], shape='shape', style=style, fillcolor=fillcolor, fontcolor=fontcolor)
 
-#     dot.edges(model['edges'])
+    #     dot.edges(model['edges'])
 
     for edge in model['edges']:
         if version == 'monthly':
@@ -106,11 +88,23 @@ for basin in basins:
                 else:
                     pass
         _dot.edges([edge])
-    _dot.render(os.path.join('schematics', '{}_schematic{}.gv'.format(basin, '' if not version else '_' + version)), view=True)
+
+    outpath1 = os.path.join('./schematics', '{}_schematic{}.gv'.format(basin, '' if not version else '_' + version))
+    _dot.render(outpath1, view=view)
+    # if format == 'png':
+    outpath2 = os.path.join('./dashapp/assets/schematics',
+                            '{}_schematic{}.gv'.format(basin, '' if not version else '_' + version))
+    _dot.render(outpath2, view=False)
 
 
-# In[ ]:
+if __name__ == '__main__':
+    # basins = ['stanislaus', 'merced', 'upper_san_joaquin', 'tuolumne']
+    # basins = ['upper_san_joaquin']
+    basin = 'stanislaus'
+    # basins = ['merced']
+    # version = None
+    # version = 'cleaned'
+    # version = 'simplified'
+    version = 'monthly'
 
-
-
-
+    create_schematic(basin, version, view=True)
