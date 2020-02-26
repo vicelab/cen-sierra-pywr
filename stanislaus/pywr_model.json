@@ -2910,9 +2910,6 @@
             "table": "Observed Storage",
             "column": "New Melones Lake"
         },
-        "New Melones Lake/Storage Demand": {
-            "type": "New_Melones_Lake_Storage_Demand"
-        },
         "New Melones Lake/Storage Value": {
             "type": "constant",
             "table": "Storage Costs",
