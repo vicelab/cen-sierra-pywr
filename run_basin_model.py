@@ -9,7 +9,7 @@ from dateutil.relativedelta import relativedelta
 from common.tests import test_planning_model, get_planning_dataframe
 import pandas as pd
 
-from utilities import simplify_network, prepare_planning_model
+from utilities import simplify_network, prepare_planning_model, create_schematic
 
 SECONDS_IN_DAY = 3600 * 24
 
@@ -159,10 +159,9 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
         simplified_model_path = os.path.join(temp_dir, simplified_filename)
 
         m = simplify_network(m, delete_gauges=True, delete_observed=True, delete_scenarios=debug)
-        # with open(simplified_model_path, 'w') as f:
-        #     json.dump(f, m, indent=4)
         with open(simplified_model_path, 'w') as f:
             f.write(json.dumps(m, indent=4))
+        create_schematic(basin, 'simplified')
 
         model_path = simplified_model_path
 
