@@ -1,0 +1,39 @@
+// merced
+digraph merced {
+	"IFR bl New Exchequer Dam" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"Crocker-Huffman Diversion Reservoir" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Lake McClure" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Lake McClure Spill" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Lake McSwain" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"McSwain PH" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Merced Falls PH" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"IFR at Shaffer Bridge" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"Merced River Outflow" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"MER_01 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"MER_02 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"MER_03 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"MER_04 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"MER_05 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"MER_06 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"MID Main" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"MID Northside" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"New Exchequer PH" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Lake McClure" -> "Lake McClure Spill"
+	"Lake McClure" -> "New Exchequer PH"
+	"IFR bl New Exchequer Dam" -> "Lake McSwain"
+	"Crocker-Huffman Diversion Reservoir" -> "MID Main"
+	"Lake McSwain" -> "McSwain PH"
+	"Crocker-Huffman Diversion Reservoir" -> "IFR at Shaffer Bridge"
+	"Merced Falls PH" -> "MID Northside"
+	"Lake McClure Spill" -> "IFR bl New Exchequer Dam"
+	"New Exchequer PH" -> "IFR bl New Exchequer Dam"
+	"Merced Falls PH" -> "Crocker-Huffman Diversion Reservoir"
+	"McSwain PH" -> "Merced Falls PH"
+	"MER_01 Headflow" -> "Lake McClure"
+	"MER_02 Headflow" -> "Lake McClure"
+	"MER_03 Headflow" -> "Lake McClure"
+	"IFR at Shaffer Bridge" -> "Merced River Outflow"
+	"MER_04 Headflow" -> "Lake McClure"
+	"MER_05 Headflow" -> "Lake McClure"
+	"MER_06 Headflow" -> "Lake McClure"
+}
