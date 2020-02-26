@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
+import os
+
 import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_leaflet as leaflet
 from dash.dependencies import Input, Output, State
 
 import json
@@ -53,6 +56,34 @@ CONTENT_STYLE = {
     # "margin-right": "2rem",
     "padding": "2rem 1rem",
 }
+
+SIDEBAR_TABS = [
+    {
+        'label': 'Map',
+        'href': '/map',
+        'id': 'map-tab'
+    },
+    {
+        'label': 'Schematics',
+        'href': '/schematics',
+        'id': 'schematics-tab'
+    },
+    {
+        'label': 'Development',
+        'href': '/development',
+        'id': 'development-tab'
+    },
+    {
+        'label': 'Scenarios',
+        'href': '/scenarios',
+        'id': 'scenarios-tab'
+    },
+    {
+        'label': 'Inter-basin trade-offs',
+        'href': '/interbasin',
+        'id': 'interbasin-tab'
+    }
+]
 
 
 # =================
@@ -224,17 +255,17 @@ def render_themes(selected=None):
 
 navbar = dbc.NavbarSimple(
     children=[
-        dcc.Dropdown(
-            id='select-basins-global',
-            options=[
-                {'label': 'Stanislaus', 'value': 'stn'},
-                {'label': 'Tuolumne', 'value': 'tuo'},
-                {'label': 'Merced', 'value': 'mer'},
-                {'label': 'Upper San Joaquin', 'value': 'usj'},
-            ],
-            value=['stn', 'tuo', 'mer', 'usj'],
-            multi=True
-        )
+        # dcc.Dropdown(
+        #     id='select-basins-global',
+        #     options=[
+        #         {'label': 'Stanislaus', 'value': 'stn'},
+        #         {'label': 'Tuolumne', 'value': 'tuo'},
+        #         {'label': 'Merced', 'value': 'mer'},
+        #         {'label': 'Upper San Joaquin', 'value': 'usj'},
+        #     ],
+        #     value=['stn', 'tuo', 'mer', 'usj'],
+        #     multi=True
+        # )
         # dbc.NavItem(dbc.NavLink("Link", href="#")),
         # dbc.DropdownMenu(
         #     nav=True,
@@ -246,7 +277,7 @@ navbar = dbc.NavbarSimple(
     ],
     brand="San Joaquin Dashboard",
     brand_href="#",
-    # sticky="top",
+    sticky="top",
 )
 
 transform_radio = dbc.FormGroup(
@@ -344,7 +375,7 @@ consolidation_checklist = dbc.FormGroup(
 
 select_development_basin = dcc.Dropdown(
     id="select-basin",
-    options=[],
+    options=[{"label": BASINS[basin], "value": basin} for basin in BASINS],
     value=None,
     style={'minWidth': '200px'},
     placeholder="Select a basin..."
@@ -492,12 +523,7 @@ body = html.Div(
             vertical=True,
             pills=True,
             style=SIDEBAR_STYLE,
-            children=[
-                # dbc.NavItem(dbc.NavLink('Map', href='/map', id='map-tab')),
-                # dbc.NavItem(dbc.NavLink('Diagnostics', href='/development', id='development-tab')),
-                # # dbc.NavItem(dbc.NavLink('Gauges', href='/gauges', id='gauges-tab')),
-                # dbc.NavItem(dbc.NavLink('Analysis', href='/scenarios', id='scenarios-tab')),
-            ]),
+            children=[]),
         html.Div(
             className='main-content',
             id='main-content',
@@ -514,6 +540,26 @@ app.layout = html.Div(
         navbar,
         body
     ])
+
+
+@app.callback(Output('main-content', 'style'), [
+    Input('url', 'pathname')
+])
+def update_css(pathname):
+    style = dict(
+        display='inline-flex',
+        padding='15px',
+        position='fixed',
+        left='10rem',
+        right='0',
+        top=55,
+        bottom=0
+    )
+    if '/development' in pathname or '/scenarios' in pathname:
+        style.update(
+            right='255px'
+        )
+    return style
 
 
 @app.callback(Output('tabs-content', 'children'),
@@ -553,45 +599,22 @@ def render_scenario_selections(basin):
     return children
 
 
-@app.callback(Output("select-basin", "options"), [
-    Input("select-basins-global", "value")
-])
-def render_select_development_basin_options(basins):
-    return [{"label": BASINS[basin], "value": basin} for basin in basins]
+# @app.callback(Output("select-basin", "options"), [
+#     Input("select-basins-global", "value")
+# ])
+# def render_select_development_basin_options(basins):
+#     return [{"label": BASINS[basin], "value": basin} for basin in basins]
 
 
-@app.callback(Output("select-basin", "value"), [
-    Input("select-basins-global", "value")
-])
-def render_select_development_basin_value(basins):
-    return basins[0]
+# @app.callback(Output("select-basin", "value"), [
+#     Input("select-basins-global", "value")
+# ])
+# def render_select_development_basin_value(basins):
+#     return basins[0]
 
 
 @app.callback(Output("sidebar-tabs", "children"), [Input("url", "pathname")])
 def render_sidebar_tabs(pathname):
-    SIDEBAR_TABS = [
-        {
-            'label': 'Map',
-            'href': '/map',
-            'id': 'map-tab'
-        },
-        {
-            'label': 'Development',
-            'href': '/development',
-            'id': 'development-tab'
-        },
-        {
-            'label': 'Scenarios',
-            'href': '/scenarios',
-            'id': 'scenarios-tab'
-        },
-        {
-            'label': 'Inter-basin trade-offs',
-            'href': '/interbasin',
-            'id': 'interbasin-tab'
-        }
-    ]
-
     nav_items = []
     for t in SIDEBAR_TABS:
         nav_item = dbc.NavItem(
@@ -625,6 +648,8 @@ def render_page_content(pathname):
         )
     elif pathname == '/map':
         return map_content()
+    elif pathname == '/schematics':
+        return render_schematics_content()
     elif pathname == "/development":
         return development_content('development')
     elif pathname == "/gauges":
@@ -660,60 +685,156 @@ def map_content():
     ], style={"width": "100%"})
 
 
+def render_schematics_content():
+    basin_schematic_tabs = []
+    for code, name in BASINS.items():
+        basin_schematic_tabs.append(
+            dbc.Tab(label=name, tab_id=code)
+        )
+
+    return html.Div([
+        dbc.Tabs(id="schematics-tabs", active_tab='stn', children=basin_schematic_tabs),
+        html.Div(
+            id='schematics-content',
+            children=[html.Div('test')],
+        )
+    ], style={"width": "100%"})
+
+
+@app.callback(Output('schematics-content', 'children'), [
+    Input('schematics-tabs', 'active_tab')
+])
+def update_schematic(basin_code):
+    basin_name = BASINS[basin_code].replace(' ', '_').lower()
+    return [html.Embed(
+        src=app.get_asset_url('schematics/{}_schematic_simplified.gv.pdf'.format(basin_name)),
+        type='application/pdf',
+        className='schematic-pdf',
+        width="100%",
+        height="100%"
+    )]
+
+
 @app.callback(Output('map-content', 'children'), [
     Input('show-map-labels', 'value')
 ])
 def render_map(show_labels):
     show_labels = 'show-all-labels' in show_labels
-
-    traces = []
-    for abbr, full_name in BASINS.items():
-        with open('../openagua_networks/{} River.json'.format(full_name)) as f:
+    simplify = False
+    nodes = []
+    links = []
+    lats = []
+    lons = []
+    tt_paths = {}
+    for i, (abbr, full_name) in enumerate(BASINS.items()):
+        oa_network_path = '../openagua_schematics/{} River.json'.format(full_name)
+        if not os.path.exists(oa_network_path):
+            continue
+        with open(oa_network_path) as f:
             oa_network = json.load(f)
-        with open('../{}/temp/pywr_model_Livneh_simplified.json'.format(full_name.replace(' ', '_').lower())) as f:
+        pywr_model_path = '../{}/temp/pywr_model_Livneh_simplified.json'.format(full_name.replace(' ', '_').lower())
+        if not os.path.exists(pywr_model_path):
+            continue
+        with open(pywr_model_path) as f:
             pywr_network = json.load(f)
 
-        nodes = [(n['x'], n['y'], n['name']) for n in oa_network['network']['nodes']]
-        lons, lats, names = list(zip(*nodes))
+        net = oa_network['network']
+        tmpl = oa_network['template']
+        node_lookup = {n['name']: n for n in net['nodes']}
 
-        trace = go.Scattermapbox(
-            lat=lats,
-            lon=lons,
-            mode='markers',
-            marker=go.scattermapbox.Marker(
-                size=14
-            ),
-            text=names,
-        )
-        traces.append(trace)
+        if i == 0:
+            for tt in tmpl['templatetypes']:
+                tt_name = tt['name']
+                tt_svg = tt['layout'].get('svg')
+                if not tt_svg:
+                    continue
+                tt_path = './icons/{}.svg'.format(tt_name.replace(' ', '_'))
+                with open(os.path.join('./assets', tt_path), 'w') as f:
+                    f.write(tt_svg)
+                tt_paths[tt['name']] = tt_path
 
-    token = open('./secrets/mapbox-token.txt').read()
+        if simplify:
+            for n in pywr_network['nodes']:
+                if n['name'] not in node_lookup:
+                    continue
+                node = node_lookup[n['name']]
+                lat, lon = float(node['y']), float(node['x'])
+                lats.append(lat)
+                lons.append(lon)
+                nodes.append(
+                    leaflet.Marker(
+                        position=[lat, lon]
+                    )
+                )
 
-    layout = dict(
-        hovermode='closest',
-        mapbox=go.layout.Mapbox(
-            accesstoken=token,
-            bearing=0,
-            center=go.layout.mapbox.Center(
-                lat=37,
-                lon=-120
-            ),
-            pitch=0,
-            zoom=5
-        ),
-        margin={'l': 0, 'b': 0, 't': 0, 'r': 0},
-    )
+            for n1, n2 in pywr_network['edges']:
+                if n1 not in node_lookup or n2 not in node_lookup:
+                    continue
+                node1 = node_lookup[n1]
+                node2 = node_lookup[n2]
+                lat1, lon1 = float(node1['y']), float(node1['x'])
+                lat2, lon2 = float(node2['y']), float(node2['x'])
+                positions = [[lat1, lon1], [lat2, lon2]]
+                links.append(
+                    leaflet.Polyline(
+                        positions=positions
+                    )
+                )
+        else:
+            for node in net['nodes']:
+                lat, lon = float(node['y']), float(node['x'])
+                tt = [t for t in node['types'] if t['template_id'] == tmpl['id']][-1]
+
+                tt_path = tt_paths.get(tt['name'])
+                kwargs = {}
+                if tt_path:
+                    if tt['name'].lower() == 'junction' or 'gauge' in tt['name'].lower():
+                        size = 12
+                    else:
+                        size = 24
+                    kwargs.update(
+                        icon=dict(
+                            iconUrl=app.get_asset_url(tt_path),
+                            iconSize=[size, size],
+                            iconAnchor=[size/2, size/2]
+                        )
+                    )
+                nodes.append(
+                    leaflet.Marker(
+                        position=[lat, lon],
+                        **kwargs
+                    )
+                )
+                lats.append(lat)
+                lons.append(lon)
+            for link in net['links']:
+                coords = link['layout']['geojson']['geometry']['coordinates']
+                lons_, lats_ = zip(*coords)
+                positions = list(zip(*[lats_, lons_]))
+                tt = [t for t in link['types'] if t['template_id'] == tmpl['id']][-1]
+                linestyle = tt['layout'].get('linestyle')
+                if type(linestyle) == str:
+                    try:
+                        linestyle = json.loads(linestyle)
+                    except:
+                        linestyle = {}
+                links.append(
+                    leaflet.Polyline(
+                        positions=positions,
+                        **linestyle
+                    )
+                )
+
+    clat = (min(lats) + max(lats)) / 2
+    clon = (min(lons) + max(lons)) / 2
 
     return [
-        dcc.Graph(
-            id='mapbox-map',
-            className='project-map',
-            figure={
-                'data': traces,
-                'layout': layout,
-            },
-
-        )
+        leaflet.Map(style={'width': '100%', 'height': '100%'}, center=[clat, clon], zoom=9, children=[
+            leaflet.TileLayer(url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"),
+            leaflet.LayerGroup(
+                children=nodes + links
+            )
+        ])
     ]
 
 
