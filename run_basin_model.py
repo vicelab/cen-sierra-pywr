@@ -13,17 +13,6 @@ from utilities import simplify_network, prepare_planning_model
 
 SECONDS_IN_DAY = 3600 * 24
 
-PARAMETERS_TO_EXPAND = {
-    'stanislaus': [
-        'New Melones Apr-Jul Runoff',
-        'New Melones WYT',
-        'New Melones Lake/Storage Demand'
-    ],
-    'common': [
-        'San Joaquin Valley WYT',
-        'San Joaquin Valley WYI'
-    ]
-}
 
 def run_model(basin, climate, price_years, network_key=None, start=None, end=None,
               run_name="default", include_planning=False,
@@ -190,10 +179,8 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
         monthly_filename = model_filename_base + '_monthly.json'
         planning_model_path = os.path.join(temp_dir, monthly_filename)
 
-        parameters_to_expand = PARAMETERS_TO_EXPAND.get(basin, []) + PARAMETERS_TO_EXPAND.get('common', [])
-
-        prepare_planning_model(m, planning_model_path, steps=months, parameters_to_expand=parameters_to_expand,
-                               debug=save_results)
+        prepare_planning_model(m, basin, planning_model_path, steps=months, debug=save_results, remove_rim_dams=True)
+        create_schematic(basin, 'monthly')
 
         # create pywr model
         try:
@@ -273,8 +260,10 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
                     else:
                         # TODO: fix the following to get from correct scenario
                         initial_volume = m.nodes[res].volume[-1]
-                    m.planning.nodes[res + ' [input]'].min_flow = initial_volume
-                    m.planning.nodes[res + ' [input]'].max_flow = initial_volume
+                    initial_storage_node = res + ' [input]'
+                    if initial_storage_node in m.planning.nodes:
+                        m.planning.nodes[initial_storage_node].min_flow = initial_volume
+                        m.planning.nodes[initial_storage_node].max_flow = initial_volume
 
                     # Other misc. updates from scheduling to daily model
 

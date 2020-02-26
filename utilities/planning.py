@@ -1,20 +1,48 @@
 import json
 from utilities import simplify_network
 
+RIM_DAMS = {
+    'stanislaus': 'New Melones Lake',
+}
 
-def prepare_planning_model(m, outpath, steps=12, blocks=8, parameters_to_expand=None, debug=False):
+PARAMETERS_TO_EXPAND = {
+    'stanislaus': [
+        'New Melones Apr-Jul Runoff',
+        # 'New Melones WYT',
+        'New Melones Lake/Storage Demand'
+    ],
+    'common': [
+        'San Joaquin Valley WYT',
+        'San Joaquin Valley WYI'
+    ]
+}
+
+PARAMETERS_TO_REMOVE = {
+    'stanislaus': [
+        'New Melones WYT'
+    ]
+}
+
+
+def prepare_planning_model(m, basin, outpath, steps=12, blocks=8, parameters_to_expand=None, debug=False,
+                           remove_rim_dams=False):
     """
     Convert the daily scheduling model to a planning model.
     :param m:
     :param outpath:
     :param steps:
+    :param blocks:
+    :param parameters_to_expand:
     :param debug:
+    :param include_rim_dams: Not used.
     :return:
     """
     # update time step
     # m['timestepper']['end'] = m['timestepper']['start']
     # m['timestepper']['timestep'] = 'M'
     # m['metadata']['title'] += ' - planning'
+
+    parameters_to_expand = PARAMETERS_TO_EXPAND.get(basin, []) + PARAMETERS_TO_EXPAND.get('common', [])
 
     m = simplify_network(m, delete_gauges=True, delete_observed=True, delete_scenarios=debug is not None)
 
@@ -34,6 +62,39 @@ def prepare_planning_model(m, outpath, steps=12, blocks=8, parameters_to_expand=
     # black_list = ['min_volume', 'max_volume']
     black_list = ['max_volume']
     storage_recorders = {}
+
+    if remove_rim_dams:
+        rim_dam = RIM_DAMS.get(basin)
+        parameters_to_remove = PARAMETERS_TO_REMOVE.get(basin, [])
+        downstream_nodes = []
+        downstream_edges = []
+        finished = False
+        while not finished:
+            finished = True
+            for n1, n2 in m['edges']:
+                if (n1 == rim_dam or n1 in downstream_nodes) and n2 not in downstream_nodes:
+                    downstream_nodes.append(n2)
+                    finished = False
+        m['nodes'] = [n for n in m['nodes'] if n['name'] not in downstream_nodes]
+        m['edges'] = [e for e in m['edges'] if e[1] not in downstream_nodes and e[0]]
+        for section in ['parameters', 'recorders']:
+            keys = list(m[section].keys())
+            for key in keys:
+                parts = key.split('/')
+                if len(parts) > 1 and parts[0] in downstream_nodes:
+                    del m[section][key]
+
+                if section == 'parameters' and key in parameters_to_remove:
+                    del m[section][key]
+
+        for i, n in enumerate(m['nodes']):
+            if n['name'] == rim_dam:
+                m['nodes'][i] = {
+                    'name': rim_dam,
+                    'type': 'Output',
+                    'cost': 1
+                }
+                break
 
     for node in m['nodes']:
         old_name = node['name']
