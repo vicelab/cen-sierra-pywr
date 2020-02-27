@@ -158,7 +158,7 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
         simplified_filename = model_filename_base + '_simplified.json'
         simplified_model_path = os.path.join(temp_dir, simplified_filename)
 
-        m = simplify_network(m, delete_gauges=True, delete_observed=True, delete_scenarios=debug)
+        m = simplify_network(m, basin, climate, delete_gauges=True, delete_observed=True, delete_scenarios=debug)
         with open(simplified_model_path, 'w') as f:
             f.write(json.dumps(m, indent=4))
         create_schematic(basin, 'simplified')
@@ -178,7 +178,7 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
         monthly_filename = model_filename_base + '_monthly.json'
         planning_model_path = os.path.join(temp_dir, monthly_filename)
 
-        prepare_planning_model(m, basin, planning_model_path, steps=months, debug=save_results, remove_rim_dams=True)
+        prepare_planning_model(m, basin, climate, planning_model_path, steps=months, debug=save_results, remove_rim_dams=True)
         create_schematic(basin, 'monthly')
 
         # create pywr model
