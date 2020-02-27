@@ -16,6 +16,8 @@ def create_full_natural_flow(root_dir, basin, scenario):
         raise Exception('Scenario path "{}" does not exist'.format(scenario_dir))
     print(scenario)
     for subwat in os.listdir(scenario_dir):
+        if 'runoff_' not in subwat:
+            continue
         path = os.path.join(scenario_dir, subwat)
         df = pd.read_csv(path, parse_dates=True, index_col=0, header=0)
         subwats.append(df)

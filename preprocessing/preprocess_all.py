@@ -1,12 +1,12 @@
 import os
 from itertools import product
 from preprocessing.scripts import create_forecasted_hydrology, create_full_natural_flow, \
-    full_natural_flow_exceedance_forecast
+    full_natural_flow_exceedance_forecast, aggregate_subwatersheds
 from preprocessing.scripts import upper_san_joaquin as usj
 # from preprocessing.scripts import stanislaus as stn
 
 # basins = ['upper san joaquin']
-basins = ['stanislaus']
+basins = ['tuolumne']
 
 root_dir = os.environ.get('SIERRA_DATA_PATH', '../data')
 
@@ -16,7 +16,7 @@ rcps = ['45', '85']
 gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
 # scenarios += gcm_rcps
 
-tasks = ["post"]
+tasks = ["main"]
 
 basin_scenarios = list(product(basins, scenarios))
 
@@ -33,7 +33,10 @@ for basin, scenario in basin_scenarios:
 
     # preprocess hydrology
     if "main" in tasks:
-        create_forecasted_hydrology(root_dir, basin=basin, scenario=scenario)
+        print("Aggregating subwatersheds...")
+        aggregate_subwatersheds(root_dir, basin=basin, scenario=scenario)
+        print("Creating forecasted hydrology...")
+        create_forecasted_hydrology(root_dir, basin=basin, scenario=scenario, runoff_dir='runoff_aggregated')
         create_full_natural_flow(root_dir, basin=basin, scenario=scenario)
 
     if "post" in tasks:
