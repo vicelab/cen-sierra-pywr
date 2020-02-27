@@ -132,9 +132,14 @@ class New_Melones_Flood_Control_Requirement(WaterLPParameter):
 
             drawdown_release_mcm += prev_inflow_mcm
 
-            # Note: This may result in a high up ramp rate in late summer. This should be accounted for
-            # in the relevant IFR (i.e. below Goodwin Dam), not here.
             release_mcm = max(release_mcm, drawdown_release_mcm)
+
+            # Let's also limit ramping (for both instream flow and reservoir management reasons)
+            prev_release_mcm = self.model.nodes["New Melones Flood Control"].prev_flow[scenario_index.global_id]
+            if release_mcm > prev_release_mcm:
+                release_mcm = min(release_mcm, prev_release_mcm * 1.1)
+            elif release_mcm < prev_release_mcm:
+                release_mcm = max(release_mcm, prev_release_mcm * 0.9)
 
         release_cms = release_mcm / 0.0864
 
