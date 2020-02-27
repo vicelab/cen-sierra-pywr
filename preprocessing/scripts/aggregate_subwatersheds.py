@@ -2,8 +2,11 @@ import json
 import pandas as pd
 import os
 
+from utilities import simplify_network
 
-def aggregate_subwatersheds(root_dir, basin, scenario):
+
+def aggregate_subwatersheds(root_dir, basin, climate):
+    scenario = climate
     basin_full = basin.title() + " River"
     basin_dir = os.path.join(root_dir, basin_full)
     basin_runoff_dir = os.path.join(basin_dir, 'Scenarios', 'runoff')
@@ -17,9 +20,11 @@ def aggregate_subwatersheds(root_dir, basin, scenario):
     subwat_groups = {}
 
     # collect subwatersheds
-    model_path = '../{}/temp/pywr_model_Livneh_simplified.json'.format(basin.replace(' ', '_'))
+    model_path = '../{}/pywr_model.json'.format(basin.replace(' ', '_'))
     with open(model_path) as f:
         model = json.load(f)
+    model = simplify_network(model, basin, climate, delete_gauges=True, delete_observed=True, delete_scenarios=True,
+                             aggregate_runoff=False)
 
     for n1, n2 in model['edges']:
         if ' Headflow' in n1:
@@ -36,7 +41,7 @@ def aggregate_subwatersheds(root_dir, basin, scenario):
             subwat_group_runoff.append(df)
         df = pd.concat(subwat_group_runoff, axis=1).sum(axis=1).to_frame()
         df.index.name = 'date'
-        df.columns = [subwat_group_name]
+        df.columns = ["flow"]
 
         outdir = os.path.join(basin_dir, 'Scenarios', 'runoff_aggregated', scenario)
         if not os.path.exists(outdir):

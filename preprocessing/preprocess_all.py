@@ -6,7 +6,7 @@ from preprocessing.scripts import upper_san_joaquin as usj
 # from preprocessing.scripts import stanislaus as stn
 
 # basins = ['upper san joaquin']
-basins = ['tuolumne']
+basins = ['merced']
 
 root_dir = os.environ.get('SIERRA_DATA_PATH', '../data')
 
@@ -34,10 +34,11 @@ for basin, scenario in basin_scenarios:
     # preprocess hydrology
     if "main" in tasks:
         print("Aggregating subwatersheds...")
-        aggregate_subwatersheds(root_dir, basin=basin, scenario=scenario)
+        aggregate_subwatersheds(root_dir, basin, scenario)
         print("Creating forecasted hydrology...")
-        create_forecasted_hydrology(root_dir, basin=basin, scenario=scenario, runoff_dir='runoff_aggregated')
-        create_full_natural_flow(root_dir, basin=basin, scenario=scenario)
+        create_forecasted_hydrology(root_dir, basin, scenario, runoff_dir='runoff_aggregated')
+        break
+        create_full_natural_flow(root_dir, basin, scenario)
 
     if "post" in tasks:
 
