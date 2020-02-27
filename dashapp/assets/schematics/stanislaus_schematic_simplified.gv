@@ -1,5 +1,22 @@
 // stanislaus
 digraph stanislaus {
+	"STN_01 Inflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Angels Canal Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Hunter Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"IFR bl confluence of NF Stanislaus and Beaver Creek Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"McKays Point Diversion Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Upper Collierville Tunnel Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Union-Utica Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"New Spicer Meadow Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Beaver Creek Diversion Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Stanislaus Tunnel Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Beardsley Afterbay Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Beardsley Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Donnells Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Relief Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Lyons Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Philadelphia Aquaduct Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Pinecrest Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Angels PH" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"Angels Canal Outflow" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Beardsley Reservoir" [fillcolor=blue fontcolor=white shape=rect style=filled]
@@ -49,32 +66,7 @@ digraph stanislaus {
 	"South San Joaquin Irrigation District" [fillcolor=black fontcolor=white shape=oval style=filled]
 	"Oakdale Irrigation District" [fillcolor=black fontcolor=white shape=oval style=filled]
 	"Stanislaus River Outflow" [fillcolor=black fontcolor=white shape=oval style=filled]
-	"STN_01 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"STN_01 Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"STN_02 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_03 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_04 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_05 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_06 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_07 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_08 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_09 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_10 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_11 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_12 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_13 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_14 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_15 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_16 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_17 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_18 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_19 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_20 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_21 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_22 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_23 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_24 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"STN_25 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Tulloch Lake" [fillcolor=blue fontcolor=white shape=rect style=filled]
 	"Tulloch Lake Flood Control" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Donnell Lake Spill" [fillcolor=green fontcolor=black shape=oval style=filled]
@@ -104,7 +96,7 @@ digraph stanislaus {
 	"Relief Reservoir" -> "IFR bl Relief Reservoir"
 	"Beardsley Afterbay" -> "Sand Bar PH"
 	"Stanislaus Tunnel Outflow" -> "Stanislaus PH"
-	"STN_01 Headflow" -> "STN_01 Inflow"
+	"STN_01 Inflow Inflow" -> "STN_01 Inflow"
 	"McKays Point Diversion" -> "IFR bl McKays Point Div"
 	"Union-Utica Reservoir" -> "IFR bl Utica Reservoir"
 	"Beardsley Afterbay" -> "IFR bl Beardsley Afterbay"
@@ -137,45 +129,37 @@ digraph stanislaus {
 	"Philadelphia Aquaduct Outflow" -> "IFR bl Philadelphia Div"
 	"IFR bl Lyons Res" -> "STN_01 Inflow"
 	"IFR bl Goodwin Reservoir" -> "Stanislaus River Outflow"
-	"STN_02 Headflow" -> "Angels Canal Outflow"
+	"Angels Canal Outflow Inflow" -> "Angels Canal Outflow"
 	"IFR at Murphys Park" -> "Angels Canal Outflow"
 	"IFR bl Collierville PH discharge" -> "STN_01 Inflow"
-	"STN_03 Headflow" -> "STN_01 Inflow"
-	"STN_04 Headflow" -> "Hunter Reservoir"
-	"STN_05 Headflow" -> "IFR bl confluence of NF Stanislaus and Beaver Creek"
+	"Hunter Reservoir Inflow" -> "Hunter Reservoir"
+	"IFR bl confluence of NF Stanislaus and Beaver Creek Inflow" -> "IFR bl confluence of NF Stanislaus and Beaver Creek"
 	"IFR bl McKays Point Div" -> "IFR bl confluence of NF Stanislaus and Beaver Creek"
-	"STN_06 Headflow" -> "McKays Point Diversion"
-	"STN_07 Headflow" -> "McKays Point Diversion"
+	"McKays Point Diversion Inflow" -> "McKays Point Diversion"
 	"IFR bl New Spicer Meadow Reservoir" -> "McKays Point Diversion"
-	"STN_08 Headflow" -> "McKays Point Diversion"
 	"IFR bl NF Stanislaus Div Res" -> "McKays Point Diversion"
-	"STN_09 Headflow" -> "Upper Collierville Tunnel Outflow"
+	"Upper Collierville Tunnel Outflow Inflow" -> "Upper Collierville Tunnel Outflow"
 	"IFR bl Utica Reservoir" -> "Upper Collierville Tunnel Outflow"
-	"STN_10 Headflow" -> "Union-Utica Reservoir"
-	"STN_11 Headflow" -> "New Spicer Meadow Reservoir"
-	"STN_13 Headflow" -> "Beaver Creek Diversion"
-	"STN_14 Headflow" -> "Stanislaus Tunnel Outflow"
+	"Union-Utica Reservoir Inflow" -> "Union-Utica Reservoir"
+	"New Spicer Meadow Reservoir Inflow" -> "New Spicer Meadow Reservoir"
+	"Beaver Creek Diversion Inflow" -> "Beaver Creek Diversion"
+	"Stanislaus Tunnel Outflow Inflow" -> "Stanislaus Tunnel Outflow"
 	"IFR bl Beardsley Afterbay" -> "Stanislaus Tunnel Outflow"
-	"STN_15 Headflow" -> "Beardsley Afterbay"
+	"Beardsley Afterbay Inflow" -> "Beardsley Afterbay"
 	"Beardsley Reservoir" -> "Beardsley Afterbay"
 	"Beardsley PH" -> "Beardsley Afterbay"
-	"STN_16 Headflow" -> "Beardsley Reservoir"
-	"STN_17 Headflow" -> "Beardsley Reservoir"
+	"Beardsley Reservoir Inflow" -> "Beardsley Reservoir"
 	"Donnell Lake Spill" -> "Beardsley Reservoir"
 	"IFR bl Donnell Lake" -> "Beardsley Reservoir"
-	"STN_18 Headflow" -> "Donnells Reservoir"
-	"STN_19 Headflow" -> "Donnells Reservoir"
-	"STN_21 Headflow" -> "Relief Reservoir"
+	"Donnells Reservoir Inflow" -> "Donnells Reservoir"
+	"Relief Reservoir Inflow" -> "Relief Reservoir"
 	"IFR bl Philadelphia Div" -> "Lyons Reservoir"
-	"STN_22 Headflow" -> "Lyons Reservoir"
-	"STN_23 Headflow" -> "Philadelphia Aquaduct Outflow"
+	"Lyons Reservoir Inflow" -> "Lyons Reservoir"
+	"Philadelphia Aquaduct Outflow Inflow" -> "Philadelphia Aquaduct Outflow"
 	"IFR bl Pinecrest Lake" -> "Philadelphia Aquaduct Outflow"
-	"STN_24 Headflow" -> "Philadelphia Aquaduct Outflow"
-	"STN_25 Headflow" -> "Pinecrest Reservoir"
+	"Pinecrest Reservoir Inflow" -> "Pinecrest Reservoir"
 	"IFR bl Relief Reservoir" -> "Donnells Reservoir"
-	"STN_20 Headflow" -> "Donnells Reservoir"
 	"Hunter Reservoir" -> "Murphys PH"
-	"STN_12 Headflow" -> "New Spicer Meadow Reservoir"
 	"Donnells PH" -> "Beardsley Reservoir"
 	"Upper Collierville Tunnel 1" -> "New Spicer Meadow Reservoir"
 	"Collierville PH" -> "IFR bl Collierville PH discharge"
