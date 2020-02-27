@@ -30,9 +30,6 @@ class New_Melones_Flood_Control_Requirement(WaterLPParameter):
         day = self.datetime.day
         start_tuple = (month, day)
 
-        if start_tuple == (1, 1) or timestep.index == 0:
-            self.NML_did_fill = False
-
         # Get expected ag. releases, so we can release more if needed
         WYT = self.get('San Joaquin Valley WYT' + self.month_suffix, timestep, scenario_index)
         SSJID_df = self.model.tables["South San Joaquin Irrigation District Demand"][WYT]
@@ -99,6 +96,7 @@ class New_Melones_Flood_Control_Requirement(WaterLPParameter):
         release_mcm = float(max(release_mcm, 0))
 
         # ...however, this should be reduced as needed to limit flow Orange Blossom Bridge to <= 8000 cfs
+        # 8000 cfs =
         orange_blossom_bridge_max_mcm = 8000 / 35.31 * 0.0864
         max_release_mcm = ag_demand_mcm + orange_blossom_bridge_max_mcm
 
@@ -107,20 +105,36 @@ class New_Melones_Flood_Control_Requirement(WaterLPParameter):
         # Let's also release extra if the reservoir filled and release slowly to a target storage of 1970 TAF (2430 MCM)
         # by Oct 31. This is based on observation, though need to confirm
 
-        # # Check if New Melones filled
-        # if not self.NML_did_fill and prev_storage_mcm >= NML.max_volume * 0.95:
-        #     self.NML_did_fill = True
-
         nov1_target = 2430
-        if (7, 1) <= (month, day) < (11, 1) and prev_storage_mcm > nov1_target:
+
+        drawdown_period = (7, 1) <= start_tuple <= (10, 31)
+        if timestep.index == 0:
+            self.should_drawdown = True
+        elif not drawdown_period:
+            self.should_drawdown = False
+
+        # Stop this if we've hit the target
+        if prev_storage_mcm < nov1_target:
+            self.should_drawdown = False
+
+        # # Check if New Melones filled
+        if drawdown_period and prev_storage_mcm > nov1_target and not self.should_drawdown:
+            day_before_yesterday = self.datetime + timedelta(days=-2)
+            prev_prev_storage_mcm = self.model.recorders["New Melones Lake/storage"]\
+                .to_dataframe().at[day_before_yesterday, tuple(scenario_index.indices)]
+            if prev_storage_mcm - prev_prev_storage_mcm <= 0:
+                self.should_drawdown = True
+
+        if drawdown_period and self.should_drawdown:
             drawdown_release_mcm = (prev_storage_mcm - nov1_target) \
                                    / (datetime(timestep.year, 11, 1) - timestep.datetime).days * 1.2335
             prev_inflow_mcm = self.model.nodes["STN_01 Inflow"].prev_flow[scenario_index.global_id]
-            release_mcm = max(release_mcm, drawdown_release_mcm + prev_inflow_mcm)
 
-            # # Stop this if we've hit the target
-            # if prev_storage_mcm < 2000:
-            #     self.NML_did_fill = False
+            drawdown_release_mcm += prev_inflow_mcm
+
+            # Note: This may result in a high up ramp rate in late summer. This should be accounted for
+            # in the relevant IFR (i.e. below Goodwin Dam), not here.
+            release_mcm = max(release_mcm, drawdown_release_mcm)
 
         release_cms = release_mcm / 0.0864
 
