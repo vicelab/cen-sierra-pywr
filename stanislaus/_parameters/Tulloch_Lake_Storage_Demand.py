@@ -8,11 +8,11 @@ class Tulloch_Lake_Storage_Demand(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         flood_control_req = self.model.tables["Tulloch Lake Flood Control"]
-        start = '{:02}-{:02}'.format(self.datetime.month, self.datetime.day)
+        start = '{}-{}'.format(self.datetime.month, self.datetime.day)
         if self.model.mode == 'scheduling':
             control_curve_target = flood_control_req[start]
         else:
-            end = '{:02}-{:02}'.format(self.datetime.month, self.days_in_month())
+            end = '{}-{}'.format(self.datetime.month, self.days_in_month())
             control_curve_target = flood_control_req[start:end].mean()
         max_storage = self.model.nodes["Tulloch Lake" + self.month_suffix].max_volume
         return control_curve_target / max_storage

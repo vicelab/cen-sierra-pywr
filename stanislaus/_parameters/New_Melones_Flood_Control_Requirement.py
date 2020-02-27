@@ -14,83 +14,115 @@ class New_Melones_Flood_Control_Requirement(WaterLPParameter):
         # Note that this linear, time step dependent approach only works for the scheduling model,
         # note the planning model, since planning model time steps are not sequentially determined.
         # Instead, a piecewise reservoir approach will need to be applied.
+        # TODO: revisit the above rationale for not including flood control in the planning model.
         if self.model.mode == 'planning':
             return 0
 
+        # Flood control has 2 components, based on USACE manuals:
+        # 1. Flood control space
+        # 2. Conditional space
+
+        # In addition to flood control, we will also release at a steady rate if we fill, down to some target storage
+        # before we hit the flood control space again in Oct. This is to spread drawdown over a longter period of time,
+        # based on observations
+
         month = self.datetime.month
         day = self.datetime.day
+        start_tuple = (month, day)
 
-        if (month, day) == (1, 1) or timestep.index == 0:
+        if start_tuple == (1, 1) or timestep.index == 0:
             self.NML_did_fill = False
-
-        # get target storage
-
-        forecast_days = 7
-        forecast_date = self.datetime + timedelta(days=forecast_days)
-        month_day = '{:02}-{:02}'.format(month, day)
-        end_month_day = '{:02}-{:02}'.format(forecast_date.month, forecast_date.day)
-        target_storage_mcm = self.model.tables["New Melones Lake Flood Control"][month_day]
-        forecasted_target_storage_mcm = self.model.tables["New Melones Lake Flood Control"][end_month_day]
-
-        # get previous storage
-        NML = self.model.nodes["New Melones Lake"]
-        prev_storage_mcm = NML.volume[scenario_index.global_id]
-        max_storage = NML.max_volume
-
-        # Check if New Melones filled
-        if not self.NML_did_fill and prev_storage_mcm >= max_storage * 0.95:
-            self.NML_did_fill = True
-
-        # Get expected inflow; for now, assume FNF
-        # TODO: update with subbasin expected inflow less subbasin storage
-        forecasted_inflow_mcm = self.model.tables["Full Natural Flow"][self.datetime:forecast_date].sum()
-        # forecasted_inflow_mcm *= 1.25
 
         # Get expected ag. releases, so we can release more if needed
         WYT = self.get('San Joaquin Valley WYT' + self.month_suffix, timestep, scenario_index)
         SSJID_df = self.model.tables["South San Joaquin Irrigation District Demand"][WYT]
         OID_df = self.model.tables["Oakdale Irrigation District Demand"][WYT]
 
-        start_tuple = (month, day)
+        # 1. Flood control space operations
 
-        if month == 12 and day + forecast_days > 31:
-            days_in_jan = day + forecast_days - 31
-            SSJID_mcm = SSJID_df[start_tuple:(12, 31)].sum() + SSJID_df[(1, 1):(1, days_in_jan)].sum()
-            OID_mcm = OID_df[start_tuple:(12, 31)].sum() + OID_df[(1, 1):(1, days_in_jan)].sum()
-        else:
-            end_tuple = (forecast_date.month, forecast_date.day)
-            SSJID_mcm = SSJID_df[start_tuple:end_tuple].sum()
-            OID_mcm = OID_df[start_tuple:end_tuple].sum()
+        # Get target storage
+        month_day = '{}-{}'.format(month, day)
+        flood_curves = self.model.tables["New Melones Lake Flood Control"]
 
-        forecasted_ag_demand_mcm = SSJID_mcm + OID_mcm
-
-        # Forecasted release volume
-        forecasted_release_mcm \
-            = prev_storage_mcm \
-              + forecasted_inflow_mcm \
-              - forecasted_ag_demand_mcm \
-              - forecasted_target_storage_mcm
+        # Get previous storage
+        NML = self.model.nodes["New Melones Lake"]
+        prev_storage_mcm = NML.volume[scenario_index.global_id]
 
         # Today's release volume, just based on flooding
+        # This only looks back one day. Although it doesn't anticipate inflows, it does account for ag. diversions
+        # inflow_mcm = self.model.tables["Full Natural Flow"][self.datetime]
+        # release_mcm = prev_storage_mcm + inflow_mcm - ag_demand_mcm - max_storage_mcm
+
+        flood_control_curve_mcm = flood_curves.at[month_day, 'flood control space']
+        conditional_curve_mcm = flood_curves.at[month_day, 'conditional space']
+
+        release_mcm = 0.0
+
         ag_demand_mcm = SSJID_df[start_tuple] + OID_df[start_tuple]
-        inflow_mcm = self.model.tables["Full Natural Flow"][self.datetime]
-        release_mcm = prev_storage_mcm + inflow_mcm - ag_demand_mcm - target_storage_mcm
 
-        over_storage_mcm = float(max(release_mcm, forecasted_release_mcm, 0))
+        if prev_storage_mcm >= flood_control_curve_mcm:
+            # 1. flood control operations we are in the flood control space
+            release_mcm = prev_storage_mcm - flood_control_curve_mcm
 
-        if 8 <= month <= 11:
-            max_release_cfs = 2000
-        else:
-            max_release_cfs = 8000
-        max_release_mcm = max_release_cfs / 35.31 * 0.0864
-        release_cms = min(over_storage_mcm, max_release_mcm) / 0.0864
+        # 2. Conditional space operations
+        elif prev_storage_mcm >= conditional_curve_mcm:
 
-        # Let's also release extra if the reservoir filled and release slowly to a target storage of 2000 TAF by Oct 31.
-        # This is based on observation, though need to confirm
-        if self.NML_did_fill and (7, 1) <= (month, day) and prev_storage_mcm >= 2000 * 1.2335:
-            # reservoir late summer drawdown is ~40.6 cms (350 TAF over Jul-Oct)
-            prev_inflow_cms = self.model.nodes["STN_01 Inflow"].prev_flow[scenario_index.global_id] / 0.0864
-            release_cms = max(release_cms, 40.6 + prev_inflow_cms)
+            forecast_days = 7
+            forecast_date = self.datetime + timedelta(days=forecast_days)
+            end_month_day = '{}-{}'.format(forecast_date.month, forecast_date.day)
+
+            # forecasted target
+            forecasted_target_storage_mcm = flood_curves.at[end_month_day, 'flood control space']
+
+            # Get expected FNF inflow
+            forecasted_inflow_mcm = self.model.tables["Full Natural Flow"][self.datetime:forecast_date].sum()
+
+            # Forecasted release volume
+            release_mcm \
+                = prev_storage_mcm \
+                  + forecasted_inflow_mcm \
+                  - forecasted_target_storage_mcm
+
+            # divide by forecast days to get the release today (will spread this out over time)
+            release_mcm /= forecast_days
+
+            # Forecasted ag demand
+            # end_tuple = (forecast_date.month, forecast_date.day)
+            # SSJID_mcm = SSJID_df[start_tuple:end_tuple].sum()
+            # OID_mcm = OID_df[start_tuple:end_tuple].sum()
+            # ag_demand_mcm = SSJID_mcm + OID_mcm
+
+            # divide by forecast_days to spread out over time
+            # ag_demand_mcm /= forecast_days
+
+        # This is our overall target release, without accounting for max downstream releases
+        release_mcm = float(max(release_mcm, 0))
+
+        # ...however, this should be reduced as needed to limit flow Orange Blossom Bridge to <= 8000 cfs
+        orange_blossom_bridge_max_mcm = 8000 / 35.31 * 0.0864
+        max_release_mcm = ag_demand_mcm + orange_blossom_bridge_max_mcm
+
+        release_mcm = min(release_mcm, max_release_mcm)
+
+        # Let's also release extra if the reservoir filled and release slowly to a target storage of 1970 TAF (2430 MCM)
+        # by Oct 31. This is based on observation, though need to confirm
+
+        # # Check if New Melones filled
+        # if not self.NML_did_fill and prev_storage_mcm >= NML.max_volume * 0.95:
+        #     self.NML_did_fill = True
+
+        nov1_target = 2430
+        if (7, 1) <= (month, day) < (11, 1) and prev_storage_mcm > nov1_target:
+            drawdown_release_mcm = (prev_storage_mcm - nov1_target) \
+                                   / (datetime(timestep.year, 11, 1) - timestep.datetime).days * 1.2335
+            prev_inflow_mcm = self.model.nodes["STN_01 Inflow"].prev_flow[scenario_index.global_id]
+            release_mcm = max(release_mcm, drawdown_release_mcm + prev_inflow_mcm)
+
+            # # Stop this if we've hit the target
+            # if prev_storage_mcm < 2000:
+            #     self.NML_did_fill = False
+
+        release_cms = release_mcm / 0.0864
 
         return release_cms
 

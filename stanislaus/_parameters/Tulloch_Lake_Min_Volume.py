@@ -8,11 +8,11 @@ class Tulloch_Lake_Min_Volume(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         flood_control_req = self.model.tables["Tulloch Lake Flood Control"]
-        start = '{:02}-{:02}'.format(self.datetime.month, self.datetime.day)
+        start = '{}-{}'.format(self.datetime.month, self.datetime.day)
         if self.model.mode == 'scheduling':
             control_curve_target = flood_control_req[start]
         else:
-            end = '{:02}-{:02}'.format(self.datetime.month, self.days_in_month())
+            end = '{}-{}'.format(self.datetime.month, self.days_in_month())
             control_curve_target = flood_control_req[start:end].mean()
         return control_curve_target - 1.62  # subtract 2 TAF based on observations
 

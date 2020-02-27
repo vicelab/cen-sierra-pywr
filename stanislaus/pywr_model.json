@@ -607,7 +607,7 @@
                 "index": "2000-09-30",
                 "column": "USGS 11299000 NEW MELONES RES NR SONORA CA"
             },
-            "max_volume": 2900,
+            "max_volume": 2985,
             "min_volume": 500,
             "cost": "New Melones Lake/Storage Value",
             "comment": "{\"resource_class\": \"node\"}",
@@ -2292,14 +2292,18 @@
             "parse_dates": false
         },
         "Tulloch Lake Flood Control": {
-            "url": "../data/Stanislaus River/Management/BAU/Flood Control/LakeTulloch_FloodControl_Requirement_mcm.csv",
+            "url": "../data/Stanislaus River/Management/BAU/Flood Control/Tulloch Lake Flood Control Requirement mcm.csv",
             "index_col": 0,
             "squeeze": true
         },
         "New Melones Lake Flood Control": {
-            "url": "../data/Stanislaus River/Management/BAU/Flood Control/LakeMelones_FloodControl_Requirement_mcm.csv",
+            "url": "../data/Stanislaus River/Management/BAU/Flood Control/New Melones Lake Flood Control Requirement mcm.csv",
             "index_col": 0,
-            "squeeze": true
+            "header": 0,
+            "names": [
+                "flood control space",
+                "conditional space"
+            ]
         },
         "New Spicer Meadow District release": {
             "url": "../data/Stanislaus River/Management/BAU/Demand/Release below New Spicer Meadow Dam cfs.csv",
@@ -2420,7 +2424,10 @@
         },
         "Oakdale Irrigation District Demand": {
             "url": "../data/Stanislaus River/Management/BAU/Demand/Oakdale Canal demand by WYT mcm.csv",
-            "index_col": [0, 1],
+            "index_col": [
+                0,
+                1
+            ],
             "header": 0,
             "names": [
                 1,
@@ -2432,7 +2439,10 @@
         },
         "South San Joaquin Irrigation District Demand": {
             "url": "../data/Stanislaus River/Management/BAU/Demand/South San Joaquin Canal demand by WYT mcm.csv",
-            "index_col": [0, 1],
+            "index_col": [
+                0,
+                1
+            ],
             "header": 0,
             "names": [
                 1,
