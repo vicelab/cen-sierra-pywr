@@ -12,7 +12,7 @@ import dash_html_components as html
 from dashapp.metrics import nash_sutcliffe_efficiency, percent_bias, root_mean_square_error
 from dashapp.functions import get_resources, flow_to_energy, consolidate_dataframe, load_timeseries, agg_by_resources
 from dashapp.constants import PLOTLY_CONFIG, ABS_DIFF, PCT_DIFF, MCM_TO_CFS, MCM_TO_TAF, PROD_RESULTS_PATH, \
-    DEV_RESULTS_PATH
+    DEV_RESULTS_PATH, BASINS
 
 OBSERVED_TEXT = 'Observed'
 OBSERVED_COLOR = 'lightgrey'
@@ -146,6 +146,31 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     gauges = []
     gauge_name = gauge_lookup.get(res_name, res_name)
 
+    fc_df = None
+    if attr == 'storage' and res_name in ['New Melones Lake', 'Tulloch Lake']:
+        basin = kwargs.get('basin')
+        basin_full_name = '{} River'.format(BASINS[basin])
+        data_path = os.environ['SIERRA_DATA_PATH']
+        filename = '{} Flood Control Requirement mcm.csv'.format(res_name)
+        fcpath = os.path.join(data_path, basin_full_name, 'Management', 'BAU', 'Flood Control', filename)
+        flood_control_curve = pd.read_csv(fcpath, index_col=0, header=0).iloc[:, 0] / 1.2335  # mcm to TAF
+        fc_df = pd.DataFrame(index=all_sim_vals.index)
+        fc_df['flood curve'] = fc_df.index.strftime('%#m-%#d')
+        fc_df.replace({'flood curve': flood_control_curve}, inplace=True)
+
+        ts_data.append(
+            go.Scatter(
+                x=fc_df.index,
+                y=fc_df['flood curve'],
+                text='Flood Curve',
+                mode='lines',
+                opacity=0.7,
+                # opacity=0.7 if not plot_max else 0.0,
+                name='Flood Curve',
+                line_color='red'
+            )
+        )
+
     for i, forcing in enumerate(set(all_sim_vals.columns.get_level_values(0))):
         parts = forcing.split('_')
         rcp = None
@@ -204,7 +229,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
                         obs_vals = flow_to_energy(obs_vals, head)
 
                     if not consolidate:  # percentiles values will use the whole record
-                        obs_vals = obs_vals.loc[sim_vals.index]
+                        obs_vals = obs_vals.reindex(sim_vals.index)
 
                     if resample:
                         obs_resampled = obs_vals.resample(resample, axis=0).mean()

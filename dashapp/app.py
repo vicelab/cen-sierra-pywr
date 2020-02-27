@@ -255,17 +255,6 @@ def render_themes(selected=None):
 
 navbar = dbc.NavbarSimple(
     children=[
-        # dcc.Dropdown(
-        #     id='select-basins-global',
-        #     options=[
-        #         {'label': 'Stanislaus', 'value': 'stn'},
-        #         {'label': 'Tuolumne', 'value': 'tuo'},
-        #         {'label': 'Merced', 'value': 'mer'},
-        #         {'label': 'Upper San Joaquin', 'value': 'usj'},
-        #     ],
-        #     value=['stn', 'tuo', 'mer', 'usj'],
-        #     multi=True
-        # )
         # dbc.NavItem(dbc.NavLink("Link", href="#")),
         # dbc.DropdownMenu(
         #     nav=True,
