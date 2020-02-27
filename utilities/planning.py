@@ -24,7 +24,7 @@ PARAMETERS_TO_REMOVE = {
 }
 
 
-def prepare_planning_model(m, basin, outpath, steps=12, blocks=8, parameters_to_expand=None, debug=False,
+def prepare_planning_model(m, basin, climate, outpath, steps=12, blocks=8, parameters_to_expand=None, debug=False,
                            remove_rim_dams=False):
     """
     Convert the daily scheduling model to a planning model.
@@ -44,7 +44,7 @@ def prepare_planning_model(m, basin, outpath, steps=12, blocks=8, parameters_to_
 
     parameters_to_expand = PARAMETERS_TO_EXPAND.get(basin, []) + PARAMETERS_TO_EXPAND.get('common', [])
 
-    m = simplify_network(m, delete_gauges=True, delete_observed=True, delete_scenarios=debug is not None)
+    m = simplify_network(m, basin, climate, delete_gauges=True, delete_observed=True, delete_scenarios=debug is not None)
 
     all_steps = range(steps)
 
@@ -343,7 +343,7 @@ def prepare_planning_model(m, basin, outpath, steps=12, blocks=8, parameters_to_
 
                 new_param = param.copy()
                 if attribute == 'Runoff':
-                    new_param['url'] = new_param['url'].replace('/runoff/', '/runoff_monthly_forecasts/')
+                    new_param['url'] = new_param['url'].replace('/runoff_aggregated/', '/runoff_monthly_forecasts/')
                     new_param['column'] = '{:02}'.format(t)
                     # new_param['parse_dates'] = False
                 elif attribute == 'Turbine Capacity':

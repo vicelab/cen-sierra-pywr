@@ -1,7 +1,9 @@
+import os
 import json
 
 
-def simplify_network(m, delete_gauges=False, delete_observed=True, delete_scenarios=False):
+def simplify_network(m, basin, climate, delete_gauges=False, delete_observed=True, delete_scenarios=False,
+                     aggregate_runoff=True, create_graphs=False):
     # simplify the network
     mission_complete = False
     obsolete_gauges = []
@@ -114,5 +116,49 @@ def simplify_network(m, delete_gauges=False, delete_observed=True, delete_scenar
             m['recorders'].pop(r, None)
         elif delete_observed and '/observed' in r:
             m['recorders'].pop(r, None)
+
+    if aggregate_runoff:
+        subwat_groups = {}
+        obsolete_subwats = []
+        new_subwats = []
+        new_nodes = []
+        new_edges = []
+        for n1, n2 in m['edges']:
+            if ' Headflow' in n1:
+                obsolete_subwats.append(n1)
+                new_subwat = '{} Inflow'.format(n2)
+                if new_subwat not in new_subwats:
+                    new_subwats.append(new_subwat)
+                    new_node = node_lookup[n1].copy()
+                    new_node.update(
+                        name=new_subwat,
+                        flow='{}/Runoff'.format(new_subwat)
+                    )
+                    new_nodes.append(new_node)
+                    new_edges.append([new_subwat, n2])
+            else:
+                new_edges.append([n1, n2])
+
+        m['nodes'] = new_nodes + [n for n in m['nodes'] if n['name'] not in obsolete_subwats]
+        m['edges'] = new_edges
+
+        for subwat in obsolete_subwats:
+            flow_param = node_lookup[subwat]['flow']
+            del m['parameters'][flow_param]
+        for node in new_nodes:
+            param_name = node['flow']
+            new_param = {
+                "type": "dataframe",
+                "url": "{datapath}/{basin} River/Scenarios/runoff_aggregated/{climate}/{param} mcm.csv".format(
+                    datapath=os.environ.get('SIERRA_DATA_PATH'),
+                    basin=basin.replace('_', ' ').title(),
+                    climate=climate,
+                    param=param_name.split('/')[0]
+                ),
+                "column": "flow",
+                "index_col": 0,
+                "parse_dates": True
+            }
+            m['parameters'][param_name] = new_param
 
     return m
