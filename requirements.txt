@@ -30,6 +30,7 @@ pytz==2019.3
 pywr==1.5.0
 retrying==1.3.3
 scipy==1.4.1
+seaborn==0.10.0
 six==1.14.0
 tables==3.6.1
 tqdm==4.43.0
