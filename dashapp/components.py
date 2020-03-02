@@ -147,7 +147,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     gauge_name = gauge_lookup.get(res_name, res_name)
 
     fc_df = None
-    if attr == 'storage' and res_name in ['New Melones Lake', 'Tulloch Lake']:
+    if attr == 'storage' and res_name in ['New Melones Lake', 'Lake Tulloch']:
         basin = kwargs.get('basin')
         basin_full_name = '{} River'.format(BASINS[basin])
         data_path = os.environ['SIERRA_DATA_PATH']

@@ -67,8 +67,8 @@ digraph stanislaus {
 	"Oakdale Irrigation District" [fillcolor=black fontcolor=white shape=oval style=filled]
 	"Stanislaus River Outflow" [fillcolor=black fontcolor=white shape=oval style=filled]
 	"STN_01 Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Tulloch Lake" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"Tulloch Lake Flood Control" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Lake Tulloch" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Lake Tulloch Flood Control" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Donnell Lake Spill" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"Goodwin Reservoir" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Union-Utica Reservoir" [fillcolor=blue fontcolor=white shape=rect style=filled]
@@ -108,8 +108,8 @@ digraph stanislaus {
 	"Lyons Reservoir" -> "IFR bl Lyons Res"
 	"Goodwin Reservoir" -> "Oakdale Irrigation District"
 	"Goodwin Reservoir" -> "South San Joaquin Irrigation District"
-	"Goodwin Reservoir" -> "Tulloch Lake Flood Control"
-	"Tulloch Lake Flood Control" -> "IFR bl Goodwin Reservoir"
+	"Goodwin Reservoir" -> "Lake Tulloch Flood Control"
+	"Lake Tulloch Flood Control" -> "IFR bl Goodwin Reservoir"
 	"New Melones Lake" -> "New Melones PH"
 	"STN_01 Inflow" -> "New Melones Lake"
 	"Upper Collierville Tunnel Outflow" -> "Upper Collierville Tunnel 1"
@@ -169,7 +169,7 @@ digraph stanislaus {
 	"New Melones Lake" -> "New Melones Spillway"
 	"New Melones PH" -> "New Melones Flood Control"
 	"New Melones Spillway" -> "New Melones Flood Control"
-	"Tulloch Lake" -> "Goodwin Reservoir"
-	"STN_below_Melons.2.2" -> "Tulloch Lake"
+	"Lake Tulloch" -> "Goodwin Reservoir"
+	"STN_below_Melons.2.2" -> "Lake Tulloch"
 	"New Melones Flood Control" -> "STN_below_Melons.2.2"
 }

@@ -4,7 +4,7 @@ from utilities.converter import convert
 import pandas as pd
 
 
-class Tulloch_Lake_Storage_Value(WaterLPParameter):
+class Lake_Tulloch_Storage_Value(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         if (4, 1) <= (self.datetime.month, self.datetime.day) <= (9, 15):
@@ -26,5 +26,5 @@ class Tulloch_Lake_Storage_Value(WaterLPParameter):
         return cls(model, **data)
 
 
-Tulloch_Lake_Storage_Value.register()
-print(" [*] Tulloch_Lake_Storage_Value successfully registered")
+Lake_Tulloch_Storage_Value.register()
+print(" [*] Lake_Tulloch_Storage_Value successfully registered")

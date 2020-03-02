@@ -4,17 +4,17 @@ from utilities.converter import convert
 import pandas as pd
 
 
-class Tulloch_Lake_Rule_Curve(WaterLPParameter):
+class Lake_Tulloch_Min_Volume(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
-        flood_control_req = self.model.tables["Tulloch Lake Flood Control"]
-        start = '{:02}-{:02}'.format(self.datetime.month, self.datetime.day)
+        flood_control_req = self.model.tables["Lake Tulloch Flood Control"]
+        start = '{}-{}'.format(self.datetime.month, self.datetime.day)
         if self.model.mode == 'scheduling':
             control_curve_target = flood_control_req[start]
         else:
-            end = '{:02}-{:02}'.format(self.datetime.month, self.days_in_month())
+            end = '{}-{}'.format(self.datetime.month, self.days_in_month())
             control_curve_target = flood_control_req[start:end].mean()
-        return control_curve_target
+        return control_curve_target - 1.62  # subtract 2 TAF based on observations
 
     def value(self, timestep, scenario_index):
         try:
@@ -29,5 +29,5 @@ class Tulloch_Lake_Rule_Curve(WaterLPParameter):
         return cls(model, **data)
 
 
-Tulloch_Lake_Rule_Curve.register()
-print(" [*] Tulloch_Lake_Rule_Curve successfully registered")
+Lake_Tulloch_Min_Volume.register()
+print(" [*] Lake_Tulloch_Min_Volume successfully registered")

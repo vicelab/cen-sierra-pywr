@@ -1158,20 +1158,20 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Tulloch Lake",
+            "name": "Lake Tulloch",
             "type": "Reservoir",
             "initial_volume": 81.02,
             "max_volume": 81.02,
-            "min_volume": "Tulloch Lake/Min Volume",
-            "cost": "Tulloch Lake/Storage Value",
+            "min_volume": "Lake Tulloch/Min Volume",
+            "cost": "Lake Tulloch/Storage Value",
             "comment": "{\"resource_class\": \"node\"}",
             "gauge": "USGS 11299995 TULLOCH RES NR KNIGHTS FERRY CA"
         },
         {
-            "name": "Tulloch Lake Flood Control",
+            "name": "Lake Tulloch Flood Control",
             "type": "PiecewiseLink",
             "max_flow": [
-                "Tulloch Lake Flood Control/Requirement",
+                "Lake Tulloch Flood Control/Requirement",
                 null
             ],
             "cost": [
@@ -2072,10 +2072,10 @@
         ],
         [
             "Goodwin Reservoir",
-            "Tulloch Lake Flood Control"
+            "Lake Tulloch Flood Control"
         ],
         [
-            "Tulloch Lake Flood Control",
+            "Lake Tulloch Flood Control",
             "IFR bl Goodwin Reservoir"
         ],
         [
@@ -2160,14 +2160,14 @@
         ],
         [
             "STN_below_Melons.2.2.2",
-            "Tulloch Lake"
+            "Lake Tulloch"
         ],
         [
             "STN_01 Inflow",
             "New Melones Lake"
         ],
         [
-            "Tulloch Lake",
+            "Lake Tulloch",
             "STAN-L-CON 7"
         ],
         [
@@ -2179,7 +2179,7 @@
             "Goodwin Reservoir"
         ],
         [
-            "Tulloch Lake",
+            "Lake Tulloch",
             "STAN-L-CON 8"
         ],
         [
@@ -2291,8 +2291,8 @@
             "index_col": "Date",
             "parse_dates": false
         },
-        "Tulloch Lake Flood Control": {
-            "url": "../data/Stanislaus River/Management/BAU/Flood Control/Tulloch Lake Flood Control Requirement mcm.csv",
+        "Lake Tulloch Flood Control": {
+            "url": "../data/Stanislaus River/Management/BAU/Flood Control/Lake Tulloch Flood Control Requirement mcm.csv",
             "index_col": 0,
             "squeeze": true
         },
@@ -3372,15 +3372,15 @@
             "index_col": "Date",
             "parse_dates": true
         },
-        "Tulloch Lake Flood Control/Violation Cost": {
+        "Lake Tulloch Flood Control/Violation Cost": {
             "type": "constant",
             "value": -50.0
         },
-        "Tulloch Lake Flood Control/Requirement": {
+        "Lake Tulloch Flood Control/Requirement": {
             "type": "controlcurveinterpolated",
-            "storage_node": "Tulloch Lake",
+            "storage_node": "Lake Tulloch",
             "control_curves": [
-                "Tulloch Lake/Storage Demand"
+                "Lake Tulloch/Storage Demand"
             ],
             "values": [
                 0.6,
@@ -3388,19 +3388,19 @@
                 0
             ]
         },
-        "Tulloch Lake/Observed Storage": {
+        "Lake Tulloch/Observed Storage": {
             "type": "dataframe",
             "table": "Observed Storage",
-            "column": "Tulloch Lake"
+            "column": "Lake Tulloch"
         },
-        "Tulloch Lake/Min Volume": {
-            "type": "Tulloch_Lake_Min_Volume"
+        "Lake Tulloch/Min Volume": {
+            "type": "Lake_Tulloch_Min_Volume"
         },
-        "Tulloch Lake/Storage Value": {
-            "type": "Tulloch_Lake_Storage_Value"
+        "Lake Tulloch/Storage Value": {
+            "type": "Lake_Tulloch_Storage_Value"
         },
-        "Tulloch Lake/Storage Demand": {
-            "type": "Tulloch_Lake_Storage_Demand"
+        "Lake Tulloch/Storage Demand": {
+            "type": "Lake_Tulloch_Storage_Demand"
         },
         "New Melones Release Requirement/Min Flow": {
             "type": "New_Melones_Release_Requirement_Min_Requirement"
@@ -3945,17 +3945,17 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Stanislaus River Outflow"
         },
-        "Tulloch Lake/storage": {
+        "Lake Tulloch/storage": {
             "type": "NumpyArrayStorageRecorder",
-            "node": "Tulloch Lake"
+            "node": "Lake Tulloch"
         },
-        "Tulloch Lake/cost": {
+        "Lake Tulloch/cost": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "Tulloch Lake/Storage Value"
+            "parameter": "Lake Tulloch/Storage Value"
         },
-        "Tulloch Lake/observed storage": {
+        "Lake Tulloch/observed storage": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "Tulloch Lake/Observed Storage"
+            "parameter": "Lake Tulloch/Observed Storage"
         },
         "USGS_11292610 DONNELLS PH/observed flow": {
             "type": "NumpyArrayParameterRecorder",
@@ -4033,9 +4033,9 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Upper Collierville Tunnel 1"
         },
-        "Tulloch Lake/storage demand": {
+        "Lake Tulloch/storage demand": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "Tulloch Lake/Storage Demand"
+            "parameter": "Lake Tulloch/Storage Demand"
         }
     }
 }
