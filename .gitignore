@@ -7,6 +7,10 @@ data/
 *.pyc
 
 */results/*
+results/
 
 *.lp
 *.mps
+
+*/secrets/*
+*/temp/*

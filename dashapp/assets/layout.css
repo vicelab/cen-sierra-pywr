@@ -1,0 +1,67 @@
+.app-body {
+    display: flex !important;
+}
+
+.sidebar-tabs {
+    display: inline-flex;
+    width: 100px;
+}
+
+.main-content {
+    /*display: inline-flex;*/
+    /*padding: 15px;*/
+    /*width: 100%;*/
+}
+
+#schematics-content, #map-content {
+    /*border: thin solid grey;*/
+    position: absolute;
+    top: 55px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/*.schematic-pdf {*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    top: 60px;*/
+/*}*/
+
+.nav-item {
+    cursor: pointer;
+}
+
+.select-climate {
+    min-width: 150px;
+}
+
+.select-price-year {
+    min-width: 100px;
+}
+
+.timeseries-metrics-data {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.metrics-gauges {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-gauge {
+    display: flex;
+    align-items: center;
+}
+
+.scenario-selection {
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.scenario-selection p {
+    margin: 5px !important;
+}

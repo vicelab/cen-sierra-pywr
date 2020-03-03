@@ -1,0 +1,175 @@
+// stanislaus
+digraph stanislaus {
+	"STN_01 Inflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Angels Canal Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Hunter Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"IFR bl confluence of NF Stanislaus and Beaver Creek Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"McKays Point Diversion Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Upper Collierville Tunnel Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Union-Utica Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"New Spicer Meadow Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Beaver Creek Diversion Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Stanislaus Tunnel Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Beardsley Afterbay Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Beardsley Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Donnells Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Relief Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Lyons Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Philadelphia Aquaduct Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Pinecrest Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Angels PH" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Angels Canal Outflow" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Beardsley Reservoir" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Beardsley PH" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Beaver Creek Diversion" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Collierville PH" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Donnells PH" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Donnells Reservoir" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Donnell Lake Low Flow Release" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"IFR bl Angels Div" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Collierville PH discharge" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR at Murphys Park" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Donnell Lake" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Hunter Reservoir" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Lyons Res" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl McKays Point Div" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"Water Supply Release bl New Spicer Meadow Reservoir" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl New Spicer Meadow Reservoir" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Philadelphia Div" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Relief Reservoir" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Sand Bar Div" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl NF Stanislaus Div Res" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Beaver Creek Diversion Dam" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl confluence of NF Stanislaus and Beaver Creek" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Goodwin Reservoir" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Pinecrest Lake" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Utica Reservoir" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR bl Beardsley Afterbay" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"Hunter Reservoir" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Lyons Reservoir" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"McKays Point Diversion" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Murphys PH" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"New Melones Lake" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"New Melones PH" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"New Spicer Meadow Reservoir" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"New Spicer Meadow PH" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Philadelphia Aquaduct Outflow" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Phoenix Canal Outflow" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"Phoenix PH" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Pinecrest Reservoir" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Relief Reservoir" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Sand Bar PH" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Beardsley Afterbay" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Spring Gap PH" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Stanislaus PH" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Stanislaus Tunnel Outflow" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"South San Joaquin Irrigation District" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"Oakdale Irrigation District" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"Stanislaus River Outflow" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"STN_01 Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Lake Tulloch" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Lake Tulloch Flood Control" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Donnell Lake Spill" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"Goodwin Reservoir" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Union-Utica Reservoir" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"UPA Tunnel Tap" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"UPA Tunnel Tap Outflow" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Upper Collierville Tunnel Outflow" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Upper Collierville Tunnel 1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"New Melones Lake Flood Control" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"New Melones Spillway" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"STN_below_Melons.2.1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"STN_below_Melons.2.2" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Angels Canal Outflow" -> "Angels PH"
+	"Angels Canal Outflow" -> "IFR bl Angels Div"
+	"Donnells Reservoir" -> "Donnells PH"
+	"Donnells Reservoir" -> "Donnell Lake Low Flow Release"
+	"Donnell Lake Low Flow Release" -> "IFR bl Donnell Lake"
+	"Donnells Reservoir" -> "Donnell Lake Spill"
+	"Upper Collierville Tunnel Outflow" -> "IFR bl NF Stanislaus Div Res"
+	"McKays Point Diversion" -> "UPA Tunnel Tap Outflow"
+	"Hunter Reservoir" -> "IFR bl Hunter Reservoir"
+	"Water Supply Release bl New Spicer Meadow Reservoir" -> "IFR bl New Spicer Meadow Reservoir"
+	"New Spicer Meadow Reservoir" -> "New Spicer Meadow PH"
+	"Philadelphia Aquaduct Outflow" -> "Spring Gap PH"
+	"Pinecrest Reservoir" -> "IFR bl Pinecrest Lake"
+	"Relief Reservoir" -> "IFR bl Relief Reservoir"
+	"Beardsley Afterbay" -> "Sand Bar PH"
+	"Stanislaus Tunnel Outflow" -> "Stanislaus PH"
+	"STN_01 Inflow Inflow" -> "STN_01 Inflow"
+	"McKays Point Diversion" -> "IFR bl McKays Point Div"
+	"Union-Utica Reservoir" -> "IFR bl Utica Reservoir"
+	"Beardsley Afterbay" -> "IFR bl Beardsley Afterbay"
+	"Beardsley Reservoir" -> "Beardsley PH"
+	"UPA Tunnel Tap Outflow" -> "UPA Tunnel Tap"
+	"UPA Tunnel Tap" -> "Hunter Reservoir"
+	"UPA Tunnel Tap Outflow" -> "Collierville PH"
+	"Stanislaus Tunnel Outflow" -> "IFR bl Sand Bar Div"
+	"Lyons Reservoir" -> "IFR bl Lyons Res"
+	"Goodwin Reservoir" -> "Oakdale Irrigation District"
+	"Goodwin Reservoir" -> "South San Joaquin Irrigation District"
+	"Goodwin Reservoir" -> "IFR bl Goodwin Reservoir"
+	"New Melones Lake" -> "New Melones PH"
+	"STN_01 Inflow" -> "New Melones Lake"
+	"Upper Collierville Tunnel Outflow" -> "Upper Collierville Tunnel 1"
+	"Angels PH" -> "STN_01 Inflow"
+	"IFR bl Angels Div" -> "STN_01 Inflow"
+	"IFR bl Beaver Creek Diversion Dam" -> "IFR bl confluence of NF Stanislaus and Beaver Creek"
+	"Beaver Creek Diversion" -> "IFR bl Beaver Creek Diversion Dam"
+	"Beaver Creek Diversion" -> "McKays Point Diversion"
+	"Phoenix PH" -> "Phoenix Canal Outflow"
+	"New Spicer Meadow Reservoir" -> "Water Supply Release bl New Spicer Meadow Reservoir"
+	"New Spicer Meadow PH" -> "Water Supply Release bl New Spicer Meadow Reservoir"
+	"Murphys PH" -> "IFR at Murphys Park"
+	"IFR bl Sand Bar Div" -> "IFR bl Collierville PH discharge"
+	"IFR bl Hunter Reservoir" -> "IFR bl Collierville PH discharge"
+	"IFR bl confluence of NF Stanislaus and Beaver Creek" -> "IFR bl Collierville PH discharge"
+	"Sand Bar PH" -> "Stanislaus Tunnel Outflow"
+	"Philadelphia Aquaduct Outflow" -> "IFR bl Philadelphia Div"
+	"IFR bl Lyons Res" -> "STN_01 Inflow"
+	"IFR bl Goodwin Reservoir" -> "Stanislaus River Outflow"
+	"Angels Canal Outflow Inflow" -> "Angels Canal Outflow"
+	"IFR at Murphys Park" -> "Angels Canal Outflow"
+	"IFR bl Collierville PH discharge" -> "STN_01 Inflow"
+	"Hunter Reservoir Inflow" -> "Hunter Reservoir"
+	"IFR bl confluence of NF Stanislaus and Beaver Creek Inflow" -> "IFR bl confluence of NF Stanislaus and Beaver Creek"
+	"IFR bl McKays Point Div" -> "IFR bl confluence of NF Stanislaus and Beaver Creek"
+	"McKays Point Diversion Inflow" -> "McKays Point Diversion"
+	"IFR bl New Spicer Meadow Reservoir" -> "McKays Point Diversion"
+	"IFR bl NF Stanislaus Div Res" -> "McKays Point Diversion"
+	"Upper Collierville Tunnel Outflow Inflow" -> "Upper Collierville Tunnel Outflow"
+	"IFR bl Utica Reservoir" -> "Upper Collierville Tunnel Outflow"
+	"Union-Utica Reservoir Inflow" -> "Union-Utica Reservoir"
+	"New Spicer Meadow Reservoir Inflow" -> "New Spicer Meadow Reservoir"
+	"Beaver Creek Diversion Inflow" -> "Beaver Creek Diversion"
+	"Stanislaus Tunnel Outflow Inflow" -> "Stanislaus Tunnel Outflow"
+	"IFR bl Beardsley Afterbay" -> "Stanislaus Tunnel Outflow"
+	"Beardsley Afterbay Inflow" -> "Beardsley Afterbay"
+	"Beardsley Reservoir" -> "Beardsley Afterbay"
+	"Beardsley PH" -> "Beardsley Afterbay"
+	"Beardsley Reservoir Inflow" -> "Beardsley Reservoir"
+	"Donnell Lake Spill" -> "Beardsley Reservoir"
+	"IFR bl Donnell Lake" -> "Beardsley Reservoir"
+	"Donnells Reservoir Inflow" -> "Donnells Reservoir"
+	"Relief Reservoir Inflow" -> "Relief Reservoir"
+	"IFR bl Philadelphia Div" -> "Lyons Reservoir"
+	"Lyons Reservoir Inflow" -> "Lyons Reservoir"
+	"Philadelphia Aquaduct Outflow Inflow" -> "Philadelphia Aquaduct Outflow"
+	"IFR bl Pinecrest Lake" -> "Philadelphia Aquaduct Outflow"
+	"Pinecrest Reservoir Inflow" -> "Pinecrest Reservoir"
+	"IFR bl Relief Reservoir" -> "Donnells Reservoir"
+	"Hunter Reservoir" -> "Murphys PH"
+	"Donnells PH" -> "Beardsley Reservoir"
+	"Upper Collierville Tunnel 1" -> "New Spicer Meadow Reservoir"
+	"Collierville PH" -> "IFR bl Collierville PH discharge"
+	"Stanislaus PH" -> "STN_01 Inflow"
+	"Spring Gap PH" -> "Stanislaus Tunnel Outflow"
+	"Lyons Reservoir" -> "Phoenix PH"
+	"New Melones Lake" -> "New Melones Spillway"
+	"New Melones PH" -> "New Melones Lake Flood Control"
+	"New Melones Spillway" -> "New Melones Lake Flood Control"
+	"Lake Tulloch" -> "Lake Tulloch Flood Control"
+	"Lake Tulloch Flood Control" -> "Goodwin Reservoir"
+	"STN_below_Melons.2.2" -> "Lake Tulloch"
+	"New Melones Lake Flood Control" -> "STN_below_Melons.2.2"
+}
