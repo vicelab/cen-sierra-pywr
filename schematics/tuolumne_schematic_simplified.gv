@@ -10,10 +10,11 @@ digraph tuolumne {
 	"Hetch Hetchy Aquaduct Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Below Hetch Hetchy Aquaduct Diverted Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Below Lake Eleanor Tunel Diverted Inflow.1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Don Pedro Lake Flood Control" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Hetch Hetch Aquaduct.1.1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Cherry Lake" [fillcolor=blue fontcolor=white shape=rect style=filled]
 	"Dion R Holm PH" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"Don Pedro Flood Control" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"Don Pedro Lake Spillway" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"Don Pedro PH" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"Don Pedro Reservoir" [fillcolor=blue fontcolor=white shape=rect style=filled]
 	"Eleanor-Cherry Pumping Station" [fillcolor=white fontcolor=black shape=oval style=filled]
@@ -24,7 +25,7 @@ digraph tuolumne {
 	"IFR bl Don Pedro Reservoir" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"IFR bl Hetch Hetchy Reservoir" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"IFR bl Lake Eleanor" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl Moccasin Reservoir" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"Moccasin Fish Hatchery" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"Kirkwood PH" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"La Grange Reservoir" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Lake Eleanor" [fillcolor=blue fontcolor=white shape=rect style=filled]
@@ -52,14 +53,14 @@ digraph tuolumne {
 	"TUOLU-N-JUN1" -> "TUO_R-N-JUN12"
 	"TUO_R-N-JUN12" -> "Priest Reservoir"
 	"Kirkwood PH" -> "Hetch Hetchy Aquaduct Outflow"
-	"Moccasin Reservoir" -> "IFR bl Moccasin Reservoir"
+	"Moccasin Reservoir" -> "Moccasin Fish Hatchery"
 	"La Grange Reservoir" -> "IFR bl Don Pedro Reservoir"
-	"Don Pedro Reservoir" -> "Don Pedro Flood Control"
+	"Don Pedro Reservoir" -> "Don Pedro Lake Spillway"
 	"Don Pedro Reservoir" -> "Don Pedro PH"
+	"Don Pedro Lake Flood Control" -> "La Grange Reservoir"
 	"Moccasin PH" -> "Moccasin Reservoir"
-	"Don Pedro Flood Control" -> "La Grange Reservoir"
-	"Don Pedro PH" -> "La Grange Reservoir"
-	"Don Pedro Reservoir" -> "La Grange Reservoir"
+	"Don Pedro Lake Spillway" -> "Don Pedro Lake Flood Control"
+	"Don Pedro PH" -> "Don Pedro Lake Flood Control"
 	"Don Pedro Reservoir Inflow" -> "Don Pedro Reservoir"
 	"Upper Hetch Hetchy Tunnel Outflow Inflow" -> "Upper Hetch Hetchy Tunnel Outflow"
 	"Cherry Lake Inflow" -> "Cherry Lake"
@@ -83,7 +84,7 @@ digraph tuolumne {
 	"La Grange Reservoir" -> "Turlock Irrigation District"
 	"IFR bl Don Pedro Reservoir" -> "Tuolumne River Outflow"
 	"Moccasin Reservoir" -> "Don Pedro Reservoir"
-	"IFR bl Moccasin Reservoir" -> "Don Pedro Reservoir"
+	"Moccasin Fish Hatchery" -> "Don Pedro Reservoir"
 	"Hetch Hetchy Aquaduct Outflow" -> "Don Pedro Reservoir"
 	"Dion R Holm PH" -> "Don Pedro Reservoir"
 	"Upper Hetch Hetchy Tunnel Outflow" -> "Don Pedro Reservoir"

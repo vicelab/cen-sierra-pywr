@@ -489,6 +489,19 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
+            "name": "Don Pedro Lake Flood Control",
+            "type": "PiecewiseLink",
+            "max_flow": [
+                "Don Pedro Lake Flood Control/Requirement",
+                null
+            ],
+            "cost": [
+                -10,
+                1
+            ],
+            "comment": "{\"resource_class\": \"link\"}"
+        },
+        {
             "name": "Dion R Holm Tunnel",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
@@ -622,17 +635,7 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "TUOLU-L-CON1",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
             "name": "TUOLU-L-CON2",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
-        },
-        {
-            "name": "TUOLU-L-CON3",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}"
         },
@@ -739,7 +742,7 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Don Pedro Flood Control",
+            "name": "Don Pedro Lake Spillway",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow_cost": -1000
@@ -754,11 +757,6 @@
                 -1
             ],
             "max_flow": []
-        },
-        {
-            "name": "Don Pedro Release Req",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "Don Pedro Reservoir",
@@ -857,7 +855,7 @@
             "max_flow_cost": 10000
         },
         {
-            "name": "IFR bl Moccasin Reservoir",
+            "name": "Moccasin Fish Hatchery",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": 0.03915038224025556,
@@ -1240,7 +1238,7 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "TUO_R-N-JUN1",
+            "name": "San Joaquin Pipelines",
             "type": "River",
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -2240,10 +2238,10 @@
         ],
         [
             "Moccasin Aquaduct.1.1",
-            "IFR bl Moccasin Reservoir"
+            "Moccasin Fish Hatchery"
         ],
         [
-            "IFR bl Moccasin Reservoir",
+            "Moccasin Fish Hatchery",
             "Moccasin Aquaduct.1.2"
         ],
         [
@@ -2296,10 +2294,10 @@
         ],
         [
             "Transmission Link from Withdrawal Node 3 to SFPUC.1",
-            "TUO_R-N-JUN1"
+            "San Joaquin Pipelines"
         ],
         [
-            "TUO_R-N-JUN1",
+            "San Joaquin Pipelines",
             "Transmission Link from Withdrawal Node 3 to SFPUC.2"
         ],
         [
@@ -2312,7 +2310,7 @@
         ],
         [
             "TUO-L-DEL2",
-            "TUO_R-N-JUN1"
+            "San Joaquin Pipelines"
         ],
         [
             "IFR bl Don Pedro Reservoir",
@@ -2340,30 +2338,14 @@
         ],
         [
             "Don Pedro Reservoir",
-            "TUOLU-L-CON1"
-        ],
-        [
-            "TUOLU-L-CON1",
-            "Don Pedro Release Req"
-        ],
-        [
-            "Don Pedro Reservoir",
             "TUOLU-L-CON2"
         ],
         [
             "TUOLU-L-CON2",
-            "Don Pedro Flood Control"
+            "Don Pedro Lake Spillway"
         ],
         [
-            "Don Pedro Release Req",
-            "TUOLU-L-CON3"
-        ],
-        [
-            "TUOLU-L-CON3",
-            "TUOLU-N-JUN2"
-        ],
-        [
-            "Don Pedro Flood Control",
+            "Don Pedro Lake Spillway",
             "TUOLU-L-CON4"
         ],
         [
@@ -2388,6 +2370,10 @@
         ],
         [
             "TUOLU-N-JUN2",
+            "Don Pedro Lake Flood Control"
+        ],
+        [
+            "Don Pedro Lake Flood Control",
             "TUOLU-L-RIV1"
         ],
         [
@@ -2443,13 +2429,31 @@
         },
         "Modesto Irrigation District/Demand Table": {
             "url": "../data/Tuolumne River/Management/BAU/Demand/Modesto Irrigation District demand cfs.csv",
-            "index_col": [0, 1],
+            "index_col": [
+                0,
+                1
+            ],
             "header": 0
         },
         "Turlock Irrigation District/Demand Table": {
             "url": "../data/Tuolumne River/Management/BAU/Demand/Turlock Irrigation District demand cfs.csv",
-            "index_col": [0, 1],
+            "index_col": [
+                0,
+                1
+            ],
             "header": 0
+        },
+        "SFPUC weekly fraction": {
+            "url": "../data/Tuolumne River/Management/BAU/Demand/SFPUC weekly fraction.csv",
+            "index_col": 0,
+            "header": 0,
+            "squeeze": true
+        },
+        "Don Pedro Lake Flood Control Curve": {
+            "url": "../data/Tuolumne River/Management/BAU/Flood Control/Don Pedro Lake Flood Control Curve mcm.csv",
+            "index_col": 0,
+            "header": 0,
+            "squeeze": true
         },
         "Preferred Storage": {
             "url": "../data/Tuolumne River/Management/BAU/Reservoirs/Preferred Storage Curves - af.csv",
@@ -2467,7 +2471,10 @@
         },
         "IFR bl Hetch Hetchy Reservoir/IFR Schedule": {
             "url": "../data/Tuolumne River/_tables/IFR_bl_Hetch_Hetchy_Reservoir_IFR_Schedule.csv",
-            "header": [0,1],
+            "header": [
+                0,
+                1
+            ],
             "index_col": 0,
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
         },
@@ -2482,6 +2489,9 @@
         "Dion R Holm Tunnel/Flow Capacity": {
             "type": "Dion_R_Holm_Tunnel_Flow_Capacity",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "Don Pedro Lake Flood Control/Requirement": {
+            "type": "Don_Pedro_Lake_Flood_Control_Requirement"
         },
         "Moccasin Aquaduct/Flow Capacity": {
             "type": "Moccasin_Aquaduct_Flow_Capacity",
@@ -2565,8 +2575,8 @@
             "values": [
                 0.0,
                 0.0,
-                -20.0,
-                -50.0,
+                -10.0,
+                -40.0,
                 -1000000.0
             ]
         },
@@ -2818,11 +2828,7 @@
             "type": "Modesto_Irrigation_District_Demand"
         },
         "SFPUC/Demand": {
-            "type": "dataframe",
-            "url": "../data/Tuolumne River/temp/SJPL mcm.csv",
-            "header": 0,
-            "index_col": 0,
-            "parse_dates": true
+            "type": "SFPUC_Demand"
         },
         "Turlock Irrigation District/Demand": {
             "type": "Turlock_Irrigation_District_Demand"
@@ -3043,17 +3049,17 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Dion R Holm PH"
         },
-        "Don Pedro Flood Control/flow": {
+        "Don Pedro Lake Spillway/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "Don Pedro Flood Control"
+            "node": "Don Pedro Lake Spillway"
         },
         "Don Pedro PH/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Don Pedro PH"
         },
-        "Don Pedro Release Req/flow": {
+        "Don Pedro Lake Flood Control/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "Don Pedro Release Req"
+            "node": "Don Pedro Lake Flood Control"
         },
         "Don Pedro Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
@@ -3091,9 +3097,9 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Lake Eleanor"
         },
-        "IFR bl Moccasin Reservoir/flow": {
+        "Moccasin Fish Hatchery/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "IFR bl Moccasin Reservoir"
+            "node": "Moccasin Fish Hatchery"
         },
         "Kirkwood PH/flow": {
             "type": "NumpyArrayNodeRecorder",
