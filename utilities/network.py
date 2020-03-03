@@ -145,6 +145,13 @@ def simplify_network(m, basin, climate, delete_gauges=False, delete_observed=Tru
         for subwat in obsolete_subwats:
             flow_param = node_lookup[subwat]['flow']
             del m['parameters'][flow_param]
+        recorder_names = list(m['recorders'])
+        for r in recorder_names:
+            recorder = m['recorders'][r]
+            node = recorder.get('node')
+            if node and node in obsolete_subwats:
+                del m['recorders'][r]
+
         for node in new_nodes:
             param_name = node['flow']
             new_param = {

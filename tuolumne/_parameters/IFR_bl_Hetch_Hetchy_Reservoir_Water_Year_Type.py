@@ -42,7 +42,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
 
             # July-Aug:
             else:
-                runoff = self.model.parameters["TUO_13 Headflow/Runoff"].dataframe
+                runoff = self.model.parameters["Hetch Hetchy Reservoir Inflow/Runoff"].dataframe
                 cumulative_runoff = runoff[oct_1:date].sum()
                 cumulative_runoff *= 810.7 / 1000  # convert mcm to taf
                 if cumulative_runoff >= criteria[0]:

@@ -6,7 +6,7 @@ from preprocessing.scripts import upper_san_joaquin as usj
 # from preprocessing.scripts import stanislaus as stn
 
 # basins = ['upper san joaquin']
-basins = ['merced']
+basins = ['tuolumne']
 
 root_dir = os.environ.get('SIERRA_DATA_PATH', '../data')
 
