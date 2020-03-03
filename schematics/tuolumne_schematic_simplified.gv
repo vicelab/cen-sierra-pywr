@@ -1,20 +1,15 @@
 // tuolumne
 digraph tuolumne {
-	"Below Dion R Holm Tunnel Diverted Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Below Hetch Hetchy Aquaduct Diverted Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Below Lake Eleanor Tunel Diverted Inflow.1" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Moccasin Aquaduct Diverted Inflow.1" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Canyon Power Tunnel" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Dion R Holm Tunnel" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Hetch Hetch Aquaduct.1" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Moccasin Aquaduct" [fillcolor=white fontcolor=black shape=oval style=filled]
-	Algerine [fillcolor=black fontcolor=white shape=oval style=filled]
+	"Hetch Hetch Aquaduct.1.1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Cherry Lake" [fillcolor=blue fontcolor=white shape=rect style=filled]
 	"Dion R Holm PH" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"Diversion bl Don Pedro Reservoir" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"Don Pedro Flood Control" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"Don Pedro PH" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"Don Pedro Reservoir" [fillcolor=blue fontcolor=white shape=rect style=filled]
 	"Eleanor-Cherry Pumping Station" [fillcolor=white fontcolor=black shape=oval style=filled]
+	Groveland [fillcolor=black fontcolor=white shape=oval style=filled]
 	"Hetch Hetchy Aquaduct Outflow" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Hetch Hetchy Reservoir" [fillcolor=blue fontcolor=white shape=rect style=filled]
 	"IFR bl Cherry Lake" [fillcolor=green fontcolor=black shape=oval style=filled]
@@ -23,13 +18,15 @@ digraph tuolumne {
 	"IFR bl Lake Eleanor" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"IFR bl Moccasin Reservoir" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"Kirkwood PH" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"La Grange Reservoir" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Lake Eleanor" [fillcolor=blue fontcolor=white shape=rect style=filled]
 	"Moccasin PH" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Moccasin Reservoir" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Modesto Irrigation District" [fillcolor=black fontcolor=white shape=oval style=filled]
 	"Priest Reservoir" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	SFPUC [fillcolor=black fontcolor=white shape=oval style=filled]
+	"TUOLU-N-JUN1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Tuolumne River Outflow" [fillcolor=black fontcolor=white shape=oval style=filled]
-	"Tuolumne Utility District" [fillcolor=black fontcolor=white shape=oval style=filled]
 	"TUO_01 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"TUO_02 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"TUO_03 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
@@ -52,72 +49,64 @@ digraph tuolumne {
 	"TUO_R-N-JUN12" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Turlock Irrigation District" [fillcolor=black fontcolor=white shape=oval style=filled]
 	"Upper Hetch Hetchy Tunnel Outflow" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
-	"Withdrawal Node 1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
-	"Withdrawal Node 2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
-	"Withdrawal Node 3" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
-	"Cherry Lake" -> "Below Dion R Holm Tunnel Diverted Inflow"
-	"Below Dion R Holm Tunnel Diverted Inflow" -> "Dion R Holm PH"
 	"Hetch Hetchy Aquaduct Outflow" -> "Below Hetch Hetchy Aquaduct Diverted Inflow"
 	"Lake Eleanor" -> "Below Lake Eleanor Tunel Diverted Inflow.1"
 	"Below Lake Eleanor Tunel Diverted Inflow.1" -> "Eleanor-Cherry Pumping Station"
-	"Priest Reservoir" -> "Below Moccasin Aquaduct Diverted Inflow.1"
-	"Hetch Hetchy Reservoir" -> "Canyon Power Tunnel"
-	"Canyon Power Tunnel" -> "Kirkwood PH"
-	"Hetch Hetch Aquaduct.1" -> "TUO_R-N-JUN12"
+	"Hetch Hetch Aquaduct.1.1" -> "TUOLU-N-JUN1"
 	"Cherry Lake" -> "IFR bl Cherry Lake"
+	"Cherry Lake" -> "Dion R Holm PH"
 	"Hetch Hetchy Reservoir" -> "IFR bl Hetch Hetchy Reservoir"
 	"Lake Eleanor" -> "IFR bl Lake Eleanor"
 	"Eleanor-Cherry Pumping Station" -> "Cherry Lake"
-	"Withdrawal Node 1" -> "Withdrawal Node 2"
-	"Diversion bl Don Pedro Reservoir" -> "Turlock Irrigation District"
+	"Hetch Hetchy Reservoir" -> "Kirkwood PH"
+	"TUOLU-N-JUN1" -> Groveland
+	"TUOLU-N-JUN1" -> "TUO_R-N-JUN12"
 	"TUO_R-N-JUN12" -> "Priest Reservoir"
 	"Kirkwood PH" -> "Hetch Hetchy Aquaduct Outflow"
-	"Withdrawal Node 3" -> "IFR bl Moccasin Reservoir"
-	"Withdrawal Node 1" -> Algerine
-	"Withdrawal Node 2" -> "Tuolumne Utility District"
+	"Moccasin Reservoir" -> "IFR bl Moccasin Reservoir"
+	"La Grange Reservoir" -> "IFR bl Don Pedro Reservoir"
+	"Don Pedro Reservoir" -> "Don Pedro Flood Control"
 	"Don Pedro Reservoir" -> "Don Pedro PH"
-	"Diversion bl Don Pedro Reservoir" -> "Modesto Irrigation District"
-	"IFR bl Don Pedro Reservoir" -> "Tuolumne River Outflow"
-	"Diversion bl Don Pedro Reservoir" -> "IFR bl Don Pedro Reservoir"
-	"Dion R Holm PH" -> "Dion R Holm Tunnel"
-	"Moccasin PH" -> "Moccasin Aquaduct"
-	"Moccasin Aquaduct" -> "Withdrawal Node 3"
+	"Moccasin PH" -> "Moccasin Reservoir"
+	"Don Pedro Flood Control" -> "La Grange Reservoir"
+	"Don Pedro PH" -> "La Grange Reservoir"
+	"Don Pedro Reservoir" -> "La Grange Reservoir"
 	"TUO_01 Headflow" -> "Don Pedro Reservoir"
-	"TUO_02 Headflow" -> "Withdrawal Node 1"
 	"TUO_09 Headflow" -> "Upper Hetch Hetchy Tunnel Outflow"
-	"IFR bl Cherry Lake" -> "Upper Hetch Hetchy Tunnel Outflow"
-	"IFR bl Lake Eleanor" -> "Upper Hetch Hetchy Tunnel Outflow"
 	"TUO_10 Headflow" -> "Cherry Lake"
 	"TUO_11 Headflow" -> "Lake Eleanor"
+	"TUO_13 Headflow" -> "Hetch Hetchy Reservoir"
+	"TUO_18 Headflow" -> "Moccasin Reservoir"
+	"Priest Reservoir" -> "Moccasin Reservoir"
+	"TUO_19 Headflow" -> "Priest Reservoir"
+	"Moccasin Reservoir" -> SFPUC
+	"Moccasin PH" -> SFPUC
+	"TUO_R-N-JUN12" -> "Moccasin PH"
+	"Priest Reservoir" -> "Moccasin PH"
+	"Below Hetch Hetchy Aquaduct Diverted Inflow" -> "Hetch Hetch Aquaduct.1.1"
+	"Kirkwood PH" -> "Hetch Hetch Aquaduct.1.1"
 	"TUO_12 Headflow" -> "Hetch Hetchy Aquaduct Outflow"
 	"IFR bl Hetch Hetchy Reservoir" -> "Hetch Hetchy Aquaduct Outflow"
-	"TUO_13 Headflow" -> "Hetch Hetchy Reservoir"
-	"TUO_18 Headflow" -> "Withdrawal Node 3"
-	"Priest Reservoir" -> "Withdrawal Node 3"
-	"TUO_19 Headflow" -> "Priest Reservoir"
-	"Withdrawal Node 3" -> SFPUC
-	"Moccasin PH" -> SFPUC
-	"Below Moccasin Aquaduct Diverted Inflow.1" -> "Moccasin PH"
-	"TUO_R-N-JUN12" -> "Moccasin PH"
-	"Don Pedro PH" -> "Diversion bl Don Pedro Reservoir"
-	"Don Pedro Reservoir" -> "Diversion bl Don Pedro Reservoir"
-	"Below Hetch Hetchy Aquaduct Diverted Inflow" -> "Hetch Hetch Aquaduct.1"
-	"Kirkwood PH" -> "Hetch Hetch Aquaduct.1"
+	"IFR bl Cherry Lake" -> "Upper Hetch Hetchy Tunnel Outflow"
+	"IFR bl Lake Eleanor" -> "Upper Hetch Hetchy Tunnel Outflow"
 	"Upper Hetch Hetchy Tunnel Outflow" -> "Hetch Hetchy Aquaduct Outflow"
-	"Withdrawal Node 2" -> "Don Pedro Reservoir"
+	"La Grange Reservoir" -> "Modesto Irrigation District"
+	"La Grange Reservoir" -> "Turlock Irrigation District"
+	"IFR bl Don Pedro Reservoir" -> "Tuolumne River Outflow"
+	"TUO_02 Headflow" -> "Don Pedro Reservoir"
 	"TUO_03 Headflow" -> "Don Pedro Reservoir"
-	"Dion R Holm Tunnel" -> "Don Pedro Reservoir"
+	"TUO_16 Headflow" -> "Don Pedro Reservoir"
+	"Moccasin Reservoir" -> "Don Pedro Reservoir"
+	"IFR bl Moccasin Reservoir" -> "Don Pedro Reservoir"
 	"Hetch Hetchy Aquaduct Outflow" -> "Don Pedro Reservoir"
-	"TUO_04 Headflow" -> "Don Pedro Reservoir"
+	"Dion R Holm PH" -> "Don Pedro Reservoir"
+	"TUO_08 Headflow" -> "Don Pedro Reservoir"
+	"Upper Hetch Hetchy Tunnel Outflow" -> "Don Pedro Reservoir"
+	"TUO_15 Headflow" -> "Don Pedro Reservoir"
+	"TUO_14 Headflow" -> "Don Pedro Reservoir"
 	"TUO_05 Headflow" -> "Don Pedro Reservoir"
 	"TUO_06 Headflow" -> "Don Pedro Reservoir"
 	"TUO_07 Headflow" -> "Don Pedro Reservoir"
-	"TUO_08 Headflow" -> "Don Pedro Reservoir"
-	"Upper Hetch Hetchy Tunnel Outflow" -> "Don Pedro Reservoir"
-	"TUO_14 Headflow" -> "Don Pedro Reservoir"
-	"TUO_15 Headflow" -> "Don Pedro Reservoir"
-	"TUO_16 Headflow" -> "Don Pedro Reservoir"
 	"TUO_17 Headflow" -> "Don Pedro Reservoir"
-	"Withdrawal Node 3" -> "Don Pedro Reservoir"
-	"IFR bl Moccasin Reservoir" -> "Don Pedro Reservoir"
+	"TUO_04 Headflow" -> "Don Pedro Reservoir"
 }

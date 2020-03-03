@@ -2,49 +2,17 @@ import os
 import sys
 import json
 from pywr.core import Model
-from pywr.timestepper import Timestepper
 from importlib import import_module
 from tqdm import tqdm
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from common.tests import test_planning_model, get_planning_dataframe
-import numpy as np
 import pandas as pd
 
-from utilities import simplify_network, prepare_planning_model
+from utilities import simplify_network, prepare_planning_model, create_schematic
 
 SECONDS_IN_DAY = 3600 * 24
 
-
-class PlanningTimestepper(Timestepper):
-
-    def setup(self):
-        periods = self.datetime_index
-
-        # Compute length of each period
-        deltas = periods.to_timestamp(how='e') - periods.to_timestamp(how='s')
-        # Round to nearest second
-        deltas = np.round(deltas.total_seconds())
-        # Convert to days
-        deltas = deltas / SECONDS_IN_DAY
-        self._periods = periods
-        self._deltas = deltas
-        self.reset()
-        self._dirty = False
-
-
-# PlanningTimestepper.register()
-
-PARAMETERS_TO_EXPAND = {
-    'stanislaus': [
-        'New Melones Apr-Jul Runoff',
-        'New Melones WYT'
-    ],
-    'common': [
-        'San Joaquin Valley WYT',
-        'San Joaquin Valley WYI'
-    ]
-}
 
 def run_model(basin, climate, price_years, network_key=None, start=None, end=None,
               run_name="default", include_planning=False,
@@ -190,11 +158,10 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
         simplified_filename = model_filename_base + '_simplified.json'
         simplified_model_path = os.path.join(temp_dir, simplified_filename)
 
-        m = simplify_network(m, delete_gauges=True, delete_observed=True, delete_scenarios=debug)
-        # with open(simplified_model_path, 'w') as f:
-        #     json.dump(f, m, indent=4)
+        m = simplify_network(m, basin, climate, delete_gauges=True, delete_observed=True, delete_scenarios=debug)
         with open(simplified_model_path, 'w') as f:
             f.write(json.dumps(m, indent=4))
+        create_schematic(basin, 'simplified')
 
         model_path = simplified_model_path
 
@@ -211,10 +178,8 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
         monthly_filename = model_filename_base + '_monthly.json'
         planning_model_path = os.path.join(temp_dir, monthly_filename)
 
-        parameters_to_expand = PARAMETERS_TO_EXPAND.get(basin, []) + PARAMETERS_TO_EXPAND.get('common', [])
-
-        prepare_planning_model(m, planning_model_path, steps=months, parameters_to_expand=parameters_to_expand,
-                               debug=save_results)
+        prepare_planning_model(m, basin, climate, planning_model_path, steps=months, debug=save_results, remove_rim_dams=True)
+        create_schematic(basin, 'monthly')
 
         # create pywr model
         try:
@@ -225,7 +190,7 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
             raise
 
         # set model mode to planning
-        setattr(planning_model, 'mode', 'planning')
+        planning_model.mode = 'planning'
 
         # set time steps
         start = planning_model.timestepper.start
@@ -294,8 +259,10 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
                     else:
                         # TODO: fix the following to get from correct scenario
                         initial_volume = m.nodes[res].volume[-1]
-                    m.planning.nodes[res + ' [input]'].min_flow = initial_volume
-                    m.planning.nodes[res + ' [input]'].max_flow = initial_volume
+                    initial_storage_node = res + ' [input]'
+                    if initial_storage_node in m.planning.nodes:
+                        m.planning.nodes[initial_storage_node].min_flow = initial_volume
+                        m.planning.nodes[initial_storage_node].max_flow = initial_volume
 
                     # Other misc. updates from scheduling to daily model
 

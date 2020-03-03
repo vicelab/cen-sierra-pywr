@@ -21,10 +21,8 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
         # We should be able to add a "WYT" parameter as a general variable and save it to parameters in the JSON file.
         # It could be pre-processed, as currently, or calculated on-the-fly
         csv_kwargs = dict(index_col=0, header=0, parse_dates=False, squeeze=True)
-        self.fish_data = self.read_csv('Management/BAU/Demand/fishPulse_Merced_cfs.csv',
-                                       **csv_kwargs) / 35.3147  # Converting to cms
-        self.div_data = self.read_csv('Management/BAU/Demand/otherDiversions_Merced_cfs.csv',
-                                      **csv_kwargs) / 35.3147  # Converting to cms
+        self.fish_data = self.model.tables["Fish Pulse"] / 35.3147  # Converting to cms
+        self.div_data = self.model.tables["Other Diversions"] / 35.3147  # Converting to cms
 
         swrcb_levels_count = self.model.scenarios['SWRCB 40'].size
         if swrcb_levels_count == 1:
