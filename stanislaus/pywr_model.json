@@ -1160,9 +1160,9 @@
         {
             "name": "Lake Tulloch",
             "type": "Reservoir",
-            "initial_volume": 81.02,
-            "max_volume": 81.02,
-            "min_volume": "Lake Tulloch/Min Volume",
+            "initial_volume": 82.64,
+            "max_volume": 82.64,
+            "min_volume": 67.8,
             "cost": "Lake Tulloch/Storage Value",
             "comment": "{\"resource_class\": \"node\"}",
             "gauge": "USGS 11299995 TULLOCH RES NR KNIGHTS FERRY CA"
@@ -1285,10 +1285,10 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "New Melones Flood Control",
+            "name": "New Melones Lake Flood Control",
             "type": "InstreamFlowRequirement",
             "max_flow": [
-                "New Melones Flood Control/Requirement"
+                "New Melones Lake Flood Control/Requirement"
             ],
             "cost": [
                 -50,
@@ -1332,17 +1332,7 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "STAN-L-CON 8",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
             "name": "STAN-L-CON 9",
-            "type": "Link",
-            "comment": "{\"resource_class\": \"node\"}"
-        },
-        {
-            "name": "STAN-L-CON 10",
             "type": "Link",
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -2072,10 +2062,6 @@
         ],
         [
             "Goodwin Reservoir",
-            "Lake Tulloch Flood Control"
-        ],
-        [
-            "Lake Tulloch Flood Control",
             "IFR bl Goodwin Reservoir"
         ],
         [
@@ -2128,10 +2114,10 @@
         ],
         [
             "STAN-L-CON 4",
-            "New Melones Flood Control"
+            "New Melones Lake Flood Control"
         ],
         [
-            "New Melones Flood Control",
+            "New Melones Lake Flood Control",
             "STANI-N-JUN4"
         ],
         [
@@ -2172,22 +2158,14 @@
         ],
         [
             "STAN-L-CON 7",
+            "Lake Tulloch Flood Control"
+        ],
+        [
+            "Lake Tulloch Flood Control",
             "STAN-L-CON 9"
         ],
         [
             "STAN-L-CON 9",
-            "Goodwin Reservoir"
-        ],
-        [
-            "Lake Tulloch",
-            "STAN-L-CON 8"
-        ],
-        [
-            "STAN-L-CON 8",
-            "STAN-L-CON 10"
-        ],
-        [
-            "STAN-L-CON 10",
             "Goodwin Reservoir"
         ],
         [
@@ -2912,8 +2890,8 @@
             "type": "constant",
             "value": 0.24
         },
-        "New Melones Flood Control/Requirement": {
-            "type": "New_Melones_Flood_Control_Requirement"
+        "New Melones Lake Flood Control/Requirement": {
+            "type": "New_Melones_Lake_Flood_Control_Requirement"
         },
         "New Melones Lake/Observed Storage": {
             "type": "dataframe",
@@ -3372,21 +3350,8 @@
             "index_col": "Date",
             "parse_dates": true
         },
-        "Lake Tulloch Flood Control/Violation Cost": {
-            "type": "constant",
-            "value": -50.0
-        },
         "Lake Tulloch Flood Control/Requirement": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Lake Tulloch",
-            "control_curves": [
-                "Lake Tulloch/Storage Demand"
-            ],
-            "values": [
-                0.6,
-                0,
-                0
-            ]
+            "type": "Lake_Tulloch_Flood_Control_Requirement"
         },
         "Lake Tulloch/Observed Storage": {
             "type": "dataframe",
@@ -3397,13 +3362,10 @@
             "type": "Lake_Tulloch_Min_Volume"
         },
         "Lake Tulloch/Storage Value": {
-            "type": "Lake_Tulloch_Storage_Value"
-        },
-        "Lake Tulloch/Storage Demand": {
-            "type": "Lake_Tulloch_Storage_Demand"
-        },
-        "New Melones Release Requirement/Min Flow": {
-            "type": "New_Melones_Release_Requirement_Min_Requirement"
+            "type": "constant",
+            "table": "Storage Costs",
+            "index": "Lake Tulloch",
+            "column": "Cost"
         },
         "Upper Collierville Tunnel 1/Capacity": {
             "type": "Upper_Collierville_Tunnel_1_Capacity"
@@ -3813,9 +3775,9 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "New Melones PH"
         },
-        "New Melones Flood Control/flow": {
+        "New Melones Lake Flood Control/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "New Melones Flood Control"
+            "node": "New Melones Lake Flood Control"
         },
         "New Spicer Meadow PH/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -4032,10 +3994,6 @@
         "Upper Collierville Tunnel 1/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Upper Collierville Tunnel 1"
-        },
-        "Lake Tulloch/storage demand": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "Lake Tulloch/Storage Demand"
         }
     }
 }

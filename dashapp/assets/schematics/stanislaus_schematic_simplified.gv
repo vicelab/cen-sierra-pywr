@@ -76,7 +76,7 @@ digraph stanislaus {
 	"UPA Tunnel Tap Outflow" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Upper Collierville Tunnel Outflow" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Upper Collierville Tunnel 1" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"New Melones Flood Control" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"New Melones Lake Flood Control" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"New Melones Spillway" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"STN_below_Melons.2.1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"STN_below_Melons.2.2" [fillcolor=white fontcolor=black shape=oval style=filled]
@@ -108,8 +108,7 @@ digraph stanislaus {
 	"Lyons Reservoir" -> "IFR bl Lyons Res"
 	"Goodwin Reservoir" -> "Oakdale Irrigation District"
 	"Goodwin Reservoir" -> "South San Joaquin Irrigation District"
-	"Goodwin Reservoir" -> "Lake Tulloch Flood Control"
-	"Lake Tulloch Flood Control" -> "IFR bl Goodwin Reservoir"
+	"Goodwin Reservoir" -> "IFR bl Goodwin Reservoir"
 	"New Melones Lake" -> "New Melones PH"
 	"STN_01 Inflow" -> "New Melones Lake"
 	"Upper Collierville Tunnel Outflow" -> "Upper Collierville Tunnel 1"
@@ -167,9 +166,10 @@ digraph stanislaus {
 	"Spring Gap PH" -> "Stanislaus Tunnel Outflow"
 	"Lyons Reservoir" -> "Phoenix PH"
 	"New Melones Lake" -> "New Melones Spillway"
-	"New Melones PH" -> "New Melones Flood Control"
-	"New Melones Spillway" -> "New Melones Flood Control"
-	"Lake Tulloch" -> "Goodwin Reservoir"
+	"New Melones PH" -> "New Melones Lake Flood Control"
+	"New Melones Spillway" -> "New Melones Lake Flood Control"
+	"Lake Tulloch" -> "Lake Tulloch Flood Control"
+	"Lake Tulloch Flood Control" -> "Goodwin Reservoir"
 	"STN_below_Melons.2.2" -> "Lake Tulloch"
-	"New Melones Flood Control" -> "STN_below_Melons.2.2"
+	"New Melones Lake Flood Control" -> "STN_below_Melons.2.2"
 }

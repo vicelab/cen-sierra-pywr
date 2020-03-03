@@ -7,6 +7,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_leaflet as leaflet
 from dash.dependencies import Input, Output, State
+from datetime import datetime
 
 import json
 import pandas as pd
@@ -55,6 +56,7 @@ CONTENT_STYLE = {
     # "marginLeft": "5rem",
     # "margin-right": "2rem",
     "padding": "2rem 1rem",
+    "overflow-y": "auto"
 }
 
 SIDEBAR_TABS = [
@@ -535,15 +537,16 @@ app.layout = html.Div(
     Input('url', 'pathname')
 ])
 def update_css(pathname):
-    style = dict(
-        display='inline-flex',
-        padding='15px',
-        position='fixed',
-        left='10rem',
-        right='0',
-        top=55,
-        bottom=0
-    )
+    style = {
+        "display": 'inline-flex',
+        "padding": '15px',
+        "position": 'fixed',
+        "left": '10rem',
+        "right": '0',
+        "top": 55,
+        "bottom": 0,
+        "overflow-y": "auto"
+    }
     if '/development' in pathname or '/scenarios' in pathname:
         style.update(
             right='255px'
@@ -696,7 +699,7 @@ def render_schematics_content():
 def update_schematic(basin_code):
     basin_name = BASINS[basin_code].replace(' ', '_').lower()
     return [html.Embed(
-        src=app.get_asset_url('schematics/{}_schematic_simplified.gv.pdf'.format(basin_name)),
+        src=app.get_asset_url('schematics/{}_schematic_simplified.gv.pdf?time={}'.format(basin_name, datetime.now())),
         type='application/pdf',
         className='schematic-pdf',
         width="100%",

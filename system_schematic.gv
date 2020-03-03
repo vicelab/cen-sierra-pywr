@@ -171,7 +171,7 @@ digraph {
 	"USGS_11297000_PHILADELPHIA CN [node]" [fillcolor=white fontcolor=black shape=star style=filled]
 	"USGS_11297500_TUOLUMNE CN [node]" [fillcolor=white fontcolor=black shape=star style=filled]
 	"Release from New Melones [node]" [fillcolor=white fontcolor=black shape=star style=filled]
-	"New Melones Flood Control [node]" [fillcolor=white fontcolor=black shape=star style=filled]
+	"New Melones Lake Flood Control [node]" [fillcolor=white fontcolor=black shape=star style=filled]
 	"STAN-L-CON 1" [fillcolor=white fontcolor=black shape=star style=filled]
 	"STAN-L-CON 2" [fillcolor=white fontcolor=black shape=star style=filled]
 	"STAN-L-CON 3" [fillcolor=white fontcolor=black shape=star style=filled]
