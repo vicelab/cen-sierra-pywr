@@ -4,7 +4,7 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class New_Melones_Flood_Control_Requirement(WaterLPParameter):
+class New_Melones_Lake_Flood_Control_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
@@ -53,9 +53,11 @@ class New_Melones_Flood_Control_Requirement(WaterLPParameter):
         flood_control_curve_mcm = flood_curves.at[month_day, 'flood control space']
         conditional_curve_mcm = flood_curves.at[month_day, 'conditional space']
 
-        release_mcm = 0.0
-
         ag_demand_mcm = SSJID_df[start_tuple] + OID_df[start_tuple]
+        IFR_below_Goodwin_Dam_mcm = self.get("IFR bl Goodwin Reservoir/Requirement", timestep, scenario_index)
+        # release_mcm = IFR_below_Goodwin_Dam_mcm + ag_demand_mcm
+
+        release_mcm = 0.0
 
         if prev_storage_mcm >= flood_control_curve_mcm:
             # 1. flood control operations we are in the flood control space
@@ -95,12 +97,21 @@ class New_Melones_Flood_Control_Requirement(WaterLPParameter):
         # This is our overall target release, without accounting for max downstream releases
         release_mcm = float(max(release_mcm, 0))
 
+        # Release a bit more to fill Lake Tulloch during the refill period
+        refill_release_mcm = 0.0
+        if (3, 21) <= start_tuple <= (5, 30):  # refill period
+            # Subtract 1 TAF as buffer based on observation
+            TUL_fc = self.model.tables["Lake Tulloch Flood Control"].at[month_day] - 1 * 1.2335
+            TUL_prev_mcm = self.model.nodes["Lake Tulloch"].volume[scenario_index.global_id]
+            if TUL_prev_mcm < TUL_fc:
+                refill_release_mcm += TUL_fc - TUL_prev_mcm
+
         # ...however, this should be reduced as needed to limit flow Orange Blossom Bridge to <= 8000 cfs
         # 8000 cfs =
         orange_blossom_bridge_max_mcm = 8000 / 35.31 * 0.0864
-        max_release_mcm = ag_demand_mcm + orange_blossom_bridge_max_mcm
-
-        release_mcm = min(release_mcm, max_release_mcm)
+        non_flood_demand = ag_demand_mcm + IFR_below_Goodwin_Dam_mcm + refill_release_mcm
+        max_release_mcm = ag_demand_mcm + refill_release_mcm + orange_blossom_bridge_max_mcm
+        release_mcm = min(max(release_mcm, non_flood_demand), max_release_mcm)
 
         # Let's also release extra if the reservoir filled and release slowly to a target storage of 1970 TAF (2430 MCM)
         # by Oct 31. This is based on observation, though need to confirm
@@ -117,7 +128,7 @@ class New_Melones_Flood_Control_Requirement(WaterLPParameter):
         if prev_storage_mcm < nov1_target:
             self.should_drawdown = False
 
-        # # Check if New Melones filled
+        # Check if New Melones filled
         if drawdown_period and prev_storage_mcm > nov1_target and not self.should_drawdown:
             day_before_yesterday = self.datetime + timedelta(days=-2)
             prev_prev_storage_mcm = self.model.recorders["New Melones Lake/storage"]\
@@ -135,7 +146,7 @@ class New_Melones_Flood_Control_Requirement(WaterLPParameter):
             release_mcm = max(release_mcm, drawdown_release_mcm)
 
             # Let's also limit ramping (for both instream flow and reservoir management reasons)
-            prev_release_mcm = self.model.nodes["New Melones Flood Control"].prev_flow[scenario_index.global_id]
+            prev_release_mcm = self.model.nodes["New Melones Lake Flood Control"].prev_flow[scenario_index.global_id]
             if release_mcm > prev_release_mcm:
                 release_mcm = min(release_mcm, prev_release_mcm * 1.1)
             elif release_mcm < prev_release_mcm:
@@ -159,5 +170,5 @@ class New_Melones_Flood_Control_Requirement(WaterLPParameter):
         return cls(model, **data)
 
 
-New_Melones_Flood_Control_Requirement.register()
-print(" [*] New_Melones_Flood_Control_Requirement successfully registered")
+New_Melones_Lake_Flood_Control_Requirement.register()
+print(" [*] New_Melones_Lake_Flood_Control_Requirement successfully registered")
