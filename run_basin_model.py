@@ -319,17 +319,20 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
 
     # results.columns = results.columns.droplevel(1)
     columns = {}
-    nodes_of_type = {}
+    # nodes_of_type = {}
     for c in results.columns:
         res_name, attr = c[0].split('/')
-        node = m.nodes[res_name]
-        _type = type(node).__name__
+        if res_name in m.nodes:
+            node = m.nodes[res_name]
+            _type = type(node).__name__
+        else:
+            _type = 'Other'
         key = (_type, attr)
         if key in columns:
             columns[key].append(c)
         else:
             columns[key] = [c]
-        nodes_of_type[_type] = nodes_of_type.get(_type, []) + [node]
+        # nodes_of_type[_type] = nodes_of_type.get(_type, []) + [node]
     for (_type, attr), cols in columns.items():
         if attr == 'elevation':
             unit = 'm'

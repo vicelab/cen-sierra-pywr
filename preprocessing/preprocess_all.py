@@ -37,7 +37,6 @@ for basin, scenario in basin_scenarios:
         aggregate_subwatersheds(root_dir, basin, scenario)
         print("Creating forecasted hydrology...")
         create_forecasted_hydrology(root_dir, basin, scenario, runoff_dir='runoff_aggregated')
-        break
         create_full_natural_flow(root_dir, basin, scenario)
 
     if "post" in tasks:

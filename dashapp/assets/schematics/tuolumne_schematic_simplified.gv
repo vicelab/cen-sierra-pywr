@@ -1,6 +1,6 @@
 // tuolumne
 digraph tuolumne {
-	"Don Pedro Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"TUO_01 Inflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Upper Hetch Hetchy Tunnel Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Cherry Lake Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Lake Eleanor Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
@@ -9,7 +9,6 @@ digraph tuolumne {
 	"Priest Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Hetch Hetchy Aquaduct Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Below Hetch Hetchy Aquaduct Diverted Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Lake Eleanor Tunel Diverted Inflow.1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Don Pedro Lake Flood Control" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Hetch Hetch Aquaduct.1.1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Cherry Lake" [fillcolor=blue fontcolor=white shape=rect style=filled]
@@ -36,18 +35,19 @@ digraph tuolumne {
 	SFPUC [fillcolor=black fontcolor=white shape=oval style=filled]
 	"TUOLU-N-JUN1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Tuolumne River Outflow" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"TUO_01 Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"TUO_R-N-JUN12" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Turlock Irrigation District" [fillcolor=black fontcolor=white shape=oval style=filled]
 	"Upper Hetch Hetchy Tunnel Outflow" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Hetch Hetchy Aquaduct Outflow" -> "Below Hetch Hetchy Aquaduct Diverted Inflow"
-	"Lake Eleanor" -> "Below Lake Eleanor Tunel Diverted Inflow.1"
-	"Below Lake Eleanor Tunel Diverted Inflow.1" -> "Eleanor-Cherry Pumping Station"
 	"Hetch Hetch Aquaduct.1.1" -> "TUOLU-N-JUN1"
 	"Cherry Lake" -> "IFR bl Cherry Lake"
 	"Cherry Lake" -> "Dion R Holm PH"
 	"Hetch Hetchy Reservoir" -> "IFR bl Hetch Hetchy Reservoir"
 	"Lake Eleanor" -> "IFR bl Lake Eleanor"
+	"Lake Eleanor" -> "Eleanor-Cherry Pumping Station"
 	"Eleanor-Cherry Pumping Station" -> "Cherry Lake"
+	"TUO_01 Inflow Inflow" -> "TUO_01 Inflow"
 	"Hetch Hetchy Reservoir" -> "Kirkwood PH"
 	"TUOLU-N-JUN1" -> Groveland
 	"TUOLU-N-JUN1" -> "TUO_R-N-JUN12"
@@ -58,10 +58,10 @@ digraph tuolumne {
 	"Don Pedro Reservoir" -> "Don Pedro Lake Spillway"
 	"Don Pedro Reservoir" -> "Don Pedro PH"
 	"Don Pedro Lake Flood Control" -> "La Grange Reservoir"
+	"TUO_01 Inflow" -> "Don Pedro Reservoir"
 	"Moccasin PH" -> "Moccasin Reservoir"
 	"Don Pedro Lake Spillway" -> "Don Pedro Lake Flood Control"
 	"Don Pedro PH" -> "Don Pedro Lake Flood Control"
-	"Don Pedro Reservoir Inflow" -> "Don Pedro Reservoir"
 	"Upper Hetch Hetchy Tunnel Outflow Inflow" -> "Upper Hetch Hetchy Tunnel Outflow"
 	"Cherry Lake Inflow" -> "Cherry Lake"
 	"Lake Eleanor Inflow" -> "Lake Eleanor"
@@ -83,9 +83,9 @@ digraph tuolumne {
 	"La Grange Reservoir" -> "Modesto Irrigation District"
 	"La Grange Reservoir" -> "Turlock Irrigation District"
 	"IFR bl Don Pedro Reservoir" -> "Tuolumne River Outflow"
-	"Moccasin Reservoir" -> "Don Pedro Reservoir"
-	"Moccasin Fish Hatchery" -> "Don Pedro Reservoir"
-	"Hetch Hetchy Aquaduct Outflow" -> "Don Pedro Reservoir"
-	"Dion R Holm PH" -> "Don Pedro Reservoir"
-	"Upper Hetch Hetchy Tunnel Outflow" -> "Don Pedro Reservoir"
+	"Moccasin Reservoir" -> "TUO_01 Inflow"
+	"Moccasin Fish Hatchery" -> "TUO_01 Inflow"
+	"Hetch Hetchy Aquaduct Outflow" -> "TUO_01 Inflow"
+	"Dion R Holm PH" -> "TUO_01 Inflow"
+	"Upper Hetch Hetchy Tunnel Outflow" -> "TUO_01 Inflow"
 }

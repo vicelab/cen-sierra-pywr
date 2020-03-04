@@ -118,8 +118,7 @@
         {
             "name": "Below Lake Eleanor Tunel Diverted Inflow.1",
             "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 1.761765116053646
+            "comment": "{\"resource_class\": \"link\"}"
         },
         {
             "name": "Below Lake Eleanor Tunel Diverted Inflow.2",
@@ -496,7 +495,7 @@
                 null
             ],
             "cost": [
-                -10,
+                -25,
                 1
             ],
             "comment": "{\"resource_class\": \"link\"}"
@@ -504,8 +503,7 @@
         {
             "name": "Dion R Holm Tunnel",
             "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": "Dion R Holm Tunnel/Flow Capacity"
+            "comment": "{\"resource_class\": \"link\"}"
         },
         {
             "name": "Eleanor Ck",
@@ -730,11 +728,14 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 640.1,
-            "turbine_capacity": 2.3242248284338327,
+            "turbine_capacity": 2.447,
             "cost": [
+                -100,
                 -1
             ],
-            "max_flow": []
+            "max_flow": [
+                "Dion R Holm PH/Demand"
+            ]
         },
         {
             "name": "Dion R Holm Tunnel Inflow",
@@ -1037,7 +1038,7 @@
         {
             "name": "TUO_01 Inflow",
             "type": "River",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\", \"keep\": true}"
         },
         {
             "name": "TUO_02 Headflow",
@@ -2422,6 +2423,13 @@
         ]
     ],
     "tables": {
+        "Full Natural Flow": {
+            "url": "../data/Tuolumne River/Scenarios/preprocessed/Livneh/full_natural_flow_daily_mcm.csv",
+            "index_col": 0,
+            "parse_dates": true,
+            "header": 0,
+            "squeeze": true
+        },
         "San Joaquin Valley Index": {
             "url": "../data/common/Scenarios/Livneh/SJVI.csv",
             "index_col": 0,
@@ -2486,32 +2494,22 @@
         }
     },
     "parameters": {
-        "Dion R Holm Tunnel/Flow Capacity": {
-            "type": "Dion_R_Holm_Tunnel_Flow_Capacity",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        "Dion R Holm PH/Demand": {
+            "type": "Dion_R_Holm_PH_Demand"
         },
         "Don Pedro Lake Flood Control/Requirement": {
             "type": "Don_Pedro_Lake_Flood_Control_Requirement"
+        },
+        "Don Pedro Water Bank": {
+            "type": "Don_Pedro_Water_Bank"
         },
         "Moccasin Aquaduct/Flow Capacity": {
             "type": "Moccasin_Aquaduct_Flow_Capacity",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Cherry Lake/Cost": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Cherry Lake",
-            "control_curves": [
-                "Cherry Lake/Rule Curve",
-                0.5,
-                0.1
-            ],
-            "values": [
-                0.0,
-                0.0,
-                -20.0,
-                -50.0,
-                -1000000.0
-            ]
+            "type": "constant",
+            "value": -50
         },
         "Cherry Lake/Rule Curve": {
             "type": "Preferred_Storage"
@@ -2564,21 +2562,12 @@
             "kind": "cubic",
             "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
         },
+        "Districts Entitlements": {
+            "type": "Districts_Entitlements"
+        },
         "Don Pedro Reservoir/Cost": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Don Pedro Reservoir",
-            "control_curves": [
-                "Don Pedro Reservoir/Rule Curve",
-                0.5,
-                0.1
-            ],
-            "values": [
-                0.0,
-                0.0,
-                -10.0,
-                -40.0,
-                -1000000.0
-            ]
+            "type": "constant",
+            "value": -10
         },
         "Don Pedro Reservoir/Rule Curve": {
             "type": "Preferred_Storage"
@@ -2658,20 +2647,8 @@
             "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
         },
         "Hetch Hetchy Reservoir/Cost": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Hetch Hetchy Reservoir",
-            "control_curves": [
-                "Hetch Hetchy Reservoir/Rule Curve",
-                0.5,
-                0.1
-            ],
-            "values": [
-                0.0,
-                0.0,
-                -20.0,
-                -50.0,
-                -1000000.0
-            ]
+            "type": "constant",
+            "value": -50
         },
         "Hetch Hetchy Reservoir/Precipitation": {
             "type": "dataframe",
@@ -2762,20 +2739,8 @@
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Lake Eleanor/Cost": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Lake Eleanor",
-            "control_curves": [
-                "Lake Eleanor/Rule Curve",
-                0.5,
-                0.1
-            ],
-            "values": [
-                0.0,
-                0.0,
-                -20.0,
-                -50.0,
-                -1000000.0
-            ]
+            "type": "constant",
+            "value": -55
         },
         "Lake Eleanor/Rule Curve": {
             "type": "Preferred_Storage"
@@ -3038,12 +3003,33 @@
         "San Joaquin Valley WYT": {
             "type": "San_Joaquin_Valley_WYT",
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
+        },
+        "Water Bank Preferred Storage AF": {
+            "type": "monthlyprofile",
+            "values": [
+                570000,
+                570000,
+                570000,
+                570000,
+                570000,
+                570000,
+                510000,
+                510000,
+                510000,
+                510000,
+                510000,
+                510000
+            ]
         }
     },
     "recorders": {
         "Cherry Lake/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Cherry Lake"
+        },
+        "Districts Entitlements/flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Districts Entitlements"
         },
         "Dion R Holm PH/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -3064,6 +3050,10 @@
         "Don Pedro Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Don Pedro Reservoir"
+        },
+        "Don Pedro Water Bank/storage": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Don Pedro Water Bank"
         },
         "Gauge Dion R Holm PH/flow": {
             "type": "NumpyArrayNodeRecorder",

@@ -9,7 +9,7 @@ class SFPUC_Demand(WaterLPParameter):
     def _value(self, timestep, scenario_index):
 
         # annual_demand_mcm = 15913 * 0.0864 / 4.5
-        annual_demand_mcm = 205 * 3.57 / 1000 * 1.2335 * 365.24
+        annual_demand_mcm = 265 * 3.57 / 1000 * 1.2335 * 365.24
 
         week = min(timestep.datetime.week, 52)
         daily_fraction = self.model.tables["SFPUC weekly fraction"][week] / 7
