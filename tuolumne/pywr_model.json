@@ -784,7 +784,8 @@
             "name": "Eleanor-Cherry Pumping Station",
             "type": "Link",
             "comment": "{\"resource_class\": \"node\"}",
-            "max_flow": 2.446898890015973
+            "max_flow": "Eleanor-Cherry Pumping Station/Requirement",
+            "cost": -500
         },
         {
             "name": "Gauge Dion R Holm PH",
@@ -883,7 +884,7 @@
             "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
             "initial_volume": 18.13,
-            "max_volume": 32.2,
+            "max_volume": 33.92,
             "min_volume": 0,
             "level": "Lake Eleanor/Volume Elevation Curve",
             "cost": "Lake Eleanor/Cost",
@@ -2471,6 +2472,12 @@
             ],
             "header": 0
         },
+        "Lake Eleanor Pumping Thresholds": {
+            "url": "../data/Tuolumne River/Lake Eleanor Pumping Threshold AF.csv",
+            "index_col": 0,
+            "header": 0,
+            "squeeze": true
+        },
         "IFR bl Don Pedro Reservoir/IFR Schedule": {
             "url": "../data/Tuolumne River/_tables/IFR_bl_Don_Pedro_Reservoir_IFR_Schedule.csv",
             "header": 0,
@@ -2502,6 +2509,9 @@
         },
         "Don Pedro Water Bank": {
             "type": "Don_Pedro_Water_Bank"
+        },
+        "Eleanor-Cherry Pumping Station/Requirement": {
+            "type": "Eleanor_Cherry_Pumping_Station_Requirement"
         },
         "Moccasin Aquaduct/Flow Capacity": {
             "type": "Moccasin_Aquaduct_Flow_Capacity",
@@ -2763,7 +2773,8 @@
                 16.6,
                 21.0,
                 26.5,
-                32.2
+                32.2,
+                34.0
             ],
             "values": [
                 1404.5,
@@ -2780,7 +2791,8 @@
                 1416.1,
                 1417.3,
                 1418.8,
-                1420.4
+                1420.4,
+                1420.5
             ],
             "kind": "cubic",
             "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
