@@ -9,10 +9,12 @@ class Eleanor_Cherry_Pumping_Station_Requirement(WaterLPParameter):
         super().setup()
         num_scenarios = len(self.model.scenarios.combinations)
         self.can_pump = np.empty([num_scenarios], np.bool)
+        self.prev_pumping = np.zeros([num_scenarios], np.bool)
 
     def _value(self, timestep, scenario_index):
 
         sid = scenario_index.global_id
+
         EL = self.model.nodes["Lake Eleanor"]
 
         # Turn pumping off Jan 1
@@ -28,7 +30,14 @@ class Eleanor_Cherry_Pumping_Station_Requirement(WaterLPParameter):
         EL_CH_transfer_mcm = 0.0
 
         if not self.can_pump[sid]:
+            self.prev_pumping[sid] = 0.0
             return 0.0
+
+        # If we start pumping, keep pumping for 1 week
+        if timestep.index % 7 != 0 and self.prev_pumping[sid]:
+            return self.prev_pumping[sid]
+
+        self.prev_pumping[sid] = 0.0
 
         available_storage = EL.max_volume - EL_storage
 
@@ -62,13 +71,15 @@ class Eleanor_Cherry_Pumping_Station_Requirement(WaterLPParameter):
                         or month not in summer and EL_storage >= min_EL_nonsummer_storage:
                     gravity_AF = min(211.88 * EL_CH_head_ft ** 0.5255, 1980)
                     gravity_flow_mcm = gravity_AF / 1e3 * 1.2335
+                    self.prev_pumping[sid] = 0.0
 
             # Pumping flow (Cherry is higher than Eleanor)
             if EL_CH_head_m <= 0:
                 pumping_AF = min(max(-0.034 * (-EL_CH_head_ft) ** 2 - 5.3068 * (-EL_CH_head_ft) + 595.72, 0), 1200)
                 pumping_flow_mcm = pumping_AF / 1e3 * 1.2335
+                self.prev_pumping[sid] = pumping_flow_mcm
 
-            EL_CH_transfer_mcm = min(gravity_flow_mcm + pumping_flow_mcm, max_release)
+            EL_CH_transfer_mcm = gravity_flow_mcm + pumping_flow_mcm
 
         return EL_CH_transfer_mcm
 
