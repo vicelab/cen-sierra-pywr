@@ -37,7 +37,6 @@ class Eleanor_Cherry_Pumping_Station_Requirement(WaterLPParameter):
         forecast = self.model.parameters["Lake Eleanor Inflow/Runoff"].dataframe[start:end].sum()
 
         # Reading the preferred storage for the current time step
-        # TODO: update
         storage_target_mcm \
             = self.model.tables["Lake Eleanor Pumping Thresholds"][timestep.datetime.dayofyear] / 1000 * 1.2335
 
