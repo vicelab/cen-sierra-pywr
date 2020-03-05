@@ -13,8 +13,6 @@ import json
 import pandas as pd
 import plotly.graph_objs as go
 
-import dash_daq as daq
-
 import dashapp.constants as c
 from dashapp.constants import BASINS, ENSEMBLE_NAMES, MCM_TO_TAF
 from dashapp.components import timeseries_collection
@@ -942,7 +940,7 @@ def render_development_content(tab, basin, metric, transform, resample, aggregat
     kwargs = dict(
         basin=basin,
         resources=resources,
-        basin_scenarios=basin_scenarios,
+        basin_scenarios=SCENARIOS[basin],
         metric=metric,
         transform=transform,
         resample=resample,

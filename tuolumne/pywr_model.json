@@ -706,7 +706,7 @@
             "name": "Cherry Lake",
             "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_volume": 1.2335,
+            "min_volume": 123.35,
             "initial_volume": 145.7,
             "max_volume": 338.2,
             "level": "Cherry Lake/Volume Elevation Curve",
@@ -2459,17 +2459,14 @@
             "squeeze": true
         },
         "Don Pedro Lake Flood Control Curve": {
-            "url": "../data/Tuolumne River/Management/BAU/Flood Control/Don Pedro Lake Flood Control Curve mcm.csv",
+            "url": "../data/Tuolumne River/Management/BAU/Flood Control/Don Pedro Reservoir Flood Control Requirement mcm.csv",
             "index_col": 0,
             "header": 0,
             "squeeze": true
         },
         "Preferred Storage": {
-            "url": "../data/Tuolumne River/Management/BAU/Reservoirs/Preferred Storage Curves - af.csv",
-            "index_col": [
-                0,
-                1
-            ],
+            "url": "../data/Tuolumne River/Management/BAU/Reservoirs/Preferred Storage Curves AF.csv",
+            "index_col": 0,
             "header": 0
         },
         "Lake Eleanor Pumping Thresholds": {

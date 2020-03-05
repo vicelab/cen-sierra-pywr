@@ -6,7 +6,7 @@ class Preferred_Storage(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        preferred_storage_af = self.model.tables["Preferred Storage"].at[(timestep.month, timestep.day), self.res_name]
+        preferred_storage_af = self.model.tables["Preferred Storage"].at[timestep.datetime.dayofyear, self.res_name]
         max_storage_af = self.model.nodes[self.res_name].max_volume * 1e6 / 1233.5
         preferred_storage_percent = preferred_storage_af / max_storage_af
         return preferred_storage_percent
