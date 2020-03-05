@@ -439,14 +439,18 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
             'height': 200,
             'width': 400
         }
+    elif show_fd:
+        style = {
+            'height': 300,
+            'width': "70%"
+        }
     else:
         style = {
             'height': 300,
-            'width': 600
+            'width': "100%"
         }
 
     layout_kwargs = dict(
-        title='Timeseries' if not compact else res_name,
         xaxis={'title': AXIS_LABELS.get(resample, "Date"), 'tickangle': -45},
         yaxis={'title': ylabel, 'rangemode': 'tozero'},
         margin={'l': 60, 'b': 80, 't': 40, 'r': 10},
@@ -458,6 +462,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     if compact:
         del layout_kwargs['xaxis']['title']
         layout_kwargs['margin'].update(b=60, t=30)
+        layout_kwargs['title'] = res_name
 
     timeseries_graph = dcc.Graph(
         id='timeseries-{}'.format(res_name_id),
@@ -482,7 +487,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
             figure={
                 'data': fd_data,
                 'layout': go.Layout(
-                    title='{}-duration'.format(attr.title()),
+                    # title='{}-duration'.format(attr.title()),
                     xaxis={'title': 'Duration (%)'},
                     yaxis={'title': ylabel},
                     margin={'l': 60, 'b': 80, 't': 40, 'r': 10},
@@ -491,6 +496,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
                     yaxis_type=kwargs.get('transform', 'linear')
                 )
             },
+            style={"width": "30%"}
         )
         children.append(flow_duration_graph)
 
