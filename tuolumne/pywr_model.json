@@ -2459,7 +2459,7 @@
             "squeeze": true
         },
         "Don Pedro Lake Flood Control Curve": {
-            "url": "../data/Tuolumne River/Management/BAU/Flood Control/Don Pedro Lake Flood Control Curve mcm.csv",
+            "url": "../data/Tuolumne River/Management/BAU/Flood Control/Don Pedro Reservoir Flood Control Requirement mcm.csv",
             "index_col": 0,
             "header": 0,
             "squeeze": true
