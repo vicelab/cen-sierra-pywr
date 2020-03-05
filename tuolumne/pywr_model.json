@@ -2465,11 +2465,8 @@
             "squeeze": true
         },
         "Preferred Storage": {
-            "url": "../data/Tuolumne River/Management/BAU/Reservoirs/Preferred Storage Curves - af.csv",
-            "index_col": [
-                0,
-                1
-            ],
+            "url": "../data/Tuolumne River/Management/BAU/Reservoirs/Preferred Storage Curves AF.csv",
+            "index_col": 0,
             "header": 0
         },
         "Lake Eleanor Pumping Thresholds": {
