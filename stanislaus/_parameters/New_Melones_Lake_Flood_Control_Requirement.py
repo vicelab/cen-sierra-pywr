@@ -138,7 +138,7 @@ class New_Melones_Lake_Flood_Control_Requirement(WaterLPParameter):
 
         if drawdown_period and self.should_drawdown:
             drawdown_release_mcm = (prev_storage_mcm - nov1_target) \
-                                   / (datetime(timestep.year, 11, 1) - timestep.datetime).days * 1.2335
+                                   / (datetime(timestep.year, 11, 1) - timestep.datetime).days
             prev_inflow_mcm = self.model.nodes["STN_01 Inflow"].prev_flow[scenario_index.global_id]
 
             drawdown_release_mcm += prev_inflow_mcm
