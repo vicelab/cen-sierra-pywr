@@ -706,7 +706,7 @@
             "name": "Cherry Lake",
             "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_volume": 1.2335,
+            "min_volume": 123.35,
             "initial_volume": 145.7,
             "max_volume": 338.2,
             "level": "Cherry Lake/Volume Elevation Curve",
