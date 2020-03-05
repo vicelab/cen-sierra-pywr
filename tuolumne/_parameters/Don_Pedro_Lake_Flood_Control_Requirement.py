@@ -51,7 +51,6 @@ class Don_Pedro_Lake_Flood_Control_Requirement(WaterLPParameter):
         if (7, 1) < month_day <= (10, 7):
             end = datetime(timestep.year, 10, 7)
             drawdown_days = (end - start).days + 1
-            drawdown_inflow_mcm = FNF[start:end].sum()
             prev_release_mcm = DP_flood_control.prev_flow[scenario_index.global_id]
             oct_target_mcm = (1690 - 10) * 1.2335
             seasonal_drawdown_mcm = prev_storage_mcm - oct_target_mcm
