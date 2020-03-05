@@ -1,3 +1,4 @@
+import numpy as np
 from parameters import WaterLPParameter
 
 from utilities.converter import convert
@@ -6,12 +7,15 @@ from utilities.converter import convert
 class Dion_R_Holm_PH_Demand(WaterLPParameter):
     """"""
 
-    prev_release_cms = 0
+    def setup(self):
+        super().setup()
+        num_scenarios = len(self.model.scenarios.combinations)
+        self.prev_release_cms = np.zeros(num_scenarios, np.float)
 
     def _value(self, timestep, scenario_index):
 
-        if timestep.index % 14 != 0:
-            return self.prev_release_cms
+        if timestep.index % 7 != 0:
+            return self.prev_release_cms[scenario_index.global_id]
 
         release_cms = 0.0
 
@@ -23,12 +27,12 @@ class Dion_R_Holm_PH_Demand(WaterLPParameter):
         water_bank_storage_curve = self.model.parameters["Water Bank Preferred Storage AF"] \
                                        .value(timestep, scenario_index) / 1000 * 1.2335
 
-        # Cherry storage min threshold = 200 * 1.2335 = 246.7
-        if cherry_storage_mcm >= 246.7 and water_bank_storage < water_bank_storage_curve:
+        # Cherry storage min threshold = 100 * 1.2335 = 123.5
+        if cherry_storage_mcm >= 185 and water_bank_storage < water_bank_storage_curve:
             # release_cms = 1.924 taf/day * 1.2335 mcm/taf / 0.0864 = 27.47
-            release_cms = 27.47
+            release_cms = 27.47 / 3
 
-        self.prev_release_cms = release_cms
+        self.prev_release_cms[scenario_index.global_id] = release_cms
 
         return release_cms
 
