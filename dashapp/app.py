@@ -367,7 +367,8 @@ select_development_basin = dcc.Dropdown(
     options=[{"label": BASINS[basin], "value": basin} for basin in BASINS],
     value=None,
     style={'minWidth': '200px'},
-    placeholder="Select a basin..."
+    placeholder="Select a basin...",
+    persistence=True
 )
 
 select_climate = dcc.Dropdown(
@@ -446,7 +447,7 @@ top_bar = dbc.Form(
                 style={'minWidth': '300px'},
                 multi=True,
                 value=[],
-                placeholder='Select a resource...'
+                placeholder='Select a resource...',
             ),
             dbc.Button([
                 'Reload'
@@ -786,7 +787,7 @@ def render_map(show_labels):
                         icon=dict(
                             iconUrl=app.get_asset_url(tt_path),
                             iconSize=[size, size],
-                            iconAnchor=[size/2, size/2]
+                            iconAnchor=[size / 2, size / 2]
                         )
                     )
                 nodes.append(
@@ -873,7 +874,8 @@ def update_selected_resources(basin, tab, data):
     # scope_data = data.get(scope, {})
     if not basin:
         return []
-    tab_data = data.get((tab, basin), {})
+    key = '{}-{}'.format(basin, tab)
+    tab_data = data.get(key, {})
     return tab_data.get('resources', [])
 
 
@@ -881,19 +883,21 @@ def update_selected_resources(basin, tab, data):
     Output('session-store', 'data'),
     [
         # Input('url', 'pathname'),
+        Input('select-basin', 'value'),
         Input('development-tabs', 'active_tab'),
         Input('select-resources', 'value')
     ],
     [State('session-store', 'data')]
 )
-def store_selected_resources(tab, resources, data):
+def store_selected_resources(basin, tab, resources, data):
     data = data or {}
     # scope = pathname.split('/')[1]
     # scoped_data = data.get(scope, {})
-    tab_data = data.get(tab, {})
+    key = '{}-{}'.format(basin, tab)
+    tab_data = data.get(key, {})
     tab_data['resources'] = resources
     # scoped_data[tab] = tab_data
-    data[tab] = tab_data
+    data[key] = tab_data
     return data
 
 
