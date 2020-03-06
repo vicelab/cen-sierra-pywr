@@ -1373,7 +1373,7 @@
             "Angels PH"
         ],
         [
-            " USGS 11298700 ANGELS C BL UTICA D DIV DAM NR MURPHYS CA",
+            "USGS 11298700 ANGELS C BL UTICA D DIV DAM NR MURPHYS CA",
             "Angels Canal Inflow"
         ],
         [
@@ -1486,7 +1486,7 @@
         ],
         [
             "IFR bl Angels Div",
-            " USGS 11298700 ANGELS C BL UTICA D DIV DAM NR MURPHYS CA"
+            "USGS 11298700 ANGELS C BL UTICA D DIV DAM NR MURPHYS CA"
         ],
         [
             "Donnells Low Flow discharge",
@@ -3411,9 +3411,9 @@
         }
     },
     "recorders": {
-        " USGS 11298700 ANGELS C BL UTICA D DIV DAM NR MURPHYS CA/flow": {
+        "USGS 11298700 ANGELS C BL UTICA D DIV DAM NR MURPHYS CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": " USGS 11298700 ANGELS C BL UTICA D DIV DAM NR MURPHYS CA"
+            "node": "USGS 11298700 ANGELS C BL UTICA D DIV DAM NR MURPHYS CA"
         },
         "Angels PH/flow": {
             "type": "NumpyArrayNodeRecorder",
