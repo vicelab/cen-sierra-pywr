@@ -2,11 +2,12 @@ from parameters import WaterLPParameter
 
 from utilities.converter import convert
 
+
 class IFR_bl_Don_Pedro_Reservoir_Water_Year_Type(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        
+
         # San Joaquin Valley Index
         return self.model.parameters["San Joaquin Valley WYI"].value(timestep, scenario_index)
 
@@ -27,6 +28,7 @@ class IFR_bl_Don_Pedro_Reservoir_Water_Year_Type(WaterLPParameter):
             print('File where error occurred: {}'.format(__file__))
             print(err)
             raise
-        
+
+
 IFR_bl_Don_Pedro_Reservoir_Water_Year_Type.register()
 print(" [*] IFR_bl_Don_Pedro_Reservoir_Water_Year_Type successfully registered")
