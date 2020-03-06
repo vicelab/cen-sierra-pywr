@@ -1238,7 +1238,7 @@
             "max_flow": "Upper Collierville Tunnel 1/Capacity"
         },
         {
-            "name": "USGS 11292610 DONNELLS PH",
+            "name": "USGS 11292610 DONNELL PH NR STRAWBERRY CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
