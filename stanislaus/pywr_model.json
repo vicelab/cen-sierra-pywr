@@ -2538,7 +2538,7 @@
         },
         "Beardsley PH/Turbine Capacity": {
             "type": "constant",
-            "value": 0.864
+            "value": 1.35
         },
         "USGS 11295210 BEAVER C DIV TO MCKAYS POINT RES NR ARNOLD CA/Observed Flow": {
             "type": "dataframe",
