@@ -1,9 +1,15 @@
+import os
 import json
-import csv
+import pandas as pd
 
 basins = ['stanislaus', 'tuolumne', 'merced', 'upper_san_joaquin']
 
-gauges_list = []
+gauges_path = '../dashapp/gauges.csv'
+gauges = {}
+if os.path.exists(gauges_path):
+    gauges_df = pd.read_csv(gauges_path, index_col=0, header=0, squeeze=True)
+    gauges = gauges_df.to_dict()
+
 for basin in basins:
     m = json.load(open('../{}/pywr_model.json'.format(basin)))
     up_nodes = {}
@@ -13,12 +19,10 @@ for basin in basins:
         up_nodes[n2] = up_nodes.get(n2, []) + [n1]
         down_nodes[n1] = down_nodes.get(n1, []) + [n2]
 
-    included = []
     for node in m['nodes']:
         node_gauge_name = node.get('gauge')
         if node_gauge_name:
-            gauges_list.append([node['name'], node_gauge_name])
-            included.append(node['name'])
+            gauges[node['name']] = node_gauge_name
 
     for node in m['nodes']:
 
@@ -29,18 +33,17 @@ for basin in basins:
         up_node = nodes[up_nodes[gauge_name][0]]
         metadata = json.loads(up_node.get('comment', '{}'))
         gauged_node = up_nodes[up_node['name']][0] if metadata.get('resource_class') == 'link' else up_node['name']
-        if gauged_node in included:
-            # maybe it's a reservoir, so we should look down instead
-            down_node = nodes[down_nodes[gauge_name][0]]
-            metadata = json.loads(down_node.get('comment', '{}'))
-            gauged_node = down_nodes[down_node['name']][0] if metadata.get('resource_class') == 'link' else down_node['name']
-            if gauged_node in included:
-                continue
-        included.append(gauged_node)
-        gauges_list.append([gauged_node, gauge_name])
 
-with open('../dashapp/gauges.csv', 'w', newline='') as f:
-    writer = csv.writer(f)
-    writer.writerows(gauges_list)
+        # let's also check down node...
+        down_node = nodes[down_nodes[gauge_name][0]]
+        metadata = json.loads(down_node.get('comment', '{}'))
+        if down_node['type'] == 'Output':
+            gauged_node = down_nodes[down_node['name']][0] if metadata.get('resource_class') == 'link' else down_node['name']
+
+        gauges[gauged_node] = gauge_name
+
+df = pd.DataFrame.from_dict(gauges, orient='index', columns=['Gauge'])
+df.index.name = 'Node'
+df.to_csv(gauges_path)
 
 print('done!')
