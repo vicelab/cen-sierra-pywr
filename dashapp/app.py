@@ -193,7 +193,7 @@ for basin in ['stn', 'tuo', 'mer', 'usj']:
 df_obs_storage = pd.concat(obs_storage, axis=1)
 df_obs_streamflow = pd.concat(obs_streamflow, axis=1)
 
-gauge_lookup = pd.read_csv('gauges.csv', header=None, index_col=0, squeeze=True, dtype=(str)).to_dict()
+gauge_lookup = pd.read_csv('gauges.csv', header=0, index_col=0, squeeze=True, dtype=(str)).to_dict()
 
 percentile_colors = {
     'simulated': 'blue',
