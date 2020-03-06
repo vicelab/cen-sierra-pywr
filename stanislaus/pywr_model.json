@@ -44,7 +44,7 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "ANGELS C BL UTICA D DIV DAM NR MURPHYS CA_11298700",
+            "name": "USGS 11298700 ANGELS C BL UTICA D DIV DAM NR MURPHYS CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
@@ -87,14 +87,14 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "AVERY_11294500",
+            "name": "USGS 11294500 NF STANISLAUS R NR AVERY CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "BEARDSLEY PH NR STRAWBERRY CA_11292820",
+            "name": "USGS 11292820 BEARDSLEY PH NR STRAWBERRY CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
@@ -123,7 +123,7 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210",
+            "name": "USGS 11295210 BEAVER C DIV TO MCKAYS POINT RES NR ARNOLD CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
@@ -140,7 +140,7 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230",
+            "name": "USGS 11295230 BEAVER CR BL DIV DAM NR ARNOLD CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
@@ -152,7 +152,7 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "BL MCKAYS POINT DAM_11295270",
+            "name": "USGS 11295270 NF STANISLAUS R BL MCKAYS POINT DAM NR AVERY CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
@@ -169,7 +169,7 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500",
+            "name": "USGS 11292500 CLARK FORK STANISLAUS R NR DARDANELLE CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
@@ -266,14 +266,14 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "HIGHLAND CREEK BELOW NEW SPICER_11294000",
+            "name": "USGS 11294000 HIGHLAND C BL SPICER MEADOWS RES CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700",
+            "name": "USGS 11293700 HOBART C AT NF DIV TUNNL OUTLT NR SPICER MDWS CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
@@ -494,7 +494,7 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA",
+            "name": "USGS 11292860 JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
@@ -535,7 +535,7 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700",
+            "name": "USGS 11292700 MF STANISLAUS R A HELLS HALF ACRE BRIDGE CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
@@ -556,21 +556,21 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000",
+            "name": "USGS 11292000 MF STANISLAUS R AT KENNEDY MDWS NR DARDANELLE CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "MF STANISLAUS R BL BEARDSLEY DAM CA_11292900",
+            "name": "USGS 11292900 MF STANISLAUS R BL BEARDSLEY DAM CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200",
+            "name": "USGS 11293200 MF STANISLAUS R BL SND BAR DIV DAM NR AVERY CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
@@ -643,28 +643,28 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "NF STANISLAUS DIV TU OL BL HOBART C_11293710",
+            "name": "USGS 11293710 NF STANISLAUS DIV TU OL BL HOBART C NR NSMD CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300",
+            "name": "USGS 11295300 NF STANISLAUS R BL BEAVER C NR HATHAWAY PINES CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600",
+            "name": "USGS 11293600 NF STANISLAUS R BL DIV D",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "NF STANISLAUS R BL SILVER C CA_11293500",
+            "name": "USGS 11293500 NF STANISLAUS R BL SILVER C CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
@@ -765,21 +765,21 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "SF STANISLAUS R A STRAWBERRY CA_11296500",
+            "name": "USGS 11296500 SF STANISLAUS R A STRAWBERRY CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "SF STANISLAUS R NR LONG BARN CA_11298000",
+            "name": "USGS 11298000 SF STANISLAUS R NR LONG BARN CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "SF STANISLAUS R NR STRAWBERRY CA_11297200",
+            "name": "USGS 11297200 SF STANISLAUS R NR STRAWBERRY CA",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
@@ -1238,42 +1238,42 @@
             "max_flow": "Upper Collierville Tunnel 1/Capacity"
         },
         {
-            "name": "USGS_11292610 DONNELLS PH",
+            "name": "USGS 11292610 DONNELLS PH",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "USGS_11293580_NF STAN R DIV TUNNEL",
+            "name": "USGS 11293580 NF STAN R DIV TUNNEL",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "USGS_11295250_COLLIERVILLE PP",
+            "name": "USGS 11295250 COLLIERVILLE PP",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "USGS_11295505_STANISLAUS PP",
+            "name": "USGS 11295505 STANISLAUS PP",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "USGS_11297000_PHILADELPHIA CN",
+            "name": "USGS 11297000 PHILADELPHIA CN",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "USGS_11297500_TUOLUMNE CN",
+            "name": "USGS 11297500 TUOLUMNE CN",
             "type": "RiverGauge",
             "mrf": 0.0,
             "mrf_cost": 0.0,
@@ -1373,7 +1373,7 @@
             "Angels PH"
         ],
         [
-            "ANGELS C BL UTICA D DIV DAM NR MURPHYS CA_11298700",
+            " USGS 11298700 ANGELS C BL UTICA D DIV DAM NR MURPHYS CA",
             "Angels Canal Inflow"
         ],
         [
@@ -1402,7 +1402,7 @@
         ],
         [
             "Beaver Creek Diversion",
-            "BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230"
+            "USGS 11295230 BEAVER CR BL DIV DAM NR ARNOLD CA"
         ],
         [
             "Clark Fk Headflow",
@@ -1414,7 +1414,7 @@
         ],
         [
             "Collierville PH",
-            "USGS_11295250_COLLIERVILLE PP"
+            "USGS 11295250 COLLIERVILLE PP NR MURPHYS CA"
         ],
         [
             "STN_03 Inflow",
@@ -1422,14 +1422,14 @@
         ],
         [
             "STN_07 Inflow",
-            "AVERY_11294500"
+            "USGS 11294500 NF STANISLAUS R NR AVERY CA"
         ],
         [
             "Donnells Reservoir",
             "Donnells PH"
         ],
         [
-            "MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700",
+            "USGS 11292700 MF STANISLAUS R A HELLS HALF ACRE BRIDGE CA",
             "Donnells PH discharge"
         ],
         [
@@ -1438,7 +1438,7 @@
         ],
         [
             "Donnells PH",
-            "USGS_11292610 DONNELLS PH"
+            "USGS 11292610 DONNELL PH NR STRAWBERRY CA"
         ],
         [
             "Donnells Reservoir",
@@ -1469,7 +1469,7 @@
             "STN_11 Inflow"
         ],
         [
-            "NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600",
+            "USGS 11293600 NF STANISLAUS R BL DIV D",
             "STN_08 Inflow"
         ],
         [
@@ -1486,7 +1486,7 @@
         ],
         [
             "IFR bl Angels Div",
-            "ANGELS C BL UTICA D DIV DAM NR MURPHYS CA_11298700"
+            " USGS 11298700 ANGELS C BL UTICA D DIV DAM NR MURPHYS CA"
         ],
         [
             "Donnells Low Flow discharge",
@@ -1506,11 +1506,11 @@
         ],
         [
             "IFR bl New Spicer Meadow Reservoir",
-            "HIGHLAND CREEK BELOW NEW SPICER_11294000"
+            "USGS 11294000 HIGHLAND C BL SPICER MEADOWS RES CA"
         ],
         [
             "Philadelphia Aquaduct Outflow",
-            "SF STANISLAUS R NR STRAWBERRY CA_11297200"
+            "USGS 11297200 SF STANISLAUS R NR STRAWBERRY CA"
         ],
         [
             "IFR bl Relief Reservoir",
@@ -1526,7 +1526,7 @@
         ],
         [
             "Beaver Creek Diversion",
-            "BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210"
+            "USGS 11295210 BEAVER C DIV TO MCKAYS POINT RES NR ARNOLD CA"
         ],
         [
             "McKays Point Diversion",
@@ -1557,12 +1557,12 @@
             "STN_22 Inflow"
         ],
         [
-            "AVERY_11294500",
+            "USGS 11294500 NF STANISLAUS R NR AVERY CA",
             "STN_06 Inflow"
         ],
         [
             "Summit Ck Inflow",
-            "MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000"
+            "USGS 11292000 MF STANISLAUS R AT KENNEDY MDWS NR DARDANELLE CA"
         ],
         [
             "Collierville Tunnel Inflow",
@@ -1578,7 +1578,7 @@
         ],
         [
             "IFR bl McKays Point Div",
-            "BL MCKAYS POINT DAM_11295270"
+            "USGS 11295270 NF STANISLAUS R BL MCKAYS POINT DAM NR AVERY CA"
         ],
         [
             "Murphys PH",
@@ -1622,7 +1622,7 @@
         ],
         [
             "Lyons Reservoir",
-            "USGS_11297500_TUOLUMNE CN"
+            "USGS 11297500 TUOLUMNE CN NR LONG BARN CA"
         ],
         [
             "Pinecrest Reservoir",
@@ -1638,22 +1638,22 @@
         ],
         [
             "Sand Bar PH",
-            "JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA"
+            "USGS 11292860 JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA"
         ],
         [
             "Beardsley Afterbay",
             "Sand Bar PH"
         ],
         [
-            "MF STANISLAUS R BL BEARDSLEY DAM CA_11292900",
+            "USGS 11292900 MF STANISLAUS R BL BEARDSLEY DAM CA",
             "Philadelphia Aqueduct Inflow"
         ],
         [
             "Beardsley PH",
-            "BEARDSLEY PH NR STRAWBERRY CA_11292820"
+            "USGS 11292820 BEARDSLEY PH NR STRAWBERRY CA"
         ],
         [
-            "BEARDSLEY PH NR STRAWBERRY CA_11292820",
+            "USGS 11292820 BEARDSLEY PH NR STRAWBERRY CA",
             "STANI-N-JUN2"
         ],
         [
@@ -1661,7 +1661,7 @@
             "STN_15 Inflow"
         ],
         [
-            "USGS_11297500_TUOLUMNE CN",
+            "USGS 11297500 TUOLUMNE CN NR LONG BARN CA",
             "Phoenix PH"
         ],
         [
@@ -1674,11 +1674,11 @@
         ],
         [
             "Spring Gap PH",
-            "USGS_11297000_PHILADELPHIA CN"
+            "USGS 11297000 PHILADELPHIA CN NR STRAWBERRY CA"
         ],
         [
             "Stanislaus PH",
-            "USGS_11295505_STANISLAUS PP"
+            "USGS 11295505 STANISLAUS PP NR HATHAWAY PINES CA"
         ],
         [
             "Middle Fork Stanislaus R Inflow",
@@ -1754,7 +1754,7 @@
         ],
         [
             "IFR bl NF Stanislaus Div Res",
-            "NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600"
+            "USGS 11293600 NF STANISLAUS R BL DIV D"
         ],
         [
             "STN_09 Headflow",
@@ -1762,7 +1762,7 @@
         ],
         [
             "STN_09 Inflow",
-            "NF STANISLAUS R BL SILVER C CA_11293500"
+            "USGS 11293500 NF STANISLAUS R BL SILVER C CA"
         ],
         [
             "STN_10 Headflow",
@@ -1794,7 +1794,7 @@
         ],
         [
             "STN_12 Inflow",
-            "HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700"
+            "USGS 11293700 HOBART C AT NF DIV TUNNL OUTLT NR SPICER MDWS CA"
         ],
         [
             "STN_13 Headflow",
@@ -1814,7 +1814,7 @@
         ],
         [
             "IFR bl Beardsley Afterbay",
-            "MF STANISLAUS R BL BEARDSLEY DAM CA_11292900"
+            "USGS 11292900 MF STANISLAUS R BL BEARDSLEY DAM CA"
         ],
         [
             "STN_15 Headflow",
@@ -1838,7 +1838,7 @@
         ],
         [
             "STN_17 Inflow",
-            "MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700"
+            "USGS 11292700 MF STANISLAUS R A HELLS HALF ACRE BRIDGE CA"
         ],
         [
             "STN_18 Headflow",
@@ -1854,7 +1854,7 @@
         ],
         [
             "STN_19 Inflow",
-            "CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500"
+            "USGS 11292500 CLARK FORK STANISLAUS R NR DARDANELLE CA"
         ],
         [
             "STN_20 Headflow",
@@ -1873,7 +1873,7 @@
             "STN_22 Inflow"
         ],
         [
-            "SF STANISLAUS R NR STRAWBERRY CA_11297200",
+            "USGS 11297200 SF STANISLAUS R NR STRAWBERRY CA",
             "IFR bl Philadelphia Div"
         ],
         [
@@ -1881,7 +1881,7 @@
             "STN_23 Inflow"
         ],
         [
-            "SF STANISLAUS R A STRAWBERRY CA_11296500",
+            "USGS 11296500 SF STANISLAUS R A STRAWBERRY CA",
             "STN_23 Inflow"
         ],
         [
@@ -1890,7 +1890,7 @@
         ],
         [
             "STN_24 Inflow",
-            "SF STANISLAUS R A STRAWBERRY CA_11296500"
+            "USGS 11296500 SF STANISLAUS R A STRAWBERRY CA"
         ],
         [
             "STN_25 Headflow",
@@ -1905,7 +1905,7 @@
             "STN_21 Inflow"
         ],
         [
-            "MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000",
+            "USGS 11292000 MF STANISLAUS R AT KENNEDY MDWS NR DARDANELLE CA",
             "Clark Fk Inflow"
         ],
         [
@@ -1925,19 +1925,19 @@
             "Collierville PH"
         ],
         [
-            "HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700",
+            "USGS 11293700 HOBART C AT NF DIV TUNNL OUTLT NR SPICER MDWS CA",
             "Upper Collierville Tunnel Inflow"
         ],
         [
-            "NF STANISLAUS R BL SILVER C CA_11293500",
+            "USGS 11293500 NF STANISLAUS R BL SILVER C CA",
             "Upper Collierville Tunnel Outflow"
         ],
         [
-            "CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500",
+            "USGS 11292500 CLARK FORK STANISLAUS R NR DARDANELLE CA",
             "Clark Fk Inflow"
         ],
         [
-            "USGS_11292610 DONNELLS PH",
+            "USGS 11292610 DONNELL PH NR STRAWBERRY CA",
             "Donnells Diversion"
         ],
         [
@@ -1945,19 +1945,19 @@
             "Donnells PH discharge"
         ],
         [
-            "HIGHLAND CREEK BELOW NEW SPICER_11294000",
+            "USGS 11294000 HIGHLAND C BL SPICER MEADOWS RES CA",
             "Highland Ck Inflow"
         ],
         [
             "Upper Collierville Tunnel Inflow",
-            "NF STANISLAUS DIV TU OL BL HOBART C_11293710"
+            "USGS 11293710 NF STANISLAUS DIV TU OL BL HOBART C NR NSMD CA"
         ],
         [
-            "NF STANISLAUS DIV TU OL BL HOBART C_11293710",
+            "USGS 11293710 NF STANISLAUS DIV TU OL BL HOBART C NR NSMD CA",
             "Hobart Ck Inflow"
         ],
         [
-            "BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210",
+            "USGS 11295210 BEAVER C DIV TO MCKAYS POINT RES NR ARNOLD CA",
             "Lower Collierville Tunnel 1"
         ],
         [
@@ -1965,7 +1965,7 @@
             "Collierville Tunnel Inflow (1)"
         ],
         [
-            "USGS_11295250_COLLIERVILLE PP",
+            "USGS 11295250 COLLIERVILLE PP NR MURPHYS CA",
             "Lower Collierville Tunnel 2"
         ],
         [
@@ -1982,14 +1982,14 @@
         ],
         [
             "IFR bl Sand Bar Div",
-            "MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200"
+            "USGS 11293200 MF STANISLAUS R BL SND BAR DIV DAM NR AVERY CA"
         ],
         [
-            "MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200",
+            "USGS 11293200 MF STANISLAUS R BL SND BAR DIV DAM NR AVERY CA",
             "Middle Fork Stanislaus R Inflow"
         ],
         [
-            "BL MCKAYS POINT DAM_11295270",
+            "USGS 11295270 NF STANISLAUS R BL MCKAYS POINT DAM NR AVERY CA",
             "STN_05 Inflow"
         ],
         [
@@ -2002,10 +2002,10 @@
         ],
         [
             "IFR bl confluence of NF Stanislaus and Beaver Creek",
-            "NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300"
+            "USGS 11295300 NF STANISLAUS R BL BEAVER C NR HATHAWAY PINES CA"
         ],
         [
-            "NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300",
+            "USGS 11295300 NF STANISLAUS R BL BEAVER C NR HATHAWAY PINES CA",
             "Mill Ck Inflow"
         ],
         [
@@ -2013,7 +2013,7 @@
             "Middle Fork Stanislaus R Inflow"
         ],
         [
-            "USGS_11297000_PHILADELPHIA CN",
+            "USGS 11297000 PHILADELPHIA CN NR STRAWBERRY CA",
             "Philadelphia Aqueduct"
         ],
         [
@@ -2025,7 +2025,7 @@
             "Phoenix Canal Outflow"
         ],
         [
-            "JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA",
+            "USGS 11292860 JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA",
             "Sand Bar Power Tunnel"
         ],
         [
@@ -2038,10 +2038,10 @@
         ],
         [
             "IFR bl Lyons Res",
-            "SF STANISLAUS R NR LONG BARN CA_11298000"
+            "USGS 11298000 SF STANISLAUS R NR LONG BARN CA"
         ],
         [
-            "SF STANISLAUS R NR LONG BARN CA_11298000",
+            "USGS 11298000 SF STANISLAUS R NR LONG BARN CA",
             "South Fork Stanislaus R Inflow"
         ],
         [
@@ -2053,7 +2053,7 @@
             "South San Joaquin Irrigation District"
         ],
         [
-            "BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230",
+            "USGS 11295230 BEAVER CR BL DIV DAM NR ARNOLD CA",
             "IFR bl Beaver Creek Diversion Dam"
         ],
         [
@@ -2081,7 +2081,7 @@
             "STANI-N-JUN3"
         ],
         [
-            "USGS_11295505_STANISLAUS PP",
+            "USGS 11295505 STANISLAUS PP NR HATHAWAY PINES CA",
             "Stanislaus Tunnel"
         ],
         [
@@ -2169,7 +2169,7 @@
             "Goodwin Reservoir"
         ],
         [
-            "USGS_11293580_NF STAN R DIV TUNNEL",
+            "USGS 11293580 NF STANISLAUS R DIV TUNNEL NR BIG MDW CA",
             "Upper Collierville Tunnel Inflow"
         ],
         [
@@ -2178,7 +2178,7 @@
         ],
         [
             "Upper Collierville Tunnel 1",
-            "USGS_11293580_NF STAN R DIV TUNNEL"
+            "USGS 11293580 NF STANISLAUS R DIV TUNNEL NR BIG MDW CA"
         ]
     ],
     "tables": {
@@ -2472,12 +2472,12 @@
         "Angels PH/Cost/3": {
             "type": "PH_Cost"
         },
-        "AVERY_11294500/Observed Flow": {
+        "USGS 11294500 NF STANISLAUS R NR AVERY CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11294500"
         },
-        "BEARDSLEY PH NR STRAWBERRY CA_11292820/Observed Flow": {
+        "USGS 11292820 BEARDSLEY PH NR STRAWBERRY CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11292820"
@@ -2540,22 +2540,22 @@
             "type": "constant",
             "value": 0.864
         },
-        "BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210/Observed Flow": {
+        "USGS 11295210 BEAVER C DIV TO MCKAYS POINT RES NR ARNOLD CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11295210"
         },
-        "BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230/Observed Flow": {
+        "USGS 11295230 BEAVER CR BL DIV DAM NR ARNOLD CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11295230"
         },
-        "BL MCKAYS POINT DAM_11295270/Observed Flow": {
+        "USGS 11295270 NF STANISLAUS R BL MCKAYS POINT DAM NR AVERY CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11295270"
         },
-        "CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500/Observed Flow": {
+        "USGS 11292500 CLARK FORK STANISLAUS R NR DARDANELLE CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11292500"
@@ -2660,12 +2660,12 @@
             ],
             "kind": "cubic"
         },
-        "HIGHLAND CREEK BELOW NEW SPICER_11294000/Observed Flow": {
+        "USGS 11294000 HIGHLAND C BL SPICER MEADOWS RES CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11294000"
         },
-        "HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700/Observed Flow": {
+        "USGS 11293700 HOBART C AT NF DIV TUNNL OUTLT NR SPICER MDWS CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11293700"
@@ -2821,7 +2821,7 @@
         "IFR bl Beardsley Afterbay/Max Flow": {
             "type": "IFR_bl_Beardsley_Afterbay_Max_Requirement"
         },
-        "JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/Observed Flow": {
+        "USGS 11292860 JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11292860"
@@ -2866,22 +2866,22 @@
             ],
             "kind": "cubic"
         },
-        "MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700/Observed Flow": {
+        "USGS 11292700 MF STANISLAUS R A HELLS HALF ACRE BRIDGE CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11292700"
         },
-        "MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000/Observed Flow": {
+        "USGS 11292000 MF STANISLAUS R AT KENNEDY MDWS NR DARDANELLE CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11292000"
         },
-        "MF STANISLAUS R BL BEARDSLEY DAM CA_11292900/Observed Flow": {
+        "USGS 11292900 MF STANISLAUS R BL BEARDSLEY DAM CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11292900"
         },
-        "MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200/Observed Flow": {
+        "USGS 11293200 MF STANISLAUS R BL SND BAR DIV DAM NR AVERY CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11293200"
@@ -2956,22 +2956,22 @@
             ],
             "kind": "cubic"
         },
-        "NF STANISLAUS DIV TU OL BL HOBART C_11293710/Observed Flow": {
+        "USGS 11293710 NF STANISLAUS DIV TU OL BL HOBART C NR NSMD CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11293710"
         },
-        "NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300/Observed Flow": {
+        "USGS 11295300 NF STANISLAUS R BL BEAVER C NR HATHAWAY PINES CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11295300"
         },
-        "NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600/Observed Flow": {
+        "USGS 11293600 NF STANISLAUS R BL DIV D/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11293600"
         },
-        "NF STANISLAUS R BL SILVER C CA_11293500/Observed Flow": {
+        "USGS 11293500 NF STANISLAUS R BL SILVER C CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11293500"
@@ -3105,17 +3105,17 @@
         "Sand Bar PH/Cost/3": {
             "type": "PH_Cost"
         },
-        "SF STANISLAUS R A STRAWBERRY CA_11296500/Observed Flow": {
+        "USGS 11296500 SF STANISLAUS R A STRAWBERRY CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11296500"
         },
-        "SF STANISLAUS R NR LONG BARN CA_11298000/Observed Flow": {
+        "USGS 11298000 SF STANISLAUS R NR LONG BARN CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11298000"
         },
-        "SF STANISLAUS R NR STRAWBERRY CA_11297200/Observed Flow": {
+        "USGS 11297200 SF STANISLAUS R NR STRAWBERRY CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11292610"
@@ -3370,32 +3370,32 @@
         "Upper Collierville Tunnel 1/Capacity": {
             "type": "Upper_Collierville_Tunnel_1_Capacity"
         },
-        "USGS_11292610 DONNELLS PH/Observed Flow": {
+        "USGS 11292610 DONNELL PH NR STRAWBERRY CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11292610"
         },
-        "USGS_11293580_NF STAN R DIV TUNNEL/Observed Flow": {
+        "USGS 11293580 NF STANISLAUS R DIV TUNNEL NR BIG MDW CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11293580"
         },
-        "USGS_11295250_COLLIERVILLE PP/Observed Flow": {
+        "USGS 11295250 COLLIERVILLE PP NR MURPHYS CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11295250"
         },
-        "USGS_11295505_STANISLAUS PP/Observed Flow": {
+        "USGS 11295505 STANISLAUS PP NR HATHAWAY PINES CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11295505"
         },
-        "USGS_11297000_PHILADELPHIA CN/Observed Flow": {
+        "USGS 11297000 PHILADELPHIA CN NR STRAWBERRY CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11297000"
         },
-        "USGS_11297500_TUOLUMNE CN/Observed Flow": {
+        "USGS 11297500 TUOLUMNE CN NR LONG BARN CA/Observed Flow": {
             "type": "dataframe",
             "table": "Observed Flow",
             "column": "11297500"
@@ -3411,29 +3411,29 @@
         }
     },
     "recorders": {
-        "ANGELS C BL UTICA D DIV DAM NR MURPHYS CA_11298700/flow": {
+        " USGS 11298700 ANGELS C BL UTICA D DIV DAM NR MURPHYS CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "ANGELS C BL UTICA D DIV DAM NR MURPHYS CA_11298700"
+            "node": " USGS 11298700 ANGELS C BL UTICA D DIV DAM NR MURPHYS CA"
         },
         "Angels PH/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Angels PH"
         },
-        "AVERY_11294500/observed flow": {
+        "USGS 11294500 NF STANISLAUS R NR AVERY CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "AVERY_11294500/Observed Flow"
+            "parameter": "USGS 11294500 NF STANISLAUS R NR AVERY CA/Observed Flow"
         },
-        "AVERY_11294500/flow": {
+        "USGS 11294500 NF STANISLAUS R NR AVERY CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "AVERY_11294500"
+            "node": "USGS 11294500 NF STANISLAUS R NR AVERY CA"
         },
-        "BEARDSLEY PH NR STRAWBERRY CA_11292820/observed flow": {
+        "USGS 11292820 BEARDSLEY PH NR STRAWBERRY CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "BEARDSLEY PH NR STRAWBERRY CA_11292820/Observed Flow"
+            "parameter": "USGS 11292820 BEARDSLEY PH NR STRAWBERRY CA/Observed Flow"
         },
-        "BEARDSLEY PH NR STRAWBERRY CA_11292820/flow": {
+        "USGS 11292820 BEARDSLEY PH NR STRAWBERRY CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "BEARDSLEY PH NR STRAWBERRY CA_11292820"
+            "node": "USGS 11292820 BEARDSLEY PH NR STRAWBERRY CA"
         },
         "Beardsley Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
@@ -3447,37 +3447,37 @@
             "type": "NumpyArrayParameterRecorder",
             "parameter": "Beardsley Reservoir/Observed Storage"
         },
-        "BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210/observed flow": {
+        "USGS 11295210 BEAVER C DIV TO MCKAYS POINT RES NR ARNOLD CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210/Observed Flow"
+            "parameter": "USGS 11295210 BEAVER C DIV TO MCKAYS POINT RES NR ARNOLD CA/Observed Flow"
         },
-        "BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210/flow": {
+        "USGS 11295210 BEAVER C DIV TO MCKAYS POINT RES NR ARNOLD CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "BEAVER C DIV TO MCKAYS POINT RES NR ARNO_11295210"
+            "node": "USGS 11295210 BEAVER C DIV TO MCKAYS POINT RES NR ARNOLD CA"
         },
-        "BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230/observed flow": {
+        "USGS 11295230 BEAVER CR BL DIV DAM NR ARNOLD CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230/Observed Flow"
+            "parameter": "USGS 11295230 BEAVER CR BL DIV DAM NR ARNOLD CA/Observed Flow"
         },
-        "BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230/flow": {
+        "USGS 11295230 BEAVER CR BL DIV DAM NR ARNOLD CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "BEAVER CR BEL DIV DAM NR ARNOLD CA_11295230"
+            "node": "USGS 11295230 BEAVER CR BL DIV DAM NR ARNOLD CA"
         },
-        "BL MCKAYS POINT DAM_11295270/observed flow": {
+        "USGS 11295270 NF STANISLAUS R BL MCKAYS POINT DAM NR AVERY CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "BL MCKAYS POINT DAM_11295270/Observed Flow"
+            "parameter": "USGS 11295270 NF STANISLAUS R BL MCKAYS POINT DAM NR AVERY CA/Observed Flow"
         },
-        "BL MCKAYS POINT DAM_11295270/flow": {
+        "USGS 11295270 NF STANISLAUS R BL MCKAYS POINT DAM NR AVERY CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "BL MCKAYS POINT DAM_11295270"
+            "node": "USGS 11295270 NF STANISLAUS R BL MCKAYS POINT DAM NR AVERY CA"
         },
-        "CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500/observed flow": {
+        "USGS 11292500 CLARK FORK STANISLAUS R NR DARDANELLE CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500/Observed Flow"
+            "parameter": "USGS 11292500 CLARK FORK STANISLAUS R NR DARDANELLE CA/Observed Flow"
         },
-        "CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500/flow": {
+        "USGS 11292500 CLARK FORK STANISLAUS R NR DARDANELLE CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "CLARK FORK STANISLAUS R NR DARDANELLE CA_11292500"
+            "node": "USGS 11292500 CLARK FORK STANISLAUS R NR DARDANELLE CA"
         },
         "Collierville PH/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -3503,21 +3503,21 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Gauge_Phoenix"
         },
-        "HIGHLAND CREEK BELOW NEW SPICER_11294000/observed flow": {
+        "USGS 11294000 HIGHLAND C BL SPICER MEADOWS RES CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "HIGHLAND CREEK BELOW NEW SPICER_11294000/Observed Flow"
+            "parameter": "USGS 11294000 HIGHLAND C BL SPICER MEADOWS RES CA/Observed Flow"
         },
-        "HIGHLAND CREEK BELOW NEW SPICER_11294000/flow": {
+        "USGS 11294000 HIGHLAND C BL SPICER MEADOWS RES CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "HIGHLAND CREEK BELOW NEW SPICER_11294000"
+            "node": "USGS 11294000 HIGHLAND C BL SPICER MEADOWS RES CA"
         },
-        "HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700/observed flow": {
+        "USGS 11293700 HOBART C AT NF DIV TUNNL OUTLT NR SPICER MDWS CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700/Observed Flow"
+            "parameter": "USGS 11293700 HOBART C AT NF DIV TUNNL OUTLT NR SPICER MDWS CA/Observed Flow"
         },
-        "HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700/flow": {
+        "USGS 11293700 HOBART C AT NF DIV TUNNL OUTLT NR SPICER MDWS CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "HOBART C AT NF DIV TUNNL OUTLT NR SPICER_11293700"
+            "node": "USGS 11293700 HOBART C AT NF DIV TUNNL OUTLT NR SPICER MDWS CA"
         },
         "Hunter Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
@@ -3703,13 +3703,13 @@
             "type": "NumpyArrayParameterRecorder",
             "parameter": "IFR bl Utica Reservoir/Requirement"
         },
-        "JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/observed flow": {
+        "USGS 11292860 JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/Observed Flow"
+            "parameter": "USGS 11292860 JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/Observed Flow"
         },
-        "JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/flow": {
+        "USGS 11292860 JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA"
+            "node": "USGS 11292860 JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA"
         },
         "Lyons Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
@@ -3723,37 +3723,37 @@
             "type": "NumpyArrayParameterRecorder",
             "parameter": "Lyons Reservoir/Observed Storage"
         },
-        "MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700/observed flow": {
+        "USGS 11292700 MF STANISLAUS R A HELLS HALF ACRE BRIDGE CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700/Observed Flow"
+            "parameter": "USGS 11292700 MF STANISLAUS R A HELLS HALF ACRE BRIDGE CA/Observed Flow"
         },
-        "MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700/flow": {
+        "USGS 11292700 MF STANISLAUS R A HELLS HALF ACRE BRIDGE CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "MF STANISLAUS R A HELLS HALF ACRE BRIDGE_11292700"
+            "node": "USGS 11292700 MF STANISLAUS R A HELLS HALF ACRE BRIDGE CA"
         },
-        "MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000/observed flow": {
+        "USGS 11292000 MF STANISLAUS R AT KENNEDY MDWS NR DARDANELLE CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000/Observed Flow"
+            "parameter": "USGS 11292000 MF STANISLAUS R AT KENNEDY MDWS NR DARDANELLE CA/Observed Flow"
         },
-        "MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000/flow": {
+        "USGS 11292000 MF STANISLAUS R AT KENNEDY MDWS NR DARDANELLE CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "MF STANISLAUS R AT KENNEDY MDWS NR DARD_11292000"
+            "node": "USGS 11292000 MF STANISLAUS R AT KENNEDY MDWS NR DARDANELLE CA"
         },
-        "MF STANISLAUS R BL BEARDSLEY DAM CA_11292900/observed flow": {
+        "USGS 11292900 MF STANISLAUS R BL BEARDSLEY DAM CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "MF STANISLAUS R BL BEARDSLEY DAM CA_11292900/Observed Flow"
+            "parameter": "USGS 11292900 MF STANISLAUS R BL BEARDSLEY DAM CA/Observed Flow"
         },
-        "MF STANISLAUS R BL BEARDSLEY DAM CA_11292900/flow": {
+        "USGS 11292900 MF STANISLAUS R BL BEARDSLEY DAM CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "MF STANISLAUS R BL BEARDSLEY DAM CA_11292900"
+            "node": "USGS 11292900 MF STANISLAUS R BL BEARDSLEY DAM CA"
         },
-        "MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200/observed flow": {
+        "USGS 11293200 MF STANISLAUS R BL SND BAR DIV DAM NR AVERY CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200/Observed Flow"
+            "parameter": "USGS 11293200 MF STANISLAUS R BL SND BAR DIV DAM NR AVERY CA/Observed Flow"
         },
-        "MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200/flow": {
+        "USGS 11293200 MF STANISLAUS R BL SND BAR DIV DAM NR AVERY CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "MF STANISLAUS R BL SND BAR DIV DAM NR AV_11293200"
+            "node": "USGS 11293200 MF STANISLAUS R BL SND BAR DIV DAM NR AVERY CA"
         },
         "Murphys PH/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -3795,37 +3795,37 @@
             "type": "NumpyArrayParameterRecorder",
             "parameter": "New Spicer Meadow Reservoir/Observed Storage"
         },
-        "NF STANISLAUS DIV TU OL BL HOBART C_11293710/observed flow": {
+        "USGS 11293710 NF STANISLAUS DIV TU OL BL HOBART C NR NSMD CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "NF STANISLAUS DIV TU OL BL HOBART C_11293710/Observed Flow"
+            "parameter": "USGS 11293710 NF STANISLAUS DIV TU OL BL HOBART C NR NSMD CA/Observed Flow"
         },
-        "NF STANISLAUS DIV TU OL BL HOBART C_11293710/flow": {
+        "USGS 11293710 NF STANISLAUS DIV TU OL BL HOBART C NR NSMD CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "NF STANISLAUS DIV TU OL BL HOBART C_11293710"
+            "node": "USGS 11293710 NF STANISLAUS DIV TU OL BL HOBART C NR NSMD CA"
         },
-        "NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300/observed flow": {
+        "USGS 11295300 NF STANISLAUS R BL BEAVER C NR HATHAWAY PINES CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300/Observed Flow"
+            "parameter": "USGS 11295300 NF STANISLAUS R BL BEAVER C NR HATHAWAY PINES CA/Observed Flow"
         },
-        "NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300/flow": {
+        "USGS 11295300 NF STANISLAUS R BL BEAVER C NR HATHAWAY PINES CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "NF STANISLAUS R BL BEAVER C NR HATHAWAY_11295300"
+            "node": "USGS 11295300 NF STANISLAUS R BL BEAVER C NR HATHAWAY PINES CA"
         },
-        "NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600/observed flow": {
+        "USGS 11293600 NF STANISLAUS R BL DIV D/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600/Observed Flow"
+            "parameter": "USGS 11293600 NF STANISLAUS R BL DIV D/Observed Flow"
         },
-        "NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600/flow": {
+        "USGS 11293600 NF STANISLAUS R BL DIV D/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "NF STANISLAUS R BL DIV DAM NR BIG MDW CA_11293600"
+            "node": "USGS 11293600 NF STANISLAUS R BL DIV D"
         },
-        "NF STANISLAUS R BL SILVER C CA_11293500/observed flow": {
+        "USGS 11293500 NF STANISLAUS R BL SILVER C CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "NF STANISLAUS R BL SILVER C CA_11293500/Observed Flow"
+            "parameter": "USGS 11293500 NF STANISLAUS R BL SILVER C CA/Observed Flow"
         },
-        "NF STANISLAUS R BL SILVER C CA_11293500/flow": {
+        "USGS 11293500 NF STANISLAUS R BL SILVER C CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "NF STANISLAUS R BL SILVER C CA_11293500"
+            "node": "USGS 11293500 NF STANISLAUS R BL SILVER C CA"
         },
         "Phoenix Canal Outflow/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -3863,29 +3863,29 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Sand Bar PH"
         },
-        "SF STANISLAUS R A STRAWBERRY CA_11296500/observed flow": {
+        "USGS 11296500 SF STANISLAUS R A STRAWBERRY CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "SF STANISLAUS R A STRAWBERRY CA_11296500/Observed Flow"
+            "parameter": "USGS 11296500 SF STANISLAUS R A STRAWBERRY CA/Observed Flow"
         },
-        "SF STANISLAUS R A STRAWBERRY CA_11296500/flow": {
+        "USGS 11296500 SF STANISLAUS R A STRAWBERRY CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "SF STANISLAUS R A STRAWBERRY CA_11296500"
+            "node": "USGS 11296500 SF STANISLAUS R A STRAWBERRY CA"
         },
-        "SF STANISLAUS R NR LONG BARN CA_11298000/observed flow": {
+        "USGS 11298000 SF STANISLAUS R NR LONG BARN CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "SF STANISLAUS R NR LONG BARN CA_11298000/Observed Flow"
+            "parameter": "USGS 11298000 SF STANISLAUS R NR LONG BARN CA/Observed Flow"
         },
-        "SF STANISLAUS R NR LONG BARN CA_11298000/flow": {
+        "USGS 11298000 SF STANISLAUS R NR LONG BARN CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "SF STANISLAUS R NR LONG BARN CA_11298000"
+            "node": "USGS 11298000 SF STANISLAUS R NR LONG BARN CA"
         },
-        "SF STANISLAUS R NR STRAWBERRY CA_11297200/observed flow": {
+        "USGS 11297200 SF STANISLAUS R NR STRAWBERRY CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "SF STANISLAUS R NR STRAWBERRY CA_11297200/Observed Flow"
+            "parameter": "USGS 11297200 SF STANISLAUS R NR STRAWBERRY CA/Observed Flow"
         },
-        "SF STANISLAUS R NR STRAWBERRY CA_11297200/flow": {
+        "USGS 11297200 SF STANISLAUS R NR STRAWBERRY CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "SF STANISLAUS R NR STRAWBERRY CA_11297200"
+            "node": "USGS 11297200 SF STANISLAUS R NR STRAWBERRY CA"
         },
         "Spring Gap PH/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -3919,53 +3919,53 @@
             "type": "NumpyArrayParameterRecorder",
             "parameter": "Lake Tulloch/Observed Storage"
         },
-        "USGS_11292610 DONNELLS PH/observed flow": {
+        "USGS 11292610 DONNELL PH NR STRAWBERRY CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "USGS_11292610 DONNELLS PH/Observed Flow"
+            "parameter": "USGS 11292610 DONNELL PH NR STRAWBERRY CA/Observed Flow"
         },
-        "USGS_11292610 DONNELLS PH/flow": {
+        "USGS 11292610 DONNELL PH NR STRAWBERRY CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "USGS_11292610 DONNELLS PH"
+            "node": "USGS 11292610 DONNELL PH NR STRAWBERRY CA"
         },
-        "USGS_11293580_NF STAN R DIV TUNNEL/observed flow": {
+        "USGS 11293580 NF STANISLAUS R DIV TUNNEL NR BIG MDW CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "USGS_11293580_NF STAN R DIV TUNNEL/Observed Flow"
+            "parameter": "USGS 11293580 NF STANISLAUS R DIV TUNNEL NR BIG MDW CA/Observed Flow"
         },
-        "USGS_11293580_NF STAN R DIV TUNNEL/flow": {
+        "USGS 11293580 NF STANISLAUS R DIV TUNNEL NR BIG MDW CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "USGS_11293580_NF STAN R DIV TUNNEL"
+            "node": "USGS 11293580 NF STANISLAUS R DIV TUNNEL NR BIG MDW CA"
         },
-        "USGS_11295250_COLLIERVILLE PP/observed flow": {
+        "USGS 11295250 COLLIERVILLE PP NR MURPHYS CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "USGS_11295250_COLLIERVILLE PP/Observed Flow"
+            "parameter": "USGS 11295250 COLLIERVILLE PP NR MURPHYS CA/Observed Flow"
         },
-        "USGS_11295250_COLLIERVILLE PP/flow": {
+        "USGS 11295250 COLLIERVILLE PP NR MURPHYS CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "USGS_11295250_COLLIERVILLE PP"
+            "node": "USGS 11295250 COLLIERVILLE PP NR MURPHYS CA"
         },
-        "USGS_11295505_STANISLAUS PP/observed flow": {
+        "USGS 11295505 STANISLAUS PP NR HATHAWAY PINES CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "USGS_11295505_STANISLAUS PP/Observed Flow"
+            "parameter": "USGS 11295505 STANISLAUS PP NR HATHAWAY PINES CA/Observed Flow"
         },
-        "USGS_11295505_STANISLAUS PP/flow": {
+        "USGS 11295505 STANISLAUS PP NR HATHAWAY PINES CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "USGS_11295505_STANISLAUS PP"
+            "node": "USGS 11295505 STANISLAUS PP NR HATHAWAY PINES CA"
         },
-        "USGS_11297000_PHILADELPHIA CN/observed flow": {
+        "USGS 11297000 PHILADELPHIA CN NR STRAWBERRY CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "USGS_11297000_PHILADELPHIA CN/Observed Flow"
+            "parameter": "USGS 11297000 PHILADELPHIA CN NR STRAWBERRY CA/Observed Flow"
         },
-        "USGS_11297000_PHILADELPHIA CN/flow": {
+        "USGS 11297000 PHILADELPHIA CN NR STRAWBERRY CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "USGS_11297000_PHILADELPHIA CN"
+            "node": "USGS 11297000 PHILADELPHIA CN NR STRAWBERRY CA"
         },
-        "USGS_11297500_TUOLUMNE CN/observed flow": {
+        "USGS 11297500 TUOLUMNE CN NR LONG BARN CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "USGS_11297500_TUOLUMNE CN/Observed Flow"
+            "parameter": "USGS 11297500 TUOLUMNE CN NR LONG BARN CA/Observed Flow"
         },
-        "USGS_11297500_TUOLUMNE CN/flow": {
+        "USGS 11297500 TUOLUMNE CN NR LONG BARN CA/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "USGS_11297500_TUOLUMNE CN"
+            "node": "USGS 11297500 TUOLUMNE CN NR LONG BARN CA"
         },
         "UPA Tunnel Tap/flow": {
             "type": "NumpyArrayNodeRecorder",
