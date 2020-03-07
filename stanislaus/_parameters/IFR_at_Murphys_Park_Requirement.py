@@ -10,12 +10,12 @@ class IFR_at_Murphys_Park_Requirement(WaterLPParameter):
     may_sep = [12, 16, 22, 26, 30]
     oct_mar = [12, 12, 16, 18, 18]
     apr = [12, 16, 22, 26, 30]
-    year_type = 5  # initial water year (for WY2009)
+    year_type = None
 
     def setup(self):
         super().setup()
         num_scenarios = len(self.model.scenarios.combinations)
-        self.year_type = np.empty([num_scenarios], np.float)
+        self.year_type = np.ones([num_scenarios], np.float) * 5  # set 5 as initial WY
 
     def _value(self, timestep, scenario_index):
         month = self.datetime.month
@@ -32,7 +32,8 @@ class IFR_at_Murphys_Park_Requirement(WaterLPParameter):
 
         # Calculate water year type based on Apr-Jul inflow forecast
         if month == 5 and self.datetime.day == 1:
-            new_melones_runoff = self.model.parameters['New Melones Apr-Jul Runoff' + self.month_suffix].value(timestep, scenario_index)
+            new_melones_runoff = self.model.parameters['New Melones Apr-Jul Runoff' + self.month_suffix] \
+                .value(timestep, scenario_index)
             self.year_type[sid] = len([x for x in self.year_type_thresholds if new_melones_runoff >= x])
 
         # Determine schedule based on time of year
