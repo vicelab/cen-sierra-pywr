@@ -1,3 +1,4 @@
+import numpy as np
 from parameters import WaterLPParameter
 
 from utilities.converter import convert
@@ -6,17 +7,27 @@ from utilities.converter import convert
 class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
     """"""
 
+    WYT = None
+
+    def setup(self):
+        super().setup()
+        # allocate an array to hold the previous storage; will be overwritten each timestep
+        num_scenarios = len(self.model.scenarios.combinations)
+        self.WYT = np.empty([num_scenarios], np.float64)
+
     def _value(self, timestep, scenario_index):
+
+        sid = scenario_index.global_id
 
         # initial IFR
         if timestep.index == 0:
-            self.WYT = 2  # default
+            self.WYT[sid] = 2  # default
 
         date = self.datetime
 
         # These are monthly values, so only calculate values in the first time step of each month
         if date.month >= 9:
-            WYT = self.WYT
+            WYT = self.WYT[sid]
 
         # Jan-June:
         else:
@@ -52,7 +63,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
                 else:
                     WYT = 1
 
-        self.WYT = WYT
+        self.WYT[sid] = WYT
 
         return WYT
 

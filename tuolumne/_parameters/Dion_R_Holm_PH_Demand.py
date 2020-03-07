@@ -7,6 +7,8 @@ from utilities.converter import convert
 class Dion_R_Holm_PH_Demand(WaterLPParameter):
     """"""
 
+    prev_release_cms = None
+
     def setup(self):
         super().setup()
         num_scenarios = len(self.model.scenarios.combinations)

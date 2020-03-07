@@ -6,11 +6,12 @@ from utilities.converter import convert
 class Turlock_Irrigation_District_Demand(WaterLPParameter):
     """"""
 
+    WYT_names = ["Critical", "Dry", "Below", "Above", "Wet"]
+
     def _value(self, timestep, scenario_index):
-        WYT_names = ["Critical", "Dry", "Below", "Above", "Wet"]
         SJV_WYT = self.model.parameters["San Joaquin Valley WYT"].value(timestep, scenario_index)
-        dm = (timestep.month, timestep.day)
-        demand_cfs = self.model.tables["Turlock Irrigation District/Demand Table"].at[dm, WYT_names[SJV_WYT - 1]]
+        demand_cfs = self.model.tables["Turlock Irrigation District/Demand Table"]\
+            .at[(timestep.month, timestep.day), self.WYT_names[SJV_WYT - 1]]
 
         return demand_cfs / 35.315
 

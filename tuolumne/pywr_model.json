@@ -565,7 +565,7 @@
             "name": "Moccasin Aquaduct",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": "Moccasin Aquaduct/Flow Capacity"
+            "max_flow": 2.2
         },
         {
             "name": "Moccasin Aquaduct.1.1",
@@ -2510,16 +2510,9 @@
         "Eleanor-Cherry Pumping Station/Requirement": {
             "type": "Eleanor_Cherry_Pumping_Station_Requirement"
         },
-        "Moccasin Aquaduct/Flow Capacity": {
-            "type": "Moccasin_Aquaduct_Flow_Capacity",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
         "Cherry Lake/Cost": {
             "type": "constant",
             "value": -50
-        },
-        "Cherry Lake/Rule Curve": {
-            "type": "Preferred_Storage"
         },
         "Cherry Lake/Volume Elevation Curve": {
             "type": "interpolatedvolume",
@@ -2575,9 +2568,6 @@
         "Don Pedro Reservoir/Cost": {
             "type": "constant",
             "value": -10
-        },
-        "Don Pedro Reservoir/Rule Curve": {
-            "type": "Preferred_Storage"
         },
         "Don Pedro Reservoir/Volume Elevation Curve": {
             "type": "interpolatedvolume",
@@ -2649,10 +2639,6 @@
             "kind": "cubic",
             "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
         },
-        "Don Pedro Reservoir/Storage Demand": {
-            "type": "Don_Pedro_Reservoir_Storage_Demand",
-            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
-        },
         "Hetch Hetchy Reservoir/Cost": {
             "type": "constant",
             "value": -50
@@ -2663,9 +2649,6 @@
             "index_col": "dates",
             "column": "Rain_mm",
             "parse_dates": true
-        },
-        "Hetch Hetchy Reservoir/Rule Curve": {
-            "type": "Preferred_Storage"
         },
         "Hetch Hetchy Reservoir/Volume Elevation Curve": {
             "type": "interpolatedvolume",
@@ -2717,10 +2700,6 @@
             "kind": "cubic",
             "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
         },
-        "Hetch Hetchy Reservoir/Storage Demand": {
-            "type": "Hetch_Hetchy_Reservoir_Storage_Demand",
-            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
-        },
         "IFR bl Cherry Lake/Min Flow": {
             "type": "IFR_bl_Cherry_Lake_Min_Flow",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
@@ -2748,9 +2727,6 @@
         "Lake Eleanor/Cost": {
             "type": "constant",
             "value": -55
-        },
-        "Lake Eleanor/Rule Curve": {
-            "type": "Preferred_Storage"
         },
         "Lake Eleanor/Volume Elevation Curve": {
             "type": "interpolatedvolume",
@@ -2793,10 +2769,6 @@
             ],
             "kind": "cubic",
             "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
-        },
-        "Lake Eleanor/Storage Demand": {
-            "type": "Lake_Eleanor_Storage_Demand",
-            "comment": "{\"dim\": \"Volume\", \"scale\": 1000000, \"unit\": \"m^3\"}"
         },
         "Modesto Irrigation District/Demand": {
             "type": "Modesto_Irrigation_District_Demand"

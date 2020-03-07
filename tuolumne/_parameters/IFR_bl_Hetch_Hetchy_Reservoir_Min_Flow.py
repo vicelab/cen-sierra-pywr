@@ -20,10 +20,11 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Min_Flow(WaterLPParameter):
         # get schedule
         schedule = self.model.tables["IFR bl Hetch Hetchy Reservoir/IFR Schedule"]
 
-        date = self.datetime
+        month = self.datetime.month
+        day = self.datetime.day
         # get row & column
-        lookup_row = date.month - 1
-        month_day = (date.month, date.day)
+        lookup_row = month - 1
+        month_day = (month, day)
         if month_day >= (9, 15):
             lookup_row += 1
         lookup_col = min([3, 2, 1].index(wyt) * 2 + 1, 4)
@@ -38,12 +39,12 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Min_Flow(WaterLPParameter):
 
         # 1987 Stipulation 2: Additional blocks of water
         block_1987 = 0
-        if wyt in [1, 2] and date.month in [5, 6, 7]:
+        if wyt in [1, 2] and month in [5, 6, 7]:
             if wyt == 1:  # A
                 block_1987 = 15000  # AF
             else:
                 block_1987 = 6500
-        elif wyt == 3 and date.month in [7, 8, 9]:
+        elif wyt == 3 and month in [7, 8, 9]:
             block_1987 = 4400
 
         if block_1987:
