@@ -870,9 +870,12 @@
             "head": 335.3,
             "turbine_capacity": 3.3028458088270254,
             "cost": [
+                -500,
                 -1
             ],
-            "max_flow": []
+            "max_flow": [
+                "Kirkwood PH/Demand"
+            ]
         },
         {
             "name": "La Grange",
@@ -987,8 +990,20 @@
             "name": "SFPUC",
             "type": "Output",
             "comment": "{\"resource_class\": \"node\"}",
-            "max_flow": "SFPUC/Demand",
-            "cost": -500
+            "cost": 1,
+            "max_flow": 1.5
+        },
+        {
+            "name": "SFPUC requirement",
+            "type": "PiecewiseLink",
+            "max_flow": [
+                "SFPUC requirement/Demand",
+                1.5
+            ],
+            "cost": [
+                -500,
+                -1
+            ]
         },
         {
             "name": "Sullivan Ck Headflow",
@@ -2304,6 +2319,10 @@
         ],
         [
             "Transmission Link from Withdrawal Node 3 to SFPUC.2",
+            "SFPUC requirement"
+        ],
+        [
+            "SFPUC requirement",
             "SFPUC"
         ],
         [
@@ -2724,6 +2743,9 @@
             "type": "IFR_bl_Lake_Eleanor_Min_Flow",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
+        "Kirkwood PH/Demand": {
+            "type": "Kirkwood_PH_Demand"
+        },
         "Lake Eleanor/Cost": {
             "type": "constant",
             "value": -55
@@ -2773,8 +2795,8 @@
         "Modesto Irrigation District/Demand": {
             "type": "Modesto_Irrigation_District_Demand"
         },
-        "SFPUC/Demand": {
-            "type": "SFPUC_Demand"
+        "SFPUC requirement/Demand": {
+            "type": "SFPUC_requirement_Demand"
         },
         "Turlock Irrigation District/Demand": {
             "type": "Turlock_Irrigation_District_Demand"

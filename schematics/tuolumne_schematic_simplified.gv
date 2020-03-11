@@ -33,6 +33,7 @@ digraph tuolumne {
 	"Modesto Irrigation District" [fillcolor=black fontcolor=white shape=oval style=filled]
 	"Priest Reservoir" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	SFPUC [fillcolor=black fontcolor=white shape=oval style=filled]
+	"SFPUC requirement" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"TUOLU-N-JUN1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Tuolumne River Outflow" [fillcolor=black fontcolor=white shape=oval style=filled]
 	"TUO_01 Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
@@ -41,6 +42,7 @@ digraph tuolumne {
 	"Upper Hetch Hetchy Tunnel Outflow" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Hetch Hetchy Aquaduct Outflow" -> "Below Hetch Hetchy Aquaduct Diverted Inflow"
 	"Hetch Hetch Aquaduct.1.1" -> "TUOLU-N-JUN1"
+	"SFPUC requirement" -> SFPUC
 	"Cherry Lake" -> "IFR bl Cherry Lake"
 	"Cherry Lake" -> "Dion R Holm PH"
 	"Hetch Hetchy Reservoir" -> "IFR bl Hetch Hetchy Reservoir"
@@ -69,8 +71,8 @@ digraph tuolumne {
 	"Moccasin Reservoir Inflow" -> "Moccasin Reservoir"
 	"Priest Reservoir" -> "Moccasin Reservoir"
 	"Priest Reservoir Inflow" -> "Priest Reservoir"
-	"Moccasin Reservoir" -> SFPUC
-	"Moccasin PH" -> SFPUC
+	"Moccasin Reservoir" -> "SFPUC requirement"
+	"Moccasin PH" -> "SFPUC requirement"
 	"TUO_R-N-JUN12" -> "Moccasin PH"
 	"Priest Reservoir" -> "Moccasin PH"
 	"Below Hetch Hetchy Aquaduct Diverted Inflow" -> "Hetch Hetch Aquaduct.1.1"

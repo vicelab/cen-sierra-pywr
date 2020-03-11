@@ -3,7 +3,7 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class SFPUC_Demand(WaterLPParameter):
+class SFPUC_requirement_Demand(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
@@ -36,5 +36,5 @@ class SFPUC_Demand(WaterLPParameter):
             raise
 
 
-SFPUC_Demand.register()
-print(" [*] SFPUC_Demand successfully registered")
+SFPUC_requirement_Demand.register()
+print(" [*] SFPUC_requirement_Demand successfully registered")
