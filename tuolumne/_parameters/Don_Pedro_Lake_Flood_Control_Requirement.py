@@ -28,7 +28,7 @@ class Don_Pedro_Lake_Flood_Control_Requirement(WaterLPParameter):
         # Normal release
         MID_mcm = self.model.parameters["Modesto Irrigation District/Demand"].value(timestep, scenario_index)
         TID_mcm = self.model.parameters["Turlock Irrigation District/Demand"].value(timestep, scenario_index)
-        IFR_mcm = self.model.parameters["IFR bl Don Pedro Reservoir/Min Flow"].value(timestep, scenario_index)
+        IFR_mcm = self.model.parameters["IFR bl La Grange Reservoir/Min Flow"].value(timestep, scenario_index)
         release_mcm = MID_mcm + TID_mcm + IFR_mcm
         if prev_storage_mcm - release_mcm >= flood_control_curve_mcm:
             release_mcm += prev_storage_mcm - release_mcm - flood_control_curve_mcm

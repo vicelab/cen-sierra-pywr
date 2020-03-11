@@ -834,10 +834,10 @@
             "min_flow_cost": -10000
         },
         {
-            "name": "IFR bl Don Pedro Reservoir",
+            "name": "IFR bl La Grange Reservoir",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_flow": "IFR bl Don Pedro Reservoir/Min Flow",
+            "min_flow": "IFR bl La Grange Reservoir/Min Flow",
             "min_flow_cost": -10000
         },
         {
@@ -2315,7 +2315,7 @@
             "San Joaquin Pipelines"
         ],
         [
-            "IFR bl Don Pedro Reservoir",
+            "IFR bl La Grange Reservoir",
             "TUO-L-RIV1.1"
         ],
         [
@@ -2336,7 +2336,7 @@
         ],
         [
             "TUO-L-RIV1.2.1.1.2",
-            "IFR bl Don Pedro Reservoir"
+            "IFR bl La Grange Reservoir"
         ],
         [
             "Don Pedro Reservoir",
@@ -2475,7 +2475,7 @@
             "header": 0,
             "squeeze": true
         },
-        "IFR bl Don Pedro Reservoir/IFR Schedule": {
+        "IFR bl La Grange Reservoir/IFR Schedule": {
             "url": "../data/Tuolumne River/_tables/IFR_bl_Don_Pedro_Reservoir_IFR_Schedule.csv",
             "header": 0,
             "index_col": 0,
@@ -2704,11 +2704,11 @@
             "type": "IFR_bl_Cherry_Lake_Min_Flow",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
-        "IFR bl Don Pedro Reservoir/Water Year Type": {
+        "IFR bl La Grange Reservoir/Water Year Type": {
             "type": "IFR_bl_Don_Pedro_Reservoir_Water_Year_Type",
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         },
-        "IFR bl Don Pedro Reservoir/Min Flow": {
+        "IFR bl La Grange Reservoir/Min Flow": {
             "type": "IFR_bl_Don_Pedro_Reservoir_Min_Flow",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
@@ -3056,9 +3056,9 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Cherry Lake"
         },
-        "IFR bl Don Pedro Reservoir/flow": {
+        "IFR bl La Grange Reservoir/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "IFR bl Don Pedro Reservoir"
+            "node": "IFR bl La Grange Reservoir"
         },
         "IFR bl Hetch Hetchy Reservoir/flow": {
             "type": "NumpyArrayNodeRecorder",

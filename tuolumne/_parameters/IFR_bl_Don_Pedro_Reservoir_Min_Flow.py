@@ -9,7 +9,7 @@ class IFR_bl_Don_Pedro_Reservoir_Min_Flow(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         SJVI = self.get("San Joaquin Valley WYI", timestep, scenario_index)
-        schedule = self.model.tables["IFR bl Don Pedro Reservoir/IFR Schedule"]
+        schedule = self.model.tables["IFR bl La Grange Reservoir/IFR Schedule"]
         thresholds = [1.500, 2.000, 2.200, 2.400, 2.700, 3.100]
         lookup_col = sum([1 for t in thresholds if SJVI >= t]) + 1  # there is also a "days" column
 
