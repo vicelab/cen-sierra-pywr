@@ -30625,7 +30625,7 @@
                         "type": "Feature"
                     }
                 },
-                "name": "IFR bl La Grange Reservoir",
+                "name": "IFR at La Grange",
                 "network_id": 1237,
                 "status": "A",
                 "types": [
@@ -31649,7 +31649,7 @@
                         "type": "Feature"
                     }
                 },
-                "name": "La Grange Reservoir",
+                "name": "La Grange",
                 "network_id": 1237,
                 "status": "A",
                 "types": [

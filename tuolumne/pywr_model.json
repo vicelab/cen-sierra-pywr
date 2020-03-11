@@ -806,7 +806,7 @@
             "name": "Groveland",
             "type": "Output",
             "comment": "{\"resource_class\": \"node\"}",
-            "max_flow": 0.0018178559959280028,
+            "max_flow": 0.0048931,
             "cost": -30000
         },
         {
@@ -834,10 +834,10 @@
             "min_flow_cost": -10000
         },
         {
-            "name": "IFR bl La Grange Reservoir",
+            "name": "IFR at La Grange",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_flow": "IFR bl La Grange Reservoir/Min Flow",
+            "min_flow": "IFR at La Grange/Min Flow",
             "min_flow_cost": -10000
         },
         {
@@ -875,7 +875,7 @@
             "max_flow": []
         },
         {
-            "name": "La Grange Reservoir",
+            "name": "La Grange",
             "type": "BreakLink",
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -2251,7 +2251,7 @@
             "TUO_R-N-JUN4"
         ],
         [
-            "La Grange Reservoir",
+            "La Grange",
             "Modesto Canal.1"
         ],
         [
@@ -2315,7 +2315,7 @@
             "San Joaquin Pipelines"
         ],
         [
-            "IFR bl La Grange Reservoir",
+            "IFR at La Grange",
             "TUO-L-RIV1.1"
         ],
         [
@@ -2331,12 +2331,12 @@
             "Tuolumne River Outflow"
         ],
         [
-            "La Grange Reservoir",
+            "La Grange",
             "TUO-L-RIV1.2.1.1.2"
         ],
         [
             "TUO-L-RIV1.2.1.1.2",
-            "IFR bl La Grange Reservoir"
+            "IFR at La Grange"
         ],
         [
             "Don Pedro Reservoir",
@@ -2380,7 +2380,7 @@
         ],
         [
             "TUOLU-L-RIV1",
-            "La Grange Reservoir"
+            "La Grange"
         ],
         [
             "Moccasin Ck Inflow",
@@ -2407,7 +2407,7 @@
             "Don Pedro Reservoir"
         ],
         [
-            "La Grange Reservoir",
+            "La Grange",
             "Turlock Canal.1"
         ],
         [
@@ -2475,8 +2475,8 @@
             "header": 0,
             "squeeze": true
         },
-        "IFR bl La Grange Reservoir/IFR Schedule": {
-            "url": "../data/Tuolumne River/_tables/IFR_bl_Don_Pedro_Reservoir_IFR_Schedule.csv",
+        "IFR at La Grange/IFR Schedule": {
+            "url": "../data/Tuolumne River/_tables/IFR_at_La_Grange_IFR_Schedule.csv",
             "header": 0,
             "index_col": 0,
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
@@ -2704,12 +2704,12 @@
             "type": "IFR_bl_Cherry_Lake_Min_Flow",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
-        "IFR bl La Grange Reservoir/Water Year Type": {
-            "type": "IFR_bl_Don_Pedro_Reservoir_Water_Year_Type",
+        "IFR at La Grange/Water Year Type": {
+            "type": "IFR_at_La_Grange_Water_Year_Type",
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         },
-        "IFR bl La Grange Reservoir/Min Flow": {
-            "type": "IFR_bl_Don_Pedro_Reservoir_Min_Flow",
+        "IFR at La Grange/Min Flow": {
+            "type": "IFR_at_La_Grange_Min_Flow",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "IFR bl Hetch Hetchy Reservoir/Water Year Type": {
@@ -3056,9 +3056,9 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Cherry Lake"
         },
-        "IFR bl La Grange Reservoir/flow": {
+        "IFR at La Grange/flow": {
             "type": "NumpyArrayNodeRecorder",
-            "node": "IFR bl La Grange Reservoir"
+            "node": "IFR at La Grange"
         },
         "IFR bl Hetch Hetchy Reservoir/flow": {
             "type": "NumpyArrayNodeRecorder",

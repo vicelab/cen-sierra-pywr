@@ -3,7 +3,7 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class IFR_bl_Don_Pedro_Reservoir_Water_Year_Type(WaterLPParameter):
+class IFR_at_La_Grange_Water_Year_Type(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
@@ -30,5 +30,5 @@ class IFR_bl_Don_Pedro_Reservoir_Water_Year_Type(WaterLPParameter):
             raise
 
 
-IFR_bl_Don_Pedro_Reservoir_Water_Year_Type.register()
-print(" [*] IFR_bl_Don_Pedro_Reservoir_Water_Year_Type successfully registered")
+IFR_at_La_Grange_Water_Year_Type.register()
+print(" [*] IFR_at_La_Grange_Water_Year_Type successfully registered")

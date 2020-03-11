@@ -28,7 +28,7 @@ class Don_Pedro_Lake_Flood_Control_Requirement(WaterLPParameter):
         # Normal release
         MID_mcm = self.model.parameters["Modesto Irrigation District/Demand"].value(timestep, scenario_index)
         TID_mcm = self.model.parameters["Turlock Irrigation District/Demand"].value(timestep, scenario_index)
-        IFR_mcm = self.model.parameters["IFR bl La Grange Reservoir/Min Flow"].value(timestep, scenario_index)
+        IFR_mcm = self.model.parameters["IFR at La Grange/Min Flow"].value(timestep, scenario_index)
         release_mcm = MID_mcm + TID_mcm + IFR_mcm
         if prev_storage_mcm - release_mcm >= flood_control_curve_mcm:
             release_mcm += prev_storage_mcm - release_mcm - flood_control_curve_mcm
@@ -48,23 +48,31 @@ class Don_Pedro_Lake_Flood_Control_Requirement(WaterLPParameter):
                 forecast_days = (end - start).days + 1
                 release_mcm = max(release_mcm, forecasted_spill / forecast_days)
 
+                # limit extra release 4000 cfs (9.7862 mcm) if we are below the flood curve
+                if prev_storage_mcm < flood_control_curve_mcm:
+                    release_mcm = min(release_mcm, 9.7862)
+
         if (7, 1) < month_day <= (10, 7):
             end = datetime(timestep.year, 10, 7)
             drawdown_days = (end - start).days + 1
-            prev_release_mcm = DP_flood_control.prev_flow[scenario_index.global_id]
-            oct_target_mcm = (1690 - 10) * 1.2335
-            seasonal_drawdown_mcm = prev_storage_mcm - oct_target_mcm
-            drawdown_release_mcm = max(seasonal_drawdown_mcm / drawdown_days, 0)
-            extra_release_mcm = max(drawdown_release_mcm + FNF[start] - MID_mcm - TID_mcm - IFR_mcm, 0)
+            # oct_target_mcm = 1690 cfs w/ 10 cfs buffer = (1690 - 10) * 1.2335 = 2072.28 mcm
+            drawdown_release_mcm = max((prev_storage_mcm - 2072.28) / drawdown_days, 0)
+            inflow_forecast_mcm = FNF[start:end].sum() / drawdown_days
+            # downstream_demand_mcm = MID_mcm + TID_mcm + IFR_mcm
+            downstream_demand_mcm = 3
+            extra_release_mcm = max(drawdown_release_mcm + inflow_forecast_mcm - downstream_demand_mcm, 0)
             release_mcm += extra_release_mcm
 
             # Let's also limit ramping (for both instream flow and reservoir management reasons)
+            prev_release_mcm = DP_flood_control.prev_flow[scenario_index.global_id]
+            if release_mcm > prev_release_mcm * 0.987:
+                release_mcm = prev_release_mcm * 0.987
             if release_mcm > prev_release_mcm:
                 release_mcm = min(release_mcm, prev_release_mcm * 1.1)
             elif release_mcm < prev_release_mcm:
                 release_mcm = max(release_mcm, prev_release_mcm * 0.9)
 
-        max_release_mcm = MID_mcm + TID_mcm + IFR_mcm + 8000 / 35.31 * 0.0864
+        max_release_mcm = MID_mcm + TID_mcm + 9000 / 35.31 * 0.0864
 
         release_mcm = min(release_mcm, max_release_mcm)  # max release
 

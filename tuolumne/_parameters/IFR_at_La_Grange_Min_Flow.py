@@ -4,12 +4,12 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class IFR_bl_Don_Pedro_Reservoir_Min_Flow(WaterLPParameter):
+class IFR_at_La_Grange_Min_Flow(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
         SJVI = self.get("San Joaquin Valley WYI", timestep, scenario_index)
-        schedule = self.model.tables["IFR bl La Grange Reservoir/IFR Schedule"]
+        schedule = self.model.tables["IFR at La Grange/IFR Schedule"]
         thresholds = [1.500, 2.000, 2.200, 2.400, 2.700, 3.100]
         lookup_col = sum([1 for t in thresholds if SJVI >= t]) + 1  # there is also a "days" column
 
@@ -71,5 +71,5 @@ class IFR_bl_Don_Pedro_Reservoir_Min_Flow(WaterLPParameter):
             raise
 
 
-IFR_bl_Don_Pedro_Reservoir_Min_Flow.register()
-print(" [*] IFR_bl_Don_Pedro_Reservoir_Min_Flow successfully registered")
+IFR_at_La_Grange_Min_Flow.register()
+print(" [*] IFR_at_La_Grange_Min_Flow successfully registered")
