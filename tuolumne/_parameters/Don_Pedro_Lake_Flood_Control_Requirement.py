@@ -41,16 +41,23 @@ class Don_Pedro_Lake_Flood_Control_Requirement(WaterLPParameter):
         DP_flood_control = self.model.nodes["Don Pedro Lake Flood Control"]
         if (4, 1) <= month_day <= (end_month, end_day):
             end = datetime(timestep.year, end_month, end_day)
-            forecast = FNF[start:end].sum()
-            available_space = NDP.max_volume - prev_storage_mcm
-            forecasted_spill = forecast - (available_space - 20 * 1.2335)  # 20 TAF buffer
+            forecast_days = (end - start).days + 1
+            forecast_all = FNF[start:end].sum()
+            forecast_above_HH = self.model.parameters["Hetch Hetchy Reservoir Inflow/Runoff"].dataframe[start:end].sum()
+            SFPUC_diversion = 920 / 35.315 * 0.0864 * forecast_days
+            forecast = forecast_all - forecast_above_HH + max(forecast_above_HH - SFPUC_diversion, 0.0)
+
+            NDP_space = NDP.max_volume - prev_storage_mcm - 20 * 1.2335
+            HH = self.model.nodes["Hetch Hetchy Reservoir"]
+            HH_space = HH.max_volume - HH.volume[scenario_index.global_id]
+            available_space = NDP_space + HH_space
+            forecasted_spill = forecast - available_space  # 20 TAF buffer
             if forecasted_spill > 0:
-                forecast_days = (end - start).days + 1
                 release_mcm = max(release_mcm, forecasted_spill / forecast_days)
 
                 # limit extra release 4000 cfs (9.7862 mcm) if we are below the flood curve
-                if prev_storage_mcm < flood_control_curve_mcm:
-                    release_mcm = min(release_mcm, 9.7862)
+                # if prev_storage_mcm < flood_control_curve_mcm:
+                #     release_mcm = min(release_mcm, 9.7862)
 
         if (7, 1) < month_day <= (10, 7):
             end = datetime(timestep.year, 10, 7)
