@@ -65,10 +65,8 @@ class Don_Pedro_Lake_Flood_Control_Requirement(WaterLPParameter):
 
             # Let's also limit ramping (for both instream flow and reservoir management reasons)
             prev_release_mcm = DP_flood_control.prev_flow[scenario_index.global_id]
-            if release_mcm > prev_release_mcm * 0.987:
-                release_mcm = prev_release_mcm * 0.987
             if release_mcm > prev_release_mcm:
-                release_mcm = min(release_mcm, prev_release_mcm * 1.1)
+                release_mcm = min(release_mcm, prev_release_mcm * 0.99)
             elif release_mcm < prev_release_mcm:
                 release_mcm = max(release_mcm, prev_release_mcm * 0.9)
 
