@@ -21,12 +21,12 @@ digraph tuolumne {
 	"Hetch Hetchy Aquaduct Outflow" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Hetch Hetchy Reservoir" [fillcolor=blue fontcolor=white shape=rect style=filled]
 	"IFR bl Cherry Lake" [fillcolor=green fontcolor=black shape=oval style=filled]
-	"IFR bl La Grange Reservoir" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR at La Grange" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"IFR bl Hetch Hetchy Reservoir" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"IFR bl Lake Eleanor" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"Moccasin Fish Hatchery" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"Kirkwood PH" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"La Grange Reservoir" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
+	"La Grange" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Lake Eleanor" [fillcolor=blue fontcolor=white shape=rect style=filled]
 	"Moccasin PH" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"Moccasin Reservoir" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
@@ -54,10 +54,10 @@ digraph tuolumne {
 	"TUO_R-N-JUN12" -> "Priest Reservoir"
 	"Kirkwood PH" -> "Hetch Hetchy Aquaduct Outflow"
 	"Moccasin Reservoir" -> "Moccasin Fish Hatchery"
-	"La Grange Reservoir" -> "IFR bl La Grange Reservoir"
+	"La Grange" -> "IFR at La Grange"
 	"Don Pedro Reservoir" -> "Don Pedro Lake Spillway"
 	"Don Pedro Reservoir" -> "Don Pedro PH"
-	"Don Pedro Lake Flood Control" -> "La Grange Reservoir"
+	"Don Pedro Lake Flood Control" -> "La Grange"
 	"TUO_01 Inflow" -> "Don Pedro Reservoir"
 	"Moccasin PH" -> "Moccasin Reservoir"
 	"Don Pedro Lake Spillway" -> "Don Pedro Lake Flood Control"
@@ -80,9 +80,9 @@ digraph tuolumne {
 	"IFR bl Cherry Lake" -> "Upper Hetch Hetchy Tunnel Outflow"
 	"IFR bl Lake Eleanor" -> "Upper Hetch Hetchy Tunnel Outflow"
 	"Upper Hetch Hetchy Tunnel Outflow" -> "Hetch Hetchy Aquaduct Outflow"
-	"La Grange Reservoir" -> "Modesto Irrigation District"
-	"La Grange Reservoir" -> "Turlock Irrigation District"
-	"IFR bl La Grange Reservoir" -> "Tuolumne River Outflow"
+	"La Grange" -> "Modesto Irrigation District"
+	"La Grange" -> "Turlock Irrigation District"
+	"IFR at La Grange" -> "Tuolumne River Outflow"
 	"Moccasin Reservoir" -> "TUO_01 Inflow"
 	"Moccasin Fish Hatchery" -> "TUO_01 Inflow"
 	"Hetch Hetchy Aquaduct Outflow" -> "TUO_01 Inflow"
