@@ -340,6 +340,21 @@ aggregate_radio = dbc.FormGroup(
     ],
 )
 
+constraints_checkboxes = dbc.FormGroup(
+    [
+        dbc.Label("Constraints", html_for="constraints-checklist", width=2),
+        dbc.Checklist(
+            id="constraints-checklist",
+            options=[
+                {"label": "Minimum", "value": "min"},
+                {"label": "Maximum", "value": "max"},
+                {"label": "Guide curve", "value": "guide"},
+            ],
+            value=["min", "max", "guide"],
+        ),
+    ],
+)
+
 consolidation_checklist = dbc.FormGroup(
     [
         dbc.Checklist(
@@ -426,7 +441,7 @@ layout_switches = dbc.FormGroup(
 
 
 def make_controls(mode='production'):
-    controls = [layout_switches, transform_radio, resample_radio, aggregate_radio, consolidation_checklist]
+    controls = [layout_switches, transform_radio, resample_radio, aggregate_radio, constraints_checkboxes, consolidation_checklist]
     if mode == 'development':
         controls = [select_metric] + controls
     return dbc.Form(
@@ -449,9 +464,8 @@ top_bar = dbc.Form(
                 value=[],
                 placeholder='Select a resource...',
             ),
-            dbc.Button([
-                'Reload'
-            ], id='reload', style={'marginLeft': 'auto'})
+            dbc.Button(['Reload'],
+                       id='reload', style={'marginLeft': 'auto'})
         ], style={'display': 'inline-flex', 'marginTop': '5px', 'width': '100%'})
     ]
 )
@@ -590,20 +604,6 @@ def render_scenario_selections(basin):
     return children
 
 
-# @app.callback(Output("select-basin", "options"), [
-#     Input("select-basins-global", "value")
-# ])
-# def render_select_development_basin_options(basins):
-#     return [{"label": BASINS[basin], "value": basin} for basin in basins]
-
-
-# @app.callback(Output("select-basin", "value"), [
-#     Input("select-basins-global", "value")
-# ])
-# def render_select_development_basin_value(basins):
-#     return basins[0]
-
-
 @app.callback(Output("sidebar-tabs", "children"), [Input("url", "pathname")])
 def render_sidebar_tabs(pathname):
     nav_items = []
@@ -618,13 +618,6 @@ def render_sidebar_tabs(pathname):
         )
         nav_items.append(nav_item)
     return nav_items
-
-
-# @app.callback(Output('select-themes', 'children'), [
-#     Input('select-theme', 'value')
-# ])
-# def render_theme_selector(selected):
-#     return []
 
 
 @app.callback(Output("main-content", "children"), [Input("url", "pathname")])
@@ -690,6 +683,13 @@ def render_schematics_content():
             children=[html.Div('test')],
         )
     ], style={"width": "100%"})
+
+
+# @app.callback(Output('select-resources', 'value'), [
+#     Input('select-all-resources', 'n_clicks')
+# ])
+# def select_all_resources(n_clicks):
+#     return []
 
 
 @app.callback(Output('schematics-content', 'children'), [
@@ -864,7 +864,7 @@ def toggle_percentile_checkboxes(values):
     [
         # Input('url', 'pathname'),
         Input('select-basin', 'value'),
-        Input('development-tabs', 'active_tab')
+        Input('development-tabs', 'active_tab'),
     ],
     [State('session-store', 'data')]
 )
@@ -931,6 +931,7 @@ def update_select_resources(tab, basin):
                   Input('select-metric', 'value'),
                   Input('radio-transform', 'value'),
                   Input('radio-resample', 'value'),
+                  Input('constraints-checklist', 'value'),
                   Input('radio-aggregate', 'value'),
                   Input('percentiles-checklist', 'value'),
                   Input('percentiles-options', 'value'),
@@ -939,7 +940,7 @@ def update_select_resources(tab, basin):
                   Input('select-resources', 'value'),
                   Input('reload', 'n_clicks'),
               ])
-def render_development_content(tab, basin, metric, transform, resample, aggregate, consolidate, percentiles,
+def render_development_content(tab, basin, metric, transform, resample, constraints, aggregate, consolidate, percentiles,
                                percentiles_type, layout_options, resources, n_clicks):
     kwargs = dict(
         basin=basin,
@@ -948,6 +949,7 @@ def render_development_content(tab, basin, metric, transform, resample, aggregat
         metric=metric,
         transform=transform,
         resample=resample,
+        constraints=constraints,
         aggregate=aggregate,
         consolidate=consolidate,
         percentiles=percentiles,

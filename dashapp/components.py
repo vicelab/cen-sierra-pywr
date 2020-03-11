@@ -128,6 +128,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     metric = kwargs.get('metric')
     metric = metric != 'default' and metric
     resample = kwargs.get('resample')
+    constraints = kwargs.get('constraints', [])
     percentiles = kwargs.get('percentiles')
     consolidate = kwargs.get('consolidate')
     calibration = kwargs.get('calibration')
@@ -247,12 +248,13 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
 
             plot_max = False
             max_reqt = kwargs.get('max_reqt')
-            if max_reqt is not None and res_name in max_reqt[forcing]:
+            if max_reqt is not None and res_name in max_reqt[forcing] and 'max' in constraints:
                 plot_max = True
 
             # Minimum flow requirement
             min_reqt = kwargs.get('min_reqt')
-            if not consolidate and min_reqt is not None and res_name in min_reqt[forcing]:
+            show_min_reqt = not consolidate and min_reqt is not None and res_name in min_reqt[forcing] and 'min' in constraints
+            if show_min_reqt:
                 if resample:
                     min_reqt_resampled = min_reqt.resample(resample).mean()
                 else:

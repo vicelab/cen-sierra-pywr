@@ -1,5 +1,31 @@
 // upper_san_joaquin
 digraph upper_san_joaquin {
+	"No. 1A Conduit Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Manzanita Diversion Dam Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Millerton Lake Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Kerckhoff Lake Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Browns Creek Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Bass Lake Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Redinger Lake Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Shaver Lake Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Big Creek 3 Conduit Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"IFR above Shakeflat Creek Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Mammoth Pool Reservoir Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Big Creek 8 Penstock Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Big Creek 2 Tunnel Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Huntington Lake Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Lake Thomas A Edison Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Portal Forebay Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Bolsillo Cr. Div. Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Camp 62 Cr. Div. Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Chinquapin Cr. Div. Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"IFR bl Hooper Creek Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Florence Lake Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"IFR No. Fk. Stevenson Creek above Shaver Lake Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"IFR bl Big Creek 5 Div Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Bear Diversion Tunnel Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Pitman Creek Diversion Dam Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"IFR bl San Joaquin R and Willow Cr confluence Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Bear Diversion Tunnel" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Below Balsam Meadows Tunnel Outflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Below Bear Diversion Tunnel Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
@@ -88,53 +114,12 @@ digraph upper_san_joaquin {
 	"San Joaquin 3 PH" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"San Joaquin River Outflow" [fillcolor=black fontcolor=white shape=oval style=filled]
 	"Shaver Lake" [fillcolor=blue fontcolor=white shape=rect style=filled]
-	"SJN_01 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_02 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_03 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_04 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_05 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_06 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_07 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_08 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_09a Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_09b Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_09c Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_09d Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_10 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_11 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_12 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_13 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_14 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_15 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_16 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_17 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_18 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_19 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_20 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_21 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_22 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_23 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_24 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_25 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_26 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_27 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_28 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_29 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_30 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_31 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_32 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_33 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_34 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_35 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_36 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_37 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
-	"SJN_38 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Balsam Meadows Tunnel Outflow" -> "Below Balsam Meadows Tunnel Outflow"
 	"Bolsillo Cr. Div. Outflow" -> "Below Bolsillo Cr. Div. Diverted Inflow"
 	"Camp 62 Cr. Div. Outflow" -> "Below Camp 62 Cr. Div. Diverted Inflow"
 	"Chinquapin Cr. Div. Outflow" -> "Below Chinquapin Cr. Div. Diverted Inflow"
-	"SJN_09c Headflow" -> "No. 1A Conduit Outflow"
-	"SJN_09b Headflow" -> "Manzanita Diversion Dam"
+	"No. 1A Conduit Outflow Inflow" -> "No. 1A Conduit Outflow"
+	"Manzanita Diversion Dam Inflow" -> "Manzanita Diversion Dam"
 	"No. 1A Conduit Outflow" -> "Below No. 1 Conduit Diverted Inflow"
 	"Below No. 2 Conduit Inflow" -> "San Joaquin 1A Div Outflow"
 	"Florence Lake" -> "Below Ward Tunnel Diverted Inflow"
@@ -189,55 +174,43 @@ digraph upper_san_joaquin {
 	"Below No. 1 Conduit Diverted Inflow" -> "Below No. 2 Conduit Inflow"
 	"Below Bear Diversion Tunnel Inflow" -> "Below Camp 62 Cr. Div. Inflow"
 	"Below Portal Aqueduct Inflow" -> "Below Camp 62 Cr. Div. Inflow"
-	"SJN_01 Headflow" -> "Millerton Lake"
+	"Millerton Lake Inflow" -> "Millerton Lake"
 	"Friant PH" -> "Friant Dam Flood Release"
 	"Friant Dam Spillway" -> "Friant Dam Flood Release"
 	"Millerton Lake" -> "Friant Dam Flood Release"
 	"Tunnel No. 7.1" -> "Tunnel No. 7.2"
 	"Pitman Creek Diversion Dam" -> "Tunnel No. 7.2"
 	"San Joaquin 1A Div Outflow" -> "San Joaquin 1 PH"
-	"SJN_02 Headflow" -> "Millerton Lake"
-	"SJN_03 Headflow" -> "Millerton Lake"
-	"SJN_04 Headflow" -> "Millerton Lake"
-	"SJN_05 Headflow" -> "Millerton Lake"
-	"SJN_06 Headflow" -> "Kerckhoff Lake"
-	"SJN_09a Headflow" -> "Browns Creek Outflow"
-	"SJN_10 Headflow" -> "Manzanita Diversion Dam"
-	"SJN_11 Headflow" -> "Bass Lake"
-	"SJN_13 Headflow" -> "Redinger Lake"
-	"SJN_14 Headflow" -> "Redinger Lake"
-	"SJN_15 Headflow" -> "Shaver Lake"
-	"SJN_16 Headflow" -> "Shaver Lake"
-	"SJN_18 Headflow" -> "Big Creek 3 Conduit Outflow"
+	"Kerckhoff Lake Inflow" -> "Kerckhoff Lake"
+	"Browns Creek Outflow Inflow" -> "Browns Creek Outflow"
+	"Bass Lake Inflow" -> "Bass Lake"
+	"Redinger Lake Inflow" -> "Redinger Lake"
+	"Shaver Lake Inflow" -> "Shaver Lake"
+	"Big Creek 3 Conduit Outflow Inflow" -> "Big Creek 3 Conduit Outflow"
 	"Mammoth Pool Reservoir" -> "IFR above Shakeflat Creek"
-	"SJN_20 Headflow" -> "IFR above Shakeflat Creek"
-	"SJN_21 Headflow" -> "Mammoth Pool Reservoir"
+	"IFR above Shakeflat Creek Inflow" -> "IFR above Shakeflat Creek"
+	"Mammoth Pool Reservoir Inflow" -> "Mammoth Pool Reservoir"
 	"Portal Forebay" -> "Mammoth Pool Reservoir"
-	"SJN_22 Headflow" -> "Mammoth Pool Reservoir"
-	"SJN_25 Headflow" -> "Big Creek 8 Penstock Outflow"
+	"Big Creek 8 Penstock Outflow Inflow" -> "Big Creek 8 Penstock Outflow"
 	"Big Creek 2 Tunnel Outflow" -> "Big Creek 8 Penstock Outflow"
-	"SJN_26 Headflow" -> "Big Creek 2 Tunnel Outflow"
-	"SJN_28 Headflow" -> "Big Creek 2 Tunnel Outflow"
-	"SJN_29 Headflow" -> "Huntington Lake"
-	"SJN_30 Headflow" -> "Huntington Lake"
-	"SJN_31 Headflow" -> "Lake Thomas A Edison"
-	"SJN_32 Headflow" -> "Portal Forebay"
-	"SJN_33 Headflow" -> "Bolsillo Cr. Div. Outflow"
-	"SJN_34 Headflow" -> "Camp 62 Cr. Div. Outflow"
-	"SJN_35 Headflow" -> "Chinquapin Cr. Div. Outflow"
-	"SJN_37 Headflow" -> "IFR bl Hooper Creek"
-	"SJN_38 Headflow" -> "Florence Lake"
+	"Big Creek 2 Tunnel Outflow Inflow" -> "Big Creek 2 Tunnel Outflow"
+	"Huntington Lake Inflow" -> "Huntington Lake"
+	"Lake Thomas A Edison Inflow" -> "Lake Thomas A Edison"
+	"Portal Forebay Inflow" -> "Portal Forebay"
+	"Bolsillo Cr. Div. Outflow Inflow" -> "Bolsillo Cr. Div. Outflow"
+	"Camp 62 Cr. Div. Outflow Inflow" -> "Camp 62 Cr. Div. Outflow"
+	"Chinquapin Cr. Div. Outflow Inflow" -> "Chinquapin Cr. Div. Outflow"
+	"IFR bl Hooper Creek Inflow" -> "IFR bl Hooper Creek"
+	"Florence Lake Inflow" -> "Florence Lake"
 	"IFR bl Big Creek 6 Div" -> "Redinger Lake"
 	"Below Balsam Meadows Tunnel Outflow" -> "IFR No. Fk. Stevenson Creek above Shaver Lake"
-	"SJN_17 Headflow" -> "IFR No. Fk. Stevenson Creek above Shaver Lake"
-	"SJN_19 Headflow" -> "Big Creek 3 Conduit Outflow"
+	"IFR No. Fk. Stevenson Creek above Shaver Lake Inflow" -> "IFR No. Fk. Stevenson Creek above Shaver Lake"
 	"Big Creek 8 Penstock Outflow" -> "IFR bl Big Creek 5 Div"
-	"SJN_24 Headflow" -> "IFR bl Big Creek 5 Div"
-	"SJN_23 Headflow" -> "Mammoth Pool Reservoir"
+	"IFR bl Big Creek 5 Div Inflow" -> "IFR bl Big Creek 5 Div"
 	"Below Ward Tunnel Diverted Inflow" -> "Below Chinquapin Cr. Div. Inflow"
 	"Florence Lake" -> "IFR bl Hooper Creek"
 	"IFR bl Hooper Creek" -> "Mammoth Pool Reservoir"
-	"SJN_36 Headflow" -> "Bear Diversion Tunnel Outflow"
+	"Bear Diversion Tunnel Outflow Inflow" -> "Bear Diversion Tunnel Outflow"
 	"Bear Diversion Tunnel Outflow" -> "Bear Diversion Tunnel"
 	"IFR bl Bear Div" -> "Mammoth Pool Reservoir"
 	"IFR bl Chinquapin Creek Div" -> "Mammoth Pool Reservoir"
@@ -250,7 +223,7 @@ digraph upper_san_joaquin {
 	"Mammoth Pool PH" -> "Big Creek 3 Conduit Outflow"
 	"Portal PH" -> "Huntington Lake"
 	"IFR bl Huntington Lake" -> "Big Creek 2 Tunnel Outflow"
-	"SJN_27 Headflow" -> "Pitman Creek Diversion Dam"
+	"Pitman Creek Diversion Dam Inflow" -> "Pitman Creek Diversion Dam"
 	"IFR bl Pitman Creek Div" -> "Big Creek 2 Tunnel Outflow"
 	"Big Creek 1 PH" -> "Big Creek 2 Tunnel Outflow"
 	"Eastwood PH" -> "Shaver Lake"
@@ -262,7 +235,6 @@ digraph upper_san_joaquin {
 	"IFR No. Fk. Stevenson Creek above Shaver Lake" -> "Shaver Lake"
 	"IFR bl Shaver Lake" -> "Redinger Lake"
 	"Big Creek 3 PH" -> "Redinger Lake"
-	"SJN_12 Headflow" -> "Bass Lake"
 	"Browns Creek Outflow" -> "Browns Creek Ditch"
 	"No. 3 Conduit Outflow" -> "San Joaquin 3 PH"
 	"IFR bl Bass Lake" -> "Manzanita Diversion Dam"
@@ -276,11 +248,9 @@ digraph upper_san_joaquin {
 	"Friant-Kern Canal Demand" -> "CVP Friant-Kern Canal"
 	"IFR bl Millerton Lake" -> "San Joaquin River Outflow"
 	"IFR bl Redinger Lake" -> "IFR bl San Joaquin R and Willow Cr confluence"
-	"SJN_08 Headflow" -> "IFR bl San Joaquin R and Willow Cr confluence"
-	"SJN_09d Headflow" -> "IFR bl San Joaquin R and Willow Cr confluence"
+	"IFR bl San Joaquin R and Willow Cr confluence Inflow" -> "IFR bl San Joaquin R and Willow Cr confluence"
 	"IFR bl San Joaquin 1 Div" -> "IFR bl San Joaquin R and Willow Cr confluence"
 	"IFR bl Manzanita Div" -> "IFR bl San Joaquin R and Willow Cr confluence"
-	"SJN_07 Headflow" -> "Kerckhoff Lake"
 	"IFR bl San Joaquin R and Willow Cr confluence" -> "Kerckhoff Lake"
 	"Big Creek 4 PH" -> "Kerckhoff Lake"
 	"San Joaquin 1 PH" -> "Kerckhoff Lake"
