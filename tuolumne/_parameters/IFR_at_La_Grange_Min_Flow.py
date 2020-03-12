@@ -8,14 +8,18 @@ class IFR_at_La_Grange_Min_Flow(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
+
+        month_day = (timestep.month, timestep.day)
+
+        if (4, 1) <= month_day <= (4, 15):
+            return self.model.nodes["IFR at La Grange"].prev_flow[scenario_index.global_id] / 0.0864  # convert to cms
+
         SJVI = self.get("San Joaquin Valley WYI", timestep, scenario_index)
         schedule = self.model.tables["IFR at La Grange/IFR Schedule"]
         thresholds = [1.500, 2.000, 2.200, 2.400, 2.700, 3.100]
         lookup_col = sum([1 for t in thresholds if SJVI >= t]) + 1  # there is also a "days" column
 
         should_interpolate = 1.5 < SJVI < 3.1 and SJVI not in thresholds
-
-        month_day = (timestep.month, timestep.day)
 
         if (10, 1) <= month_day <= (10, 15):
             lookup_row = 0
@@ -32,6 +36,7 @@ class IFR_at_La_Grange_Min_Flow(WaterLPParameter):
         if outmigration_season:
             outmigration_pulse_flow_af = schedule.iat[3, lookup_col]
 
+        # Interpolate between WYT thresholds
         if should_interpolate:
             low_threshold = thresholds[lookup_col - 2]
             high_threshold = thresholds[lookup_col - 1]
