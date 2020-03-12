@@ -21,7 +21,7 @@ class WaterLPParameter(Parameter):
 
     # h5store = 'store.h5'
 
-    cfs_to_cms = 1 / 35.315
+    cfs_to_cms = (1 / 35.315)
 
     mode = 'scheduling'
     res_class = 'network'
@@ -29,9 +29,12 @@ class WaterLPParameter(Parameter):
     res_name_full = None
     attr_name = None
     block = None
-    month = None
     year = None
+    month = None
     month_offset = None
+    initial_value = None
+    rate= 0.25
+    max_flow = None
     month_suffix = ''
     demand_constant_param = ''
     elevation_param = ''
@@ -87,14 +90,14 @@ class WaterLPParameter(Parameter):
     def get(self, param, timestep, scenario_index):
         return self.model.parameters[param].value(timestep, scenario_index)
 
-    def days_in_month(self, year=None, month=None):
+    def days_in_month(self, year, month):
         if year is None:
             year = self.year
         if month is None:
             month = self.month
         return monthrange(year, month)[1]
 
-    def dates_in_month(self, year=None, month=None):
+    def dates_in_month(self, year, month):
         if year is None:
             year = self.year
         if month is None:
@@ -104,7 +107,7 @@ class WaterLPParameter(Parameter):
         dates = pd.date_range(start, periods=ndays).tolist()
         return dates
 
-    def get_down_ramp_ifr(self, timestep, scenario_index, value, initial_value=None, rate=0.25):
+    def get_down_ramp_ifr(self, timestep, scenario_index, value, initial_value, rate):
         """
 
         :param timestep:
@@ -123,7 +126,7 @@ class WaterLPParameter(Parameter):
             Qp = self.model.nodes[self.res_name].prev_flow[scenario_index.global_id] / 0.0864  # convert to cms
         return max(value, Qp * (1 - rate))
 
-    def get_up_ramp_ifr(self, timestep, scenario_index, initial_value=None, rate=0.25, max_flow=None):
+    def get_up_ramp_ifr(self, timestep, scenario_index, initial_value, rate, max_flow):
 
         if self.model.mode == 'scheduling':
             if initial_value is None:
