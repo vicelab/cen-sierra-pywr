@@ -11,7 +11,7 @@ class IFR_at_Shaffer_Bridge_Max_Flow(WaterLPParameter):
     def _value(self, timestep, scenario_index):
 
         ifr_val = 250 / 35.31  # cfs to cms (16.5 cfs)
-        ifr_range = self.get_ifr_range(timestep, scenario_index, initial_value=ifr_val, rate=0.25)
+        ifr_range = self.get_ifr_range(timestep, scenario_index, initial_value=ifr_val, rate=10)
 
         return ifr_range * 0.0864
 

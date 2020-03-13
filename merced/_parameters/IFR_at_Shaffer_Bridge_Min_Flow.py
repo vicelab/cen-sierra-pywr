@@ -21,10 +21,8 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
         # We should be able to add a "WYT" parameter as a general variable and save it to parameters in the JSON file.
         # It could be pre-processed, as currently, or calculated on-the-fly
         csv_kwargs = dict(index_col=0, header=0, parse_dates=False, squeeze=True)
-        self.fish_data = self.read_csv('Management/BAU/Demand/fishPulse_Merced_cfs.csv',
-                                       **csv_kwargs) / 35.3147  # Converting to cms
-        self.div_data = self.read_csv('Management/BAU/Demand/otherDiversions_Merced_cfs.csv',
-                                      **csv_kwargs) / 35.3147  # Converting to cms
+        self.fish_data = self.model.tables["Fish Pulse"] / 35.3147  # Converting to cms
+        self.div_data = self.model.tables["Other Diversion"] / 35.3147 # Converting to cms
 
         swrcb_levels_count = self.model.scenarios['SWRCB 40'].size
         if swrcb_levels_count == 1:
@@ -52,19 +50,19 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
         dev_req = self.dev_requirement(timestep)
 
         # SCWRB 40 REQUIREMENT
-        swrcb_reqt_mcm = 0.0
-        if 2 <= timestep.month <= 7:
-            swrcb_reqt_mcm = self.swrcb_40_requirement(timestep, scenario_index)
+        #swrcb_reqt_mcm = 0.0
+        #if 2 <= timestep.month <= 7:
+        #    swrcb_reqt_mcm = self.swrcb_40_requirement(timestep, scenario_index)
 
         # The required flow is (greater of the Davis-Grunsky and FERC flows) + the Cowell Agreement entitlement + Fish Pulse + Diversion Reg
         requirement_cms = max(ferc_flow_req, dga_flow_req) + ca_flow_req + fish_req + dev_req
         requirement_mcm = requirement_cms * 0.0864  # convert to mcm
 
-        requirement_mcm = max(requirement_mcm, swrcb_reqt_mcm)
+        previous_flow_mcm = self.model.nodes['IFR at Shaffer Bridge'].prev_flow[scenario_index.global_id]
+        #downramp_mcm = self.get_down_ramp_ifr(timestep, scenario_index, previous_flow_mcm, rate=0.25)
+        #requirement_mcm = max(requirement_mcm, swrcb_reqt_mcm)
 
-        final_reqt_cms = self.get_down_ramp_ifr(timestep, scenario_index, requirement_mcm, rate=0.25)
-
-        return final_reqt_cms * 0.0864
+        return requirement_mcm
 
     def ferc_req(self, timestep, scenario_index, wyt):
         mth = timestep.month
@@ -152,7 +150,7 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
             # Calculate the natural flow
             # Because this should depend on the current timestep's inflow, inflow data should be
             # loaded all at once, then replace prev_flow with flow                                                                                             scenario_index)
-            flow_val = self.model.parameters["Full Natural Flow"].value(timestep, scenario_index)
+            flow_val = self.model.parameters["Full Natural Flow"].value(timestep, scenario_index)/ 0.0864 # mcm to cms
             #flow_val = self.model.tables["Full Natural Flow"][timestep.datetime] / 0.0864 # mcm to cms
 
             if mth in (10, 11, 12, 1, 2):

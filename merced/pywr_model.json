@@ -760,6 +760,18 @@
             "url": "../data/Merced River/gauges/storage_mcm.csv",
             "index_col": "Date",
             "parse_dates": false
+        },
+        "Fish Pulse": {
+            "url": "../data/Merced River/Management/BAU/Demand/fishPulse_Merced_cfs.csv",
+            "index_col": 0,
+            "header": 0,
+            "squeeze": true
+        },
+        "Other Diversion": {
+            "url": "../data/Merced River/Management/BAU/Demand/otherDiversions_Merced_cfs.csv",
+            "index_col": 0,
+            "header": 0,
+            "squeeze": true
         }
     },
     "parameters": {
@@ -826,7 +838,7 @@
         },
         "Lake McClure/Inactive Pool": {
             "type": "constant",
-            "value": 0.37005057357838905
+            "value": 308
         },
         "Lake McClure/Observed Storage": {
             "type": "Lake_McClure_Observed_Storage"

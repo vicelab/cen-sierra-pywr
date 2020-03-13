@@ -18,6 +18,7 @@ class Exchequer_Dam_Flood_Release_Requirement(WaterLPParameter):
             values = table.values[1:, 1:]
             self.esrd_spline = interpolate.RectBivariateSpline(rows, cols, values, kx=1, ky=1)
         self.elevation = self.model.parameters["Lake McClure/Elevation"].value(timestep, scenario_index)
+
         return_value = 0
 
         if self.is_conservation_zone(timestep, scenario_index, ">") and self.elevation <= 264.9779:  # Between conservation zone and 869.35 ft
