@@ -22,7 +22,6 @@ digraph merced {
 	"BlwMcClure.2.1.2 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"BlwMcClure.2.2 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Main Canal [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"MERCE-L-CON1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Merced River [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Merced River (1).1.1 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Merced River (1).1.2 [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
@@ -39,22 +38,23 @@ digraph merced {
 	"Merced River below Crocker-Huffman [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Northside Canal [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Valley_inflow [link]" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Ex Chequer Dam" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Below Merced Falls Dam" [fillcolor=white fontcolor=black shape=oval style=filled]
-	blwNewExchequerPH [fillcolor=green fontcolor=black shape=oval style=filled]
+	"Exchequer Dam Flood Release" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"USGS 11270900 MERCED R BL MERCED FALLS DAM NR SNELL CA" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"IFR bl New Exchequer Dam" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"Crocker-Huffman Diversion Reservoir" [fillcolor=blue fontcolor=white shape=rect style=filled]
 	"Lake McClure" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Lake McClure Spill" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Lake McClure Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Lake McSwain" [fillcolor=blue fontcolor=white shape=rect style=filled]
 	"Maxwell Ck Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Maxwell Ck Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"McSwain PH" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"MERCE-N-JUN1" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"MERCE-N-JUN2" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"MERCE-N-JUN2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Merced Falls PH" [fillcolor=red fontcolor=white shape=oval style=filled]
-	"Merced Falls Res" [fillcolor=blue fontcolor=white shape=rect style=filled]
+	"Merced Falls Reservoir" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Merced R below Crocker-Huffman Dam" [fillcolor=green fontcolor=black shape=oval style=filled]
+	"IFR at Shaffer Bridge" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"Merced River Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Merced River Outflow" [fillcolor=black fontcolor=white shape=oval style=filled]
 	"MER_01 Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
@@ -71,13 +71,12 @@ digraph merced {
 	"MER_06 Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"MID Main" [fillcolor=black fontcolor=white shape=oval style=filled]
 	"MID Northside" [fillcolor=black fontcolor=white shape=oval style=filled]
-	"Near Shaffer Bridge_11271290" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Near Stevinson_11272500" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"USGS 11271290 MERCED R A SHAFFER BRIDGE NR CRESSEY CA" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"USGS 11272500 MERCED R NR STEVINSON CA" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"New Exchequer PH" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"South Fork Merced R Headflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"South Fork Merced R Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"USGS_11264500 MERCED R A HAPPY ISLES" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Valley Demand" [fillcolor=black fontcolor=white shape=oval style=filled]
 	Valley_Inflow [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Maxwell Ck Headflow" -> "Below Maxwell Ck Headflow [link]"
 	"Below Maxwell Ck Headflow [link]" -> "MER_02 Inflow"
@@ -115,16 +114,17 @@ digraph merced {
 	"Below South Fork Merced R Inflow [link]" -> "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500"
 	"Lake McClure" -> "BlwMcClure.1 [link]"
 	"BlwMcClure.1 [link]" -> "New Exchequer PH"
+	"Lake McClure" -> "Lake McClure Spill"
 	"New Exchequer PH" -> "BlwMcClure.2.1.1 [link]"
-	"BlwMcClure.2.1.1 [link]" -> "Below Ex Chequer Dam"
-	"Below Ex Chequer Dam" -> "BlwMcClure.2.1.2 [link]"
-	"BlwMcClure.2.1.2 [link]" -> blwNewExchequerPH
-	blwNewExchequerPH -> "BlwMcClure.2.2 [link]"
+	"BlwMcClure.2.1.1 [link]" -> "Exchequer Dam Flood Release"
+	"Lake McClure Spill" -> "Exchequer Dam Flood Release"
+	"Lake McClure" -> "Exchequer Dam Flood Release"
+	"Exchequer Dam Flood Release" -> "BlwMcClure.2.1.2 [link]"
+	"BlwMcClure.2.1.2 [link]" -> "IFR bl New Exchequer Dam"
+	"IFR bl New Exchequer Dam" -> "BlwMcClure.2.2 [link]"
 	"BlwMcClure.2.2 [link]" -> "Lake McSwain"
 	"Crocker-Huffman Diversion Reservoir" -> "Main Canal [link]"
 	"Main Canal [link]" -> "MID Main"
-	"MERCE-N-JUN2" -> "MERCE-L-CON1 [link]"
-	"MERCE-L-CON1 [link]" -> "Valley Demand"
 	"Maxwell Ck Inflow" -> "Merced River [link]"
 	"Merced River [link]" -> "MER_01 Inflow"
 	"MER_01 Inflow" -> "Merced River (1).1.1 [link]"
@@ -134,25 +134,25 @@ digraph merced {
 	"Lake McSwain" -> "Merced River (2).2.1 [link]"
 	"Merced River (2).2.1 [link]" -> "McSwain PH"
 	"McSwain PH" -> "Merced River (2).2.2.1.1 [link]"
-	"Merced River (2).2.2.1.1 [link]" -> "Merced Falls Res"
-	"Merced Falls Res" -> "Merced River (2).2.2.1.2.1 [link]"
+	"Merced River (2).2.2.1.1 [link]" -> "Merced Falls Reservoir"
+	"Merced Falls Reservoir" -> "Merced River (2).2.2.1.2.1 [link]"
 	"Merced River (2).2.2.1.2.1 [link]" -> "Merced Falls PH"
 	"Merced Falls PH" -> "Merced River (2).2.2.1.2.2.1 [link]"
-	"Merced River (2).2.2.1.2.2.1 [link]" -> "Below Merced Falls Dam"
-	"Below Merced Falls Dam" -> "Merced River (2).2.2.1.2.2.2.1.1.1 [link]"
+	"Merced River (2).2.2.1.2.2.1 [link]" -> "USGS 11270900 MERCED R BL MERCED FALLS DAM NR SNELL CA"
+	"USGS 11270900 MERCED R BL MERCED FALLS DAM NR SNELL CA" -> "Merced River (2).2.2.1.2.2.2.1.1.1 [link]"
 	"Merced River (2).2.2.1.2.2.2.1.1.1 [link]" -> "Crocker-Huffman Diversion Reservoir"
 	"Crocker-Huffman Diversion Reservoir" -> "Merced River (2).2.2.1.2.2.2.1.1.2 [link]"
-	"Merced River (2).2.2.1.2.2.2.1.1.2 [link]" -> "Merced R below Crocker-Huffman Dam"
-	"Near Shaffer Bridge_11271290" -> "Merced River (2).2.2.1.2.2.2.2 [link]"
+	"Merced River (2).2.2.1.2.2.2.1.1.2 [link]" -> "IFR at Shaffer Bridge"
+	"USGS 11271290 MERCED R A SHAFFER BRIDGE NR CRESSEY CA" -> "Merced River (2).2.2.1.2.2.2.2 [link]"
 	"Merced River (2).2.2.1.2.2.2.2 [link]" -> "MERCE-N-JUN1"
 	"MERCE-N-JUN1" -> "Merced River (2).2.2.2.1 [link]"
 	"Merced River (2).2.2.2.1 [link]" -> "MERCE-N-JUN2"
 	"MERCE-N-JUN2" -> "Merced River (2).2.2.2.2.1 [link]"
-	"Merced River (2).2.2.2.2.1 [link]" -> "Near Stevinson_11272500"
-	"Near Stevinson_11272500" -> "Merced River (2).2.2.2.2.2 [link]"
+	"Merced River (2).2.2.2.2.1 [link]" -> "USGS 11272500 MERCED R NR STEVINSON CA"
+	"USGS 11272500 MERCED R NR STEVINSON CA" -> "Merced River (2).2.2.2.2.2 [link]"
 	"Merced River (2).2.2.2.2.2 [link]" -> "Merced River Outflow"
-	"Merced R below Crocker-Huffman Dam" -> "Merced River below Crocker-Huffman [link]"
-	"Merced River below Crocker-Huffman [link]" -> "Near Shaffer Bridge_11271290"
+	"IFR at Shaffer Bridge" -> "Merced River below Crocker-Huffman [link]"
+	"Merced River below Crocker-Huffman [link]" -> "USGS 11271290 MERCED R A SHAFFER BRIDGE NR CRESSEY CA"
 	"Merced Falls PH" -> "Northside Canal [link]"
 	"Northside Canal [link]" -> "MID Northside"
 	Valley_Inflow -> "Valley_inflow [link]"

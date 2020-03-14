@@ -23,7 +23,7 @@ class Lake_McClure_Spill_Max_Flow(WaterLPParameter):
         #     release_cms =
 
         # ESRD
-        inflow = self.model.parameters["Merced River/Full Natural Flow"].value(timestep, scenario_index)
+        inflow = self.model.parameters["Full Natural Flow"].value(timestep, scenario_index)
         max_cms = self.esrd_spline(elevation, inflow)
         max_mcm = max_cms * 0.0864
         return max_mcm

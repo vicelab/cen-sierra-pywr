@@ -1,9 +1,8 @@
 from parameters import WaterLPParameter
 from datetime import date
-import numpy as np
 
 
-class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
+class Requirement_Merced_R_below_Merced_Falls_PH(WaterLPParameter):
     """
     This policy calculates instream flow requirements in the Merced River below the Merced Falls powerhouse.
     """
@@ -20,51 +19,27 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
         # TODO: this should be moved to real-time lookup to be scenario-dependent
         # We should be able to add a "WYT" parameter as a general variable and save it to parameters in the JSON file.
         # It could be pre-processed, as currently, or calculated on-the-fly
-        csv_kwargs = dict(index_col=0, header=0, parse_dates=False, squeeze=True)
-        self.fish_data = self.model.tables["Fish Pulse"] / 35.3147  # Converting to cms
-        self.div_data = self.model.tables["Other Diversion"] / 35.3147 # Converting to cms
-
-        swrcb_levels_count = self.model.scenarios['SWRCB 40'].size
-        if swrcb_levels_count == 1:
-            self.swrcb_levels = [0.0] # baseline scenario only
-        else:
-            self.swrcb_levels = np.arange(0.0, 0.41, 0.4 / (swrcb_levels_count - 1))
+        self.wyts = self.read_csv('Scenarios/Livneh/preprocessed/Exchequer_WYT.csv', index_col=0, header=None, parse_dates=False,
+                                  squeeze=True)
 
     def value(self, timestep, scenario_index):
         # All flow units are in cubic meters per second (cms)
 
         # FERC REQUIREMENT
-        wyt = self.model.tables['WYT for IFR Below Exchequer'][timestep.year]
-        ferc_flow_req = self.ferc_req(timestep, scenario_index, wyt)
+        if (timestep.month, timestep.day) in [(10, 1), (1, 1)]:
+            self.wyt = self.wyts[timestep.year]  # just calculate this as needed
+        ferc_flow_req = self.ferc_req(timestep, self.wyt)
 
         # DAVIS-GRUNSKY AGREEMENT REQUIREMENT
         dga_flow_req = self.dga_requirement(timestep)
 
         # COWELL AGREEMENT REQUIREMENT
-        ca_flow_req = self.ca_requirement(timestep,scenario_index)
+        ca_flow_req = self.ca_requirement(timestep, scenario_index)
 
-        # FISH PULSE REQUIREMENT
-        fish_req = self.fish_requirement(timestep)
+        # The required flow is (greater of the Davis-Grunsky and FERC flows) + the Cowell Agreement entitlement
+        return max(ferc_flow_req, dga_flow_req) + ca_flow_req
 
-        # DIVERSION REQUIREMENT
-        dev_req = self.dev_requirement(timestep)
-
-        # SCWRB 40 REQUIREMENT
-        #swrcb_reqt_mcm = 0.0
-        #if 2 <= timestep.month <= 7:
-        #    swrcb_reqt_mcm = self.swrcb_40_requirement(timestep, scenario_index)
-
-        # The required flow is (greater of the Davis-Grunsky and FERC flows) + the Cowell Agreement entitlement + Fish Pulse + Diversion Reg
-        requirement_cms = max(ferc_flow_req, dga_flow_req) + ca_flow_req + fish_req + dev_req
-        requirement_mcm = requirement_cms * 0.0864  # convert to mcm
-
-        previous_flow_mcm = self.model.nodes['IFR at Shaffer Bridge'].prev_flow[scenario_index.global_id]
-        #downramp_mcm = self.get_down_ramp_ifr(timestep, scenario_index, previous_flow_mcm, rate=0.25)
-        #requirement_mcm = max(requirement_mcm, swrcb_reqt_mcm)
-
-        return requirement_mcm
-
-    def ferc_req(self, timestep, scenario_index, wyt):
+    def ferc_req(self, timestep, wyt):
         mth = timestep.month
         dy = timestep.day
         yr = timestep.year
@@ -104,8 +79,8 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
                 # Calculate for average flow in Nov and Dec of previous year at Shaffer Bridge on 1st Jan
                 st_date = date(yr - 1, 11, 1)
                 end_date = date(yr - 1, 12, 31)
-                gauge_Shafer_ts = self.model.recorders['IFR at Shaffer Bridge/flow'].to_dataframe()
-                self.nov_dec_mean = gauge_Shafer_ts[tuple(scenario_index.indices)][st_date:end_date].mean()
+                gauge_Shafer_ts = self.model.recorders['Near Shaffer Bridge_11271290/flow'].to_dataframe()
+                self.nov_dec_mean = gauge_Shafer_ts[st_date:end_date].mean().values[0]
             if self.nov_dec_mean >= 4.25:  # If mean flow greater than eaual to 150 cfs, then atleast 100 cfs flow
                 ferc_lic_flow = 2.83
 
@@ -114,11 +89,8 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
     def dga_requirement(self, timestep):
         # Davis-Grunsky Agreement
         # Flow required from Nov to March - 180 to 220 cfs. Using average value of 200 cfs(5.66 cms)
-        if timestep.year <= 2017:  # The agreement expired in 2017
-            if timestep.month in (11, 12, 1, 2, 3):
-                davis_grunsky_flow = 5.66
-            else:
-                davis_grunsky_flow = 0
+        if timestep.month in (11, 12, 1, 2, 3):
+            davis_grunsky_flow = 5.66
         else:
             davis_grunsky_flow = 0
 
@@ -147,11 +119,17 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
 
         else:
 
+            flow_val = 0
+
             # Calculate the natural flow
             # Because this should depend on the current timestep's inflow, inflow data should be
-            # loaded all at once, then replace prev_flow with flow                                                                                             scenario_index)
-            flow_val = self.model.parameters["Full Natural Flow"].value(timestep, scenario_index)/ 0.0864 # mcm to cms
-            #flow_val = self.model.tables["Full Natural Flow"][timestep.datetime] / 0.0864 # mcm to cms
+            # loaded all at once, then replace prev_flow with flow
+
+            flow_val = 0
+            for j in range(1, 7):
+                # Note: the following two are about equivalent in time. Which to use seems to be arbitrary.
+                # flow_val += self.model.nodes['MER_0{} Headflow'.format(j)].max_flow.value(timestep, scenario_index)
+                flow_val += self.model.parameters['MER_0{} Headflow/Runoff'.format(j)].value(timestep, scenario_index)
 
             if mth in (10, 11, 12, 1, 2):
                 # Flow of 50 cfs (1.416 cms) -only from ExChequer flows
@@ -185,21 +163,10 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
 
         return cowell_flow
 
-    def fish_requirement(self, timestep):
-        return self.fish_data['1900-{:02}-{:02}'.format(timestep.month, timestep.day)]
-
-    def dev_requirement(self, timestep):
-        return self.div_data['1900-{:02}-{:02}'.format(timestep.month, timestep.day)]
-
-    def swrcb_40_requirement(self, timestep, scenario_index):
-        fnf = self.model.parameters["Full Natural Flow"].value(timestep, scenario_index)
-        #fnf = self.model.tables['Full Natural Flow'][timestep.datetime]
-        return fnf * self.swrcb_levels[scenario_index.indices[0]]
-
     @classmethod
     def load(cls, model, data):
         return cls(model, **data)
 
 
-IFR_at_Shaffer_Bridge_Min_Flow.register()
-print(" [*] IFR_at_Shaffer_Bridge_Min_Flow successfully registered")
+Requirement_Merced_R_below_Merced_Falls_PH.register()
+print(" [*] Requirement_Merced_R_below_Merced_Falls_PH successfully registered")
