@@ -9,7 +9,7 @@ import pandas as pd
 from itertools import product
 
 
-def create_forecasted_hydrology(root_dir, basin, scenario):
+def create_forecasted_hydrology(root_dir, basin, scenario, runoff_dir):
 
     # In[5]:
 
@@ -28,20 +28,20 @@ def create_forecasted_hydrology(root_dir, basin, scenario):
     month_columns = ['{:02}'.format(i) for i in range(1, 13)]
 
     print(basin, scenario)
-    runoff_dir = os.path.join(root_dir, '{} River/Scenarios/runoff/{}'.format(basin.title(), scenario))
+    runoff_dir_path = os.path.join(root_dir, '{} River/Scenarios/{}/{}'.format(basin.title(), runoff_dir, scenario))
     #         print(runoff_dir)
-    runoff_dir_monthly = runoff_dir.replace('runoff', 'runoff_monthly')
-    runoff_dir_monthly_forecasts = runoff_dir.replace('runoff', 'runoff_monthly_forecasts')
+    runoff_dir_monthly = runoff_dir_path.replace(runoff_dir, 'runoff_monthly')
+    runoff_dir_monthly_forecasts = runoff_dir_path.replace(runoff_dir, 'runoff_monthly_forecasts')
     if not os.path.exists(runoff_dir_monthly):
         os.makedirs(runoff_dir_monthly)
     if not os.path.exists(runoff_dir_monthly_forecasts):
         os.makedirs(runoff_dir_monthly_forecasts)
-    filenames = os.listdir(runoff_dir)
+    filenames = os.listdir(runoff_dir_path)
     #     for filename in tqdm(os.listdir(runoff_dir), desc='{}, {}'.format(basin, scenario), ncols=800):
     for filename in filenames:
-        if '_mcm' not in filename:
+        if '.csv' not in filename:
             continue
-        filepath = os.path.join(runoff_dir, filename)
+        filepath = os.path.join(runoff_dir_path, filename)
         print(filepath)
         df = pd.read_csv(filepath, parse_dates=True, index_col=0)
         col = df.columns[0]

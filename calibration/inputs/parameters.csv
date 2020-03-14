@@ -1,4 +1,4 @@
 Parameters, Min, High, StepSize
-node/Tulloch Lake/Storage Value, -100, 0, 10
+node/Lake Tulloch/Storage Value, -100, 0, 10
 melones_storageValueConstant, 5, 20, 2
 melones_storage_value_leading, 0.1, 1.5, 0.1

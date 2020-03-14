@@ -5,9 +5,9 @@
 
 #app-body {
     display: flex !important;
-    position: fixed;
+    position: absolute;
     top: 55px !important;
-    right: 230px;
+    right: 0;
     left: 0;
     bottom: 0;
     overflow-y: auto;

@@ -772,6 +772,18 @@
             "index_col": 0,
             "header": 0,
             "squeeze": true
+        },
+        "Fish Pulse": {
+            "url": "../data/Merced River/Management/BAU/Demand/fishPulse_Merced_cfs.csv",
+            "index_col": 0,
+            "header": 0,
+            "squeeze": true
+        },
+        "Other Diversions": {
+            "url": "../data/Merced River/Management/BAU/Demand/otherDiversions_Merced_cfs.csv",
+            "index_col": 0,
+            "header": 0,
+            "squeeze": true
         }
     },
     "parameters": {

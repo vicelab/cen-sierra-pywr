@@ -7,7 +7,6 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Min_Flow(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        kwargs = dict(timestep=timestep, scenario_index=scenario_index)
 
         # Note: all IFR units are cfs
 
@@ -16,7 +15,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Min_Flow(WaterLPParameter):
         # ======
 
         # get water year type
-        wyt = self.get("IFR bl Hetch Hetchy Reservoir/Water Year Type", **kwargs)
+        wyt = self.get("IFR bl Hetch Hetchy Reservoir/Water Year Type", timestep, scenario_index)
 
         # get schedule
         schedule = self.model.tables["IFR bl Hetch Hetchy Reservoir/IFR Schedule"]

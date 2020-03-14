@@ -8,10 +8,25 @@
 }
 
 .main-content {
-    display: inline-flex;
-    padding: 15px;
-    width: 100%;
+    /*display: inline-flex;*/
+    /*padding: 15px;*/
+    /*width: 100%;*/
 }
+
+#schematics-content, #map-content {
+    /*border: thin solid grey;*/
+    position: absolute;
+    top: 55px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/*.schematic-pdf {*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    top: 60px;*/
+/*}*/
 
 .nav-item {
     cursor: pointer;

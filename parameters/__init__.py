@@ -84,11 +84,8 @@ class WaterLPParameter(Parameter):
         else:
             self.operational_water_year = self.datetime.year - 1
 
-    def GET(self, *args, **kwargs):
-        return self.get(*args, **kwargs)
-
-    def get(self, param, timestep=None, scenario_index=None):
-        return self.model.parameters[param].value(timestep or self.model.timestep, scenario_index)
+    def get(self, param, timestep, scenario_index):
+        return self.model.parameters[param].value(timestep, scenario_index)
 
     def days_in_month(self, year=None, month=None):
         if year is None:
@@ -106,56 +103,6 @@ class WaterLPParameter(Parameter):
         ndays = monthrange(year, month)[1]
         dates = pd.date_range(start, periods=ndays).tolist()
         return dates
-
-    def read_csv(self, *args, **kwargs):
-
-        # hashval = md5((str(args) + str(kwargs)).encode()).hexdigest()
-        hashval = str(hash(str(args) + str(kwargs)))
-
-        data = self.store.get(hashval)
-
-        if data is None:
-
-            if not args:
-                raise Exception("No arguments passed to read_csv.")
-
-            # update args with additional path information
-
-            args = list(args)
-            file_path = args[0]
-
-            if '://' in file_path:
-                pass
-            elif self.root_path:
-                if '://' in self.root_path:
-                    args[0] = os.path.join(self.root_path, file_path)
-                else:
-                    args[0] = os.path.join(self.root_path, self.model.metadata['title'], file_path)
-
-            # modify kwargs with sensible defaults
-            # TODO: modify these depending on data type (timeseries, array, etc.)
-
-            kwargs['parse_dates'] = kwargs.get('parse_dates', True)
-            kwargs['index_col'] = kwargs.get('index_col', 0)
-            kwargs['comment'] = kwargs.get('comment', '#')
-
-            # Import data from local files
-            # data = pd.read_csv("s3_imports/" + args[0].split('/').pop(), **kwargs)
-
-            # Import data
-            # print(args)
-            try:
-                data = pd.read_csv(*args, **kwargs)
-            except:
-                print(args)
-                raise
-
-            # Saving Data from S3 to a local directory
-            # data.to_csv("s3_imports/" + args[0].split('/').pop(), header=True)
-
-            self.store[hashval] = data
-
-        return data
 
     def get_down_ramp_ifr(self, timestep, scenario_index, value, initial_value=None, rate=0.25):
         """

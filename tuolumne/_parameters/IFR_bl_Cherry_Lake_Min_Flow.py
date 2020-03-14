@@ -9,12 +9,10 @@ class IFR_bl_Cherry_Lake_Min_Flow(WaterLPParameter):
     def _value(self, timestep, scenario_index):
 
         if self.datetime.month in [7, 8, 9]:
-            ifr = 15.5 # cfs
+            ifr = 15.5  # cfs
         else:
-            ifr = 5
-
-        # SFPUC releases twice the IFR as a factor of safety
-        return ifr * 2 / 35.31
+            ifr = 6  # 5 + 1 as a factor of safety
+        return ifr / 35.31
 
     def value(self, timestep, scenario_index):
         try:

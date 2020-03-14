@@ -9,8 +9,8 @@ class IFR_bl_Lyons_Res_Requirement(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
 
-        WYT = self.get("San Joaquin Valley WYT" + self.month_suffix)
-        WYI = self.get("San Joaquin Valley WYI" + self.month_suffix)
+        WYT = self.get("San Joaquin Valley WYT" + self.month_suffix, timestep, scenario_index)
+        WYI = self.get("San Joaquin Valley WYI" + self.month_suffix, timestep, scenario_index)
 
         # IFR is in cfs
 
