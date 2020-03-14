@@ -13,8 +13,7 @@ import json
 import pandas as pd
 import plotly.graph_objs as go
 
-import dashapp.constants as c
-from dashapp.constants import BASINS, ENSEMBLE_NAMES, MCM_TO_TAF
+from dashapp.constants import PLOTLY_CONFIG, BASINS, ENSEMBLE_NAMES, MCM_TO_TAF, PCT_DIFF, ABS_DIFF
 from dashapp.components import timeseries_collection
 
 external_stylesheets = [dbc.themes.BOOTSTRAP]
@@ -219,7 +218,7 @@ def gauges_content(**kwargs):
     timeseries_graph = dcc.Graph(
         id='gauges-all',
         className='timeseries-chart',
-        config=c.PLOTLY_CONFIG,
+        config=PLOTLY_CONFIG,
         figure={
             'data': ts_data,
             'layout': go.Layout(
@@ -291,8 +290,8 @@ select_metric = dbc.FormGroup(
         #     id="radio-metric",
         #     options=[
         #         {"label": "None", "value": None},
-        #         {"label": "Percent difference", "value": c.PCT_DIFF},
-        #         {"label": "Absolute difference", "value": c.ABS_DIFF},
+        #         {"label": "Percent difference", "value": PCT_DIFF},
+        #         {"label": "Absolute difference", "value": ABS_DIFF},
         #     ],
         #     value=None,
         #     # inline=True
@@ -301,8 +300,8 @@ select_metric = dbc.FormGroup(
             id="select-metric",
             options=[
                 {"label": "None", "value": "default"},
-                {"label": "Percent difference", "value": c.PCT_DIFF},
-                {"label": "Absolute difference", "value": c.ABS_DIFF},
+                {"label": "Percent difference", "value": PCT_DIFF},
+                {"label": "Absolute difference", "value": ABS_DIFF},
             ],
             value="default"
         )
