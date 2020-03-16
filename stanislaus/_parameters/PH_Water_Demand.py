@@ -4,18 +4,23 @@ from utilities.converter import convert
 from dateutil.relativedelta import relativedelta
 from calendar import isleap
 import random
+import numpy as np
 
 
 class PH_Water_Demand(WaterLPParameter):
     """"""
 
-    price_threshold = 20.0  # an arbitrary first value
     cms_to_mcm = 0.0864
 
     def __init__(self, model, node, block, **kwargs):
         super().__init__(model, **kwargs)
         self.node = node
         self.block = block
+
+    def setup(self):
+        super().setup()
+        num_scenarios = len(self.model.scenarios.combinations)
+        self.price_threshold = np.ones([num_scenarios], np.float) * 20.0  # arbitrary initial value
 
     def _value(self, timestep, scenario_index, mode='scheduling'):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
@@ -56,16 +61,18 @@ class PH_Water_Demand(WaterLPParameter):
                 planning_release_fraction = min(planning_release / planning_turbine_capacity, 1.0)
                 price_index = int(len(energy_prices) * planning_release_fraction) - 1
                 if price_index < 0:
-                    self.price_threshold = 1e6  # no production this month (unlikely)
+                    self.price_threshold[scenario_index.global_id] = 1e6  # no production this month (unlikely)
                 else:
-                    self.price_threshold = energy_prices[price_index]
+                    self.price_threshold[scenario_index.global_id] = energy_prices[price_index]
 
             # calculate today's total release
+
+            price_threshold = self.price_threshold[scenario_index.global_id]
             energy_prices_today = all_energy_prices.loc[price_date].values
             if self.block == 1:
-                production_hours = len([1 for p in energy_prices_today if p >= self.price_threshold])
+                production_hours = len([1 for p in energy_prices_today if p >= price_threshold])
             else:
-                production_hours = len([1 for p in energy_prices_today if 0.0 < p < self.price_threshold])
+                production_hours = len([1 for p in energy_prices_today if 0.0 < p < price_threshold])
 
             max_flow_fraction = production_hours / 24
             # blocks = self.model.tables["Energy Price Blocks"].loc[timestep.datetime]
