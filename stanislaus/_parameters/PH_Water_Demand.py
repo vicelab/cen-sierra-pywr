@@ -53,7 +53,7 @@ class PH_Water_Demand(WaterLPParameter):
                     price_end = end.strftime('{}-%m-%d'.format(price_year))
                 energy_prices = all_energy_prices[price_date:price_end].values.flatten()
                 energy_prices[::-1].sort()  # sort in descending order
-                planning_release = self.model.planning.nodes[self.res_name + '/1'].flow[-1]
+                planning_release = self.model.planning.nodes[self.res_name + '/1'].flow[scenario_index.global_id]
 
                 # for planning turbine capacity, note that the turbine capacities are the same
                 # in both models (i.e., cms)
