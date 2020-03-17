@@ -842,7 +842,7 @@
         },
         "IFR bl New Exchequer Dam/Min Flow": {
             "type": "constant",
-            "value": 0.7080147267063155
+            "value": 0.061164
         },
         "Lake McClure/Storage Capacity": {
             "type": "constant",
