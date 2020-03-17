@@ -17,7 +17,7 @@ class New_Melones_WYT(WaterLPParameter):
 
         # Only calculate the index anew the 1st of Mar-Jun.
         if month < 3 or month > 6 or self.datetime.day != 1:
-            return self.wyt
+            return self.wyt[scenario_index.global_id]
 
         # Step 1: Calculate New Melones Index (NMI), sum of Mar-Sep runoff and end-of-month storage
 
@@ -47,7 +47,7 @@ class New_Melones_WYT(WaterLPParameter):
         WYT = sum([1 for threshold in thresholds if NMI >= threshold])
 
         # save the WYT
-        self.wyt = WYT
+        self.wyt[scenario_index.global_id] = WYT
 
         return WYT
 
