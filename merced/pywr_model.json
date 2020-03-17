@@ -767,18 +767,6 @@
             "header": 0,
             "squeeze": true
         },
-        "Other Diversion": {
-            "url": "../data/Merced River/Management/BAU/Demand/otherDiversions_Merced_cfs.csv",
-            "index_col": 0,
-            "header": 0,
-            "squeeze": true
-        },
-        "Other Diversions": {
-            "url": "../data/Merced River/Management/BAU/Demand/otherDiversions_Merced_cfs.csv",
-            "index_col": 0,
-            "header": 0,
-            "squeeze": true
-        }
     },
     "parameters": {
         "Full Natural Flow": {

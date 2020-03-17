@@ -22,7 +22,6 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
         # It could be pre-processed, as currently, or calculated on-the-fly
         csv_kwargs = dict(index_col=0, header=0, parse_dates=False, squeeze=True)
         self.fish_data = self.model.tables["Fish Pulse"] / 35.3147  # Converting to cms
-        self.div_data = self.model.tables["Other Diversion"] / 35.3147  # Converting to cms
 
         swrcb_levels_count = self.model.scenarios['SWRCB 40'].size
         if swrcb_levels_count == 1:
@@ -203,9 +202,6 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
 
     def fish_requirement(self, timestep):
         return self.fish_data['1900-{:02}-{:02}'.format(timestep.month, timestep.day)]
-
-    def dev_requirement(self, timestep):
-        return self.div_data['1900-{:02}-{:02}'.format(timestep.month, timestep.day)]
 
     def swrcb_40_requirement(self, timestep, scenario_index):
         fnf = self.model.parameters["Full Natural Flow"].value(timestep, scenario_index)
