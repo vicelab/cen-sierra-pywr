@@ -762,7 +762,7 @@
             "parse_dates": false
         },
         "Fish Pulse": {
-            "url": "../data/Merced River/Management/BAU/Demand/fishPulse_Merced_cfs.csv",
+            "url": "../data/Merced River/Management/BAU/IFRs/fishPulse_Merced_cfs.csv",
             "index_col": 0,
             "header": 0,
             "squeeze": true
