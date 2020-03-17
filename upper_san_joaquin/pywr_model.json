@@ -1754,10 +1754,10 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Friant Dam Flood Release",
+            "name": "Millerton Lake Flood Release",
             "type": "PiecewiseLink",
             "max_flow": [
-                "Friant Dam Flood Release/Requirement",
+                "Millerton Lake Flood Release/Requirement",
                 null
             ],
             "cost": [
@@ -5207,10 +5207,10 @@
         ],
         [
             "SAN J-N-JUN7",
-            "Friant Dam Flood Release"
+            "Millerton Lake Flood Release"
         ],
         [
-            "Friant Dam Flood Release",
+            "Millerton Lake Flood Release",
             "SAN-L-RIV4.2"
         ],
         [
@@ -5396,11 +5396,8 @@
             "squeeze": true
         },
         "Millerton Lake rule curve": {
-            "url": "../data/Upper San Joaquin River/Management/BAU/Flood Control/Millerton Lake rule curve - mcm.csv",
-            "index_col": [
-                0,
-                1
-            ],
+            "url": "../data/Upper San Joaquin River/Management/BAU/Flood Control/Millerton Lake Flood Control Requirement mcm.csv",
+            "index_col": 0,
             "header": 0,
             "squeeze": true
         }
@@ -5652,17 +5649,8 @@
             "value": 1,
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         },
-        "Friant Dam Flood Release/Requirement": {
-            "type": "controlcurveinterpolated",
-            "storage_node": "Millerton Lake",
-            "control_curves": [
-                "Millerton Lake/Storage Demand"
-            ],
-            "values": [
-                19.5,
-                0,
-                0
-            ]
+        "Millerton Lake Flood Release/Requirement": {
+            "type": "Millerton_Lake_Flood_Release_Requirement"
         },
         "Huntington Lake/Cost": {
             "type": "Huntington_Lake_Cost"

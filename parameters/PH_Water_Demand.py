@@ -44,7 +44,7 @@ class PH_Water_Demand(WaterLPParameter):
                 spinning_flow_fraction = powerhouse.spinning_flow
                 block = max(spinning_flow_fraction, block)
 
-            # turbine_capacity *= self.days_in_month()
+            # turbine_capacity *= self.days_in_month
 
         elif self.model.planning:
 
