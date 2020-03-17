@@ -1,10 +1,15 @@
 from parameters import WaterLPParameter
+import numpy as np
 
 
 class New_Melones_WYT(WaterLPParameter):
     """"""
-    wyt = 3
 
+    def setup(self):
+        super.setup()
+        num_scenarios = len(self.model.scenarios.combinations)
+        self.wyt = np.ones([num_scenarios], np.float) * 3  # initial value
+    
     def _value(self, timestep, scenario_index):
 
         month = self.datetime.month

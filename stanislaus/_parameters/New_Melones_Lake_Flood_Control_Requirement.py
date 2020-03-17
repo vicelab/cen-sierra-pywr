@@ -1,11 +1,17 @@
 from datetime import datetime, timedelta
 from parameters import WaterLPParameter
+import numpy as np
 
 from utilities.converter import convert
 
 
 class New_Melones_Lake_Flood_Control_Requirement(WaterLPParameter):
     """"""
+
+    def setup(self):
+        super.setup()
+        num_scenarios = len(self.model.scenarios.combinations)
+        self.should_drawdown = np.ones([num_scenarios], np.float)
 
     def _value(self, timestep, scenario_index):
 
@@ -120,23 +126,23 @@ class New_Melones_Lake_Flood_Control_Requirement(WaterLPParameter):
 
         drawdown_period = (7, 1) <= start_tuple <= (10, 31)
         if timestep.index == 0:
-            self.should_drawdown = True
+            self.should_drawdown[scenario_index.global_id] = True
         elif not drawdown_period:
-            self.should_drawdown = False
+            self.should_drawdown[scenario_index.global_id] = False
 
         # Stop this if we've hit the target
         if prev_storage_mcm < nov1_target:
-            self.should_drawdown = False
+            self.should_drawdown[scenario_index.global_id] = False
 
         # Check if New Melones filled
-        if drawdown_period and prev_storage_mcm > nov1_target and not self.should_drawdown:
+        if drawdown_period and prev_storage_mcm > nov1_target and not self.should_drawdown[scenario_index.global_id]:
             day_before_yesterday = self.datetime + timedelta(days=-2)
             prev_prev_storage_mcm = self.model.recorders["New Melones Lake/storage"]\
                 .to_dataframe().at[day_before_yesterday, tuple(scenario_index.indices)]
             if prev_storage_mcm - prev_prev_storage_mcm <= 0:
-                self.should_drawdown = True
+                self.should_drawdown[scenario_index.global_id] = True
 
-        if drawdown_period and self.should_drawdown:
+        if drawdown_period and self.should_drawdown[scenario_index.global_id]:
             drawdown_release_mcm = (prev_storage_mcm - nov1_target) \
                                    / (datetime(timestep.year, 11, 1) - timestep.datetime).days
             prev_inflow_mcm = self.model.nodes["STN_01 Inflow"].prev_flow[scenario_index.global_id]

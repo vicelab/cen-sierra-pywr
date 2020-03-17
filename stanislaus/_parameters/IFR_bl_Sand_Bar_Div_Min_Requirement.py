@@ -1,10 +1,15 @@
 import datetime
+import numpy as np
 from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
 class IFR_bl_Sand_Bar_Div_Min_Requirement(WaterLPParameter):
     """"""
+    def setup(self):
+        super.setup()
+        num_scenarios = len(self.model.scenarios.combinations)
+        self.peak_dt = np.ones([num_scenarios], np.float)
 
     def _value(self, timestep, scenario_index):
 
