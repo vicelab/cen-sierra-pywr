@@ -10,7 +10,8 @@ class Lake_McClure_Water_Demand(WaterLPParameter):
 
         if (timestep.month, timestep.day) == (10, 1):
             SJVI = self.model.tables["San Joaquin Valley Index"][timestep.year + 1]
-
+            # Note: this isn't exactly scenario safe, but self.wyt doesn't change between scenarios
+            # so is okay as is.
             if SJVI <= 2.5:
                 self.wyt = 'dry'
             elif SJVI < 3.8:
