@@ -42,15 +42,15 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
     def _value(self, timestep, scenario_index):
         # All flow units are in cubic meters per second (cms)
 
-        # if timestep.month == 10 and timestep.day <= 10:
-        #     return self.model.nodes["IFR at Shaffer Bridge"].prev_flow[scenario_index.global_id]
+        if timestep.month == 10 and timestep.day <= 10:
+            return self.model.nodes["IFR at Shaffer Bridge"].prev_flow[scenario_index.global_id]
 
         # FERC REQUIREMENT
         wyt = self.model.tables['WYT for IFR Below Exchequer'][timestep.year]
         ferc_flow_req = self.ferc_req(timestep, scenario_index, wyt)
 
         # DAVIS-GRUNSKY AGREEMENT REQUIREMENT
-        # dga_flow_req = self.dga_requirement(timestep)
+        dga_flow_req = self.dga_requirement(timestep)
 
         # COWELL AGREEMENT REQUIREMENT
         ca_flow_req = self.ca_requirement(timestep, scenario_index)
@@ -63,8 +63,9 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
         # if 2 <= timestep.month <= 7:
         #    swrcb_reqt_mcm = self.swrcb_40_requirement(timestep, scenario_index)
 
-        # The required flow is FERC flows + the Cowell Agreement entitlement + Fish Pulse
-        requirement_cms = ferc_flow_req + ca_flow_req + fish_req
+        # The required flow is (greater of the Davis-Grunsky and FERC flows)
+        # + the Cowell Agreement entitlement + Fish Pulse + Diversion Reg
+        requirement_cms = max(ferc_flow_req, dga_flow_req) + ca_flow_req + fish_req
         requirement_mcm = requirement_cms * 0.0864  # convert to mcm
 
         # previous_flow_mcm = self.model.nodes['IFR at Shaffer Bridge'].prev_flow[scenario_index.global_id]
