@@ -11,7 +11,7 @@ class IFR_bl_confluence_of_NF_Stanislaus_and_Beaver_Creek_Requirement(WaterLPPar
     def _value(self, timestep, scenario_index):
         ifr_val = 25 / 35.31  # cfs to cms
         if self.mode == 'planning':
-            ifr_val *= self.days_in_month()
+            ifr_val *= self.days_in_month
         return ifr_val
 
     def value(self, timestep, scenario_index):

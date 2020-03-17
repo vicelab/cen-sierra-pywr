@@ -23,7 +23,7 @@ class IFR_bl_Donnell_Lake_Min_Requirement(WaterLPParameter):
             ifr_cms = schedule[(start_month, start_day)] / 35.31
 
         else:
-            ifr_cms = schedule[(month, 1)] / 35.31 * self.days_in_month()
+            ifr_cms = schedule[(month, 1)] / 35.31 * self.days_in_month
 
         return ifr_cms
 

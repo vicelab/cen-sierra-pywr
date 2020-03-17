@@ -33,7 +33,7 @@ class IFR_bl_Lyons_Res_Requirement(WaterLPParameter):
                 ifr = 5
         ifr *= self.cfs_to_cms
         if self.mode == 'planning':
-            ifr *= self.days_in_month()
+            ifr *= self.days_in_month
         return ifr
 
     def value(self, timestep, scenario_index):

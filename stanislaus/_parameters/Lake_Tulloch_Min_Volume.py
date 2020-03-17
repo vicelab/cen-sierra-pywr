@@ -12,7 +12,7 @@ class Lake_Tulloch_Min_Volume(WaterLPParameter):
         if self.model.mode == 'scheduling':
             control_curve_target = flood_control_req[start]
         else:
-            end = '{}-{}'.format(self.datetime.month, self.days_in_month())
+            end = '{}-{}'.format(self.datetime.month, self.days_in_month)
             control_curve_target = flood_control_req[start:end].mean()
         return control_curve_target - 1.62  # subtract 2 TAF based on observations
 

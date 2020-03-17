@@ -20,7 +20,7 @@ class CVP_Madera_Canal_Demand(WaterLPParameter):
         if self.model.mode == 'scheduling':
             demand_cfs = demand_cfs[today]
         else:
-            end = (self.datetime.month, self.days_in_month())
+            end = (self.datetime.month, self.days_in_month)
             demand_cfs = demand_cfs[today:end].sum()
         
         demand_cms = demand_cfs / 35.315

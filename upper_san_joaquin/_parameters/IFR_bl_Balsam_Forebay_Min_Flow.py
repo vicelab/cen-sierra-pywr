@@ -14,7 +14,7 @@ class IFR_bl_Balsam_Forebay_Min_Flow(WaterLPParameter):
         ifr_cfs += 0.1  # add factor of safety
 
         if self.model.mode == "planning":
-            ifr_cfs *= self.days_in_month()
+            ifr_cfs *= self.days_in_month
         
         return ifr_cfs / 35.315
         

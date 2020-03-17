@@ -25,7 +25,7 @@ class Big_Creek_System_IFRs_2000(WaterLPParameter):
         ifr_cfs = ifr_table.at[self.res_name, col_name]
 
         if self.model.mode == "planning":
-            ifr_cfs *= self.days_in_month()
+            ifr_cfs *= self.days_in_month
 
         return ifr_cfs / 35.315
 

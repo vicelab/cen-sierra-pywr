@@ -32,7 +32,7 @@ class Sand_Bar_PH_Turbine_Capacity(WaterLPParameter):
         else:
             # if self.datetime.month in [6, 7, 8]:
             #     capacity_cms = 100 / 35.31
-            capacity_cms *= self.days_in_month()
+            capacity_cms *= self.days_in_month
 
         return capacity_cms
 

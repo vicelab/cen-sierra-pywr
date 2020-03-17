@@ -39,7 +39,7 @@ class Donnell_Lake_Spill_Min_Requirement(WaterLPParameter):
             else:
                 ifr_cfs = 0
 
-            ifr_cms = (ifr_cms + ifr_cfs / 35.31) * self.days_in_month()
+            ifr_cms = (ifr_cms + ifr_cfs / 35.31) * self.days_in_month
 
         return ifr_cms
 

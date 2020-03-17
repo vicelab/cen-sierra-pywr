@@ -35,7 +35,7 @@ class IFR_bl_Millerton_Lake_Min_Flow(WaterLPParameter):
             ifr_cfs *= allocation_adjustment
 
         if self.model.mode == "planning":
-            ifr_cfs *= self.days_in_month()
+            ifr_cfs *= self.days_in_month
         
         return ifr_cfs / 35.31
         

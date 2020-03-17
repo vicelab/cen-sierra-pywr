@@ -34,7 +34,7 @@ class PH_Water_Demand(WaterLPParameter):
         # calculate the price threshold if needed
         if self.model.mode == 'planning':
             block = self.model.tables["Energy Price Blocks"].at[price_date, str(self.block)]
-            turbine_capacity *= self.days_in_month()
+            turbine_capacity *= self.days_in_month
 
         else:
 

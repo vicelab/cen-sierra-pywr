@@ -38,7 +38,7 @@ class IFR_bl_Goodwin_Reservoir_Requirement(WaterLPParameter):
             #     min_ifr = self.model.nodes[self.res_name].prev_flow[-1] / 0.0864
 
         else:
-            end = '{:02}-{:02}'.format(self.datetime.month, self.days_in_month())
+            end = '{:02}-{:02}'.format(self.datetime.month, self.days_in_month)
             min_ifr_cms = schedule[WYT][start:end].mean() / 35.31  # cfs to cms
 
         # # Check if New Melones filled; if so, add a little more to manage reservoir

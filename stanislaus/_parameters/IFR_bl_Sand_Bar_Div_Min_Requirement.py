@@ -48,7 +48,7 @@ class IFR_bl_Sand_Bar_Div_Min_Requirement(WaterLPParameter):
             else:
                 supp_cfs = 0
 
-            ifr_cms = (ifr_cms + supp_cfs / 35.31) * self.days_in_month()
+            ifr_cms = (ifr_cms + supp_cfs / 35.31) * self.days_in_month
 
         return ifr_cms
 

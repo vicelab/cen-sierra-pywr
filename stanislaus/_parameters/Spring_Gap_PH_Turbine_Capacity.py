@@ -30,7 +30,7 @@ class Spring_Gap_PH_Turbine_Capacity(WaterLPParameter):
                 capacity_cms = 12.5 / 35.31
             # elif self.datetime.month == 8:
             #     capacity_cms = (12.5 + 57) / 2 / 35.31  # average of 12.5 and 57
-            capacity_cms *= self.days_in_month()
+            capacity_cms *= self.days_in_month
 
         return capacity_cms
 

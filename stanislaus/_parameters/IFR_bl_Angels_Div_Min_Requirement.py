@@ -18,9 +18,9 @@ class IFR_bl_Angels_Div_Min_Requirement(WaterLPParameter):
         #         Qp = self.model.nodes[self.res_name].prev_flow[-1] / 0.0864  # convert to cms
         #     ifr_val = max(ifr_val, Qp * 0.75)
         # else:
-        #     ifr_val *= self.days_in_month()
+        #     ifr_val *= self.days_in_month
         if self.model.mode == 'planning':
-            ifr_val *= self.days_in_month()
+            ifr_val *= self.days_in_month
         return ifr_val
 
     def value(self, timestep, scenario_index):

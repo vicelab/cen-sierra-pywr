@@ -15,7 +15,7 @@ class Oakdale_Irrigation_District_Demand(WaterLPParameter):
         if self.model.mode == 'scheduling':
             demand_mcm = demand_mcm_df[start]
         else:
-            end_date = self.datetime + relativedelta(days=+(self.days_in_month()-1))
+            end_date = self.datetime + relativedelta(days=+(self.days_in_month-1))
             demand_mcm = demand_mcm_df[start:(end_date.month, end_date.day)].sum()
         return demand_mcm
 

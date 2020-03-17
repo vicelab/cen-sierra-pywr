@@ -11,7 +11,7 @@ class IFR_bl_San_Joaquin_R_and_Willow_Cr_confluence_Min_Flow(WaterLPParameter):
         ifr_cfs = 20
 
         if self.model.mode == "planning":
-            ifr_cfs *= self.days_in_month()
+            ifr_cfs *= self.days_in_month
         return ifr_cfs / 35.31
 
     def value(self, timestep, scenario_index):

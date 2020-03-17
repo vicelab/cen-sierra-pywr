@@ -18,7 +18,7 @@ class Friant_Kern_Canal_Demand_Demand(WaterLPParameter):
             demand_cms = demand_cfs[today] / 35.31
 
         else:
-            end = (self.datetime.month, self.days_in_month())
+            end = (self.datetime.month, self.days_in_month)
             demand_cms = demand_cfs[today:end].sum() / 35.31
         
         return demand_cms

@@ -11,7 +11,7 @@ class IFR_bl_Lake_Thomas_A_Edison_Min_Flow(WaterLPParameter):
         ifr_cfs = 10 * 2  # double based on observations
 
         if self.model.mode == "planning":
-            ifr_cfs *= self.days_in_month()
+            ifr_cfs *= self.days_in_month
 
         return ifr_cfs / 35.31
 

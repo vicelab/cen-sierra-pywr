@@ -10,7 +10,7 @@ class IFR_bl_Kerckhoff_Lake_Min_Flow(WaterLPParameter):
         ifr_cfs = 25
         
         if self.model.mode == "planning":
-            ifr_cfs *= self.days_in_month()
+            ifr_cfs *= self.days_in_month
         
         return ifr_cfs / 35.31
         

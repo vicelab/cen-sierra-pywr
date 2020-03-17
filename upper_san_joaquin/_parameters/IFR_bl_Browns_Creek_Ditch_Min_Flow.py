@@ -13,7 +13,7 @@ class IFR_bl_Browns_Creek_Ditch_Min_Flow(WaterLPParameter):
         if year_type in [1,2]:  # Critical or Dry WYT
             return_val = 3
             if self.model.mode == "planning":
-                return_val *= self.days_in_month()
+                return_val *= self.days_in_month
             return return_val
         
         # Get month
@@ -38,7 +38,7 @@ class IFR_bl_Browns_Creek_Ditch_Min_Flow(WaterLPParameter):
         
         # Account for planning model
         if self.model.mode == "planning":
-            prescribed *= self.days_in_month()
+            prescribed *= self.days_in_month
         
         return prescribed
         

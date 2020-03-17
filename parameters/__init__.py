@@ -31,6 +31,7 @@ class WaterLPParameter(Parameter):
     block = None
     month = None
     year = None
+    days_in_month = None
     month_offset = None
     month_suffix = ''
     demand_constant_param = ''
@@ -72,6 +73,7 @@ class WaterLPParameter(Parameter):
     def before(self):
         super(WaterLPParameter, self).before()
         self.datetime = self.model.timestepper.current.datetime
+
         if self.model.mode == 'planning':
             if self.month_offset:
                 self.datetime += relativedelta(months=+self.month_offset)
@@ -84,17 +86,20 @@ class WaterLPParameter(Parameter):
         else:
             self.operational_water_year = self.datetime.year - 1
 
+        if self.datetime.day == 1:
+            self.days_in_month = monthrange(self.datetime.year, self.datetime.month)[1]
+
     def get(self, param, timestep, scenario_index):
         return self.model.parameters[param].value(timestep, scenario_index)
 
-    def days_in_month(self, year=None, month=None):
+    def get_days_in_month(self, year=None, month=None):
         if year is None:
             year = self.year
         if month is None:
             month = self.month
         return monthrange(year, month)[1]
 
-    def dates_in_month(self, year=None, month=None):
+    def get_dates_in_month(self, year=None, month=None):
         if year is None:
             year = self.year
         if month is None:

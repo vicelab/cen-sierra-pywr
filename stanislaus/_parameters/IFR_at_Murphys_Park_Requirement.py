@@ -51,7 +51,7 @@ class IFR_at_Murphys_Park_Requirement(WaterLPParameter):
         ifr_val = (schedule[self.year_type[sid] - 1] + additional) / 35.31  # convert cfs to cms
 
         if self.model.mode == 'planning':
-            ifr_val *= self.days_in_month()
+            ifr_val *= self.days_in_month
 
         if month == 11:  # reduce flow for maintenance in early November
             if mode == 'scheduling' and timestep.day <= 14:

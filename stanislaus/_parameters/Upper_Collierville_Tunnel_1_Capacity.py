@@ -28,7 +28,7 @@ class Upper_Collierville_Tunnel_1_Capacity(WaterLPParameter):
                 capacity_cms = 300 / 35.31
 
         else:
-            capacity_cms *= self.days_in_month()
+            capacity_cms *= self.days_in_month
 
         return capacity_cms
 

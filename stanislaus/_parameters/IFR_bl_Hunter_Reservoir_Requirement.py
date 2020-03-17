@@ -15,7 +15,7 @@ class IFR_bl_Hunter_Reservoir_Requirement(WaterLPParameter):
             ifr_val = 0.6 / 35.31  # cfs to cms
 
         if self.mode == 'planning':
-            ifr_val *= self.days_in_month()
+            ifr_val *= self.days_in_month
         return ifr_val
 
     def value(self, timestep, scenario_index):

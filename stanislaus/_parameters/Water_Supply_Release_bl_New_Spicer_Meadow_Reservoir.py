@@ -16,7 +16,7 @@ class Water_Supply_Release_bl_New_Spicer_Meadow_Reservoir(WaterLPParameter):
         if self.model.mode == 'scheduling':
             max_flow = water_supply_reqt[start] / 35.31
         else:
-            end = '{}/{}'.format(month, self.days_in_month())
+            end = '{}/{}'.format(month, self.days_in_month)
             max_flow = water_supply_reqt[start:end].sum() / 35.31  # cfs to cms
 
         # modify max_flow up/down based on regression
