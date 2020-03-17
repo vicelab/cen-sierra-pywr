@@ -766,7 +766,7 @@
             "index_col": 0,
             "header": 0,
             "squeeze": true
-        },
+        }
     },
     "parameters": {
         "Full Natural Flow": {

@@ -16,13 +16,6 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # load the water year types
-        # TODO: this should be moved to real-time lookup to be scenario-dependent
-        # We should be able to add a "WYT" parameter as a general variable and save it to parameters in the JSON file.
-        # It could be pre-processed, as currently, or calculated on-the-fly
-        csv_kwargs = dict(index_col=0, header=0, parse_dates=False, squeeze=True)
-        self.fish_data = self.model.tables["Fish Pulse"] / 35.3147  # Converting to cms
-
         swrcb_levels_count = self.model.scenarios['SWRCB 40'].size
         if swrcb_levels_count == 1:
             self.swrcb_levels = [0.0]  # baseline scenario only
@@ -55,7 +48,7 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
         ca_flow_req = self.ca_requirement(timestep, scenario_index)
 
         # FISH PULSE REQUIREMENT
-        fish_req = self.fish_requirement(timestep)
+        fish_pulse = self.model.tables["Fish Pulse"]['1900-{:02}-{:02}'.format(timestep.month, timestep.day)] / 35.315
 
         # SCWRB 40 REQUIREMENT
         # swrcb_reqt_mcm = 0.0
@@ -64,7 +57,7 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
 
         # The required flow is (greater of the Davis-Grunsky and FERC flows)
         # + the Cowell Agreement entitlement + Fish Pulse + Diversion Reg
-        requirement_cms = max(ferc_flow_req, dga_flow_req) + ca_flow_req + fish_req
+        requirement_cms = max(ferc_flow_req, dga_flow_req) + ca_flow_req + fish_pulse
         requirement_mcm = requirement_cms * 0.0864  # convert to mcm
 
         # previous_flow_mcm = self.model.nodes['IFR at Shaffer Bridge'].prev_flow[scenario_index.global_id]
@@ -199,9 +192,6 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
                 self.cowell_day_cnt[scenario_index.global_id] = day_cnt
 
         return cowell_flow
-
-    def fish_requirement(self, timestep):
-        return self.fish_data['1900-{:02}-{:02}'.format(timestep.month, timestep.day)]
 
     def swrcb_40_requirement(self, timestep, scenario_index):
         fnf = self.model.parameters["Full Natural Flow"].value(timestep, scenario_index)
