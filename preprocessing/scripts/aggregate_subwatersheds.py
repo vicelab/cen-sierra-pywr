@@ -6,6 +6,13 @@ from utilities import simplify_network
 
 
 def aggregate_subwatersheds(root_dir, basin, climate):
+    """
+    Some description...
+    :param root_dir:
+    :param basin:
+    :param climate:
+    :return:
+    """
     scenario = climate
     basin_full = basin.title() + " River"
     basin_dir = os.path.join(root_dir, basin_full)
