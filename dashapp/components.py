@@ -148,21 +148,21 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     gauge_name = gauge_lookup.get(res_name, res_name)
 
     fc_df = None
-    if attr == 'storage' and res_name in ['New Melones Lake', 'Lake Tulloch', 'Don Pedro Reservoir']:
+    if attr == 'storage' and res_name in ['New Melones Lake', 'Lake Tulloch', 'Don Pedro Reservoir', 'Millerton Lake']:
         basin = kwargs.get('basin')
         basin_full_name = '{} River'.format(BASINS[basin])
         data_path = os.environ['SIERRA_DATA_PATH']
-        filename = '{} Flood Control Requirement mcm.csv'.format(res_name)
+        filename = '{} Flood Control Curve mcm.csv'.format(res_name)
         fcpath = os.path.join(data_path, basin_full_name, 'Management', 'BAU', 'Flood Control', filename)
         flood_control_curve = pd.read_csv(fcpath, index_col=0, header=0).iloc[:, 0] / 1.2335  # mcm to TAF
         fc_df = pd.DataFrame(index=all_sim_vals.index)
-        fc_df['flood curve'] = fc_df.index.strftime('%#m-%#d')
-        fc_df.replace({'flood curve': flood_control_curve}, inplace=True)
+        fc_df['Rainflood space'] = fc_df.index.strftime('%#m-%#d')
+        fc_df.replace({'Rainflood space': flood_control_curve}, inplace=True)
 
         ts_data.append(
             go.Scatter(
                 x=fc_df.index,
-                y=fc_df['flood curve'],
+                y=fc_df['Rainflood space'],
                 text='Flood Curve',
                 mode='lines',
                 opacity=0.7,
