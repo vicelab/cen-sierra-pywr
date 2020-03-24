@@ -41,6 +41,7 @@ digraph upper_san_joaquin {
 	"Below Ward Tunnel Diverted Inflow/1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Browns Creek Ditch/1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Friant-Kern Canal Demand/1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Madera Canal.1/1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Mono Tunnel/1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Tunnel No. 7.1/1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Tunnel No. 7.2/1" [fillcolor=white fontcolor=black shape=oval style=filled]
@@ -68,6 +69,7 @@ digraph upper_san_joaquin {
 	"Chinquapin Cr. Div. Outflow/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"CVP Friant-Kern Canal/1" [fillcolor=black fontcolor=white shape=oval style=filled]
 	"CVP Madera Canal/1" [fillcolor=black fontcolor=white shape=oval style=filled]
+	"CVP Madera Canal Demand/1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Eastwood PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"Florence Lake [original]/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Florence Lake [input]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
@@ -76,7 +78,7 @@ digraph upper_san_joaquin {
 	"Florence Lake [link]/1" -> "Florence Lake/1" [style=dashed]
 	"Florence Lake [original]/2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Friant Dam Spillway/1" [fillcolor=white fontcolor=black shape=oval style=filled]
-	"Friant Dam Flood Release/1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Millerton Lake Flood Release/1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Friant PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"Huntington Lake [original]/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Huntington Lake [input]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
@@ -195,6 +197,8 @@ digraph upper_san_joaquin {
 	"No. 1A Conduit Outflow/1" -> "Below No. 1 Conduit Diverted Inflow/1"
 	"Below No. 2 Conduit Inflow/1" -> "San Joaquin 1A Div Outflow/1"
 	"Florence Lake [original]/1" -> "Below Ward Tunnel Diverted Inflow/1"
+	"Millerton Lake [original]/1" -> "Madera Canal.1/1"
+	"Madera Canal.1/1" -> "CVP Madera Canal Demand/1"
 	"Huntington Lake [original]/1" -> "Tunnel No. 7.1/1"
 	"Tunnel No. 7.2/1" -> "Balsam Meadows Tunnel Outflow/1"
 	"Balsam Meadows Tunnel Outflow/1" -> "Balsam Forebay/1"
@@ -233,7 +237,7 @@ digraph upper_san_joaquin {
 	"Millerton Lake [original]/1" -> "Friant PH/1"
 	"Millerton Lake [original]/1" -> "Friant Dam Spillway/1"
 	"Huntington Lake [original]/1" -> "Big Creek 1 PH/1"
-	"Friant Dam Flood Release/1" -> "IFR bl Millerton Lake/1"
+	"Millerton Lake Flood Release/1" -> "IFR bl Millerton Lake/1"
 	"Below Bolsillo Cr. Div. Diverted Inflow/1" -> "Portal Forebay/1"
 	"Below Bolsillo Cr. Div. Inflow/1" -> "Portal Forebay/1"
 	"Browns Creek Ditch/1" -> "Bass Lake [original]/1"
@@ -247,9 +251,9 @@ digraph upper_san_joaquin {
 	"Below Bear Diversion Tunnel Inflow/1" -> "Below Camp 62 Cr. Div. Inflow/1"
 	"Below Portal Aqueduct Inflow/1" -> "Below Camp 62 Cr. Div. Inflow/1"
 	"Millerton Lake Inflow/1" -> "Millerton Lake [original]/1"
-	"Friant PH/1" -> "Friant Dam Flood Release/1"
-	"Friant Dam Spillway/1" -> "Friant Dam Flood Release/1"
-	"Millerton Lake [original]/1" -> "Friant Dam Flood Release/1"
+	"Friant PH/1" -> "Millerton Lake Flood Release/1"
+	"Friant Dam Spillway/1" -> "Millerton Lake Flood Release/1"
+	"Millerton Lake [original]/1" -> "Millerton Lake Flood Release/1"
 	"Tunnel No. 7.1/1" -> "Tunnel No. 7.2/1"
 	"Pitman Creek Diversion Dam/1" -> "Tunnel No. 7.2/1"
 	"San Joaquin 1A Div Outflow/1" -> "San Joaquin 1 PH/1"
@@ -316,7 +320,7 @@ digraph upper_san_joaquin {
 	"IFR bl Kerckhoff Lake/1" -> "Millerton Lake [original]/1"
 	"Kerckhoff 1 PH/1" -> "Millerton Lake [original]/1"
 	"Kerckhoff 2 PH/1" -> "Millerton Lake [original]/1"
-	"Millerton Lake [original]/1" -> "CVP Madera Canal/1"
+	"CVP Madera Canal Demand/1" -> "CVP Madera Canal/1"
 	"Friant-Kern Canal Demand/1" -> "CVP Friant-Kern Canal/1"
 	"IFR bl Millerton Lake/1" -> "San Joaquin River Outflow/1"
 	"IFR bl Redinger Lake/1" -> "IFR bl San Joaquin R and Willow Cr confluence/1"

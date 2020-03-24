@@ -13,9 +13,7 @@ class CVP_Madera_Canal_Demand(WaterLPParameter):
             return 0
         
         WYT = self.get('San Joaquin Valley WYT' + self.month_suffix, timestep, scenario_index)
-        df = self.model.tables["CVP Madera Canal Demand"]
-        col = df.columns[WYT - 1]
-        demand_cfs = df[col]  # data is currently in cfs
+        demand_cfs = self.model.tables["CVP Madera Canal demand"][WYT]
 
         if self.model.mode == 'scheduling':
             demand_cfs = demand_cfs[today]
@@ -24,7 +22,7 @@ class CVP_Madera_Canal_Demand(WaterLPParameter):
             demand_cfs = demand_cfs[today:end].sum()
         
         demand_cms = demand_cfs / 35.315
-        
+
         return demand_cms
         
     def value(self, timestep, scenario_index):

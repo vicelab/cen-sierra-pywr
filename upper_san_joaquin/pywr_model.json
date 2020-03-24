@@ -1215,6 +1215,7 @@
         {
             "name": "Madera Canal.1",
             "type": "Link",
+            "max_flow": 3.132,
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
@@ -1710,9 +1711,20 @@
         {
             "name": "CVP Madera Canal",
             "type": "Output",
+            "cost": 1
+        },
+        {
+            "name": "CVP Madera Canal Demand",
+            "type": "PiecewiseLink",
             "comment": "{\"resource_class\": \"node\"}",
-            "max_flow": "CVP Madera Canal/Demand",
-            "cost": -2000
+            "max_flow": [
+                "CVP Madera Canal/Demand",
+                1000
+            ],
+            "cost": [
+                -2000,
+                1
+            ]
         },
         {
             "name": "Eastwood PH",
@@ -1750,7 +1762,7 @@
         {
             "name": "Friant Dam Spillway",
             "type": "Link",
-            "cost": 100,
+            "cost": 5,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -1761,8 +1773,8 @@
                 null
             ],
             "cost": [
-                -5000,
-                1500
+                -50,
+                2
             ]
         },
         {
@@ -1926,8 +1938,8 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Millerton Lake/Min Flow",
-            "max_flow_cost": 5000,
-            "min_flow_cost": -10000
+            "max_flow_cost": 5,
+            "min_flow_cost": -10
         },
         {
             "name": "IFR bl Mono Creek Div",
@@ -2120,8 +2132,8 @@
                 "index": "2000-09-30",
                 "column": "USGS 11250100 MILLERTON LK A FRIANT CA"
             },
-            "cost": -5,
-            "max_volume": 632,
+            "cost": -30,
+            "max_volume": 641.42,
             "min_volume": 185,
             "gauge": "USGS 11250100 MILLERTON LK A FRIANT CA"
         },
@@ -4963,6 +4975,10 @@
         ],
         [
             "Madera Canal.1",
+            "CVP Madera Canal Demand"
+        ],
+        [
+            "CVP Madera Canal Demand",
             "USGS 11249500 MADERA CN A FRIANT CA"
         ],
         [
@@ -5312,27 +5328,48 @@
             "index_col": 0,
             "squeeze": true
         },
+        "Full Natural Flow": {
+            "url": "../data/Upper San Joaquin River/Scenarios/preprocessed/Livneh/full_natural_flow_daily_mcm.csv",
+            "index_col": 0,
+            "parse_dates": true,
+            "header": 0,
+            "squeeze": true
+        },
         "Initial Storage": {
             "url": "../data/Upper San Joaquin River/gauges/storage_mcm.csv",
             "index_col": 0,
             "header": 0,
             "parse_dates": true
         },
-        "CVP Friant-Kern Canal Demand": {
+        "CVP Friant-Kern Canal demand": {
             "url": "../data/Upper San Joaquin River/Management/BAU/Demand/CVP Friant-Kern Canal - cfs.csv",
             "index_col": [
                 0,
                 1
             ],
-            "header": 0
+            "header": 0,
+            "names": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
         },
-        "CVP Madera Canal Demand": {
+        "CVP Madera Canal demand": {
             "url": "../data/Upper San Joaquin River/Management/BAU/Demand/CVP Madera Canal - cfs.csv",
             "index_col": [
                 0,
                 1
             ],
-            "header": 0
+            "header": 0,
+            "names": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
         },
         "All Energy Price Values": {
             "url": "../data/common/energy prices/prices_pivoted_select_years.csv",
@@ -5395,11 +5432,14 @@
             "header": 0,
             "squeeze": true
         },
-        "Millerton Lake rule curve": {
-            "url": "../data/Upper San Joaquin River/Management/BAU/Flood Control/Millerton Lake Flood Control Requirement mcm.csv",
+        "Millerton Lake flood curve": {
+            "url": "../data/Upper San Joaquin River/Management/BAU/Flood Control/Millerton Lake Flood Control Curve mcm.csv",
             "index_col": 0,
             "header": 0,
-            "squeeze": true
+            "names": [
+                "rainflood",
+                "conditional"
+            ]
         }
     },
     "parameters": {
@@ -6002,9 +6042,6 @@
             "type": "constant",
             "value": -30
         },
-        "Millerton Lake/Storage Demand": {
-            "type": "Millerton_Lake_Storage_Demand"
-        },
         "Portal PH/Cost/1": {
             "type": "PH_Cost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
@@ -6195,7 +6232,7 @@
         },
         "SJN_01 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/Scenarios/runoff/Livneh/tot_runoff_sb01_mcm.csv",
+            "url": "../data/Upper San Joaquin River/Scenarioms/runoff/Livneh/tot_runoff_sb01_mcm.csv",
             "column": "tot_runoff_sb01",
             "index_col": "Date",
             "parse_dates": true
@@ -6874,7 +6911,7 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "San Joaquin 3 PH"
         },
-        "San Joaquin River Outflow/outflow": {
+        "San Joaquin River Outflow/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "San Joaquin River Outflow"
         },

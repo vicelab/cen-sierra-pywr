@@ -8,7 +8,7 @@ class Friant_Kern_Canal_Demand_Demand(WaterLPParameter):
     def _value(self, timestep, scenario_index):
         
         WYT = self.get('San Joaquin Valley WYT' + self.month_suffix, timestep, scenario_index)
-        df = self.model.tables["CVP Friant-Kern Canal Demand"]
+        df = self.model.tables["CVP Friant-Kern Canal demand"]
         col = df.columns[WYT - 1]
         demand_cfs = df[col]  # data is currently in cfs
         
