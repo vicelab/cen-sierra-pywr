@@ -2270,17 +2270,17 @@
             "parse_dates": false
         },
         "Lake Tulloch Flood Control": {
-            "url": "../data/Stanislaus River/Management/BAU/Flood Control/Lake Tulloch Flood Control Requirement mcm.csv",
+            "url": "../data/Stanislaus River/Management/BAU/Flood Control/Lake Tulloch Flood Control Curve mcm.csv",
             "index_col": 0,
             "squeeze": true
         },
         "New Melones Lake Flood Control": {
-            "url": "../data/Stanislaus River/Management/BAU/Flood Control/New Melones Lake Flood Control Requirement mcm.csv",
+            "url": "../data/Stanislaus River/Management/BAU/Flood Control/New Melones Lake Flood Control Curve mcm.csv",
             "index_col": 0,
             "header": 0,
             "names": [
-                "flood control space",
-                "conditional space"
+                "rainflood",
+                "conditional"
             ]
         },
         "New Spicer Meadow District release": {

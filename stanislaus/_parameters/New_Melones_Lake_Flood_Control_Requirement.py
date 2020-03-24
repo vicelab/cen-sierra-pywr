@@ -50,8 +50,8 @@ class New_Melones_Lake_Flood_Control_Requirement(WaterLPParameter):
         # inflow_mcm = self.model.tables["Full Natural Flow"][self.datetime]
         # release_mcm = prev_storage_mcm + inflow_mcm - ag_demand_mcm - max_storage_mcm
 
-        flood_control_curve_mcm = flood_curves.at[month_day, 'flood control space']
-        conditional_curve_mcm = flood_curves.at[month_day, 'conditional space']
+        flood_control_curve_mcm = flood_curves.at[month_day, 'rainflood']
+        conditional_curve_mcm = flood_curves.at[month_day, 'conditional']
 
         ag_demand_mcm = SSJID_df[start_tuple] + OID_df[start_tuple]
         IFR_below_Goodwin_Dam_mcm = self.get("IFR bl Goodwin Reservoir/Requirement", timestep, scenario_index)
@@ -71,7 +71,7 @@ class New_Melones_Lake_Flood_Control_Requirement(WaterLPParameter):
             end_month_day = '{}-{}'.format(forecast_date.month, forecast_date.day)
 
             # forecasted target
-            forecasted_target_storage_mcm = flood_curves.at[end_month_day, 'flood control space']
+            forecasted_target_storage_mcm = flood_curves.at[end_month_day, 'rainflood']
 
             # Get expected FNF inflow
             forecasted_inflow_mcm = self.model.tables["Full Natural Flow"][self.datetime:forecast_date].sum()
