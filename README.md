@@ -81,13 +81,25 @@ conda config --add channels pywr
 conda install pywr
 ```
 
-## Running the Models 
+## Running the Models
+
+Running the models involves  steps, including:
+0. Data preparation
+0. Scenario setup
+0. Running the models
+
+### Data preparation
+For data preparation, see 
+
+### Scenario setup
+
+### Running
 
 ```
 conda activate *environment_name*
 ```
 
-### Flags
+*Flags*
 
 * "-b", "--basin"
 * "-nk", "--network_key"
@@ -106,6 +118,9 @@ For both daily and monthly models
 ``` 
 python main.py -b *network* -p -n "development" -d dm
 ```
+
+### Postprocessing
+
 ## Built With
 
 * [Pywr](https://pywr.github.io/pywr-docs/master/index.html) - The main library used
