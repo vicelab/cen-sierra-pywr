@@ -1,6 +1,6 @@
 import numpy as np
 from parameters import WaterLPParameter
-from datetime import datetime
+from datetime import datetime, timedelta
 from utilities.converter import convert
 
 
@@ -23,8 +23,11 @@ class Kirkwood_PH_Demand(WaterLPParameter):
 
         # HH storage
         month_day = (timestep.month, timestep.day)
-        end_month = 7
-        end_day = 1
+        # end_month = 7
+        # end_day = 1
+        end_date = timestep.datetime + timedelta(days=60)
+        end_month = end_date.month
+        end_day = end_date.day
         if (2, 1) <= month_day <= (end_month, end_day):
             start = timestep.datetime
             end = datetime(timestep.year, end_month, end_day)
@@ -34,7 +37,7 @@ class Kirkwood_PH_Demand(WaterLPParameter):
             HH_space = HH.max_volume - HH.volume[scenario_index.global_id]
             forecast_spill = forecast_above_HH - HH_space
             if forecast_spill > 0:
-                release_cms += 22 # forecast_spill  # / forecast_days
+                release_cms = 38.2  # forecast_spill  # / forecast_days
 
         self.prev_release_cms[scenario_index.global_id] = release_cms
 
