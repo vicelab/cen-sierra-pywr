@@ -16,7 +16,7 @@ rcps = ['45', '85']
 gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
 # scenarios += gcm_rcps
 
-tasks = ["main"]
+tasks = ["common"]
 
 basin_scenarios = list(product(basins, scenarios))
 
@@ -32,14 +32,14 @@ for basin, scenario in basin_scenarios:
             usj.disaggregate_SJN_09_subwatershed(scenarios_path, scenario)
 
     # preprocess hydrology
-    if "main" in tasks:
+    if "common" in tasks:
         print("Aggregating subwatersheds...")
         aggregate_subwatersheds(root_dir, basin, scenario)
         print("Creating forecasted hydrology...")
         create_forecasted_hydrology(root_dir, basin, scenario, runoff_dir='runoff_aggregated')
         create_full_natural_flow(root_dir, basin, scenario)
 
-    if "post" in tasks:
+    if "basins" in tasks:
 
         if basin == 'stanislaus':
             full_natural_flow_exceedance_forecast(basin_preprocessed_path, scenario)
