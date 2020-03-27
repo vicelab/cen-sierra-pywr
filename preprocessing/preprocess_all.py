@@ -23,7 +23,7 @@ basin_scenarios = list(product(basins, scenarios))
 for basin, scenario in basin_scenarios:
 
     basin_path = os.path.join(root_dir, '{} River'.format(basin.title()))
-    scenarios_path = os.path.join(basin_path, 'Scenarios')
+    scenarios_path = os.path.join(basin_path, 'scenarios')
     basin_preprocessed_path = os.path.join(scenarios_path, 'preprocessed')
 
     # before processing hydrology

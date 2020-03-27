@@ -28,7 +28,7 @@ def create_forecasted_hydrology(root_dir, basin, scenario, runoff_dir):
     month_columns = ['{:02}'.format(i) for i in range(1, 13)]
 
     print(basin, scenario)
-    runoff_dir_path = os.path.join(root_dir, '{} River/Scenarios/{}/{}'.format(basin.title(), runoff_dir, scenario))
+    runoff_dir_path = os.path.join(root_dir, '{} River/scenarios/{}/{}'.format(basin.title(), runoff_dir, scenario))
     #         print(runoff_dir)
     runoff_dir_monthly = runoff_dir_path.replace(runoff_dir, 'runoff_monthly')
     runoff_dir_monthly_forecasts = runoff_dir_path.replace(runoff_dir, 'runoff_monthly_forecasts')

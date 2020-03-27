@@ -3,7 +3,7 @@ import pandas as pd
 ####################################
 rcp = 85
 scen = ['CanESM2_rcp{}'.format(rcp),'CNRM-CM5_rcp{}'.format(rcp),'HadGEM2-ES_rcp{}'.format(rcp),'MIROC5_rcp{}'.format(rcp)]
-o_path = r"C:\Users\Aditya\Box Sync\VICE Lab\RESEARCH\PROJECTS\CERC-WET\Task7_San_Joaquin_Model\Pywr models\data\Merced River\Scenarios\preprocessed"
+o_path = r"C:\Users\Aditya\Box Sync\VICE Lab\RESEARCH\PROJECTS\CERC-WET\Task7_San_Joaquin_Model\Pywr models\data\Merced River\scenarios\preprocessed"
 
 def calc_WY(flw):
     if flw >= 450:

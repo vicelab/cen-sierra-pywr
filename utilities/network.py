@@ -156,7 +156,7 @@ def simplify_network(m, basin, climate, delete_gauges=False, delete_observed=Tru
             param_name = node['flow']
             new_param = {
                 "type": "dataframe",
-                "url": "{datapath}/{basin} River/Scenarios/runoff_aggregated/{climate}/{param} mcm.csv".format(
+                "url": "{datapath}/{basin} River/scenarios/{climate}/runoff_aggregated/{param} mcm.csv".format(
                     datapath=os.environ.get('SIERRA_DATA_PATH'),
                     basin=basin.replace('_', ' ').title(),
                     climate=climate,

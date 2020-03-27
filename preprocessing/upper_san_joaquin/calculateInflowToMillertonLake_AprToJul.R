@@ -6,7 +6,7 @@ library(ggplot2)
 library(stringr)
 scen = "MIROC5_rcp85"
 rm(list=ls(all=TRUE)) #start with empty workspace
-p <- paste("C:/Users/Aditya/Box Sync/VICE Lab/RESEARCH/PROJECTS/CERC-WET/Task7_San_Joaquin_Model/Pywr models/data/San Joaquin River/Scenarios/",scen,"/preprocessed", sep = '')
+p <- paste("C:/Users/Aditya/Box Sync/VICE Lab/RESEARCH/PROJECTS/CERC-WET/Task7_San_Joaquin_Model/Pywr models/data/San Joaquin River/scenarios/",scen,"/preprocessed", sep = '')
 df <- read.csv(paste(p,'/full_natural_flow_daily_mcm.csv', sep = ''))
 df$Date <- as.Date(mdy(df$Date))
 df$Year <- year(df$Date)

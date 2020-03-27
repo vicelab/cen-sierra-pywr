@@ -718,12 +718,12 @@
     ],
     "tables": {
         "San Joaquin Valley Index": {
-            "url": "../data/common/Scenarios/Livneh/SJVI.csv",
+            "url": "../data/common/scenarios/Livneh/SJVI.csv",
             "index_col": "WY",
             "squeeze": true
         },
         "WYT for IFR Below Exchequer": {
-            "url": "../data/Merced River/Scenarios/preprocessed/Livneh/Exchequer_WYT.csv",
+            "url": "../data/Merced River/scenarios/Livneh/preprocessed/Exchequer_WYT.csv",
             "index_col": 0,
             "header": 0,
             "parse_dates": false,
@@ -789,7 +789,7 @@
     "parameters": {
         "Full Natural Flow": {
             "type": "dataframe",
-            "url": "../data/Merced River/Scenarios/preprocessed/Livneh/full_natural_flow_daily_mcm.csv",
+            "url": "../data/Merced River/scenarios/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
             "index_col": 0,
             "header": 0,
             "parse_dates": true
@@ -922,42 +922,42 @@
         },
         "MER_01 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Merced River/Scenarios/runoff/Livneh/tot_runoff_sb01_mcm.csv",
+            "url": "../data/Merced River/scenarios/Livneh/runoff/tot_runoff_sb01_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "MER_02 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Merced River/Scenarios/runoff/Livneh/tot_runoff_sb02_mcm.csv",
+            "url": "../data/Merced River/scenarios/Livneh/runoff/tot_runoff_sb02_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "MER_03 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Merced River/Scenarios/runoff/Livneh/tot_runoff_sb03_mcm.csv",
+            "url": "../data/Merced River/scenarios/Livneh/runoff/tot_runoff_sb03_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "MER_04 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Merced River/Scenarios/runoff/Livneh/tot_runoff_sb04_mcm.csv",
+            "url": "../data/Merced River/scenarios/Livneh/runoff/tot_runoff_sb04_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "MER_05 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Merced River/Scenarios/runoff/Livneh/tot_runoff_sb05_mcm.csv",
+            "url": "../data/Merced River/scenarios/Livneh/runoff/tot_runoff_sb05_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "MER_06 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Merced River/Scenarios/runoff/Livneh/tot_runoff_sb06_mcm.csv",
+            "url": "../data/Merced River/scenarios/Livneh/runoff/tot_runoff_sb06_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true

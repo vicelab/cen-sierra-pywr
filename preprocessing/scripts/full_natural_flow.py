@@ -5,7 +5,7 @@ import os
 def create_full_natural_flow(root_dir, basin, scenario):
     basin_full = basin.title() + " River"
     basin_dir = os.path.join(root_dir, basin_full)
-    basin_runoff_dir = os.path.join(basin_dir, 'Scenarios', 'runoff')
+    basin_runoff_dir = os.path.join(basin_dir, 'scenarios', 'runoff')
     if not os.path.exists(basin_runoff_dir):
         raise Exception('Basin path "{}" does not exist'.format(basin_runoff_dir))
     print(basin)
@@ -24,7 +24,7 @@ def create_full_natural_flow(root_dir, basin, scenario):
     df = pd.concat(subwats, axis=1).sum(axis=1).to_frame()
     df.index.name = 'date'
     df.columns = ['flow']
-    outdir = os.path.join(basin_dir, 'Scenarios', 'preprocessed', scenario)
+    outdir = os.path.join(basin_dir, 'scenarios', 'preprocessed', scenario)
 
     # daily
     df.to_csv(os.path.join(outdir, 'full_natural_flow_daily_mcm.csv'))

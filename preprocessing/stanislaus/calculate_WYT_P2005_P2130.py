@@ -27,14 +27,14 @@ def assign_WY(row):
     return x
 
 for scn in scenarios:
-    inflow_melones = pd.read_csv(dir + "/Scenarios/preprocessed/{}/full_natural_flow_daily_mcm.csv".format(scn), names=['Date', 'T_flw'], header=0, parse_dates=[0])  # mcm
+    inflow_melones = pd.read_csv(dir + "/scenarios/preprocessed/{}/full_natural_flow_daily_mcm.csv".format(scn), names=['Date', 'T_flw'], header=0, parse_dates=[0])  # mcm
     inflow_melones['WY'] = inflow_melones.apply (lambda row: assign_WY(row), axis=1)
     df = inflow_melones.groupby('WY')['T_flw'].sum()*810.71318 #mcm to AF
     df1 = df.to_frame()
     df1.columns = ['Inflow_AF']
     #df1 = df1.unstack()
-    # df1.to_csv(dir+ "\Scenarios\preprocessed\{}\inflow_annual_LakeMelones_AF.csv".format(scn))
-    # annual_inflow_df = pd.read_csv(dir + "\Scenarios\preprocessed\{}\inflow_annual_LakeMelones_AF.csv".format(scn),names=['WY','Inflow_AF'], header=0,index_col=False)
+    # df1.to_csv(dir+ "\scenarios\preprocessed\{}\inflow_annual_LakeMelones_AF.csv".format(scn))
+    # annual_inflow_df = pd.read_csv(dir + "\scenarios\preprocessed\{}\inflow_annual_LakeMelones_AF.csv".format(scn),names=['WY','Inflow_AF'], header=0,index_col=False)
     annual_inflow_df = df1
     print(annual_inflow_df.head())
 
@@ -42,4 +42,4 @@ for scn in scenarios:
     print(annual_inflow_df.head())
     new_db = annual_inflow_df[['WY','WYT']]
     print(new_db.head())
-    new_db.to_csv(dir + "\Scenarios\preprocessed\{}\WYT_P2005_P2130.csv".format(scn),index=False)
+    new_db.to_csv(dir + "\scenarios\preprocessed\{}\WYT_P2005_P2130.csv".format(scn),index=False)

@@ -8,7 +8,7 @@ for basin in os.listdir(root_dir):
     if 'River' not in basin:
         continue
     basin_dir = os.path.join(root_dir, basin)
-    basin_runoff_dir = os.path.join(basin_dir, 'Scenarios', 'runoff')
+    basin_runoff_dir = os.path.join(basin_dir, 'scenarios', 'runoff')
     if not os.path.exists(basin_runoff_dir):
         continue
     print(basin)
@@ -26,7 +26,7 @@ for basin in os.listdir(root_dir):
         all_subwats_df = pd.concat(subwats, axis=1)
 
         # save to file
-        outdir = os.path.join(basin_dir, 'Scenarios', 'preprocessed', scenario)
+        outdir = os.path.join(basin_dir, 'scenarios', 'preprocessed', scenario)
         if not os.path.exists(outdir):
             os.makedirs(outdir)
         all_subwats_df.to_csv(os.path.join(outdir, 'runoff_mcm.csv'))

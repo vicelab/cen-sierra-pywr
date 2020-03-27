@@ -14,7 +14,7 @@ basin_scenarios = product(basins, scenarios)
 
 for basin, scenario in basin_scenarios:
     print(basin, scenario)
-    datadir = '../../data/{} River/Scenarios/{}/runoff'.format(basin.title(), scenario)
+    datadir = '../../data/{} River/scenarios/{}/runoff'.format(basin.title(), scenario)
     for filename in os.listdir(datadir):
         if '_cms.csv' in filename:
             print(filename)

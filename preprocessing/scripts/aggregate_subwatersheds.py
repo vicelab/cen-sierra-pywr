@@ -16,7 +16,7 @@ def aggregate_subwatersheds(root_dir, basin, climate):
     scenario = climate
     basin_full = basin.title() + " River"
     basin_dir = os.path.join(root_dir, basin_full)
-    basin_runoff_dir = os.path.join(basin_dir, 'Scenarios', 'runoff')
+    basin_runoff_dir = os.path.join(basin_dir, 'scenarios', 'runoff')
     if not os.path.exists(basin_runoff_dir):
         raise Exception('Basin path "{}" does not exist'.format(basin_runoff_dir))
 
@@ -50,7 +50,7 @@ def aggregate_subwatersheds(root_dir, basin, climate):
         df.index.name = 'date'
         df.columns = ["flow"]
 
-        outdir = os.path.join(basin_dir, 'Scenarios', 'runoff_aggregated', scenario)
+        outdir = os.path.join(basin_dir, 'scenarios', scenario, 'runoff_aggregated')
         if not os.path.exists(outdir):
             os.makedirs(outdir)
 

@@ -9,7 +9,7 @@ rm(list=ls(all=TRUE)) #start with empty workspace
 scen = c('Livneh','CanESM2_rcp45','CanESM2_rcp85','CNRM-CM5_rcp45','CNRM-CM5_rcp85','HadGEM2-ES_rcp45','HadGEM2-ES_rcp85','MIROC5_rcp45','MIROC5_rcp85')
 d = "C:/Users/Aditya/Box Sync/VICE Lab/RESEARCH/PROJECTS/CERC-WET/Task7_San_Joaquin_Model/Pywr models/data/Stanislaus River/"
 for (s in scen){
-  p <- paste(d,"Scenarios/runoff/",s, sep="")
+  p <- paste(d,"scenarios/runoff/",s, sep="")
   files <- list.files(path=p, pattern="*.csv", full.names=TRUE, recursive=FALSE)
   df_t <- data.frame()
   i = 0
@@ -31,5 +31,5 @@ for (s in scen){
   df_f <- df_t[,c("Date","T_flw")]
   print(head(df_t))
   print(head(df_f))
-  write.csv(df_f,file=paste(d,"Scenarios/preprocessed/",s,"/inflow_daily_LakeMelones_mcm.csv", sep=""), row.names = FALSE)
+  write.csv(df_f,file=paste(d,"scenarios/preprocessed/",s,"/inflow_daily_LakeMelones_mcm.csv", sep=""), row.names = FALSE)
 }  
