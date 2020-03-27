@@ -4,7 +4,7 @@ from itertools import product
 import pandas as pd
 
 
-def full_natural_flow_exceedance_forecast(basin_preprocessed_path, scenario):
+def full_natural_flow_exceedance_forecast(scenario_path):
     """
     This function calculates the full natural flow exceedance forecasts each month.
     Actually, for now it really does no such thing, and simply assumes perfect forecast. However, it can be updated
@@ -17,7 +17,7 @@ def full_natural_flow_exceedance_forecast(basin_preprocessed_path, scenario):
 
 
     # Approximate DWR's 50% exceedance flows for the basin.
-    fnf_path = os.path.join(basin_preprocessed_path, scenario, 'full_natural_flow_daily_mcm.csv')
+    fnf_path = os.path.join(scenario_path, 'preprocessed', 'full_natural_flow_daily_mcm.csv')
     fnf_df = pd.read_csv(fnf_path, index_col=0, header=0, parse_dates=True)
 
     months = list(range(3, 9 + 1))
@@ -60,5 +60,5 @@ def full_natural_flow_exceedance_forecast(basin_preprocessed_path, scenario):
         # sum across exceedance
         fnf_all[('sum', exceedance)] = fnf_all.loc[(years, months), (months, exceedance)].sum(axis=1)
 
-    outpath = os.path.join(basin_preprocessed_path, scenario, 'fnf_forecast_mcm.csv')
+    outpath = os.path.join(scenario_path, 'preprocessed', 'exceedance_forecast_mcm.csv')
     fnf_all.to_csv(outpath)

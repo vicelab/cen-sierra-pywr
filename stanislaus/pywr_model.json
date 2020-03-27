@@ -2190,7 +2190,7 @@
             "squeeze": true
         },
         "Full Natural Flow Forecast": {
-            "url": "../data/Stanislaus River/scenarios/Livneh/preprocessed/fnf_forecast_mcm.csv",
+            "url": "../data/Stanislaus River/scenarios/Livneh/preprocessed/exceedance_forecast_mcm.csv",
             "index_col": [
                 0,
                 1

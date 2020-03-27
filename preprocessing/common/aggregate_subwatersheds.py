@@ -16,13 +16,13 @@ def aggregate_subwatersheds(root_dir, basin, climate):
     scenario = climate
     basin_full = basin.title() + " River"
     basin_dir = os.path.join(root_dir, basin_full)
-    basin_runoff_dir = os.path.join(basin_dir, 'scenarios', 'runoff')
-    if not os.path.exists(basin_runoff_dir):
-        raise Exception('Basin path "{}" does not exist'.format(basin_runoff_dir))
-
-    scenario_dir = os.path.join(basin_runoff_dir, scenario)
+    scenario_dir = os.path.join(basin_dir, 'scenarios', scenario)
     if not os.path.exists(scenario_dir):
         raise Exception('Scenario path "{}" does not exist'.format(scenario_dir))
+
+    basin_runoff_dir = os.path.join(scenario_dir, 'runoff')
+    if not os.path.exists(basin_runoff_dir):
+        raise Exception('Basin path "{}" does not exist'.format(basin_runoff_dir))
 
     subwat_groups = {}
 
@@ -43,7 +43,7 @@ def aggregate_subwatersheds(root_dir, basin, climate):
         subwat_group_runoff = []
         for subwat in subwats:
             filename = 'tot_runoff_sb{}_mcm.csv'.format(subwat.split(' ')[0].split('_')[1])
-            path = os.path.join(scenario_dir, filename)
+            path = os.path.join(scenario_dir, 'runoff', filename)
             df = pd.read_csv(path, parse_dates=True, index_col=0, header=0)
             subwat_group_runoff.append(df)
         df = pd.concat(subwat_group_runoff, axis=1).sum(axis=1).to_frame()

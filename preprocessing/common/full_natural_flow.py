@@ -5,26 +5,28 @@ import os
 def create_full_natural_flow(root_dir, basin, scenario):
     basin_full = basin.title() + " River"
     basin_dir = os.path.join(root_dir, basin_full)
-    basin_runoff_dir = os.path.join(basin_dir, 'scenarios', 'runoff')
+    scenario_dir = os.path.join(basin_dir, 'scenarios', scenario)
+    basin_runoff_dir = os.path.join(scenario_dir, 'runoff_aggregated')
     if not os.path.exists(basin_runoff_dir):
         raise Exception('Basin path "{}" does not exist'.format(basin_runoff_dir))
     print(basin)
 
-    scenario_dir = os.path.join(basin_runoff_dir, scenario)
     subwats = []
     if not os.path.exists(scenario_dir):
         raise Exception('Scenario path "{}" does not exist'.format(scenario_dir))
     print(scenario)
-    for subwat in os.listdir(scenario_dir):
-        if 'runoff_' not in subwat:
+    for filename in os.listdir(basin_runoff_dir):
+        if '.csv' not in filename:
             continue
-        path = os.path.join(scenario_dir, subwat)
+        path = os.path.join(basin_runoff_dir, filename)
         df = pd.read_csv(path, parse_dates=True, index_col=0, header=0)
         subwats.append(df)
     df = pd.concat(subwats, axis=1).sum(axis=1).to_frame()
     df.index.name = 'date'
     df.columns = ['flow']
-    outdir = os.path.join(basin_dir, 'scenarios', 'preprocessed', scenario)
+    outdir = os.path.join(basin_dir, 'scenarios', scenario, 'preprocessed')
+    if not os.path.exists(outdir):
+        os.makedirs(outdir)
 
     # daily
     df.to_csv(os.path.join(outdir, 'full_natural_flow_daily_mcm.csv'))
