@@ -31,7 +31,7 @@ for basin, scenario in basin_scenarios:
         if basin == 'upper san joaquin':
             usj.disaggregate_SJN_09_subwatershed(scenarios_path, scenario)
 
-    # preprocess hydrology
+    # preprocess hydrology c
     if "common" in tasks:
         print("Aggregating subwatersheds...")
         aggregate_subwatersheds(root_dir, basin, scenario)

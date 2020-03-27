@@ -1,19 +1,15 @@
 import os
-from shutil import copyfile
+from shutil import move
 
-for basin in ['tuolumne']:
-    basin_path = '../data/{} River/Scenarios'.format(basin.title())
-    scenarios = os.listdir(basin_path)
-    for scenario in scenarios:
-        scenario_path = os.path.join(basin_path, scenario)
-        variables = os.listdir(scenario_path)
-        for variable in variables:
-            variable_path = os.path.join(scenario_path, variable)
-            new_variable_path = os.path.join(basin_path, variable, scenario)
-            if not os.path.exists(new_variable_path):
-                os.makedirs(new_variable_path)
-            for filename in os.listdir(variable_path):
-                copyfile(
-                    os.path.join(variable_path, filename),
-                    os.path.join(new_variable_path, filename)
-                )
+for basin in ['merced', 'tuolumne', 'upper san joaquin', 'stanislaus']:
+    scenarios_path = '{}/{} River/Scenarios'.format(os.environ['SIERRA_DATA_PATH'], basin.title())
+    variables_path = os.path.join(scenarios_path, 'runoff')
+    for scenario in os.listdir(variables_path):
+        scenario_path = os.path.join(variables_path, scenario)
+        new_variable_path = os.path.join(scenarios_path, scenario, 'runoff')
+        if not os.path.exists(new_variable_path):
+            os.makedirs(new_variable_path)
+        for filename in os.listdir(scenario_path):
+            src = os.path.join(scenario_path, filename)
+            dst = os.path.join(new_variable_path, filename)
+            move(src, dst)
