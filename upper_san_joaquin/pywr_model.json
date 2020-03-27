@@ -5342,7 +5342,7 @@
             "parse_dates": true
         },
         "CVP Friant-Kern Canal demand": {
-            "url": "../data/Upper San Joaquin River/Management/BAU/Demand/CVP Friant-Kern Canal - cfs.csv",
+            "url": "../data/Upper San Joaquin River/management/BAU/Demand/CVP Friant-Kern Canal - cfs.csv",
             "index_col": [
                 0,
                 1
@@ -5357,7 +5357,7 @@
             ]
         },
         "CVP Madera Canal demand": {
-            "url": "../data/Upper San Joaquin River/Management/BAU/Demand/CVP Madera Canal - cfs.csv",
+            "url": "../data/Upper San Joaquin River/management/BAU/Demand/CVP Madera Canal - cfs.csv",
             "index_col": [
                 0,
                 1
@@ -5396,7 +5396,7 @@
             "squeeze": true
         },
         "Big Creek System IFRs 2000 normal": {
-            "url": "../data/Upper San Joaquin River/Management/BAU/IFRs/Big Creek 2000 IFRs daily cfs.xlsx",
+            "url": "../data/Upper San Joaquin River/management/BAU/IFRs/Big Creek 2000 IFRs daily cfs.xlsx",
             "sheet_name": "normal",
             "skiprows": [
                 0
@@ -5405,7 +5405,7 @@
             "header": 0
         },
         "Big Creek System IFRs 2000 dry": {
-            "url": "../data/Upper San Joaquin River/Management/BAU/IFRs/Big Creek 2000 IFRs daily cfs.xlsx",
+            "url": "../data/Upper San Joaquin River/management/BAU/IFRs/Big Creek 2000 IFRs daily cfs.xlsx",
             "sheet_name": "dry",
             "skiprows": [
                 0
@@ -5414,7 +5414,7 @@
             "header": 0
         },
         "IFR Schedule below Friant Dam": {
-            "url": "../data/Upper San Joaquin River/Management/BAU/IFRs/IFR Below Friant Dam cfs daily.csv",
+            "url": "../data/Upper San Joaquin River/management/BAU/IFRs/IFR Below Friant Dam cfs daily.csv",
             "index_col": [
                 0,
                 1
@@ -5433,7 +5433,7 @@
             "squeeze": true
         },
         "Millerton Lake flood curve": {
-            "url": "../data/Upper San Joaquin River/Management/BAU/Flood Control/Millerton Lake Flood Control Curve mcm.csv",
+            "url": "../data/Upper San Joaquin River/management/BAU/Flood Control/Millerton Lake Flood Control Curve mcm.csv",
             "index_col": 0,
             "header": 0,
             "names": [

@@ -24,7 +24,7 @@ for basin in basins:
             columns='WY',
             aggfunc=np.mean
         ).fillna(0)
-        outpath = path = '../../data/{basin} River/Management/BAU/Demand/{diversion} demand by WYT mcm.csv'.format(
+        outpath = path = '../../data/{basin} River/management/BAU/Demand/{diversion} demand by WYT mcm.csv'.format(
             basin=basin.title(),
             diversion=gauge['name']
         )

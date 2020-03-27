@@ -18,7 +18,7 @@ for basin in basins:
         data['Day'] = data.index.strftime('%j')  # add day
         medians = data.groupby('Day').median()[gauge['gauge']] # get median
         median_fractions = medians / medians.sum()
-        outpath = path = '../../data/{basin} River/Management/BAU/Demand/{diversion} median fraction.csv'.format(
+        outpath = path = '../../data/{basin} River/management/BAU/Demand/{diversion} median fraction.csv'.format(
             basin=basin.title(),
             diversion=gauge['name']
         )

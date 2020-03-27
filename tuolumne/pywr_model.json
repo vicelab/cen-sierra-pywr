@@ -2456,7 +2456,7 @@
             "squeeze": true
         },
         "Modesto Irrigation District/Demand Table": {
-            "url": "../data/Tuolumne River/Management/BAU/Demand/Modesto Irrigation District demand cfs.csv",
+            "url": "../data/Tuolumne River/management/BAU/Demand/Modesto Irrigation District demand cfs.csv",
             "index_col": [
                 0,
                 1
@@ -2464,7 +2464,7 @@
             "header": 0
         },
         "Turlock Irrigation District/Demand Table": {
-            "url": "../data/Tuolumne River/Management/BAU/Demand/Turlock Irrigation District demand cfs.csv",
+            "url": "../data/Tuolumne River/management/BAU/Demand/Turlock Irrigation District demand cfs.csv",
             "index_col": [
                 0,
                 1
@@ -2472,19 +2472,19 @@
             "header": 0
         },
         "SFPUC weekly fraction": {
-            "url": "../data/Tuolumne River/Management/BAU/Demand/SFPUC weekly fraction.csv",
+            "url": "../data/Tuolumne River/management/BAU/Demand/SFPUC weekly fraction.csv",
             "index_col": 0,
             "header": 0,
             "squeeze": true
         },
         "Don Pedro Lake Flood Control Curve": {
-            "url": "../data/Tuolumne River/Management/BAU/Flood Control/Don Pedro Reservoir Flood Control Curve mcm.csv",
+            "url": "../data/Tuolumne River/management/BAU/Flood Control/Don Pedro Reservoir Flood Control Curve mcm.csv",
             "index_col": 0,
             "header": 0,
             "squeeze": true
         },
         "Preferred Storage": {
-            "url": "../data/Tuolumne River/Management/BAU/Reservoirs/Preferred Storage Curves AF.csv",
+            "url": "../data/Tuolumne River/management/BAU/Reservoirs/Preferred Storage Curves AF.csv",
             "index_col": 0,
             "header": 0
         },
