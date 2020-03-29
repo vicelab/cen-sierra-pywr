@@ -5390,7 +5390,7 @@
             "parse_dates": false
         },
         "Seasonal Inflow at Friant": {
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/preprocessed/inflow_MillertonLake_AprToJul_AF.csv",
+            "url": "../data/Upper San Joaquin River/scenarios/Livneh/preprocessed/inflow_MillertonLake_AprToJul_af.csv",
             "header": 0,
             "index_col": 0,
             "squeeze": true

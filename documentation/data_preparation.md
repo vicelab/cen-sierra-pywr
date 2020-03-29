@@ -121,4 +121,4 @@ The following table lists which file/script is used to create each dataset neede
 | `WYT_P2019.csv`                            | `stanislaus.calculate_WYT_P2019`                           |
 | `Donnells_Reservoir_Peak_MAM_Runoff_date.csv` | `stanislaus.calculate_peak_donnell_lake_inflow`                  |
 | `SJ restoration flows.csv`                 | `upper_san_joaquin.sjrrp_below_friant`                              |
-| `inflow_MillertonLake_AprToJul_AF.csv`     | `upper_san_joaquin/calculateInflowToMillertonLake_AprToJul.R` |
+| `inflow_MillertonLake_AprToJul_mcm.csv`     | `upper_san_joaquin.calculate_millerton_snowmelt_inflow` |
