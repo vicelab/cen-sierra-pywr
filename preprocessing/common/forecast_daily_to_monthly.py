@@ -9,7 +9,7 @@ import pandas as pd
 from itertools import product
 
 
-def create_forecasted_hydrology(root_dir, basin, scenario, runoff_dir):
+def create_forecasted_hydrology(scenario_path):
 
     # In[5]:
 
@@ -27,8 +27,8 @@ def create_forecasted_hydrology(root_dir, basin, scenario, runoff_dir):
     debug = False
     month_columns = ['{:02}'.format(i) for i in range(1, 13)]
 
-    print(basin, scenario)
-    runoff_dir_path = os.path.join(root_dir, '{} River/scenarios/{}/{}'.format(basin.title(), scenario, runoff_dir))
+    runoff_dir = 'runoff_aggregated'
+    runoff_dir_path = os.path.join(scenario_path, )
     #         print(runoff_dir)
     runoff_dir_monthly = runoff_dir_path.replace(runoff_dir, 'runoff_monthly')
     runoff_dir_monthly_forecasts = runoff_dir_path.replace(runoff_dir, 'runoff_monthly_forecasts')

@@ -5,22 +5,17 @@ import os
 from utilities import simplify_network
 
 
-def aggregate_subwatersheds(root_dir, basin, climate):
+def aggregate_subwatersheds(scenario_path, basin):
     """
     Some description...
-    :param root_dir:
+    :param scenario_path:
     :param basin:
-    :param climate:
     :return:
     """
-    scenario = climate
-    basin_full = basin.title() + " River"
-    basin_dir = os.path.join(root_dir, basin_full)
-    scenario_dir = os.path.join(basin_dir, 'scenarios', scenario)
-    if not os.path.exists(scenario_dir):
-        raise Exception('Scenario path "{}" does not exist'.format(scenario_dir))
+    if not os.path.exists(scenario_path):
+        raise Exception('Scenario path "{}" does not exist'.format(scenario_path))
 
-    basin_runoff_dir = os.path.join(scenario_dir, 'runoff')
+    basin_runoff_dir = os.path.join(scenario_path, 'runoff')
     if not os.path.exists(basin_runoff_dir):
         raise Exception('Basin path "{}" does not exist'.format(basin_runoff_dir))
 
@@ -29,8 +24,9 @@ def aggregate_subwatersheds(root_dir, basin, climate):
     # collect subwatersheds
     model_path = '../{}/pywr_model.json'.format(basin.replace(' ', '_'))
     with open(model_path) as f:
-        model = json.load(f)
-    model = simplify_network(model, basin, climate, delete_gauges=True, delete_observed=True, delete_scenarios=True,
+        full_model = json.load(f)
+    model = simplify_network(full_model, scenario_path=scenario_path, delete_gauges=True, delete_observed=True,
+                             delete_scenarios=True,
                              aggregate_runoff=False)
 
     for n1, n2 in model['edges']:
@@ -43,14 +39,14 @@ def aggregate_subwatersheds(root_dir, basin, climate):
         subwat_group_runoff = []
         for subwat in subwats:
             filename = 'tot_runoff_sb{}_mcm.csv'.format(subwat.split(' ')[0].split('_')[1])
-            path = os.path.join(scenario_dir, 'runoff', filename)
+            path = os.path.join(scenario_path, 'runoff', filename)
             df = pd.read_csv(path, parse_dates=True, index_col=0, header=0)
             subwat_group_runoff.append(df)
         df = pd.concat(subwat_group_runoff, axis=1).sum(axis=1).to_frame()
         df.index.name = 'date'
         df.columns = ["flow"]
 
-        outdir = os.path.join(basin_dir, 'scenarios', scenario, 'runoff_aggregated')
+        outdir = os.path.join(scenario_path, 'runoff_aggregated')
         if not os.path.exists(outdir):
             os.makedirs(outdir)
 

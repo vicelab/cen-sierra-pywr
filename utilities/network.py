@@ -2,7 +2,7 @@ import os
 import json
 
 
-def simplify_network(m, basin, climate, delete_gauges=False, delete_observed=True, delete_scenarios=False,
+def simplify_network(m, scenario_path=None, basin=None, climate=None, delete_gauges=False, delete_observed=True, delete_scenarios=False,
                      aggregate_runoff=True, create_graphs=False):
     # simplify the network
     mission_complete = False
@@ -154,14 +154,23 @@ def simplify_network(m, basin, climate, delete_gauges=False, delete_observed=Tru
 
         for node in new_nodes:
             param_name = node['flow']
-            new_param = {
-                "type": "dataframe",
-                "url": "{datapath}/{basin} River/scenarios/{climate}/runoff_aggregated/{param} mcm.csv".format(
+            if scenario_path:
+                url = "{scenario_path}/runoff_aggregated/{param} mcm.csv".format(
                     datapath=os.environ.get('SIERRA_DATA_PATH'),
                     basin=basin.replace('_', ' ').title(),
                     climate=climate,
                     param=param_name.split('/')[0]
-                ),
+                )
+            else:
+                url = "{datapath}/{basin} River/scenarios/{climate}/runoff_aggregated/{param} mcm.csv".format(
+                    datapath=os.environ.get('SIERRA_DATA_PATH'),
+                    basin=basin.replace('_', ' ').title(),
+                    climate=climate,
+                    param=param_name.split('/')[0]
+                )
+            new_param = {
+                "type": "dataframe",
+                "url": url,
                 "column": "flow",
                 "index_col": 0,
                 "parse_dates": True

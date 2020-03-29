@@ -158,7 +158,7 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
         simplified_filename = model_filename_base + '_simplified.json'
         simplified_model_path = os.path.join(temp_dir, simplified_filename)
 
-        m = simplify_network(m, basin, climate, delete_gauges=True, delete_observed=True, delete_scenarios=debug)
+        m = simplify_network(m, basin=basin, climate=climate, delete_gauges=True, delete_observed=True, delete_scenarios=debug)
         with open(simplified_model_path, 'w') as f:
             f.write(json.dumps(m, indent=4))
         create_schematic(basin, 'simplified')

@@ -39,10 +39,10 @@ for basin, scenario in basin_scenarios:
     # preprocess hydrology c
     if "common" in tasks:
         print("Aggregating subwatersheds...")
-        aggregate_subwatersheds(root_dir, basin, scenario)
+        aggregate_subwatersheds(scenario_path, basin)
 
         print("Creating forecasted hydrology...")
-        create_forecasted_hydrology(root_dir, basin, scenario, runoff_dir='runoff_aggregated')
+        create_forecasted_hydrology(scenario_path)
 
         print("Creating full natural flow...")
         create_full_natural_flow(root_dir, basin, scenario)
