@@ -44,7 +44,8 @@ def prepare_planning_model(m, basin, climate, outpath, steps=12, blocks=8, param
 
     parameters_to_expand = PARAMETERS_TO_EXPAND.get(basin, []) + PARAMETERS_TO_EXPAND.get('common', [])
 
-    m = simplify_network(m, basin, climate, delete_gauges=True, delete_observed=True, delete_scenarios=debug is not None)
+    m = simplify_network(m, basin=basin, climate=climate, delete_gauges=True, delete_observed=True,
+                         delete_scenarios=debug is not None)
 
     all_steps = range(steps)
 
