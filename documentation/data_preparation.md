@@ -115,7 +115,7 @@ The following table lists which file/script is used to create each dataset neede
 | `full_natural_flow_daily_mcm.csv`          | `scripts.create_full_natural_flow`                            |
 | `full_natural_flow_monthly_mcm.csv`        | `scripts.create_full_natural_flow`                            |
 | `full_natural_flow_annual_mcm.csv`         | `scripts.create_full_natural_flow`                            |
-| `Exchequer_WYT.csv`                        | `merced/calculateExchequerWYT.py`                             |
+| `Exchequer_WYT.csv`                        | `merced.calculate_Exchequer_WYT.py`                             |
 | `exceedance_forecast_mcm.csv`                     | `scripts.full_natural_flow_exceedance_forecast`               |
 | `WYT_P2005_P2130.csv`                      | `stanislaus.calculate_WYT_P2005_P2130`                     |
 | `WYT_P2019.csv`                            | `stanislaus.calculate_WYT_P2019`                           |

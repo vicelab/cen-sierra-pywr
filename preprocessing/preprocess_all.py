@@ -5,9 +5,11 @@ from preprocessing.common import create_forecasted_hydrology, create_full_natura
 import preprocessing.upper_san_joaquin as usj
 import preprocessing.stanislaus as stn
 import preprocessing.merced as mer
+
 # import preprocessing.tuolumne as tuo
 
 basins = ['stanislaus', 'tuolumne', 'merced', 'upper san joaquin']
+# basins = ["merced"]
 
 root_dir = os.environ.get('SIERRA_DATA_PATH', '../data')
 
@@ -18,7 +20,7 @@ gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
 # scenarios += gcm_rcps
 
 tasks = ["pre", "common", "basins"]
-# tasks = ["basins"]
+# tasks = ["common", "basins"]
 
 basin_scenarios = list(product(basins, scenarios))
 
@@ -36,7 +38,6 @@ for basin, scenario in basin_scenarios:
 
     # preprocess hydrology c
     if "common" in tasks:
-
         print("Aggregating subwatersheds...")
         aggregate_subwatersheds(root_dir, basin, scenario)
 
@@ -54,6 +55,8 @@ for basin, scenario in basin_scenarios:
             stn.calculate_peak_donnell_lake_inflow(scenario_path)
             full_natural_flow_exceedance_forecast(scenario_path)
 
-        # after processing hydrology
-        if basin == 'upper san joaquin':
+        elif basin == 'merced':
+            mer.calculate_Exchequer_WYT(scenario_path)
+
+        elif basin == 'upper san joaquin':
             usj.sjrrp_below_friant(scenario_path)
