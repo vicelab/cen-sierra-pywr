@@ -2,8 +2,8 @@ import pandas as pd
 import os
 
 
-def create_full_natural_flow(scenario_dir):
-    basin_runoff_dir = os.path.join(scenario_dir, 'runoff_aggregated')
+def create_full_natural_flow(src, dst):
+    basin_runoff_dir = src
     subwats = []
     for filename in os.listdir(basin_runoff_dir):
         if '.csv' not in filename:
@@ -15,7 +15,7 @@ def create_full_natural_flow(scenario_dir):
     df.index.name = 'date'
     df.columns = ['flow']
 
-    outdir = os.path.join(scenario_dir, 'preprocessed')
+    outdir = dst
     if not os.path.exists(outdir):
         os.makedirs(outdir)
 

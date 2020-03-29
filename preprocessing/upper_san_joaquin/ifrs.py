@@ -2,11 +2,11 @@ import os
 import pandas as pd
 
 
-def sjrrp_below_friant(scenario_path):
+def sjrrp_below_friant(src, dst):
     thresholds_taf = [0, 400, 670, 930, 1450, 2500]
     allocations_taf = [116.866, 187.785, 272.280, 330.300, 400.300, 547.400, 673.488]
 
-    inpath = os.path.join(scenario_path, 'preprocessed', 'full_natural_flow_annual_mcm.csv')
+    inpath = os.path.join(src, 'full_natural_flow_annual_mcm.csv')
 
     df = pd.read_csv(inpath, index_col=0, header=0)
 
@@ -46,5 +46,5 @@ def sjrrp_below_friant(scenario_path):
     df2['Annual allocation mcm'] = allocations_mcm
     df2['Allocation adjustment'] = allocation_fractions
 
-    outpath = os.path.join(scenario_path, 'preprocessed', 'SJ restoration flows.csv')
+    outpath = os.path.join(dst, 'SJ restoration flows.csv')
     df2.to_csv(outpath)

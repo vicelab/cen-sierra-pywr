@@ -28,7 +28,7 @@ for basin, scenario in basin_scenarios:
     basin_path = os.path.join(root_dir, '{} River'.format(basin.title()))
     scenarios_path = os.path.join(basin_path, 'scenarios')
     scenario_path = os.path.join(scenarios_path, scenario)
-    basin_preprocessed_path = os.path.join(scenario_path, 'preprocessed')
+    preprocessed_path = os.path.join(scenario_path, 'preprocessed')
 
     # before processing hydrology
     if "pre" in tasks:
@@ -44,7 +44,9 @@ for basin, scenario in basin_scenarios:
         common.create_forecasted_hydrology(scenario_path)
 
         print("Creating full natural flow...")
-        common.create_full_natural_flow(root_dir, basin, scenario)
+        src = os.path.join(scenario_path, 'runoff_aggregated')
+        dst = preprocessed_path
+        common.create_full_natural_flow(src, dst)
 
     if "basins" in tasks:
 
@@ -58,5 +60,6 @@ for basin, scenario in basin_scenarios:
             mer.calculate_Exchequer_WYT(scenario_path)
 
         elif basin == 'upper san joaquin':
-            usj.sjrrp_below_friant(scenario_path)
-            usj.calculate_millerton_snowmelt_inflow(scenario_path)
+            src = dst = preprocessed_path
+            usj.sjrrp_below_friant(src, dst)
+            usj.calculate_millerton_snowmelt_inflow(src, dst)
