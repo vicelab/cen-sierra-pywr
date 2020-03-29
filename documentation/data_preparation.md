@@ -81,9 +81,9 @@ These scripts/modules convert runoff data into derivative data for specific basi
 * Stanislaus
 
   1. `scripts.full_natural_flow_exceedance_forecast`
-  1. `stanislaus/calculate_WYT_P2005_P2130.py`
-  1. `stanislaus/calculate_WYT_P2019.py`
-  1. `stanislaus/calculatePeakFlowDonnellsLake.R` (to be converted to Python)
+  1. `stanislaus.calculate_WYT_P2005_P2130`
+  1. `stanislaus.calculate_WYT_P2019`
+  1. `stanislaus.calculate_peak_donnell_lake_inflow`
 
 * Merced
 
@@ -117,8 +117,8 @@ The following table lists which file/script is used to create each dataset neede
 | `full_natural_flow_annual_mcm.csv`         | `scripts.create_full_natural_flow`                            |
 | `Exchequer_WYT.csv`                        | `merced/calculateExchequerWYT.py`                             |
 | `exceedance_forecast_mcm.csv`                     | `scripts.full_natural_flow_exceedance_forecast`               |
-| `WYT_P2005_P2130.csv`                      | `stanislaus/calculate_WYT_P2005_P2130.py`                     |
-| `WYT_P2019.csv`                            | `stanislaus/calculate_WYT_P2019.py`                           |
-| `peak_runoff_DonnellsRes_MarToMay_cms.csv` | `stanislaus/calculatePeakFlowDonnellsLake.R`                  |
-| `SJ restoration flows.csv`                 | `scripts.usj.sjrrp_below_friant`                              |
+| `WYT_P2005_P2130.csv`                      | `stanislaus.calculate_WYT_P2005_P2130`                     |
+| `WYT_P2019.csv`                            | `stanislaus.calculate_WYT_P2019`                           |
+| `Donnells_Reservoir_Peak_MAM_Runoff_date.csv` | `stanislaus.calculate_peak_donnell_lake_inflow`                  |
+| `SJ restoration flows.csv`                 | `upper_san_joaquin.sjrrp_below_friant`                              |
 | `inflow_MillertonLake_AprToJul_AF.csv`     | `upper_san_joaquin/calculateInflowToMillertonLake_AprToJul.R` |

@@ -1,26 +1,28 @@
+import os
 import pandas as pd
 
-dir = r"C:\Users\Aditya\Box Sync\VICE Lab\RESEARCH\PROJECTS\CERC-WET\Task7_San_Joaquin_Model\Pywr models\data\Stanislaus River"
-scenarios = ['Livneh','CanESM2_rcp45','CanESM2_rcp85','CNRM-CM5_rcp45','CNRM-CM5_rcp85','HadGEM2-ES_rcp45','HadGEM2-ES_rcp85','MIROC5_rcp45','MIROC5_rcp85']
 
-def assign_WYT(row):
-    if row['Flow'] <= 140000:
-        x = 1
-    elif row['Flow'] <= 320000:
-        x = 2
-    elif row['Flow'] <= 400000:
-        x = 3
-    elif row['Flow'] <= 500000:
-        x = 4
-    else:
-        x = 5
-    return x
+def calculate_WYT_P2019(scenario_path):
+    def assign_WYT(row):
+        if row['flow'] <= 140000:
+            x = 1
+        elif row['flow'] <= 320000:
+            x = 2
+        elif row['flow'] <= 400000:
+            x = 3
+        elif row['flow'] <= 500000:
+            x = 4
+        else:
+            x = 5
+        return x
 
-for scn in scenarios:
-    # TODO: update to read in fnf file
-    apr_jul_inflow_df = pd.read_csv(dir+ "\scenarios\preprocessed\{}\inflow_NewMelones_AprToJul_AF.csv".format(scn),names=['WY','Flow'], header=0,index_col=False)
-    apr_jul_inflow_df['WYT'] = apr_jul_inflow_df.apply(lambda row: assign_WYT(row), axis=1)
-    print(apr_jul_inflow_df.head())
-    new_db = apr_jul_inflow_df[['WY','WYT']]
-    print(new_db.head())
-    new_db.to_csv(dir+ "\scenarios\preprocessed\{}\WYT_P2019.csv".format(scn),index=False)
+    fnf_path = os.path.join(scenario_path, 'preprocessed', 'full_natural_flow_daily_mcm.csv')
+    df = pd.read_csv(fnf_path, names=['date', 'flow'], index_col=0, header=0, parse_dates=[0])  # mcm
+    df['year'] = df.index.year
+    df1 = df[df.index.map(lambda x: x.month in [4, 5, 6, 7])]
+    df2 = df1.groupby('year').sum() / 1.2335 * 1000
+    df2.index.name = 'WY'
+    df2['WYT'] = df2.apply(lambda row: assign_WYT(row), axis=1)
+    df2.drop('flow', axis=1, inplace=True)
+    outpath = os.path.join(scenario_path, 'preprocessed', 'WYT_P2019.csv')
+    df2.to_csv(outpath)

@@ -2201,11 +2201,7 @@
             ]
         },
         "Peak Donnells Runoff": {
-            "url": "../data/Stanislaus River/scenarios/Livneh/preprocessed/peak_runoff_DonnellsRes_MarToMay_cms.csv",
-            "usecols": [
-                0,
-                1
-            ],
+            "url": "../data/Stanislaus River/scenarios/Livneh/preprocessed/Donnells_Reservoir_Peak_MAM_Runoff_date.csv",
             "index_col": 0,
             "parse_dates": [
                 1

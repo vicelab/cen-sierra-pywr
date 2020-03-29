@@ -18,6 +18,7 @@ gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
 # scenarios += gcm_rcps
 
 tasks = ["pre", "common", "basins"]
+# tasks = ["basins"]
 
 basin_scenarios = list(product(basins, scenarios))
 
@@ -48,8 +49,9 @@ for basin, scenario in basin_scenarios:
     if "basins" in tasks:
 
         if basin == 'stanislaus':
-            stn.wyts.calculate_WYT_P2005_P2130(scenario_path)
-            stn.wyts.calculate_WYT_P2019(scenario_path)
+            stn.calculate_WYT_P2005_P2130(scenario_path)
+            stn.calculate_WYT_P2019(scenario_path)
+            stn.calculate_peak_donnell_lake_inflow(scenario_path)
             full_natural_flow_exceedance_forecast(scenario_path)
 
         # after processing hydrology
