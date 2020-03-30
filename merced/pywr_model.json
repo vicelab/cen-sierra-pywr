@@ -723,7 +723,7 @@
             "squeeze": true
         },
         "WYT for IFR Below Exchequer": {
-            "url": "../data/Merced River/Scenarios/preprocessed/Livneh/Exchequer_WYT.csv",
+            "url": "../data/Merced River/Scenarios/Livneh/preprocessed/Exchequer_WYT.csv",
             "index_col": 0,
             "header": 0,
             "parse_dates": false,
@@ -771,7 +771,7 @@
     "parameters": {
         "Full Natural Flow": {
             "type": "dataframe",
-            "url": "../data/Merced River/Scenarios/preprocessed/Livneh/full_natural_flow_daily_mcm.csv",
+            "url": "../data/Merced River/Scenarios/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
             "index_col": 0,
             "header": 0,
             "parse_dates": true
