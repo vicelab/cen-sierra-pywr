@@ -762,25 +762,7 @@
             "parse_dates": false
         },
         "Fish Pulse": {
-            "url": "../data/Merced River/Management/BAU/Demand/fishPulse_Merced_cfs.csv",
-            "index_col": 0,
-            "header": 0,
-            "squeeze": true
-        },
-        "Other Diversion": {
-            "url": "../data/Merced River/Management/BAU/Demand/otherDiversions_Merced_cfs.csv",
-            "index_col": 0,
-            "header": 0,
-            "squeeze": true
-        },
-        "Fish Pulse": {
-            "url": "../data/Merced River/Management/BAU/Demand/fishPulse_Merced_cfs.csv",
-            "index_col": 0,
-            "header": 0,
-            "squeeze": true
-        },
-        "Other Diversions": {
-            "url": "../data/Merced River/Management/BAU/Demand/otherDiversions_Merced_cfs.csv",
+            "url": "../data/Merced River/Management/BAU/IFRs/fishPulse_Merced_cfs.csv",
             "index_col": 0,
             "header": 0,
             "squeeze": true
@@ -842,7 +824,7 @@
         },
         "IFR bl New Exchequer Dam/Min Flow": {
             "type": "constant",
-            "value": 0.7080147267063155
+            "value": 0.061164
         },
         "Lake McClure/Storage Capacity": {
             "type": "constant",

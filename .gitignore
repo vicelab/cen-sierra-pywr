@@ -17,5 +17,3 @@ results/
 
 *.pdf
 */*.pdf
-
-*/__pycache__/

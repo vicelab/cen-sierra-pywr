@@ -370,6 +370,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
             obs_graph = go.Scatter(
                 x=obs_resampled.index,
                 y=obs_resampled,
+                connectgaps=False,
                 text=OBSERVED_TEXT,
                 mode='lines',
                 opacity=0.7,
