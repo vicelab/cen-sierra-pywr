@@ -7,8 +7,8 @@ import preprocessing.merced as mer
 
 # import preprocessing.tuolumne as tuo
 
-basins = ['stanislaus', 'tuolumne', 'merced', 'upper san joaquin']
-basins = ["upper san joaquin"]
+# basins = ['stanislaus', 'tuolumne', 'merced', 'upper san joaquin']
+basins = ["merced"]
 
 root_dir = os.environ.get('SIERRA_DATA_PATH', '../data')
 
@@ -18,8 +18,8 @@ rcps = ['45', '85']
 gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
 # scenarios += gcm_rcps
 
-# tasks = ["pre", "common", "basins"]
-tasks = ["basins"]
+tasks = ["pre", "common", "basins"]
+# tasks = ["basins"]
 
 basin_scenarios = list(product(basins, scenarios))
 

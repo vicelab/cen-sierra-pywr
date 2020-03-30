@@ -762,24 +762,12 @@
             "parse_dates": false
         },
         "Fish Pulse": {
-            "url": "../data/Merced River/management/BAU/Demand/fishPulse_Merced_cfs.csv",
+            "url": "../data/Merced River/management/BAU/IFRs/fishPulse_Merced_cfs.csv",
             "index_col": 0,
             "header": 0,
             "squeeze": true
         },
         "Other Diversion": {
-            "url": "../data/Merced River/management/BAU/Demand/otherDiversions_Merced_cfs.csv",
-            "index_col": 0,
-            "header": 0,
-            "squeeze": true
-        },
-        "Fish Pulse": {
-            "url": "../data/Merced River/management/BAU/Demand/fishPulse_Merced_cfs.csv",
-            "index_col": 0,
-            "header": 0,
-            "squeeze": true
-        },
-        "Other Diversions": {
             "url": "../data/Merced River/management/BAU/Demand/otherDiversions_Merced_cfs.csv",
             "index_col": 0,
             "header": 0,
