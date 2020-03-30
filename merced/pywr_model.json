@@ -718,23 +718,23 @@
     ],
     "tables": {
         "San Joaquin Valley Index": {
-            "url": "../data/common/scenarios/Livneh/SJVI.csv",
+            "url": "../data/common/Scenarios/Livneh/SJVI.csv",
             "index_col": "WY",
             "squeeze": true
         },
         "WYT for IFR Below Exchequer": {
-            "url": "../data/Merced River/scenarios/Livneh/preprocessed/Exchequer_WYT.csv",
+            "url": "../data/Merced River/Scenarios/preprocessed/Livneh/Exchequer_WYT.csv",
             "index_col": 0,
             "header": 0,
             "parse_dates": false,
             "squeeze": true
         },
         "Lake McClure Spill/ESRD": {
-            "url": "../data/Merced River/management/BAU/Flood Control/ESRD_unitsSI.csv",
+            "url": "../data/Merced River/Management/BAU/Flood Control/ESRD_unitsSI.csv",
             "header": null
         },
         "Lake McClure/Guide Curve": {
-            "url": "../data/Merced River/management/BAU/Flood Control/LakeMcLure_FloodControl_Requirements_af.csv",
+            "url": "../data/Merced River/Management/BAU/Flood Control/LakeMcLure_FloodControl_Requirements_af.csv",
             "names": [
                 "dry",
                 "normal",
@@ -745,13 +745,13 @@
             "header": 0
         },
         "MID Northside Diversions": {
-            "url": "../data/Merced River/management/BAU/Demand/MID_WYT_average_diversion_Northside_cfs.csv",
+            "url": "../data/Merced River/Management/BAU/Demand/MID_WYT_average_diversion_Northside_cfs.csv",
             "index_col": 0,
             "header": 0,
             "squeeze": true
         },
         "MID Main Diversions": {
-            "url": "../data/Merced River/management/BAU/Demand/MID_WYT_average_diversion_Main_cfs.csv",
+            "url": "../data/Merced River/Management/BAU/Demand/MID_WYT_average_diversion_Main_cfs.csv",
             "index_col": 0,
             "header": 0,
             "squeeze": true
@@ -762,13 +762,7 @@
             "parse_dates": false
         },
         "Fish Pulse": {
-            "url": "../data/Merced River/management/BAU/IFRs/fishPulse_Merced_cfs.csv",
-            "index_col": 0,
-            "header": 0,
-            "squeeze": true
-        },
-        "Other Diversion": {
-            "url": "../data/Merced River/management/BAU/Demand/otherDiversions_Merced_cfs.csv",
+            "url": "../data/Merced River/Management/BAU/IFRs/fishPulse_Merced_cfs.csv",
             "index_col": 0,
             "header": 0,
             "squeeze": true
@@ -777,7 +771,7 @@
     "parameters": {
         "Full Natural Flow": {
             "type": "dataframe",
-            "url": "../data/Merced River/scenarios/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
+            "url": "../data/Merced River/Scenarios/preprocessed/Livneh/full_natural_flow_daily_mcm.csv",
             "index_col": 0,
             "header": 0,
             "parse_dates": true
@@ -830,7 +824,7 @@
         },
         "IFR bl New Exchequer Dam/Min Flow": {
             "type": "constant",
-            "value": 0.7080147267063155
+            "value": 0.061164
         },
         "Lake McClure/Storage Capacity": {
             "type": "constant",
@@ -910,42 +904,42 @@
         },
         "MER_01 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Merced River/scenarios/Livneh/runoff/tot_runoff_sb01_mcm.csv",
+            "url": "../data/Merced River/Scenarios/runoff/Livneh/tot_runoff_sb01_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "MER_02 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Merced River/scenarios/Livneh/runoff/tot_runoff_sb02_mcm.csv",
+            "url": "../data/Merced River/Scenarios/runoff/Livneh/tot_runoff_sb02_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "MER_03 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Merced River/scenarios/Livneh/runoff/tot_runoff_sb03_mcm.csv",
+            "url": "../data/Merced River/Scenarios/runoff/Livneh/tot_runoff_sb03_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "MER_04 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Merced River/scenarios/Livneh/runoff/tot_runoff_sb04_mcm.csv",
+            "url": "../data/Merced River/Scenarios/runoff/Livneh/tot_runoff_sb04_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "MER_05 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Merced River/scenarios/Livneh/runoff/tot_runoff_sb05_mcm.csv",
+            "url": "../data/Merced River/Scenarios/runoff/Livneh/tot_runoff_sb05_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "MER_06 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Merced River/scenarios/Livneh/runoff/tot_runoff_sb06_mcm.csv",
+            "url": "../data/Merced River/Scenarios/runoff/Livneh/tot_runoff_sb06_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
