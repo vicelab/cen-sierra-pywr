@@ -11,8 +11,8 @@ class Eleanor_Cherry_Pumping_Station_Requirement(WaterLPParameter):
     def setup(self):
         super().setup()
         num_scenarios = len(self.model.scenarios.combinations)
-        self.can_pump = np.zeros([num_scenarios], np.bool)
-        self.prev_pumping = np.zeros([num_scenarios], np.bool)
+        self.can_pump = np.zeros(num_scenarios, np.bool)
+        self.prev_pumping = np.zeros(num_scenarios, np.bool)
 
     def _value(self, timestep, scenario_index):
 

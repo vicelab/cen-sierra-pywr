@@ -258,7 +258,7 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
                         initial_volume = m.nodes[res].initial_volume
                     else:
                         # TODO: fix the following to get from correct scenario
-                        initial_volume = m.nodes[res].volume[-1]
+                        initial_volume = m.nodes[res].volume[scenario_index.global_id]
                     initial_storage_node = res + ' [input]'
                     if initial_storage_node in m.planning.nodes:
                         m.planning.nodes[initial_storage_node].min_flow = initial_volume
@@ -272,7 +272,7 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
                 #     # Note: this is before the daily model has run, so technically we are still on Feb. 28/29
                 #     # TODO: update this to get from correct scenario and change New Melones Mar 1 storage
                 #     #  to be a scenario constant
-                #     m.planning.parameters["New Melones Mar 1 storage"] = m.nodes["New Melones Lake"].volume[-1]
+                #     m.planning.parameters["New Melones Mar 1 storage"] = m.nodes["New Melones Lake"].volume[scenario_index.global_id]
 
                 # Step 1b: run planning model
                 m.planning.step()  # redundant with run, since only one timestep

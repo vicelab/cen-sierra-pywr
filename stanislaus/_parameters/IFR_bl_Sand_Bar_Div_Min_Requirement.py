@@ -1,10 +1,16 @@
 import datetime
+import numpy as np
 from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
 class IFR_bl_Sand_Bar_Div_Min_Requirement(WaterLPParameter):
     """"""
+
+    def setup(self):
+        super().setup()
+        num_scenarios = len(self.model.scenarios.combinations)
+        self.peak_dt = np.ones(num_scenarios, np.float)
 
     def _value(self, timestep, scenario_index):
 
@@ -29,8 +35,8 @@ class IFR_bl_Sand_Bar_Div_Min_Requirement(WaterLPParameter):
 
         if self.mode == 'scheduling':
             if self.datetime.month == 10 and self.datetime.day == 1:
-                self.peak_dt = self.model.tables["Peak Donnells Runoff"][timestep.year + 1]
-            diff_day = (self.datetime - self.peak_dt).days
+                self.peak_dt[scenario_index.global_id] = self.model.tables["Peak Donnells Runoff"][timestep.year + 1]
+            diff_day = (self.datetime - self.peak_dt[scenario_index.global_id]).days
             if 0 <= diff_day < 91:
                 data_supp = self.model.tables["Supplemental IFR below Sand Bar Div"]
                 start_idx = diff_day - diff_day % 7

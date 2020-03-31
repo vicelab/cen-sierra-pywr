@@ -13,7 +13,7 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
     def setup(self):
         super().setup()
         num_scenarios = len(self.model.scenarios.combinations)
-        self.should_drawdown = np.empty([num_scenarios], np.bool)
+        self.should_drawdown = np.empty(num_scenarios, np.bool)
 
     def _value(self, timestep, scenario_index):
 

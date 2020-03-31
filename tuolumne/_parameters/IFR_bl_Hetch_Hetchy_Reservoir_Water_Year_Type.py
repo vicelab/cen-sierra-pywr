@@ -13,7 +13,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
         super().setup()
         # allocate an array to hold the previous storage; will be overwritten each timestep
         num_scenarios = len(self.model.scenarios.combinations)
-        self.WYT = np.empty([num_scenarios], np.float64)
+        self.WYT = np.empty(num_scenarios, np.float64)
 
     def _value(self, timestep, scenario_index):
 

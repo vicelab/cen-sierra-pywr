@@ -1,18 +1,23 @@
+import numpy as np
 from parameters import WaterLPParameter
 
 
 class New_Melones_WYT(WaterLPParameter):
     """"""
-    wyt = 3
+
+    def setup(self):
+        super().setup()
+        num_scenarios = len(self.model.scenarios.combinations)
+        self.wyt = np.ones(num_scenarios, int) * 3  # initial value
 
     def _value(self, timestep, scenario_index):
-
+        sid = scenario_index.global_id
         month = self.datetime.month
         year = self.datetime.year
 
         # Only calculate the index anew the 1st of Mar-Jun.
         if month < 3 or month > 6 or self.datetime.day != 1:
-            return self.wyt
+            return self.wyt[sid]
 
         # Step 1: Calculate New Melones Index (NMI), sum of Mar-Sep runoff and end-of-month storage
 
@@ -42,7 +47,7 @@ class New_Melones_WYT(WaterLPParameter):
         WYT = sum([1 for threshold in thresholds if NMI >= threshold])
 
         # save the WYT
-        self.wyt = WYT
+        self.wyt[sid] = WYT
 
         return WYT
 

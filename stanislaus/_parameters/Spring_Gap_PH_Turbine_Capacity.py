@@ -17,7 +17,7 @@ class Spring_Gap_PH_Turbine_Capacity(WaterLPParameter):
                 if timestep.index == 0:
                     prev_storage = pinecrest_reservoir.initial_volume
                 else:
-                    prev_storage = pinecrest_reservoir.volume[-1]
+                    prev_storage = pinecrest_reservoir.volume[scenario_index.global_id]
                 prev_storage_taf = prev_storage / 1.2335
 
                 if prev_storage_taf <= 5:  # taf to mcm

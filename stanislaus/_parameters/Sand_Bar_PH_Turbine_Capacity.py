@@ -21,8 +21,8 @@ class Sand_Bar_PH_Turbine_Capacity(WaterLPParameter):
                 prev_donnell_storage = donnells_reservoir.initial_volume
                 # prev_relief_storage = relief_reservoir.initial_volume
             else:
-                prev_donnell_storage = donnells_reservoir.volume[-1]
-                # prev_relief_storage = relief_reservoir.volume[-1]
+                prev_donnell_storage = donnells_reservoir.volume[scenario_index.global_id]
+                # prev_relief_storage = relief_reservoir.volume[scenario_index.global_id]
             prev_donnell_storage /= 1.2335
 
             storage_fraction = prev_donnell_storage / max_volume

@@ -25,8 +25,8 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
     def setup(self):
         super().setup()
         num_scenarios = len(self.model.scenarios.combinations)
-        self.nov_dec_mean = np.empty([num_scenarios], np.float64)
-        self.cowell_day_cnt = np.empty([num_scenarios], np.float64)
+        self.nov_dec_mean = np.empty(num_scenarios, np.float64)
+        self.cowell_day_cnt = np.empty(num_scenarios, np.float64)
 
     def before(self):
         super().before()

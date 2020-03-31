@@ -17,7 +17,7 @@ class Upper_Collierville_Tunnel_1_Capacity(WaterLPParameter):
             if timestep.index == 0:
                 prev_storage = union_utica.initial_volume
             else:
-                prev_storage = union_utica.volume[-1]
+                prev_storage = union_utica.volume[scenario_index.global_id]
             prev_storage /= 1.2335
 
             if prev_storage <= 2:

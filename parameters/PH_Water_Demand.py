@@ -20,7 +20,7 @@ class PH_Water_Demand(WaterLPParameter):
     def setup(self):
         super().setup()
         num_scenarios = len(self.model.scenarios.combinations)
-        self.price_threshold = np.zeros([num_scenarios], np.float)
+        self.price_threshold = np.zeros(num_scenarios, np.float)
 
     def _value(self, timestep, scenario_index):
 

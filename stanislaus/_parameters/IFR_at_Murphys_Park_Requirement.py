@@ -15,7 +15,7 @@ class IFR_at_Murphys_Park_Requirement(WaterLPParameter):
     def setup(self):
         super().setup()
         num_scenarios = len(self.model.scenarios.combinations)
-        self.year_type = np.ones([num_scenarios], np.int) * 5  # set 5 as initial WY
+        self.year_type = np.ones(num_scenarios, np.int) * 5  # set 5 as initial WY
 
     def _value(self, timestep, scenario_index):
         month = self.datetime.month

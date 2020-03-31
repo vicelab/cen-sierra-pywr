@@ -10,7 +10,7 @@ class Don_Pedro_Water_Bank(WaterLPParameter):
         super().setup()
         # allocate an array to hold the previous storage; will be overwritten each timestep
         num_scenarios = len(self.model.scenarios.combinations)
-        self.initial_storage = np.empty([num_scenarios], np.float64)
+        self.initial_storage = np.empty(num_scenarios, np.float64)
 
     def _value(self, timestep, scenario_index):
 

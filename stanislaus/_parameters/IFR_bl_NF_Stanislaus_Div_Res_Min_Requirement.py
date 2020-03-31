@@ -7,10 +7,12 @@ from utilities.converter import convert
 class IFR_bl_NF_Stanislaus_Div_Res_Min_Requirement(WaterLPParameter):
     """"""
 
+    initial_value = 16.5 / 35.31
+
     def _value(self, timestep, scenario_index):
-        ifr_val = 16.5 / 35.31  # cfs to cms (16.5 cfs)
+        ifr_val = self.initial_value # cfs to cms (16.5 cfs)
         if self.model.mode == 'scheduling':
-            ifr_val = self.get_down_ramp_ifr(timestep, scenario_index, ifr_val, initial_value=16.5/35.31, rate=0.25)
+            ifr_val = self.get_down_ramp_ifr(timestep, scenario_index, ifr_val, initial_value=ifr_val, rate=0.25)
         if self.model.mode == 'planning':
             ifr_val *= self.days_in_month
         return ifr_val

@@ -1,11 +1,15 @@
 import pandas as pd
+import numpy as np
 from parameters import WaterLPParameter
 
 
 class New_Melones_Apr_Jul_Runoff(WaterLPParameter):
     """"""
 
-    apr_jul_runoff = 350000  # acre-feet
+    def setup(self):
+        super().setup()
+        num_scenarios = len(self.model.scenarios.combinations)
+        self.apr_jul_runoff = np.ones(num_scenarios, np.float) * 350000
 
     def _value(self, timestep, scenario_index):
         month = self.datetime.month
@@ -14,9 +18,9 @@ class New_Melones_Apr_Jul_Runoff(WaterLPParameter):
         if month == 4 and day == 1 or self.model.mode == 'planning' and month in [4, 5, 6, 7]:
             start = '{:04}-04-01'.format(self.datetime.year)
             end = '{:04}-07-31'.format(self.datetime.year)
-            self.apr_jul_runoff = self.model.tables["Full Natural Flow"][start:end].sum() / 1.2335 * 1000
+            self.apr_jul_runoff[scenario_index.global_id] = self.model.tables["Full Natural Flow"][start:end].sum() / 1.2335 * 1000
 
-        return self.apr_jul_runoff
+        return self.apr_jul_runoff[scenario_index.global_id]
 
     def value(self, timestep, scenario_index):
         try:
