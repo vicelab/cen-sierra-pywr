@@ -99,7 +99,7 @@ class PH_Water_Demand(WaterLPParameter):
 
     def value(self, timestep, scenario_index):
         try:
-            return self._value(timestep, scenario_index, mode=self.mode)
+            return self._value(timestep, scenario_index)
         except Exception as err:
             print('\nERROR for parameter {}'.format(self.name))
             print('File where error occurred: {}'.format(__file__))
