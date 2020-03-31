@@ -1,0 +1,19 @@
+[
+    {
+        "name": "SWRCB 40",
+        "size": 1
+    },
+    {
+        "name": "District Reductions",
+        "size": 1
+    },
+    {
+        "name": "IFRs",
+        "size": 3,
+        "ensemble_names": [
+            "Baseline",
+            "No IFRs",
+            "Functional Flows"
+        ]
+    }
+]
