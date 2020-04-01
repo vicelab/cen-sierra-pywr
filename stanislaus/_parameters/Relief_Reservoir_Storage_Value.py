@@ -17,7 +17,11 @@ class Relief_Reservoir_Storage_Value(WaterLPParameter):
         return val
 
     def value(self, timestep, scenario_index):
-        return self._value(timestep, scenario_index)
+        try:
+            return self._value(timestep, scenario_index)
+        except Exception as err:
+            print('\nERROR for parameter {}'.format(self.name))
+            print('File where error occurred: {}'.format(__file__))
 
     @classmethod
     def load(cls, model, data):
