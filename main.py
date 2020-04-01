@@ -12,8 +12,9 @@ parser.add_argument("-d", "--debug", help="Debug ('m' or 'd' or 'dm')")
 parser.add_argument("-p", "--include_planning", help="Include planning model", action='store_true')
 parser.add_argument("-n", "--run_name", help="Run name")
 parser.add_argument("-mp", "--multiprocessing", help="Use multiprocessing", action='store_true')
-parser.add_argument("-s", "--start_year", help="Start year")
-parser.add_argument("-e", "--end_year", help="End year")
+parser.add_argument("-s", "--start_year", help="Start year", type=int)
+parser.add_argument("-e", "--end_year", help="End year", type=int)
+parser.add_argument("-m", "--planning_months", help="Planning months", type=int)
 args = parser.parse_args()
 
 basin = args.basin
@@ -30,7 +31,7 @@ gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
 data_path = os.environ.get('SIERRA_DATA_PATH')
 
 if debug:
-    planning_months = 3
+    planning_months = args.planning_months or 3
     climate_scenarios = ['Livneh']
     price_years = [2009]
     # climate_scenarios = ['CanESM2_rcp85']
@@ -38,7 +39,7 @@ if debug:
     start = '{}-10-01'.format(args.start_year or 2000)
     end = '{}-09-30'.format(args.end_year or 2002)
 else:
-    planning_months = 12
+    planning_months = args.planning_months or 12
     climate_scenarios = ['Livneh'] + gcm_rcps
     # climate_scenarios = ['HadGEM2-ES_rcp85']  # + gcm_rcps
     price_years = [2009, 2060]
