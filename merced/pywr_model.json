@@ -12,16 +12,6 @@
     "solver": {
         "name": "glpk"
     },
-    "scenarios": [
-        {
-            "name": "SWRCB 40",
-            "size": 1
-        },
-        {
-            "name": "District Reductions",
-            "size": 1
-        }
-    ],
     "nodes": [
         {
             "name": "Below Maxwell Ck Headflow [link]",

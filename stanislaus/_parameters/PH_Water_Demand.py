@@ -24,7 +24,6 @@ class PH_Water_Demand(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
         sid = scenario_index.global_id
-        kwargs = dict(timestep=timestep, scenario_index=scenario_index)
         all_energy_prices = self.model.tables['All Energy Price Values']
         param = self.res_name + '/Turbine Capacity' + self.month_suffix
         # turbine capacity is already in mcm

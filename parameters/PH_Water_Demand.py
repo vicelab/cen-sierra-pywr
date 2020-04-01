@@ -24,8 +24,6 @@ class PH_Water_Demand(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
 
-        sid = scenario_index.global_id
-
         all_energy_prices = self.model.tables['All Energy Price Values']
         powerhouse = self.model.nodes[self.res_name + self.month_suffix]  # powerhouse
         turbine_capacity_mcm = powerhouse.turbine_capacity
@@ -50,6 +48,8 @@ class PH_Water_Demand(WaterLPParameter):
 
             # TODO: move as much of this as possible to a single parameter
 
+            sid = scenario_index.global_id
+
             if timestep.day == 1:
                 end = timestep.datetime + relativedelta(months=+1) - relativedelta(days=+1)
                 if not isleap(price_year) and timestep.month == 2:
@@ -65,6 +65,7 @@ class PH_Water_Demand(WaterLPParameter):
                 planning_turbine_capacity = turbine_capacity_mcm * (end - self.datetime).days
                 planning_release_fraction = min(planning_release / planning_turbine_capacity, 1.0)
                 price_index = int(len(energy_prices) * planning_release_fraction) - 1
+
                 if price_index < 0:
                     self.price_threshold[sid] = 1e6  # no production this month (unlikely)
                 else:
