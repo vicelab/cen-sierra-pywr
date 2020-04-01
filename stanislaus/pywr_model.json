@@ -103,12 +103,7 @@
         {
             "name": "Beardsley Reservoir",
             "type": "Reservoir",
-            "initial_volume": {
-                "type": "constant",
-                "table": "Initial Storage",
-                "index": "2000-09-30",
-                "column": "USGS 11292800 BEARDSLEY LAKE NEAR STRAWBERRY CA"
-            },
+            "initial_volume": 70.0,
             "max_volume": 121.45,
             "min_volume": 25,
             "cost": "Beardsley Reservoir/Storage Value",
@@ -225,12 +220,7 @@
         {
             "name": "Donnells Reservoir",
             "type": "Reservoir",
-            "initial_volume": {
-                "type": "constant",
-                "table": "Initial Storage",
-                "index": "2000-09-30",
-                "column": "USGS 11292600 DONNELL LK NR DARDANELLE CA"
-            },
+            "initial_volume": 40.0,
             "max_volume": 79.83,
             "min_volume": 6.2,
             "cost": "Donnells Reservoir/Storage Value",
@@ -517,12 +507,7 @@
         {
             "name": "Lyons Reservoir",
             "type": "Reservoir",
-            "initial_volume": {
-                "type": "constant",
-                "table": "Initial Storage",
-                "index": "2000-09-30",
-                "column": "USGS 11297700 LYONS RES NR LONG BARN CA"
-            },
+            "initial_volume": 2.0,
             "max_volume": 7.5,
             "min_volume": 1.25,
             "cost": "Lyons Reservoir/Storage Value",
@@ -623,12 +608,7 @@
         {
             "name": "New Spicer Meadow Reservoir",
             "type": "Reservoir",
-            "initial_volume": {
-                "type": "constant",
-                "table": "Initial Storage",
-                "index": "2000-09-30",
-                "column": "USGS 11293770 NEW SPICER MEADOW RES NR BIG MEADOW CA"
-            },
+            "initial_volume": 120.0,
             "max_volume": 227.24,
             "min_volume": 50,
             "cost": "New Spicer Meadow Reservoir/Storage Value",
@@ -709,12 +689,7 @@
         {
             "name": "Pinecrest Reservoir",
             "type": "Reservoir",
-            "initial_volume": {
-                "type": "constant",
-                "table": "Initial Storage",
-                "index": "2000-09-30",
-                "column": "USGS 11295900 PINECREST LK NR STRAWBERRY CA"
-            },
+            "initial_volume": 15.0,
             "max_volume": 22.58,
             "min_volume": 0.57,
             "cost": "Pinecrest Reservoir/Storage Value",
@@ -725,12 +700,7 @@
         {
             "name": "Relief Reservoir",
             "type": "Reservoir",
-            "initial_volume": {
-                "type": "constant",
-                "table": "Initial Storage",
-                "index": "2000-09-30",
-                "column": "USGS 11291000 RELIEF RES NR BAKER STATION CA"
-            },
+            "initial_volume": 10.0,
             "max_volume": 18.5,
             "min_volume": 1.2,
             "cost": "Relief Reservoir/Storage Value",
@@ -1160,7 +1130,7 @@
         {
             "name": "Lake Tulloch",
             "type": "Reservoir",
-            "initial_volume": 82.64,
+            "initial_volume": 80.0,
             "max_volume": 82.64,
             "min_volume": 67.8,
             "cost": "Lake Tulloch/Storage Value",

@@ -2,6 +2,7 @@ import os
 import sys
 import json
 from pywr.core import Model
+from pywr.parameters import ConstantScenarioParameter
 from importlib import import_module
 from tqdm import tqdm
 from datetime import datetime
@@ -243,39 +244,15 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
         step += 1
         try:
 
-            # Step 1: run planning model & update daily model
-
+            # Step 1: run planning model
             if include_planning and date.day == 1:
-                # monthly_now = datetime.now()
-                # Step 1a: update planning model
-                # ...update start day
-                # m.planning.timestepper.start = date.to_timestamp()
+
+                # update planning model
                 m.planning.reset(start=date.to_timestamp())
 
-                # ...update initial conditions (not needed for the first step)
-                for res in reservoirs:
-                    if step == 0:
-                        initial_volume = m.nodes[res].initial_volume
-                    else:
-                        # TODO: fix the following to get from correct scenario
-                        initial_volume = m.nodes[res].volume[scenario_index.global_id]
-                    initial_storage_node = res + ' [input]'
-                    if initial_storage_node in m.planning.nodes:
-                        m.planning.nodes[initial_storage_node].min_flow = initial_volume
-                        m.planning.nodes[initial_storage_node].max_flow = initial_volume
+                # run planning model (intial conditions are set within the model step)
+                m.planning.step()
 
-                    # Other misc. updates from scheduling to daily model
-
-                # # Store March 1 (end-of-Feb) storage in Stanislaus model
-                # # This is used in New Melones WYT parameter (New_Melones_WYT.py)
-                # if basin == 'stanislaus' and date.month == 3 and date.day == 1:
-                #     # Note: this is before the daily model has run, so technically we are still on Feb. 28/29
-                #     # TODO: update this to get from correct scenario and change New Melones Mar 1 storage
-                #     #  to be a scenario constant
-                #     m.planning.parameters["New Melones Mar 1 storage"] = m.nodes["New Melones Lake"].volume[scenario_index.global_id]
-
-                # Step 1b: run planning model
-                m.planning.step()  # redundant with run, since only one timestep
                 if debug == 'dm' and save_results:
                     df_month = get_planning_dataframe(m.planning)
                     if df_planning is None:
@@ -283,21 +260,13 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
                     else:
                         df_planning = pd.concat([df_planning, df_month])
 
-                # Step 1c: update daily model with planning model results
-                # print('Updating daily model')
-
-                # this_monthly_seconds = (datetime.now() - monthly_now).total_seconds()
-                # print('Monthly run in {} seconds'.format(this_monthly_seconds))
-                # monthly_seconds += this_monthly_seconds
-
-            # Step 3: run daily model
+            # Step 2: run daily model
             m.step()
         except Exception as err:
             print('\nFailed at step {}'.format(date))
             print(err)
             raise
-            # continue
-            # break
+
     total_seconds = (datetime.now() - now).total_seconds()
     print('Total run: {} seconds'.format(total_seconds))
     print(

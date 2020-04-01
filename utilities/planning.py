@@ -47,6 +47,10 @@ def prepare_planning_model(m, basin, climate, outpath, steps=12, blocks=8, param
     m = simplify_network(m, basin=basin, climate=climate, delete_gauges=True, delete_observed=True,
                          delete_scenarios=debug is not None)
 
+    num_scenarios = 1
+    for scenario in m.get('scenarios', []):
+        num_scenarios *= scenario['size']
+
     all_steps = range(steps)
 
     new_nodes = []
@@ -153,7 +157,10 @@ def prepare_planning_model(m, basin, climate, outpath, steps=12, blocks=8, param
                     storage_input = {
                         'name': input_name,
                         'type': 'Catchment',
-                        'flow': node.get('initial_volume', 0.0)
+                        'flow': {
+                            "type": "Planning_Initial_Storage",
+                            "reservoir": old_name
+                        }
                     }
                     new_nodes.append(storage_input)
 
