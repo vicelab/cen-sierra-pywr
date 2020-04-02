@@ -11,7 +11,7 @@ parser.add_argument("-nk", "--network_key", help="Network key")
 parser.add_argument("-d", "--debug", help="Debug ('m' or 'd' or 'dm')")
 parser.add_argument("-p", "--include_planning", help="Include planning model", action='store_true')
 parser.add_argument("-n", "--run_name", help="Run name")
-parser.add_argument("-mp", "--multiprocessing", help="Use multiprocessing", action='store_true')
+parser.add_argument("-mp", "--multiprocessing", help="Use multiprocessing", default="none")
 parser.add_argument("-s", "--start_year", help="Start year", type=int)
 parser.add_argument("-e", "--end_year", help="End year", type=int)
 parser.add_argument("-m", "--planning_months", help="Planning months", type=int)
@@ -59,7 +59,7 @@ kwargs = dict(
     data_path=data_path
 )
 
-if not multiprocessing:  # serial processing for debugging
+if multiprocessing == "none":  # serial processing for debugging
     for scenario in scenarios:
         print('Running: ', scenario)
         try:
@@ -77,7 +77,7 @@ elif multiprocessing == "slurm":
     time_end = time.time()
 
 else:
-     pool = mp.Pool(processes=mp.cpu_count() - 1)
+    pool = mp.Pool(processes=mp.cpu_count() - 1)
     run_model_partial = partial(run_model, **kwargs)
     for scenario in scenarios:
         print('Adding ', scenario)
