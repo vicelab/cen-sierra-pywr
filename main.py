@@ -69,8 +69,15 @@ if not multiprocessing:  # serial processing for debugging
             print(err)
             continue
 
+elif multiprocessing == "slurm":
+    run_model_partial = partial(run_model, **kwargs)
+    time_start = time.time()
+    output = Parallel(n_jobs=num_cores)(delayed(run_model_partial)(scenarios) for scenarios in range(number_of_simulations))
+    output_size = np.matrix(output).shape
+    time_end = time.time()
+
 else:
-    pool = mp.Pool(processes=mp.cpu_count() - 1)
+     pool = mp.Pool(processes=mp.cpu_count() - 1)
     run_model_partial = partial(run_model, **kwargs)
     for scenario in scenarios:
         print('Adding ', scenario)
