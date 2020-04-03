@@ -2,7 +2,6 @@ import os
 import sys
 import json
 from pywr.core import Model
-from pywr.parameters import ConstantScenarioParameter
 from importlib import import_module
 from tqdm import tqdm
 from datetime import datetime
@@ -15,10 +14,18 @@ from utilities import simplify_network, prepare_planning_model, create_schematic
 SECONDS_IN_DAY = 3600 * 24
 
 
-def run_model(basin, climate, price_years, network_key=None, start=None, end=None,
-              run_name="default", include_planning=False,
-              simplify=True, use_multiprocessing=False,
-              debug=False, planning_months=12, data_path=None):
+def run_model(
+        basin, climate, price_years,
+        start=None, end=None,
+        run_name="default",
+        include_planning=False,
+        simplify=True,
+        use_multiprocessing=False,
+        debug=False,
+        planning_months=12,
+        scenarios=None,
+        data_path=None):
+
     months = planning_months
 
     if start is None or end is None:
@@ -54,6 +61,16 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
     # first order of business: update file paths in json file
     with open(base_path) as f:
         base_model = json.load(f)
+
+    if scenarios is not None:
+        for s in scenarios:
+            scenario_path = os.path.join(root_dir, 'scenarios', '{}.json'.format(s))
+            if os.path.exists(scenario_path):
+                with open(scenario_path) as f:
+                    scenario_model = json.load(scenario_path)
+                for key in scenario_model.keys():
+                    if key in base_model:
+                        base_model[key].update(scenario_model[key])
 
     new_model_parts = {}
     for model_part in ['tables', 'parameters']:
@@ -159,7 +176,8 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
         simplified_filename = model_filename_base + '_simplified.json'
         simplified_model_path = os.path.join(temp_dir, simplified_filename)
 
-        m = simplify_network(m, basin=basin, climate=climate, delete_gauges=True, delete_observed=True, delete_scenarios=debug)
+        m = simplify_network(m, basin=basin, climate=climate, delete_gauges=True, delete_observed=True,
+                             delete_scenarios=debug)
         with open(simplified_model_path, 'w') as f:
             f.write(json.dumps(m, indent=4))
         create_schematic(basin, 'simplified')
@@ -179,7 +197,8 @@ def run_model(basin, climate, price_years, network_key=None, start=None, end=Non
         monthly_filename = model_filename_base + '_monthly.json'
         planning_model_path = os.path.join(temp_dir, monthly_filename)
 
-        prepare_planning_model(m, basin, climate, planning_model_path, steps=months, debug=save_results, remove_rim_dams=True)
+        prepare_planning_model(m, basin, climate, planning_model_path, steps=months, debug=save_results,
+                               remove_rim_dams=True)
         create_schematic(basin, 'monthly')
 
         # create pywr model

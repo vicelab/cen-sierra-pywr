@@ -11,6 +11,7 @@ parser.add_argument("-nk", "--network_key", help="Network key")
 parser.add_argument("-d", "--debug", help="Debug ('m' or 'd' or 'dm')")
 parser.add_argument("-p", "--include_planning", help="Include planning model", action='store_true')
 parser.add_argument("-n", "--run_name", help="Run name")
+parser.add_argument("-ss", "--scenario_set", help="Scenario set")
 parser.add_argument("-mp", "--multiprocessing", help="Use multiprocessing", action='store_true')
 parser.add_argument("-s", "--start_year", help="Start year", type=int)
 parser.add_argument("-e", "--end_year", help="End year", type=int)
@@ -30,6 +31,9 @@ gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
 
 data_path = os.environ.get('SIERRA_DATA_PATH')
 
+start = None
+end = None
+
 if debug:
     planning_months = args.planning_months or 3
     climate_scenarios = ['Livneh']
@@ -38,15 +42,16 @@ if debug:
     # price_years = [2060]
     start = '{}-10-01'.format(args.start_year or 2000)
     end = '{}-09-30'.format(args.end_year or 2002)
+
 else:
     planning_months = args.planning_months or 12
-    climate_scenarios = ['Livneh'] + gcm_rcps
-    # climate_scenarios = ['HadGEM2-ES_rcp85']  # + gcm_rcps
-    price_years = [2009, 2060]
-    # start = '2003-10-01'
-    # end = '2005-09-30'
 
-scenarios = climate_scenarios
+    if args.scenario_set == 'gcms':
+        climate_scenarios = ['Livneh'] + gcm_rcps
+        price_years = [2009, 2060]
+    # elif args.scenario_set == 'sequences':
+    else:
+        raise Exception("No scenario set specified")
 
 kwargs = dict(
     run_name=args.run_name,
@@ -60,7 +65,7 @@ kwargs = dict(
 )
 
 if not multiprocessing:  # serial processing for debugging
-    for scenario in scenarios:
+    for scenario in climate_scenarios:
         print('Running: ', scenario)
         try:
             run_model(basin, scenario, price_years, **kwargs)
@@ -72,7 +77,7 @@ if not multiprocessing:  # serial processing for debugging
 else:
     pool = mp.Pool(processes=mp.cpu_count() - 1)
     run_model_partial = partial(run_model, **kwargs)
-    for scenario in scenarios:
+    for scenario in climate_scenarios:
         print('Adding ', scenario)
         pool.apply_async(run_model_partial, args=(basin, scenario))
 
