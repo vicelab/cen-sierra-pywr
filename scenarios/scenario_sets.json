@@ -1,0 +1,39 @@
+{
+    "debug": {
+        "name": "Debug",
+        "climate": [
+            "historical"
+        ]
+    },
+    "energy_prices": {
+        "name": "Energy Prices",
+        "climate": [
+            "historical",
+            "gcms"
+        ],
+        "scenarios": [
+            "energy_prices"
+        ]
+    },
+    "functional_flows": {
+        "name": "Functional Flows",
+        "climate": [
+            "historical",
+            "gcms"
+        ],
+        "scenarios": [
+            "functional_flows"
+        ]
+    },
+    "full_scenario_run": {
+        "name": "Functional flows with future energy prices",
+        "climate": [
+            "historical",
+            "gcms"
+        ],
+        "scenarios": [
+            "energy_prices",
+            "functional_flows"
+        ]
+    }
+}
