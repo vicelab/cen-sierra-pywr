@@ -1,4 +1,5 @@
 import os
+import json
 import multiprocessing as mp
 from functools import partial
 import argparse
@@ -33,25 +34,25 @@ data_path = os.environ.get('SIERRA_DATA_PATH')
 
 start = None
 end = None
+scenarios = []
 
 if debug:
     planning_months = args.planning_months or 3
     climate_scenarios = ['Livneh']
-    price_years = [2009]
-    # climate_scenarios = ['CanESM2_rcp85']
-    # price_years = [2060]
     start = '{}-10-01'.format(args.start_year or 2000)
     end = '{}-09-30'.format(args.end_year or 2002)
 
+elif not args.scenario_set:
+    raise Exception("No scenario set specified")
 else:
     planning_months = args.planning_months or 12
-
-    if args.scenario_set == 'gcms':
-        climate_scenarios = ['Livneh'] + gcm_rcps
-        price_years = [2009, 2060]
-    # elif args.scenario_set == 'sequences':
-    else:
-        raise Exception("No scenario set specified")
+    climate_scenarios = ['Livneh'] + gcm_rcps
+    with open("./scenarios/scenario_sets.json") as f:
+        scenario_sets = json.load(f)
+        scenario_set_definition = scenario_sets.get(args.scenario_set)
+        if not scenario_set_definition:
+            raise Exception("Scenario set not defined in scenario_sets.json")
+        scenarios = scenario_set_definition.get('scenarios', [])
 
 kwargs = dict(
     run_name=args.run_name,
@@ -61,25 +62,26 @@ kwargs = dict(
     use_multiprocessing=multiprocessing,
     start=start,
     end=end,
-    data_path=data_path
+    data_path=data_path,
+    scenarios=scenarios
 )
 
 if not multiprocessing:  # serial processing for debugging
-    for scenario in climate_scenarios:
-        print('Running: ', scenario)
+    for climate_scenario in climate_scenarios:
+        print('Running: ', climate_scenario)
         try:
-            run_model(basin, scenario, price_years, **kwargs)
+            run_model(basin, climate_scenario, **kwargs)
         except Exception as err:
-            print("Failed: ", scenario)
+            print("Failed: ", climate_scenario)
             print(err)
             continue
 
 else:
     pool = mp.Pool(processes=mp.cpu_count() - 1)
     run_model_partial = partial(run_model, **kwargs)
-    for scenario in climate_scenarios:
-        print('Adding ', scenario)
-        pool.apply_async(run_model_partial, args=(basin, scenario))
+    for climate_scenario in climate_scenarios:
+        print('Adding ', climate_scenario)
+        pool.apply_async(run_model_partial, args=(basin, climate_scenario))
 
     pool.close()
     pool.join()

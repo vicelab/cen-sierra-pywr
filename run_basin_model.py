@@ -14,19 +14,17 @@ from utilities import simplify_network, prepare_planning_model, create_schematic
 SECONDS_IN_DAY = 3600 * 24
 
 
-def run_model(
-        basin, climate, price_years,
-        start=None, end=None,
-        run_name="default",
-        include_planning=False,
-        simplify=True,
-        use_multiprocessing=False,
-        debug=False,
-        planning_months=12,
-        scenarios=None,
-        data_path=None):
-
-    months = planning_months
+def run_model(basin, climate,
+              start=None, end=None,
+              run_name="default",
+              include_planning=False,
+              simplify=True,
+              use_multiprocessing=False,
+              debug=False,
+              planning_months=12,
+              scenarios=None,
+              data_path=None):
+    # Set up dates
 
     if start is None or end is None:
         if climate == 'Livneh':
@@ -62,15 +60,25 @@ def run_model(
     with open(base_path) as f:
         base_model = json.load(f)
 
+    def update_model(scenario_path):
+        if os.path.exists(scenario_path):
+            with open(scenario_path) as f:
+                scenario_model = json.load(f)
+            for key in scenario_model.keys():
+                if key in base_model:
+                    if type(scenario_model[key]) == dict:
+                        base_model[key].update(scenario_model[key])
+                    elif key in ['scenarios', 'nodes']:
+                        items = {item['name']: item for item in base_model.get(key, [])}
+                        new_items = {item['name']: item for item in scenario_model[key]}
+                        items.update(new_items)
+                        base_model[key] = list(items.values())
+
     if scenarios is not None:
         for s in scenarios:
-            scenario_path = os.path.join(root_dir, 'scenarios', '{}.json'.format(s))
-            if os.path.exists(scenario_path):
-                with open(scenario_path) as f:
-                    scenario_model = json.load(scenario_path)
-                for key in scenario_model.keys():
-                    if key in base_model:
-                        base_model[key].update(scenario_model[key])
+            # update from scenarios folder
+            scenario_path = os.path.join(root_dir, '../scenarios/{}.json'.format(s))
+            update_model(scenario_path)
 
     new_model_parts = {}
     for model_part in ['tables', 'parameters']:
@@ -84,21 +92,10 @@ def run_model(
             if url:
                 if data_path:
                     url = url.replace('../data', data_path)
-                if climate != 'Livneh':
-                    url = url.replace('Livneh', climate)
+                url = url.replace('Livneh', climate)
                 param['url'] = url
             new_model_parts[model_part][pname] = param
 
-    new_model_parts['scenarios'] = base_model.get('scenarios', [])
-    new_model_parts['scenarios'].append({
-        "name": "Price Year",
-        "size": len(price_years)
-    })
-    new_model_parts['parameters']['Price Year'] = {
-        "type": "ConstantScenario",
-        "scenario": "Price Year",
-        "values": price_years
-    }
     base_model.update(new_model_parts)
     base_model['timestepper']['start'] = start
     base_model['timestepper']['end'] = end
@@ -197,7 +194,7 @@ def run_model(
         monthly_filename = model_filename_base + '_monthly.json'
         planning_model_path = os.path.join(temp_dir, monthly_filename)
 
-        prepare_planning_model(m, basin, climate, planning_model_path, steps=months, debug=save_results,
+        prepare_planning_model(m, basin, climate, planning_model_path, steps=planning_months, debug=save_results,
                                remove_rim_dams=True)
         create_schematic(basin, 'monthly')
 
@@ -215,13 +212,13 @@ def run_model(
         # set time steps
         start = planning_model.timestepper.start
         end = planning_model.timestepper.end
-        end -= relativedelta(months=months)
+        end -= relativedelta(months=planning_months)
         # planning_model.timestepper = PlanningTimestepper(start, end)
 
         planning_model.setup()
 
         if debug == 'm':
-            test_planning_model(planning_model, months=months, save_results=save_results)
+            test_planning_model(planning_model, months=planning_months, save_results=save_results)
             return
 
     # ==================
@@ -248,7 +245,7 @@ def run_model(
     days_to_omit = 0
     if include_planning:
         end = m.timestepper.end
-        new_end = end + relativedelta(months=-months)
+        new_end = end + relativedelta(months=-planning_months)
         m.timestepper.end = new_end
     step = -1
     now = datetime.now()
