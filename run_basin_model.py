@@ -60,6 +60,7 @@ def run_model(basin, climate,
     with open(base_path) as f:
         base_model = json.load(f)
 
+    # update model with scenarios, if any
     def update_model(scenario_path):
         if os.path.exists(scenario_path):
             with open(scenario_path) as f:

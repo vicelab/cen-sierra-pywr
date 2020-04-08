@@ -5,7 +5,7 @@
             "historical"
         ]
     },
-    "energy_prices": {
+    "price_year": {
         "name": "Energy Prices",
         "climate": [
             "historical",

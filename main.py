@@ -12,7 +12,7 @@ parser.add_argument("-nk", "--network_key", help="Network key")
 parser.add_argument("-d", "--debug", help="Debug ('m' or 'd' or 'dm')")
 parser.add_argument("-p", "--include_planning", help="Include planning model", action='store_true')
 parser.add_argument("-n", "--run_name", help="Run name")
-parser.add_argument("-ss", "--scenario_set", help="Scenario set")
+parser.add_argument("-sc", "--scenario_set", help="Scenario set")
 parser.add_argument("-mp", "--multiprocessing", help="Use multiprocessing", action='store_true')
 parser.add_argument("-s", "--start_year", help="Start year", type=int)
 parser.add_argument("-e", "--end_year", help="End year", type=int)
@@ -44,15 +44,17 @@ if debug:
 
 elif not args.scenario_set:
     raise Exception("No scenario set specified")
+
 else:
     planning_months = args.planning_months or 12
     climate_scenarios = ['Livneh'] + gcm_rcps
-    with open("./scenarios/scenario_sets.json") as f:
-        scenario_sets = json.load(f)
-        scenario_set_definition = scenario_sets.get(args.scenario_set)
-        if not scenario_set_definition:
-            raise Exception("Scenario set not defined in scenario_sets.json")
-        scenarios = scenario_set_definition.get('scenarios', [])
+
+with open("./scenario_sets.json") as f:
+    scenario_sets = json.load(f)
+    scenario_set_definition = scenario_sets.get(args.scenario_set)
+    if not scenario_set_definition:
+        raise Exception("Scenario set not defined in scenario_sets.json")
+    scenarios = scenario_set_definition.get('scenarios', [])
 
 kwargs = dict(
     run_name=args.run_name,
