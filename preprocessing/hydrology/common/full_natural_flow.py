@@ -21,6 +21,7 @@ def create_full_natural_flow(src, dst):
 
     # daily
     df.to_csv(os.path.join(outdir, 'full_natural_flow_daily_mcm.csv'))
+    # (df/0.0864*35.315).to_csv(os.path.join(outdir, 'full_natural_flow_daily_cfs.csv'))
 
     # monthly
     df2 = df.resample('MS').sum()
