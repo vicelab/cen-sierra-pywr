@@ -48,12 +48,13 @@ else:
     planning_months = args.planning_months or 12
     climate_scenarios = ['Livneh'] + gcm_rcps
 
-with open("./scenario_sets.json") as f:
-    scenario_sets = json.load(f)
-    scenario_set_definition = scenario_sets.get(args.scenario_set)
-    if not scenario_set_definition:
-        raise Exception("Scenario set not defined in scenario_sets.json")
-    scenarios = scenario_set_definition.get('scenarios', [])
+if args.scenario_set:
+    with open("./scenario_sets.json") as f:
+        scenario_sets = json.load(f)
+        scenario_set_definition = scenario_sets.get(args.scenario_set)
+        if not scenario_set_definition:
+            raise Exception("Scenario set {} not defined in scenario_sets.json".format(args.scenario_set))
+        scenarios = scenario_set_definition.get('scenarios', [])
 
 kwargs = dict(
     run_name=args.run_name,
