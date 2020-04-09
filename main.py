@@ -1,10 +1,9 @@
 import os
 import json
-import multiprocessing as mp
-from functools import partial
 import argparse
 from itertools import product
 from run_basin_model import run_model
+from functools import partial
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-b", "--basin", help="Basin to run")
@@ -78,7 +77,18 @@ if not multiprocessing:  # serial processing for debugging
             print(err)
             continue
 
-else:
+elif multiprocessing == 'joblib':
+    import time
+    from joblib import Parallel, delayed
+    run_model_partial = partial(run_model, **kwargs)
+    time_start = time.time()
+    output = Parallel(n_jobs=num_cores)(delayed(run_model_partial)(scenarios) for scenarios in range(number_of_simulations))
+    output_size = np.matrix(output).shape
+    time_end = time.time()
+
+elif multiprocessing == 'native':
+    import multiprocessing as mp
+
     pool = mp.Pool(processes=mp.cpu_count() - 1)
     run_model_partial = partial(run_model, **kwargs)
     for climate_scenario in climate_scenarios:
@@ -87,5 +97,7 @@ else:
 
     pool.close()
     pool.join()
+
+else:
 
 print('done!')
