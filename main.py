@@ -87,7 +87,7 @@ elif multiprocessing == 'joblib':
     output_size = np.matrix(output).shape
     time_end = time.time()
 
-elif multiprocessing == 'native':
+else:
     import multiprocessing as mp
 
     pool = mp.Pool(processes=mp.cpu_count() - 1)
@@ -98,7 +98,5 @@ elif multiprocessing == 'native':
 
     pool.close()
     pool.join()
-
-else:
 
 print('done!')
