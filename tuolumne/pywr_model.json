@@ -460,7 +460,7 @@
             "name": "Canyon Power Tunnel",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 3.6703497517784163
+            "max_flow": 3.303
         },
         {
             "name": "Cherry Ck",
@@ -846,7 +846,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Hetch Hetchy Reservoir/Min Flow",
             "min_flow_cost": -10000,
-            "max_flow_cost": 10000
+            "max_flow_cost": 1
         },
         {
             "name": "IFR bl Lake Eleanor",
@@ -868,7 +868,7 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 335.3,
-            "turbine_capacity": 3.3028458088270254,
+            "turbine_capacity": 3.303,
             "cost": [
                 -500,
                 -1
@@ -2509,6 +2509,10 @@
             "index_col": 0,
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
         },
+        "IFR bl Hetch Hetchy Reservoir/UTREP hydrographs": {
+            "url": "../data/Tuolumne River/_tables/IFR_bl_Hetch_Hetchy_Reservoir_UTREP_template_hydrographs.csv",
+            "header": 0
+        },
         "IFR bl Lake Eleanor/IFR Schedule": {
             "url": "../data/Tuolumne River/_tables/IFR_bl_Lake_Eleanor_IFR_Schedule.csv",
             "header": 0,
@@ -2735,8 +2739,16 @@
             "type": "IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type",
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         },
+        "IFR bl Hetch Hetchy Reservoir/Base Flow": {
+            "type": "IFR_bl_Hetch_Hetchy_Reservoir_Base_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
         "IFR bl Hetch Hetchy Reservoir/Min Flow": {
             "type": "IFR_bl_Hetch_Hetchy_Reservoir_Min_Flow",
+            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
+        },
+        "IFR bl Hetch Hetchy Reservoir/UTREP Spill": {
+            "type": "IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "IFR bl Lake Eleanor/Min Flow": {

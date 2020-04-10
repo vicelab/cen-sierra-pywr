@@ -24,17 +24,34 @@ class Kirkwood_PH_Demand(WaterLPParameter):
         # HH storage
         month_day = (timestep.month, timestep.day)
         end_month = 7
-        end_day = 1
+        end_day = 15
         if (2, 1) <= month_day <= (end_month, end_day):
             start = timestep.datetime
             end = datetime(timestep.year, end_month, end_day)
             forecast_days = (end - start).days + 1
-            forecast_above_HH = self.model.parameters["Hetch Hetchy Reservoir Inflow/Runoff"].dataframe[start:end].sum()
+            forecast_HH_inflow = self.model.parameters["Hetch Hetchy Reservoir Inflow/Runoff"].dataframe[start:end].sum()
             HH = self.model.nodes["Hetch Hetchy Reservoir"]
-            HH_space = HH.max_volume - HH.volume[scenario_index.global_id]
-            forecast_spill = forecast_above_HH - HH_space
+            current_storage_mcm = HH.volume[scenario_index.global_id]
+            HH_space = HH.max_volume - current_storage_mcm
+            forecast_spill = forecast_HH_inflow - HH_space
             if forecast_spill > 0:
-                release_cms += 22 # forecast_spill  # / forecast_days
+                release_cms = forecast_spill / forecast_days / 0.0864
+                # release_cms = 20
+                # release_cms = self.model.nodes["Kirkwood PH"].max_flow / 0.0864
+
+            # TODO: move this to an independent parameter
+            current_storage_taf = current_storage_mcm / 1.2335
+            if current_storage_taf < 200:
+                release_coefficient = 0.0
+            elif current_storage_taf < 210:
+                release_coefficient = 0.25
+            elif current_storage_taf <= 225:
+                release_coefficient = 0.5
+            elif current_storage_taf <= 250:
+                release_coefficient = 0.75
+            else:
+                release_coefficient = 1.0
+            release_cms *= release_coefficient
 
         self.prev_release_cms[scenario_index.global_id] = release_cms
 
