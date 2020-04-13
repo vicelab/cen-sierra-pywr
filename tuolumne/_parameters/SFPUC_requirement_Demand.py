@@ -6,11 +6,6 @@ from utilities.converter import convert
 class SFPUC_requirement_Demand(WaterLPParameter):
     """"""
 
-    def setup(self):
-        super().setup()
-        num_scenarios = len(self.model.scenarios.combinations)
-        self.demand_reduction = [0.0] * num_scenarios
-
     def _value(self, timestep, scenario_index):
 
         # Assume 265 MGD = 426.22 MCM/year
@@ -21,7 +16,7 @@ class SFPUC_requirement_Demand(WaterLPParameter):
         daily_fraction = self.model.tables["SFPUC weekly fraction"][week] / 7
         daily_demand_cms = annual_demand_mcm * daily_fraction / 0.0864
 
-        demand_reduction = self.model.parameters["SFPUC Demand Reduction"].value(timestep, scenario_index)
+        demand_reduction = self.model.parameters["SFPUC requirement/Demand Reduction"].value(timestep, scenario_index)
         daily_demand_cms *= (1 - demand_reduction)
 
         return daily_demand_cms

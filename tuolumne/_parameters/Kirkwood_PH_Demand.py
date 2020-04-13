@@ -39,7 +39,7 @@ class Kirkwood_PH_Demand(WaterLPParameter):
                 # release_cms = 20
                 # release_cms = self.model.nodes["Kirkwood PH"].max_flow / 0.0864
 
-        demand_reduction = self.model.parameters["SFPUC Demand Reduction"].value(timestep, scenario_index)
+        demand_reduction = self.model.parameters["SFPUC requirement/Demand Reduction"].value(timestep, scenario_index)
         release_cms *= (1 - demand_reduction)
 
         self.prev_release_cms[scenario_index.global_id] = release_cms

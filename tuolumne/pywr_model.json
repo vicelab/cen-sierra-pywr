@@ -2807,6 +2807,9 @@
         "Modesto Irrigation District/Demand": {
             "type": "Modesto_Irrigation_District_Demand"
         },
+        "SFPUC requirement/Demand Reduction": {
+            "type": "SFPUC_requirement_Demand_Reduction"
+        },
         "SFPUC requirement/Demand": {
             "type": "SFPUC_requirement_Demand"
         },
