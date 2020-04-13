@@ -460,7 +460,7 @@
             "name": "Canyon Power Tunnel",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 3.303
+            "max_flow": 3.6703497517784163
         },
         {
             "name": "Cherry Ck",
@@ -846,7 +846,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Hetch Hetchy Reservoir/Min Flow",
             "min_flow_cost": -10000,
-            "max_flow_cost": 1
+            "max_flow_cost": 10000
         },
         {
             "name": "IFR bl Lake Eleanor",
@@ -868,7 +868,7 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 335.3,
-            "turbine_capacity": 3.303,
+            "turbine_capacity": 3.3028458088270254,
             "cost": [
                 -500,
                 -1
@@ -2444,19 +2444,19 @@
     ],
     "tables": {
         "Full Natural Flow": {
-            "url": "../data/Tuolumne River/scenarios/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/preprocessed/Livneh/full_natural_flow_daily_mcm.csv",
             "index_col": 0,
             "parse_dates": true,
             "header": 0,
             "squeeze": true
         },
         "San Joaquin Valley Index": {
-            "url": "../data/common/scenarios/Livneh/SJVI.csv",
+            "url": "../data/common/Scenarios/Livneh/SJVI.csv",
             "index_col": 0,
             "squeeze": true
         },
         "Modesto Irrigation District/Demand Table": {
-            "url": "../data/Tuolumne River/management/BAU/Demand/Modesto Irrigation District demand cfs.csv",
+            "url": "../data/Tuolumne River/Management/BAU/Demand/Modesto Irrigation District demand fraction.csv",
             "index_col": [
                 0,
                 1
@@ -2464,7 +2464,7 @@
             "header": 0
         },
         "Turlock Irrigation District/Demand Table": {
-            "url": "../data/Tuolumne River/management/BAU/Demand/Turlock Irrigation District demand cfs.csv",
+            "url": "../data/Tuolumne River/Management/BAU/Demand/Turlock Irrigation District demand fraction.csv",
             "index_col": [
                 0,
                 1
@@ -2472,19 +2472,19 @@
             "header": 0
         },
         "SFPUC weekly fraction": {
-            "url": "../data/Tuolumne River/management/BAU/Demand/SFPUC weekly fraction.csv",
+            "url": "../data/Tuolumne River/Management/BAU/Demand/SFPUC weekly fraction.csv",
             "index_col": 0,
             "header": 0,
             "squeeze": true
         },
         "Don Pedro Lake Flood Control Curve": {
-            "url": "../data/Tuolumne River/management/BAU/Flood Control/Don Pedro Reservoir Flood Control Curve mcm.csv",
+            "url": "../data/Tuolumne River/Management/BAU/Flood Control/Don Pedro Reservoir Flood Control Curve mcm.csv",
             "index_col": 0,
             "header": 0,
             "squeeze": true
         },
         "Preferred Storage": {
-            "url": "../data/Tuolumne River/management/BAU/Reservoirs/Preferred Storage Curves AF.csv",
+            "url": "../data/Tuolumne River/Management/BAU/Reservoirs/Preferred Storage Curves AF.csv",
             "index_col": 0,
             "header": 0
         },
@@ -2508,10 +2508,6 @@
             ],
             "index_col": 0,
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
-        },
-        "IFR bl Hetch Hetchy Reservoir/UTREP hydrographs": {
-            "url": "../data/Tuolumne River/_tables/IFR_bl_Hetch_Hetchy_Reservoir_UTREP_template_hydrographs.csv",
-            "header": 0
         },
         "IFR bl Lake Eleanor/IFR Schedule": {
             "url": "../data/Tuolumne River/_tables/IFR_bl_Lake_Eleanor_IFR_Schedule.csv",
@@ -2668,7 +2664,7 @@
         },
         "Hetch Hetchy Reservoir/Precipitation": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/precipitation/rainfall_HetchHetchy_mm.csv",
+            "url": "../data/Tuolumne River/Scenarios/precipitation/Livneh/rainfall_HetchHetchy_mm.csv",
             "index_col": "dates",
             "column": "Rain_mm",
             "parse_dates": true
@@ -2739,16 +2735,8 @@
             "type": "IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type",
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         },
-        "IFR bl Hetch Hetchy Reservoir/Base Flow": {
-            "type": "IFR_bl_Hetch_Hetchy_Reservoir_Base_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
         "IFR bl Hetch Hetchy Reservoir/Min Flow": {
             "type": "IFR_bl_Hetch_Hetchy_Reservoir_Min_Flow",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
-        "IFR bl Hetch Hetchy Reservoir/UTREP Spill": {
-            "type": "IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "IFR bl Lake Eleanor/Min Flow": {
@@ -2815,133 +2803,133 @@
         },
         "TUO_01 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb01_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb01_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_02 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb02_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb02_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_03 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb03_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb03_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_04 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb04_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb04_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_05 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb05_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb05_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_06 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb06_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb06_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_07 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb07_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb07_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_08 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb08_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb08_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_09 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb09_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb09_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_10 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb10_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb10_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_11 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb11_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb11_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_12 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb12_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb12_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_13 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb13_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb13_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_14 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb14_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb14_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_15 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb15_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb15_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_16 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb16_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb16_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_17 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb17_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb17_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_18 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb18_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb18_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_19 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb19_mcm.csv",
+            "url": "../data/Tuolumne River/Scenarios/runoff/Livneh/tot_runoff_sb19_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
