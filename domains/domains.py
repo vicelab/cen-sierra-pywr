@@ -253,7 +253,8 @@ class Hydropower(PiecewiseLink):
         costs = kwargs.pop('costs', [])
 
         # Add an unconstrained block with a default cost of zero
-        max_flows.append(None)
+        if len(max_flows) < len(costs):
+            max_flows.append(None)
         if len(costs) < len(max_flows):
             costs.append(0.0)  # PiecewiseLink will raise an error if not same length
 

@@ -16,6 +16,19 @@ class Modesto_Irrigation_District_Demand(WaterLPParameter):
         # Assume MID annual demand is 300,000 AF = 370.1 mcm
         TID_annual_demand_mcm = 370.1
         demand_cms = demand_fraction * TID_annual_demand_mcm / 0.0864
+
+        dp = self.model.nodes["Don Pedro Reservoir"]
+        dp_storage = dp.volume[scenario_index.global_id]
+        # dp_min = dp.min_volume
+        # dp_max = dp.max_volume
+
+        demand_reduction = 0.0
+        if dp_storage <= 1200:
+            demand_reduction = 0.75
+        elif dp_storage <= 1350:
+            demand_reduction = 0.5
+        demand_cms *= (1 - demand_reduction)
+
         return demand_cms
 
     def value(self, timestep, scenario_index):

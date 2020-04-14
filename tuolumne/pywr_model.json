@@ -548,6 +548,8 @@
         },
         {
             "name": "Lower Cherry Aqueduct 1",
+            "max_flow": "Lower Cherry Aqueduct 1/Flow Requirement",
+            "cost": -1000,
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}"
         },
@@ -765,7 +767,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "initial_volume": 2082.0,
             "max_volume": 2504.0,
-            "min_volume": 616.75,
+            "min_volume": 1000,
             "level": "Don Pedro Reservoir/Volume Elevation Curve",
             "cost": "Don Pedro Reservoir/Cost",
             "gauge": "USGS 11287500 DON PEDRO RES NR LA GRANGE CA"
@@ -871,7 +873,7 @@
             "turbine_capacity": 3.303,
             "cost": [
                 -500,
-                -1
+                1000
             ],
             "max_flow": [
                 "Kirkwood PH/Demand"
@@ -995,15 +997,9 @@
         },
         {
             "name": "SFPUC requirement",
-            "type": "PiecewiseLink",
-            "max_flow": [
-                "SFPUC requirement/Demand",
-                1.5
-            ],
-            "cost": [
-                -500,
-                -1
-            ]
+            "type": "Link",
+            "max_flow": "SFPUC requirement/Demand",
+            "cost": -5000
         },
         {
             "name": "Sullivan Ck Headflow",
@@ -2664,7 +2660,7 @@
         },
         "Hetch Hetchy Reservoir/Cost": {
             "type": "constant",
-            "value": -50
+            "value": -100
         },
         "Hetch Hetchy Reservoir/Precipitation": {
             "type": "dataframe",
@@ -2803,6 +2799,9 @@
             ],
             "kind": "cubic",
             "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
+        },
+        "Lower Cherry Aqueduct 1/Flow Requirement": {
+            "type": "Lower_Cherry_Aqueduct_1_Flow_Requirement"
         },
         "Modesto Irrigation District/Demand": {
             "type": "Modesto_Irrigation_District_Demand"
@@ -3116,6 +3115,10 @@
         "Lake Eleanor/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Lake Eleanor"
+        },
+        "Lower Cherry Aqueduct 1/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Lower Cherry Aqueduct 1"
         },
         "Moccasin PH/flow": {
             "type": "NumpyArrayNodeRecorder",

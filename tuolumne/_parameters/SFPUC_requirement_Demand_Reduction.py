@@ -14,25 +14,28 @@ class SFPUC_requirement_Demand_Reduction(WaterLPParameter):
     def _value(self, timestep, scenario_index):
         sid = scenario_index.global_id
 
-        if (timestep.month, timestep.day) == (7, 1):
+        if timestep.month in [7] and timestep.day == 1:
 
             annual_demand_mcm = 426.22
 
+            # calculate total storage, including snowpack
             total_storage = 0.0
-            for res in ['Hetch Hetchy Reservoir', 'Cherry Lake', 'Lake Eleanor']:
-                total_storage += self.model.nodes[res].volume[sid]
-            total_storage += self.model.parameters["Don Pedro Water Bank"].value(timestep, scenario_index)
+            hh = self.model.nodes["Hetch Hetchy Reservoir"].volume[sid]
+            ch = self.model.nodes["Cherry Lake"].volume[sid]
+            el = self.model.nodes["Lake Eleanor"].volume[sid]
+            wb = self.model.parameters["Don Pedro Water Bank"].value(timestep, scenario_index)
+
+            total_storage = hh + ch + el + wb
+            # total_storage = hh + ch + el
 
             years_supply_remaining = total_storage / annual_demand_mcm
 
-            if years_supply_remaining >= 3.0:
-                demand_reduction = 0.0
-            elif years_supply_remaining >= 2.5:
-                demand_reduction = 0.1
-            elif years_supply_remaining >= 2.0:
-                demand_reduction = 0.2
-            else:
-                demand_reduction = 0.25
+            thresholds = [3.0, 2.8, 2.6]
+            # thresholds = [1.8, 1.5, 1.25]
+            reductions = [0.0, 0.1, 0.2, 0.25]
+            idx = sum([1 for t in thresholds if years_supply_remaining < t])
+            demand_reduction = reductions[idx]
+
             self.demand_reduction[sid] = demand_reduction
 
         return self.demand_reduction[sid]

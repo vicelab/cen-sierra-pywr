@@ -3,28 +3,19 @@ from parameters import WaterLPParameter
 from utilities.converter import convert
 
 
-class SFPUC_requirement_Demand(WaterLPParameter):
+class Lower_Cherry_Aqueduct_1_Flow_Requirement(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
 
-        # Assume 265 MGD = 426.22 MCM/year
-        # 265 mgd * 3.57/1000 taf/mg * 1.2335 mcm/taf * 365.24 d/year = 426.22 mcm/y
-        annual_demand_mcm = 426.22
-
-        week = min(timestep.datetime.week, 52)
-        daily_fraction = self.model.tables["SFPUC weekly fraction"][week] / 7
-        daily_demand_cms = annual_demand_mcm * daily_fraction / 0.0864
-
-        demand_reduction = self.model.parameters["SFPUC requirement/Demand Reduction"].value(timestep, scenario_index)
-
         hh = self.model.nodes["Hetch Hetchy Reservoir"].volume[scenario_index.global_id]
-        if hh <= 200:
-            demand_reduction = 0.3
+        demand_reduction = self.model.parameters["SFPUC requirement/Demand Reduction"].value(timestep, scenario_index)
+        if demand_reduction == 0.25 and hh <= 135:
+            flow_cms = 6.5
+        else:
+            flow_cms = 0.0
 
-        daily_demand_cms *= (1 - demand_reduction)
-
-        return daily_demand_cms
+        return flow_cms
 
     def value(self, timestep, scenario_index):
         try:
@@ -46,5 +37,5 @@ class SFPUC_requirement_Demand(WaterLPParameter):
             raise
 
 
-SFPUC_requirement_Demand.register()
-print(" [*] SFPUC_requirement_Demand successfully registered")
+Lower_Cherry_Aqueduct_1_Flow_Requirement.register()
+print(" [*] Lower_Cherry_Aqueduct_1_Flow_Requirement successfully registered")

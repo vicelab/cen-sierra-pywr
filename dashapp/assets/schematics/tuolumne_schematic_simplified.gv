@@ -11,6 +11,7 @@ digraph tuolumne {
 	"Below Hetch Hetchy Aquaduct Diverted Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Don Pedro Lake Flood Control" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Hetch Hetch Aquaduct.1.1" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Lower Cherry Aqueduct 1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Cherry Lake" [fillcolor=blue fontcolor=white shape=rect style=filled]
 	"Dion R Holm PH" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"Don Pedro Lake Spillway" [fillcolor=green fontcolor=black shape=oval style=filled]
@@ -42,6 +43,7 @@ digraph tuolumne {
 	"Upper Hetch Hetchy Tunnel Outflow" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Hetch Hetchy Aquaduct Outflow" -> "Below Hetch Hetchy Aquaduct Diverted Inflow"
 	"Hetch Hetch Aquaduct.1.1" -> "TUOLU-N-JUN1"
+	"Upper Hetch Hetchy Tunnel Outflow" -> "Lower Cherry Aqueduct 1"
 	"SFPUC requirement" -> SFPUC
 	"Cherry Lake" -> "IFR bl Cherry Lake"
 	"Cherry Lake" -> "Dion R Holm PH"
@@ -81,7 +83,7 @@ digraph tuolumne {
 	"IFR bl Hetch Hetchy Reservoir" -> "Hetch Hetchy Aquaduct Outflow"
 	"IFR bl Cherry Lake" -> "Upper Hetch Hetchy Tunnel Outflow"
 	"IFR bl Lake Eleanor" -> "Upper Hetch Hetchy Tunnel Outflow"
-	"Upper Hetch Hetchy Tunnel Outflow" -> "Hetch Hetchy Aquaduct Outflow"
+	"Lower Cherry Aqueduct 1" -> "Hetch Hetchy Aquaduct Outflow"
 	"La Grange" -> "Modesto Irrigation District"
 	"La Grange" -> "Turlock Irrigation District"
 	"IFR at La Grange" -> "Tuolumne River Outflow"
