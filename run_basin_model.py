@@ -226,7 +226,8 @@ def run_model(climate,
     # ==================
     # Create daily model
     # ==================
-    print('Loading daily model')
+    if debug:
+        print('Loading daily model')
     from pywr.nodes import Storage
     from domains import Reservoir
     try:
@@ -285,10 +286,11 @@ def run_model(climate,
             print(err)
             raise
 
-    total_seconds = (datetime.now() - now).total_seconds()
-    print('Total run: {} seconds'.format(total_seconds))
-    print(
-        'Monthly overhead: {} seconds ({:02}% of total)'.format(monthly_seconds, monthly_seconds / total_seconds * 100))
+    if debug:
+        total_seconds = (datetime.now() - now).total_seconds()
+        print('Total run: {} seconds'.format(total_seconds))
+        monthly_pct = monthly_seconds / total_seconds * 100
+        print('Monthly overhead: {} seconds ({:02}% of total)'.format(monthly_seconds, monthly_pct))
 
     # save results to CSV
     results = m.to_dataframe()
