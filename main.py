@@ -10,9 +10,8 @@ parser.add_argument("-b", "--basin", help="Basin to run")
 parser.add_argument("-nk", "--network_key", help="Network key")
 parser.add_argument("-d", "--debug", help="Debug ('m' or 'd' or 'dm')")
 parser.add_argument("-p", "--include_planning", help="Include planning model", action='store_true')
-parser.add_argument("-n", "--run_name", help="Run name")
 parser.add_argument("-sc", "--scenario_set", help="Scenario set")
-parser.add_argument("-mp", "--multiprocessing", help="Use multiprocessing", action='store_true')
+parser.add_argument("-mp", "--multiprocessing", help="Multiprocessing protocol (omit for none)")
 parser.add_argument("-s", "--start_year", help="Start year", type=int)
 parser.add_argument("-e", "--end_year", help="End year", type=int)
 parser.add_argument("-m", "--planning_months", help="Planning months", type=int)
@@ -24,40 +23,48 @@ debug = args.debug
 include_planning = args.include_planning
 multiprocessing = args.multiprocessing
 
-gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
-# gcms = ['HadGEM2-ES', 'MIROC5']
-rcps = ['45', '85']
-gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
-
 data_path = os.environ.get('SIERRA_DATA_PATH')
 
 start = None
 end = None
 scenarios = []
 
+run_name = 'basic'
+climate_scenarios = ['Livneh']
+
 if debug:
     planning_months = args.planning_months or 3
-    climate_scenarios = ['Livneh']
     start = '{}-10-01'.format(args.start_year or 2000)
     end = '{}-09-30'.format(args.end_year or 2002)
-
-elif not args.scenario_set:
-    raise Exception("No scenario set specified")
-
+    run_name = 'development'
 else:
     planning_months = args.planning_months or 12
-    climate_scenarios = ['Livneh'] + gcm_rcps
 
 if args.scenario_set:
     with open("./scenario_sets.json") as f:
         scenario_sets = json.load(f)
-        scenario_set_definition = scenario_sets.get(args.scenario_set)
-        if not scenario_set_definition:
-            raise Exception("Scenario set {} not defined in scenario_sets.json".format(args.scenario_set))
-        scenarios = scenario_set_definition.get('scenarios', [])
+
+    scenario_set_definition = scenario_sets.get(args.scenario_set)
+    if not scenario_set_definition:
+        raise Exception("Scenario set {} not defined in scenario_sets.json".format(args.scenario_set))
+    scenarios = scenario_set_definition.get('scenarios', [])
+    climates = scenario_set_definition.get('climates', [])
+    run_name = scenario_set_definition['name']
+    if climates:
+        climate_scenarios = []
+        if 'historical' in climates:
+            climate_scenarios = ['Livneh']
+        if 'gcms' in climates:
+            gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
+            # gcms = ['HadGEM2-ES', 'MIROC5']
+            # rcps = ['45', '85']
+            rcps = ['85']
+            gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
+            climate_scenarios += gcm_rcps
 
 kwargs = dict(
-    run_name=args.run_name,
+    basin=basin,
+    run_name=run_name,
     include_planning=include_planning,
     debug=debug,
     planning_months=planning_months,
@@ -69,34 +76,35 @@ kwargs = dict(
 )
 
 if not multiprocessing:  # serial processing for debugging
-    for climate_scenario in climate_scenarios:
-        print('Running: ', climate_scenario)
+    for climate in climate_scenarios:
+        print('Running: ', climate)
         try:
-            run_model(basin, climate_scenario, **kwargs)
+            run_model(climate, **kwargs)
         except Exception as err:
-            print("Failed: ", climate_scenario)
+            print("Failed: ", climate)
             print(err)
             continue
-
-elif multiprocessing == 'joblib':
-    import time
-    from joblib import Parallel, delayed
-    run_model_partial = partial(run_model, **kwargs)
-    time_start = time.time()
-    output = Parallel(n_jobs=num_cores)(delayed(run_model_partial)(scenarios) for scenarios in range(number_of_simulations))
-    output_size = np.matrix(output).shape
-    time_end = time.time()
 
 else:
     import multiprocessing as mp
 
-    pool = mp.Pool(processes=mp.cpu_count() - 1)
-    run_model_partial = partial(run_model, **kwargs)
-    for climate_scenario in climate_scenarios:
-        print('Adding ', climate_scenario)
-        pool.apply_async(run_model_partial, args=(basin, climate_scenario))
+    num_cores = mp.cpu_count() - 1
+    run_partial = partial(run_model, **kwargs)
 
-    pool.close()
-    pool.join()
+    if multiprocessing == 'joblib':
+        import time
+        from joblib import Parallel, delayed
+
+        time_start = time.time()
+        output = Parallel(n_jobs=num_cores)(delayed(run_partial)(climate) for climate in climate_scenarios)
+
+    else:
+        pool = mp.Pool(processes=num_cores)
+        for climate in climate_scenarios:
+            print('Adding ', climate)
+            pool.apply_async(run_partial, args=(climate))
+
+        pool.close()
+        pool.join()
 
 print('done!')

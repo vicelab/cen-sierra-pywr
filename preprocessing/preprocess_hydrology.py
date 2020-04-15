@@ -16,7 +16,7 @@ scenarios = ['Livneh']
 gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
 rcps = ['45', '85']
 gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
-# scenarios += gcm_rcps
+scenarios += gcm_rcps
 
 tasks = ["pre", "common", "basins"]
 # tasks = ["basins"]
@@ -24,7 +24,7 @@ tasks = ["pre", "common", "basins"]
 basin_scenarios = list(product(basins, scenarios))
 
 for basin, scenario in basin_scenarios:
-
+    print("\n Processing {}: {}\n".format(basin, scenario))
     basin_path = os.path.join(root_dir, '{} River'.format(basin.title()))
     scenarios_path = os.path.join(basin_path, 'scenarios')
     scenario_path = os.path.join(scenarios_path, scenario)

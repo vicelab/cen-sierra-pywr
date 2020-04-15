@@ -14,7 +14,8 @@ from utilities import simplify_network, prepare_planning_model, create_schematic
 SECONDS_IN_DAY = 3600 * 24
 
 
-def run_model(basin, climate,
+def run_model(climate,
+              basin=None,
               start=None, end=None,
               run_name="default",
               include_planning=False,
