@@ -169,4 +169,3 @@ class Requirement_Merced_R_below_Merced_Falls_PH(WaterLPParameter):
 
 
 Requirement_Merced_R_below_Merced_Falls_PH.register()
-print(" [*] Requirement_Merced_R_below_Merced_Falls_PH successfully registered")
