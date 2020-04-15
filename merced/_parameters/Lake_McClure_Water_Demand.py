@@ -35,4 +35,3 @@ class Lake_McClure_Water_Demand(WaterLPParameter):
 
 
 Lake_McClure_Water_Demand.register()
-print(" [*] Lake_McClure_Water_Demand successfully registered")

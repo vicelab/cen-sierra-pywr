@@ -25,4 +25,3 @@ class IFR_at_Shaffer_Bridge_Max_Flow(WaterLPParameter):
 
 
 IFR_at_Shaffer_Bridge_Max_Flow.register()
-print(" [*] IFR_at_Shaffer_Bridge_Max_Flow successfully registered")

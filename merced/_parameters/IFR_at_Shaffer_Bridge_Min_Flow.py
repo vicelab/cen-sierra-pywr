@@ -188,4 +188,3 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
 
 
 IFR_at_Shaffer_Bridge_Min_Flow.register()
-print(" [*] IFR_at_Shaffer_Bridge_Min_Flow successfully registered")

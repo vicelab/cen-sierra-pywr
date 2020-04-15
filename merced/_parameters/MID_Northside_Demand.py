@@ -37,4 +37,3 @@ class MID_Northside_Demand(WaterLPParameter):
 
 
 MID_Northside_Demand.register()
-print(" [*] MID_Northside_Demand successfully registered")

@@ -37,4 +37,3 @@ class Lake_McClure_Spill_Max_Flow(WaterLPParameter):
 
 
 Lake_McClure_Spill_Max_Flow.register()
-print(" [*] Lake_McClure_Spill_Max_Flow successfully registered")

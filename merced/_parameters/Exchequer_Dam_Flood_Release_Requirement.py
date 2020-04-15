@@ -94,4 +94,3 @@ class Exchequer_Dam_Flood_Release_Requirement(WaterLPParameter):
 
 
 Exchequer_Dam_Flood_Release_Requirement.register()
-print(" [*] Exchequer_Dam_Flood_Release_Requirement successfully registered")

@@ -36,4 +36,3 @@ class MID_Main_Demand(WaterLPParameter):
 
 
 MID_Main_Demand.register()
-print(" [*] MID_Main_Demand successfully registered")
