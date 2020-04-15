@@ -34,4 +34,3 @@ class Planning_Initial_Storage(Parameter):
 
 
 Planning_Initial_Storage.register()
-print(" [*] Planning_Initial_Storage successfully registered")

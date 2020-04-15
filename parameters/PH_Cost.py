@@ -69,5 +69,3 @@ class PH_Cost(WaterLPParameter):
 
 
 PH_Cost.register()
-
-print(" [*] PH_Cost successfully registered")

@@ -26,4 +26,3 @@ class San_Joaquin_Valley_WYT(WaterLPParameter):
 
 
 San_Joaquin_Valley_WYT.register()
-print(" [*] San_Joaquin_Valley_WYT successfully registered")

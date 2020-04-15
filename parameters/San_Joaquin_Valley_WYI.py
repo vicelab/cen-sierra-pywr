@@ -36,4 +36,3 @@ class San_Joaquin_Valley_WYI(WaterLPParameter):
 
 
 San_Joaquin_Valley_WYI.register()
-print(" [*] San_Joaquin_Valley_WYI successfully registered")

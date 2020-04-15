@@ -121,4 +121,3 @@ class PH_Water_Demand(WaterLPParameter):
 
 
 PH_Water_Demand.register()
-print(" [*] PH_Water_Demand successfully registered")
