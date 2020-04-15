@@ -16,12 +16,6 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        swrcb_levels_count = self.model.scenarios['SWRCB 40'].size
-        if swrcb_levels_count == 1:
-            self.swrcb_levels = [0.0]  # baseline scenario only
-        else:
-            self.swrcb_levels = np.arange(0.0, 0.41, 0.4 / (swrcb_levels_count - 1))
-
     def setup(self):
         super().setup()
         num_scenarios = len(self.model.scenarios.combinations)
@@ -49,11 +43,6 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
 
         # FISH PULSE REQUIREMENT
         fish_pulse = self.model.tables["Fish Pulse"]['1900-{:02}-{:02}'.format(timestep.month, timestep.day)] / 35.315
-
-        # SCWRB 40 REQUIREMENT
-        # swrcb_reqt_mcm = 0.0
-        # if 2 <= timestep.month <= 7:
-        #    swrcb_reqt_mcm = self.swrcb_40_requirement(timestep, scenario_index)
 
         # The required flow is (greater of the Davis-Grunsky and FERC flows)
         # + the Cowell Agreement entitlement + Fish Pulse + Diversion Reg
@@ -192,11 +181,6 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
                 self.cowell_day_cnt[scenario_index.global_id] = day_cnt
 
         return cowell_flow
-
-    def swrcb_40_requirement(self, timestep, scenario_index):
-        fnf = self.model.parameters["Full Natural Flow"].value(timestep, scenario_index)
-        # fnf = self.model.tables['Full Natural Flow'][timestep.datetime]
-        return fnf * self.swrcb_levels[scenario_index.indices[0]]
 
     @classmethod
     def load(cls, model, data):

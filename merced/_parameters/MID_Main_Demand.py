@@ -9,7 +9,6 @@ class MID_Main_Demand(WaterLPParameter):
     reductions = [0, 0]
 
     def _value(self, timestep, scenario_index):
-        m3_to_cfs = 35.31
         type_value = self.model.tables['WYT for IFR Below Exchequer'][timestep.year]
         ts = "{}/{}/1900".format(timestep.month, timestep.day)
 
@@ -26,13 +25,6 @@ class MID_Main_Demand(WaterLPParameter):
 
         demand_cms = self.model.tables["MID Main Diversions"].at[ts, year_type] / 35.31
 
-        idx = scenario_index.indices[1]
-        reduction = 0.0
-        if idx == 1:
-            ifr_param = self.model.parameters["IFR at Shaffer Bridge/Min Flow"]
-            reduction = ifr_param.swrcb_levels[scenario_index.indices[0]]
-
-        demand_cms *= (1 - reduction)
         return demand_cms
 
     def value(self, timestep, scenario_index):
