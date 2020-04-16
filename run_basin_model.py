@@ -134,30 +134,12 @@ def run_model(climate,
             continue
         policy_name = os.path.splitext(filename)[0]
         policy_module = '{basin}._parameters.{policy_name}'.format(basin=basin, policy_name=policy_name)
-        # package = '.{}'.format(policy_folder)
         import_module(policy_module, policy_folder)
-
-    # modules = [
-    #     # ('IFRs', 'policies'),
-    #     # ('domains', 'domains')
-    # ]
-    # # from domains import domains
-    # for name, package in modules:
-    #     try:
-    #         import_module('{}.{}'.format(basin, name), package)
-    #     except Exception as err:
-    #         print(' [-] WARNING: {} could not be imported from {}'.format(name, package))
-    #         print(type(err))
-    #         print(err)
-
-    modules = [
-        # ('IFRs', 'policies'),
-        # ('domains', 'domains')
-    ]
-    # from domains import domains
 
     # import domains
     import_module('.domains', 'domains')
+    if debug:
+        print("[*] domains imported")
 
     # import custom policies
     try:
@@ -259,7 +241,7 @@ def run_model(climate,
         m.planning = planning_model
         m.planning.scheduling = m
 
-    for date in tqdm(m.timestepper.datetime_index, ncols=60, disable=use_multiprocessing):
+    for date in tqdm(m.timestepper.datetime_index, ncols=60, disable=not debug):
         step += 1
         try:
 
@@ -300,6 +282,8 @@ def run_model(climate,
     if not scenario_names:
         scenario_names = [0]
     results_path = os.path.join('./results', run_name, basin, scenario_name)
+    if not debug:
+        results_path = os.path.join(data_path, results_path)
     if not os.path.exists(results_path):
         os.makedirs(results_path)
 
