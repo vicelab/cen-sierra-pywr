@@ -9,15 +9,15 @@ def simplify_network(m, scenario_path=None, basin=None, climate=None, delete_gau
     obsolete_gauges = []
 
     if delete_scenarios:
-        scenarios = []
-        for scen in m.get('scenarios', []):
-            if scen['name'] == 'Price Year':
-                scenarios.append(scen)
-            else:
-                scen['size'] = 1
-                scenarios.append(scen)
-        m['scenarios'] = scenarios
-
+        # scenarios = []
+        # for scen in m.get('scenarios', []):
+        #     if scen['name'] == 'Price Year':
+        #         scenarios.append(scen)
+        #     else:
+        #         scen['size'] = 1
+        #         scenarios.append(scen)
+        # m['scenarios'] = scenarios
+        m.pop('scenarios', None)
     obsolete_nodes = []
 
     while not mission_complete:

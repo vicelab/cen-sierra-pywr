@@ -2506,7 +2506,7 @@
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"ft^3 s^-1\"}"
         },
         "IFR bl Hetch Hetchy Reservoir/UTREP hydrographs": {
-            "url": "../data/Tuolumne River/_tables/IFR_bl_Hetch_Hetchy_Reservoir_UTREP_template_hydrographs.csv",
+            "url": "../data/Tuolumne River/_tables/IFR_bl_Hetch_Hetchy_Reservoir_UTREP_template_hydrographs_cfs.csv",
             "header": 0
         },
         "IFR bl Lake Eleanor/IFR Schedule": {
