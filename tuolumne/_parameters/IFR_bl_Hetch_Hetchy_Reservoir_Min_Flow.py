@@ -7,7 +7,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Min_Flow(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        base_flow_mcm = self.model.parameters["IFR bl Hetch Hetchy Reservoir/Base Flow"].value(timestep, scenario_index)
+        base_flow_mcm = self.model.parameters["IFR bl Hetch Hetchy Reservoir/Base Flow"].get_value(scenario_index)
         UTREP_spill_mcm = self.model.parameters["IFR bl Hetch Hetchy Reservoir/UTREP Spill"].get_value(scenario_index)
         IFR_mcm = max(base_flow_mcm, UTREP_spill_mcm)
 

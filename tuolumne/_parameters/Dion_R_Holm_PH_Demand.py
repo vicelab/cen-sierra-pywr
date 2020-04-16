@@ -25,7 +25,7 @@ class Dion_R_Holm_PH_Demand(WaterLPParameter):
         cherry_storage_mcm = self.model.nodes["Cherry Lake"].volume[scenario_index.global_id]
 
         # Water Bank storage
-        water_bank_storage = self.model.parameters["Don Pedro Water Bank"].value(timestep, scenario_index)
+        water_bank_storage = self.model.parameters["Don Pedro Water Bank"].get_value(scenario_index)
         water_bank_storage_curve = self.model.parameters["Water Bank Preferred Storage AF"] \
                                        .value(timestep, scenario_index) / 1000 * 1.2335
 

@@ -20,7 +20,7 @@ class Don_Pedro_Water_Bank(WaterLPParameter):
             return initial_storage
 
         inflow = self.model.nodes["TUO_01 Inflow"].prev_flow[scenario_index.global_id]
-        outflow = self.model.parameters["Districts Entitlements"].value(timestep, scenario_index)
+        outflow = self.model.parameters["Districts Entitlements"].get_value(scenario_index)
         initial_storage = self.initial_storage[scenario_index.global_id]
         # initial_storage = self.model.recorders["Don Pedro Water Bank"][timestep.index, scenario_index.global_id]
         new_storage = max(min(initial_storage + inflow - outflow, 703.1), 0.0)

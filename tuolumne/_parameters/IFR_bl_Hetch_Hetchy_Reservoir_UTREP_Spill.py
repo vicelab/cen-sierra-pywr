@@ -49,7 +49,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(Parameter):
         dates = pd.date_range(start=timestep.datetime, end=end_date, freq='D')
         storage = current_storage
         max_storage = self.model.nodes["Hetch Hetchy Reservoir"].max_volume
-        wyt = self.model.parameters["IFR bl Hetch Hetchy Reservoir/Water Year Type"].value(timestep, scenario_index)
+        wyt = self.model.parameters["IFR bl Hetch Hetchy Reservoir/Water Year Type"].get_value(scenario_index)
 
         # Additional IFR (if power tunnel release >= 920 cfs)
         if wyt <= 2:

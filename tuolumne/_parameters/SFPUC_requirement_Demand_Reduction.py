@@ -23,7 +23,7 @@ class SFPUC_requirement_Demand_Reduction(WaterLPParameter):
             hh = self.model.nodes["Hetch Hetchy Reservoir"].volume[sid]
             ch = self.model.nodes["Cherry Lake"].volume[sid]
             el = self.model.nodes["Lake Eleanor"].volume[sid]
-            wb = self.model.parameters["Don Pedro Water Bank"].value(timestep, scenario_index)
+            wb = self.model.parameters["Don Pedro Water Bank"].get_value(scenario_index)
 
             total_storage = hh + ch + el + wb
             # total_storage = hh + ch + el

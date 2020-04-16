@@ -9,7 +9,7 @@ class Modesto_Irrigation_District_Demand(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
 
-        SJV_WYT = self.model.parameters["San Joaquin Valley WYT"].value(timestep, scenario_index)
+        SJV_WYT = self.model.parameters["San Joaquin Valley WYT"].get_value(scenario_index)
         demand_fraction = self.model.tables["Modesto Irrigation District/Demand Table"]\
             .at[(timestep.month, timestep.day), self.WYT_names[SJV_WYT - 1]]
 

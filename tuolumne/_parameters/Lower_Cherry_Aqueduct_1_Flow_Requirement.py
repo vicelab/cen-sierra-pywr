@@ -9,7 +9,7 @@ class Lower_Cherry_Aqueduct_1_Flow_Requirement(WaterLPParameter):
     def _value(self, timestep, scenario_index):
 
         hh = self.model.nodes["Hetch Hetchy Reservoir"].volume[scenario_index.global_id]
-        demand_reduction = self.model.parameters["SFPUC requirement/Demand Reduction"].value(timestep, scenario_index)
+        demand_reduction = self.model.parameters["SFPUC requirement/Demand Reduction"].get_value(scenario_index)
         if demand_reduction == 0.25 and hh <= 135:
             flow_cms = 6.5
         else:

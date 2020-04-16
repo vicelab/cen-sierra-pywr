@@ -9,7 +9,7 @@ class IFR_at_La_Grange_Water_Year_Type(WaterLPParameter):
     def _value(self, timestep, scenario_index):
 
         # San Joaquin Valley Index
-        return self.model.parameters["San Joaquin Valley WYI"].value(timestep, scenario_index)
+        return self.model.parameters["San Joaquin Valley WYI"].get_value(scenario_index)
 
     def value(self, timestep, scenario_index):
         try:
