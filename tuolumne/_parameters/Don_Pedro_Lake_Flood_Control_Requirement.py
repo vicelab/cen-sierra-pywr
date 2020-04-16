@@ -104,4 +104,3 @@ class Don_Pedro_Lake_Flood_Control_Requirement(WaterLPParameter):
 
 
 Don_Pedro_Lake_Flood_Control_Requirement.register()
-print(" [*] Don_Pedro_Lake_Flood_Control_Requirement successfully registered")

@@ -248,4 +248,3 @@ class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(Parameter):
 
 
 IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill.register()
-print(" [*] IFR_bl_Hetch_Hetchy_Reservoir_UTREP successfully registered")

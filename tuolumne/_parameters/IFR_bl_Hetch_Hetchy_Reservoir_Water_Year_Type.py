@@ -87,4 +87,3 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
 
 
 IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type.register()
-print(" [*] IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type successfully registered")

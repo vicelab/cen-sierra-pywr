@@ -106,4 +106,3 @@ class Eleanor_Cherry_Pumping_Station_Requirement(WaterLPParameter):
 
 
 Eleanor_Cherry_Pumping_Station_Requirement.register()
-print(" [*] Districts_Entitlements successfully registered")

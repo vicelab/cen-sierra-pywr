@@ -52,4 +52,3 @@ class Modesto_Irrigation_District_Demand(WaterLPParameter):
 
 
 Modesto_Irrigation_District_Demand.register()
-print(" [*] Modesto_Irrigation_District_Demand successfully registered")

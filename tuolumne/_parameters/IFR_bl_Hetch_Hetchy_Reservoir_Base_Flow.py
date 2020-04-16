@@ -49,7 +49,9 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Base_Flow(WaterLPParameter):
 
         ifr_cfs += block_1987_af * 0.0056  # convert to cfs
 
-        return ifr_cfs / 35.315
+        ifr_cms = ifr_cfs / 35.315
+
+        return ifr_cms
 
     def value(self, timestep, scenario_index):
         try:
@@ -72,4 +74,3 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Base_Flow(WaterLPParameter):
 
 
 IFR_bl_Hetch_Hetchy_Reservoir_Base_Flow.register()
-print(" [*] IFR_bl_Hetch_Hetchy_Reservoir_Base_Flow successfully registered")

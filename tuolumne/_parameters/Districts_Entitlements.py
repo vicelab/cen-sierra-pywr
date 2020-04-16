@@ -38,4 +38,3 @@ class Districts_Entitlements(WaterLPParameter):
 
 
 Districts_Entitlements.register()
-print(" [*] Districts_Entitlements successfully registered")

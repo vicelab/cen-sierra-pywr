@@ -49,4 +49,3 @@ class Don_Pedro_Water_Bank(WaterLPParameter):
 
 
 Don_Pedro_Water_Bank.register()
-print(" [*] Don_Pedro_Water_Bank successfully registered")

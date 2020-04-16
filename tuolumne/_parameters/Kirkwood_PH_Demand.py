@@ -67,4 +67,3 @@ class Kirkwood_PH_Demand(WaterLPParameter):
 
 
 Kirkwood_PH_Demand.register()
-print(" [*] Kirkwood_PH_Demand successfully registered")

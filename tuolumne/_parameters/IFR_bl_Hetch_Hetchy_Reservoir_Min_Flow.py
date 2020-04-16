@@ -7,11 +7,13 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Min_Flow(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        base_flow = self.model.parameters["IFR bl Hetch Hetchy Reservoir/Base Flow"].value(timestep, scenario_index)
-        UTREP_spill = self.model.parameters["IFR bl Hetch Hetchy Reservoir/UTREP Spill"].value(timestep, scenario_index)
-        IFR_mcm = max(base_flow, UTREP_spill)
+        base_flow_mcm = self.model.parameters["IFR bl Hetch Hetchy Reservoir/Base Flow"].value(timestep, scenario_index)
+        UTREP_spill_mcm = self.model.parameters["IFR bl Hetch Hetchy Reservoir/UTREP Spill"].get_value(scenario_index)
+        IFR_mcm = max(base_flow_mcm, UTREP_spill_mcm)
 
-        return IFR_mcm / 0.0864 # convert to cms
+        IFR_cms = IFR_mcm / 0.0864 # convert to cms
+
+        return IFR_cms
 
     def value(self, timestep, scenario_index):
         try:
@@ -34,4 +36,3 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Min_Flow(WaterLPParameter):
 
 
 IFR_bl_Hetch_Hetchy_Reservoir_Min_Flow.register()
-print(" [*] IFR_bl_Hetch_Hetchy_Reservoir_Min_Flow successfully registered")

@@ -56,4 +56,3 @@ class IFR_bl_Lake_Eleanor_Min_Flow(WaterLPParameter):
 
 
 IFR_bl_Lake_Eleanor_Min_Flow.register()
-print(" [*] IFR_bl_Lake_Eleanor_Min_Flow successfully registered")

@@ -31,4 +31,3 @@ class IFR_at_La_Grange_Water_Year_Type(WaterLPParameter):
 
 
 IFR_at_La_Grange_Water_Year_Type.register()
-print(" [*] IFR_at_La_Grange_Water_Year_Type successfully registered")

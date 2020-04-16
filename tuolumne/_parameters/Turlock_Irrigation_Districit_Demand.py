@@ -56,4 +56,3 @@ class Turlock_Irrigation_District_Demand(WaterLPParameter):
 
 
 Turlock_Irrigation_District_Demand.register()
-print(" [*] Turlock_Irrigation_District_Demand successfully registered")

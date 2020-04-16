@@ -61,4 +61,3 @@ class SFPUC_requirement_Demand_Reduction(WaterLPParameter):
 
 
 SFPUC_requirement_Demand_Reduction.register()
-print(" [*] SFPUC_requirement_Demand_Reduction successfully registered")

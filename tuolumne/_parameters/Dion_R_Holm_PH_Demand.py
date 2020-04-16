@@ -59,4 +59,3 @@ class Dion_R_Holm_PH_Demand(WaterLPParameter):
 
 
 Dion_R_Holm_PH_Demand.register()
-print(" [*] Dion_R_Holm_Tunnel_Flow_Capacity successfully registered")

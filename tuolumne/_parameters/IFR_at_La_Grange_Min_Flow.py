@@ -77,4 +77,3 @@ class IFR_at_La_Grange_Min_Flow(WaterLPParameter):
 
 
 IFR_at_La_Grange_Min_Flow.register()
-print(" [*] IFR_at_La_Grange_Min_Flow successfully registered")

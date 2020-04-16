@@ -38,4 +38,3 @@ class Lower_Cherry_Aqueduct_1_Flow_Requirement(WaterLPParameter):
 
 
 Lower_Cherry_Aqueduct_1_Flow_Requirement.register()
-print(" [*] Lower_Cherry_Aqueduct_1_Flow_Requirement successfully registered")
