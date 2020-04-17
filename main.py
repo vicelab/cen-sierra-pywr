@@ -15,6 +15,8 @@ parser.add_argument("-mp", "--multiprocessing", help="Multiprocessing protocol (
 parser.add_argument("-s", "--start_year", help="Start year", type=int)
 parser.add_argument("-e", "--end_year", help="End year", type=int)
 parser.add_argument("-m", "--planning_months", help="Planning months", type=int)
+parser.add_argument("-n", "--run_name", help="Run name")
+parser.add_argument("-pb", "--progress_bar", help="Show progress bar", action='store_true')
 args = parser.parse_args()
 
 basin = args.basin
@@ -29,7 +31,7 @@ start = None
 end = None
 scenarios = []
 
-run_name = 'basic'
+run_name = args.run_name or 'baseline'
 climate_scenarios = ['Livneh']
 
 if debug:
@@ -39,6 +41,11 @@ if debug:
     run_name = 'development'
 else:
     planning_months = args.planning_months or 12
+
+if args.start_year:
+    start = '{}-10-01'.format(args.start_year)
+if args.end_year:
+    end = '{}-09-30'.format(args.end_year)
 
 if args.scenario_set:
     with open("./scenario_sets.json") as f:
@@ -72,7 +79,8 @@ kwargs = dict(
     start=start,
     end=end,
     data_path=data_path,
-    scenarios=scenarios
+    scenarios=scenarios,
+    show_progress=args.progress_bar
 )
 
 if not multiprocessing:  # serial processing for debugging

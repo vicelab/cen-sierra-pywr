@@ -24,6 +24,7 @@ def run_model(climate,
               debug=False,
               planning_months=12,
               scenarios=None,
+              show_progress=False,
               data_path=None):
     # Set up dates
 
@@ -241,7 +242,8 @@ def run_model(climate,
         m.planning = planning_model
         m.planning.scheduling = m
 
-    for date in tqdm(m.timestepper.datetime_index, ncols=60, disable=not debug):
+    disable_progress_bar = not debug and not show_progress
+    for date in tqdm(m.timestepper.datetime_index, ncols=60, disable=disable_progress_bar):
         step += 1
         try:
 
