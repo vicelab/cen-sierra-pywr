@@ -5,10 +5,9 @@ from datetime import datetime
 
 
 class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(Parameter):
-    MIN_STORAGE_THRESHOLD_MCM = 100 * 1.2335  # Storage threshold below which snowmelt flows will not initiate
-    STORAGE_FORECAST_THRESHOLD = 300 * 1.2335  # Storage forecast above which snowmelt releases should be initiated
+    MIN_STORAGE_THRESHOLD_MCM = 150 * 1.2335  # Storage threshold below which snowmelt flows will not initiate
+    STORAGE_FORECAST_THRESHOLD_MCM = 360 * 1.2335  # Storage forecast above which snowmelt releases should be initiated
     EXCESS_SPILL_THRESHOLD_AF = 10000  # Excess spill value above which the template hydrograph should be changed
-    POWER_TUNNEL_MAX_MCM = 1250 / 35.315 * 0.0864
     LOW_SPILL_THRESHOLD_MCM = 30 * 1.2335
 
     # Though power tunnel max flow is dynamic, during UTREP releases it is assumed at capacity
@@ -22,11 +21,13 @@ class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(Parameter):
         self.thresholds = [int(t) for t in self.template_hydrographs_cfs.columns]
         self.reversed_thresholds = list(reversed(self.thresholds))
 
-        num_scenarios = len(self.model.scenarios.combinations)
+        self.POWER_TUNNEL_MAX_MCM = self.model.nodes["Kirkwood PH"].turbine_capacity
 
+        num_scenarios = len(self.model.scenarios.combinations)
         self.latest_start_date = [None] * num_scenarios
         self.fcst_spill_mcm = np.zeros(num_scenarios)
-        self.spill_days = np.zeros(num_scenarios)
+        self.last_release_af = np.zeros(num_scenarios)
+        self.spill_days = np.zeros(num_scenarios, dtype=int)
         self.excess_af = [None] * num_scenarios
         self.spill_threshold_af = np.empty(num_scenarios, dtype=int)
         self.base_template_hydrograph_cfs = [None] * num_scenarios
@@ -39,11 +40,10 @@ class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(Parameter):
         hh_inflow_df = self.model.nodes['Hetch Hetchy Reservoir Inflow'].max_flow.dataframe
 
         # get end date if fcst_inflow is not supplied
-        if fcst_inflow is None:
-            if days and end_date is None:
-                end_date = timestep.datetime + pd.DateOffset(days=days)
+        if fcst_inflow is None and days and end_date is None:
+            end_date = timestep.datetime + pd.DateOffset(days=days)
 
-        total_spill = 0
+        total_spill = 0.0
 
         # Create dates for spill estimation period
         dates = pd.date_range(start=timestep.datetime, end=end_date, freq='D')
@@ -63,27 +63,27 @@ class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(Parameter):
         evap = 0
 
         # get schedule
-        schedule = self.model.tables["IFR bl Hetch Hetchy Reservoir/IFR Schedule"]
+        schedule_cfs = self.model.tables["IFR bl Hetch Hetchy Reservoir/IFR Schedule"]
 
         # Calculate total spill as summation of daily spill
 
         # get lookup column
-        lookup_col = min([3, 2, 1].index(wyt) * 2 + 1, 4)
+        lookup_col = min([3, 2, 1].index(int(wyt)) * 2 + 1, 4)
 
         for date in dates:
             # get lookup row
             lookup_row = date.month - 1
 
             # factor of safety based on practice
-            base_ifr_cfs = schedule.iat[lookup_row, lookup_col] + 5
+            base_ifr_cfs = schedule_cfs.iat[lookup_row, lookup_col] + 5
             base_ifr = base_ifr_cfs / 35.31 * 0.0864  # convert to mcm
 
             inflow = hh_inflow_df[date]
             ifr = base_ifr + add_ifr  # units in mcm at this point
-            available_storage = self.max_storage - storage
-            daily_spill = max(inflow - available_storage - self.POWER_TUNNEL_MAX_MCM - evap - ifr, 0.0)
-            storage = min(storage + inflow - self.POWER_TUNNEL_MAX_MCM - evap - ifr, max_storage)
-            total_spill += daily_spill
+            storage_temp = storage + inflow - self.POWER_TUNNEL_MAX_MCM - evap - ifr
+            spill = max(storage - max_storage, 0.0)
+            storage = storage_temp - spill
+            total_spill += spill
 
         return total_spill
 
@@ -98,6 +98,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(Parameter):
     def reset_state_variables(self, sid):
         self.latest_start_date[sid] = None
         self.fcst_spill_mcm[sid] = 0.0
+        self.last_release_af[sid] = 0.0
         self.spill_days[sid] = 0.0
         self.excess_af[sid] = None
         self.spill_threshold_af[sid] = 0
@@ -121,7 +122,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(Parameter):
             return 0.0
 
         # General state variables
-        current_storage_mcm = self.model.nodes['Hetch Hetchy Reservoir'].volume[scenario_index.global_id]
+        current_storage_mcm = self.model.nodes['Hetch Hetchy Reservoir'].volume[sid]
 
         # =========================
         # Spill forecasting routine
@@ -178,7 +179,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(Parameter):
             self.excess_af[sid] = excess_af
 
             base_template_hydrograph_cfs = self.base_template_hydrograph_cfs[sid]
-            self.adjusted_template_hydrograph_cfs[sid] = base_template_hydrograph_cfs
+            self.adjusted_template_hydrograph_cfs[sid] = base_template_hydrograph_cfs.copy()
 
             if excess_af:
                 if 66000 <= spill_threshold_af <= 178000 and spill_threshold_af != 104000:
@@ -189,7 +190,8 @@ class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(Parameter):
 
                     adjusted_template_hydrograph_cfs = []
                     for i in range(len(base_template_hydrograph_cfs)):
-                        adjusted_release_cfs = min(base_template_hydrograph_cfs[i] * (1 + alpha), next_hydrograph_cfs[i])
+                        adjusted_release_cfs = min(base_template_hydrograph_cfs[i] * (1 + alpha),
+                                                   next_hydrograph_cfs[i])
                         adjusted_template_hydrograph_cfs.append(adjusted_release_cfs)
 
                     self.adjusted_template_hydrograph_cfs[sid] = adjusted_template_hydrograph_cfs
@@ -203,23 +205,37 @@ class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(Parameter):
                 return 0.0
 
             # ...storage forecast
-            week_forecast = self.model.nodes['Hetch Hetchy Reservoir Inflow'].max_flow.dataframe[
-                            timestep.datetime:timestep.datetime + pd.DateOffset(7)].sum()
-            if current_storage_mcm + week_forecast - self.POWER_TUNNEL_MAX_MCM * 7 < self.STORAGE_FORECAST_THRESHOLD:
-                return 0.0
+            # forecast_days = 60
+            # forecast_mcm = self.model.nodes['Hetch Hetchy Reservoir Inflow'].max_flow.dataframe[
+            #                 timestep.datetime:timestep.datetime + pd.DateOffset(forecast_days)].sum()
+            # if current_storage_mcm + forecast_mcm \
+            #         - self.POWER_TUNNEL_MAX_MCM * forecast_days < self.STORAGE_FORECAST_THRESHOLD_MCM:
+            #     return 0.0
 
         # initiate spill
         self.spill_days[sid] += 1
 
-        if self.spill_days[sid] >= len(self.base_template_hydrograph_cfs[sid]):
+        adjusted_template_hydrograph_cfs = self.adjusted_template_hydrograph_cfs[sid]
+
+        if self.spill_days[sid] >= len(adjusted_template_hydrograph_cfs):
             return 0.0
-        release_cfs = self.adjusted_template_hydrograph_cfs[sid][self.spill_days[sid] - 1]
+
+        release_cfs = adjusted_template_hydrograph_cfs[self.spill_days[sid] - 1]
+
+        # subtract/add previous excess/deficit from total excess spill to release
+        # excess (positive value) should be subtracted; deficit (negative value) should be added
+        if self.spill_days[sid] > 1:
+            prev_flow_af = self.model.nodes["IFR bl Hetch Hetchy Reservoir"].prev_flow[sid] / 0.0864 / 1.2335 * 1e3
+            previous_excess_af = prev_flow_af - self.last_release_af[sid]
+            excess_af -= previous_excess_af
+            self.excess_af[sid] = excess_af
 
         # check if we have extra water to spill above threshold
         # there will probably always be extra
         if excess_af > self.EXCESS_SPILL_THRESHOLD_AF:
             # subtract amount from excess; convert to af
-            excess_adjustment_af = release_cfs * 0.0864 / 43560.0 * release_coefficient
+            excess_adjustment_af = release_cfs * 86400 / 43560 * release_coefficient
+            # TODO: add prev uncontrolled spill when adjusting release below
             if spill_threshold_af < 66000:
                 # stay at the 700 cfs shelf level
                 if release_cfs == 700:  # 1388 AF = 700 CFS
@@ -246,6 +262,8 @@ class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(Parameter):
         utrep_mcm = release_cfs / 35.315 * 0.0864
         # release_mcm = max(utrep_mcm - ifr_mcm, 0.0) * release_coefficient
         release_mcm = utrep_mcm * release_coefficient
+
+        self.last_release_af[sid] = release_mcm / 1.2335 * 1e3
 
         return release_mcm
 
