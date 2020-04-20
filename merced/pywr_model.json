@@ -198,12 +198,7 @@
         {
             "name": "Lake McClure",
             "type": "Reservoir",
-            "initial_volume": {
-                "type": "constant",
-                "table": "Initial Storage",
-                "index": "2000-09-30",
-                "column": "USGS 11269500 LK MCCLURE A EXCHEQUER CA"
-            },
+            "initial_volume": 750,
             "max_volume": "Lake McClure/Storage Capacity",
             "min_volume": "Lake McClure/Inactive Pool",
             "cost": "Lake McClure/Cost",
@@ -746,11 +741,6 @@
             "header": 0,
             "squeeze": true
         },
-        "Initial Storage": {
-            "url": "../data/Merced River/gauges/storage_mcm.csv",
-            "index_col": "Date",
-            "parse_dates": false
-        },
         "Fish Pulse": {
             "url": "../data/Merced River/Management/BAU/IFRs/fishPulse_Merced_cfs.csv",
             "index_col": 0,
@@ -822,7 +812,7 @@
         },
         "Lake McClure/Inactive Pool": {
             "type": "constant",
-            "value": 308
+            "value": 142
         },
         "Lake McClure/Observed Storage": {
             "type": "Lake_McClure_Observed_Storage"

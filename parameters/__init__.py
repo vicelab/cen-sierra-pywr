@@ -15,11 +15,6 @@ class Timestep(object):
 
 
 class WaterLPParameter(Parameter):
-    store = {}  # TODO: create h5 store on disk (or redis?) to share between class instances
-
-    root_path = os.environ.get('ROOT_S3_PATH')
-
-    # h5store = 'store.h5'
 
     cfs_to_cms = 1 / 35.315
 

@@ -75,7 +75,7 @@ kwargs = dict(
     include_planning=include_planning,
     debug=debug,
     planning_months=planning_months,
-    use_multiprocessing=multiprocessing,
+    use_multiprocessing=multiprocessing is not None,
     start=start,
     end=end,
     data_path=data_path,
@@ -100,10 +100,7 @@ else:
     run_partial = partial(run_model, **kwargs)
 
     if multiprocessing == 'joblib':
-        import time
         from joblib import Parallel, delayed
-
-        time_start = time.time()
         output = Parallel(n_jobs=num_cores)(delayed(run_partial)(climate) for climate in climate_scenarios)
 
     else:

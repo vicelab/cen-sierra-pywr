@@ -105,11 +105,6 @@ def run_model(climate,
     with open(model_path, 'w') as f:
         json.dump(base_model, f, indent=4)
 
-    # needed when loading JSON file
-    # root_path = 's3://{}/{}/'.format(bucket, network_key)
-    root_path = './data'
-    os.environ['ROOT_S3_PATH'] = root_path
-
     # =========================================
     # Load and register global model parameters
     # =========================================
@@ -121,7 +116,6 @@ def run_model(climate,
             continue
         policy_name = os.path.splitext(filename)[0]
         policy_module = 'parameters.{policy_name}'.format(policy_name=policy_name)
-        # package = '.{}'.format(policy_folder)
         import_module(policy_module, policy_folder)
 
     # =========================================
@@ -195,10 +189,9 @@ def run_model(climate,
         planning_model.mode = 'planning'
 
         # set time steps
-        start = planning_model.timestepper.start
+        # start = planning_model.timestepper.start
         end = planning_model.timestepper.end
         end -= relativedelta(months=planning_months)
-        # planning_model.timestepper = PlanningTimestepper(start, end)
 
         planning_model.setup()
 
