@@ -7,8 +7,23 @@ import preprocessing.hydrology.merced as mer
 
 # import preprocessing.tuolumne as tuo
 
-# basins = ['stanislaus', 'tuolumne', 'merced', 'upper san joaquin']
-basins = ["merced"]
+basins = {
+    "stn": {
+        "name": "stanislaus",
+    },
+    "tuo": {
+        "name": "tuolumne",
+    },
+    "mer": {
+        "name": "merced",
+    },
+    "usj": {
+        "name": "upper san joaquin",
+    },
+}
+
+# basins_to_process = ['stn', 'tuo', 'mer', 'usj']
+basins_to_process = ["tuo"]
 
 root_dir = os.environ.get('SIERRA_DATA_PATH', '../data')
 
@@ -21,9 +36,10 @@ scenarios += gcm_rcps
 tasks = ["pre", "common", "basins"]
 # tasks = ["basins"]
 
-basin_scenarios = list(product(basins, scenarios))
+basin_scenarios = list(product(basins_to_process, scenarios))
 
-for basin, scenario in basin_scenarios:
+for b, scenario in basin_scenarios:
+    basin = basins[b]['name']
     print("\n Processing {}: {}\n".format(basin, scenario))
     basin_path = os.path.join(root_dir, '{} River'.format(basin.title()))
     scenarios_path = os.path.join(basin_path, 'scenarios')
@@ -32,6 +48,17 @@ for basin, scenario in basin_scenarios:
 
     # before processing hydrology
     if "pre" in tasks:
+
+        print("Converting original cms runoff to mcm...")
+        abbr = b.upper() + 'R'
+        rel_src = '../bias correction/{abbr}/Catchment_RO_BC/{clim}'.format(abbr=abbr, clim=scenario)
+        src = os.path.join(root_dir, rel_src)
+        dst = os.path.join(scenario_path, 'runoff')
+
+        if not os.path.exists(dst):
+            os.makedirs(dst)
+
+        common.convert_cms_to_mcm(src, dst)
         if basin == 'upper san joaquin':
             usj.disaggregate_SJN_09_subwatershed(scenario_path)
 
