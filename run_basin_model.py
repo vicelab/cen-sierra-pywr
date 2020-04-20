@@ -134,7 +134,7 @@ def run_model(climate,
     # import domains
     import_module('.domains', 'domains')
     if debug:
-        print("[*] domains imported")
+        print(" [*] domains imported")
 
     # import custom policies
     try:
