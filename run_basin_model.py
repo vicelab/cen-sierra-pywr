@@ -26,6 +26,9 @@ def run_model(climate,
               scenarios=None,
               show_progress=False,
               data_path=None):
+
+    print("Running \"{}\" scenario for {} basin, {} climate".format(run_name, basin.upper(), climate.upper()))
+
     # Set up dates
 
     if start is None or end is None:
@@ -134,7 +137,7 @@ def run_model(climate,
     # import domains
     import_module('.domains', 'domains')
     if debug:
-        print(" [*] domains imported")
+        print(" [*] Domains imported")
 
     # import custom policies
     try:
@@ -203,7 +206,7 @@ def run_model(climate,
     # Create daily model
     # ==================
     if debug:
-        print('Loading daily model')
+        print(' [*] Loading daily model')
     from pywr.nodes import Storage
     from domains import Reservoir
     try:

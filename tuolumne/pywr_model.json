@@ -2664,10 +2664,11 @@
         },
         "Hetch Hetchy Reservoir/Precipitation": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/precipitation/rainfall_HetchHetchy_mm.csv",
-            "index_col": "dates",
-            "column": "Rain_mm",
-            "parse_dates": true
+            "url": "../data/Tuolumne River/scenarios/Livneh/precipitation/precipitation_Hetch_Hetchy_mm.csv",
+            "header": 0,
+            "index_col": 0,
+            "parse_dates": true,
+            "squeeze": true
         },
         "Hetch Hetchy Reservoir/Volume Elevation Curve": {
             "type": "interpolatedvolume",
