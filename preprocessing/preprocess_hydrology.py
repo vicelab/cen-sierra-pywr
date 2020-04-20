@@ -33,8 +33,8 @@ rcps = ['45', '85']
 gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
 scenarios += gcm_rcps
 
-tasks = ["pre", "common", "basins"]
-# tasks = ["basins"]
+# tasks = ["pre", "common", "basins"]
+tasks = ["pre"]
 
 basin_scenarios = list(product(basins_to_process, scenarios))
 
@@ -59,7 +59,23 @@ for b, scenario in basin_scenarios:
             os.makedirs(dst)
 
         common.convert_cms_to_mcm(src, dst)
+
+        # if basin == 'tuolumne':
+        #     print("Extracting precipitation at Hetch Hetchy...")
+        #
+        #     if scenario != 'Livneh':
+        #         lat = -119.7739
+        #         lon = 37.9491
+        #         start = 2006
+        #         end = 2099
+        #         climate, rcp = scenario.split('_')
+        #         src = os.path.join(root_dir, '..', 'precipitation', climate, rcp)
+        #         dstdir = os.path.join(scenario_path, "precipitation")
+        #         dst = os.path.join(dstdir, "rainfall_Hetch_Hetchy_mcm.csv")
+        #         common.extract_precipitation_at(src, dst, lat, lon, start, end)
+
         if basin == 'upper san joaquin':
+            print("Disaggregating SJN_09 subwatershed...")
             usj.disaggregate_SJN_09_subwatershed(scenario_path)
 
     # preprocess hydrology
