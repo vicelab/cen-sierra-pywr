@@ -69,8 +69,15 @@ if args.scenario_set:
             gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
             climate_scenarios += gcm_rcps
 
+if basin == 'all':
+    basins = ['stanislaus', 'tuolumne', 'merced', 'upper_san_joaquin']
+    include_planning = True
+else:
+    basins = [basin]
+
+model_args = list(product(climate_scenarios, basins))
+
 kwargs = dict(
-    basin=basin,
     run_name=run_name,
     include_planning=include_planning,
     debug=debug,
@@ -84,12 +91,11 @@ kwargs = dict(
 )
 
 if not multiprocessing:  # serial processing for debugging
-    for climate in climate_scenarios:
-        print('Running: ', climate)
+    for args in model_args:
         try:
-            run_model(climate, **kwargs)
+            run_model(*args, **kwargs)
         except Exception as err:
-            print("Failed: ", climate)
+            print("Failed: ", args)
             print(err)
             continue
 
@@ -101,13 +107,12 @@ else:
 
     if multiprocessing == 'joblib':
         from joblib import Parallel, delayed
-        output = Parallel(n_jobs=num_cores)(delayed(run_partial)(climate) for climate in climate_scenarios)
+        output = Parallel(n_jobs=num_cores)(delayed(run_partial)(*args) for args in model_args)
 
     else:
         pool = mp.Pool(processes=num_cores)
-        for climate in climate_scenarios:
-            print('Adding ', climate)
-            pool.apply_async(run_partial, args=(climate))
+        for args in model_args:
+            pool.apply_async(run_partial, *args)
 
         pool.close()
         pool.join()

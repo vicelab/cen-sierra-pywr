@@ -15,7 +15,7 @@ SECONDS_IN_DAY = 3600 * 24
 
 
 def run_model(climate,
-              basin=None,
+              basin,
               start=None, end=None,
               run_name="default",
               include_planning=False,
@@ -28,6 +28,10 @@ def run_model(climate,
               data_path=None):
 
     print("Running \"{}\" scenario for {} basin, {} climate".format(run_name, basin.upper(), climate.upper()))
+
+    # Some adjustments
+    if basin in ['merced', 'tuolumne']:
+        include_planning = False
 
     # Set up dates
 
