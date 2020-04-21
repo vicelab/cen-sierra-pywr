@@ -9,7 +9,7 @@ from dateutil.relativedelta import relativedelta
 from common.tests import test_planning_model, get_planning_dataframe
 import pandas as pd
 
-from utilities import simplify_network, prepare_planning_model, create_schematic
+from utilities import simplify_network, prepare_planning_model
 
 SECONDS_IN_DAY = 3600 * 24
 
@@ -28,6 +28,9 @@ def run_model(climate,
               data_path=None):
 
     print("Running \"{}\" scenario for {} basin, {} climate".format(run_name, basin.upper(), climate.upper()))
+
+    if debug:
+        from utilities import create_schematic
 
     # Some adjustments
     if basin in ['merced', 'tuolumne']:
