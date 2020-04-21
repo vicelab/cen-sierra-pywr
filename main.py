@@ -33,7 +33,7 @@ end = None
 scenarios = []
 
 run_name = args.run_name or 'baseline'
-climate_scenarios = ['Livneh']
+climates = ['Livneh']
 
 if debug:
     planning_months = args.planning_months or 3
@@ -76,7 +76,7 @@ if basin == 'all':
 else:
     basins = [basin]
 
-model_args = list(product(climate_scenarios, basins))
+model_args = list(product(climates, basins))
 
 kwargs = dict(
     run_name=run_name,
@@ -101,7 +101,7 @@ if not multiprocessing:  # serial processing for debugging
             continue
 
 else:
-    n_jobs = args.num_cores
+    n_jobs = min(args.num_cores, len(climates))
     run_partial = partial(run_model, **kwargs)
 
     if multiprocessing == 'joblib':
