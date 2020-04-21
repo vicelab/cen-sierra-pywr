@@ -163,7 +163,9 @@ def run_model(climate,
                              delete_scenarios=debug)
         with open(simplified_model_path, 'w') as f:
             f.write(json.dumps(m, indent=4))
-        create_schematic(basin, 'simplified')
+
+        if debug:
+            create_schematic(basin, 'simplified')
 
         model_path = simplified_model_path
 
@@ -182,7 +184,9 @@ def run_model(climate,
 
         prepare_planning_model(m, basin, climate, planning_model_path, steps=planning_months, debug=save_results,
                                remove_rim_dams=True)
-        create_schematic(basin, 'monthly')
+
+        if debug:
+            create_schematic(basin, 'monthly')
 
         # create pywr model
         try:
