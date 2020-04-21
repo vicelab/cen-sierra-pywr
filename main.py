@@ -9,6 +9,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-b", "--basin", help="Basin to run")
 parser.add_argument("-nk", "--network_key", help="Network key")
 parser.add_argument("-d", "--debug", help="Debug ('m' or 'd' or 'dm')")
+parser.add_argument("-c", "--num_cores", help="Number of cores to use in joblib multiprocessing", type=int)
 parser.add_argument("-p", "--include_planning", help="Include planning model", action='store_true')
 parser.add_argument("-sc", "--scenario_set", help="Scenario set")
 parser.add_argument("-mp", "--multiprocessing", help="Multiprocessing protocol (omit for none)")
@@ -100,16 +101,18 @@ if not multiprocessing:  # serial processing for debugging
             continue
 
 else:
-    import multiprocessing as mp
-
-    num_cores = mp.cpu_count() - 1
+    n_jobs = args.num_cores
     run_partial = partial(run_model, **kwargs)
 
     if multiprocessing == 'joblib':
         from joblib import Parallel, delayed
-        output = Parallel(n_jobs=num_cores)(delayed(run_partial)(*args) for args in model_args)
+
+        output = Parallel(n_jobs=n_jobs)(delayed(run_partial)(*args) for args in model_args)
 
     else:
+        import multiprocessing as mp
+        num_cores = mp.cpu_count() - 1
+
         pool = mp.Pool(processes=num_cores)
         for args in model_args:
             pool.apply_async(run_partial, *args)
