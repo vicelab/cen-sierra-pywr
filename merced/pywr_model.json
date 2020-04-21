@@ -715,11 +715,11 @@
             "squeeze": true
         },
         "Lake McClure Spill/ESRD": {
-            "url": "../data/Merced River/Management/BAU/Flood Control/ESRD_unitsSI.csv",
+            "url": "../data/Merced River/management/BAU/Flood Control/ESRD_unitsSI.csv",
             "header": null
         },
         "Lake McClure/Guide Curve": {
-            "url": "../data/Merced River/Management/BAU/Flood Control/LakeMcLure_FloodControl_Requirements_af.csv",
+            "url": "../data/Merced River/management/BAU/Flood Control/LakeMcLure_FloodControl_Requirements_af.csv",
             "names": [
                 "dry",
                 "normal",
@@ -730,19 +730,19 @@
             "header": 0
         },
         "MID Northside Diversions": {
-            "url": "../data/Merced River/Management/BAU/Demand/MID_WYT_average_diversion_Northside_cfs.csv",
+            "url": "../data/Merced River/management/BAU/Demand/MID_WYT_average_diversion_Northside_cfs.csv",
             "index_col": 0,
             "header": 0,
             "squeeze": true
         },
         "MID Main Diversions": {
-            "url": "../data/Merced River/Management/BAU/Demand/MID_WYT_average_diversion_Main_cfs.csv",
+            "url": "../data/Merced River/management/BAU/Demand/MID_WYT_average_diversion_Main_cfs.csv",
             "index_col": 0,
             "header": 0,
             "squeeze": true
         },
         "Fish Pulse": {
-            "url": "../data/Merced River/Management/BAU/IFRs/fishPulse_Merced_cfs.csv",
+            "url": "../data/Merced River/management/BAU/IFRs/fishPulse_Merced_cfs.csv",
             "index_col": 0,
             "header": 0,
             "squeeze": true
