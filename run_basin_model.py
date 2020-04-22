@@ -8,7 +8,7 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from common.tests import test_planning_model, get_planning_dataframe
 import pandas as pd
-
+import traceback
 from utilities import simplify_network, prepare_planning_model
 
 SECONDS_IN_DAY = 3600 * 24
@@ -48,8 +48,13 @@ def run_model(climate,
             start_year = 2030
             end_year = 2060
         elif climate_set == 'sequences':
-            # TODO: update to create start and end year from climate name
-            pass
+            # name format is N01_S01, where N01 refers to the number of drought years
+            # the total number of years is 1 + N + 2 (1 year at the end as a buffer)
+            N = int(climate_scenario.split('_')[0].replace('N', ''))
+            start_year = 2000
+            end_year = start_year + 1 + N + 2
+        else:
+            raise Exception("Climate scenario unknown")
         start = '{}-10-01'.format(start_year)
         end = '{}-09-30'.format(end_year)
 
@@ -278,8 +283,8 @@ def run_model(climate,
             # Step 2: run daily model
             m.step()
         except Exception as err:
-            print('\nFailed at step {}'.format(date))
-            print(err)
+            traceback.print_exc()
+            print('The above error occurred in step {}'.format(date))
             raise
 
     if debug:
