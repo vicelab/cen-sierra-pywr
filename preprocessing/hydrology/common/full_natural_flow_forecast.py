@@ -17,7 +17,11 @@ def full_natural_flow_exceedance_forecast(scenario_path):
 
 
     # Approximate DWR's 50% exceedance flows for the basin.
-    fnf_path = os.path.join(scenario_path, 'preprocessed', 'full_natural_flow_daily_mcm.csv')
+    if 'sequences' in scenario_path:
+        livneh_scenario_path = scenario_path.split('sequences')[0] + 'historical/Livneh'
+        fnf_path = os.path.join(livneh_scenario_path, 'preprocessed', 'full_natural_flow_daily_mcm.csv')
+    else:
+        fnf_path = os.path.join(scenario_path, 'preprocessed', 'full_natural_flow_daily_mcm.csv')
     fnf_df = pd.read_csv(fnf_path, index_col=0, header=0, parse_dates=True)
 
     months = list(range(3, 9 + 1))

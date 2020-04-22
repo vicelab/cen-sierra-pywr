@@ -3,16 +3,17 @@ import shutil
 import pandas as pd
 import random
 import matplotlib.pyplot as plt
-from functools import partial
 import multiprocessing as mp
+from joblib import Parallel, delayed
 from itertools import product
 
 SEQ_NAME_TPL = 'N{:02}_S{:02}'
-
+FLOW_HEADER = 'flow (mcm)'
 LIVNEH_RUNOFF_PATH = 'hydrology/historical/Livneh/runoff'
 
 root_dir = os.environ['SIERRA_DATA_PATH']
 basins = ['stanislaus', 'tuolumne', 'merced', 'upper san joaquin']
+# basins = ['upper san joaquin']
 
 dfs = []
 
@@ -90,8 +91,6 @@ def generate_runoff_from_sequence(df, basin, dry_years_length, sequence):
 
     sequence = df[sequence_name].values
 
-    root_dir = os.environ['SIERRA_DATA_PATH']
-
     full_basin_name = '{} River'.format(basin.title())
     basin_dir = os.path.join(root_dir, full_basin_name, LIVNEH_RUNOFF_PATH)
     sequence_dir = os.path.join(root_dir, full_basin_name, 'hydrology', 'sequences', sequence_name, 'runoff')
@@ -100,7 +99,7 @@ def generate_runoff_from_sequence(df, basin, dry_years_length, sequence):
     water_years = None
     for filename in os.listdir(basin_dir):
         filepath = os.path.join(basin_dir, filename)
-        df = pd.read_csv(filepath, index_col=0, header=0, parse_dates=True)
+        df = pd.read_csv(filepath, index_col=0, header=0, parse_dates=True, names=[FLOW_HEADER])
 
         if water_years is None:
             water_years = list(map(lambda d: d.year if d.month <= 9 else d.year + 1, df.index))
@@ -111,7 +110,7 @@ def generate_runoff_from_sequence(df, basin, dry_years_length, sequence):
                 year = int(year)
             except:
                 continue
-            year_df = df[df['WY'] == year]['flw'].copy()
+            year_df = df[df['WY'] == year][FLOW_HEADER].copy()
             start_year = 2000 + i
             start_date = '{}-10-01'.format(start_year)
             end_date = '{}-09-30'.format(start_year + 1)
@@ -145,18 +144,14 @@ def generate_runoff(n_dry, n_wet, n_dry_years_max, n_buffer_years, n_sequences):
         sequences.extend([(n, s) for s in range(1, n_sequences + 1)])
 
     drought_dfs = pd.concat(drought_dfs, axis=1)
-    root_dir = os.environ["SIERRA_DATA_PATH"]
     outdir = os.path.join(root_dir, "common", "hydrology", "sequences")
     if not os.path.exists(outdir):
         os.makedirs(outdir)
     drought_path = os.path.join(outdir, 'drought_sequences.csv')
     drought_dfs.to_csv(drought_path)
 
-    basins = ['stanislaus', 'tuolumne', 'merced', 'upper san joaquin']
-
     # delete previous sequence folders
     for basin in basins:
-        root_dir = os.environ['SIERRA_DATA_PATH']
         full_basin_name = '{} River'.format(basin.title())
         basin_dir = os.path.join(root_dir, full_basin_name, LIVNEH_RUNOFF_PATH)
         sequences_dir = os.path.join(root_dir, full_basin_name, 'hydrology', 'sequences')
@@ -166,14 +161,16 @@ def generate_runoff(n_dry, n_wet, n_dry_years_max, n_buffer_years, n_sequences):
 
     num_cores = mp.cpu_count() - 1
 
-    pool = mp.Pool(processes=num_cores)
-
+    debug = False
+    all_args = []
     for basin, (dry_years_length, sequence) in product(basins, sequences):
         args = (drought_dfs, basin, dry_years_length, sequence)
-        pool.apply_async(generate_runoff_from_sequence, args)
+        all_args.append(args)
+        if debug:
+            generate_runoff_from_sequence(*args)
 
-    pool.close()
-    pool.join()
+    if not debug:
+        Parallel(n_jobs=num_cores)(delayed(generate_runoff_from_sequence)(*args) for args in all_args)
 
     return
 
