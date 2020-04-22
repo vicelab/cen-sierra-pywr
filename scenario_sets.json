@@ -43,5 +43,12 @@
             "gcms"
         ],
         "scenarios": []
+    },
+    "sequences": {
+        "name": "Sequences test",
+        "climates": [
+            "sequences"
+        ],
+        "scenarios": []
     }
 }
