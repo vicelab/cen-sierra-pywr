@@ -64,7 +64,7 @@ Notes:
 
 * `/management`: This folder includes non-climate scenario data (demand, flood control, etc.).  
 
-* `/scenarios`: Each subfolder within the `/scenarios` folder includes one folder for each named scenario. Furthermore, each named scenario folder contains the actual data files (typically .csv files) needed for that scenario. For example: `/scenarios/Livneh/runoff/tot_runoff_sb01_mcm.csv` for runoff data for subbasin 01 in that basin's folder.
+* `/scenarios`: Each subfolder within the `/scenarios` folder includes one folder for each named scenario. Furthermore, each named scenario folder contains the actual data files (typically .csv files) needed for that scenario. For example: `/hydrology/historical/Livneh/runoff/tot_runoff_sb01_mcm.csv` for runoff data for subbasin 01 in that basin's folder.
 
 ## Hydrologic data ("scenarios")
 

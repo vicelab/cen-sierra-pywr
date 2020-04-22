@@ -703,12 +703,12 @@
     ],
     "tables": {
         "San Joaquin Valley Index": {
-            "url": "../data/common/scenarios/Livneh/SJVI.csv",
+            "url": "../data/common/hydrology/historical/Livneh/SJVI.csv",
             "index_col": "WY",
             "squeeze": true
         },
         "WYT for IFR Below Exchequer": {
-            "url": "../data/Merced River/scenarios/Livneh/preprocessed/Exchequer_WYT.csv",
+            "url": "../data/Merced River/hydrology/historical/Livneh/preprocessed/Exchequer_WYT.csv",
             "index_col": 0,
             "header": 0,
             "parse_dates": false,
@@ -751,7 +751,7 @@
     "parameters": {
         "Full Natural Flow": {
             "type": "dataframe",
-            "url": "../data/Merced River/scenarios/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
+            "url": "../data/Merced River/hydrology/historical/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
             "index_col": 0,
             "header": 0,
             "parse_dates": true

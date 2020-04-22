@@ -5324,12 +5324,12 @@
     ],
     "tables": {
         "San Joaquin Valley Index": {
-            "url": "../data/common/scenarios/Livneh/SJVI.csv",
+            "url": "../data/common/hydrology/historical/Livneh/SJVI.csv",
             "index_col": 0,
             "squeeze": true
         },
         "Full Natural Flow": {
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
             "index_col": 0,
             "parse_dates": true,
             "header": 0,
@@ -5390,7 +5390,7 @@
             "parse_dates": false
         },
         "Seasonal Inflow at Friant": {
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/preprocessed/inflow_MillertonLake_AprToJul_af.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/preprocessed/inflow_MillertonLake_AprToJul_af.csv",
             "header": 0,
             "index_col": 0,
             "squeeze": true
@@ -5422,12 +5422,12 @@
             "header": 0
         },
         "SJ restoration flows": {
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/preprocessed/SJ restoration flows.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/preprocessed/SJ restoration flows.csv",
             "index_col": 0,
             "header": 0
         },
         "WY Full Natural Flow at Friant Dam": {
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/preprocessed/full_natural_flow_annual_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/preprocessed/full_natural_flow_annual_mcm.csv",
             "index_col": 0,
             "header": 0,
             "squeeze": true
@@ -6239,280 +6239,280 @@
         },
         "SJN_02 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb02_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb02_mcm.csv",
             "column": "tot_runoff_sb02",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_03 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb03_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb03_mcm.csv",
             "column": "tot_runoff_sb03",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_04 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb04_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb04_mcm.csv",
             "column": "tot_runoff_sb04",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_05 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb05_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb05_mcm.csv",
             "column": "tot_runoff_sb05",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_06 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb06_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb06_mcm.csv",
             "column": "tot_runoff_sb06",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_07 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb07_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb07_mcm.csv",
             "column": "tot_runoff_sb07",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_08 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb08_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb08_mcm.csv",
             "column": "tot_runoff_sb08",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_09a Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb09a_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb09a_mcm.csv",
             "column": "tot_runoff_sb09",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_09b Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb09b_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb09b_mcm.csv",
             "column": "tot_runoff_sb09",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_09c Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb09c_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb09c_mcm.csv",
             "column": "tot_runoff_sb09",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_09d Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb09d_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb09d_mcm.csv",
             "column": "tot_runoff_sb09",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_10 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb10_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb10_mcm.csv",
             "column": "tot_runoff_sb10",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_11 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb11_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb11_mcm.csv",
             "column": "tot_runoff_sb11",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_12 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb12_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb12_mcm.csv",
             "column": "tot_runoff_sb12",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_13 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb13_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb13_mcm.csv",
             "column": "tot_runoff_sb13",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_14 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb14_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb14_mcm.csv",
             "column": "tot_runoff_sb14",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_15 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb15_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb15_mcm.csv",
             "column": "tot_runoff_sb15",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_16 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb16_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb16_mcm.csv",
             "column": "tot_runoff_sb16",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_17 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb17_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb17_mcm.csv",
             "column": "tot_runoff_sb17",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_18 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb18_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb18_mcm.csv",
             "column": "tot_runoff_sb18",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_19 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb19_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb19_mcm.csv",
             "column": "tot_runoff_sb19",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_20 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb20_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb20_mcm.csv",
             "column": "tot_runoff_sb20",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_21 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb21_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb21_mcm.csv",
             "column": "tot_runoff_sb21",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_22 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb22_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb22_mcm.csv",
             "column": "tot_runoff_sb22",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_23 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb23_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb23_mcm.csv",
             "column": "tot_runoff_sb23",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_24 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb24_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb24_mcm.csv",
             "column": "tot_runoff_sb24",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_25 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb25_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb25_mcm.csv",
             "column": "tot_runoff_sb25",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_26 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb26_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb26_mcm.csv",
             "column": "tot_runoff_sb26",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_27 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb27_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb27_mcm.csv",
             "column": "tot_runoff_sb27",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_28 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb28_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb28_mcm.csv",
             "column": "tot_runoff_sb28",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_29 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb29_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb29_mcm.csv",
             "column": "tot_runoff_sb29",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_30 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb30_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb30_mcm.csv",
             "column": "tot_runoff_sb30",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_31 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb31_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb31_mcm.csv",
             "column": "tot_runoff_sb31",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_32 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb32_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb32_mcm.csv",
             "column": "tot_runoff_sb32",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_33 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb33_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb33_mcm.csv",
             "column": "tot_runoff_sb33",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_34 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb34_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb34_mcm.csv",
             "column": "tot_runoff_sb34",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_35 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb35_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb35_mcm.csv",
             "column": "tot_runoff_sb35",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_36 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb36_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb36_mcm.csv",
             "column": "tot_runoff_sb36",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_37 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb37_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb37_mcm.csv",
             "column": "tot_runoff_sb37",
             "index_col": "Date",
             "parse_dates": true
         },
         "SJN_38 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Upper San Joaquin River/scenarios/Livneh/runoff/tot_runoff_sb38_mcm.csv",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/runoff/tot_runoff_sb38_mcm.csv",
             "column": "tot_runoff_sb38",
             "index_col": "Date",
             "parse_dates": true

@@ -2440,14 +2440,14 @@
     ],
     "tables": {
         "Full Natural Flow": {
-            "url": "../data/Tuolumne River/scenarios/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
+            "url": "../data/Tuolumne River/hydrology/historical/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
             "index_col": 0,
             "parse_dates": true,
             "header": 0,
             "squeeze": true
         },
         "San Joaquin Valley Index": {
-            "url": "../data/common/scenarios/Livneh/SJVI.csv",
+            "url": "../data/common/hydrology/historical/Livneh/SJVI.csv",
             "index_col": 0,
             "squeeze": true
         },
@@ -2664,7 +2664,7 @@
         },
         "Hetch Hetchy Reservoir/Precipitation": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/precipitation/precipitation_Hetch_Hetchy_mm.csv",
+            "url": "../data/Tuolumne River/hydrology/historical/Livneh/precipitation/precipitation_Hetch_Hetchy_mm.csv",
             "header": 0,
             "index_col": 0,
             "parse_dates": true,
@@ -2818,28 +2818,28 @@
         },
         "TUO_01 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb01_mcm.csv",
+            "url": "../data/Tuolumne River/hydrology/historical/Livneh/runoff/tot_runoff_sb01_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_02 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb02_mcm.csv",
+            "url": "../data/Tuolumne River/hydrology/historical/Livneh/runoff/tot_runoff_sb02_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_03 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb03_mcm.csv",
+            "url": "../data/Tuolumne River/hydrology/historical/Livneh/runoff/tot_runoff_sb03_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
         },
         "TUO_04 Headflow/Runoff": {
             "type": "dataframe",
-            "url": "../data/Tuolumne River/scenarios/Livneh/runoff/tot_runoff_sb04_mcm.csv",
+            "url": "../data/Tuolumne River/hydrology/historical/Livneh/runoff/tot_runoff_sb04_mcm.csv",
             "column": "flw",
             "index_col": "Date",
             "parse_dates": true
