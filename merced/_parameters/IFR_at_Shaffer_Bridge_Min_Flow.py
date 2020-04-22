@@ -32,8 +32,8 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
             return self.model.nodes["IFR at Shaffer Bridge"].prev_flow[scenario_index.global_id]
 
         # FERC REQUIREMENT
-        wyt = self.model.tables['WYT for IFR Below Exchequer'][timestep.year]
-        ferc_flow_req = self.ferc_req(timestep, scenario_index, wyt)
+        WYT = self.model.tables['WYT for IFR Below Exchequer'][self.operational_water_year]
+        ferc_flow_req = self.ferc_req(timestep, scenario_index, WYT)
 
         # DAVIS-GRUNSKY AGREEMENT REQUIREMENT
         dga_flow_req = self.dga_requirement(timestep)

@@ -711,8 +711,8 @@
             "url": "../data/Merced River/hydrology/historical/Livneh/preprocessed/Exchequer_WYT.csv",
             "index_col": 0,
             "header": 0,
-            "parse_dates": false,
-            "squeeze": true
+            "squeeze": true,
+            "dtype": "int"
         },
         "Lake McClure Spill/ESRD": {
             "url": "../data/Merced River/management/BAU/Flood Control/ESRD_unitsSI.csv",
@@ -733,13 +733,25 @@
             "url": "../data/Merced River/management/BAU/Demand/MID_WYT_average_diversion_Northside_cfs.csv",
             "index_col": 0,
             "header": 0,
-            "squeeze": true
+            "names": [
+                4,
+                3,
+                1,
+                2,
+                5
+            ]
         },
         "MID Main Diversions": {
             "url": "../data/Merced River/management/BAU/Demand/MID_WYT_average_diversion_Main_cfs.csv",
             "index_col": 0,
             "header": 0,
-            "squeeze": true
+            "names": [
+                4,
+                3,
+                1,
+                2,
+                5
+            ]
         },
         "Fish Pulse": {
             "url": "../data/Merced River/management/BAU/IFRs/fishPulse_Merced_cfs.csv",
