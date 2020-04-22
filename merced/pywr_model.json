@@ -704,7 +704,7 @@
     "tables": {
         "San Joaquin Valley Index": {
             "url": "../data/common/hydrology/historical/Livneh/SJVI.csv",
-            "index_col": "WY",
+            "index_col": 0,
             "squeeze": true
         },
         "WYT for IFR Below Exchequer": {

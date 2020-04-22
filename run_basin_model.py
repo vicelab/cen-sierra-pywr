@@ -29,6 +29,8 @@ def run_model(climate,
 
     print("Running \"{}\" scenario for {} basin, {} climate".format(run_name, basin.upper(), climate.upper()))
 
+    climate_set, climate_scenario = climate.split('/')
+
     if debug:
         from utilities import create_schematic
 
@@ -39,12 +41,15 @@ def run_model(climate,
     # Set up dates
 
     if start is None or end is None:
-        if climate == 'Livneh':
+        if climate_scenario == 'Livneh':
             start_year = 1980
             end_year = 2012
-        else:
+        elif climate_set == 'gcms':
             start_year = 2030
             end_year = 2060
+        elif climate_set == 'sequences':
+            # TODO: update to create start and end year from climate name
+            pass
         start = '{}-10-01'.format(start_year)
         end = '{}-09-30'.format(end_year)
 
@@ -62,7 +67,7 @@ def run_model(climate,
 
     bucket = 'openagua-networks'
     base_filename = 'pywr_model.json'
-    model_filename_base = 'pywr_model_{}'.format(climate)
+    model_filename_base = 'pywr_model_{}'.format(climate_scenario)
     model_filename = model_filename_base + '.json'
 
     base_path = os.path.join(root_dir, base_filename)
@@ -105,7 +110,7 @@ def run_model(climate,
             if url:
                 if data_path:
                     url = url.replace('../data', data_path)
-                url = url.replace('Livneh', climate)
+                url = url.replace('historical/Livneh', climate)
                 param['url'] = url
             new_model_parts[model_part][pname] = param
 

@@ -162,7 +162,7 @@ def simplify_network(m, scenario_path=None, basin=None, climate=None, delete_gau
                     param=param_name.split('/')[0]
                 )
             else:
-                url = "{datapath}/{basin} River/scenarios/{climate}/runoff_aggregated/{param} mcm.csv".format(
+                url = "{datapath}/{basin} River/hydrology/{climate}/runoff_aggregated/{param} mcm.csv".format(
                     datapath=os.environ.get('SIERRA_DATA_PATH'),
                     basin=basin.replace('_', ' ').title(),
                     climate=climate,

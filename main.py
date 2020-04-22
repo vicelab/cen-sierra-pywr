@@ -33,7 +33,10 @@ end = None
 scenarios = []
 
 run_name = args.run_name or 'baseline'
-climate_scenarios = ['Livneh']
+
+climate_sets = {
+    'historical': ['Livneh']
+}
 
 if debug:
     planning_months = args.planning_months or 3
@@ -59,16 +62,25 @@ if args.scenario_set:
     climates = scenario_set_definition.get('climates', [])
     run_name = scenario_set_definition['name']
     if climates:
-        climate_scenarios = []
+        climate_sets = {}
         if 'historical' in climates:
-            climate_scenarios = ['Livneh']
+            climate_sets['historical'] = ['Livneh']
         if 'gcms' in climates:
             gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
             # gcms = ['HadGEM2-ES', 'MIROC5']
             # rcps = ['45', '85']
             rcps = ['85']
             gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
-            climate_scenarios += gcm_rcps
+            climate_sets['gcms'] = gcm_rcps
+        if 'sequences' in climates:
+            sequences_file = os.path.join(data_path, 'common/hydrology/sequences/drought_sequences.csv')
+            with open(sequences_file) as f:
+                sequences = f.readline().split(',')[1:]
+            climate_sets['sequences'] = sequences
+
+climate_scenarios = []
+for climate_set, scenarios in climate_sets.items():
+    climate_scenarios.extend(['{}/{}'.format(climate_set, scen) for scen in scenarios])
 
 if basin == 'all':
     basins = ['stanislaus', 'tuolumne', 'merced', 'upper_san_joaquin']
