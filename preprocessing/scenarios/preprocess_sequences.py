@@ -34,6 +34,8 @@ def generate_sequences(n_dry, n_wet, n_dry_years, n_buffer_years, n_sequences):
     This script creates a sequence of psuedo-random years pulled from
     the Livneh dataset to generate sequences of dry years sandwiched between wet years.
 
+    IMPORTANT: Full natural flow must be precalculated for the Livneh dataset (see preprocess_hydrology.py)
+
     :param n_dry: The number of dry years to sample from.
     :param n_wet: The number of wet years to sample from.
     :param n_dry_years: Total number of drought years.
