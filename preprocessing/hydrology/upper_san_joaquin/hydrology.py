@@ -19,4 +19,4 @@ def disaggregate_SJN_09_subwatershed(scenario_path):
 
     for subsubwat in ['a', 'b', 'c', 'd']:
         df2 = df * FRACTIONS[subsubwat]
-        df2.to_csv(sjn09_path.replace('09', '09{}'.format(subsubwat)))
+        df2.to_csv(sjn09_path.replace('sb09', 'sb09{}'.format(subsubwat)))
