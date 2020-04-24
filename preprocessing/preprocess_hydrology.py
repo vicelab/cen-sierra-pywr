@@ -82,12 +82,9 @@ def process_basin_climate(tasks, basin, climate):
             usj.calculate_millerton_snowmelt_inflow(src, dst)
 
 
-def preprocess_hydrology():
-    
-    datasets_to_process = ['historical', 'gcms']
-    # datasets_to_process = ['sequences']
-    basins_to_process = ['stn', 'tuo', 'mer', 'usj']
-    # basins_to_process = ["usj"]
+def preprocess_hydrology(dataset, basins_to_process=None):
+
+    basins_to_process = basins_to_process or ['stn', 'tuo', 'mer', 'usj']
 
     basins = {
         "stn": {
@@ -106,19 +103,22 @@ def preprocess_hydrology():
 
     climates = {}
 
-    if 'historical' in datasets_to_process:
+    if dataset == 'historical':
         climates['historical'] = ['Livneh']
 
-    if 'gcms' in datasets_to_process:
+    elif dataset == 'gcms':
         gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
         rcps = ['45', '85']
         gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
         climates['gcms'] = gcm_rcps
 
-    if 'sequences' in datasets_to_process:
-        sequences_path = os.path.join(root_dir, 'common/hydrology/sequences/drought_sequences.csv')
+    elif dataset == 'sequences':
+        sequences_path = os.path.join(root_dir, 'metadata/drought_sequences.csv')
         seq_df = pd.read_csv(sequences_path, index_col=0, header=0)
-        climates['sequences'] = seq_df.columns
+        climates['sequences'] = seq_df.index
+
+    else:
+        raise Exception("No dataset defined.")
 
     tasks = ["pre", "common", "basins"]
     # tasks = ["pre"]
@@ -156,4 +156,8 @@ def preprocess_hydrology():
 
 
 if __name__ == '__main__':
-    preprocess_hydrology()
+    # datasets = ['historical', 'gcms']
+    datasets = ['sequences']
+
+    for dataset in datasets:
+        preprocess_hydrology(dataset)
