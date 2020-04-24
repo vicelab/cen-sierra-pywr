@@ -26,7 +26,6 @@ def run_model(climate,
               scenarios=None,
               show_progress=False,
               data_path=None):
-
     print("Running \"{}\" scenario for {} basin, {} climate".format(run_name, basin.upper(), climate.upper()))
 
     climate_set, climate_scenario = climate.split('/')
@@ -50,9 +49,9 @@ def run_model(climate,
         elif climate_set == 'sequences':
             # name format is N01_S01, where N01 refers to the number of drought years
             # the total number of years is 1 + N + 2 (1 year at the end as a buffer)
-            N = int(climate_scenario.split('_')[0].replace('N', ''))
+            N = int(climate_scenario.split('Y')[1].split('_')[0])
             start_year = 2000
-            end_year = start_year + 1 + N + 2
+            end_year = start_year + N + 1
         else:
             raise Exception("Climate scenario unknown")
         start = '{}-10-01'.format(start_year)

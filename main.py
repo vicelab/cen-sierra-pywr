@@ -4,6 +4,7 @@ import argparse
 from itertools import product
 from run_basin_model import run_model
 from functools import partial
+import pandas as pd
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-b", "--basin", help="Basin to run")
@@ -73,10 +74,8 @@ if args.scenario_set:
             gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
             climate_sets['gcms'] = gcm_rcps
         if 'sequences' in climates:
-            sequences_file = os.path.join(data_path, 'common/hydrology/sequences/drought_sequences.csv')
-            with open(sequences_file) as f:
-                sequences = f.readline().split(',')[1:]
-            climate_sets['sequences'] = sequences
+            sequences_file = os.path.join(data_path, 'metadata/drought_sequences.csv')
+            climate_sets['sequences'] = pd.read_csv(sequences_file, index_col=0, header=0).index
 
 climate_scenarios = []
 for climate_set, scenarios in climate_sets.items():
