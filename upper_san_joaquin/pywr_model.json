@@ -5443,6 +5443,10 @@
         }
     },
     "parameters": {
+        "Price Year": {
+            "type": "Constant",
+            "value": 2009
+        },
         "Bass Lake/Volume Elevation Curve": {
             "type": "interpolatedvolume",
             "node": "Bass Lake",
