@@ -1,9 +1,10 @@
 import os
 from itertools import product
 import preprocessing.hydrology.common as common
-import preprocessing.hydrology.upper_san_joaquin as usj
 import preprocessing.hydrology.stanislaus as stn
+import preprocessing.hydrology.tuolumne as tuo
 import preprocessing.hydrology.merced as mer
+import preprocessing.hydrology.upper_san_joaquin as usj
 import pandas as pd
 
 import multiprocessing as mp
@@ -11,14 +12,16 @@ import multiprocessing as mp
 # import preprocessing.tuolumne as tuo
 
 root_dir = os.environ.get('SIERRA_DATA_PATH', '../data')
+metadata_path = os.path.join(root_dir, 'metadata')
 
+def process_basin_climate(tasks, basin, dataset, climate):
+    print("Processing {}: {}/{}".format(basin, dataset, climate))
 
-def process_basin_climate(tasks, basin, climate):
-    print("Processing {}: {}".format(basin, climate))
     basin_path = os.path.join(root_dir, '{} River'.format(basin.title()))
     hydrology_path = os.path.join(basin_path, 'hydrology')
-    climate_path = os.path.join(hydrology_path, climate)
+    climate_path = os.path.join(hydrology_path, dataset, climate)
     preprocessed_path = os.path.join(climate_path, 'preprocessed')
+    precipitation_path = os.path.join(climate_path, 'precipitation')
 
     # before processing hydrology
     if "pre" in tasks:
@@ -52,6 +55,14 @@ def process_basin_climate(tasks, basin, climate):
             # print("Disaggregating SJN_09 subwatershed...")
             usj.disaggregate_SJN_09_subwatershed(climate_path)
 
+        if basin == 'tuolumne' and dataset == 'sequences':
+            sequence_name = climate
+            source_path = os.path.join(root_dir, 'Tuolumne River/hydrology/historical/Livneh/precipitation')
+            dest_path = precipitation_path
+            if not os.path.exists(dest_path):
+                os.makedirs(dest_path)
+            tuo.hh_precip_from_Livneh(metadata_path, sequence_name, source_path, dest_path)
+
     # preprocess hydrology
     if "common" in tasks:
         # print("Aggregating subwatersheds...")
@@ -82,7 +93,7 @@ def process_basin_climate(tasks, basin, climate):
             usj.calculate_millerton_snowmelt_inflow(src, dst)
 
 
-def preprocess_hydrology(dataset, basins_to_process=None):
+def preprocess_hydrology(dataset, basins_to_process=None, debug=False):
 
     basins_to_process = basins_to_process or ['stn', 'tuo', 'mer', 'usj']
 
@@ -123,34 +134,33 @@ def preprocess_hydrology(dataset, basins_to_process=None):
     tasks = ["pre", "common", "basins"]
     # tasks = ["pre"]
 
-    climate_paths = []
+    all_climates = []
     for k, values in climates.items():
         for v in values:
-            climate_paths.append('{}/{}'.format(k, v))
+            all_climates.append((k, v))
 
-    basin_climates = list(product(basins_to_process, climate_paths))
+    basin_climates = list(product(basins_to_process, all_climates))
 
     # basin-specific tasks; these can be parallelized
-    debug = False
     if debug:
-        for b, climate in basin_climates:
+        for b, (d, c) in basin_climates:
             basin = basins[b]['name']
-            process_basin_climate(tasks, basin, climate)
+            process_basin_climate(tasks, basin, d, c)
 
     else:
         num_cores = mp.cpu_count() - 1
         pool = mp.Pool(processes=num_cores)
         print("Starting processing...")
-        for b, climate in basin_climates:
+        for b, (d, c) in basin_climates:
             basin = basins[b]['name']
-            pool.apply_async(process_basin_climate, (tasks, basin, climate))
+            pool.apply_async(process_basin_climate, (tasks, basin, d, c))
 
         pool.close()
         pool.join()
 
     # common tasks
-    for climate in climate_paths:
-        common.calculate_sjvi(climate)
+    for (dataset, climate) in all_climates:
+        common.calculate_sjvi('/'.join([dataset, climate]))
 
     print('done!')
 
@@ -160,4 +170,4 @@ if __name__ == '__main__':
     datasets = ['sequences']
 
     for dataset in datasets:
-        preprocess_hydrology(dataset)
+        preprocess_hydrology(dataset, basins_to_process=['tuo'], debug=True)
