@@ -431,8 +431,9 @@ layout_switches = dbc.FormGroup(
                 {"label": "Compact", "value": "compact"},
                 {"label": "FD curves", "value": "flow-duration"},
                 # {"label": "Disabled Option", "value": 3, "disabled": True},
+                {"label": "Toolbar", "value": "toolbar"}
             ],
-            value=["flow-duration"],
+            value=["flow-duration", "toolbar"],
             switch=True,
         ),
     ]

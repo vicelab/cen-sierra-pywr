@@ -31,6 +31,8 @@ PALETTES = {
     'P2060': 'OrRd_r'
 }
 
+FLOOD_CONTROL_RESERVOIRS = ['New Melones Lake', 'Lake Tulloch', 'Don Pedro Reservoir', 'Millerton Lake']
+
 percentiles_ordered = {
     ('median', 'quartiles'): ['quartiles', 'median'],
     ('median', 'quartiles', 'range'): ['range', 'quartiles', 'median'],
@@ -140,6 +142,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     layout = kwargs.get('layout_options', [])
     compact = kwargs.get('compact', False)
     show_fd = 'flow-duration' in layout and not compact
+    show_fc = 'guide' in constraints
     color_idx = -1
 
     # Variables for observed data
@@ -148,7 +151,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     gauge_name = gauge_lookup.get(res_name, res_name)
 
     fc_df = None
-    if attr == 'storage' and res_name in ['New Melones Lake', 'Lake Tulloch', 'Don Pedro Reservoir', 'Millerton Lake']:
+    if attr == 'storage' and show_fc and res_name in FLOOD_CONTROL_RESERVOIRS:
         basin = kwargs.get('basin')
         basin_full_name = '{} River'.format(BASINS[basin])
         data_path = os.environ['SIERRA_DATA_PATH']
@@ -173,7 +176,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
         )
 
     for i, forcing in enumerate(set(all_sim_vals.columns.get_level_values(0))):
-        parts = forcing.split('_')
+        parts = forcing.split('/')[1].split('_')
         rcp = None
         if len(parts) == 1:
             gcm, = parts
@@ -200,7 +203,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
             if scenario_combo:
                 scenario_name = '{} {}'.format(tuple(parts), scenario_combo)
             else:
-                scenario_name = '{}'.format(tuple(parts))
+                scenario_name = '-'.join(tuple(parts))
 
             if not scenario_combo:
                 sim_vals = resource_scenario_sim_vals
@@ -331,14 +334,14 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     pbias = 100
     nse = -1
 
-    if calibration and obs_vals is not None and not metric:
+    if calibration and obs_resampled is not None and not metric:
 
         # flow-duration curve
-        N = len(obs_vals)
+        N = len(obs_resampled)
         if show_fd:
             fd_data.insert(0,
                            go.Scatter(
-                               y=sorted(obs_vals.values),
+                               y=sorted(obs_resampled.values),
                                x=np.arange(0, N) / N * 100,
                                name=OBSERVED_TEXT,
                                text=OBSERVED_TEXT,
@@ -435,7 +438,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
     ylabel = AXIS_LABELS.get(attr, 'unknown')
 
     CLASS_NAME = 'timeseries-chart'
-    PLOTLY_CONFIG['displayModeBar'] = not compact
+    PLOTLY_CONFIG['displayModeBar'] = not compact and 'toolbar' in layout
 
     if compact:
         style = {
@@ -562,7 +565,7 @@ def timeseries_collection(tab, **kwargs):
     kwargs['calibration'] = calibration
 
     if calibration:
-        forcings = ['Livneh']
+        forcings = ['historical/Livneh']
     else:
         # rcp = 'rcp85'
         forcings = list(product(climates, rcps))
