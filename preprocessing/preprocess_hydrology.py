@@ -14,6 +14,7 @@ import multiprocessing as mp
 root_dir = os.environ.get('SIERRA_DATA_PATH', '../data')
 metadata_path = os.path.join(root_dir, 'metadata')
 
+
 def process_basin_climate(tasks, basin, dataset, climate):
     print("Processing {}: {}/{}".format(basin, dataset, climate))
 
@@ -94,7 +95,6 @@ def process_basin_climate(tasks, basin, dataset, climate):
 
 
 def preprocess_hydrology(dataset, basins_to_process=None, debug=False):
-
     basins_to_process = basins_to_process or ['stn', 'tuo', 'mer', 'usj']
 
     basins = {
@@ -162,12 +162,10 @@ def preprocess_hydrology(dataset, basins_to_process=None, debug=False):
     for (dataset, climate) in all_climates:
         common.calculate_sjvi('/'.join([dataset, climate]))
 
-    print('done!')
-
 
 if __name__ == '__main__':
-    # datasets = ['historical', 'gcms']
-    datasets = ['sequences']
+    datasets = ['historical', 'gcms']
+    # datasets = ['sequences']
 
     for dataset in datasets:
-        preprocess_hydrology(dataset, basins_to_process=['tuo'], debug=True)
+        preprocess_hydrology(dataset, basins_to_process=['stn'], debug=False)
