@@ -27,7 +27,10 @@ debug = args.debug
 include_planning = args.include_planning
 multiprocessing = args.multiprocessing
 
-data_path = os.environ.get('SIERRA_DATA_PATH')
+try:
+    data_path = os.environ['SIERRA_DATA_PATH']
+except:
+    raise Exception("SIERRA_DATA_PATH must be defined in your environment")
 
 start = None
 end = None
@@ -127,6 +130,7 @@ else:
 
     else:
         import multiprocessing as mp
+
         num_cores = mp.cpu_count() - 1
 
         pool = mp.Pool(processes=num_cores)
