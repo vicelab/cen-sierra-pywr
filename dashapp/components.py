@@ -225,6 +225,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
 
             # Prepare observed data
             if i == 0:
+                obs_resampled = None
                 if calibration and gauge_name in df_obs:
                     obs_vals = df_obs[gauge_name]
 

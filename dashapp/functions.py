@@ -65,7 +65,7 @@ def load_timeseries(results_path, basin, forcings, res_type, res_attr, basin_sce
 
         start = 1
         end = start + len(df.columns.names[1:-1])
-        levelvals = df.columns.levels[start:end + 1]
+        levelvals = range(1, df.columns.nlevels)
         for i, val in enumerate(levelvals):
             if len(val) > 1:
                 df.drop(val[1:], axis=1, level=1, inplace=True)

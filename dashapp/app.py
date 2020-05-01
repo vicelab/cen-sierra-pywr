@@ -20,7 +20,10 @@ external_stylesheets = [dbc.themes.BOOTSTRAP]
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.config.suppress_callback_exceptions = True
-datapath = os.environ.get('SIERRA_DATA_PATH', '../data')
+try:
+    datapath = os.environ['SIERRA_DATA_PATH']
+except:
+    raise Exception("SIERRA_DATA_PATH must be defined in your environment")
 opath = '{root}/{{basin}}/gauges/{{attr}}.csv'.format(root=datapath)
 
 source_text = {'simulated': 'Simulated', 'observed': 'Observed'}
@@ -142,11 +145,7 @@ for basin in ['stn', 'tuo', 'mer', 'usj']:
     nodes = {n['name']: n for n in m['nodes']}
 
     # load scenarios
-    price_scenario = {
-        'name': 'Price Year',
-        'size': 2
-    }
-    basin_scenarios = [price_scenario] + m.get('scenarios', [])
+    basin_scenarios = m.get('scenarios', [])
     SCENARIOS[basin] = basin_scenarios
 
     for recorder in m['recorders']:
