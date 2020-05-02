@@ -27,7 +27,7 @@ def create_forecasted_hydrology(scenario_path):
     debug = False
     month_columns = ['{:02}'.format(i) for i in range(1, 13)]
 
-    runoff_dir = 'runoff'
+    runoff_dir = 'runoff_aggregated'
     runoff_dir_path = os.path.join(scenario_path, runoff_dir)
     #         print(runoff_dir)
     runoff_dir_monthly = runoff_dir_path.replace(runoff_dir, 'runoff_monthly')
