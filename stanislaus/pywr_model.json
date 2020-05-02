@@ -586,12 +586,7 @@
         {
             "name": "New Melones Lake",
             "type": "Reservoir",
-            "initial_volume": {
-                "type": "constant",
-                "table": "Initial Storage",
-                "index": "2000-09-30",
-                "column": "USGS 11299000 NEW MELONES RES NR SONORA CA"
-            },
+            "initial_volume": 1500,
             "max_volume": 2985,
             "min_volume": 500,
             "cost": "New Melones Lake/Storage Value",
