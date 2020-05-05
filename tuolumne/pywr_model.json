@@ -767,7 +767,7 @@
             "initial_volume": 2082.0,
             "max_volume": 2504.0,
             "min_volume": 1000,
-            "level": "Don Pedro Reservoir/Volume Elevation Curve",
+            "level": "Don Pedro Reservoir/Elevation",
             "cost": "Don Pedro Reservoir/Cost",
             "gauge": "USGS 11287500 DON PEDRO RES NR LA GRANGE CA"
         },
@@ -2587,7 +2587,7 @@
             "type": "constant",
             "value": -10
         },
-        "Don Pedro Reservoir/Volume Elevation Curve": {
+        "Don Pedro Reservoir/Elevation": {
             "type": "interpolatedvolume",
             "node": "Don Pedro Reservoir",
             "volumes": [
@@ -3067,6 +3067,14 @@
         "Don Pedro Reservoir/elevation": {
             "type": "NumpyArrayLevelRecorder",
             "node": "Don Pedro Reservoir"
+        },
+        "Don Pedro PH/energy": {
+            "type": "HydropowerRecorder",
+            "node": "Don Pedro PH",
+            "water_elevation_parameter": "Don Pedro Reservoir/Elevation",
+            "turbine_elevation": 88.4,
+            "efficiency": 0.85,
+            "flow_unit_conversion": 1e3
         },
         "Don Pedro Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
