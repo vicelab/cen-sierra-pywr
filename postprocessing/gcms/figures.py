@@ -1,16 +1,17 @@
 import os
 from os.path import join, exists
+import json
 from itertools import product
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-SCENARIOS = 'GCMs test'
+CLIMATES = 'GCMs test'
 
 data_dir = os.environ['SIERRA_DATA_PATH']
 results_dir = join(data_dir, 'results')
-climates_dir = join(results_dir, SCENARIOS)
-figs_path = join(results_dir, 'figures', SCENARIOS)
+climates_dir = join(results_dir, CLIMATES)
+figs_path = join(results_dir, 'figures', CLIMATES)
 if not exists(figs_path):
     os.makedirs(figs_path)
 
@@ -19,16 +20,19 @@ basin_dir_tpl = join(climates_dir, '{basin}/{climate}')
 basins = list(d for d in os.listdir(climates_dir))
 
 gcms = ['CanESM2', 'CNRM-CM5', 'HadGEM2-ES', 'MIROC5']
-gcm_rcps = [gcm + '_rcp85' for gcm in gcms]
-climates = ['Livneh'] + gcm_rcps
+gcm_rcps = ['gcms/{}_rcp85'.format(gcm) for gcm in gcms]
+climates = ['historical/Livneh'] + gcm_rcps
 
-basin_scenarios = list(product(basins, climates))
+basin_climates = list(product(basins, climates))
 
 # Reservoir storage
 RIM_RESERVOIRS = ['New Melones Lake', 'Don Pedro Reservoir', 'Lake McClure', 'Millerton Lake']
 WATER_BANK = 'Don Pedro Water Bank'
 
-SKIP_ROWS = [1, 2]
+# SKIP_ROWS = [1, 2]
+SKIP_ROWS = []
+
+MONTHS = ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
 
 
 def read_csv(path, index_name='date', **kwargs):
@@ -50,46 +54,144 @@ def get_common_columns(*args):
     return sorted(list(set(all_cols)))
 
 
-def get_water_years(index):
-    return [d.year if d.month < 10 else d.year + 1 for d in index]
+def get_water_years(dates):
+    return [d.year if d.month < 10 else d.year + 1 for d in dates]
+
+
+def get_water_months(dates):
+    return [d.month + 3 if d.month < 10 else d.month - 9 for d in dates]
+
+
+NODES = {
+    'McSwain PH': {
+        'head': 16.46,
+        'turbine_capacity': 76.45
+    },
+    'Merced Falls PH': {
+        'head': 7.92,
+        'turbine_capacity': 49.55
+    },
+    'New Exchequer PH': {
+        'head': 'Lake McClure',
+        'turbine_capacity': 8.12
+    },
+    'Don Pedro PH': {
+        'head': 'Don Pedro Reservoir'
+    }
+}
 
 
 def create_basic_charts(variable, figname=None):
     df = pd.DataFrame()
     for basin in basins:
-        scenario_dfs = []
+        climate_dfs = []
         print('Processing {}'.format(basin))
         for climate in climates:
-            scenario_dir = join(climates_dir, basin, climate)
-            variable_path = join(scenario_dir, variable + '.csv')
+            climate_dir = join(climates_dir, basin, climate)
 
-            _df = pd.read_csv(variable_path, header=0, index_col=0, skiprows=[1, 2], parse_dates=True)
+            if variable == 'Hydropower_Generation_MWh':
+                variable_path = join(climate_dir, 'Hydropower_Flow_mcm.csv')
+            else:
+                variable_path = join(climate_dir, variable + '.csv')
+
+            _df = read_csv(variable_path)
             _df.index.name = 'date'
-            _df['scenario'] = climate
+
+            if variable == 'Hydropower_Generation_MWh':
+
+                # load model
+                model_path = '../../{}/pywr_model.json'.format(basin)
+                with open(model_path) as f:
+                    model = json.load(f)
+
+                # get elevations
+                elev_path = join(climate_dir, 'Reservoir_Elevation_m.csv')
+                if os.path.exists(elev_path):
+                    elev = read_csv(elev_path)
+                else:
+                    elev = None
+
+                keepers = []
+                eta = 0.85
+                gamma = 9810  # = rho * g = 1000 * 9.81
+                nodes = {n['name']: n for n in model['nodes']}
+                for ph in _df:
+                    node = nodes[ph]
+                    Q = _df[ph] / 0.0864  # convert to mcm
+                    h = node.get('head', NODES.get(ph, {}).get('head'))  # m
+                    if type(h) == str and elev is not None:
+                        h = elev.get(h)
+                    elif type(h) not in [int, float]:
+                        h = None
+                    if h is None:
+                        continue
+                    keepers.append(ph)
+                    Qmax = node.get('turbine_capacity')  # cms
+                    if type(Qmax) not in [int, float]:
+                        Qmax = NODES.get(ph, {}).get('turbine_capacity', 0)
+                    Q = Q.map(lambda q: min(q, Qmax))
+                    MWh = eta * gamma * Q * h * 24 / 1e6
+                    _df[ph] = MWh
+
+                _df = _df[keepers]
+
+            _df['climate'] = climate
             _df.reset_index(inplace=True)
-            _df.set_index(['date', 'scenario'], inplace=True)
-            scenario_dfs.append(_df)
-        basin_df = pd.concat(scenario_dfs, axis=1).sum(axis=1).to_frame()
+            _df.set_index(['date', 'climate'], inplace=True)
+            climate_dfs.append(_df)
+        basin_df = pd.concat(climate_dfs, axis=1).sum(axis=1).to_frame()
         basin_df['basin'] = basin
-        basin_df = basin_df.reset_index().set_index(['date', 'basin', 'scenario'])
+        basin_df = basin_df.reset_index().set_index(['climate', 'basin', 'date'])
         basin_df.columns = [variable]
         df = df.append(basin_df)
 
-    # annual
-    # df_annual = df.resample('YS').mean().sum(axis=1)
 
-    df.reset_index(inplace=True)
+    ylabel_parts = variable.split('_')
+    ylabel = ' '.join(ylabel_parts[:2] + ['({})'.format(ylabel_parts[-1])])
+    if 'MWh' in ylabel:
+        ylabel = ylabel.replace('MWh', 'GWh')
 
-    # boxplots
-    fig, ax = plt.subplots(figsize=(12, 6))
-    sns.boxplot(data=df, x='basin', y=variable, hue='scenario', ax=ax)
+    # monthly box plots
+    df_monthly = df.copy()
+    # df_monthly['WM'] = get_water_months(df_monthly.reset_index()['date'])
+    level_values = df_monthly.index.get_level_values
+    groups = [pd.Grouper(level='climate'), pd.Grouper(level='basin'), pd.Grouper(level='date', freq='MS')]
+    df_monthly = df_monthly.groupby(groups).sum() / 1e3
+    df_monthly['WM'] = get_water_months(df_monthly.reset_index()['date'])
+    df_monthly = df_monthly.reindex(level='climate', index=climates)
+    df_monthly.reset_index(inplace=True)
+    N = len(basins)
+    fig1, axes = plt.subplots(N, figsize=(10, 4*N))
+    for i, basin in enumerate(basins):
+        ax = axes[i]
+        data = df_monthly[df_monthly['basin']==basin]
+        sns.boxplot(data=data, x='WM', y=variable, hue='climate', ax=ax)
+        ax.set_title(basin)
+        ax.set_ylabel(ylabel)
+        ax.legend(loc='lower right')
+        ax.set_xticklabels(MONTHS)
+        ax.set_xlabel('Month', size=12)
 
     plt.show()
-
     if not figname:
         figname = variable
-    figpath = join(figs_path, figname + '.png')
-    fig.savefig(figpath, dpi=300)
+    figpath = join(figs_path, figname + '_monthly.png')
+    fig1.savefig(figpath, dpi=600)
+
+    # annual box plots by basin
+    df_annual = df.copy()
+    df_annual['WY'] = get_water_years(df_annual.reset_index()['date'])
+    df_annual = df_annual.reset_index().groupby(['basin', 'climate', 'WY']).sum() / 1000
+    df_annual = df_annual.reindex(level='climate', index=climates)
+    df_annual.reset_index(inplace=True)
+    fig2, ax = plt.subplots(figsize=(12, 6))
+    sns.boxplot(data=df_annual, x='basin', y=variable, hue='climate', ax=ax)
+    ax.set_ylabel(ylabel)
+    plt.show()
+    if not figname:
+        figname = variable
+    figpath = join(figs_path, figname + '_annual.png')
+    fig2.savefig(figpath, dpi=600)
 
     return
 
@@ -98,11 +200,11 @@ def create_spill_charts():
     spill_df = pd.DataFrame()
     for climate in climates:
         for basin in basins:
-            scenario_dir = join(climates_dir, basin, climate)
+            climate_dir = join(climates_dir, basin, climate)
 
             var = 'InstreamFlowRequirement_{var}_mcm.csv'
-            flow_path = join(scenario_dir, var.format(var='Flow'))
-            min_flow_path = join(scenario_dir, var.format(var='Min Flow'))
+            flow_path = join(climate_dir, var.format(var='Flow'))
+            min_flow_path = join(climate_dir, var.format(var='Min Flow'))
 
             flow_df = read_csv(flow_path)
 
@@ -132,7 +234,7 @@ def create_spill_charts():
     # plots by facility
     df2 = df.groupby(['climate', 'WY']).sum() / 1233.5
     N = len(df2.columns)
-    fig, axes = plt.subplots(N, 1, figsize=(8, 3*N))
+    fig, axes = plt.subplots(N, 1, figsize=(8, 3 * N))
     for i, loc in enumerate(df2.columns):
         ax = axes[i]
         data = df2[loc].reset_index()
@@ -158,5 +260,6 @@ def create_spill_charts():
 if __name__ == '__main__':
     # create_basic_charts('Reservoir_Storage_mcm')
     # create_basic_charts('Hydropower_Flow_mcm')
+    create_basic_charts('Hydropower_Generation_MWh')
 
-    create_spill_charts()
+    # create_spill_charts()

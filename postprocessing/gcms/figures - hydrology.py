@@ -41,6 +41,10 @@ def create_box_plots():
             scenario_dir = os.path.join(data_dir, basin_name, 'hydrology', climate)
             fnf_path = os.path.join(scenario_dir, 'preprocessed', 'full_natural_flow_annual_mcm.csv')
             _df = pd.read_csv(fnf_path, index_col=0, header=0)
+
+            if 'gcms' in climate:
+                _df = _df.loc[range(2030, 2061)]
+
             _df['climate'] = climate
             _df['basin'] = basin
             _df.reset_index(inplace=True)
@@ -62,7 +66,6 @@ def create_box_plots():
 
 
 def create_monthly_plots():
-
     df = pd.DataFrame()
     climates.insert(0, 'historical/Livneh')
     for climate in climates:
