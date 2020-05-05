@@ -367,7 +367,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
             obs_data = None
             if percentiles_type == 'timeseries':
                 obs_data = percentile_timeseries_graphs(obs_cons, OBSERVED_TEXT, percentiles, color=OBSERVED_COLOR)
-            elif percentiles_type == 'boxplot':
+            elif percentiles_type == 'boxplots':
                 obs_data = boxplots_graphs(obs_cons, OBSERVED_TEXT, percentiles, color=OBSERVED_COLOR)
             ts_data.extend(obs_data)
         else:
