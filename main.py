@@ -16,6 +16,7 @@ parser.add_argument("-sc", "--scenario_set", help="Scenario set")
 parser.add_argument("-mp", "--multiprocessing", help="Multiprocessing protocol (omit for none)")
 parser.add_argument("-s", "--start_year", help="Start year", type=int)
 parser.add_argument("-e", "--end_year", help="End year", type=int)
+parser.add_argument("-y", "--years", help="Years to run (useful for debugging)", type=int)
 parser.add_argument("-m", "--planning_months", help="Planning months", type=int)
 parser.add_argument("-n", "--run_name", help="Run name")
 parser.add_argument("-pb", "--progress_bar", help="Show progress bar", action='store_true')
@@ -100,9 +101,10 @@ kwargs = dict(
     use_multiprocessing=multiprocessing is not None,
     start=start,
     end=end,
+    years=args.years,
     data_path=data_path,
     scenarios=scenarios,
-    show_progress=args.progress_bar
+    show_progress=args.progress_bar,
 )
 
 if not multiprocessing:  # serial processing for debugging

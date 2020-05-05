@@ -754,8 +754,7 @@
             "name": "Don Pedro PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
-            "head": 170.0,
-            "turbine_capacity": 2.2018972058846833,
+            "turbine_capacity": 2.2,
             "cost": [
                 -1
             ],
@@ -925,7 +924,7 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 377.952,
-            "turbine_capacity": 2.2018972058846833,
+            "turbine_capacity": 1.6,
             "cost": [
                 -1
             ],
@@ -3064,6 +3063,10 @@
         "Don Pedro Lake Flood Control/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Don Pedro Lake Flood Control"
+        },
+        "Don Pedro Reservoir/elevation": {
+            "type": "NumpyArrayLevelRecorder",
+            "node": "Don Pedro Reservoir"
         },
         "Don Pedro Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",

@@ -17,6 +17,7 @@ SECONDS_IN_DAY = 3600 * 24
 def run_model(climate,
               basin,
               start=None, end=None,
+              years=None,
               run_name="default",
               include_planning=False,
               simplify=True,
@@ -293,8 +294,8 @@ def run_model(climate,
         print('Monthly overhead: {} seconds ({:02}% of total)'.format(monthly_seconds, monthly_pct))
 
     # save results to CSV
-    results = m.to_dataframe()
-    results.index.name = 'Date'
+    results_df = m.to_dataframe()
+    results_df.index.name = 'Date'
     scenario_name = climate
     scenario_names = [s.name for s in m.scenarios.scenarios]
     if not scenario_names:
@@ -308,11 +309,17 @@ def run_model(climate,
     if df_planning is not None:
         df_planning.to_csv(os.path.join(results_path, 'planning_debug.csv'))
 
-    # results.columns = results.columns.droplevel(1)
+    # Drop extraneous row
+    has_scenarios = True
+    recorder_items = results_df.columns.get_level_values(0)
+    if len(results_df.columns) == len(recorder_items):
+        has_scenarios = False
+        results_df.columns = results_df.columns.droplevel(1)
+
     columns = {}
     # nodes_of_type = {}
-    for c in results.columns:
-        res_name, attr = c[0].split('/')
+    for c in results_df.columns:
+        res_name, attr = (c[0] if has_scenarios else c).split('/')
         if res_name in m.nodes:
             node = m.nodes[res_name]
             _type = type(node).__name__
@@ -324,26 +331,29 @@ def run_model(climate,
         else:
             columns[key] = [c]
         # nodes_of_type[_type] = nodes_of_type.get(_type, []) + [node]
+
     for (_type, attr), cols in columns.items():
         if attr == 'elevation':
             unit = 'm'
+        elif attr == 'energy':
+            unit = 'MWh'
         else:
             unit = 'mcm'
         tab_path = os.path.join(results_path, '{}_{}_{}'.format(_type, attr.title(), unit))
-        df = results[cols]
-        if scenario_names:
+        df = results_df[cols]
+        if has_scenarios:
             new_cols = [tuple([col[0].split('/')[0]] + list(col[1:])) for col in cols]
             df.columns = pd.MultiIndex.from_tuples(new_cols)
             df.columns.names = ["node"] + scenario_names
         else:
-            new_cols = [col[0].split('/')[0] for col in cols]
-            df.columns = new_cols
+            df.columns = [c.split('/')[0] for c in df.columns]
         df.to_csv(tab_path + '.csv')
 
-        if _type in ['Hydropower', 'PiecewiseHydropower'] and attr == 'flow':
-            gen_df = df.copy()
-            gen_path = os.path.join(results_path, '{}_Generation_MWh.csv'.format(_type))
-            for c in df.columns:
-                node = m.nodes[c[0]]
-                gen_df *= node.head * 0.9 * 9.81 * 1000 / 1e6 * 24
-                gen_df.to_csv(gen_path)
+        # if _type in ['Hydropower', 'PiecewiseHydropower'] and attr == 'flow':
+        #     gen_df = df.copy()
+        #     gen_path = os.path.join(results_path, '{}_Generation_MWh.csv'.format(_type))
+        #     for c in df.columns:
+        #         node_name = c[0] if has_scenarios else c
+        #         node = m.nodes[node_name]
+        #         gen_df *= node.head * 0.9 * 9.81 * 1000 / 1e6 * 24
+        #         gen_df.to_csv(gen_path)
