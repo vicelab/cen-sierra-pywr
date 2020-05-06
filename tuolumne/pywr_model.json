@@ -711,7 +711,7 @@
             "min_volume": 123.35,
             "initial_volume": 145.7,
             "max_volume": 338.2,
-            "level": "Cherry Lake/Volume Elevation Curve",
+            "level": "Cherry Lake/Elevation",
             "cost": "Cherry Lake/Cost",
             "gauge": "USGS 11277200 CHERRY LK NR HETCH HETCHY CA"
         },
@@ -822,7 +822,7 @@
             "initial_volume": 353,
             "max_volume": 444.6,
             "min_volume": 123.3,
-            "level": "Hetch Hetchy Reservoir/Volume Elevation Curve",
+            "level": "Hetch Hetchy Reservoir/Elevation",
             "cost": "Hetch Hetchy Reservoir/Cost",
             "gauge": "USGS 11275500 HETCH HETCHY RES A HETCH HETCHY CA"
         },
@@ -890,7 +890,7 @@
             "initial_volume": 18.13,
             "max_volume": 33.92,
             "min_volume": 0,
-            "level": "Lake Eleanor/Volume Elevation Curve",
+            "level": "Lake Eleanor/Elevation",
             "cost": "Lake Eleanor/Cost",
             "gauge": "USGS 11277500 LK ELEANOR NR HETCH HETCHY CA"
         },
@@ -2532,7 +2532,7 @@
             "type": "constant",
             "value": -50
         },
-        "Cherry Lake/Volume Elevation Curve": {
+        "Cherry Lake/Elevation": {
             "type": "interpolatedvolume",
             "node": "Cherry Lake",
             "volumes": [
@@ -2669,7 +2669,7 @@
             "parse_dates": true,
             "squeeze": true
         },
-        "Hetch Hetchy Reservoir/Volume Elevation Curve": {
+        "Hetch Hetchy Reservoir/Elevation": {
             "type": "interpolatedvolume",
             "node": "Hetch Hetchy Reservoir",
             "volumes": [
@@ -2758,7 +2758,7 @@
             "type": "constant",
             "value": -55
         },
-        "Lake Eleanor/Volume Elevation Curve": {
+        "Lake Eleanor/Elevation": {
             "type": "interpolatedvolume",
             "node": "Lake Eleanor",
             "volumes": [
@@ -3067,14 +3067,6 @@
         "Don Pedro Reservoir/elevation": {
             "type": "NumpyArrayLevelRecorder",
             "node": "Don Pedro Reservoir"
-        },
-        "Don Pedro PH/energy": {
-            "type": "HydropowerRecorder",
-            "node": "Don Pedro PH",
-            "water_elevation_parameter": "Don Pedro Reservoir/Elevation",
-            "turbine_elevation": 88.4,
-            "efficiency": 0.85,
-            "flow_unit_conversion": 1e3
         },
         "Don Pedro Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
