@@ -1,10 +1,10 @@
+import pandas as pd
 import numpy as np
 from datetime import timedelta
 from parameters import WaterLPParameter
 
 
 class Eleanor_Cherry_Pumping_Station_Requirement(WaterLPParameter):
-
     can_pump = None
     prev_pumping = None
 
@@ -24,45 +24,60 @@ class Eleanor_Cherry_Pumping_Station_Requirement(WaterLPParameter):
         if timestep.datetime.dayofyear == 1:
             self.can_pump[sid] = False
 
-        EL_storage = EL.volume[scenario_index.global_id]
+        EL_storage_mcm = EL.volume[sid]
+        prev_pumping = self.prev_pumping[sid]
 
-        # Turn pumping on if reservoir is full
-        if EL_storage >= EL.max_volume * 0.95:
-            self.can_pump[sid] = True
-
-        EL_CH_transfer_mcm = 0.0
-
-        if not self.can_pump[sid]:
-            self.prev_pumping[sid] = 0.0
-            return 0.0
+        self.can_pump[sid] = EL_storage_mcm >= 20.36 or prev_pumping and timestep.index % 7
 
         # If we start pumping, keep pumping for 1 week
-        if timestep.index % 7 != 0 and self.prev_pumping[sid]:
-            return self.prev_pumping[sid]
+        if timestep.index % 7 and prev_pumping:
+            return prev_pumping
 
         self.prev_pumping[sid] = 0.0
 
-        available_storage = EL.max_volume - EL_storage
-
-        start = timestep.datetime
-        end = start + timedelta(days=60)
-        forecast = self.model.parameters["Lake Eleanor Inflow/Runoff"].dataframe[start:end].sum()
-
-        # Reading the preferred storage for the current time step
-        storage_target_mcm \
-            = self.model.tables["Lake Eleanor Pumping Thresholds"][timestep.datetime.dayofyear] / 1000 * 1.2335
+        # Initial transfer (none)
+        EL_CH_transfer_mcm = 0.0
 
         # If Eleanor will likely spill and current storage is above the target storage, then pump
-        if forecast >= available_storage and EL_storage >= storage_target_mcm:
 
-            CH_elev = self.model.nodes["Cherry Lake"].get_level(scenario_index)
-            EL_elev = self.model.nodes["Lake Eleanor"].get_level(scenario_index)
+        # get forecasted spill (60 days out; assume perfect foresight)
+        start = timestep.datetime
+        end = start + timedelta(days=60)
+        forecast_dates = pd.date_range(start, end)
+        forecasted_inflow_mcm = self.model.parameters["Lake Eleanor Inflow/Runoff"].dataframe[forecast_dates].sum()
+
+        # get forecasted IFR
+        forecasted_ifr_mcm = 0
+        for date in forecast_dates:
+            md = (date.month, date.day)
+            if (4, 1) <= md <= (5, 14) or (9, 16) <= md <= (10, 31):
+                ifr_cfs = 10
+            elif (5, 15) <= md <= (9, 15):
+                ifr_cfs = 20
+            else:
+                ifr_cfs = 5
+            forecasted_ifr_mcm += ifr_cfs / 35.315 * 0.0864
+
+        forecasted_inflow_mcm -= forecasted_ifr_mcm
+        
+        # get available storage
+        available_storage = EL.max_volume - EL_storage_mcm
+
+        if forecasted_inflow_mcm >= available_storage:
+
+            # Get storage target
+            # storage_target_mcm \
+            #     = self.model.tables["Lake Eleanor Pumping Thresholds"][timestep.datetime.dayofyear] / 1000 * 1.2335
+
+            CH = self.model.nodes["Cherry Lake"]
+
+            CH_elev = CH.get_level(scenario_index)
+            EL_elev = EL.get_level(scenario_index)
             EL_CH_head_m = EL_elev - CH_elev
             EL_CH_head_ft = EL_CH_head_m / 3.048
 
             gravity_flow_mcm = 0.0
             pumping_flow_mcm = 0.0
-            max_release = 2.447  # TODO: double check this number
 
             # Gravity flow (Eleanor is higher than Cherry)
             if EL_CH_head_m > 0:
@@ -70,15 +85,15 @@ class Eleanor_Cherry_Pumping_Station_Requirement(WaterLPParameter):
                 summer = [7, 8, 9]
                 min_EL_summer_storage = 17900 / 1e3 * 1.2335
                 min_EL_nonsummer_storage = 5000 / 1e3 * 1.2335
-                if month in summer and EL_storage >= min_EL_summer_storage \
-                        or month not in summer and EL_storage >= min_EL_nonsummer_storage:
+                if month in summer and EL_storage_mcm >= min_EL_summer_storage \
+                        or month not in summer and EL_storage_mcm >= min_EL_nonsummer_storage:
                     gravity_AF = min(211.88 * EL_CH_head_ft ** 0.5255, 1980)
                     gravity_flow_mcm = gravity_AF / 1e3 * 1.2335
                     self.prev_pumping[sid] = 0.0
 
             # Pumping flow (Cherry is higher than Eleanor)
-            if EL_CH_head_m <= 0:
-                pumping_AF = min(max(-0.034 * (-EL_CH_head_ft) ** 2 - 5.3068 * (-EL_CH_head_ft) + 595.72, 0), 1200)
+            else:
+                pumping_AF = min(max(-0.034 * -EL_CH_head_ft ** 2 - 5.3068 * -EL_CH_head_ft + 595.72, 0), 1200)
                 pumping_flow_mcm = pumping_AF / 1e3 * 1.2335
                 self.prev_pumping[sid] = pumping_flow_mcm
 
