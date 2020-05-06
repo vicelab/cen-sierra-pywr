@@ -8,9 +8,9 @@ class Reservoir(Storage):
     """
 
     def __init__(self, *args, **kwargs):
-
         self.gauge = kwargs.pop("gauge", None)
         super(Reservoir, self).__init__(*args, **kwargs)
+
 
 class PiecewiseReservoir(Storage):
     """
@@ -289,7 +289,8 @@ class Hydropower(PiecewiseLink):
         spinning_cost = data.pop('spinning_cost', 0.0)
         param_type = data.pop('type')
         try:
-            node = cls(model, turbine_capacity, spinning_flow, spinning_cost, max_flows=max_flows, costs=costs, head=head, **data)
+            node = cls(model, turbine_capacity, spinning_flow, spinning_cost, max_flows=max_flows, costs=costs,
+                       head=head, **data)
         except:
             raise Exception('{} {} failed to load'.format(param_type, data['name']))
         return node
