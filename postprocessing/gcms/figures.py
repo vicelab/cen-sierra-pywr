@@ -99,6 +99,17 @@ def create_basic_charts(variable, figname=None):
 
             if variable == 'Hydropower_Generation_MWh':
 
+                # Calculate energy in MWh from energy equation:
+                # P = rho * g * Q * h * eta
+                # P = power (Joules?)
+                # rho = density (1000 kg/m^3); assume constant
+                # g = gravitational constant (9.81 m/s^2); assume constant
+                # Q = flowrate (m^3/s); variable
+                # h = head (m); could be fixed or variable
+                # eta = efficiency (assume 0.85 for now)
+
+                # E = P * 24 / 1e6 (double check) - convert from Joules/second to MWh (per day)
+
                 # load model
                 model_path = '../../{}/pywr_model.json'.format(basin)
                 with open(model_path) as f:
