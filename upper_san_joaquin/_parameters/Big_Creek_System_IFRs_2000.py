@@ -50,4 +50,3 @@ class Big_Creek_System_IFRs_2000(WaterLPParameter):
 
 
 Big_Creek_System_IFRs_2000.register()
-print(" [*] Big_Creek_System_IFRs_2000 successfully registered")

@@ -31,4 +31,3 @@ class USBR_Big_Creek_WYT(WaterLPParameter):
 
 USBR_Big_Creek_WYT.register()
 
-print(" [*] USBR_Big_Creek_WYT successfully registered")

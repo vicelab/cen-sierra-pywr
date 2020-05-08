@@ -42,4 +42,3 @@ class Friant_Kern_Canal_Demand_Demand(WaterLPParameter):
             raise
         
 Friant_Kern_Canal_Demand_Demand.register()
-print(" [*] Friant_Kern_Canal_Demand_Demand successfully registered")

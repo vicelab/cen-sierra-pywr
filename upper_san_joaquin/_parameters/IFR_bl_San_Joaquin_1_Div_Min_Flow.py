@@ -31,4 +31,3 @@ class IFR_bl_San_Joaquin_1_Div_Min_Flow(WaterLPParameter):
             raise
         
 IFR_bl_San_Joaquin_1_Div_Min_Flow.register()
-print(" [*] IFR_bl_San_Joaquin_1_Div_Min_Flow successfully registered")

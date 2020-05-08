@@ -44,4 +44,3 @@ class CVP_Madera_Canal_Demand(WaterLPParameter):
             raise
         
 CVP_Madera_Canal_Demand.register()
-print(" [*] CVP_Madera_Canal_Demand successfully registered")

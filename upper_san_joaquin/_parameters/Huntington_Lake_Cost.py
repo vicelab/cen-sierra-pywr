@@ -34,4 +34,3 @@ class Huntington_Lake_Cost(WaterLPParameter):
 
 
 Huntington_Lake_Cost.register()
-print(" [*] Huntington_Lake_Cost successfully registered")

@@ -33,4 +33,3 @@ class IFR_bl_Camp_62_Creek_Div_Min_Flow(WaterLPParameter):
             raise
         
 IFR_bl_Camp_62_Creek_Div_Min_Flow.register()
-print(" [*] IFR_bl_Camp_62_Creek_Div_Min_Flow successfully registered")

@@ -58,4 +58,3 @@ class IFR_bl_Millerton_Lake_Min_Flow(WaterLPParameter):
             raise
         
 IFR_bl_Millerton_Lake_Min_Flow.register()
-print(" [*] IFR_bl_Millerton_Lake_Min_Flow successfully registered")

@@ -35,4 +35,3 @@ class IFR_bl_San_Joaquin_R_and_Willow_Cr_confluence_Min_Flow(WaterLPParameter):
 
 
 IFR_bl_San_Joaquin_R_and_Willow_Cr_confluence_Min_Flow.register()
-print(" [*] IFR_bl_San_Joaquin_R_and_Willow_Cr_confluence_Min_Flow successfully registered")

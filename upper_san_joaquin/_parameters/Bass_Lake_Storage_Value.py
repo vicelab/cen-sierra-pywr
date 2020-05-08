@@ -35,4 +35,3 @@ class Bass_Lake_Storage_Value(WaterLPParameter):
 
 
 Bass_Lake_Storage_Value.register()
-print(" [*] Bass_Lake_Storage_Value successfully registered")

@@ -211,4 +211,3 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
 
 
 Millerton_Lake_Flood_Release_Requirement.register()
-print(" [*] Millerton_Lake_Flood_Release_Requirement successfully registered")

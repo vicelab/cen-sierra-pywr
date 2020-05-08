@@ -28,4 +28,3 @@ class Florence_Lake_Storage_Value(WaterLPParameter):
             raise
         
 Florence_Lake_Storage_Value.register()
-print(" [*] Florence_Lake_Storage_Value successfully registered")
