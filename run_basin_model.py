@@ -228,15 +228,18 @@ def run_model(climate,
     # ==================
     if debug:
         print(' [*] Loading daily model')
-    from pywr.nodes import Storage
-    from domains import Reservoir
     try:
         m = Model.load(model_path, path=model_path)
+        # with open(model_path) as f:
+        #     data = json.load(f)
+        # recorders = data.pop('recorders', None)
+        # m = Model.load(data=data)
+        # if recorders:
+        #     m = Model.load(model_path, path=model_path)
     except Exception as err:
         print(err)
         raise
-    reservoirs = [n.name for n in m.nodes if type(n) in [Storage, Reservoir] and '(storage)' not in n.name]
-    # piecewise_ifrs = [n.name for n in m.nodes if type(n) == Storage and '(storage)' not in n.name]
+
     m.setup()
 
     # run model
