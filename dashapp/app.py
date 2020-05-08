@@ -510,7 +510,7 @@ def development_content(purpose):
                         #     dbc.Tab(label='Outflow', tab_id='outflow'),
                         #     dbc.Tab(label='Mixed', tab_id='mixed')
                         # ]),
-                        dbc.Tabs(id="development-tabs", active_tab='reservoir-storage', children=[]),
+                        dbc.Tabs(id="development-tabs", active_tab='reservoir-storage-mcm', children=[]),
                         top_bar,
                         main_content
                     ])],
