@@ -1,4 +1,6 @@
+import pandas as pd
 import numpy as np
+import datetime as dt
 from parameters import WaterLPParameter
 
 from utilities.converter import convert
@@ -7,6 +9,7 @@ from utilities.converter import convert
 class Dion_R_Holm_PH_Demand(WaterLPParameter):
     """"""
 
+    max_release_cms = 27.47
     prev_release_cms = None
 
     def setup(self):
@@ -16,23 +19,46 @@ class Dion_R_Holm_PH_Demand(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
 
-        if timestep.index % 7 != 0:
+        if timestep.index % 7:
             return self.prev_release_cms[scenario_index.global_id]
 
         release_cms = 0.0
 
         # Cherry storage
-        cherry_storage_mcm = self.model.nodes["Cherry Lake"].volume[scenario_index.global_id]
+        CH = self.model.nodes["Cherry Lake"]
+        cherry_storage = CH.volume[scenario_index.global_id]
+        max_cherry_storage = CH.max_volume
+        available_storage_mcm = max_cherry_storage - cherry_storage
+
+        # get forecasted spill (assume perfect foresight)
+        days = 60
+        start = timestep.datetime
+        end = start + dt.timedelta(days=days)
+        forecast_dates = pd.date_range(start, end)
+        forecasted_inflow_mcm = self.model.parameters["Lake Eleanor Inflow/Runoff"].dataframe[forecast_dates].sum()
+        forecasted_ifr_mcm = np.sum([15.5 if d.month in [7, 8, 9] else 6 for d in forecast_dates]) / 35.31 * 0.0864
+
+        spill_release_cms = 0.0
+        if forecasted_inflow_mcm - forecasted_ifr_mcm > available_storage_mcm:
+            # spill_release_cms = (forecasted_inflow_mcm - available_storage_mcm) / days / 0.0864
+            # spill_release_cms = (forecasted_inflow_mcm - available_storage_mcm) / 0.0864
+            # spill_release_cms = min(spill_release_cms, self.max_release_cms)
+            spill_release_cms = self.max_release_cms
 
         # Water Bank storage
         water_bank_storage = self.model.parameters["Don Pedro Water Bank"].get_value(scenario_index)
         water_bank_storage_curve = self.model.parameters["Water Bank Preferred Storage AF"] \
                                        .value(timestep, scenario_index) / 1000 * 1.2335
 
+        water_bank_release_cms = 0.0
         # Cherry storage min threshold = 100 * 1.2335 = 123.5
-        if cherry_storage_mcm >= 185 and water_bank_storage < water_bank_storage_curve:
-            # release_cms = 1.924 taf/day * 1.2335 mcm/taf / 0.0864 = 27.47
-            release_cms = 27.47 / 3
+        if cherry_storage >= 123.5 and water_bank_storage < water_bank_storage_curve:
+            # release_cfs = 970 cfs = 27.47 cms
+            water_bank_release_cms = self.max_release_cms
+
+        release_cms = max(spill_release_cms, water_bank_release_cms)
+
+        release_cms *= 0.5
 
         self.prev_release_cms[scenario_index.global_id] = release_cms
 

@@ -708,8 +708,8 @@
             "name": "Cherry Lake",
             "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_volume": 123.35,
-            "initial_volume": 145.7,
+            "min_volume": 25,
+            "initial_volume": 250,
             "max_volume": 338.2,
             "level": "Cherry Lake/Elevation",
             "cost": "Cherry Lake/Cost",
@@ -821,7 +821,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "initial_volume": 353,
             "max_volume": 444.6,
-            "min_volume": 123.3,
+            "min_volume": 35,
             "level": "Hetch Hetchy Reservoir/Elevation",
             "cost": "Hetch Hetchy Reservoir/Cost",
             "gauge": "USGS 11275500 HETCH HETCHY RES A HETCH HETCHY CA"
@@ -2530,7 +2530,7 @@
         },
         "Cherry Lake/Cost": {
             "type": "constant",
-            "value": -50
+            "value": -100
         },
         "Cherry Lake/Elevation": {
             "type": "interpolatedvolume",
