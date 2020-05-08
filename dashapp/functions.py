@@ -44,24 +44,24 @@ def flow_to_energy(df_cfs, head):
     return df
 
 
-def load_timeseries(results_path, basin, forcings, res_type, res_attr, basin_scenarios, nscenarios=1,
+def load_timeseries(results_path, basin, forcings, attr_id, basin_scenarios, nscenarios=1,
                     run='full run', tpl='mcm', multiplier=1.0, aggregate=None, filterby=None):
     full_basin = BASINS[basin].replace(' ', '_').lower()
     if run == 'development':
-        path_tpl = os.path.join(results_path, PATH_TEMPLATES[tpl])
-        path = path_tpl.format(
-            run=run,
-            basin=full_basin,
-            scenario=forcings[0],
-            res_type=res_type,
-            res_attr=res_attr
+        data_dir = os.path.join(
+            results_path,
+            run,
+            full_basin,
+            forcings[0],
         )
-        if not os.path.exists(path):
+        filename = attr_id.replace('-', '_') + '.csv'
+        filepath = os.path.join(data_dir, filename)
+        if not os.path.exists(filepath):
             return None
 
         header = list(range(len(basin_scenarios) + 1))
 
-        df = pd.read_csv(path, index_col=0, parse_dates=True, header=header)
+        df = pd.read_csv(filepath, index_col=0, parse_dates=True, header=header)
 
         start = 1
         end = start + len(df.columns.names[1:-1])
@@ -75,7 +75,7 @@ def load_timeseries(results_path, basin, forcings, res_type, res_attr, basin_sce
 
     else:
         path = os.path.join(results_path, '{}.h5'.format(full_basin))
-        key = '{}_{}_mcm'.format(res_type, res_attr).replace(' ', '_')
+        key = attr_id.replace(' ', '_')
         df = pd.read_hdf(path, key=key)
 
         for i, scenario in basin_scenarios:

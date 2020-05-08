@@ -18,7 +18,6 @@ ENSEMBLE_NAMES = {
 
 PATH_TEMPLATES = {
     'mcm': '{run}/{basin}/{scenario}/{res_type}_{res_attr}_mcm.csv',
-    'Variable Head': '{run}/{basin}/{scenario}/{res_type}_{res_attr}_m.csv',
 }
 
 # PROD_RESULTS_PATH = r'C:\Users\david\Box\CERC-WET\Task7_San_Joaquin_Model\Pywr models\results'

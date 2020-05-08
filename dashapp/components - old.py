@@ -14,12 +14,6 @@ from dashapp.functions import get_resources, flow_to_energy, consolidate_datafra
 from dashapp.constants import PLOTLY_CONFIG, ABS_DIFF, PCT_DIFF, MCM_TO_CFS, MCM_TO_TAF, PROD_RESULTS_PATH, \
     DEV_RESULTS_PATH, BASINS
 
-MULTIPLIERS = {
-    'storage': MCM_TO_TAF,
-    'flow': MCM_TO_CFS,
-    'elevation': 1.0
-}
-
 OBSERVED_TEXT = 'Observed'
 OBSERVED_COLOR = 'lightgrey'
 
@@ -232,7 +226,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
             # Prepare observed data
             if i == 0:
                 obs_resampled = None
-                if calibration and df_obs is not None and gauge_name in df_obs:
+                if calibration and gauge_name in df_obs:
                     obs_vals = df_obs[gauge_name]
 
                     head = kwargs.get('head')
@@ -263,8 +257,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
 
             # Minimum flow requirement
             min_reqt = kwargs.get('min_reqt')
-            show_min_reqt = not consolidate and min_reqt is not None and res_name in min_reqt[
-                forcing] and 'min' in constraints
+            show_min_reqt = not consolidate and min_reqt is not None and res_name in min_reqt[forcing] and 'min' in constraints
             if show_min_reqt:
                 if resample:
                     min_reqt_resampled = min_reqt.resample(resample).mean()
@@ -538,10 +531,8 @@ def timeseries_collection(tab, **kwargs):
     basin_scenarios = kwargs.pop('basin_scenarios', {})
     selected_scenarios = kwargs.pop('selected_scenarios', [])
     gauge_lookup = kwargs.get('gauge_lookup')
-    df_obs = {
-        'flow': kwargs.pop('df_obs_streamflow', None),
-        'storage': kwargs.pop('df_obs_storage', None)
-    }
+    df_obs_streamflow = kwargs.pop('df_obs_streamflow', None)
+    df_obs_storage = kwargs.pop('df_obs_storage', None)
     consolidate = "consolidate" in kwargs.get('consolidate', [])
     kwargs['consolidate'] = consolidate
     kwargs['compact'] = compact = 'compact' in kwargs.get('layout_options', [])
@@ -585,26 +576,165 @@ def timeseries_collection(tab, **kwargs):
     if consolidate and resample == 'Y':
         return 'Sorry, you cannot consolidate annually resampled data.'
 
-    resource_class, attr, unit = tab.split('-')
+    facility_class, attr, unit = tab.split('-')
 
-    if 'storage' in attr:
+    if tab == 'reservoir-storage':
+        attr = 'storage'
+        df_storage = load_timeseries(results_path, basin, forcings, 'Reservoir', 'Storage',
+                                     multiplier=MCM_TO_TAF, **load_data_kwargs)
         kwargs.pop('transform', None)
-
-    load_data_kwargs['multiplier'] = MULTIPLIERS.get(attr, 1.0)
-
-    attr_id = tab
-    df = load_timeseries(results_path, basin, forcings, attr_id, **load_data_kwargs)
-
-    obs = None
-    if attr in df_obs:
-        obs = df_obs[attr].copy()
         if resample:
-            obs = obs.resample(resample).mean()
+            obs = df_obs_storage.resample(resample).mean()
+        else:
+            obs = df_obs_storage
+        filtered_resources = get_resources(df_storage, filterby=aggregate or resources)
+        for res in filtered_resources:
+            component = timeseries_component(attr, res, df_storage, obs, **kwargs)
+            children.append(component)
 
-    filtered_resources = get_resources(df, filterby=aggregate or resources)
-    for res in filtered_resources:
-        component = timeseries_component(attr, res, df, obs, **kwargs)
-        children.append(component)
+    else:
+        df_hp_flow = None
+        # df_obs = df_obs_streamflow.loc[df_hydropower.index]
+        if resample:
+            obs = df_obs_streamflow.resample(resample).mean()
+        else:
+            obs = df_obs_streamflow
+
+        if tab in ['hydropower-generation', 'hydropower-flow', 'system']:
+            hp = []
+            df_hp1 = None
+            df_hp2 = None
+
+            try:
+                df_hp1 = load_timeseries(results_path, basin, forcings, 'PiecewiseHydropower', 'Flow',
+                                         **load_data_kwargs) * MCM_TO_CFS
+            except:
+                pass
+            if df_hp1 is not None:
+                hp.append(df_hp1)
+
+            try:
+                df_hp2 = load_timeseries(results_path, basin, forcings, 'Hydropower', 'Flow',
+                                         **load_data_kwargs) * MCM_TO_CFS
+            except:
+                pass
+            if df_hp2 is not None:
+                hp.append(df_hp2)
+            if hp:
+                df_hp_flow = pd.concat(hp, axis=1)
+
+            if aggregate and df_hp_flow is not None:
+                df_hp_flow = agg_by_resources(df_hp_flow, aggregate)
+
+        if tab in ['hydropower-generation', 'system']:
+            path = '../data/{} River/fixed_head.csv'.format(basin.title())
+            if os.path.exists(path):
+                fixed_head = pd.read_csv(path, index_col=0, squeeze=True).to_dict()
+            else:
+                fixed_head = {}
+
+        if tab == 'hydropower-flow':
+            attr = 'flow'
+            if df_hp_flow is not None:
+                for res in get_resources(df_hp_flow, filterby=aggregate or resources):
+                    component = timeseries_component(attr, res, df_hp_flow, obs, **kwargs)
+                    children.append(component)
+
+        elif tab == 'hydropower-generation':
+            attr = 'generation'
+            if df_hp_flow is not None:
+                for res in get_resources(df_hp_flow, filterby=resources):
+                    if res not in fixed_head:
+                        continue  # TODO: update to include non-fixed head
+                    head = fixed_head[res]
+                    component = timeseries_component(attr, res, df_hp_flow, obs, head=head, **kwargs)
+                    children.append(component)
+
+        elif tab == 'outflow':
+            attr = 'flow'
+            df = load_timeseries(results_path, basin, forcings, 'Output', 'Flow',
+                                 multiplier=MCM_TO_CFS, **load_data_kwargs)
+            for res in get_resources(df, filterby=resources):
+                component = timeseries_component(attr, res, df, obs, **kwargs)
+                children.append(component)
+
+        # elif tab == 'ifr-flow':
+        #     attr = 'flow'
+        #     df = load_timeseries(results_path, basin, forcings, 'InstreamFlowRequirement', 'Flow',
+        #                          multiplier=MCM_TO_CFS, **load_data_kwargs)
+        #     reqt = load_timeseries(results_path, basin, forcings, 'InstreamFlowRequirement', 'Requirement',
+        #                            multiplier=MCM_TO_CFS, **load_data_kwargs)
+        #     for res in get_resources(df, filterby=resources):
+        #         component = timeseries_component(attr, res, df, obs, min_reqt=reqt, **kwargs)
+        #         children.append(component)
+
+        elif tab == 'ifr-flow':
+            attr = 'flow'
+            # if basin == 'stn':
+            #     pywr_param_name = 'PiecewiseInstreamFlowRequirement'
+            # else:
+            pywr_param_name = 'InstreamFlowRequirement'
+            df = load_timeseries(results_path, basin, forcings, pywr_param_name, 'Flow',
+                                 multiplier=MCM_TO_CFS, **load_data_kwargs)
+            df_pw_min_ifr_reqt = load_timeseries(
+                results_path, basin, forcings, pywr_param_name, 'Min Flow',
+                multiplier=MCM_TO_CFS, **load_data_kwargs)
+            df_pw_ifr_range_reqt = load_timeseries(
+                results_path, basin, forcings, pywr_param_name, 'Max Flow',
+                multiplier=MCM_TO_CFS, **load_data_kwargs)
+
+            if df_pw_min_ifr_reqt is not None and df_pw_ifr_range_reqt is not None:
+                df_pw_max_ifr_reqt = df_pw_min_ifr_reqt[df_pw_ifr_range_reqt.columns] + df_pw_ifr_range_reqt
+            else:
+                df_pw_max_ifr_reqt = None
+
+            for res in get_resources(df, filterby=resources):
+                component = timeseries_component(
+                    attr, res, df, obs,
+                    min_reqt=df_pw_min_ifr_reqt,
+                    max_reqt=df_pw_max_ifr_reqt,
+                    **kwargs
+                )
+                children.append(component)
+
+        elif tab == 'system':
+
+            # System generation
+            system_res = 'System generation'
+            if df_hp_flow is not None:
+                gauged_hp = [c for c in df_hp_flow.columns if gauge_lookup.get(c) in obs]
+                gauge_lookup[system_res] = system_res
+
+                df_sim_scenarios = []
+                df_obs = []
+                df_sim_system = None
+                df_obs_system = None
+                for i, forcing in enumerate(forcings):
+                    dfs_sim = []
+                    for res in get_resources(df_hp_flow):
+                        head = fixed_head.get(res)
+                        hp_gauge = gauge_lookup.get(res)
+                        if not head or not hp_gauge:
+                            continue
+                        sim_energy = flow_to_energy(df_hp_flow[forcing, res], head)
+                        dfs_sim.append(sim_energy)
+                        if i == 0:
+                            obs_energy = flow_to_energy(obs[hp_gauge], head)
+                            df_obs.append(obs_energy)
+                    if dfs_sim:
+                        concatenated_summed = pd.concat(dfs_sim, axis=1).dropna().sum(axis=1)
+                        df_sim_scenarios.append(concatenated_summed)
+                if df_sim_scenarios:
+                    df_sim_system = pd.concat(df_sim_scenarios, axis=1, keys=forcings)
+                    df_sim_system.columns = pd.MultiIndex.from_product([forcings, (system_res,)])
+
+                if df_obs:
+                    df_obs_system = pd.concat(df_obs, axis=1).sum(axis=1).to_frame(system_res)
+
+                if df_sim_system is not None:
+                    hp_component = timeseries_component('generation', system_res, df_sim_system, df_obs_system,
+                                                        **kwargs)
+                    children.append(hp_component)
 
     return html.Div(
         children=children,

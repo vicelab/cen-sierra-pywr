@@ -87,8 +87,6 @@ SIDEBAR_TABS = [
     }
 ]
 
-RESULTS_PATH = '../results'
-
 
 # =================
 
@@ -154,9 +152,10 @@ for basin in ['stn', 'tuo', 'mer', 'usj']:
         parts = recorder.split('/')
         if len(parts) == 2:
             res, attr = parts
-            node = nodes.get(res, {})
-            node_type = node.get('type', 'other').lower()
-            ta = (node_type, attr)
+            node = nodes.get(res)
+            if not node:
+                continue
+            ta = (node['type'], attr)
             option = {'label': res, 'value': res.replace(' ', '_')}
             if ta in RES_OPTIONS[basin]:
                 RES_OPTIONS[basin][ta].append(option)
@@ -441,8 +440,7 @@ layout_switches = dbc.FormGroup(
 
 
 def make_controls(mode='production'):
-    controls = [layout_switches, transform_radio, resample_radio, aggregate_radio, constraints_checkboxes,
-                consolidation_checklist]
+    controls = [layout_switches, transform_radio, resample_radio, aggregate_radio, constraints_checkboxes, consolidation_checklist]
     if mode == 'development':
         controls = [select_metric] + controls
     return dbc.Form(
@@ -489,10 +487,6 @@ def development_content(purpose):
             children=[]
         )
         scenario_selections = html.Div([], id='scenario-selections')
-
-    # define tabs based on output in results folder
-    development_tabs = []
-
     return html.Div(
         [
             dbc.Row([
@@ -500,17 +494,16 @@ def development_content(purpose):
                     html.Div(children=[
                         selections,
                         scenario_selections,
-                        # dbc.Tabs(id="development-tabs", active_tab='reservoir-storage', children=[
-                        #     # dbc.Tab(label='System', tab_id='system'),
-                        #     dbc.Tab(label='Reservoir storage', tab_id='reservoir-storage'),
-                        #     dbc.Tab(label='HP flow', tab_id='hydropower-flow'),
-                        #     # dbc.Tab(label='HP generation', tab_id='hydropower-generation'),
-                        #     dbc.Tab(label='IFR flow', tab_id='ifr-flow'),
-                        #     # dbc.Tab(label='IFR flow (range)', tab_id='ifr-range-flow'),
-                        #     dbc.Tab(label='Outflow', tab_id='outflow'),
-                        #     dbc.Tab(label='Mixed', tab_id='mixed')
-                        # ]),
-                        dbc.Tabs(id="development-tabs", active_tab='reservoir-storage', children=[]),
+                        dbc.Tabs(id="development-tabs", active_tab='reservoir-storage', children=[
+                            # dbc.Tab(label='System', tab_id='system'),
+                            dbc.Tab(label='Reservoir storage', tab_id='reservoir-storage'),
+                            dbc.Tab(label='HP flow', tab_id='hydropower-flow'),
+                            # dbc.Tab(label='HP generation', tab_id='hydropower-generation'),
+                            dbc.Tab(label='IFR flow', tab_id='ifr-flow'),
+                            # dbc.Tab(label='IFR flow (range)', tab_id='ifr-range-flow'),
+                            dbc.Tab(label='Outflow', tab_id='outflow'),
+                            dbc.Tab(label='Mixed', tab_id='mixed')
+                        ]),
                         top_bar,
                         main_content
                     ])],
@@ -866,28 +859,6 @@ def toggle_percentile_checkboxes(values):
 
 
 @app.callback(
-    Output('development-tabs', 'children'),
-    [
-        Input('url', 'pathname'),
-        Input('select-basin', 'value'),
-    ],
-)
-def update_selected_resources(url, basin):
-    if url != '/development' or not basin:
-        return []
-
-    basin_name = BASINS[basin].lower().replace(' ', '_')
-    results_path = os.path.join(RESULTS_PATH, 'development/{basin}/historical/Livneh'.format(basin=basin_name))
-    tabs = []
-    for filename in os.listdir(results_path):
-        resource_class, attr, unit = os.path.splitext(filename)[0].split('_')
-        label = '{} {}'.format(resource_class, attr)
-        tab_id = '-'.join([resource_class, attr, unit]).lower()
-        tabs.append(dbc.Tab(label=label, tab_id=tab_id))
-    return tabs
-
-
-@app.callback(
     Output('select-resources', 'value'),
     [
         # Input('url', 'pathname'),
@@ -935,9 +906,21 @@ def store_selected_resources(basin, tab, resources, data):
 ])
 def update_select_resources(tab, basin):
     res_options = RES_OPTIONS.get(basin, {})
-    resource_class, attr, unit = tab.split('-')
-    options = res_options.get((resource_class, attr), [])
-    return options
+    options = []
+    if tab == 'reservoir-storage':
+        options = res_options.get(('Reservoir', 'storage'))
+    elif tab in ['hydropower-flow', 'hydropower-generation']:
+        opts_npw = res_options.get(('Hydropower', 'flow'), [])
+        opts_pw = res_options.get(('PiecewiseHydropower', 'flow'), [])
+        options = opts_npw + opts_pw
+    elif tab == 'outflow':
+        options = res_options.get(('Output', 'flow'))
+    elif tab == 'ifr-flow':
+        options = res_options.get(('InstreamFlowRequirement', 'flow'))
+    # elif tab == 'ifr-range-flow':
+    #     options = res_options.get(('PiecewiseInstreamFlowRequirement', 'flow'))
+
+    return options or []
 
 
 @app.callback(Output('development-tabs-content', 'children'),
@@ -956,8 +939,7 @@ def update_select_resources(tab, basin):
                   Input('select-resources', 'value'),
                   Input('reload', 'n_clicks'),
               ])
-def render_development_content(tab, basin, metric, transform, resample, constraints, aggregate, consolidate,
-                               percentiles,
+def render_development_content(tab, basin, metric, transform, resample, constraints, aggregate, consolidate, percentiles,
                                percentiles_type, layout_options, resources, n_clicks):
     kwargs = dict(
         basin=basin,
