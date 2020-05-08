@@ -24,7 +24,7 @@ class IFR_bl_Goodwin_Reservoir_Requirement(WaterLPParameter):
             pass
 
     def _value(self, timestep, scenario_index):
-        WYT = self.get('New Melones WYT' + self.month_suffix, timestep, scenario_index)
+        WYT = self.get('New Melones Lake/WYT' + self.month_suffix, timestep, scenario_index)
         if WYT == 0:
             return 0
         schedule = self.model.tables["IFR bl Goodwin Dam schedule"]
