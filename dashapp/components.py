@@ -17,6 +17,7 @@ from dashapp.constants import PLOTLY_CONFIG, ABS_DIFF, PCT_DIFF, MCM_TO_CFS, MCM
 MULTIPLIERS = {
     'storage': MCM_TO_TAF,
     'flow': MCM_TO_CFS,
+    'requirement': MCM_TO_CFS,
     'elevation': 1.0
 }
 
@@ -26,6 +27,7 @@ OBSERVED_COLOR = 'lightgrey'
 AXIS_LABELS = {
     'storage': 'Storage (TAF)',
     'flow': 'Flow (cfs)',
+    'requirement': 'Flow (cfs)',
     'generation': 'Generation (MWh)',
     'M': 'Month',
     'Y': 'Year'
