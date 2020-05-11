@@ -20,6 +20,8 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
         if self.model.mode == 'planning':
             return 0
 
+        sid = scenario_index.global_id
+
         # Note: the following logic follows the U.S. Army Corps of Engineers 1980 Water Control Manual for Friant Dam
 
         month = self.datetime.month
@@ -54,11 +56,11 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
             mammoth_pool_mcm = self.model.nodes["Mammoth Pool Reservoir"].volume[scenario_index.global_id]
             rainflood_curve_mcm += min(above_85_taf_mcm, mammoth_pool_mcm)
 
-        elif millerton_storage_mcm >= rainflood_curve_mcm:
+        if millerton_storage_mcm >= rainflood_curve_mcm:
             release_mcm = millerton_storage_mcm - rainflood_curve_mcm
 
         # 3. Conditional space release
-        elif 2 <= month <= 7:
+        if 3 <= month <= 7:
             # Note: Here, we are calculating forecasts directly as able, rather than using the USACE manual diagram.
 
             # 3.1. Calculate forecasted unimpaired runoff into Millerton Lake, through July 31.
@@ -84,6 +86,7 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
             # 3.3. Calculate total space required for flood control
             # slope from flood control chart = 1 / 1.6
             total_space_required_mcm = forecasted_inflow_mcm * 0.625 - forecasted_ag_demand_mcm
+            # total_space_required_mcm = forecasted_inflow_mcm * 1.0 - forecasted_ag_demand_mcm
 
             # 3.4. Calculate upstream space, adjusted
 
@@ -105,15 +108,17 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
 
             # 3.5. Calculate conditional reservation required
             # Note: It does not appear that this is actually used in the Flood Control Diagram
-            conditional_space_required_mcm = total_space_required_mcm - adjusted_upstream_storage_space_mcm
+            # conditional_space_required_mcm = total_space_required_mcm - adjusted_upstream_storage_space_mcm
+            conditional_space_required_mcm = total_space_required_mcm
 
             # 3.6. Compute total space available for flood control
-            total_space_available_mcm = millerton_storage_mcm + upstream_storage_space_mcm \
-                                        - adjustment_to_upstream_space_mcm
+            millerton_storage_space_mcm = NML.max_volume - millerton_storage_mcm
+            # total_space_available_mcm = millerton_storage_space_mcm + adjusted_upstream_storage_space_mcm
+            total_space_available_mcm = millerton_storage_space_mcm
 
             # 3.7. Finally, compute the supplemental release
             # Note that the goal is to spread the release out over time
-            # storage_difference_mcm = max(total_space_required_mcm - total_space_available_mcm, 0.0)
+            storage_difference_mcm = max(conditional_space_required_mcm - total_space_available_mcm, 0.0)
 
             # if storage_difference_mcm > 0.0:
             #     print('{}: conditional; release: {} taf'.format(timestep.datetime, storage_difference_mcm / 1.2335))
@@ -129,15 +134,12 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
             #
             # else:
 
-            supplemental_release_mcm = conditional_space_required_mcm - millerton_storage_mcm
-
-            days_until_jul31 = (datetime(timestep.year, 7, 31) - timestep.datetime).days + 1
-            supplemental_release_mcm /= days_until_jul31
+            supplemental_release_mcm = storage_difference_mcm
 
             # 3.8. Calculate total release
             # Note that this differs from the example in the USACE manual, since we are only calculating instream
             # release here. In the manual, "total release" is instream release + ag. release
-            release_mcm = supplemental_release_mcm
+            release_mcm = max(release_mcm, supplemental_release_mcm)
 
         # This is our overall target release, without accounting for max downstream releases
         release_mcm = float(max(release_mcm, 0.0))
@@ -160,7 +162,6 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
         # Release slowly to a target storage of 350 TAF by Oct 31.
 
         if (7, 1) <= (month, day) <= (10, 31):
-            sid = scenario_index.global_id
             nov1_target = 431.725  # 350 TAF
 
             # Stop this if we've hit the target
@@ -172,28 +173,38 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
                 day_before_yesterday = self.datetime + timedelta(days=-2)
                 prev_millerton_storage_mcm = self.model.recorders["Millerton Lake/storage"] \
                     .to_dataframe().at[day_before_yesterday, tuple(scenario_index.indices)]
-                if millerton_storage_mcm - prev_millerton_storage_mcm <= 0:
+                if millerton_storage_mcm <= prev_millerton_storage_mcm:
                     self.should_drawdown[sid] = True
 
             if self.should_drawdown[sid]:
-                drawdown_release_mcm = (millerton_storage_mcm - nov1_target) \
-                                       / (datetime(timestep.year, 11, 1) - timestep.datetime).days
+                drawdown_release_mcm = millerton_storage_mcm - nov1_target
+                # drawdown_release_mcm = millerton_storage_mcm - nov1_target
                 prev_inflow_mcm = 0.0
                 for node in ['Kerckhoff 1 PH', 'Kerckhoff 2 PH', 'IFR bl Kerckhoff Lake', 'Millerton Lake Inflow']:
                     prev_inflow_mcm += self.model.nodes[node].prev_flow[scenario_index.global_id]
 
                 drawdown_release_mcm += prev_inflow_mcm
 
-                release_mcm = max(release_mcm, drawdown_release_mcm)
+                drawdown_days = (datetime(timestep.year, 11, 1) - timestep.datetime).days
+                release_mcm = drawdown_release_mcm / drawdown_days
+                # release_mcm = max(release_mcm, drawdown_release_mcm)
 
                 # Let's also limit ramping (for both instream flow and reservoir management reasons)
                 prev_release_mcm = self.model.nodes["Millerton Lake Flood Release"].prev_flow[scenario_index.global_id]
+                # if (month, day) == (7, 1):
+                #     release_mcm = min(release_mcm, 3)
                 if release_mcm > prev_release_mcm:
-                    release_mcm = min(release_mcm, prev_release_mcm * 1.1)
+                    release_mcm = min(release_mcm, prev_release_mcm * 1.2)
                 elif release_mcm < prev_release_mcm:
-                    release_mcm = max(release_mcm, prev_release_mcm * 0.9)
+                    release_mcm = max(release_mcm, prev_release_mcm * 0.8)
+
+        else:
+            self.should_drawdown[sid] = False
 
         release_cms = release_mcm / 0.0864
+
+        if millerton_storage_mcm < 250:
+            release_cms *= 0.5
 
         return release_cms
 

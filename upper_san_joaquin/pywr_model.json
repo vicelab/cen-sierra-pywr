@@ -1185,7 +1185,7 @@
             "name": "Friant-Kern Canal Demand",
             "type": "Link",
             "max_flow": "Friant-Kern Canal Demand/Demand",
-            "cost": -2000
+            "cost": -200
         },
         {
             "name": "Friant-Kern Canal.1",
@@ -1722,7 +1722,7 @@
                 1000
             ],
             "cost": [
-                -2000,
+                -200,
                 1
             ]
         },
@@ -1939,7 +1939,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Millerton Lake/Min Flow",
             "max_flow_cost": 5,
-            "min_flow_cost": -10
+            "min_flow_cost": -250
         },
         {
             "name": "IFR bl Mono Creek Div",
@@ -2126,15 +2126,10 @@
             "name": "Millerton Lake",
             "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": {
-                "type": "constant",
-                "table": "Initial Storage",
-                "index": "2000-09-30",
-                "column": "USGS 11250100 MILLERTON LK A FRIANT CA"
-            },
+            "initial_volume": 400,
             "cost": -30,
             "max_volume": 641.42,
-            "min_volume": 185,
+            "min_volume": 150,
             "gauge": "USGS 11250100 MILLERTON LK A FRIANT CA"
         },
         {
