@@ -1748,15 +1748,10 @@
             "name": "Florence Lake",
             "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": {
-                "type": "constant",
-                "table": "Initial Storage",
-                "index": "2000-09-30",
-                "column": "USGS 11229600 FLORENCE LK NR BIG C CA"
-            },
+            "initial_volume": 2,
             "max_volume": 79.41,
             "min_volume": 1.25,
-            "cost": -90,
+            "cost": -83,
             "gauge": "USGS 11229600 FLORENCE LK NR BIG C CA"
         },
         {
@@ -1802,12 +1797,7 @@
             "name": "Huntington Lake",
             "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": {
-                "type": "constant",
-                "table": "Initial Storage",
-                "index": "2000-09-30",
-                "column": "USGS 11236000 HUNTINGTON LK NR BIG CREEK CA"
-            },
+            "initial_volume": 75,
             "max_volume": 109.94,
             "min_volume": 37.0,
             "cost": "Huntington Lake/Cost",
@@ -2068,14 +2058,9 @@
             "name": "Lake Thomas A Edison",
             "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": {
-                "type": "constant",
-                "table": "Initial Storage",
-                "index": "2000-09-30",
-                "column": "USGS 11231000 LK THOMAS A. EDISON NR BIG C CA"
-            },
+            "initial_volume": 75,
             "max_volume": 154.17,
-            "min_volume": 49.3,
+            "min_volume": 10,
             "cost": -84,
             "gauge": "USGS 11231000 LK THOMAS A. EDISON NR BIG C CA"
         },
@@ -2084,7 +2069,7 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 306.0,
-            "turbine_capacity": 6.1172472250399315,
+            "turbine_capacity": 5.4,
             "spinning_flow": 0.1,
             "spinning_cost": -1000,
             "cost": [
@@ -2101,15 +2086,10 @@
             "name": "Mammoth Pool Reservoir",
             "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": {
-                "type": "constant",
-                "table": "Initial Storage",
-                "index": "2000-09-30",
-                "column": "USGS 11234700 MAMMOTH POOL RE NR BIG CREEK CA"
-            },
+            "initial_volume": 65,
             "max_volume": 147.89,
             "min_volume": 5.0,
-            "cost": -10,
+            "cost": -85,
             "gauge": "USGS 11234700 MAMMOTH POOL RE NR BIG CREEK CA"
         },
         {
@@ -2244,15 +2224,10 @@
             "name": "Redinger Lake",
             "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": {
-                "type": "constant",
-                "table": "Initial Storage",
-                "index": "2000-09-30",
-                "column": "USGS 11241950 REDINGER LK NR AUBERRY CA"
-            },
-            "max_volume": 32.21,
+            "initial_volume": 30.8,
+            "max_volume": 30.8,
             "min_volume": 5.28,
-            "cost": -40,
+            "cost": -150,
             "gauge": "USGS 11241950 REDINGER LK NR AUBERRY CA"
         },
         {

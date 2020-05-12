@@ -7,7 +7,6 @@ class Huntington_Lake_Cost(WaterLPParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
-        kwargs = dict(timestep=timestep, scenario_index=scenario_index)
         if self.datetime.month in [6, 7, 8]:
             cost = -1000
         else:
