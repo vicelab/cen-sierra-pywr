@@ -192,3 +192,7 @@ class MinFlowParameter(WaterLPParameter):
     def functional_flows_ifr(self, timestep, scenario_index):
         FNF = self.model.parameters['Full Natural Flow'].value(timestep, scenario_index)
         return FNF * 0.4
+
+
+class MaxFlowParameter(WaterLPParameter):
+    pass
