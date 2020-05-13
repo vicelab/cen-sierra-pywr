@@ -1,9 +1,9 @@
-from parameters import WaterLPParameter
+from parameters import MinFlowParameter
 from datetime import date
 import numpy as np
 
 
-class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
+class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):
     """
     This policy calculates instream flow requirements in the Merced River below the Merced Falls powerhouse.
     """
@@ -12,21 +12,18 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
     ferc_wyt = 1
     cowell_day_cnt = 0
     nov_dec_mean = 0
+    ifr_names = None
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
     def setup(self):
         super().setup()
-        num_scenarios = len(self.model.scenarios.combinations)
-        self.nov_dec_mean = np.empty(num_scenarios, np.float64)
-        self.cowell_day_cnt = np.empty(num_scenarios, np.float64)
-
-    def before(self):
-        super().before()
+        self.nov_dec_mean = np.zeros(self.num_scenarios)
+        self.cowell_day_cnt = np.zeros(self.num_scenarios)
 
     def _value(self, timestep, scenario_index):
-        # All flow units are in cubic meters per second (cms)
+        # All flow units are in cubic meters per second (cms) unless otherwise noted
 
         if timestep.month == 10 and timestep.day <= 10:
             return self.model.nodes["IFR at Shaffer Bridge"].prev_flow[scenario_index.global_id]
@@ -52,13 +49,17 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
         # previous_flow_mcm = self.model.nodes['IFR at Shaffer Bridge'].prev_flow[scenario_index.global_id]
         # downramp_mcm = self.get_down_ramp_ifr(timestep, scenario_index, previous_flow_mcm, rate=0.25)
         # requirement_mcm = max(requirement_mcm, swrcb_reqt_mcm)
-
         return requirement_mcm
 
     def value(self, *args, **kwargs):
-        return self._value(*args, **kwargs)
+        ifr = self.get_ifr(*args, **kwargs)
+        if ifr is not None:
+            return ifr
+        else:
+            return self._value(*args, **kwargs)
 
     def ferc_req(self, timestep, scenario_index, wyt):
+        sid = scenario_index.global_id
         month = timestep.month
         day = timestep.day
         year = timestep.year
@@ -98,8 +99,9 @@ class IFR_at_Shaffer_Bridge_Min_Flow(WaterLPParameter):
             st_date = date(year - 1, 11, 1)
             end_date = date(year - 1, 12, 31)
             gauge_Shafer_ts = self.model.recorders['IFR at Shaffer Bridge/flow'].to_dataframe()
-            self.nov_dec_mean[scenario_index.global_id] \
-                = gauge_Shafer_ts[tuple(scenario_index.indices)][st_date:end_date].mean()
+
+            # TODO: find a more efficient lookup method than iloc
+            self.nov_dec_mean[sid] = gauge_Shafer_ts[st_date:end_date].mean()[scenario_index.global_id]
 
         if month in (1, 2, 3):
             # If mean flow greater than eaual to 150 cfs, then at least 100 cfs flow

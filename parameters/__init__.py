@@ -1,8 +1,6 @@
-import os
 import pandas as pd
 from calendar import monthrange
 from dateutil.relativedelta import relativedelta
-from hashlib import md5
 
 from pywr.parameters import Parameter
 
@@ -15,7 +13,6 @@ class Timestep(object):
 
 
 class WaterLPParameter(Parameter):
-
     cfs_to_cms = 1 / 35.315
 
     mode = 'scheduling'
@@ -31,11 +28,14 @@ class WaterLPParameter(Parameter):
     month_suffix = ''
     demand_constant_param = ''
     elevation_param = ''
+    num_scenarios = 0
 
     timestep = Timestep()
 
     def setup(self):
-        super(WaterLPParameter, self).setup()
+        super().setup()
+
+        self.num_scenarios = len(self.model.scenarios.combinations)
 
         self.mode = getattr(self.model, 'mode', self.mode)
 
@@ -151,3 +151,41 @@ class WaterLPParameter(Parameter):
         ifr_range = max(max_ifr - min_ifr, 0.0)
 
         return ifr_range
+
+
+class MinFlowParameter(WaterLPParameter):
+    ifrs_idx = None
+    ifr_names = None
+
+    def setup(self):
+        super().setup()
+
+        scenario_names = [s.name for s in self.model.scenarios.scenarios]
+        self.ifrs_idx = scenario_names.index('IFRs') if 'IFRs' in scenario_names else None
+        if self.ifrs_idx is not None:
+            self.ifr_names = self.model.scenarios.scenarios[self.ifrs_idx].ensemble_names
+
+    def get_ifr(self, timestep, scenario_index):
+        """
+        Calculate a custom IFR other than the baseline IFR
+        :param timestep:
+        :param scenario_index:
+        :return:
+        """
+        if self.ifrs_idx is None:
+            return None
+
+        min_flow = None
+        scenario_name = self.ifr_names[scenario_index.indices[self.ifrs_idx]]
+
+        if scenario_name == 'No IFRs':
+            min_flow = 0.0
+
+        elif scenario_name == 'Functional Flows':
+            min_flow = self.functional_flows_ifr(timestep, scenario_index)
+
+        return min_flow
+
+    def functional_flows_ifr(self, timestep, scenario_index):
+        FNF = self.model.parameters['Full Natural Flow'].value(timestep, scenario_index)
+        return FNF * 0.4
