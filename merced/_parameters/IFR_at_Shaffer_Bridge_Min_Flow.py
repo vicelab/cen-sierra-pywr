@@ -52,11 +52,17 @@ class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):
         return requirement_mcm
 
     def value(self, *args, **kwargs):
-        ifr = self.get_ifr(*args, **kwargs)
-        if ifr is not None:
-            return ifr
-        else:
-            return self._value(*args, **kwargs)
+        try:
+            ifr = self.get_ifr(*args, **kwargs)
+            if ifr is not None:
+                return ifr
+            else:
+                ifr = self._value(*args, **kwargs)
+                return ifr # unit is already mcm
+        except Exception as err:
+            print('\nERROR for parameter {}'.format(self.name))
+            print('File where error occurred: {}'.format(__file__))
+            print(err)
 
     def ferc_req(self, timestep, scenario_index, wyt):
         sid = scenario_index.global_id
