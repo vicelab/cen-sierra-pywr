@@ -97,6 +97,8 @@ class InstreamFlowRequirement(PiecewiseLink):
         except:
             raise
 
+        self.ifr_type = kwargs.pop('ifr_type', 'basic')
+
         super(InstreamFlowRequirement, self).__init__(*args, **kwargs)
 
     @classmethod

@@ -156,9 +156,12 @@ class WaterLPParameter(Parameter):
 class MinFlowParameter(WaterLPParameter):
     ifrs_idx = None
     ifr_names = None
+    ifr_type = 'basic'
 
     def setup(self):
         super().setup()
+
+        self.ifr_type = self.model.nodes[self.res_name].ifr_type
 
         scenario_names = [s.name for s in self.model.scenarios.scenarios]
         self.ifrs_idx = scenario_names.index('IFRs') if 'IFRs' in scenario_names else None
@@ -181,7 +184,7 @@ class MinFlowParameter(WaterLPParameter):
         if scenario_name == 'No IFRs':
             min_flow = 0.0
 
-        elif scenario_name == 'Functional Flows':
+        elif scenario_name == 'Functional Flows' and self.ifr_type == 'enhanced':
             min_flow = self.functional_flows_ifr(timestep, scenario_index)
 
         return min_flow

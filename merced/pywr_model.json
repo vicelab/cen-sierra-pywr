@@ -272,7 +272,8 @@
             "min_flow_cost": "IFR at Shaffer Bridge/Min Flow Cost",
             "max_flow_cost": "IFR at Shaffer Bridge/Max Flow Cost",
             "min_flow": "IFR at Shaffer Bridge/Min Flow",
-            "max_flow": "IFR at Shaffer Bridge/Max Flow"
+            "max_flow": "IFR at Shaffer Bridge/Max Flow",
+            "ifr_type": "enhanced"
         },
         {
             "name": "Merced River Headflow",
@@ -779,8 +780,7 @@
             "value": -5000
         },
         "IFR bl New Exchequer Dam/Min Flow": {
-            "type": "constant",
-            "value": 0.061164
+            "type": "IFR_bl_New_Exchequer_Dam_Min_Flow"
         },
         "Lake McClure/Storage Demand": {
             "type": "Lake_McClure_Water_Demand"
