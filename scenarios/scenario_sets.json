@@ -25,6 +25,15 @@
             "functional_flows"
         ]
     },
+    "functional_flows_test": {
+        "name": "Functional Flows",
+        "climates": [
+            "historical"
+        ],
+        "scenarios": [
+            "functional_flows"
+        ]
+    },
     "full_scenario_run": {
         "name": "Functional flows with future energy prices",
         "climates": [

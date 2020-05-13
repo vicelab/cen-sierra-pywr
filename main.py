@@ -57,7 +57,7 @@ if args.end_year:
     end = '{}-09-30'.format(args.end_year)
 
 if args.scenario_set:
-    with open("./scenario_sets.json") as f:
+    with open("./scenarios/scenario_sets.json") as f:
         scenario_sets = json.load(f)
 
     scenario_set_definition = scenario_sets.get(args.scenario_set)
@@ -82,8 +82,8 @@ if args.scenario_set:
             climate_sets['sequences'] = pd.read_csv(sequences_file, index_col=0, header=0).index
 
 climate_scenarios = []
-for climate_set, scenarios in climate_sets.items():
-    climate_scenarios.extend(['{}/{}'.format(climate_set, scen) for scen in scenarios])
+for climate_set, climates in climate_sets.items():
+    climate_scenarios.extend(['{}/{}'.format(climate_set, climate) for climate in climates])
 
 if basin == 'all':
     basins = ['stanislaus', 'tuolumne', 'merced', 'upper_san_joaquin']

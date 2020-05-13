@@ -91,11 +91,11 @@ def run_model(climate,
                 if key in base_model:
                     if type(scenario_model[key]) == dict:
                         base_model[key].update(scenario_model[key])
-                    elif key in ['scenarios', 'nodes']:
-                        items = {item['name']: item for item in base_model.get(key, [])}
-                        new_items = {item['name']: item for item in scenario_model[key]}
-                        items.update(new_items)
-                        base_model[key] = list(items.values())
+                elif key in ['scenarios', 'nodes']:
+                    items = {item['name']: item for item in base_model.get(key, [])}
+                    new_items = {item['name']: item for item in scenario_model[key]}
+                    items.update(new_items)
+                    base_model[key] = list(items.values())
 
     if scenarios is not None:
         for s in scenarios:
@@ -172,8 +172,7 @@ def run_model(climate,
         simplified_filename = model_filename_base + '_simplified.json'
         simplified_model_path = os.path.join(temp_dir, simplified_filename)
 
-        m = simplify_network(m, basin=basin, climate=climate, delete_gauges=True, delete_observed=True,
-                             delete_scenarios=debug)
+        m = simplify_network(m, basin=basin, climate=climate, delete_gauges=True, delete_observed=True)
         with open(simplified_model_path, 'w') as f:
             f.write(json.dumps(m, indent=4))
 
@@ -299,22 +298,21 @@ def run_model(climate,
     # save results to CSV
     results_df = m.to_dataframe()
     results_df.index.name = 'Date'
-    scenario_name = climate
     scenario_names = [s.name for s in m.scenarios.scenarios]
     if not scenario_names:
         scenario_names = [0]
-    results_path = os.path.join('./results', run_name, basin, scenario_name)
+    results_path = os.path.join('./results', run_name, basin, climate)
     if not debug:
         results_path = os.path.join(data_path, results_path)
     if not os.path.exists(results_path):
         os.makedirs(results_path)
 
-    if df_planning is not None:
-        df_planning.to_csv(os.path.join(results_path, 'planning_debug.csv'))
+    # if df_planning is not None:
+    #     df_planning.to_csv(os.path.join(results_path, 'planning_debug.csv'))
 
     # Drop extraneous row
     has_scenarios = True
-    recorder_items = results_df.columns.get_level_values(0)
+    recorder_items = set(results_df.columns.get_level_values(0))
     if len(results_df.columns) == len(recorder_items):
         has_scenarios = False
         results_df.columns = results_df.columns.droplevel(1)
