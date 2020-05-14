@@ -19,13 +19,9 @@ class Oakdale_Irrigation_District_Demand(WaterLPParameter):
             demand_mcm = demand_mcm_df[start:(end_date.month, end_date.day)].sum()
         return demand_mcm
 
-    def value(self, timestep, scenario_index):
-        try:
-            return self._value(timestep, scenario_index)
-        except Exception as err:
-            print('\nERROR for parameter {}'.format(self.name))
-            print('File where error occurred: {}'.format(__file__))
-            print(err)
+    def value(self, *args, **kwargs):
+        val = self._value(*args, **kwargs)
+        return val
 
     @classmethod
     def load(cls, model, data):

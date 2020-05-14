@@ -3,6 +3,7 @@ from datetime import date
 import numpy as np
 from utilities.converter import convert
 
+
 class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):
     """
     This policy calculates instream flow requirements in the Merced River below the Merced Falls powerhouse.
