@@ -1,8 +1,9 @@
 import pandas as pd
 from calendar import monthrange
 from dateutil.relativedelta import relativedelta
-
+from functools import wraps
 from pywr.parameters import Parameter
+from utilities.converter import convert
 
 
 class Timestep(object):
@@ -104,6 +105,25 @@ class WaterLPParameter(Parameter):
         dates = pd.date_range(start, periods=ndays).tolist()
         return dates
 
+
+class IFRParameter(WaterLPParameter):
+    ifrs_idx = None
+    ifr_names = None
+    ifr_type = 'basic'
+
+    def setup(self):
+        super().setup()
+
+        self.ifr_type = self.model.nodes[self.res_name].ifr_type
+
+        scenario_names = [s.name for s in self.model.scenarios.scenarios]
+        self.ifrs_idx = scenario_names.index('IFRs') if 'IFRs' in scenario_names else None
+        if self.ifrs_idx is not None:
+            self.ifr_names = self.model.scenarios.scenarios[self.ifrs_idx].ensemble_names
+
+
+class MinFlowParameter(IFRParameter):
+
     def get_down_ramp_ifr(self, timestep, scenario_index, value, initial_value=None, rate=0.25):
         """
 
@@ -123,6 +143,79 @@ class WaterLPParameter(Parameter):
             Qp = self.model.nodes[self.res_name].prev_flow[scenario_index.global_id] / 0.0864  # convert to cms
         return max(value, Qp * (1 - rate))
 
+    def requirement(self, timestep, scenario_index, default=None):
+        """
+        Calculate a custom IFR other than the baseline IFR
+        :param timestep:
+        :param scenario_index:
+        :return:
+        """
+
+        if self.ifrs_idx is not None:
+            scenario_name = self.ifr_names[scenario_index.indices[self.ifrs_idx]]
+        else:
+            scenario_name = None
+
+        min_flow_mcm = 0.0
+
+        if scenario_name == 'No IFRs':
+            pass
+
+        elif scenario_name == 'Functional Flows' and self.ifr_type == 'enhanced':
+            min_flow_mcm = self.functional_flows_min_flow(timestep, scenario_index)
+
+        elif default:
+            min_flow_mcm = default(timestep, scenario_index)
+
+        return min_flow_mcm
+
+    def functional_flows_min_flow(self, timestep, scenario_index):
+        FNF = self.model.parameters['Full Natural Flow'].value(timestep, scenario_index)
+        return FNF * 0.4
+
+
+class FlowRangeParameter(IFRParameter):
+    def requirement(self, timestep, scenario_index, default=None):
+        """
+        Calculate a custom IFR other than the baseline IFR
+        :param timestep:
+        :param scenario_index:
+        :return:
+        """
+
+        scenario_name = None
+        if self.ifrs_idx is not None:
+            scenario_name = self.ifr_names[scenario_index.indices[self.ifrs_idx]]
+
+        flow_range = 1e9
+
+        if scenario_name == 'No IFRs':
+            pass
+
+        elif scenario_name == 'Functional Flows' and self.ifr_type == 'enhanced':
+            flow_range = self.functional_flows_range(timestep, scenario_index)
+
+        elif default:
+            flow_range = default(timestep, scenario_index)
+
+        flow_range_mcm = convert(flow_range, "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
+
+        return flow_range_mcm
+
+    def functional_flows_range(self, timestep, scenario_index):
+        FNF = self.model.parameters['Full Natural Flow'].value(timestep, scenario_index)
+        return FNF * 0.4 / 0.0864
+
+    def get_ifr_range(self, timestep, scenario_index, **kwargs):
+        param_name = self.res_name + '/Min Flow' + self.month_suffix
+        # min_ifr = self.model.parameters[param_name].get_value(scenario_index) / 0.0864  # convert to cms
+        min_ifr = self.model.parameters[param_name].value(timestep, scenario_index) / 0.0864  # convert to cms
+        max_ifr = self.get_up_ramp_ifr(timestep, scenario_index, **kwargs)
+
+        ifr_range = max(max_ifr - min_ifr, 0.0)
+
+        return ifr_range
+
     def get_up_ramp_ifr(self, timestep, scenario_index, initial_value=None, rate=0.25, max_flow=None):
 
         if self.model.mode == 'scheduling':
@@ -140,59 +233,3 @@ class WaterLPParameter(Parameter):
             qmax = min(qmax, max_flow)
 
         return qmax
-
-    def get_ifr_range(self, timestep, scenario_index, **kwargs):
-
-        param_name = self.res_name + '/Min Flow' + self.month_suffix
-        # min_ifr = self.model.parameters[param_name].get_value(scenario_index) / 0.0864  # convert to cms
-        min_ifr = self.model.parameters[param_name].value(timestep, scenario_index) / 0.0864  # convert to cms
-        max_ifr = self.get_up_ramp_ifr(timestep, scenario_index, **kwargs)
-
-        ifr_range = max(max_ifr - min_ifr, 0.0)
-
-        return ifr_range
-
-
-class MinFlowParameter(WaterLPParameter):
-    ifrs_idx = None
-    ifr_names = None
-    ifr_type = 'basic'
-
-    def setup(self):
-        super().setup()
-
-        self.ifr_type = self.model.nodes[self.res_name].ifr_type
-
-        scenario_names = [s.name for s in self.model.scenarios.scenarios]
-        self.ifrs_idx = scenario_names.index('IFRs') if 'IFRs' in scenario_names else None
-        if self.ifrs_idx is not None:
-            self.ifr_names = self.model.scenarios.scenarios[self.ifrs_idx].ensemble_names
-
-    def get_ifr(self, timestep, scenario_index):
-        """
-        Calculate a custom IFR other than the baseline IFR
-        :param timestep:
-        :param scenario_index:
-        :return:
-        """
-        if self.ifrs_idx is None:
-            return None
-
-        min_flow = None
-        scenario_name = self.ifr_names[scenario_index.indices[self.ifrs_idx]]
-
-        if scenario_name == 'No IFRs':
-            min_flow = 0.0
-
-        elif scenario_name == 'Functional Flows' and self.ifr_type == 'enhanced':
-            min_flow = self.functional_flows_ifr(timestep, scenario_index)
-
-        return min_flow
-
-    def functional_flows_ifr(self, timestep, scenario_index):
-        FNF = self.model.parameters['Full Natural Flow'].value(timestep, scenario_index)
-        return FNF * 0.4
-
-
-class MaxFlowParameter(WaterLPParameter):
-    pass

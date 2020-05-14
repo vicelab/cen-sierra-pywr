@@ -1,4 +1,5 @@
 from parameters import MinFlowParameter
+from utilities.converter import convert
 
 
 class IFR_bl_New_Exchequer_Dam_Min_Flow(MinFlowParameter):
@@ -7,16 +8,13 @@ class IFR_bl_New_Exchequer_Dam_Min_Flow(MinFlowParameter):
     """
 
     def _value(self, timestep, scenario_index):
-        ifr_mcm = 0.061164
+        ifr_cms = 0.061164 / 0.0864
 
-        return ifr_mcm
+        return ifr_cms
 
-    def value(self, *args, **kwargs):
-        ifr = self.get_ifr(*args, **kwargs)
-        if ifr is not None:
-            return ifr
-        else:
-            return self._value(*args, **kwargs)
+    def value(self, timestep, scenario_index):
+        val = self.requirement(timestep, scenario_index, default=self._value)
+        return convert(val, "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
 
     @classmethod
     def load(cls, model, data):
