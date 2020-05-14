@@ -67,9 +67,9 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(MinFlowParameter):
 
         return WYT
 
-    def value(self, timestep, scenario_index):
-        val = self.requirement(timestep, scenario_index, default=self._value)
-        return convert(val, "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
+    def value(self, *args, **kwargs):
+        val = self._value(*args, **kwargs)
+        return val
 
     @classmethod
     def load(cls, model, data):
