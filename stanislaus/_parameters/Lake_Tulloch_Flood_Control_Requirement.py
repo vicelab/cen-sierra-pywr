@@ -60,14 +60,10 @@ class Lake_Tulloch_Flood_Control_Requirement(WaterLPParameter):
 
         return release_cms
 
-    def value(self, *args, **kwargs):
+    def value(self, timestep, scenario_index):
         try:
-            ifr = self.get_ifr(*args, **kwargs)
-            if ifr is not None:
-                return ifr
-            else:
-                ifr = self._value(*args, **kwargs)
-                return convert(ifr, "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
+            return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1,
+                           scale_out=1000000.0)
         except Exception as err:
             print('\nERROR for parameter {}'.format(self.name))
             print('File where error occurred: {}'.format(__file__))
