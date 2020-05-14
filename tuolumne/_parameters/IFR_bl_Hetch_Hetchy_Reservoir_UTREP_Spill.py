@@ -49,7 +49,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(MinFlowParameter):
         dates = pd.date_range(start=timestep.datetime, end=end_date, freq='D')
         storage = current_storage
         max_storage = self.model.nodes["Hetch Hetchy Reservoir"].max_volume
-        wyt = self.model.MinFlowParameters["IFR bl Hetch Hetchy Reservoir/Water Year Type"].get_value(scenario_index)
+        wyt = self.model.parameters["IFR bl Hetch Hetchy Reservoir/Water Year Type"].get_value(scenario_index)
 
         # Additional IFR (if power tunnel release >= 920 cfs)
         if wyt <= 2:
@@ -257,7 +257,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(MinFlowParameter):
             self.excess_af[sid] = excess_af
 
         # account for base IFR already being released
-        ifr_mcm = self.model.MinFlowParameters["IFR bl Hetch Hetchy Reservoir/Base Flow"].get_value(scenario_index)
+        ifr_mcm = self.model.parameters["IFR bl Hetch Hetchy Reservoir/Base Flow"].get_value(scenario_index)
 
         utrep_mcm = release_cfs / 35.315 * 0.0864
         # release_mcm = max(utrep_mcm - ifr_mcm, 0.0) * release_coefficient
@@ -268,17 +268,8 @@ class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(MinFlowParameter):
         return release_mcm
 
     def value(self, *args, **kwargs):
-        try:
-            ifr = self.get_ifr(*args, **kwargs)
-            if ifr is not None:
-                return ifr
-            else:
-                ifr = self._value(*args, **kwargs)
-                return ifr # unit is already mcm
-        except Exception as err:
-            print('\nERROR for MinFlowParameter {}'.format(self.name))
-            print('File where error occurred: {}'.format(__file__))
-            print(err)
+        val = self._value(*args, **kwargs)
+        return val
 
     @classmethod
     def load(cls, model, data):

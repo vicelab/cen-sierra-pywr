@@ -3100,9 +3100,17 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR at La Grange"
         },
+        "IFR at La Grange/water year type": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR at La Grange/Water Year Type"
+        },
         "IFR bl Hetch Hetchy Reservoir/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Hetch Hetchy Reservoir"
+        },
+        "IFR bl Hetch Hetchy Reservoir/water year type": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Hetch Hetchy Reservoir/Water Year Type"
         },
         "IFR bl Lake Eleanor/flow": {
             "type": "NumpyArrayNodeRecorder",
