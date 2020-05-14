@@ -1,10 +1,10 @@
 import numpy as np
-from parameters import WaterLPParameter
+from parameters import MinFlowParameter
 
 from utilities.converter import convert
 
 
-class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
+class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(MinFlowParameter):
     """"""
 
     WYT = None
@@ -67,14 +67,18 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(WaterLPParameter):
 
         return WYT
 
-    def value(self, timestep, scenario_index):
+    def value(self, *args, **kwargs):
         try:
-            return self._value(timestep, scenario_index)
+            ifr = self.get_ifr(*args, **kwargs)
+            if ifr is not None:
+                return ifr
+            else:
+                ifr = self._value(*args, **kwargs)
+                return ifr # unit is already mcm
         except Exception as err:
-            print('ERROR for parameter {}'.format(self.name))
+            print('\nERROR for parameter {}'.format(self.name))
             print('File where error occurred: {}'.format(__file__))
             print(err)
-            raise
 
     @classmethod
     def load(cls, model, data):

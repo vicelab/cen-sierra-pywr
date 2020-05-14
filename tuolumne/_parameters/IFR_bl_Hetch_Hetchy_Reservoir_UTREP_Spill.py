@@ -1,10 +1,10 @@
-from pywr.parameters import Parameter
+from parameters import MinFlowParameter
 import pandas as pd
 import numpy as np
 from datetime import datetime
 
 
-class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(Parameter):
+class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(MinFlowParameter):
     MIN_STORAGE_THRESHOLD_MCM = 150 * 1.2335  # Storage threshold below which snowmelt flows will not initiate
     STORAGE_FORECAST_THRESHOLD_MCM = 360 * 1.2335  # Storage forecast above which snowmelt releases should be initiated
     EXCESS_SPILL_THRESHOLD_AF = 10000  # Excess spill value above which the template hydrograph should be changed
@@ -49,7 +49,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(Parameter):
         dates = pd.date_range(start=timestep.datetime, end=end_date, freq='D')
         storage = current_storage
         max_storage = self.model.nodes["Hetch Hetchy Reservoir"].max_volume
-        wyt = self.model.parameters["IFR bl Hetch Hetchy Reservoir/Water Year Type"].get_value(scenario_index)
+        wyt = self.model.MinFlowParameters["IFR bl Hetch Hetchy Reservoir/Water Year Type"].get_value(scenario_index)
 
         # Additional IFR (if power tunnel release >= 920 cfs)
         if wyt <= 2:
@@ -257,7 +257,7 @@ class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(Parameter):
             self.excess_af[sid] = excess_af
 
         # account for base IFR already being released
-        ifr_mcm = self.model.parameters["IFR bl Hetch Hetchy Reservoir/Base Flow"].get_value(scenario_index)
+        ifr_mcm = self.model.MinFlowParameters["IFR bl Hetch Hetchy Reservoir/Base Flow"].get_value(scenario_index)
 
         utrep_mcm = release_cfs / 35.315 * 0.0864
         # release_mcm = max(utrep_mcm - ifr_mcm, 0.0) * release_coefficient
@@ -269,12 +269,16 @@ class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(Parameter):
 
     def value(self, *args, **kwargs):
         try:
-            return self._value(*args, **kwargs)
+            ifr = self.get_ifr(*args, **kwargs)
+            if ifr is not None:
+                return ifr
+            else:
+                ifr = self._value(*args, **kwargs)
+                return ifr # unit is already mcm
         except Exception as err:
-            print('ERROR for parameter {}'.format(self.name))
+            print('\nERROR for MinFlowParameter {}'.format(self.name))
             print('File where error occurred: {}'.format(__file__))
             print(err)
-            raise
 
     @classmethod
     def load(cls, model, data):
