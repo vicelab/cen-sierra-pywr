@@ -1,9 +1,9 @@
-from parameters import WaterLPParameter
+from parameters import MaxFlowParameter
 from datetime import date
 import numpy as np
 
 
-class IFR_at_Shaffer_Bridge_Max_Flow(WaterLPParameter):
+class IFR_at_Shaffer_Bridge_Max_Flow(MaxFlowParameter):
     """
     This policy calculates instream flow requirements in the Merced River below the Merced Falls powerhouse.
     """

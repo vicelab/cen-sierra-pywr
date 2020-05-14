@@ -1,11 +1,11 @@
 import datetime
 import calendar
-from parameters import WaterLPParameter
+from parameters import MaxFlowParameter
 
 from utilities.converter import convert
 
 
-class IFR_bl_Angels_Div_Max_Requirement(WaterLPParameter):
+class IFR_bl_Angels_Div_Max_Requirement(MaxFlowParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
@@ -15,10 +15,14 @@ class IFR_bl_Angels_Div_Max_Requirement(WaterLPParameter):
             ifr_range = 1e6  # no constraint
         return ifr_range
 
-    def value(self, timestep, scenario_index):
+    def value(self, *args, **kwargs):
         try:
-            return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1,
-                           scale_out=1000000.0)
+            ifr = self.get_ifr(*args, **kwargs)
+            if ifr is not None:
+                return ifr
+            else:
+                ifr = self._value(*args, **kwargs)
+                return convert(ifr, "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
         except Exception as err:
             print('\nERROR for parameter {}'.format(self.name))
             print('File where error occurred: {}'.format(__file__))
