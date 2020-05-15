@@ -446,6 +446,7 @@
             "type": "InstreamFlowRequirement",
             "min_flow_cost": "IFR bl Goodwin Reservoir/Violation Cost",
             "min_flow": "IFR bl Goodwin Reservoir/Requirement",
+            "ifr_type": "enhanced",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
