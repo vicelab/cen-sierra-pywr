@@ -8,7 +8,7 @@ RIM_DAMS = {
 PARAMETERS_TO_EXPAND = {
     'stanislaus': [
         'New Melones Apr-Jul Runoff',
-        # 'New Melones Lake/WYT',
+        # 'New Melones Lake/Water Year Type',
         'New Melones Lake/Storage Demand'
     ],
     'common': [
@@ -19,7 +19,7 @@ PARAMETERS_TO_EXPAND = {
 
 PARAMETERS_TO_REMOVE = {
     'stanislaus': [
-        'New Melones Lake/WYT'
+        'New Melones Lake/Water Year Type'
     ]
 }
 
