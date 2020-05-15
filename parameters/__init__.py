@@ -113,7 +113,7 @@ class IFRParameter(WaterLPParameter):
     def setup(self):
         super().setup()
 
-        self.ifr_type = self.model.nodes[self.res_name].ifr_type
+        self.ifr_type = self.model.nodes[self.res_name + self.month_suffix].ifr_type
 
         scenario_names = [s.name for s in self.model.scenarios.scenarios]
         self.ifrs_idx = scenario_names.index('IFRs') if 'IFRs' in scenario_names else None
