@@ -13,18 +13,8 @@ class IFR_bl_Goodwin_Reservoir_Requirement(MinFlowParameter):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        try:
-            swrcb_levels_count = self.model.scenarios['SWRCB 40'].size
-            if swrcb_levels_count == 1:
-                self.swrcb_levels = [0.0]  # baseline scenario only
-            else:
-                self.swrcb_levels = np.arange(0.0, 0.41, 0.4 / (swrcb_levels_count - 1))
-        except:
-            # print("SWRCB 40 scenario doesn't exist.")
-            pass
-
     def _value(self, timestep, scenario_index):
-        WYT = self.get('New Melones Lake/WYT' + self.month_suffix, timestep, scenario_index)
+        WYT = self.get('New Melones Lake/Water Year Type' + self.month_suffix, timestep, scenario_index)
         if WYT == 0:
             return 0
         schedule = self.model.tables["IFR bl Goodwin Dam schedule"]
@@ -56,15 +46,6 @@ class IFR_bl_Goodwin_Reservoir_Requirement(MinFlowParameter):
         #     if self.NML_did_fill and (7, 1) <= (month, day) <= (10, 31) and prev_storage_mcm / 1.2335 >= 2000:
         #         # reservoir late summer drawdown is ~40.6 cms (350 TAF over Jul-Oct)
         #         min_ifr_cms = max(min_ifr_cms, 40.6)
-
-        # SCWRB 40 REQUIREMENT
-        if 2 <= timestep.month <= 7 and scenario_index:
-            try:
-                fnf = self.model.tables['Full Natural Flow'][self.datetime]
-                swrcb_reqt_cms = fnf * self.swrcb_levels[scenario_index.indices[0]] / 0.0864 # mcm to cms
-                min_ifr_cms = max(min_ifr_cms, swrcb_reqt_cms)
-            except:
-                pass
 
         return min_ifr_cms
 

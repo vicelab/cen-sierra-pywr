@@ -2402,7 +2402,7 @@
             "type": "Constant",
             "value": 2009
         },
-        "New Melones Lake/WYT": {
+        "New Melones Lake/Water Year Type": {
             "type": "New_Melones_WYT"
         },
         "South San Joaquin Irrigation District/Demand": {
@@ -3736,9 +3736,9 @@
             "type": "NumpyArrayParameterRecorder",
             "parameter": "New Melones Lake/Observed Storage"
         },
-        "New Melones Lake/wyt": {
+        "New Melones Lake/water year type": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "New Melones Lake/WYT"
+            "parameter": "New Melones Lake/Water Year Type"
         },
         "New Melones PH/flow": {
             "type": "NumpyArrayNodeRecorder",

@@ -165,7 +165,8 @@ class New_Melones_Lake_Flood_Control_Requirement(WaterLPParameter):
 
     def value(self, *args, **kwargs):
         val = self._value(*args, **kwargs)
-        return val
+        return convert(val, "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
+
 
     @classmethod
     def load(cls, model, data):
