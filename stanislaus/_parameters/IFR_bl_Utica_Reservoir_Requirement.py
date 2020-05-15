@@ -1,11 +1,11 @@
 import datetime
 import calendar
-from parameters import WaterLPParameter
+from parameters import MinFlowParameter
 
 from utilities.converter import convert
 
 
-class IFR_bl_Utica_Reservoir_Requirement(WaterLPParameter):
+class IFR_bl_Utica_Reservoir_Requirement(MinFlowParameter):
     """"""
 
     def _value(self, timestep, scenario_index):

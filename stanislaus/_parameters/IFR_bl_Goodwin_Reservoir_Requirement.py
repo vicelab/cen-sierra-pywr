@@ -1,13 +1,13 @@
 import datetime
 import numpy as np
-from parameters import WaterLPParameter
+from parameters import MinFlowParameter
 
 from utilities.converter import convert
 
 from dateutil.relativedelta import relativedelta
 
 
-class IFR_bl_Goodwin_Reservoir_Requirement(WaterLPParameter):
+class IFR_bl_Goodwin_Reservoir_Requirement(MinFlowParameter):
     """"""
 
     def __init__(self, *args, **kwargs):

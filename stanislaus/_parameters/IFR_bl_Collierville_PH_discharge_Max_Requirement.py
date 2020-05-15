@@ -1,11 +1,11 @@
 import datetime
 import calendar
-from parameters import WaterLPParameter
+from parameters import FlowRangeParameter
 
 from utilities.converter import convert
 
 
-class IFR_bl_Collierville_PH_discharge_Max_Requirement(WaterLPParameter):
+class IFR_bl_Collierville_PH_discharge_Max_Requirement(FlowRangeParameter):
     """"""
 
     def _value(self, timestep, scenario_index):

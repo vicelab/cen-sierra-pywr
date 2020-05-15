@@ -1,10 +1,10 @@
 import datetime
-from parameters import WaterLPParameter
+from parameters import MinFlowParameter
 
 from utilities.converter import convert
 
 
-class Donnell_Lake_Spill_Min_Requirement(WaterLPParameter):
+class Donnell_Lake_Spill_Min_Requirement(MinFlowParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
