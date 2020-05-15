@@ -1,10 +1,9 @@
 import pandas as pd
 from calendar import monthrange
 from dateutil.relativedelta import relativedelta
-from functools import wraps
 from pywr.parameters import Parameter
 from utilities.converter import convert
-
+from utilities.decorators import catch
 
 class Timestep(object):
     step = None
