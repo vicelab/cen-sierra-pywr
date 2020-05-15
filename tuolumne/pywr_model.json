@@ -839,7 +839,8 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR at La Grange/Min Flow",
-            "min_flow_cost": -10000
+            "min_flow_cost": -10000,
+            "ifr_type": "enhanced"
         },
         {
             "name": "IFR bl Hetch Hetchy Reservoir",

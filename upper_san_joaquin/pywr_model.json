@@ -1929,7 +1929,8 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Millerton Lake/Min Flow",
             "max_flow_cost": 5,
-            "min_flow_cost": -250
+            "min_flow_cost": -250,
+            "ifr_type": "enhanced"
         },
         {
             "name": "IFR bl Mono Creek Div",
