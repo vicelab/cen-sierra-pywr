@@ -5299,13 +5299,6 @@
             "index_col": 0,
             "squeeze": true
         },
-        "Full Natural Flow": {
-            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
-            "index_col": 0,
-            "parse_dates": true,
-            "header": 0,
-            "squeeze": true
-        },
         "Initial Storage": {
             "url": "../data/Upper San Joaquin River/gauges/storage_mcm.csv",
             "index_col": 0,
@@ -5397,7 +5390,7 @@
             "index_col": 0,
             "header": 0
         },
-        "WY Full Natural Flow at Friant Dam": {
+        "Annual Full Natural Flow": {
             "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/preprocessed/full_natural_flow_annual_mcm.csv",
             "index_col": 0,
             "header": 0,
@@ -5417,6 +5410,14 @@
         "Price Year": {
             "type": "Constant",
             "value": 2009
+        },
+        "Full Natural Flow": {
+            "type": "dataframe",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
+            "index_col": 0,
+            "parse_dates": true,
+            "header": 0,
+            "squeeze": true
         },
         "Bass Lake/Volume Elevation Curve": {
             "type": "interpolatedvolume",

@@ -17,7 +17,7 @@ class IFR_bl_Millerton_Lake_Min_Flow(MinFlowParameter):
         ifr_schedule_cfs = self.model.tables["IFR Schedule below Friant Dam"]
 
         # get full natural flow
-        # fnf = self.model.tables["WY Full Natural Flow at Friant Dam"][restoration_year]
+        # fnf = self.model.tables["Annual Full Natural Flow"][restoration_year]
 
         if self.model.mode == 'planning':
             date_index = self.datetime.month - 1

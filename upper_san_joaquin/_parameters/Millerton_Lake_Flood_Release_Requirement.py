@@ -68,7 +68,7 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
             # TODO: update to use imperfect forecast?
             fnf_start = timestep.datetime
             fnf_end = datetime(timestep.year, 7, 31)
-            forecasted_inflow_mcm = self.model.tables["Full Natural Flow"][fnf_start:fnf_end].sum()
+            forecasted_inflow_mcm = self.model.parameters["Full Natural Flow"].dataframe[fnf_start:fnf_end].sum()
 
             # 3.2. Calculate today's and forecasted irrigation demand.
             ag_start = (month, day)
@@ -171,8 +171,8 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
             # Check if New Melones filled
             if millerton_storage_mcm > nov1_target and not self.should_drawdown[sid]:
                 day_before_yesterday = self.datetime + timedelta(days=-2)
-                prev_millerton_storage_mcm = self.model.recorders["Millerton Lake/storage"] \
-                    .to_dataframe().at[day_before_yesterday, tuple(scenario_index.indices)]
+                millerton_storage_df = self.model.recorders["Millerton Lake/storage"].to_dataframe()
+                prev_millerton_storage_mcm = millerton_storage_df.loc[day_before_yesterday][sid]
                 if millerton_storage_mcm <= prev_millerton_storage_mcm:
                     self.should_drawdown[sid] = True
 
@@ -210,11 +210,13 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
 
     def value(self, *args, **kwargs):
         try:
-            return convert(self._value(*args, **kwargs), "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
+            val = self._value(*args, **kwargs)
+            return convert(val, "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
         except Exception as err:
             print('\nERROR for parameter {}'.format(self.name))
             print('File where error occurred: {}'.format(__file__))
             print(err)
+            raise
 
     @classmethod
     def load(cls, model, data):
