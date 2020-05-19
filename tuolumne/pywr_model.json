@@ -2439,13 +2439,6 @@
         ]
     ],
     "tables": {
-        "Full Natural Flow": {
-            "url": "../data/Tuolumne River/hydrology/historical/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
-            "index_col": 0,
-            "parse_dates": true,
-            "header": 0,
-            "squeeze": true
-        },
         "San Joaquin Valley Index": {
             "url": "../data/common/hydrology/historical/Livneh/SJVI.csv",
             "index_col": 0,
@@ -2517,6 +2510,14 @@
         }
     },
     "parameters": {
+        "Full Natural Flow": {
+            "type": "dataframe",
+            "url": "../data/Tuolumne River/hydrology/historical/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
+            "index_col": 0,
+            "parse_dates": true,
+            "header": 0,
+            "squeeze": true
+        },
         "Dion R Holm PH/Demand": {
             "type": "Dion_R_Holm_PH_Demand"
         },
