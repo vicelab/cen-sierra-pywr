@@ -36,13 +36,13 @@ class Don_Pedro_Lake_Flood_Control_Requirement(WaterLPParameter):
         # Refill release to prevent uncontrolled spill before July 1
         end_month = 7
         end_day = 1
-        FNF = self.model.tables["Full Natural Flow"]
+        FNF_df = self.model.parameters["Full Natural Flow"].dataframe
         start = timestep.datetime
         DP_flood_control = self.model.nodes["Don Pedro Lake Flood Control"]
         if (4, 1) <= month_day <= (end_month, end_day):
             end = datetime(timestep.year, end_month, end_day)
             forecast_days = (end - start).days + 1
-            forecast_all = FNF[start:end].sum()
+            forecast_all = FNF_df[start:end].sum()
             forecast_above_HH = self.model.parameters["Hetch Hetchy Reservoir Inflow/Runoff"].dataframe[start:end].sum()
             SFPUC_diversion = 920 / 35.315 * 0.0864 * forecast_days
             forecast = forecast_all - forecast_above_HH + max(forecast_above_HH - SFPUC_diversion, 0.0)
@@ -64,7 +64,7 @@ class Don_Pedro_Lake_Flood_Control_Requirement(WaterLPParameter):
             drawdown_days = (end - start).days + 1
             # oct_target_mcm = 1690 cfs w/ 10 cfs buffer = (1690 - 10) * 1.2335 = 2072.28 mcm
             drawdown_release_mcm = max((prev_storage_mcm - 2072.28) / drawdown_days, 0)
-            inflow_forecast_mcm = FNF[start:end].sum() / drawdown_days
+            inflow_forecast_mcm = FNF_df[start:end].sum() / drawdown_days
             # downstream_demand_mcm = MID_mcm + TID_mcm + IFR_mcm
             downstream_demand_mcm = 3
             extra_release_mcm = max(drawdown_release_mcm + inflow_forecast_mcm - downstream_demand_mcm, 0)

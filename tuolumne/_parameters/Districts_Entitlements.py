@@ -9,7 +9,7 @@ class Districts_Entitlements(WaterLPParameter):
         # Jun 15-Apr 14: 4792.1 AF/day = 5.911 mcm
         # Apr 15-Jun 14 : 8064.8 AF/day = 9.948 mcm
 
-        fnf_mcm = self.model.tables["Full Natural Flow"][timestep.datetime]
+        fnf_mcm = self.model.parameters["Full Natural Flow"].value(timestep, scenario_index)
 
         if (4, 15) <= (timestep.month, timestep.day) <= (6, 14):
             max_entitlement_mcm = 9.948
