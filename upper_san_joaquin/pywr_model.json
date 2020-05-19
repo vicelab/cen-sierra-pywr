@@ -1486,7 +1486,7 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 586.0,
-            "turbine_capacity": 1.693254031891053,
+            "turbine_capacity": 1.42,
             "spinning_flow": 0.2,
             "spinning_cost": -1500,
             "cost": [
