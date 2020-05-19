@@ -15,27 +15,41 @@ from loguru import logger
 
 SECONDS_IN_DAY = 3600 * 24
 
-def run_model(climate,
-              basin,
-              start=None, end=None,
-              years=None,
-              run_name="default",
-              include_planning=False,
-              simplify=True,
-              use_multiprocessing=False,
-              debug=False,
-              planning_months=12,
-              scenarios=None,
-              show_progress=False,
-              data_path=None):
+
+def run_model(*args, **kwargs):
+    climate = args[0]
+    basin = args[1]
+    run_name = kwargs['run_name']
 
     logger_name = '{}-{}-{}.log'.format(run_name, basin, climate.replace('/', '_'))
     logs_dir = './logs'
     if not os.path.exists(logs_dir):
         os.makedirs(logs_dir)
     logger_path = os.path.join(logs_dir, logger_name)
-    # logger.add(logger_path)
+    if os.path.exists(logger_path):
+        os.remove(logger_path)
+    logger.add(logger_path)
 
+    try:
+        _run_model(*args, **kwargs)
+    except Exception as err:
+        logger.exception(err)
+        logger.error("Failed")
+
+
+def _run_model(climate,
+               basin,
+               start=None, end=None,
+               years=None,
+               run_name="default",
+               include_planning=False,
+               simplify=True,
+               use_multiprocessing=False,
+               debug=False,
+               planning_months=12,
+               scenarios=None,
+               show_progress=False,
+               data_path=None):
     logger.info("Running \"{}\" scenario for {} basin, {} climate".format(run_name, basin.upper(), climate.upper()))
 
     climate_set, climate_scenario = climate.split('/')
@@ -272,10 +286,12 @@ def run_model(climate,
 
     disable_progress_bar = not debug and not show_progress
     disable_progress_bar = True
+    n_timesteps = len(m.timestepper.datetime_index)
     for date in tqdm(m.timestepper.datetime_index, ncols=60, disable=disable_progress_bar):
         step += 1
         if disable_progress_bar and date.month == 9 and date.day == 30:
-            logger.info('Finished year {}'.format(date.year))
+            # logger.info('Finished year {}'.format(date.year))
+            logger.info('{}% complete'.format(round(step / n_timesteps * 100)))
         try:
 
             # Step 1: run planning model

@@ -18,3 +18,5 @@ results/
 *.pdf
 */*.pdf
 .Rproj.user
+
+logs/
