@@ -4,24 +4,13 @@ import paramiko
 from loguru import logger
 from paramiko import SSHClient, AutoAddPolicy, RSAKey
 from paramiko.auth_handler import AuthenticationException, SSHException
-from scp import SCPClient, SCPException
-
-# data_dir = os.environ['SIERRA_DATA_PATH']
-# log_dir = os.join(data_dir, 'logs')
-
-# LOG_FILENAME = "logfile.log"
-# for handler in logger.root.handlers[:]:
-#     logger.root.removeHandler(handler)
-# logger.basicConfig(filename=LOG_FILENAME,level=logger.DEBUG)    
+from scp import SCPClient, SCPException 
 
 logger.add(sys.stderr,
         format="{time} {message}",
         filter="client",
         level="INFO")
-# logger.add('logs/log_{time:YYYY-MM-DD}.log',
-#         format="{time} {level} {message}",
-#         filter="client",
-#         level="ERROR")
+
 logger.add('logs/log_{time:YYYY-MM-DD}.log',
         format="{time} {level} {message}",
         filter="client",
@@ -109,7 +98,7 @@ if __name__ == '__main__':
 
     remote = RemoteClient(host, user, password, local_path, remote_path)
     remote.connect_to_cluster(host, user, password)
-    # remote.upload_to_cluster(host, basins, local_path, remote_path)
-    # remote.download_from_cluster(host, basins, local_path, remote_path)
-    # remote.execute_commands(test_command)
+    remote.upload_to_cluster(host, basins, local_path, remote_path)
+    remote.execute_commands(test_command)
+    remote.download_from_cluster(host, basins, local_path, remote_path)
     remote.disconnect_from_cluster()
