@@ -1,6 +1,7 @@
 from parameters import MinFlowParameter
 from datetime import date
 import numpy as np
+from utilities.converter import convert
 
 
 class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):
@@ -44,19 +45,15 @@ class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):
         # The required flow is (greater of the Davis-Grunsky and FERC flows)
         # + the Cowell Agreement entitlement + Fish Pulse + Diversion Reg
         requirement_cms = max(ferc_flow_req, dga_flow_req) + ca_flow_req + fish_pulse
-        requirement_mcm = requirement_cms * 0.0864  # convert to mcm
 
         # previous_flow_mcm = self.model.nodes['IFR at Shaffer Bridge'].prev_flow[scenario_index.global_id]
         # downramp_mcm = self.get_down_ramp_ifr(timestep, scenario_index, previous_flow_mcm, rate=0.25)
         # requirement_mcm = max(requirement_mcm, swrcb_reqt_mcm)
-        return requirement_mcm
+        return requirement_cms
 
-    def value(self, *args, **kwargs):
-        ifr = self.get_ifr(*args, **kwargs)
-        if ifr is not None:
-            return ifr
-        else:
-            return self._value(*args, **kwargs)
+    def value(self, timestep, scenario_index):
+        val = self.requirement(timestep, scenario_index, default=self._value)
+        return convert(val, "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
 
     def ferc_req(self, timestep, scenario_index, wyt):
         sid = scenario_index.global_id

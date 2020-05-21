@@ -53,14 +53,15 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
         max_storage = NML.get_max_volume(scenario_index)
         above_85_taf_mcm = max_storage - rainflood_curve_mcm - 104.85
         if above_85_taf_mcm > 0.0 and (month >= 10 or month <= 3):  # 85 TAF
-            mammoth_pool_mcm = self.model.nodes["Mammoth Pool Reservoir"].volume[scenario_index.global_id]
-            rainflood_curve_mcm += min(above_85_taf_mcm, mammoth_pool_mcm)
+            MPL = self.model.nodes["Mammoth Pool Reservoir"]
+            mammoth_pool_space_mcm = MPL.max_volume - MPL.volume[sid]
+            rainflood_curve_mcm += min(above_85_taf_mcm, mammoth_pool_space_mcm)
 
         if millerton_storage_mcm >= rainflood_curve_mcm:
             release_mcm = millerton_storage_mcm - rainflood_curve_mcm
 
         # 3. Conditional space release
-        if 3 <= month <= 7:
+        elif 2 <= month <= 7:
             # Note: Here, we are calculating forecasts directly as able, rather than using the USACE manual diagram.
 
             # 3.1. Calculate forecasted unimpaired runoff into Millerton Lake, through July 31.
@@ -68,7 +69,7 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
             # TODO: update to use imperfect forecast?
             fnf_start = timestep.datetime
             fnf_end = datetime(timestep.year, 7, 31)
-            forecasted_inflow_mcm = self.model.tables["Full Natural Flow"][fnf_start:fnf_end].sum()
+            forecasted_inflow_mcm = self.model.parameters["Full Natural Flow"].dataframe[fnf_start:fnf_end].sum()
 
             # 3.2. Calculate today's and forecasted irrigation demand.
             ag_start = (month, day)
@@ -86,7 +87,6 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
             # 3.3. Calculate total space required for flood control
             # slope from flood control chart = 1 / 1.6
             total_space_required_mcm = forecasted_inflow_mcm * 0.625 - forecasted_ag_demand_mcm
-            # total_space_required_mcm = forecasted_inflow_mcm * 1.0 - forecasted_ag_demand_mcm
 
             # 3.4. Calculate upstream space, adjusted
 
@@ -108,13 +108,12 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
 
             # 3.5. Calculate conditional reservation required
             # Note: It does not appear that this is actually used in the Flood Control Diagram
-            # conditional_space_required_mcm = total_space_required_mcm - adjusted_upstream_storage_space_mcm
-            conditional_space_required_mcm = total_space_required_mcm
+            conditional_space_required_mcm = total_space_required_mcm - adjusted_upstream_storage_space_mcm
 
             # 3.6. Compute total space available for flood control
             millerton_storage_space_mcm = NML.max_volume - millerton_storage_mcm
-            # total_space_available_mcm = millerton_storage_space_mcm + adjusted_upstream_storage_space_mcm
-            total_space_available_mcm = millerton_storage_space_mcm
+            total_space_available_mcm = millerton_storage_space_mcm + adjusted_upstream_storage_space_mcm
+            # total_space_available_mcm = millerton_storage_space_mcm
 
             # 3.7. Finally, compute the supplemental release
             # Note that the goal is to spread the release out over time
@@ -171,8 +170,8 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
             # Check if New Melones filled
             if millerton_storage_mcm > nov1_target and not self.should_drawdown[sid]:
                 day_before_yesterday = self.datetime + timedelta(days=-2)
-                prev_millerton_storage_mcm = self.model.recorders["Millerton Lake/storage"] \
-                    .to_dataframe().at[day_before_yesterday, tuple(scenario_index.indices)]
+                millerton_storage_df = self.model.recorders["Millerton Lake/storage"].to_dataframe()
+                prev_millerton_storage_mcm = millerton_storage_df.loc[day_before_yesterday].values[sid]
                 if millerton_storage_mcm <= prev_millerton_storage_mcm:
                     self.should_drawdown[sid] = True
 
@@ -181,7 +180,7 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
                 # drawdown_release_mcm = millerton_storage_mcm - nov1_target
                 prev_inflow_mcm = 0.0
                 for node in ['Kerckhoff 1 PH', 'Kerckhoff 2 PH', 'IFR bl Kerckhoff Lake', 'Millerton Lake Inflow']:
-                    prev_inflow_mcm += self.model.nodes[node].prev_flow[scenario_index.global_id]
+                    prev_inflow_mcm += self.model.nodes[node].prev_flow[sid]
 
                 drawdown_release_mcm += prev_inflow_mcm
 
@@ -210,11 +209,13 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
 
     def value(self, *args, **kwargs):
         try:
-            return convert(self._value(*args, **kwargs), "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
+            val = self._value(*args, **kwargs)
+            return convert(val, "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
         except Exception as err:
             print('\nERROR for parameter {}'.format(self.name))
             print('File where error occurred: {}'.format(__file__))
             print(err)
+            raise
 
     @classmethod
     def load(cls, model, data):

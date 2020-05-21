@@ -1,10 +1,10 @@
 import numpy as np
-from parameters import WaterLPParameter
+from parameters import MinFlowParameter
 
 from utilities.converter import convert
 
 
-class IFR_at_Murphys_Park_Requirement(WaterLPParameter):
+class IFR_at_Murphys_Park_Requirement(MinFlowParameter):
     """"""
     year_type_thresholds = [100000, 140000, 320000, 400000, 500000]
     may_sep = [12, 16, 22, 26, 30]
@@ -62,13 +62,8 @@ class IFR_at_Murphys_Park_Requirement(WaterLPParameter):
         return ifr_val
 
     def value(self, timestep, scenario_index):
-        try:
-            return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1,
-                           scale_out=1000000.0)
-        except Exception as err:
-            print('\nERROR for parameter {}'.format(self.name))
-            print('File where error occurred: {}'.format(__file__))
-            print(err)
+        val = self.requirement(timestep, scenario_index, default=self._value)
+        return convert(val, "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
 
     @classmethod
     def load(cls, model, data):

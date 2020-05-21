@@ -16,13 +16,9 @@ class Lake_Tulloch_Min_Volume(WaterLPParameter):
             control_curve_target = flood_control_req[start:end].mean()
         return control_curve_target - 1.62  # subtract 2 TAF based on observations
 
-    def value(self, timestep, scenario_index):
-        try:
-            return self._value(timestep, scenario_index)
-        except Exception as err:
-            print('\nERROR for parameter {}'.format(self.name))
-            print('File where error occurred: {}'.format(__file__))
-            print(err)
+    def value(self, *args, **kwargs):
+        val = self._value(*args, **kwargs)
+        return val
 
     @classmethod
     def load(cls, model, data):

@@ -1,10 +1,10 @@
-from pywr.parameters import Parameter
+from parameters import MinFlowParameter
 import pandas as pd
 import numpy as np
 from datetime import datetime
 
 
-class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(Parameter):
+class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(MinFlowParameter):
     MIN_STORAGE_THRESHOLD_MCM = 150 * 1.2335  # Storage threshold below which snowmelt flows will not initiate
     STORAGE_FORECAST_THRESHOLD_MCM = 360 * 1.2335  # Storage forecast above which snowmelt releases should be initiated
     EXCESS_SPILL_THRESHOLD_AF = 10000  # Excess spill value above which the template hydrograph should be changed
@@ -268,13 +268,8 @@ class IFR_bl_Hetch_Hetchy_Reservoir_UTREP_Spill(Parameter):
         return release_mcm
 
     def value(self, *args, **kwargs):
-        try:
-            return self._value(*args, **kwargs)
-        except Exception as err:
-            print('ERROR for parameter {}'.format(self.name))
-            print('File where error occurred: {}'.format(__file__))
-            print(err)
-            raise
+        val = self._value(*args, **kwargs)
+        return val
 
     @classmethod
     def load(cls, model, data):

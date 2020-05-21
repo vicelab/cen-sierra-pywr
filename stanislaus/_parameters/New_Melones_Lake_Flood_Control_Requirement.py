@@ -163,14 +163,10 @@ class New_Melones_Lake_Flood_Control_Requirement(WaterLPParameter):
 
         return release_cms
 
-    def value(self, timestep, scenario_index):
-        try:
-            return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1,
-                           scale_out=1000000.0)
-        except Exception as err:
-            print('\nERROR for parameter {}'.format(self.name))
-            print('File where error occurred: {}'.format(__file__))
-            print(err)
+    def value(self, *args, **kwargs):
+        val = self._value(*args, **kwargs)
+        return convert(val, "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
+
 
     @classmethod
     def load(cls, model, data):

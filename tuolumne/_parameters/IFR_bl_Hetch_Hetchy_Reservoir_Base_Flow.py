@@ -1,9 +1,9 @@
-from parameters import WaterLPParameter
+from parameters import MinFlowParameter
 
 from utilities.converter import convert
 
 
-class IFR_bl_Hetch_Hetchy_Reservoir_Base_Flow(WaterLPParameter):
+class IFR_bl_Hetch_Hetchy_Reservoir_Base_Flow(MinFlowParameter):
     """"""
 
     def _value(self, timestep, scenario_index):
@@ -54,14 +54,8 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Base_Flow(WaterLPParameter):
         return ifr_cms
 
     def value(self, timestep, scenario_index):
-        try:
-            return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1,
-                           scale_out=1000000.0)
-        except Exception as err:
-            print('ERROR for parameter {}'.format(self.name))
-            print('File where error occurred: {}'.format(__file__))
-            print(err)
-            raise
+        val = self.requirement(timestep, scenario_index, default=self._value)
+        return convert(val, "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
 
     @classmethod
     def load(cls, model, data):

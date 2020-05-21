@@ -103,6 +103,7 @@ class PH_Water_Demand(WaterLPParameter):
             print('\nERROR for parameter {}'.format(self.name))
             print('File where error occurred: {}'.format(__file__))
             print(err)
+            raise
 
     @classmethod
     def load(cls, model, data):

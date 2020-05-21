@@ -22,13 +22,9 @@ class New_Melones_Apr_Jul_Runoff(WaterLPParameter):
 
         return self.apr_jul_runoff[scenario_index.global_id]
 
-    def value(self, timestep, scenario_index):
-        try:
-            return self._value(timestep, scenario_index)
-        except Exception as err:
-            print('\nERROR for parameter {}'.format(self.name))
-            print('File where error occurred: {}'.format(__file__))
-            print(err)
+    def value(self, *args, **kwargs):
+        val = self._value(*args, **kwargs)
+        return val
 
     @classmethod
     def load(cls, model, data):

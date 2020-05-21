@@ -5,6 +5,7 @@ from itertools import product
 from run_basin_model import run_model
 from functools import partial
 import pandas as pd
+import traceback as tb
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-b", "--basin", help="Basin to run")

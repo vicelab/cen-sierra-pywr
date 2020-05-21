@@ -19,8 +19,7 @@ class PH_Water_Demand(WaterLPParameter):
 
     def setup(self):
         super().setup()
-        num_scenarios = len(self.model.scenarios.combinations)
-        self.price_threshold = np.zeros(num_scenarios, np.float)
+        self.price_threshold = np.zeros(self.num_scenarios, np.float)
 
     def _value(self, timestep, scenario_index):
 
@@ -58,7 +57,7 @@ class PH_Water_Demand(WaterLPParameter):
                     price_end = end.strftime('{}-%m-%d'.format(price_year))
                 energy_prices = all_energy_prices[price_date:price_end].values.flatten()
                 energy_prices[::-1].sort()  # sort in descending order
-                planning_release = self.model.planning.nodes[self.res_name + '/1'].flow[scenario_index.global_id]
+                planning_release = self.model.planning.nodes[self.res_name + '/1'].flow[sid]
 
                 # for planning turbine capacity, note that the turbine capacities are the same
                 # in both models (i.e., cms)
@@ -112,6 +111,7 @@ class PH_Water_Demand(WaterLPParameter):
             print('\nERROR for parameter {}'.format(self.name))
             print('File where error occurred: {}'.format(__file__))
             print(err)
+            raise
 
     @classmethod
     def load(cls, model, data):

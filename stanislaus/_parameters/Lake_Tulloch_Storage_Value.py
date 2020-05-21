@@ -13,13 +13,9 @@ class Lake_Tulloch_Storage_Value(WaterLPParameter):
             cost = 4000.0  # drawdown period
         return cost
 
-    def value(self, timestep, scenario_index):
-        try:
-            return self._value(timestep, scenario_index)
-        except Exception as err:
-            print('\nERROR for parameter {}'.format(self.name))
-            print('File where error occurred: {}'.format(__file__))
-            print(err)
+    def value(self, *args, **kwargs):
+        val = self._value(*args, **kwargs)
+        return val
 
     @classmethod
     def load(cls, model, data):

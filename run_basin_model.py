@@ -11,23 +11,46 @@ import pandas as pd
 import traceback
 from utilities import simplify_network, prepare_planning_model
 
+from loguru import logger
+
 SECONDS_IN_DAY = 3600 * 24
 
 
-def run_model(climate,
-              basin,
-              start=None, end=None,
-              years=None,
-              run_name="default",
-              include_planning=False,
-              simplify=True,
-              use_multiprocessing=False,
-              debug=False,
-              planning_months=12,
-              scenarios=None,
-              show_progress=False,
-              data_path=None):
-    print("Running \"{}\" scenario for {} basin, {} climate".format(run_name, basin.upper(), climate.upper()))
+def run_model(*args, **kwargs):
+    climate = args[0]
+    basin = args[1]
+    run_name = kwargs['run_name']
+
+    logger_name = '{}-{}-{}.log'.format(run_name, basin, climate.replace('/', '_'))
+    logs_dir = './logs'
+    if not os.path.exists(logs_dir):
+        os.makedirs(logs_dir)
+    logger_path = os.path.join(logs_dir, logger_name)
+    if os.path.exists(logger_path):
+        os.remove(logger_path)
+    logger.add(logger_path)
+
+    try:
+        _run_model(*args, **kwargs)
+    except Exception as err:
+        logger.exception(err)
+        logger.error("Failed")
+
+
+def _run_model(climate,
+               basin,
+               start=None, end=None,
+               years=None,
+               run_name="default",
+               include_planning=False,
+               simplify=True,
+               use_multiprocessing=False,
+               debug=False,
+               planning_months=12,
+               scenarios=None,
+               show_progress=False,
+               data_path=None):
+    logger.info("Running \"{}\" scenario for {} basin, {} climate".format(run_name, basin.upper(), climate.upper()))
 
     climate_set, climate_scenario = climate.split('/')
 
@@ -154,7 +177,7 @@ def run_model(climate,
     # import domains
     import_module('.domains', 'domains')
     if debug:
-        print(" [*] Domains imported")
+        logger.debug("Domains imported")
 
     # import custom policies
     try:
@@ -188,7 +211,7 @@ def run_model(climate,
 
     if include_planning:
 
-        print('Creating planning model (this may take a minute or two)')
+        logger.info('Creating planning model (this may take a minute or two)')
 
         # create filenames, etc.
         monthly_filename = model_filename_base + '_monthly.json'
@@ -204,8 +227,8 @@ def run_model(climate,
         try:
             planning_model = Model.load(planning_model_path, path=planning_model_path)
         except Exception as err:
-            print("Planning model failed to load")
-            print(err)
+            logger.error("Planning model failed to load")
+            # logger.error(err)
             raise
 
         # set model mode to planning
@@ -226,7 +249,7 @@ def run_model(climate,
     # Create daily model
     # ==================
     if debug:
-        print(' [*] Loading daily model')
+        logger.debug('Loading daily model')
     try:
         m = Model.load(model_path, path=model_path)
         # with open(model_path) as f:
@@ -236,7 +259,7 @@ def run_model(climate,
         # if recorders:
         #     m = Model.load(model_path, path=model_path)
     except Exception as err:
-        print(err)
+        logger.error(err)
         raise
 
     m.setup()
@@ -262,8 +285,13 @@ def run_model(climate,
         m.planning.scheduling = m
 
     disable_progress_bar = not debug and not show_progress
+    disable_progress_bar = True
+    n_timesteps = len(m.timestepper.datetime_index)
     for date in tqdm(m.timestepper.datetime_index, ncols=60, disable=disable_progress_bar):
         step += 1
+        if disable_progress_bar and date.month == 9 and date.day == 30:
+            # logger.info('Finished year {}'.format(date.year))
+            logger.info('{}% complete'.format(round(step / n_timesteps * 100)))
         try:
 
             # Step 1: run planning model
@@ -286,14 +314,14 @@ def run_model(climate,
             m.step()
         except Exception as err:
             traceback.print_exc()
-            print('The above error occurred in step {}'.format(date))
+            logger.error('Failed at step {}'.format(date))
             raise
 
     if debug:
         total_seconds = (datetime.now() - now).total_seconds()
-        print('Total run: {} seconds'.format(total_seconds))
+        logger.debug('Total run: {} seconds'.format(total_seconds))
         monthly_pct = monthly_seconds / total_seconds * 100
-        print('Monthly overhead: {} seconds ({:02}% of total)'.format(monthly_seconds, monthly_pct))
+        logger.debug('Monthly overhead: {} seconds ({:02}% of total)'.format(monthly_seconds, monthly_pct))
 
     # save results to CSV
     results_df = m.to_dataframe()

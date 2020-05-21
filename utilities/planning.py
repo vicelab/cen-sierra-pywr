@@ -8,7 +8,7 @@ RIM_DAMS = {
 PARAMETERS_TO_EXPAND = {
     'stanislaus': [
         'New Melones Apr-Jul Runoff',
-        # 'New Melones Lake/WYT',
+        # 'New Melones Lake/Water Year Type',
         'New Melones Lake/Storage Demand'
     ],
     'common': [
@@ -19,7 +19,7 @@ PARAMETERS_TO_EXPAND = {
 
 PARAMETERS_TO_REMOVE = {
     'stanislaus': [
-        'New Melones Lake/WYT'
+        'New Melones Lake/Water Year Type'
     ]
 }
 
@@ -45,7 +45,7 @@ def prepare_planning_model(m, basin, climate, outpath, steps=12, blocks=8, param
     parameters_to_expand = PARAMETERS_TO_EXPAND.get(basin, []) + PARAMETERS_TO_EXPAND.get('common', [])
 
     m = simplify_network(m, basin=basin, climate=climate, delete_gauges=True, delete_observed=True,
-                         delete_scenarios=debug is not None)
+                         delete_scenarios=False)
 
     num_scenarios = 1
     for scenario in m.get('scenarios', []):

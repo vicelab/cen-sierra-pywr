@@ -1486,7 +1486,7 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 586.0,
-            "turbine_capacity": 1.693254031891053,
+            "turbine_capacity": 1.42,
             "spinning_flow": 0.2,
             "spinning_cost": -1500,
             "cost": [
@@ -1768,7 +1768,7 @@
                 null
             ],
             "cost": [
-                -50,
+                -10000,
                 2
             ]
         },
@@ -1929,7 +1929,8 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Millerton Lake/Min Flow",
             "max_flow_cost": 5,
-            "min_flow_cost": -250
+            "min_flow_cost": -250,
+            "ifr_type": "enhanced"
         },
         {
             "name": "IFR bl Mono Creek Div",
@@ -5298,13 +5299,6 @@
             "index_col": 0,
             "squeeze": true
         },
-        "Full Natural Flow": {
-            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
-            "index_col": 0,
-            "parse_dates": true,
-            "header": 0,
-            "squeeze": true
-        },
         "Initial Storage": {
             "url": "../data/Upper San Joaquin River/gauges/storage_mcm.csv",
             "index_col": 0,
@@ -5396,7 +5390,7 @@
             "index_col": 0,
             "header": 0
         },
-        "WY Full Natural Flow at Friant Dam": {
+        "Annual Full Natural Flow": {
             "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/preprocessed/full_natural_flow_annual_mcm.csv",
             "index_col": 0,
             "header": 0,
@@ -5416,6 +5410,14 @@
         "Price Year": {
             "type": "Constant",
             "value": 2009
+        },
+        "Full Natural Flow": {
+            "type": "dataframe",
+            "url": "../data/Upper San Joaquin River/hydrology/historical/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
+            "index_col": 0,
+            "parse_dates": true,
+            "header": 0,
+            "squeeze": true
         },
         "Bass Lake/Volume Elevation Curve": {
             "type": "interpolatedvolume",
