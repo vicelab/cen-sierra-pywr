@@ -72,17 +72,25 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
             forecasted_inflow_mcm = self.model.parameters["Full Natural Flow"].dataframe[fnf_start:fnf_end].sum()
 
             # 3.2. Calculate today's and forecasted irrigation demand.
+            forecast_days = 14
             ag_start = (month, day)
             if (month, day) <= (5, 31):
                 ag_end = (6, 15)
             else:
                 # min of +15 days (1-15 = today + 14 days)
-                ag_end_date = timestep.datetime + timedelta(days=14)
+                ag_end_date = timestep.datetime + timedelta(days=forecast_days)
                 ag_end = min((ag_end_date.month, ag_end_date.day), (8, 1))
 
             # today_ag_demand = Madera_df[ag_start] + Friant_Kern_df[ag_start]
-            forecasted_ag_demand_cfs = Madera_df[ag_start:ag_end].sum() + Friant_Kern_df[ag_start:ag_end].sum()
-            forecasted_ag_demand_mcm = forecasted_ag_demand_cfs / 35.31 * 0.0864
+
+            # option 1: use actual forecasted demand
+            # madera_forcasted_demand_mcm = Madera_df[ag_start:ag_end].sum() / 35.315 * 0.0864
+
+            # option 2: use Madera canal capacity (i.e., assume we can release at capacity)
+            madera_fcst_dem_mcm = self.model.nodes['CVP Madera Canal'].max_flow * forecast_days
+
+            friant_kern_fcst_dem_mcm = Friant_Kern_df[ag_start:ag_end].sum() / 35.315 * 0.0864
+            forecasted_ag_demand_mcm = madera_fcst_dem_mcm + friant_kern_fcst_dem_mcm
 
             # 3.3. Calculate total space required for flood control
             # slope from flood control chart = 1 / 1.6
@@ -199,6 +207,10 @@ class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
 
         else:
             self.should_drawdown[sid] = False
+
+        # if self.res_name == 'Millerton Flood Release':
+        #     release_mcm -= self.model.nodes['CVP Madera Canal'].max_flow
+        #     release_mcm = max(release_mcm, 0.0)
 
         release_cms = release_mcm / 0.0864
 

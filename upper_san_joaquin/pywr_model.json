@@ -1185,7 +1185,7 @@
             "name": "Friant-Kern Canal Demand",
             "type": "Link",
             "max_flow": "Friant-Kern Canal Demand/Demand",
-            "cost": -200
+            "cost": -120
         },
         {
             "name": "Friant-Kern Canal.1",
@@ -1711,7 +1711,8 @@
         {
             "name": "CVP Madera Canal",
             "type": "Output",
-            "cost": 1
+            "cost": 1,
+            "max_flow": 3.132
         },
         {
             "name": "CVP Madera Canal Demand",
@@ -1722,7 +1723,7 @@
                 1000
             ],
             "cost": [
-                -200,
+                -120,
                 1
             ]
         },
@@ -1757,7 +1758,7 @@
         {
             "name": "Friant Dam Spillway",
             "type": "Link",
-            "cost": 5,
+            "cost": 1000,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -1768,18 +1769,18 @@
                 null
             ],
             "cost": [
-                -10000,
-                2
+                -50,
+                10
             ]
         },
         {
             "name": "Friant PH",
             "type": "Hydropower",
             "cost": [
-                5
+                -1
             ],
             "max_flow": [
-                null
+                1
             ],
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -2108,7 +2109,7 @@
             "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
             "initial_volume": 400,
-            "cost": -30,
+            "cost": -10,
             "max_volume": 641.42,
             "min_volume": 150,
             "gauge": "USGS 11250100 MILLERTON LK A FRIANT CA"
