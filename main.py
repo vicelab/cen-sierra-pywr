@@ -5,7 +5,7 @@ from itertools import product
 from run_basin_model import run_model
 from functools import partial
 import pandas as pd
-import traceback as tb
+from loguru import logger
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-b", "--basin", help="Basin to run")
@@ -143,4 +143,4 @@ else:
         pool.close()
         pool.join()
 
-print('done!')
+logger.info('Done!')

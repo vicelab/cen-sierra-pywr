@@ -177,7 +177,7 @@ def _run_model(climate,
     # import domains
     import_module('.domains', 'domains')
     if debug:
-        logger.debug("Domains imported")
+        logger.info("Domains imported")
 
     # import custom policies
     try:
@@ -249,7 +249,7 @@ def _run_model(climate,
     # Create daily model
     # ==================
     if debug:
-        logger.debug('Loading daily model')
+        logger.info('Loading daily model')
     try:
         m = Model.load(model_path, path=model_path)
         # with open(model_path) as f:
@@ -285,7 +285,6 @@ def _run_model(climate,
         m.planning.scheduling = m
 
     disable_progress_bar = not debug and not show_progress
-    disable_progress_bar = True
     n_timesteps = len(m.timestepper.datetime_index)
     for date in tqdm(m.timestepper.datetime_index, ncols=60, disable=disable_progress_bar):
         step += 1
