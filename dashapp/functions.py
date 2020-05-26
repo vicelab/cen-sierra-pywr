@@ -5,9 +5,10 @@ from dashapp.constants import BASINS, PATH_TEMPLATES, ENSEMBLE_NAMES
 
 def agg_by_resources(df, agg):
     levels = list(range(len(df.columns.levels)))
-    levels.pop(1)
-    df = df.groupby(axis=1, level=levels).agg(agg)
-    new_cols = [(c[0], agg) + tuple(c[1:]) for c in df.columns]
+    # levels.pop(1)
+    df = df.groupby(axis=1, level=0).agg(agg)
+    # new_cols = [(c[0], agg) + tuple(c[1:]) for c in df.columns]
+    new_cols = [(c, agg) for c in df.columns]
     df.columns = pd.MultiIndex.from_tuples(new_cols)
     return df
 
