@@ -8,8 +8,7 @@
     "price_year": {
         "name": "Energy Prices",
         "climates": [
-            "historical",
-            "gcms"
+            "historical"
         ],
         "scenarios": [
             "energy_prices"
