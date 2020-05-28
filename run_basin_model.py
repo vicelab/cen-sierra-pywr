@@ -9,7 +9,8 @@ from dateutil.relativedelta import relativedelta
 from common.tests import test_planning_model, get_planning_dataframe
 import pandas as pd
 import traceback
-from utilities import simplify_network, prepare_planning_model, save_model_results
+from utilities import simplify_network, prepare_planning_model, save_model_results, create_schematic
+from graphviz.backend import ExecutableNotFound
 
 from loguru import logger
 
@@ -54,8 +55,8 @@ def _run_model(climate,
 
     climate_set, climate_scenario = climate.split('/')
 
-    if debug:
-        from utilities import create_schematic
+    # if debug:
+    #     from utilities import create_schematic
 
     # Some adjustments
     if basin in ['merced', 'tuolumne']:
@@ -200,7 +201,10 @@ def _run_model(climate,
             f.write(json.dumps(m, indent=4))
 
         if debug:
-            create_schematic(basin, 'simplified')
+            try:
+                create_schematic(basin, 'simplified')
+            except ExecutableNotFound:
+                logger.warning('Graphviz executable not found. Daily schematic not created.')
 
         model_path = simplified_model_path
 
@@ -221,7 +225,10 @@ def _run_model(climate,
                                remove_rim_dams=True)
 
         if debug:
-            create_schematic(basin, 'monthly')
+            try:
+                create_schematic(basin, 'monthly')
+            except ExecutableNotFound:
+                logger.warning('Graphviz executable not found. Monthly schematic not created.')
 
         # create pywr model
         try:
@@ -248,7 +255,7 @@ def _run_model(climate,
     # ==================
     # Create daily model
     # ==================
-    logger.debug('Loading daily model')
+    logger.info('Loading daily model')
     try:
         m = Model.load(model_path, path=model_path)
     except Exception as err:
