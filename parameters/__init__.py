@@ -133,16 +133,30 @@ class IFRParameter(WaterLPParameter):
 class MinFlowParameter(IFRParameter):
     current_flow_period = None
     water_year_type = []
+    params = None
+    dowy = None
+
+    # Functional flows parameters
+    magnitude_col = None
+    dry_season_baseflow_mcm = None
+    include_functional_flows = False
+    wet_baseflow_start = 100
+    spring_recession_start = 250
 
     def setup(self, *args, **kwargs):
         super().setup(*args, **kwargs)
 
         self.current_flow_period = [FlowPeriods.DRY_SEASON] * self.num_scenarios
-        self.params = self.model.tables['functional flows parameters']
-        self.water_year_type = 'dry'
 
-        self.magnitude_col = 'dry magnitude'
-        self.dry_season_baseflow_mcm = self.params.at['dry season baseflow', self.magnitude_col] / 35.31 * 0.0864
+        for s in self.model.scenarios.scenarios:
+            if 'Functional Flows' in s.ensemble_names:
+                self.include_functional_flows = True
+                self.params = self.model.tables['functional flows parameters']
+                self.water_year_type = 'dry'
+
+                self.magnitude_col = 'dry magnitude'
+                self.dry_season_baseflow_mcm = self.params.at['dry season baseflow', self.magnitude_col] \
+                                               / 35.31 * 0.0864
 
     def before(self, *args, **kwargs):
         super().before(*args, **kwargs)
@@ -154,12 +168,14 @@ class MinFlowParameter(IFRParameter):
         else:
             dowy = timestep.dayofyear + 275 + 1
         self.dowy = dowy
-        self.wet_baseflow_start = 100
-        self.spring_recession_start = 250
 
-        if timestep.month == 4 and timestep.day == 1:
-            self.magnitude_col = self.water_year_type + ' magnitude'
-            self.dry_season_baseflow_mcm = self.params.at['dry season baseflow', self.magnitude_col] / 35.31
+        if self.include_functional_flows:
+            self.wet_baseflow_start = 100
+            self.spring_recession_start = 250
+
+            if timestep.month == 4 and timestep.day == 1:
+                self.magnitude_col = self.water_year_type + ' magnitude'
+                self.dry_season_baseflow_mcm = self.params.at['dry season baseflow', self.magnitude_col] / 35.31
 
     def get_down_ramp_ifr(self, timestep, scenario_index, value, initial_value=None, rate=0.25):
         """
