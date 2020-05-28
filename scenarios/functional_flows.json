@@ -1,13 +1,13 @@
 {
-    "scenarios": [
-        {
-            "name": "IFRs",
-            "size": 3,
-            "ensemble_names": [
-                "Baseline",
-                "No IFRs",
-                "Functional Flows"
-            ]
-        }
-    ]
+  "scenarios": [
+    {
+      "name": "IFRs",
+      "size": 3,
+      "ensemble_names": [
+        "Baseline",
+        "No IFRs",
+        "Functional Flows"
+      ]
+    }
+  ]
 }

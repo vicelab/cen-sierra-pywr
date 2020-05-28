@@ -4,6 +4,15 @@ from dateutil.relativedelta import relativedelta
 from pywr.parameters import Parameter
 from utilities.converter import convert
 from utilities.decorators import catch
+import random
+
+
+class FlowPeriods(object):
+    DRY_SEASON = 'dry season'
+    FALL_PULSE = 'fall pulse'
+    WET_SEASON = 'wet season'
+    SPRING_RECESSION = 'spring recession'
+
 
 class Timestep(object):
     step = None
@@ -122,6 +131,35 @@ class IFRParameter(WaterLPParameter):
 
 
 class MinFlowParameter(IFRParameter):
+    current_flow_period = None
+    water_year_type = []
+
+    def setup(self, *args, **kwargs):
+        super().setup(*args, **kwargs)
+
+        self.current_flow_period = [FlowPeriods.DRY_SEASON] * self.num_scenarios
+        self.params = self.model.tables['functional flows parameters']
+        self.water_year_type = 'dry'
+
+        self.magnitude_col = 'dry magnitude'
+        self.dry_season_baseflow_mcm = self.params.at['dry season baseflow', self.magnitude_col] / 35.31 * 0.0864
+
+    def before(self, *args, **kwargs):
+        super().before(*args, **kwargs)
+
+        timestep = self.model.timestep
+
+        if timestep.month >= 10:
+            dowy = timestep.dayofyear - 275 + 1
+        else:
+            dowy = timestep.dayofyear + 275 + 1
+        self.dowy = dowy
+        self.wet_baseflow_start = 100
+        self.spring_recession_start = 250
+
+        if timestep.month == 4 and timestep.day == 1:
+            self.magnitude_col = self.water_year_type + ' magnitude'
+            self.dry_season_baseflow_mcm = self.params.at['dry season baseflow', self.magnitude_col] / 35.31
 
     def get_down_ramp_ifr(self, timestep, scenario_index, value, initial_value=None, rate=0.25):
         """
@@ -169,8 +207,49 @@ class MinFlowParameter(IFRParameter):
         return min_flow_mcm
 
     def functional_flows_min_flow(self, timestep, scenario_index):
-        FNF = self.model.parameters['Full Natural Flow'].value(timestep, scenario_index)
-        return FNF * 0.4
+        sid = scenario_index.global_id
+
+        params = self.params
+
+        ifr_mcm = 0.0
+        ifr = 0.0
+        fnf = self.model.parameters['Full Natural Flow']
+
+        # Dry season baseflow
+        if self.dowy < params.at['fall pulse', 'earliest'] or self.dowy > params.at['fall pulse', 'latest']:
+            ifr = params.at['dry season baseflow', self.magnitude_col]
+
+        # Fall pulse
+        elif self.dowy == params.at['fall pulse', 'earliest']:
+            pulse_flow_idx = list(params.columns).index('dry magnitude') + random.randint(1, 3) - 1
+            pulse_flow_col = params.columns[pulse_flow_idx]
+            ifr = params.at['fall pulse', pulse_flow_col]
+
+        elif self.dowy < params.at['fall pulse', 'latest']:
+            ifr_mcm = self.model.nodes[self.res_name].prev_flow[sid]
+
+        elif self.dowy == params.at['fall pulse', 'latest']:
+            ifr_mcm = self.model.nodes[self.res_name].prev_flow[sid] * 0.2
+
+        # Low wet season baseflow
+        elif self.dowy < self.wet_baseflow_start:
+            ifr = fnf[timestep.datetime] * 0.2
+
+        # Median wet season baseflow
+        elif self.dowy < self.spring_recession_start:
+            ifr = params.at['median wet baseflow', self.magnitude_col]
+
+        # Sprint recession
+        elif self.dowy == self.spring_recession_start:
+            ifr = params.at['spring recession start', self.magnitude_col]
+
+        # ...ramp down
+        else:
+            ramp_rate = params.at['spring recession rate', self.magnitude_col]
+            ifr_mcm = self.model.nodes[self.res_name].prev_flow[sid] * ramp_rate
+            ifr_mcm = max(ifr_mcm, self.dry_season_baseflow_mcm)
+
+        return ifr_mcm or ifr / 35.315 * 0.0864
 
 
 class FlowRangeParameter(IFRParameter):
