@@ -2,6 +2,7 @@ from parameters import MinFlowParameter
 
 from utilities.converter import convert
 
+
 class IFR_bl_Millerton_Lake_Min_Flow(MinFlowParameter):
     """"""
 
@@ -30,15 +31,15 @@ class IFR_bl_Millerton_Lake_Min_Flow(MinFlowParameter):
         wyt_index = wyt - 1
         ifr_cfs = ifr_schedule_cfs.iat[date_index, wyt_index]
         if wyt in [3, 4, 5]:
-            allocation_adjustment = self.model.tables["SJ restoration flows"]\
+            allocation_adjustment = self.model.tables["SJ restoration flows"] \
                 .at[restoration_year, 'Allocation adjustment']
             ifr_cfs *= allocation_adjustment
 
         if self.model.mode == "planning":
             ifr_cfs *= self.days_in_month
-        
+
         return ifr_cfs / 35.31
-        
+
     def value(self, timestep, scenario_index):
         val = self.requirement(timestep, scenario_index, default=self._value)
         return convert(val, "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
@@ -51,5 +52,6 @@ class IFR_bl_Millerton_Lake_Min_Flow(MinFlowParameter):
             print('File where error occurred: {}'.format(__file__))
             print(err)
             raise
-        
+
+
 IFR_bl_Millerton_Lake_Min_Flow.register()
