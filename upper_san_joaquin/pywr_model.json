@@ -1818,7 +1818,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Balsam Forebay/Min Flow",
             "max_flow_cost": 2000,
-            "min_flow_cost": -50000
+            "min_flow_cost": -10500
         },
         {
             "name": "IFR bl Bass Lake",
@@ -1947,7 +1947,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Pitman Creek Div/Min Flow",
             "max_flow_cost": 2000,
-            "min_flow_cost": -10000
+            "min_flow_cost": -40000
         },
         {
             "name": "IFR bl Redinger Lake",
@@ -1987,7 +1987,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR No. Fk. Stevenson Creek above Shaver Lake/Min Flow",
             "max_flow_cost": 2000,
-            "min_flow_cost": -9000
+            "min_flow_cost": -11000
         },
         {
             "name": "Jose Cr Headflow",

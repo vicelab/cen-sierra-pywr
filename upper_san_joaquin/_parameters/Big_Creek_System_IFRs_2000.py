@@ -24,6 +24,9 @@ class Big_Creek_System_IFRs_2000(WaterLPParameter):
 
         ifr_cfs = ifr_table.at[self.res_name, col_name]
 
+        if "No. Fk. Stevenson Creek above Shaver Lake" in self.res_name:
+            ifr_cfs += 1
+
         if self.model.mode == "planning":
             ifr_cfs *= self.days_in_month
 

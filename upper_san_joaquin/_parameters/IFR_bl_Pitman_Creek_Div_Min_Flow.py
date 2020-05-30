@@ -7,7 +7,13 @@ class IFR_bl_Pitman_Creek_Div_Min_Flow(MinFlowParameter):
 
     def _value(self, timestep, scenario_index):
         
-        ifr_cfs = 1.0  # actual ifr is 0.3 cfs
+        ifr_cfs = 0.5  # actual ifr is 0.3 cfs
+
+        inflow_param = self.model.parameters["Pitman Creek Diversion Dam Inflow/Runoff" + self.month_suffix]
+        inflow_to_pitman_cfs = inflow_param.value(timestep, scenario_index) / 0.0864 * 35.315
+
+        ifr_cfs = min(ifr_cfs, inflow_to_pitman_cfs)
+
         if self.model.mode == "planning":
             ifr_cfs *= self.days_in_month
         return ifr_cfs / 35.31
