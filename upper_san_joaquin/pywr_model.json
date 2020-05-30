@@ -2045,14 +2045,10 @@
             "name": "Kerckhoff Lake",
             "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": {
-                "type": "constant",
-                "table": "Initial Storage",
-                "index": "2000-09-30",
-                "column": "USGS 11246650 KERCKHOFF RES NR AUBERRY CA"
-            },
-            "max_volume": 4.6,
-            "min_volume": 4.1,
+            "initial_volume": 4.3,
+            "level": "Kerckhoff Lake/Volume Elevation Curve",
+            "max_volume": 4.8,
+            "min_volume": 4.2,
             "cost": -50,
             "gauge": "USGS 11246650 KERCKHOFF RES NR AUBERRY CA"
         },
