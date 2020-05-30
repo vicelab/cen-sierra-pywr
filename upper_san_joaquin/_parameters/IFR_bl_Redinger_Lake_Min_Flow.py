@@ -8,7 +8,13 @@ class IFR_bl_Redinger_Lake_Min_Flow(MinFlowParameter):
 
     def _value(self, timestep, scenario_index):
 
-        ifr_cfs = 3.0
+        year_type = self.model.parameters["San Joaquin Valley WYT" + self.month_suffix].value(timestep, scenario_index)
+
+        # Note: no factor of safety release is assumed
+        if year_type <= 2 and timestep.month >= 10 or (timestep.month, timestep.day) <= (4, 1):
+            ifr_cfs = 15
+        else:
+            ifr_cfs = 20
 
         if self.model.mode == "planning":
             ifr_cfs *= self.days_in_month
