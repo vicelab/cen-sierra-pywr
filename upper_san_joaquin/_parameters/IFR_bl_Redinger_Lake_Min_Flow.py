@@ -16,6 +16,8 @@ class IFR_bl_Redinger_Lake_Min_Flow(MinFlowParameter):
         else:
             ifr_cfs = 20
 
+        ifr_cfs = 32  # This overrides the above based on observations post-2006
+
         if self.model.mode == "planning":
             ifr_cfs *= self.days_in_month
 
