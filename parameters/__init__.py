@@ -132,7 +132,7 @@ class IFRParameter(WaterLPParameter):
 
 class MinFlowParameter(IFRParameter):
     current_flow_period = None
-    water_year_type = []
+    water_year_type = None
     params = None
     dowy = None
 
@@ -152,21 +152,22 @@ class MinFlowParameter(IFRParameter):
             if 'Functional Flows' in s.ensemble_names:
                 self.include_functional_flows = True
                 self.params = self.model.tables['functional flows parameters']
-                self.water_year_type = 'dry'
+                self.water_year_type = 'moderate'
 
-                self.magnitude_col = 'dry magnitude'
+                self.magnitude_col = 'moderate magnitude'
                 self.dry_season_baseflow_mcm = self.params.at['dry season baseflow', self.magnitude_col] \
                                                / 35.31 * 0.0864
+                self.prev_requirement = [0] * self.num_scenarios
 
-    def before(self, *args, **kwargs):
-        super().before(*args, **kwargs)
+    def before(self):
+        super().before()
 
         timestep = self.model.timestep
 
         if timestep.month >= 10:
             dowy = timestep.dayofyear - 275 + 1
         else:
-            dowy = timestep.dayofyear + 275 + 1
+            dowy = timestep.dayofyear + 92 - 1
         self.dowy = dowy
 
         if self.include_functional_flows:
@@ -175,7 +176,8 @@ class MinFlowParameter(IFRParameter):
 
             if timestep.month == 4 and timestep.day == 1:
                 self.magnitude_col = self.water_year_type + ' magnitude'
-                self.dry_season_baseflow_mcm = self.params.at['dry season baseflow', self.magnitude_col] / 35.31
+                self.dry_season_baseflow_mcm = self.params.at[
+                                                   'dry season baseflow', self.magnitude_col] / 35.31 * 0.0864
 
     def get_down_ramp_ifr(self, timestep, scenario_index, value, initial_value=None, rate=0.25):
         """
@@ -212,60 +214,71 @@ class MinFlowParameter(IFRParameter):
         min_flow_mcm = 0.0
 
         if scenario_name == 'No IFRs':
-            pass
+            min_flow_mcm = 2e-6
 
         elif scenario_name == 'Functional Flows' and self.ifr_type == 'enhanced':
             min_flow_mcm = self.functional_flows_min_flow(timestep, scenario_index)
+
+        elif scenario_name == 'Functional Flows PR0' and self.ifr_type == 'enhanced':
+            min_flow_mcm = self.functional_flows_min_flow(timestep, scenario_index, peak_method='historical')
+
+        elif scenario_name == 'Functional Flows PR0' and self.ifr_type == 'enhanced':
+            min_flow_mcm = self.functional_flows_min_flow(timestep, scenario_index, peak_method='recalibrate')
 
         elif default:
             min_flow_mcm = default(timestep, scenario_index)
 
         return min_flow_mcm
 
-    def functional_flows_min_flow(self, timestep, scenario_index):
+    def functional_flows_min_flow(self, timestep, scenario_index, peak_method='historical'):
         sid = scenario_index.global_id
 
         params = self.params
 
         ifr_mcm = 0.0
-        ifr = 0.0
+        ifr_cfs = 0.0
         fnf = self.model.parameters['Full Natural Flow']
 
         # Dry season baseflow
-        if self.dowy < params.at['fall pulse', 'earliest'] or self.dowy > params.at['fall pulse', 'latest']:
-            ifr = params.at['dry season baseflow', self.magnitude_col]
+        if self.dowy < params.at['fall pulse', 'earliest']:
+            ifr_cfs = params.at['dry season baseflow', self.magnitude_col]
 
         # Fall pulse
         elif self.dowy == params.at['fall pulse', 'earliest']:
-            pulse_flow_idx = list(params.columns).index('dry magnitude') + random.randint(1, 3) - 1
+            # pulse_flow_idx = list(params.columns).index('dry magnitude') + random.randint(1, 3) - 1
+            pulse_flow_idx = list(params.columns).index('dry magnitude') + 3 - 1
             pulse_flow_col = params.columns[pulse_flow_idx]
-            ifr = params.at['fall pulse', pulse_flow_col]
+            ifr_cfs = params.at['fall pulse', pulse_flow_col]
 
         elif self.dowy < params.at['fall pulse', 'latest']:
-            ifr_mcm = self.model.nodes[self.res_name].prev_flow[sid]
+            ifr_mcm = self.prev_requirement[sid]
 
         elif self.dowy == params.at['fall pulse', 'latest']:
             ifr_mcm = self.model.nodes[self.res_name].prev_flow[sid] * 0.2
 
         # Low wet season baseflow
         elif self.dowy < self.wet_baseflow_start:
-            ifr = fnf[timestep.datetime] * 0.2
+            ifr_mcm = fnf.get_value(scenario_index) * 0.5
 
         # Median wet season baseflow
         elif self.dowy < self.spring_recession_start:
-            ifr = params.at['median wet baseflow', self.magnitude_col]
+            ifr_cfs = params.at['median wet baseflow', self.magnitude_col]
 
         # Sprint recession
         elif self.dowy == self.spring_recession_start:
-            ifr = params.at['spring recession start', self.magnitude_col]
+            ifr_cfs = params.at['spring recession start', self.magnitude_col]
 
         # ...ramp down
         else:
             ramp_rate = params.at['spring recession rate', self.magnitude_col]
-            ifr_mcm = self.model.nodes[self.res_name].prev_flow[sid] * ramp_rate
+            ifr_mcm = self.model.nodes[self.res_name].prev_flow[sid] * (1 - ramp_rate)
             ifr_mcm = max(ifr_mcm, self.dry_season_baseflow_mcm)
 
-        return ifr_mcm or ifr / 35.315 * 0.0864
+        ifr_mcm = ifr_mcm or (ifr_cfs / 35.315 * 0.0864)
+
+        self.prev_requirement[sid] = ifr_mcm
+
+        return ifr_mcm
 
 
 class FlowRangeParameter(IFRParameter):
