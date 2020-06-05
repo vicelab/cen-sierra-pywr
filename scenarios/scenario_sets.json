@@ -25,12 +25,12 @@
         ]
     },
     "functional_flows_test": {
-        "name": "Functional Flows",
+        "name": "Functional Flows test",
         "climates": [
             "historical"
         ],
         "scenarios": [
-            "functional_flows"
+            "functional_flows_test"
         ]
     },
     "full_scenario_run": {
