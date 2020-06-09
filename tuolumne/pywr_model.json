@@ -731,6 +731,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 640.1,
             "turbine_capacity": 2.447,
+            "flow_capacity": 2.447,
             "cost": [
                 -100,
                 -1
@@ -754,7 +755,10 @@
             "name": "Don Pedro PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
-            "turbine_capacity": 2.2,
+            "turbine_capacity": 10.0,
+            "flow_capacity": 10.0,
+            "water_elevation_reservoir": "Don Pedro Reservoir",
+            "tailwater_elevation": 88.4,
             "cost": [
                 -1
             ],
@@ -871,6 +875,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 335.3,
             "turbine_capacity": 3.303,
+            "flow_capacity": 3.303,
             "cost": [
                 -500,
                 1000
@@ -926,6 +931,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 377.952,
             "turbine_capacity": 1.6,
+            "flow_capacity": 1.6,
             "cost": [
                 -1
             ],
@@ -3055,6 +3061,10 @@
             "type": "NumpyArrayParameterRecorder",
             "parameter": "Districts Entitlements"
         },
+        "Dion R Holm PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Dion R Holm PH"
+        },
         "Dion R Holm PH/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Dion R Holm PH"
@@ -3062,6 +3072,10 @@
         "Don Pedro Lake Spillway/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Don Pedro Lake Spillway"
+        },
+        "Don Pedro PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Don Pedro PH"
         },
         "Don Pedro PH/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -3127,6 +3141,10 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Moccasin Fish Hatchery"
         },
+        "Kirkwood PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Kirkwood PH"
+        },
         "Kirkwood PH/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Kirkwood PH"
@@ -3138,6 +3156,10 @@
         "Lower Cherry Aqueduct 1/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Lower Cherry Aqueduct 1"
+        },
+        "Moccasin PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Moccasin PH"
         },
         "Moccasin PH/flow": {
             "type": "NumpyArrayNodeRecorder",

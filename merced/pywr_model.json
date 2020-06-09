@@ -235,6 +235,8 @@
         {
             "name": "McSwain PH",
             "type": "Hydropower",
+            "head": 16.46,
+            "turbine_capacity": 6.606,
             "cost": [
                 0,
                 "McSwain PH/Excess Value"
@@ -251,6 +253,8 @@
         {
             "name": "Merced Falls PH",
             "type": "Hydropower",
+            "head": 7.925,
+            "turbine_capacity": 4.28,
             "cost": [
                 "Merced Falls PH/Base Value",
                 "Merced Falls PH/Excess Value"
@@ -365,6 +369,9 @@
             "name": "New Exchequer PH",
             "type": "Hydropower",
             "turbine_capacity": "New Exchequer PH/Turbine Capacity",
+            "flow_capacity": "New Exchequer PH/Turbine Capacity",
+            "tailwater_elevation": 120,
+            "water_elevation_reservoir": "Lake McClure",
             "cost": [
                 -1
             ]
@@ -1027,8 +1034,16 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "McSwain PH"
         },
+        "McSwain PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "McSwain PH"
+        },
         "Merced Falls PH/flow": {
             "type": "NumpyArrayNodeRecorder",
+            "node": "Merced Falls PH"
+        },
+        "Merced Falls PH/energy": {
+            "type": "HydropowerEnergyRecorder",
             "node": "Merced Falls PH"
         },
         "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500/observed flow": {
@@ -1038,6 +1053,10 @@
         "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500"
+        },
+        "New Exchequer PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "New Exchequer PH"
         },
         "IFR at Shaffer Bridge/flow": {
             "type": "NumpyArrayNodeRecorder",
