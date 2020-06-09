@@ -1,5 +1,6 @@
 from pywr.nodes import Domain, PiecewiseLink, Storage
 from pywr.parameters import load_parameter, load_parameter_values
+from loguru import logger
 
 
 class Reservoir(Storage):
@@ -239,7 +240,8 @@ class Hydropower(PiecewiseLink):
 
     _type = 'hydropower'
 
-    def __init__(self, model, turbine_capacity=None, spinning_flow=0.0, spinning_cost=0.0, **kwargs):
+    def __init__(self, model, turbine_capacity=None, flow_capacity=None, spinning_flow=0.0, spinning_cost=0.0,
+                 **kwargs):
         """Initialise a new Hydropower instance
         Parameters
         ----------
@@ -249,7 +251,9 @@ class Hydropower(PiecewiseLink):
         #     res_name = kwargs.get('name', '').split('/')[0]
         #     raise ValueError("Hydropower turbine_capacity must be provided for {}".format(res_name))
 
-        head = kwargs.pop('head', None)  # Fixed head
+        self.head = kwargs.pop('head', None)  # Fixed head
+        self.efficiency = kwargs.pop('efficiency', 0.9)  # Turbine efficiency
+        self.tailwater_elevation = kwargs.pop('tailwater_elevation', 0.0)
 
         max_flows = kwargs.pop('max_flows', [])
         costs = kwargs.pop('costs', [])
@@ -263,13 +267,16 @@ class Hydropower(PiecewiseLink):
         kwargs['max_flow'] = max_flows
         kwargs['cost'] = costs
 
-        super(Hydropower, self).__init__(model, **kwargs)
-
-        self.output.max_flow = turbine_capacity
+        self.water_elevation_reservoir = kwargs.pop('water_elevation_reservoir', None)
+        self.water_elevation_parameter = kwargs.pop('water_elevation_parameter', None)
         self.turbine_capacity = turbine_capacity
-        self.head = head
         self.spinning_flow = spinning_flow
         self.spinning_cost = spinning_cost
+
+        super(Hydropower, self).__init__(model, **kwargs)
+
+        # do this after super(...).__init__(...)
+        self.output.max_flow = flow_capacity
 
     @classmethod
     def load(cls, data, model):
@@ -286,15 +293,19 @@ class Hydropower(PiecewiseLink):
             costs = [cost]
         costs = [load_parameter(model, c) for c in costs]
         turbine_capacity = load_parameter(model, data.pop('turbine_capacity', None))
-        head = data.pop('head', 0.0)
+        flow_capacity = load_parameter(model, data.pop('flow_capacity', None))
+        data['head'] = load_parameter(model, data.pop('head', None))
+        data['efficiency'] = load_parameter(model, data.pop('efficiency', 0.9))
+        data['tailwater_elevation'] = load_parameter(model, data.pop('tailwater_elevation', 0.0))
         spinning_flow = data.pop('spinning_flow', 0.0)
         spinning_cost = data.pop('spinning_cost', 0.0)
         param_type = data.pop('type')
         try:
-            node = cls(model, turbine_capacity, spinning_flow, spinning_cost, max_flows=max_flows, costs=costs,
-                       head=head, **data)
+            node = cls(model, turbine_capacity, flow_capacity, spinning_flow, spinning_cost, max_flows=max_flows,
+                       costs=costs, **data)
         except:
-            raise Exception('{} {} failed to load'.format(param_type, data['name']))
+            logger.error('{} {} failed to load'.format(param_type, data['name']))
+            raise
         return node
 
 
