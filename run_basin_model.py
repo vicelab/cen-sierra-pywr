@@ -111,13 +111,15 @@ def _run_model(climate,
         if os.path.exists(scenario_path):
             with open(scenario_path) as f:
                 scenario_model = json.load(f)
-            for key in scenario_model.keys():
+            for key, scenario_items in scenario_model.items():
                 if key in base_model:
-                    if type(scenario_model[key]) == dict:
-                        base_model[key].update(scenario_model[key])
+                    if type(scenario_items) == dict:
+                        base_model[key].update(scenario_items)
+                    else:
+                        base_model[key].extend(scenario_items)
                 elif key in ['scenarios', 'nodes']:
                     items = {item['name']: item for item in base_model.get(key, [])}
-                    new_items = {item['name']: item for item in scenario_model[key]}
+                    new_items = {item['name']: item for item in scenario_items}
                     items.update(new_items)
                     base_model[key] = list(items.values())
 
@@ -186,19 +188,26 @@ def _run_model(climate,
     except:
         pass
 
+    # =========================================
+    # Load and register custom model recorders
+    # =========================================
+
+    from recorders.hydropower import HydropowerEnergyRecorder
+    HydropowerEnergyRecorder.register()
+
     # prepare the model files
     if simplify or include_planning:
         with open(model_path, 'r') as f:
-            m = json.load(f)
+            model_json = json.load(f)
 
     if simplify:
         # simplify model
         simplified_filename = model_filename_base + '_simplified.json'
         simplified_model_path = os.path.join(temp_dir, simplified_filename)
 
-        m = simplify_network(m, basin=basin, climate=climate, delete_gauges=True, delete_observed=True)
+        model_json = simplify_network(model_json, basin=basin, climate=climate, delete_gauges=True, delete_observed=True)
         with open(simplified_model_path, 'w') as f:
-            f.write(json.dumps(m, indent=4))
+            f.write(json.dumps(model_json, indent=4))
 
         if debug:
             try:
@@ -221,7 +230,7 @@ def _run_model(climate,
         monthly_filename = model_filename_base + '_monthly.json'
         planning_model_path = os.path.join(temp_dir, monthly_filename)
 
-        prepare_planning_model(m, basin, climate, planning_model_path, steps=planning_months, debug=save_results,
+        prepare_planning_model(model_json, basin, climate, planning_model_path, steps=planning_months, debug=save_results,
                                remove_rim_dams=True)
 
         if debug:
@@ -257,12 +266,12 @@ def _run_model(climate,
     # ==================
     logger.info('Loading daily model')
     try:
-        m = Model.load(model_path, path=model_path)
+        model = Model.load(model_path, path=model_path)
     except Exception as err:
         logger.error(err)
         raise
 
-    m.setup()
+    model.setup()
 
     # run model
     # note that tqdm + step adds a little bit of overhead.
@@ -272,21 +281,21 @@ def _run_model(climate,
     # the 'before' and 'after' functions.
     days_to_omit = 0
     if include_planning:
-        end = m.timestepper.end
+        end = model.timestepper.end
         new_end = end + relativedelta(months=-planning_months)
-        m.timestepper.end = new_end
+        model.timestepper.end = new_end
     step = -1
     now = datetime.now()
     monthly_seconds = 0
-    m.mode = 'scheduling'
-    m.planning = None
+    model.mode = 'scheduling'
+    model.planning = None
     if include_planning:
-        m.planning = planning_model
-        m.planning.scheduling = m
+        model.planning = planning_model
+        model.planning.scheduling = model
 
     disable_progress_bar = not debug and not show_progress
-    n_timesteps = len(m.timestepper.datetime_index)
-    for date in tqdm(m.timestepper.datetime_index, ncols=60, disable=disable_progress_bar):
+    n_timesteps = len(model.timestepper.datetime_index)
+    for date in tqdm(model.timestepper.datetime_index, ncols=60, disable=disable_progress_bar):
         step += 1
         if disable_progress_bar and date.month == 9 and date.day == 30:
             # logger.info('Finished year {}'.format(date.year))
@@ -297,10 +306,10 @@ def _run_model(climate,
             if include_planning and date.day == 1:
 
                 # update planning model
-                m.planning.reset(start=date.to_timestamp())
+                model.planning.reset(start=date.to_timestamp())
 
                 # run planning model (intial conditions are set within the model step)
-                m.planning.step()
+                model.planning.step()
 
                 if debug == 'dm' and save_results:
                     df_month = get_planning_dataframe(m.planning)
@@ -310,7 +319,7 @@ def _run_model(climate,
                         df_planning = pd.concat([df_planning, df_month])
 
             # Step 2: run daily model
-            m.step()
+            model.step()
         except Exception as err:
             traceback.print_exc()
             logger.error('Failed at step {}'.format(date))
@@ -324,4 +333,4 @@ def _run_model(climate,
 
     # save results to CSV
     results_path = os.path.join('./results', run_name, basin, climate)
-    save_model_results(m, data_path, results_path, debug=debug)
+    save_model_results(model, data_path, results_path, debug=debug)
