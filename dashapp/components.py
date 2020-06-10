@@ -22,13 +22,13 @@ MULTIPLIERS = {
 }
 
 OBSERVED_TEXT = 'Observed'
-OBSERVED_COLOR = 'lightgrey'
+OBSERVED_COLOR = 'grey'
 
 AXIS_LABELS = {
     'storage': 'Storage (TAF)',
     'flow': 'Flow (cfs)',
     'requirement': 'Flow (cfs)',
-    'generation': 'Generation (MWh)',
+    'energy': 'Energy (MWh)',
     'M': 'Month',
     'Y': 'Year'
 }
@@ -46,6 +46,10 @@ percentiles_ordered = {
     ('median', 'quartiles', 'range'): ['range', 'quartiles', 'median'],
     ('quartiles', 'range'): ['range', 'quartiles'],
     ('median', 'range'): ['range', 'median']
+}
+
+resample_agg = {
+    'energy': 'sum'
 }
 
 
@@ -227,7 +231,7 @@ def timeseries_component(attr, res_name, all_sim_vals, df_obs, **kwargs):
             if head is not None:
                 sim_vals = flow_to_energy(sim_vals, head)
             if resample:
-                sim_resampled = sim_vals.dropna().resample(resample).mean()
+                sim_resampled = sim_vals.dropna().resample(resample).agg(resample_agg.get(attr, 'mean'))
             else:
                 sim_resampled = sim_vals.dropna()
 
@@ -542,7 +546,8 @@ def timeseries_collection(tab, **kwargs):
     gauge_lookup = kwargs.get('gauge_lookup')
     df_obs = {
         'flow': kwargs.pop('df_obs_streamflow', None),
-        'storage': kwargs.pop('df_obs_storage', None)
+        'storage': kwargs.pop('df_obs_storage', None),
+        'energy': kwargs.pop('df_obs_energy', None)
     }
     consolidate = "consolidate" in kwargs.get('consolidate', [])
     kwargs['consolidate'] = consolidate
