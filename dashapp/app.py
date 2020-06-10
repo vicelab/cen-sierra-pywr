@@ -131,7 +131,8 @@ def register_basin_callbacks(basin, basin_scenarios):
             selected_scenarios=selected_scenarios,
             gauge_lookup=gauge_lookup,
             df_obs_streamflow=df_obs_streamflow,
-            df_obs_storage=df_obs_storage
+            df_obs_storage=df_obs_storage,
+            df_obs_energy=df_obs_energy
         )
         return timeseries_collection(tab, **kwargs)
 
@@ -192,12 +193,13 @@ for basin in ['stn', 'tuo', 'mer', 'usj']:
 df_obs_storage = pd.concat(obs_storage, axis=1)
 df_obs_streamflow = pd.concat(obs_streamflow, axis=1)
 
-gauge_lookup = pd.read_csv('gauges.csv', header=0, index_col=0, squeeze=True, dtype=(str)).to_dict()
+gauge_lookup = pd.read_csv('gauges.csv', header=0, index_col=0, squeeze=True, dtype=str).to_dict()
+gauge_lookup_energy = pd.read_csv('gauges_lookup_energy.csv', header=0, index_col=0, squeeze=True,
+                                  dtype=str).to_dict()
 
-percentile_colors = {
-    'simulated': 'blue',
-    'observed': 'grey'
-}
+df_obs_energy = pd.read_csv('monthly_hydro_1980_2018_MWh.csv', index_col=0, header=0, parse_dates=True)
+df_obs_energy = df_obs_energy[[n for n in gauge_lookup_energy.values() if n != '-']]
+# df_obs_energy /= 1000
 
 
 def gauges_content(**kwargs):
@@ -973,9 +975,10 @@ def render_development_content(tab, basin, metric, transform, resample, constrai
         percentiles_type=percentiles_type,
         layout_options=layout_options,
         run_name='development',
-        gauge_lookup=gauge_lookup,
+        gauge_lookup=gauge_lookup if 'energy' not in tab else gauge_lookup_energy,
         df_obs_streamflow=df_obs_streamflow,
-        df_obs_storage=df_obs_storage
+        df_obs_storage=df_obs_storage,
+        df_obs_energy=df_obs_energy
     )
     return timeseries_collection(tab, **kwargs)
 
