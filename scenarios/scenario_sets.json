@@ -8,7 +8,8 @@
     "price_year": {
         "name": "Energy Prices",
         "climates": [
-            "historical"
+            "historical",
+            "gcms"
         ],
         "scenarios": [
             "energy_prices"
@@ -33,15 +34,15 @@
             "functional_flows_test"
         ]
     },
-    "full_scenario_run": {
-        "name": "Functional flows with future energy prices",
+    "basic_ifrs_energy_prices": {
+        "name": "Binary IFRs x Prices",
         "climates": [
             "historical",
             "gcms"
         ],
         "scenarios": [
             "energy_prices",
-            "functional_flows"
+            "binary_ifrs"
         ]
     },
     "gcms": {
