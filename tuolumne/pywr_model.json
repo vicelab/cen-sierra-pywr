@@ -3117,9 +3117,17 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Cherry Lake"
         },
+        "IFR bl Cherry Lake/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Cherry Lake/Min Flow"
+        },
         "IFR at La Grange/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR at La Grange"
+        },
+        "IFR at La Grange/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR at La Grange/Min Flow"
         },
         "IFR at La Grange/water year type": {
             "type": "NumpyArrayParameterRecorder",
@@ -3129,6 +3137,10 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Hetch Hetchy Reservoir"
         },
+        "IFR bl Hetch Hetchy Reservoir/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Hetch Hetchy Reservoir/Min Flow"
+        },
         "IFR bl Hetch Hetchy Reservoir/water year type": {
             "type": "NumpyArrayParameterRecorder",
             "parameter": "IFR bl Hetch Hetchy Reservoir/Water Year Type"
@@ -3136,6 +3148,10 @@
         "IFR bl Lake Eleanor/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Lake Eleanor"
+        },
+        "IFR bl Lake Eleanor/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Lake Eleanor/Min Flow"
         },
         "Moccasin Fish Hatchery/flow": {
             "type": "NumpyArrayNodeRecorder",
