@@ -55,12 +55,3 @@ def save_model_results(model, data_path, results_path, debug=False):
         else:
             df.columns = [c.split('/')[0] for c in df.columns]
         df.to_csv(tab_path + '.csv')
-
-        # if _type in ['Hydropower', 'PiecewiseHydropower'] and attr == 'flow':
-        #     gen_df = df.copy()
-        #     gen_path = os.path.join(results_path, '{}_Generation_MWh.csv'.format(_type))
-        #     for c in df.columns:
-        #         node_name = c[0] if has_scenarios else c
-        #         node = model.nodes[node_name]
-        #         gen_df *= node.head * 0.9 * 9.81 * 1000 / 1e6 * 24
-        #         gen_df.to_csv(gen_path)
