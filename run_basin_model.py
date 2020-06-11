@@ -66,7 +66,7 @@ def _run_model(climate,
 
     if start is None or end is None:
         if climate_scenario == 'Livneh':
-            start_year = 1980
+            start_year = 1950
             end_year = 2012
         elif climate_set == 'gcms':
             start_year = 2030
