@@ -70,4 +70,3 @@ class Lake_Tulloch_Flood_Control_Requirement(WaterLPParameter):
 
 
 Lake_Tulloch_Flood_Control_Requirement.register()
-print(" [*] Lake_Tulloch_Flood_Control_Requirement successfully registered")

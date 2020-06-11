@@ -26,4 +26,3 @@ class IFR_bl_Donnell_Lake_Max_Requirement(FlowRangeParameter):
 
 
 IFR_bl_Donnell_Lake_Max_Requirement.register()
-print(" [*] IFR_bl_Donnell_Lake_Max_Requirement successfully registered")

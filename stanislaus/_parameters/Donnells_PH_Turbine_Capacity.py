@@ -51,4 +51,3 @@ class Donnells_PH_Turbine_Capacity(WaterLPParameter):
 
 
 Donnells_PH_Turbine_Capacity.register()
-print(" [*] Donnells_PH_Turbine_Capacity successfully registered")

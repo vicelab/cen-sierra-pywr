@@ -58,4 +58,3 @@ class Donnell_Lake_Spill_Min_Requirement(MinFlowParameter):
 
 
 Donnell_Lake_Spill_Min_Requirement.register()
-print(" [*] IFR_bl_Donnell_Lake_Min_Requirement successfully registered")

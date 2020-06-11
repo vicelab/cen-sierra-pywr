@@ -24,4 +24,3 @@ class IFR_bl_confluence_of_NF_Stanislaus_and_Beaver_Creek_Requirement(MinFlowPar
 
 
 IFR_bl_confluence_of_NF_Stanislaus_and_Beaver_Creek_Requirement.register()
-print(" [*] IFR_bl_confluence_of_NF_Stanislaus_and_Beaver_Creek_Requirement successfully registered")

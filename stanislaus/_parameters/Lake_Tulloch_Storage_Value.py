@@ -23,4 +23,3 @@ class Lake_Tulloch_Storage_Value(WaterLPParameter):
 
 
 Lake_Tulloch_Storage_Value.register()
-print(" [*] Lake_Tulloch_Storage_Value successfully registered")

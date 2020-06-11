@@ -25,4 +25,3 @@ class IFR_bl_Collierville_PH_discharge_Max_Requirement(FlowRangeParameter):
 
 
 IFR_bl_Collierville_PH_discharge_Max_Requirement.register()
-print(" [*] IFR_bl_Angels_Div_Requirement successfully registered")

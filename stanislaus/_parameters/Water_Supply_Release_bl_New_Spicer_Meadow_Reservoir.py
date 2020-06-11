@@ -41,4 +41,3 @@ class Water_Supply_Release_bl_New_Spicer_Meadow_Reservoir(WaterLPParameter):
 
 
 Water_Supply_Release_bl_New_Spicer_Meadow_Reservoir.register()
-print(" [*] Water_Supply_Release_bl_New_Spicer_Meadow_Reservoir successfully registered")

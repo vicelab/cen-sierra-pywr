@@ -68,4 +68,3 @@ class IFR_bl_Sand_Bar_Div_Min_Requirement(MinFlowParameter):
 
 
 IFR_bl_Sand_Bar_Div_Min_Requirement.register()
-print(" [*] IFR_bl_Sand_Bar_Div_Requirement successfully registered")

@@ -39,4 +39,3 @@ class IFR_bl_Pinecrest_Lake_Min_Requirement(MinFlowParameter):
 
 
 IFR_bl_Pinecrest_Lake_Min_Requirement.register()
-print(" [*] IFR_bl_Pinecrest_Lake_Min_Requirement successfully registered")

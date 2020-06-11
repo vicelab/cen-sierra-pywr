@@ -28,4 +28,3 @@ class IFR_bl_Hunter_Reservoir_Requirement(MinFlowParameter):
 
 
 IFR_bl_Hunter_Reservoir_Requirement.register()
-print(" [*] IFR_bl_Hunter_Reservoir_Requirement successfully registered")

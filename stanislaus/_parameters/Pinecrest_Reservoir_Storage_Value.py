@@ -29,4 +29,3 @@ class Pinecrest_Reservoir_Storage_Value(WaterLPParameter):
 
 
 Pinecrest_Reservoir_Storage_Value.register()
-print(" [*] Pinecrest_Reservoir_Storage_Value successfully registered")

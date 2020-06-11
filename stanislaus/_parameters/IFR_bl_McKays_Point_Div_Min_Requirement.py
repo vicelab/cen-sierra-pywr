@@ -24,4 +24,3 @@ class IFR_bl_McKays_Point_Div_Min_Requirement(MinFlowParameter):
 
 
 IFR_bl_McKays_Point_Div_Min_Requirement.register()
-print(" [*] IFR_bl_McKays_Point_Div_Min_Requirement successfully registered")

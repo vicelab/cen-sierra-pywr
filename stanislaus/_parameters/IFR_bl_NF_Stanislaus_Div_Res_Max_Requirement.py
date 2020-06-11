@@ -25,4 +25,3 @@ class IFR_bl_NF_Stanislaus_Div_Res_Max_Requirement(FlowRangeParameter):
 
 
 IFR_bl_NF_Stanislaus_Div_Res_Max_Requirement.register()
-print(" [*] IFR_bl_NF_Stanislaus_Div_Res_Max_Requirement successfully registered")

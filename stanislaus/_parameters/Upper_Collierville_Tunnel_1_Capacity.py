@@ -47,4 +47,3 @@ class Upper_Collierville_Tunnel_1_Capacity(WaterLPParameter):
 
 
 Upper_Collierville_Tunnel_1_Capacity.register()
-print(" [*] Upper_Collierville_Tunnel_1_Capacity successfully registered")

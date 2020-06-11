@@ -51,4 +51,3 @@ class Sand_Bar_PH_Turbine_Capacity(WaterLPParameter):
 
 
 Sand_Bar_PH_Turbine_Capacity.register()
-print(" [*] Sand_Bar_PH_Turbine_Capacity successfully registered")

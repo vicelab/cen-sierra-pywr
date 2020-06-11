@@ -39,4 +39,3 @@ class IFR_bl_Relief_Reservoir_Min_Requirement(MinFlowParameter):
 
 
 IFR_bl_Relief_Reservoir_Min_Requirement.register()
-print(" [*] IFR_bl_Relief_Reservoir_Min_Requirement successfully registered")

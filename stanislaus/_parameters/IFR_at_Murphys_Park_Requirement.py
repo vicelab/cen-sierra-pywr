@@ -71,4 +71,3 @@ class IFR_at_Murphys_Park_Requirement(MinFlowParameter):
 
 
 IFR_at_Murphys_Park_Requirement.register()
-print(" [*] IFR_bl_Angels_Div_Requirement successfully registered")

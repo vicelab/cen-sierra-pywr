@@ -32,4 +32,3 @@ class IFR_bl_Collierville_PH_discharge_Min_Requirement(MinFlowParameter):
 
 
 IFR_bl_Collierville_PH_discharge_Min_Requirement.register()
-print(" [*] IFR_bl_Collierville_PH_discharge_Min_Requirement successfully registered")

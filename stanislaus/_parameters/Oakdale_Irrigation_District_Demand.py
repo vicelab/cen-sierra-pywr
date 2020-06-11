@@ -29,4 +29,3 @@ class Oakdale_Irrigation_District_Demand(WaterLPParameter):
 
 
 Oakdale_Irrigation_District_Demand.register()
-print(" [*] Oakdale_Irrigation_District_Demand successfully registered")

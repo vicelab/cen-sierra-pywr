@@ -29,4 +29,3 @@ class Donnells_Reservoir_Storage_Value(WaterLPParameter):
 
 
 Donnells_Reservoir_Storage_Value.register()
-print(" [*] Pinecrest_Reservoir_Storage_Value successfully registered")

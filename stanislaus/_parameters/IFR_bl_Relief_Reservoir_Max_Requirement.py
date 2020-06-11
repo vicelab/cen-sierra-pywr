@@ -24,4 +24,3 @@ class IFR_bl_Relief_Reservoir_Max_Requirement(FlowRangeParameter):
 
 
 IFR_bl_Relief_Reservoir_Max_Requirement.register()
-print(" [*] IFR_bl_Relief_Reservoir_Requirement successfully registered")

@@ -28,4 +28,3 @@ class IFR_bl_Philadelphia_Div_Max_Requirement(FlowRangeParameter):
 
 
 IFR_bl_Philadelphia_Div_Max_Requirement.register()
-print(" [*] IFR_bl_Philadelphia_Div_Max_Requirement successfully registered")

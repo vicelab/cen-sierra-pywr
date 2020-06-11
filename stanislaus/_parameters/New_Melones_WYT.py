@@ -65,4 +65,3 @@ class New_Melones_WYT(WaterLPParameter):
 
 
 New_Melones_WYT.register()
-print(" [*] New_Melones_WYT successfully registered")

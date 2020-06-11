@@ -25,4 +25,3 @@ class IFR_bl_New_Spicer_Meadow_Reservoir_Min_Requirement(MinFlowParameter):
 
 
 IFR_bl_New_Spicer_Meadow_Reservoir_Min_Requirement.register()
-print(" [*] IFR_bl_New_Spicer_Meadow_Reservoir_Min_Requirement successfully registered")

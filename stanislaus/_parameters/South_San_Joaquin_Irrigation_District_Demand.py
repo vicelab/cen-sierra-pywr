@@ -32,4 +32,3 @@ class South_San_Joaquin_Irrigation_District_Demand(WaterLPParameter):
 
 
 South_San_Joaquin_Irrigation_District_Demand.register()
-print(" [*] South_San_Joaquin_Irrigation_District_Demand successfully registered")

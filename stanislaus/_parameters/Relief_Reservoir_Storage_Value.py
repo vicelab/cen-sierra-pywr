@@ -29,4 +29,3 @@ class Relief_Reservoir_Storage_Value(WaterLPParameter):
 
 
 Relief_Reservoir_Storage_Value.register()
-print(" [*] Relief_Reservoir_Storage_Value successfully registered")

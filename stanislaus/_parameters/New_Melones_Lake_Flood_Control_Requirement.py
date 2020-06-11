@@ -174,4 +174,3 @@ class New_Melones_Lake_Flood_Control_Requirement(WaterLPParameter):
 
 
 New_Melones_Lake_Flood_Control_Requirement.register()
-print(" [*] New_Melones_Lake_Flood_Control_Requirement successfully registered")

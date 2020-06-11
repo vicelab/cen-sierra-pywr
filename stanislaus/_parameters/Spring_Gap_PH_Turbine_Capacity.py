@@ -49,4 +49,3 @@ class Spring_Gap_PH_Turbine_Capacity(WaterLPParameter):
 
 
 Spring_Gap_PH_Turbine_Capacity.register()
-print(" [*] Spring_Gap_PH_Turbine_Capacity successfully registered")

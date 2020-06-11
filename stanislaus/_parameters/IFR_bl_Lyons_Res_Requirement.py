@@ -50,4 +50,3 @@ class IFR_bl_Lyons_Res_Requirement(MinFlowParameter):
 
 
 IFR_bl_Lyons_Res_Requirement.register()
-print(" [*] IFR_bl_Lyons_Res_Requirement successfully registered")

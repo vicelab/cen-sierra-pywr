@@ -27,4 +27,3 @@ class IFR_bl_NF_Stanislaus_Div_Res_Min_Requirement(MinFlowParameter):
 
 
 IFR_bl_NF_Stanislaus_Div_Res_Min_Requirement.register()
-print(" [*] IFR_bl_NF_Stanislaus_Div_Res_Min_Requirement successfully registered")

@@ -29,4 +29,3 @@ class IFR_bl_Beardsley_Afterbay_Min_Requirement(MinFlowParameter):
 
 
 IFR_bl_Beardsley_Afterbay_Min_Requirement.register()
-print(" [*] IFR_bl_Beardsley_Afterbay_Min_Requirement successfully registered")

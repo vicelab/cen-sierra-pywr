@@ -26,4 +26,3 @@ class Lake_Tulloch_Min_Volume(WaterLPParameter):
 
 
 Lake_Tulloch_Min_Volume.register()
-print(" [*] Lake_Tulloch_Min_Volume successfully registered")

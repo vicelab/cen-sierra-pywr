@@ -32,4 +32,3 @@ class New_Melones_Apr_Jul_Runoff(WaterLPParameter):
 
 
 New_Melones_Apr_Jul_Runoff.register()
-print(" [*] New_Melones_Apr_Jul successfully registered")
