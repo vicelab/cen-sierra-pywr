@@ -10,7 +10,7 @@ from loguru import logger
 parser = argparse.ArgumentParser()
 parser.add_argument("-b", "--basin", help="Basin to run")
 parser.add_argument("-nk", "--network_key", help="Network key")
-parser.add_argument("-d", "--debug", help="Debug ('m' or 'd' or 'dm')")
+parser.add_argument("-d", "--debug", help="Debug", action='store_true')
 parser.add_argument("-c", "--num_cores", help="Number of cores to use in joblib multiprocessing", type=int)
 parser.add_argument("-p", "--include_planning", help="Include planning model", action='store_true')
 parser.add_argument("-sc", "--scenario_set", help="Scenario set")
