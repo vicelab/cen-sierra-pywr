@@ -153,7 +153,7 @@ class HydropowerEnergyRecorder(NumpyArrayNodeRecorder):
                 reservoir = self._water_elevation_reservoir
                 head = reservoir.get_level(scenario_index)
             else:
-                raise ValueError('One or both of storage_node or level must be set.')
+                raise ValueError('Either head or water_elevation_parameter/_reservoir must be set.')
 
             if self.tailwater_elevation is not None:
                 head -= self.tailwater_elevation
