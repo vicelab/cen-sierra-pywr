@@ -24,8 +24,11 @@ class PH_Water_Demand(WaterLPParameter):
     def _value(self, timestep, scenario_index):
 
         all_energy_prices = self.model.tables['All Energy Price Values']
+
         powerhouse = self.model.nodes[self.res_name + self.month_suffix]  # powerhouse
         turbine_capacity_mcm = powerhouse.turbine_capacity
+        if type(turbine_capacity_mcm) not in [float, int]:
+            turbine_capacity_mcm = turbine_capacity_mcm.get_value(scenario_index)
 
         price_year = int(self.model.parameters['Price Year'].value(timestep, scenario_index))
 
@@ -100,8 +103,6 @@ class PH_Water_Demand(WaterLPParameter):
             elif self.model.mode == 'planning' and self.datetime.month == 11:
                 turbine_capacity_mcm *= 0.5
 
-        if type(turbine_capacity_mcm) not in [float, int]:
-            turbine_capacity_mcm = turbine_capacity_mcm.get_value(scenario_index)
         demand_mcm = turbine_capacity_mcm * block
 
         return demand_mcm
