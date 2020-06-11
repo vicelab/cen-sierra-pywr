@@ -218,7 +218,7 @@ def _run_model(climate,
         model_path = simplified_model_path
 
     # Area for testing monthly model
-    save_results = debug and 'm' in debug
+    save_results = debug
     planning_model = None
     df_planning = None
 
@@ -230,7 +230,7 @@ def _run_model(climate,
         monthly_filename = model_filename_base + '_monthly.json'
         planning_model_path = os.path.join(temp_dir, monthly_filename)
 
-        prepare_planning_model(model_json, basin, climate, planning_model_path, steps=planning_months, debug=save_results,
+        prepare_planning_model(model_json, basin, climate, planning_model_path, steps=planning_months, debug=debug,
                                remove_rim_dams=True)
 
         if debug:
@@ -257,9 +257,9 @@ def _run_model(climate,
 
         planning_model.setup()
 
-        if debug == 'm':
-            test_planning_model(planning_model, months=planning_months, save_results=save_results)
-            return
+        # if debug == 'm':
+        #     test_planning_model(planning_model, months=planning_months, save_results=save_results)
+        #     return
 
     # ==================
     # Create daily model
@@ -311,8 +311,8 @@ def _run_model(climate,
                 # run planning model (intial conditions are set within the model step)
                 model.planning.step()
 
-                if debug == 'dm' and save_results:
-                    df_month = get_planning_dataframe(m.planning)
+                if debug and save_results:
+                    df_month = get_planning_dataframe(model.planning)
                     if df_planning is None:
                         df_planning = df_month
                     else:
