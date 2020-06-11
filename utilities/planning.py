@@ -335,7 +335,7 @@ def prepare_planning_model(m, basin, climate, outpath, steps=12, blocks=8, param
             res_name, attribute, block = parts
             block = int(block)
 
-        if attribute in ['Observed Flow', 'Observed Storage']:
+        if attribute in ['Observed Flow', 'Observed Storage', 'Elevation']:
             continue
 
         if param_name in parameters_to_expand or 'node' in param:
