@@ -1487,6 +1487,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 586.0,
             "turbine_capacity": 1.42,
+            "flow_capacity": 1.42,
             "spinning_flow": 0.2,
             "spinning_cost": -1500,
             "cost": [
@@ -1505,6 +1506,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 499.4,
             "turbine_capacity": 1.4852676262396953,
+            "flow_capacity": 1.4852676262396953,
             "spinning_flow": 0.2,
             "spinning_cost": -1500,
             "cost": [
@@ -1561,6 +1563,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 232.9,
             "turbine_capacity": 7.830076448051113,
+            "flow_capacity": 7.830076448051113,
             "cost": [
                 "Big Creek 3 PH/Cost/1",
                 "Big Creek 3 PH/Cost/2",
@@ -1582,6 +1585,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 118.2,
             "turbine_capacity": 9.0535258930591,
+            "flow_capacity": 9.0535258930591,
             "cost": [
                 "Big Creek 4 PH/Cost/1",
                 "Big Creek 4 PH/Cost/2",
@@ -1603,6 +1607,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 208.8,
             "turbine_capacity": 3.259269321501275,
+            "flow_capacity": 3.259269321501275,
             "cost": [
                 "Big Creek 8 PH/Cost/1",
                 "Big Creek 8 PH/Cost/2",
@@ -1733,6 +1738,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 400.0,
             "turbine_capacity": 5.618079851476674,
+            "flow_capacity": 5.618079851476674,
             "spinning_flow": 0.15,
             "spinning_cost": -2500,
             "cost": [
@@ -1776,6 +1782,8 @@
         {
             "name": "Friant PH",
             "type": "Hydropower",
+            "water_elevation_reservoir": "Millerton Lake",
+            "tailwater_elevation": 0.0,
             "cost": [
                 -1
             ],
@@ -2005,6 +2013,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 106.7,
             "turbine_capacity": 4.245369574177712,
+            "flow_capacity": 4.245369574177712,
             "cost": [
                 "Kerckhoff 1 PH/Cost/1",
                 "Kerckhoff 1 PH/Cost/2",
@@ -2026,6 +2035,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 128.3,
             "turbine_capacity": 12.47918433908146,
+            "flow_capacity": 12.47918433908146,
             "cost": [
                 "Kerckhoff 2 PH/Cost/1",
                 "Kerckhoff 2 PH/Cost/2",
@@ -2068,6 +2078,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 306.0,
             "turbine_capacity": 5.4,
+            "flow_capacity": 5.4,
             "spinning_flow": 0.1,
             "spinning_cost": -1000,
             "cost": [
@@ -2108,6 +2119,7 @@
             "cost": -10,
             "max_volume": 641.42,
             "min_volume": 150,
+            "level": "Millerton Lake/Elevation",
             "gauge": "USGS 11250100 MILLERTON LK A FRIANT CA"
         },
         {
@@ -2206,6 +2218,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 54.864000000000004,
             "turbine_capacity": 4.23,
+            "flow_capacity": 4.23,
             "spinning_flow": 0.15,
             "spinning_cost": -9000,
             "cost": [
@@ -2279,6 +2292,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 397.8,
             "turbine_capacity": 0.3670348335023959,
+            "flow_capacity": 0.3670348335023959,
             "cost": [
                 "San Joaquin 1 PH/Cost/1",
                 "San Joaquin 1 PH/Cost/2",
@@ -2305,6 +2319,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 12.2,
             "turbine_capacity": 0.4086321146326674,
+            "flow_capacity": 0.4086321146326674,
             "cost": [
                 "San Joaquin 1A PH/Cost/1",
                 "San Joaquin 1A PH/Cost/2",
@@ -2321,6 +2336,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 89.0,
             "turbine_capacity": 0.34256584460223616,
+            "flow_capacity": 0.34256584460223616,
             "cost": [
                 "San Joaquin 2 PH/Cost/1",
                 "San Joaquin 2 PH/Cost/2",
@@ -2337,6 +2353,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 115.2,
             "turbine_capacity": 0.3058623612519966,
+            "flow_capacity": 0.3058623612519966,
             "cost": [
                 "San Joaquin 3 PH/Cost/1",
                 "San Joaquin 3 PH/Cost/2",
@@ -5768,10 +5785,6 @@
             "type": "IFR_bl_Lake_Thomas_A_Edison_Min_Flow",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
-        "IFR bl Kerckhoff Lake/Observed Delivery": {
-            "type": "IFR_bl_Kerckhoff_Lake_Observed_Delivery",
-            "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
-        },
         "IFR bl Kerckhoff Lake/Min Flow": {
             "type": "IFR_bl_Kerckhoff_Lake_Min_Flow",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
@@ -6014,6 +6027,60 @@
         "Millerton Lake/Cost": {
             "type": "constant",
             "value": -30
+        },
+        "Millerton Lake/Elevation": {
+            "type": "interpolatedvolume",
+            "node": "Millerton Lake",
+            "volumes": [
+                150,
+                150.6,
+                152,
+                154.8,
+                159.2,
+                165.5,
+                173.8,
+                184.4,
+                197.3,
+                212.7,
+                230.7,
+                251.6,
+                275.5,
+                302.7,
+                333.4,
+                367.6,
+                405.6,
+                447.5,
+                493.2,
+                543,
+                597,
+                641.3
+            ],
+            "values": [
+                200,
+                201.5,
+                203,
+                204.6,
+                206.1,
+                207.6,
+                209.1,
+                210.7,
+                212.2,
+                213.7,
+                215.2,
+                216.8,
+                218.3,
+                219.8,
+                221.3,
+                222.9,
+                224.4,
+                225.9,
+                227.4,
+                229,
+                230.5,
+                231.6
+            ],
+            "kind": "cubic",
+            "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
         },
         "Portal PH/Cost/1": {
             "type": "PH_Cost",
@@ -6668,6 +6735,30 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Big Creek 8 PH"
         },
+        "Big Creek 1 PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Big Creek 1 PH"
+        },
+        "Big Creek 2 PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Big Creek 2 PH"
+        },
+        "Big Creek 2A PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Big Creek 2A PH"
+        },
+        "Big Creek 3 PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Big Creek 3 PH"
+        },
+        "Big Creek 4 PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Big Creek 4 PH"
+        },
+        "Big Creek 8 PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Big Creek 8 PH"
+        },
         "Friant-Kern Canal Demand/demand": {
             "type": "NumpyArrayParameterRecorder",
             "parameter": "Friant-Kern Canal Demand/Demand"
@@ -6688,6 +6779,10 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Eastwood PH"
         },
+        "Eastwood PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Eastwood PH"
+        },
         "Florence Lake/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Florence Lake"
@@ -6702,6 +6797,10 @@
         },
         "Friant PH/flow": {
             "type": "NumpyArrayNodeRecorder",
+            "node": "Friant PH"
+        },
+        "Friant PH/energy": {
+            "type": "HydropowerEnergyRecorder",
             "node": "Friant PH"
         },
         "Huntington Lake/storage": {
@@ -6760,10 +6859,6 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Huntington Lake"
         },
-        "IFR bl Huntington Lake/min flow": {
-            "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Huntington Lake/Min Flow"
-        },
         "IFR bl Kerckhoff Lake/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Kerckhoff Lake"
@@ -6808,12 +6903,112 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR No. Fk. Stevenson Creek above Shaver Lake"
         },
+        "IFR above Shakeflat Creek/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR above Shakeflat Creek/Min Flow"
+        },
+        "IFR bl Balsam Forebay/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Balsam Forebay/Min Flow"
+        },
+        "IFR bl Bass Lake/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Bass Lake/Min Flow"
+        },
+        "IFR bl Bear Div/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Bear Div/Min Flow"
+        },
+        "IFR bl Big Creek 5 Div/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Big Creek 5 Div/Min Flow"
+        },
+        "IFR bl Big Creek 6 Div/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Big Creek 6 Div/Min Flow"
+        },
+        "IFR bl Bolsillo Creek Div/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Bolsillo Creek Div/Min Flow"
+        },
+        "IFR bl Browns Creek Ditch/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Browns Creek Ditch/Min Flow"
+        },
+        "IFR bl Camp 62 Creek Div/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Camp 62 Creek Div/Min Flow"
+        },
+        "IFR bl Chinquapin Creek Div/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Chinquapin Creek Div/Min Flow"
+        },
+        "IFR bl Hooper Creek/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Hooper Creek/Min Flow"
+        },
+        "IFR bl Huntington Lake/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Huntington Lake/Min Flow"
+        },
+        "IFR bl Kerckhoff Lake/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Kerckhoff Lake/Min Flow"
+        },
+        "IFR bl Lake Thomas A Edison/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Lake Thomas A Edison/Min Flow"
+        },
+        "IFR bl Manzanita Div/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Manzanita Div/Min Flow"
+        },
+        "IFR bl Millerton Lake/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Millerton Lake/Min Flow"
+        },
+        "IFR bl Mono Creek Div/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Mono Creek Div/Min Flow"
+        },
+        "IFR bl Pitman Creek Div/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Pitman Creek Div/Min Flow"
+        },
+        "IFR bl Redinger Lake/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Redinger Lake/Min Flow"
+        },
+        "IFR bl San Joaquin 1 Div/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl San Joaquin 1 Div/Min Flow"
+        },
+        "IFR bl San Joaquin R and Willow Cr confluence/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl San Joaquin R and Willow Cr confluence/Min Flow"
+        },
+        "IFR bl Shaver Lake/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Shaver Lake/Min Flow"
+        },
+        "IFR No. Fk. Stevenson Creek above Shaver Lake/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR No. Fk. Stevenson Creek above Shaver Lake/Min Flow"
+        },
         "Kerckhoff 1 PH/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Kerckhoff 1 PH"
         },
         "Kerckhoff 2 PH/flow": {
             "type": "NumpyArrayNodeRecorder",
+            "node": "Kerckhoff 2 PH"
+        },
+        "Kerckhoff 1 PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Kerckhoff 1 PH"
+        },
+        "Kerckhoff 2 PH/energy": {
+            "type": "HydropowerEnergyRecorder",
             "node": "Kerckhoff 2 PH"
         },
         "Kerckhoff Lake/storage": {
@@ -6834,6 +7029,10 @@
         },
         "Mammoth Pool PH/flow": {
             "type": "NumpyArrayNodeRecorder",
+            "node": "Mammoth Pool PH"
+        },
+        "Mammoth Pool PH/energy": {
+            "type": "HydropowerEnergyRecorder",
             "node": "Mammoth Pool PH"
         },
         "Mammoth Pool Reservoir/storage": {
@@ -6859,6 +7058,10 @@
         "Portal PH/cost": {
             "type": "NumpyArrayParameterRecorder",
             "parameter": "Portal PH/Cost/1"
+        },
+        "Portal PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Portal PH"
         },
         "Mammoth Pool PH/cost": {
             "type": "NumpyArrayParameterRecorder",
@@ -6886,6 +7089,22 @@
         },
         "San Joaquin 3 PH/flow": {
             "type": "NumpyArrayNodeRecorder",
+            "node": "San Joaquin 3 PH"
+        },
+        "San Joaquin 1 PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "San Joaquin 1 PH"
+        },
+        "San Joaquin 1A PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "San Joaquin 1A PH"
+        },
+        "San Joaquin 2 PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "San Joaquin 2 PH"
+        },
+        "San Joaquin 3 PH/energy": {
+            "type": "HydropowerEnergyRecorder",
             "node": "San Joaquin 3 PH"
         },
         "San Joaquin River Outflow/flow": {
