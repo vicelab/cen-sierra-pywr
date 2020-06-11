@@ -100,6 +100,8 @@ class PH_Water_Demand(WaterLPParameter):
             elif self.model.mode == 'planning' and self.datetime.month == 11:
                 turbine_capacity_mcm *= 0.5
 
+        if type(turbine_capacity_mcm) not in [float, int]:
+            turbine_capacity_mcm = turbine_capacity_mcm.get_value(scenario_index)
         demand_mcm = turbine_capacity_mcm * block
 
         return demand_mcm
