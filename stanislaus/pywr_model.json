@@ -70,6 +70,7 @@
             "type": "Hydropower",
             "head": 135.3,
             "turbine_capacity": "Angels PH/Turbine Capacity",
+            "flow_capacity": "Angels PH/Turbine Capacity",
             "max_flow": [
                 "Angels PH/Water Demand/1",
                 "Angels PH/Water Demand/2"
@@ -114,6 +115,9 @@
             "name": "Beardsley PH",
             "type": "Hydropower",
             "turbine_capacity": "Beardsley PH/Turbine Capacity",
+            "flow_capacity": "Beardsley PH/Turbine Capacity",
+            "water_elevation_reservoir": "Beardsley Reservoir",
+            "tailwater_elevation": 953.1,
             "cost": -1,
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -175,6 +179,7 @@
             "type": "Hydropower",
             "head": 691.896,
             "turbine_capacity": "Collierville PH/Turbine Capacity",
+            "flow_capacity": "Collierville PH/Turbine Capacity",
             "max_flow": [
                 "Collierville PH/Water Demand/1",
                 "Collierville PH/Water Demand/2"
@@ -204,8 +209,9 @@
         {
             "name": "Donnells PH",
             "type": "Hydropower",
-            "head": 350.8,
+            "head": 400,
             "turbine_capacity": "Donnells PH/Turbine Capacity",
+            "flow_capacity": "Donnells PH/Turbine Capacity",
             "max_flow": [
                 "Donnells PH/Water Demand/1",
                 "Donnells PH/Water Demand/2"
@@ -599,6 +605,9 @@
             "name": "New Melones PH",
             "type": "Hydropower",
             "turbine_capacity": "New Melones PH/Turbine Capacity",
+            "flow_capacity": "New Melones PH/Turbine Capacity",
+            "water_elevation_reservoir": "New Melones Lake",
+            "tailwater_elevation": 150,
             "cost": -1,
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -608,6 +617,7 @@
             "initial_volume": 120.0,
             "max_volume": 227.24,
             "min_volume": 50,
+            "level": "New Spicer Meadow Reservoir/Elevation",
             "cost": "New Spicer Meadow Reservoir/Storage Value",
             "comment": "{\"resource_class\": \"node\"}",
             "gauge": "USGS 11293770 NEW SPICER MEADOW RES NR BIG MEADOW CA"
@@ -616,6 +626,9 @@
             "name": "New Spicer Meadow PH",
             "type": "Hydropower",
             "turbine_capacity": "New Spicer Meadow PH/Turbine Capacity",
+            "flow_capacity": "New Spicer Meadow PH/Turbine Capacity",
+            "water_elevation_reservoir": "New Spicer Meadow Reservoir",
+            "tailwater_elevation": 1940.1,
             "cost": -1,
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -671,6 +684,7 @@
             "name": "Phoenix PH",
             "type": "Hydropower",
             "turbine_capacity": "Phoenix PH/Turbine Capacity",
+            "flow_capacity": "Phoenix PH/Turbine Capacity",
             "head": 361.7976,
             "max_flow": [
                 "Phoenix PH/Water Demand/1",
@@ -710,6 +724,7 @@
             "type": "Hydropower",
             "head": 130,
             "turbine_capacity": "Sand Bar PH/Turbine Capacity",
+            "flow_capacity": "Sand Bar PH/Turbine Capacity",
             "max_flow": [
                 "Sand Bar PH/Water Demand/1",
                 "Sand Bar PH/Water Demand/2"
@@ -767,6 +782,7 @@
             "type": "Hydropower",
             "head": 568.452,
             "turbine_capacity": "Spring Gap PH/Turbine Capacity",
+            "flow_capacity": "Spring Gap PH/Turbine Capacity",
             "max_flow": [
                 "Spring Gap PH/Water Demand/1",
                 "Spring Gap PH/Water Demand/2"
@@ -803,6 +819,7 @@
             "type": "Hydropower",
             "head": 463.296,
             "turbine_capacity": "Stanislaus PH/Turbine Capacity",
+            "flow_capacity": "Stanislaus PH/Turbine Capacity",
             "max_flow": [
                 "Stanislaus PH/Water Demand/1",
                 "Stanislaus PH/Water Demand/2"
@@ -3440,6 +3457,90 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Angels PH"
         },
+        "Beardsley PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Beardsley PH"
+        },
+        "Spring Gap PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Spring Gap PH"
+        },
+        "Stanislaus PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Stanislaus PH"
+        },
+        "Sand Bar PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Sand Bar PH"
+        },
+        "Phoenix PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Phoenix PH"
+        },
+        "New Melones PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "New Melones PH"
+        },
+        "Murphys PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Murphys PH"
+        },
+        "Collierville PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Collierville PH"
+        },
+        "Donnells PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Donnells PH"
+        },
+        "New Spicer Meadow PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "New Spicer Meadow PH"
+        },
+        "Angels PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Angels PH"
+        },
+        "Beardsley PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Beardsley PH"
+        },
+        "Spring Gap PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Spring Gap PH"
+        },
+        "Stanislaus PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Stanislaus PH"
+        },
+        "Sand Bar PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Sand Bar PH"
+        },
+        "Phoenix PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Phoenix PH"
+        },
+        "New Melones PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "New Melones PH"
+        },
+        "Murphys PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Murphys PH"
+        },
+        "Collierville PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Collierville PH"
+        },
+        "Donnells PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Donnells PH"
+        },
+        "New Spicer Meadow PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "New Spicer Meadow PH"
+        },
         "USGS 11294500 NF STANISLAUS R NR AVERY CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
             "parameter": "USGS 11294500 NF STANISLAUS R NR AVERY CA/Observed Flow"
@@ -3499,14 +3600,6 @@
         "USGS 11292500 CLARK FORK STANISLAUS R NR DARDANELLE CA/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "USGS 11292500 CLARK FORK STANISLAUS R NR DARDANELLE CA"
-        },
-        "Collierville PH/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "Collierville PH"
-        },
-        "Donnells PH/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "Donnells PH"
         },
         "Donnells Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
@@ -3776,10 +3869,6 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "USGS 11293200 MF STANISLAUS R BL SND BAR DIV DAM NR AVERY CA"
         },
-        "Murphys PH/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "Murphys PH"
-        },
         "New Melones Lake/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "New Melones Lake"
@@ -3796,17 +3885,9 @@
             "type": "NumpyArrayParameterRecorder",
             "parameter": "New Melones Lake/Water Year Type"
         },
-        "New Melones PH/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "New Melones PH"
-        },
         "New Melones Lake Flood Control/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "New Melones Lake Flood Control"
-        },
-        "New Spicer Meadow PH/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "New Spicer Meadow PH"
         },
         "New Spicer Meadow Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
@@ -3856,10 +3937,6 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Phoenix Canal Outflow"
         },
-        "Phoenix PH/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "Phoenix PH"
-        },
         "Pinecrest Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Pinecrest Reservoir"
@@ -3884,10 +3961,6 @@
             "type": "NumpyArrayParameterRecorder",
             "parameter": "Relief Reservoir/Observed Storage"
         },
-        "Sand Bar PH/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "Sand Bar PH"
-        },
         "USGS 11296500 SF STANISLAUS R A STRAWBERRY CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
             "parameter": "USGS 11296500 SF STANISLAUS R A STRAWBERRY CA/Observed Flow"
@@ -3911,14 +3984,6 @@
         "USGS 11297200 SF STANISLAUS R NR STRAWBERRY CA/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "USGS 11297200 SF STANISLAUS R NR STRAWBERRY CA"
-        },
-        "Spring Gap PH/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "Spring Gap PH"
-        },
-        "Stanislaus PH/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "Stanislaus PH"
         },
         "South San Joaquin Irrigation District/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -3995,10 +4060,6 @@
         "UPA Tunnel Tap/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "UPA Tunnel Tap"
-        },
-        "Beardsley PH/flow": {
-            "type": "NumpyArrayNodeRecorder",
-            "node": "Beardsley PH"
         },
         "Donnell Lake Spill/flow": {
             "type": "NumpyArrayNodeRecorder",
