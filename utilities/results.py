@@ -2,14 +2,12 @@ import os
 import pandas as pd
 
 
-def save_model_results(model, data_path, results_path, debug=False):
+def save_model_results(model, results_path):
     results_df = model.to_dataframe()
     results_df.index.name = 'Date'
     scenario_names = [s.name for s in model.scenarios.scenarios]
     if not scenario_names:
         scenario_names = [0]
-    if not debug:
-        results_path = os.path.join(data_path, results_path)
     if not os.path.exists(results_path):
         os.makedirs(results_path)
 

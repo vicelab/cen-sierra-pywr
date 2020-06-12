@@ -205,7 +205,8 @@ def _run_model(climate,
         simplified_filename = model_filename_base + '_simplified.json'
         simplified_model_path = os.path.join(temp_dir, simplified_filename)
 
-        model_json = simplify_network(model_json, basin=basin, climate=climate, delete_gauges=True, delete_observed=True)
+        model_json = simplify_network(model_json, basin=basin, climate=climate, delete_gauges=True,
+                                      delete_observed=True)
         with open(simplified_model_path, 'w') as f:
             f.write(json.dumps(model_json, indent=4))
 
@@ -332,5 +333,11 @@ def _run_model(climate,
         logger.debug('Monthly overhead: {} seconds ({:02}% of total)'.format(monthly_seconds, monthly_pct))
 
     # save results to CSV
-    results_path = os.path.join('./results', run_name, basin, climate)
-    save_model_results(model, data_path, results_path, debug=debug)
+    # results_path = os.path.join('./results', run_name, basin, climate)
+    if debug:
+        base_results_path = './results'
+    else:
+        base_results_path = os.environ.get('SIERRA_RESULTS_PATH', './results')
+
+    results_path = os.path.join(base_results_path, run_name, basin, climate)
+    save_model_results(model, results_path)
