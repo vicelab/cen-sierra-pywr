@@ -1,6 +1,7 @@
 backcall==0.2.0
 colorama==0.4.3
 cycler==0.10.0
+Cython==0.29.20
 decorator==4.4.2
 graphviz==0.14
 ipython==7.15.0
