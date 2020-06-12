@@ -214,16 +214,10 @@ class MinFlowParameter(IFRParameter):
         min_flow_mcm = 0.0
 
         if scenario_name == 'No IFRs':
-            min_flow_mcm = 2e-6
+            min_flow_mcm = 0.0
 
         elif scenario_name == 'Functional Flows' and self.ifr_type == 'enhanced':
             min_flow_mcm = self.functional_flows_min_flow(timestep, scenario_index)
-
-        elif scenario_name == 'Functional Flows PR0' and self.ifr_type == 'enhanced':
-            min_flow_mcm = self.functional_flows_min_flow(timestep, scenario_index, peak_method='historical')
-
-        elif scenario_name == 'Functional Flows PR0' and self.ifr_type == 'enhanced':
-            min_flow_mcm = self.functional_flows_min_flow(timestep, scenario_index, peak_method='recalibrate')
 
         elif default:
             min_flow_mcm = default(timestep, scenario_index)
