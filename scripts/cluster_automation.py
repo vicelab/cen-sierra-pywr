@@ -1,27 +1,29 @@
-import os;
+import os
 import sys
 import paramiko
 from loguru import logger
 from paramiko import SSHClient, AutoAddPolicy, RSAKey
 from paramiko.auth_handler import AuthenticationException, SSHException
-from scp import SCPClient, SCPException 
+from scp import SCPClient, SCPException
 
 logger.add(sys.stderr,
-        format="{time} {message}",
-        filter="client",
-        level="INFO")
+           format="{time} {message}",
+           filter="client",
+           level="INFO")
 
 logger.add('logs/log_{time:YYYY-MM-DD}.log',
-        format="{time} {level} {message}",
-        filter="client",
-        level="INFO")
+           format="{time} {level} {message}",
+           filter="client",
+           level="INFO")
+
 
 class RemoteClient:
     """A class for executing commands on the cluster"""
 
-    def __init__(self, host, user, password, local_path, remote_path):
+    def __init__(self, host, username, password, local_path, remote_path):
         self.host = host
-        self.user = user
+        self.username = username
+        self.password = password
         # self.ssh_key_filepath = ssh_key_filepath
         self.local_path = local_path
         self.remote_path = remote_path
@@ -29,20 +31,18 @@ class RemoteClient:
         self.scp = None
         # self.__upload_ssh_key()
 
-    def connect_to_cluster(self, host, user, password):
+    def connect_to_cluster(self):
         """Connects to the remote host given necessary credentials"""
         try:
             self.client = paramiko.SSHClient()
-            self.client.load_system_host_keys()
+            # self.client.load_system_host_keys()
             self.client.set_missing_host_key_policy(AutoAddPolicy())
-            
-            self.client.connect(self, host=self.host, 
-            user=self.user, password=self.password, look_for_keys=True, 
-            port=22, TimeoutError=5000)
-            
+
+            self.client.connect(self.host, username=self.username, password=self.password, port=22, timeout=5000)
+
             logger.info('Successfully connected: you are now logged in.')
         except AuthenticationException as error:
-            logger.info('Authentication failed: did you foget your password?')
+            logger.info('Authentication failed: did you forget your password?')
             logger.error(error)
             raise error
         finally:
@@ -54,7 +54,7 @@ class RemoteClient:
         self.scp.close()
         logger.info('logger out')
 
-    def upload_to_cluster(self, host, basins, local_path, remote_path):
+    def upload_to_cluster(self, basins, local_path, remote_path):
         """Uploads specific files to the cluster depending on the remote path"""
         # See: https://pypi.org/project/scp/
 
@@ -74,7 +74,7 @@ class RemoteClient:
             self.conn = self.connect()
         self.scp.get(file)
 
-    def execute_commands(self, commands):   # pass a list parameter
+    def execute_commands(self, commands):  # pass a list parameter
         """Executes specific commands. Must be specified as the parameter"""
         if self.client is None:
             self.client = self.__connect()
@@ -85,20 +85,21 @@ class RemoteClient:
             for line in response:
                 logger.info(f'INPUT: {cmd} | OUTPUT: {line}')
 
+
 if __name__ == '__main__':
-    host = os.environ.get('REMOTE_HOST')
-    user = os.environ.get('REMOTE_USERNAME')
-    password = os.environ.get('REMOTE_PASSWORD')
+    host = os.environ.get('CLUSTER_HOST', 'merced.ucmerced.edu')
+    user = os.environ.get('CLUSTER_USERNAME')
+    password = os.environ.get('CLUSTER_PASSWORD')
     # ssh_key_filepath = environ.get('SSH_KEY')
     basins = ['stanislaus', 'tuolumne', 'merced', 'upper san joaquin']
     local_path = os.environ.get('SIERRA_DATA_PATH')
     remote_path = '/home/user/sierra_pywr_data'
 
-    test_command='ls'
+    test_command = 'ls'
 
     remote = RemoteClient(host, user, password, local_path, remote_path)
-    remote.connect_to_cluster(host, user, password)
-    remote.upload_to_cluster(host, basins, local_path, remote_path)
+    remote.connect_to_cluster()
+    remote.upload_to_cluster(basins, local_path, remote_path)
     remote.execute_commands(test_command)
-    remote.download_from_cluster(host, basins, local_path, remote_path)
+    # remote.download_from_cluster(host, basins, local_path, remote_path)
     remote.disconnect_from_cluster()
