@@ -139,7 +139,7 @@ class New_Melones_Lake_Flood_Control_Requirement(WaterLPParameter):
         if drawdown_period and prev_storage_mcm > nov1_target and not self.should_drawdown[sid]:
             day_before_yesterday = self.datetime + timedelta(days=-2)
             prev_prev_storage_mcm = self.model.recorders["New Melones Lake/storage"].to_dataframe()\
-                                        .iloc[:, sid][day_before_yesterday]
+                                        .loc[day_before_yesterday].values[sid]
             if prev_storage_mcm - prev_prev_storage_mcm <= 0:
                 self.should_drawdown[sid] = True
 

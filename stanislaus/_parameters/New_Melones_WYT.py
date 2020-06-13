@@ -34,7 +34,7 @@ class New_Melones_WYT(WaterLPParameter):
                 # we should already know the end-of-Feb storage
                 # TODO: figure out how to make this more efficient. This is going to slow things down a bit.
                 NML_storage = self.model.scheduling.recorders["New Melones Lake/storage"].to_dataframe()
-                NML_Mar1_storage_mcm = NML_storage.at['{}-02-28'.format(year), tuple(scenario_index.indices)]
+                NML_Mar1_storage_mcm = NML_storage.loc['{}-02-28'.format(year)].values[scenario_index.global_id]
             else:
                 NML_initial_storage = self.model.nodes["New Melones Lake [input]"].prev_flow[scenario_index.global_id]
                 regr = self.model.tables["New Melones Storage Regression"]
