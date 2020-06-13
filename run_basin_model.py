@@ -299,8 +299,7 @@ def _run_model(climate,
     for date in tqdm(model.timestepper.datetime_index, ncols=60, disable=disable_progress_bar):
         step += 1
         if disable_progress_bar and date.month == 9 and date.day == 30:
-            # logger.info('Finished year {}'.format(date.year))
-            logger.info('{}% complete'.format(round(step / n_timesteps * 100)))
+            logger.info('{}% complete (finsished year {})'.format(round(step / n_timesteps * 100), date.year))
         try:
 
             # Step 1: run planning model
