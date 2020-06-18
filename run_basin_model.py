@@ -77,7 +77,7 @@ def _run_model(climate,
             # the total number of years is 1 + N + 2 (1 year at the end as a buffer)
             N = int(climate_scenario.split('Y')[1].split('_')[0])
             start_year = 2000
-            end_year = start_year + N + 1
+            end_year = start_year + N
         else:
             raise Exception("Climate scenario unknown")
         start = '{}-10-01'.format(start_year)
