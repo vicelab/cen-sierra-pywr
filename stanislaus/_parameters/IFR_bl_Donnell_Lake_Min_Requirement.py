@@ -9,7 +9,7 @@ class IFR_bl_Donnell_Lake_Min_Requirement(MinFlowParameter):
 
     def _value(self, timestep, scenario_index):
 
-        WYT = self.model.tables["WYT P2005 & P2130"][self.operational_water_year]
+        WYT = self.model.tables["WYT P2005 & P2130"].get(self.operational_water_year, 3)
         schedule = self.model.tables["IFR Below Donnell Lake schedule"][WYT]
         month = self.datetime.month
         if self.model.mode == 'scheduling':

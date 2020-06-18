@@ -14,7 +14,7 @@ class IFR_bl_Sand_Bar_Div_Min_Requirement(MinFlowParameter):
 
     def _value(self, timestep, scenario_index):
 
-        WYT = self.model.tables["WYT P2005 & P2130"][self.operational_water_year]
+        WYT = self.model.tables["WYT P2005 & P2130"].get(self.operational_water_year, 3)
         schedule = self.model.tables["IFR Below Sand Bar Div Schedule"]
 
         month = self.datetime.month

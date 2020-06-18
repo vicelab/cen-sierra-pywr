@@ -9,7 +9,9 @@ class Donnell_Lake_Spill_Min_Requirement(MinFlowParameter):
 
     def _value(self, timestep, scenario_index):
 
-        WYT = self.model.tables["WYT P2005 & P2130"][self.operational_water_year]
+        # Default WYT is 3, for instances where we don't have pre-calculated WYT for the first operational water year
+        # This is needed particularly for sequences.
+        WYT = self.model.tables["WYT P2005 & P2130"].get(self.operational_water_year, 3)
 
         # Critically Dry: 1,Dry: 2,Normal-Dry: 3,Normal-Wet: 4,Wet: 5
         # Calculate regular IFR

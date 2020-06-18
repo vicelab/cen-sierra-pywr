@@ -12,7 +12,7 @@ class IFR_bl_Philadelphia_Div_Min_Requirement(MinFlowParameter):
         year = self.datetime.year
         month = self.datetime.month
 
-        WYT = self.model.tables["WYT P2005 & P2130"][self.operational_water_year]
+        WYT = self.model.tables["WYT P2005 & P2130"].get(self.operational_water_year, 3)
         schedule = self.model.tables["IFR Below Philadelphia Div Schedule"]
 
         if self.model.mode == 'scheduling':
