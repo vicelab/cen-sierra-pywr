@@ -11,6 +11,7 @@ import pandas as pd
 import traceback
 from utilities import simplify_network, prepare_planning_model, save_model_results, create_schematic
 from graphviz.backend import ExecutableNotFound
+from time import sleep
 
 from loguru import logger
 
@@ -340,3 +341,6 @@ def _run_model(climate,
 
     results_path = os.path.join(base_results_path, run_name, basin, climate)
     save_model_results(model, results_path)
+
+    # this might solve random spxchuzr.c error
+    sleep(5)
