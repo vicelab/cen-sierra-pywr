@@ -10,7 +10,8 @@ class IFR_bl_Pinecrest_Lake_Max_Requirement(FlowRangeParameter):
     def _value(self, timestep, scenario_index):
 
         if self.model.mode == 'scheduling':
-            ifr_range = self.get_ifr_range(timestep, scenario_index, initial_value=(10 / 35.31), rate=0.25)
+            # TODO: improve this logic to account for occasional allowable high flowrate change
+            ifr_range = self.get_ifr_range(timestep, scenario_index, initial_value=(10 / 35.31), rate=100)
         else:
             ifr_range = 1e6
         return ifr_range
