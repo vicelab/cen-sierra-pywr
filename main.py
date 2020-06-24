@@ -110,12 +110,7 @@ kwargs = dict(
 
 if not multiprocessing:  # serial processing for debugging
     for args in model_args:
-        try:
-            run_model(*args, **kwargs)
-        except Exception as err:
-            print("Failed: ", args)
-            print(err)
-            continue
+        run_model(*args, **kwargs)
 
 else:
     try:
