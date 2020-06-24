@@ -74,8 +74,8 @@ if args.scenario_set:
         if 'gcms' in climates:
             gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
             # gcms = ['HadGEM2-ES', 'MIROC5']
-            # rcps = ['45', '85']
-            rcps = ['85']
+            rcps = ['45', '85']
+            # rcps = ['85']
             gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
             climate_sets['gcms'] = gcm_rcps
         if 'sequences' in climates:
