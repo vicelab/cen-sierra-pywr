@@ -56,6 +56,17 @@ def _run_model(climate,
 
     climate_set, climate_scenario = climate.split('/')
 
+    if debug:
+        from utilities import check_nan
+        basin_path = os.path.join(data_path, basin.replace('_', ' ').title() + ' River')
+        total_nan = check_nan(basin_path, climate)
+
+        try:
+            assert (total_nan == 0)
+            logger.info('No NaNs found in data files')
+        except AssertionError:
+            logger.warning('{} NaNs found in data files.'.format(total_nan))
+
     # if debug:
     #     from utilities import create_schematic
 
