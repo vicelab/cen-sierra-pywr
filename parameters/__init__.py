@@ -239,8 +239,8 @@ class MinFlowParameter(IFRParameter):
 
         # Fall pulse
         elif self.dowy == params.at['fall pulse', 'earliest']:
-            # pulse_flow_idx = list(params.columns).index('dry magnitude') + random.randint(1, 3) - 1
-            pulse_flow_idx = list(params.columns).index('dry magnitude') + 3 - 1
+            pulse_flow_idx = list(params.columns).index('dry magnitude') + random.randint(1, 3) - 1
+            # pulse_flow_idx = list(params.columns).index('dry magnitude') + 3 - 1
             pulse_flow_col = params.columns[pulse_flow_idx]
             ifr_cfs = params.at['fall pulse', pulse_flow_col]
 
