@@ -54,7 +54,7 @@
         "scenarios": []
     },
     "sequences": {
-        "name": "Sequences test",
+        "name": "Sequences",
         "climates": [
             "sequences"
         ],
