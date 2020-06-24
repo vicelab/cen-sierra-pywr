@@ -6,6 +6,7 @@
 
 import os
 import pandas as pd
+import shutil
 from itertools import product
 
 
@@ -32,10 +33,9 @@ def create_forecasted_hydrology(scenario_path):
     #         print(runoff_dir)
     runoff_dir_monthly = runoff_dir_path.replace(runoff_dir, 'runoff_monthly')
     runoff_dir_monthly_forecasts = runoff_dir_path.replace(runoff_dir, 'runoff_monthly_forecasts')
-    # if not os.path.exists(runoff_dir_monthly):
-    #     os.makedirs(runoff_dir_monthly)
-    if not os.path.exists(runoff_dir_monthly_forecasts):
-        os.makedirs(runoff_dir_monthly_forecasts)
+    if os.path.exists(runoff_dir_monthly_forecasts):
+        shutil.rmtree(runoff_dir_monthly_forecasts, ignore_errors=True)
+    os.makedirs(runoff_dir_monthly_forecasts)
     filenames = os.listdir(runoff_dir_path)
     #     for filename in tqdm(os.listdir(runoff_dir), desc='{}, {}'.format(basin, scenario), ncols=800):
     for filename in filenames:

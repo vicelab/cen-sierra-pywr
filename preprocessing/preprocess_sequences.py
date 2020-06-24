@@ -8,6 +8,7 @@ from joblib import Parallel, delayed
 from itertools import product
 
 from preprocessing.preprocess_hydrology import preprocess_hydrology
+from preprocessing.utils.sequences import generate_data_from_sequence
 
 RND_SEQ_NAME_TPL = 'S{id:04}_Y{years:02}_RAND_N{number:02}'
 DRY_SEQ_NAME_TPL = 'S{id:04}_Y{years:02}_D{dry:1}W{wet:1}_N{number:02}'
@@ -97,54 +98,6 @@ def generate_sequence(n_dry, n_wet, n_buffer_years, scenario_number, sequence_nu
     return sequence_df
 
 
-def generate_runoff_from_sequence(df, basin, sequence_name):
-    print(basin, sequence_name)
-
-    sequence = df.loc[sequence_name].values
-
-    full_basin_name = '{} River'.format(basin.title())
-    basin_dir = os.path.join(root_dir, full_basin_name, LIVNEH_RUNOFF_PATH)
-    sequence_dir = os.path.join(root_dir, full_basin_name, 'hydrology', 'sequences', sequence_name, 'runoff')
-    if not os.path.exists(sequence_dir):
-        os.makedirs(sequence_dir)
-    water_years = None
-    for filename in os.listdir(basin_dir):
-        filepath = os.path.join(basin_dir, filename)
-        df = pd.read_csv(filepath, index_col=0, header=0, parse_dates=True, names=[FLOW_HEADER])
-
-        if water_years is None:
-            water_years = list(map(lambda d: d.year if d.month <= 9 else d.year + 1, df.index))
-        df['WY'] = water_years
-        df2 = pd.DataFrame()
-        for i, year in enumerate(sequence):
-            try:
-                year = int(year)
-            except:
-                continue
-            year_df = df[df['WY'] == year][FLOW_HEADER].copy()
-            start_year = 2000 + i
-            start_date = '{}-10-01'.format(start_year)
-            end_date = '{}-09-30'.format(start_year + 1)
-            idx = pd.date_range(start_date, end_date)
-
-            # account for leap years by adding/deleting days at end of year
-            if len(year_df) < len(idx):
-                year_df.index = idx[:len(year_df)]
-                year_df[idx[-1]] = year_df.iloc[-1]
-            elif len(year_df) > len(idx):
-                year_df.pop(year_df.index[-1])
-                year_df.index = idx
-            else:
-                year_df.index = idx
-            df2 = df2.append(year_df.to_frame())
-
-        df2.index.name = 'date'
-        outpath = os.path.join(sequence_dir, filename)
-        df2.to_csv(outpath)
-
-    return
-
-
 def generate_runoff(n_dry, n_wet, n_dry_years_max, n_wet_years_max, n_buffer_years, n_random_sequences, n_sequences,
                     seed=1, debug=False):
     # Seed the random number generator to generate pseudo-random numbers
@@ -201,13 +154,18 @@ def generate_runoff(n_dry, n_wet, n_dry_years_max, n_wet_years_max, n_buffer_yea
 
     all_args = []
     for basin, sequence in product(basins, sequences_df.index):
-        args = (sequences_df, basin, sequence)
+
+        full_basin_name = '{} River'.format(basin.title())
+        basin_dir = os.path.join(root_dir, full_basin_name, LIVNEH_RUNOFF_PATH)
+        sequence_dir = os.path.join(root_dir, full_basin_name, 'hydrology', 'sequences', sequence, 'runoff')
+
+        args = (sequences_df, basin, sequence, basin_dir, sequence_dir)
         all_args.append(args)
         if debug:
-            generate_runoff_from_sequence(*args)
+            generate_data_from_sequence(*args)
 
     if not debug:
-        Parallel(n_jobs=num_cores)(delayed(generate_runoff_from_sequence)(*args) for args in all_args)
+        Parallel(n_jobs=num_cores)(delayed(generate_data_from_sequence)(*args) for args in all_args)
 
     return
 
@@ -225,4 +183,4 @@ if __name__ == '__main__':
     generate_runoff(n_dry, n_wet, n_dry_years_max, n_wet_years_max, n_buffer_years, n_random_sequences, n_sequences,
                     debug=debug)
 
-    preprocess_hydrology('sequences')
+    preprocess_hydrology('sequences', basins_to_process=['tuo'], debug=True)

@@ -14,6 +14,21 @@ import multiprocessing as mp
 root_dir = os.environ.get('SIERRA_DATA_PATH', '../data')
 metadata_path = os.path.join(root_dir, 'metadata')
 
+basins = {
+    "stn": {
+        "name": "stanislaus",
+    },
+    "tuo": {
+        "name": "tuolumne",
+    },
+    "mer": {
+        "name": "merced",
+    },
+    "usj": {
+        "name": "upper san joaquin",
+    },
+}
+
 
 def process_basin_climate(tasks, basin, dataset, climate):
     print("Processing {}: {}/{}".format(basin, dataset, climate))
@@ -94,23 +109,9 @@ def process_basin_climate(tasks, basin, dataset, climate):
             usj.calculate_millerton_snowmelt_inflow(src, dst)
 
 
-def preprocess_hydrology(dataset, basins_to_process=None, debug=False):
+def preprocess_hydrology(dataset, basins_to_process=None, tasks=None, debug=False):
     basins_to_process = basins_to_process or ['stn', 'tuo', 'mer', 'usj']
-
-    basins = {
-        "stn": {
-            "name": "stanislaus",
-        },
-        "tuo": {
-            "name": "tuolumne",
-        },
-        "mer": {
-            "name": "merced",
-        },
-        "usj": {
-            "name": "upper san joaquin",
-        },
-    }
+    tasks = tasks or ["pre", "common", "basins"]
 
     climates = {}
 
@@ -126,13 +127,10 @@ def preprocess_hydrology(dataset, basins_to_process=None, debug=False):
     elif dataset == 'sequences':
         sequences_path = os.path.join(root_dir, 'metadata/drought_sequences.csv')
         seq_df = pd.read_csv(sequences_path, index_col=0, header=0)
-        climates['sequences'] = seq_df.index
+        climates['sequences'] = seq_df.index[:5]
 
     else:
         raise Exception("No dataset defined.")
-
-    tasks = ["pre", "common", "basins"]
-    # tasks = ["pre"]
 
     all_climates = []
     for k, values in climates.items():
@@ -164,8 +162,12 @@ def preprocess_hydrology(dataset, basins_to_process=None, debug=False):
 
 
 if __name__ == '__main__':
-    datasets = ['historical', 'gcms']
+    # datasets = ['historical', 'gcms']
+    # datasets = ['historical']
     # datasets = ['sequences']
+    datasets = ['gcms']
+    tasks = ["pre", "common", "basins"]
+    # tasks = ['basins']
 
     for dataset in datasets:
-        preprocess_hydrology(dataset, basins_to_process=['stn'], debug=False)
+        preprocess_hydrology(dataset, tasks=tasks, debug=True)
