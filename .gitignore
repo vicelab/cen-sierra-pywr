@@ -3,6 +3,8 @@ data/
 .idea/
 .*
 
+env/
+
 !/.gitignore
 *.pyc
 
