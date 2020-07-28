@@ -82,11 +82,12 @@ def create_timeseries_plot(csv_path):
     fig2, axes = plt.subplots(5, 1, figsize=(7, 10), sharex='all')
     # titles = ['a) One wet year', 'b) Two wet years']
     ax = axes[0]
+    df1 = df[df.scheme == 'RAND']
+    sns.lineplot(x='wy', y='value', data=df1, ax=ax, legend=None)
     ax.set_ylabel(ylabel=y_label)
     ax.set_xlabel(xlabel=x_label)
     ax.set_title('a) Random')
-    df1 = df[df.scheme == 'RAND']
-    sns.lineplot(x='wy', y='value', data=df1, ax=ax, legend=None)
+
     dry_years = [2, 3, 4, 5]
     for i in range(4):
         ax = axes[i + 1]
