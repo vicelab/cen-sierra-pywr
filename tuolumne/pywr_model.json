@@ -999,7 +999,7 @@
             "type": "Output",
             "comment": "{\"resource_class\": \"node\"}",
             "cost": 1,
-            "max_flow": 1.5
+            "max_flow": 1.15
         },
         {
             "name": "SFPUC requirement",
