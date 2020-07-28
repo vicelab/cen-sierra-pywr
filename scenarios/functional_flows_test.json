@@ -4,7 +4,7 @@
       "name": "IFRs",
       "size": 2,
       "ensemble_names": [
-        "No IFRs",
+        "baseline",
         "Functional Flows"
       ]
     }
