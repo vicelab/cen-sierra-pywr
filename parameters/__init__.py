@@ -265,14 +265,17 @@ class MinFlowParameter(IFRParameter):
         # ...ramp down
         else:
             ramp_rate = params.at['spring recession rate', self.magnitude_col]
-            ifr_mcm = self.model.nodes[self.res_name].prev_flow[sid] * (1 - ramp_rate)
+            prev_flow = self.model.nodes[self.res_name].prev_flow[sid]
+            ifr_mcm = prev_flow * (1 - ramp_rate)
             ifr_mcm = max(ifr_mcm, self.dry_season_baseflow_mcm)
 
         ifr_mcm = ifr_mcm or (ifr_cfs / 35.315 * 0.0864)
 
         self.prev_requirement[sid] = ifr_mcm
 
-        return ifr_mcm
+        ifr_cms = ifr_mcm / 0.0864
+
+        return ifr_cms
 
 
 class FlowRangeParameter(IFRParameter):
