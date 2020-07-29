@@ -2,7 +2,7 @@ import spotpy
 from spot_setup import SpotSetup
 
 # Set local storage variables for calibration ie: Name and Format(CSV, RAM)
-results_path = "../stanislaus/results/"
+results_path = "../models/stanislaus/results/"
 dbname = "temp_db"
 dbformat = "csv"
 

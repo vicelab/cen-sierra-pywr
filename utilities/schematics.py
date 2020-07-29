@@ -31,7 +31,7 @@ def create_schematic(basin, version, format='pdf', view=False):
     if version:
         filename += '_' + version
     filename += '.json'
-    with open(os.path.join(basin, 'temp', filename)) as f:
+    with open(os.path.join('models', basin, 'temp', filename)) as f:
         model = json.load(f)
     _dot = Digraph(name=basin, comment=basin, format=format)
     for node in model['nodes']:

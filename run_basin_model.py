@@ -101,7 +101,7 @@ def _run_model(climate,
     here = os.path.dirname(os.path.realpath(__file__))
     os.chdir(here)
 
-    root_dir = os.path.join(here, basin)
+    root_dir = os.path.join(here, 'models', basin)
     temp_dir = os.path.join(root_dir, 'temp')
     if not os.path.exists(temp_dir):
         os.makedirs(temp_dir)
@@ -181,12 +181,12 @@ def _run_model(climate,
     # =========================================
 
     sys.path.insert(0, os.getcwd())
-    policy_folder = os.path.join(basin, '_parameters')
+    policy_folder = os.path.join('models', basin, '_parameters')
     for filename in os.listdir(policy_folder):
         if '__init__' in filename:
             continue
         policy_name = os.path.splitext(filename)[0]
-        policy_module = '{basin}._parameters.{policy_name}'.format(basin=basin, policy_name=policy_name)
+        policy_module = 'models.{basin}._parameters.{policy_name}'.format(basin=basin, policy_name=policy_name)
         import_module(policy_module, policy_folder)
 
     # import domains

@@ -143,7 +143,7 @@ obs_streamflow = []
 for basin in ['stn', 'tuo', 'mer', 'usj']:
     RES_OPTIONS[basin] = {}
     basin_long = BASINS[basin].replace(' ', '_').lower()
-    with open('../{}/pywr_model.json'.format(basin_long)) as f:
+    with open('../models/{}/pywr_model.json'.format(basin_long)) as f:
         m = json.load(f)
     nodes = {n['name']: n for n in m['nodes']}
 
