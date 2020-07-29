@@ -15,7 +15,7 @@ results/
 *.mps
 
 */secrets/*
-*/temp/*
+*/*/temp
 
 *.pdf
 */*.pdf
