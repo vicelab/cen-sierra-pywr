@@ -116,12 +116,12 @@
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Below Lake Eleanor Tunel Diverted Inflow.1",
+            "name": "Below Lake Eleanor Tunnel Diverted Inflow.1",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
-            "name": "Below Lake Eleanor Tunel Diverted Inflow.2",
+            "name": "Below Lake Eleanor Tunnel Diverted Inflow.2",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}"
         },
@@ -786,10 +786,17 @@
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
-            "name": "Eleanor-Cherry Pumping Station",
+            "name": "Eleanor-Cherry Pumping",
             "type": "Link",
             "comment": "{\"resource_class\": \"node\"}",
-            "max_flow": "Eleanor-Cherry Pumping Station/Requirement",
+            "max_flow": "Eleanor-Cherry Pumping/Requirement",
+            "cost": -500
+        },
+        {
+            "name": "Eleanor-Cherry Gravity",
+            "type": "Link",
+            "comment": "{\"resource_class\": \"node\"}",
+            "max_flow": "Eleanor-Cherry Gravity/Requirement",
             "cost": -500
         },
         {
@@ -1557,18 +1564,26 @@
         ],
         [
             "Lake Eleanor",
-            "Below Lake Eleanor Tunel Diverted Inflow.1"
+            "Below Lake Eleanor Tunnel Diverted Inflow.1"
         ],
         [
-            "Below Lake Eleanor Tunel Diverted Inflow.1",
-            "Eleanor-Cherry Pumping Station"
+            "Below Lake Eleanor Tunnel Diverted Inflow.1",
+            "Eleanor-Cherry Pumping"
         ],
         [
-            "Eleanor-Cherry Pumping Station",
-            "Below Lake Eleanor Tunel Diverted Inflow.2"
+            "Eleanor-Cherry Pumping",
+            "Below Lake Eleanor Tunnel Diverted Inflow.2"
         ],
         [
-            "Below Lake Eleanor Tunel Diverted Inflow.2",
+            "Below Lake Eleanor Tunnel Diverted Inflow.1",
+            "Eleanor-Cherry Gravity"
+        ],
+        [
+            "Eleanor-Cherry Gravity",
+            "Below Lake Eleanor Tunnel Diverted Inflow.2"
+        ],
+        [
+            "Below Lake Eleanor Tunnel Diverted Inflow.2",
             "Cherry Lake"
         ],
         [
@@ -2538,8 +2553,11 @@
         "Don Pedro Water Bank": {
             "type": "Don_Pedro_Water_Bank"
         },
-        "Eleanor-Cherry Pumping Station/Requirement": {
-            "type": "Eleanor_Cherry_Pumping_Station_Requirement"
+        "Eleanor-Cherry Pumping/Requirement": {
+            "type": "Eleanor_Cherry_Pumping_Requirement"
+        },
+        "Eleanor-Cherry Gravity/Requirement": {
+            "type": "Eleanor_Cherry_Gravity_Requirement"
         },
         "Cherry Lake/Cost": {
             "type": "constant",
@@ -2813,6 +2831,9 @@
             "kind": "cubic",
             "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
         },
+        "Lake Eleanor/Forecasted Inflow": {
+            "type": "Lake_Eleanor_Forecasted_Inflow"
+        },
         "Lower Cherry Aqueduct 1/Flow Requirement": {
             "type": "Lower_Cherry_Aqueduct_1_Flow_Requirement"
         },
@@ -3057,6 +3078,10 @@
             "type": "NumpyArrayStorageRecorder",
             "node": "Cherry Lake"
         },
+        "Cherry Lake/elevation": {
+            "type": "NumpyArrayLevelRecorder",
+            "node": "Cherry Lake"
+        },
         "Districts Entitlements/flow": {
             "type": "NumpyArrayParameterRecorder",
             "parameter": "Districts Entitlements"
@@ -3096,6 +3121,14 @@
         "Don Pedro Water Bank/storage": {
             "type": "NumpyArrayParameterRecorder",
             "parameter": "Don Pedro Water Bank"
+        },
+        "Eleanor-Cherry Pumping/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Eleanor-Cherry Pumping"
+        },
+        "Eleanor-Cherry Gravity/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Eleanor-Cherry Gravity"
         },
         "Gauge Dion R Holm PH/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -3167,6 +3200,10 @@
         },
         "Lake Eleanor/storage": {
             "type": "NumpyArrayStorageRecorder",
+            "node": "Lake Eleanor"
+        },
+        "Lake Eleanor/elevation": {
+            "type": "NumpyArrayLevelRecorder",
             "node": "Lake Eleanor"
         },
         "Lower Cherry Aqueduct 1/flow": {

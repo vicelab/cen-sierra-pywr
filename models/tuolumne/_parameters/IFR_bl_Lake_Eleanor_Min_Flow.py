@@ -10,7 +10,7 @@ class IFR_bl_Lake_Eleanor_Min_Flow(MinFlowParameter):
 
         # Determine whether or not we are pumping
         # TODO: put this into a parameter?
-        is_transferring = self.model.parameters["Eleanor-Cherry Pumping Station/Requirement"] \
+        is_transferring = self.model.parameters["Eleanor-Cherry Pumping/Requirement"] \
                               .value(timestep, scenario_index) > 0.0
         CH_elev = self.model.nodes["Cherry Lake"].get_level(scenario_index)
         EL_elev = self.model.nodes["Lake Eleanor"].get_level(scenario_index)

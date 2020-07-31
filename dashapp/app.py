@@ -568,7 +568,7 @@ def update_css(pathname):
         "bottom": 0,
         "overflow-y": "auto"
     }
-    if '/development' in pathname or '/scenarios' in pathname:
+    if pathname and ('/development' in pathname or '/scenarios' in pathname):
         style.update(
             right='255px'
         )
