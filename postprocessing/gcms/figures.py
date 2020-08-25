@@ -27,7 +27,7 @@ basin_climates = list(product(basins, climates))
 
 # Reservoir storage
 RIM_RESERVOIRS = ['New Melones Lake', 'Don Pedro Reservoir', 'Lake McClure', 'Millerton Lake']
-WATER_BANK = 'Don Pedro Water Bank'
+WATER_BANK = 'Water Bank'
 
 # SKIP_ROWS = [1, 2]
 SKIP_ROWS = []

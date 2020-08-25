@@ -16,14 +16,14 @@ class SFPUC_requirement_Demand_Reduction(WaterLPParameter):
 
         if timestep.month in [7] and timestep.day == 1:
 
-            annual_demand_mcm = 426.22
+            annual_demand_mcm = self.model.parameters["SFPUC requirement/Annual Demand"].value(timestep, scenario_index)
 
             # calculate total storage, including snowpack
             total_storage = 0.0
             hh = self.model.nodes["Hetch Hetchy Reservoir"].volume[sid]
             ch = self.model.nodes["Cherry Lake"].volume[sid]
             el = self.model.nodes["Lake Eleanor"].volume[sid]
-            wb = self.model.parameters["Don Pedro Water Bank"].get_value(scenario_index)
+            wb = self.model.parameters["Water Bank"].get_value(scenario_index)
 
             total_storage = hh + ch + el + wb
             # total_storage = hh + ch + el

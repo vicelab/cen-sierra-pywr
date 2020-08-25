@@ -8,14 +8,13 @@ class SFPUC_requirement_Demand(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
 
-        # Assume 265 MGD = 426.22 MCM/year
-        # 265 mgd * 3.57/1000 taf/mg * 1.2335 mcm/taf * 365.24 d/year = 426.22 mcm/y
-        annual_demand_mcm = 426.22
+        # Assume 265 MGD = 366.4 MCM/year
+        # 265 mgd * 3.07/1000 taf/mg * 1.2335 mcm/taf * 365.24 d/year = 366.4 mcm/y
+        annual_demand_mcm = self.model.parameters["SFPUC requirement/Annual Demand"].value(timestep, scenario_index)
 
         week = min(timestep.datetime.week, 52)
         daily_fraction = self.model.tables["SFPUC weekly fraction"][week] / 7
         daily_demand_cms = annual_demand_mcm * daily_fraction / 0.0864
-
 
         hh = self.model.nodes["Hetch Hetchy Reservoir"].volume[scenario_index.global_id]
         if hh <= 200:

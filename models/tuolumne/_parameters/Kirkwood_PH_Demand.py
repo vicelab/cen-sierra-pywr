@@ -40,6 +40,8 @@ class Kirkwood_PH_Demand(WaterLPParameter):
                 # release_cms = self.model.nodes["Kirkwood PH"].max_flow / 0.0864
 
         demand_reduction = self.model.parameters["SFPUC requirement/Demand Reduction"].get_value(scenario_index)
+
+        # TODO: the following is in conflict with SJPL demand, which *increases* during demand reduction periods
         release_cms *= (1 - demand_reduction)
 
         self.prev_release_cms[scenario_index.global_id] = release_cms

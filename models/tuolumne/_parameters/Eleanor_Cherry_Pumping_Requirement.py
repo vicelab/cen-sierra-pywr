@@ -50,8 +50,9 @@ class Eleanor_Cherry_Pumping_Requirement(WaterLPParameter):
 
             # Gravity flow (Eleanor is higher than Cherry)
             if EL_CH_head_m <= 0:
-                pumping_AF = min(max(-0.034 * -EL_CH_head_ft ** 2 - 5.3068 * -EL_CH_head_ft + 595.72, 0), 1200)
-                pumping_flow_mcm = pumping_AF / 1e3 * 1.2335
+                # pumping_AF = min(max(-0.034 * -EL_CH_head_ft ** 2 - 5.3068 * -EL_CH_head_ft + 595.72, 0), 1200)
+                pumping_cfs = min(max(-0.0171 * -EL_CH_head_ft ** 2 - 0.077 * -EL_CH_head_ft + 300.34, 0), 605)
+                pumping_flow_mcm = pumping_cfs / 35.315 * 0.0864
 
         return pumping_flow_mcm
 

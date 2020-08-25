@@ -1006,7 +1006,7 @@
             "type": "Output",
             "comment": "{\"resource_class\": \"node\"}",
             "cost": 1,
-            "max_flow": 1.15
+            "max_flow": 1.1
         },
         {
             "name": "SFPUC requirement",
@@ -2550,8 +2550,8 @@
         "Don Pedro Lake Flood Control/Requirement": {
             "type": "Don_Pedro_Lake_Flood_Control_Requirement"
         },
-        "Don Pedro Water Bank": {
-            "type": "Don_Pedro_Water_Bank"
+        "Water Bank": {
+            "type": "Water_Bank"
         },
         "Eleanor-Cherry Pumping/Requirement": {
             "type": "Eleanor_Cherry_Pumping_Requirement"
@@ -2846,6 +2846,10 @@
         "SFPUC requirement/Demand": {
             "type": "SFPUC_requirement_Demand"
         },
+        "SFPUC requirement/Annual Demand": {
+            "type": "Constant",
+            "value": 331.83
+        },
         "Turlock Irrigation District/Demand": {
             "type": "Turlock_Irrigation_District_Demand"
         },
@@ -3118,9 +3122,9 @@
             "type": "NumpyArrayStorageRecorder",
             "node": "Don Pedro Reservoir"
         },
-        "Don Pedro Water Bank/storage": {
+        "Water Bank/storage": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "Don Pedro Water Bank"
+            "parameter": "Water Bank"
         },
         "Eleanor-Cherry Pumping/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -3173,6 +3177,10 @@
         "IFR bl Hetch Hetchy Reservoir/min flow": {
             "type": "NumpyArrayParameterRecorder",
             "parameter": "IFR bl Hetch Hetchy Reservoir/Min Flow"
+        },
+        "IFR bl Hetch Hetchy Reservoir/base flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl Hetch Hetchy Reservoir/Base Flow"
         },
         "IFR bl Hetch Hetchy Reservoir/water year type": {
             "type": "NumpyArrayParameterRecorder",

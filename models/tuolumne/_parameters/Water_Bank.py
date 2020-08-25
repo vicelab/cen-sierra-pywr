@@ -2,7 +2,7 @@ import numpy as np
 from parameters import WaterLPParameter
 
 
-class Don_Pedro_Water_Bank(WaterLPParameter):
+class Water_Bank(WaterLPParameter):
 
     initial_storage = None
 
@@ -22,7 +22,7 @@ class Don_Pedro_Water_Bank(WaterLPParameter):
         inflow = self.model.nodes["TUO_01 Inflow"].prev_flow[scenario_index.global_id]
         outflow = self.model.parameters["Districts Entitlements"].get_value(scenario_index)
         initial_storage = self.initial_storage[scenario_index.global_id]
-        # initial_storage = self.model.recorders["Don Pedro Water Bank"][timestep.index, scenario_index.global_id]
+        # initial_storage = self.model.recorders["Water Bank"][timestep.index, scenario_index.global_id]
         new_storage = max(min(initial_storage + inflow - outflow, 703.1), 0.0)
 
         self.initial_storage[scenario_index.global_id] = new_storage
@@ -48,4 +48,4 @@ class Don_Pedro_Water_Bank(WaterLPParameter):
             raise
 
 
-Don_Pedro_Water_Bank.register()
+Water_Bank.register()

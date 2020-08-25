@@ -8,7 +8,7 @@ sns.set(style="darkgrid")
 results_dir = "../../results/development"
 data_dir = os.environ['SIERRA_DATA_PATH']
 
-figs_path = os.path.join(data_dir, 'results', 'figures', 'performance')
+figs_path = os.path.join(data_dir, '..', 'calibration', 'figures', 'timeseries')
 if not os.path.exists(figs_path):
     os.makedirs(figs_path)
 
@@ -119,40 +119,40 @@ if __name__ == '__main__':
     basins = ['stanislaus', 'tuolumne', 'merced', 'upper_san_joaquin']
 
     variables = ['Reservoir_Storage_mcm']
-    # reservoirs = ['New Melones Lake', 'Don Pedro Reservoir', 'Lake McClure', 'Millerton Lake']
-    # create_timeseries_charts(basins, reservoirs, variables, 'rim_reservoir_storage.png', 'storage_mcm.csv')
+    reservoirs = ['New Melones Lake', 'Don Pedro Reservoir', 'Lake McClure', 'Millerton Lake']
+    create_timeseries_charts(basins, reservoirs, variables, 'rim_reservoir_storage.png', 'storage_mcm.csv')
 
-    # hh_storage_variables = ['Reservoir_Storage_mcm', 'Other_Storage_mcm']
-    # hh_reservoirs = ['Hetch Hetchy Reservoir', 'Don Pedro Reservoir', 'Don Pedro Water Bank']
-    # create_timeseries_charts(basins, hh_reservoirs, hh_storage_variables, 'hh_reservoir_storage.png', 'storage_mcm.csv')
+    hh_storage_variables = ['Reservoir_Storage_mcm', 'Other_Storage_mcm']
+    hh_reservoirs = ['Hetch Hetchy Reservoir', 'Don Pedro Reservoir', 'Water Bank']
+    create_timeseries_charts(basins, hh_reservoirs, hh_storage_variables, 'hh_reservoir_storage.png', 'storage_mcm.csv')
 
-    # hh_flow_variables = ['Hydropower_Flow_mcm', 'Output_Flow_mcm']
-    # hh_flow_nodes = ['Kirkwood PH', 'Dion R Holm PH', 'Moccasin PH', 'SFPUC']
-    # create_timeseries_charts(['tuolumne'], hh_flow_nodes, hh_flow_variables, 'hh_system_flow.png', 'streamflow_cfs.csv')
-    #
-    # create_timeseries_charts(
-    #     ['tuolumne'],
-    #     ['IFR bl Hetch Hetchy Reservoir', 'IFR bl Cherry Lake', 'IFR bl Lake Eleanor', 'IFR at La Grange'],
-    #     ['InstreamFlowRequirement_Flow_mcm'],
-    #     'hh_IFR_flow.png',
-    #     'streamflow_cfs.csv'
-    # )
-    #
-    # create_timeseries_charts(
-    #     ['tuolumne'],
-    #     ['Kirkwood PH', 'Moccasin PH', 'SFPUC'],
-    #     ['Hydropower_Flow_mcm', 'Output_Flow_mcm'],
-    #     'to_bay_flows.png',
-    #     'streamflow_cfs.csv'
-    # )
-    #
-    # create_timeseries_charts(
-    #     ['tuolumne'],
-    #     ['IFR bl Hetch Hetchy Reservoir', 'IFR at La Grange'],
-    #     ['InstreamFlowRequirement_Flow_mcm'],
-    #     'IFR_flows.png',
-    #     'streamflow_cfs.csv'
-    # )
+    hh_flow_variables = ['Hydropower_Flow_mcm', 'Output_Flow_mcm']
+    hh_flow_nodes = ['Kirkwood PH', 'Dion R Holm PH', 'Moccasin PH', 'SFPUC']
+    create_timeseries_charts(['tuolumne'], hh_flow_nodes, hh_flow_variables, 'hh_system_flow.png', 'streamflow_cfs.csv')
+
+    create_timeseries_charts(
+        ['tuolumne'],
+        ['IFR bl Hetch Hetchy Reservoir', 'IFR bl Cherry Lake', 'IFR bl Lake Eleanor', 'IFR at La Grange'],
+        ['InstreamFlowRequirement_Flow_mcm'],
+        'hh_IFR_flow.png',
+        'streamflow_cfs.csv'
+    )
+
+    create_timeseries_charts(
+        ['tuolumne'],
+        ['Kirkwood PH', 'Moccasin PH', 'SFPUC'],
+        ['Hydropower_Flow_mcm', 'Output_Flow_mcm'],
+        'to_bay_flows.png',
+        'streamflow_cfs.csv'
+    )
+
+    create_timeseries_charts(
+        ['tuolumne'],
+        ['IFR bl Hetch Hetchy Reservoir', 'IFR at La Grange'],
+        ['InstreamFlowRequirement_Flow_mcm'],
+        'IFR_flows.png',
+        'streamflow_cfs.csv'
+    )
 
     create_timeseries_charts(
         ['tuolumne'],

@@ -56,8 +56,9 @@ class Eleanor_Cherry_Gravity_Requirement(WaterLPParameter):
                 min_EL_nonsummer_storage = 5000 / 1e3 * 1.2335
                 if month in summer and EL_storage_mcm >= min_EL_summer_storage \
                         or month not in summer and EL_storage_mcm >= min_EL_nonsummer_storage:
-                    gravity_AF = min(211.88 * EL_CH_head_ft ** 0.5255, 1980)
-                    gravity_flow_mcm = gravity_AF / 1e3 * 1.2335
+                    # gravity_AF = min(211.88 * EL_CH_head_ft ** 0.5255, 1980)
+                    gravity_cfs = min(106.8 * EL_CH_head_ft ** 0.5255, 998.25)
+                    gravity_flow_mcm = gravity_cfs / 35.315 * 0.0864
 
         return gravity_flow_mcm
 
