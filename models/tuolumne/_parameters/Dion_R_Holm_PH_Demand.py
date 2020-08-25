@@ -10,23 +10,25 @@ class Dion_R_Holm_PH_Demand(WaterLPParameter):
     """"""
 
     max_release_cms = 27.47
-    prev_release_cms = None
-
-    def setup(self):
-        super().setup()
-        num_scenarios = len(self.model.scenarios.combinations)
-        self.prev_release_cms = np.zeros(num_scenarios, np.float)
 
     def _value(self, timestep, scenario_index):
 
-        if timestep.index % 7:
-            return self.prev_release_cms[scenario_index.global_id]
+        sid = scenario_index.global_id
 
-        release_cms = 0.0
+        # Recreational flows - 9,000 AF/month, 4-5hrs/day except every other Weds.
+        # Here, assume: 9,000 TAF * 5 months / ((153 total days - 11 Wednesdays) / 5 months) = 317 AF / day
+        # 317 AF/day = 160 cfs = 4.52 cms
+        recreation_cms = 0.0
+        if 6 <= timestep.month <= 10:
+            if timestep.dayofyear % 14:
+                recreation_cms = 4.52
+
+        elif timestep.index % 7:
+            return self.model.nodes["Dion R Holm PH"].prev_flow[sid] / 0.0864
 
         # Cherry storage
         CH = self.model.nodes["Cherry Lake"]
-        cherry_storage = CH.volume[scenario_index.global_id]
+        cherry_storage = CH.volume[sid]
         max_cherry_storage = CH.max_volume
         available_storage_mcm = max_cherry_storage - cherry_storage
 
@@ -35,7 +37,13 @@ class Dion_R_Holm_PH_Demand(WaterLPParameter):
         start = timestep.datetime
         end = start + dt.timedelta(days=days)
         forecast_dates = pd.date_range(start, end)
-        forecasted_inflow_mcm = self.model.parameters["Lake Eleanor Inflow/Runoff"].dataframe[forecast_dates].sum()
+
+        EL_forecasted_inflow_mcm = self.model.parameters["Lake Eleanor Inflow/Runoff"].dataframe[forecast_dates].sum()
+        CH_forecasted_inflow_mcm = self.model.parameters["Cherry Lake Inflow/Runoff"].dataframe[forecast_dates].sum()
+
+        # forecasted_inflow_mcm = EL_forecasted_inflow_mcm + CH_forecasted_inflow_mcm
+        forecasted_inflow_mcm = CH_forecasted_inflow_mcm
+
         forecasted_ifr_mcm = np.sum([15.5 if d.month in [7, 8, 9] else 6 for d in forecast_dates]) / 35.31 * 0.0864
 
         spill_release_cms = 0.0
@@ -46,7 +54,7 @@ class Dion_R_Holm_PH_Demand(WaterLPParameter):
             spill_release_cms = self.max_release_cms
 
         # Water Bank storage
-        water_bank_storage = self.model.parameters["Don Pedro Water Bank"].get_value(scenario_index)
+        water_bank_storage = self.model.parameters["Water Bank"].get_value(scenario_index)
         water_bank_storage_curve = self.model.parameters["Water Bank Preferred Storage AF"] \
                                        .value(timestep, scenario_index) / 1000 * 1.2335
 
@@ -54,13 +62,12 @@ class Dion_R_Holm_PH_Demand(WaterLPParameter):
         # Cherry storage min threshold = 100 * 1.2335 = 123.5
         if cherry_storage >= 123.5 and water_bank_storage < water_bank_storage_curve:
             # release_cfs = 970 cfs = 27.47 cms
-            water_bank_release_cms = self.max_release_cms
+            # water_bank_release_cms = self.max_release_cms
+            water_bank_release_cms = water_bank_storage_curve - water_bank_storage
 
-        release_cms = max(spill_release_cms, water_bank_release_cms)
+        release_cms = max(spill_release_cms, water_bank_release_cms, recreation_cms)
 
-        release_cms *= 0.5
-
-        self.prev_release_cms[scenario_index.global_id] = release_cms
+        # release_cms *= 0.75
 
         return release_cms
 
