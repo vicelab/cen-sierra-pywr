@@ -59,5 +59,18 @@
             "sequences"
         ],
         "scenarios": []
+    },
+    "full_study": {
+        "name": "Functional flows with future energy prices",
+        "scenarios": [
+            "energy_prices",
+            "functional_flows"
+        ]
+    },
+    "energy_prices_only": {
+        "name": "Energy prices only",
+        "scenarios": [
+            "energy_prices"
+        ]
     }
 }

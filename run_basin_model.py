@@ -138,7 +138,7 @@ def _run_model(climate,
     if scenarios is not None:
         for s in scenarios:
             # update from scenarios folder
-            scenario_path = os.path.join(root_dir, '../scenarios/{}.json'.format(s))
+            scenario_path = os.path.join(root_dir, '../../scenarios/{}.json'.format(s))
             update_model(scenario_path)
 
     new_model_parts = {}

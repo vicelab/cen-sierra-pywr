@@ -9,7 +9,6 @@ class SFPUC_requirement_Demand(WaterLPParameter):
     def _value(self, timestep, scenario_index):
 
         # Assume 265 MGD = 366.4 MCM/year
-        # 265 mgd * 3.07/1000 taf/mg * 1.2335 mcm/taf * 365.24 d/year = 366.4 mcm/y
         annual_demand_mcm = self.model.parameters["SFPUC requirement/Annual Demand"].value(timestep, scenario_index)
 
         week = min(timestep.datetime.week, 52)

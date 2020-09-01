@@ -2536,6 +2536,10 @@
         }
     },
     "parameters": {
+        "Price Year": {
+            "type": "constant",
+            "value": 2009
+        },
         "Full Natural Flow": {
             "type": "dataframe",
             "url": "../data/Tuolumne River/hydrology/historical/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
