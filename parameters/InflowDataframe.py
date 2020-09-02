@@ -2,6 +2,11 @@ from pywr.parameters import DataFrameParameter
 
 
 class InflowDataframe(DataFrameParameter):
+    """
+    This parameter type extends the base DataFrameParameter by looking for a bias correction factor table
+    in the model. If found, and the name of the parameter is in the table, then it will pull the correction factor
+    from the table and multiply the original value by the correction factor.
+    """
     bias_correction_factor = False
     bias_correct = False
 
