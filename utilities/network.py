@@ -169,7 +169,7 @@ def simplify_network(m, scenario_path=None, basin=None, climate=None, delete_gau
                     param=param_name.split('/')[0]
                 )
             new_param = {
-                "type": "dataframe",
+                "type": "Dataframe2",
                 "url": url,
                 "column": "flow",
                 "index_col": 0,
