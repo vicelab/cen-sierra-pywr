@@ -1860,6 +1860,14 @@
             "max_flow_cost": 1000,
             "min_flow_cost": -10000
         },
+         {
+            "name": "IFR bl Portal Forebay",
+            "type": "InstreamFlowRequirement",
+            "comment": "{\"resource_class\": \"node\"}",
+            "min_flow": "IFR bl Portal Forebay/Min Flow",
+            "max_flow_cost": 2000,
+            "min_flow_cost": -10000
+        },
         {
             "name": "IFR bl Bolsillo Creek Div",
             "type": "InstreamFlowRequirement",
@@ -4084,8 +4092,13 @@
         ],
         [
             "Below Portal Penstock Outflow.1",
+            "IFR bl Portal Forebay"
+        ],
+         [
+            "IFR bl Portal Forebay",
             "Below Portal Penstock Outflow.2"
         ],
+
         [
             "Below Portal Penstock Outflow.2",
             "Camp 61 Creek Inflow"
