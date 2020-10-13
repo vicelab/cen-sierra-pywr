@@ -13,70 +13,70 @@ class Reservoir(Storage):
         super(Reservoir, self).__init__(*args, **kwargs)
 
 
-class PiecewiseReservoir(Storage):
-    """
-    Like a storage node, only better
-    """
-
-    def __init__(self, *args, **kwargs):
-
-        self.gauge = kwargs.pop("gauge", None)
-        super(PiecewiseReservoir, self).__init__(*args, **kwargs)
-
-    @classmethod
-    def load(cls, data, model):
-        name = data.pop('name')
-        num_inputs = int(data.pop('inputs', 1))
-        num_outputs = int(data.pop('outputs', 1))
-
-        if 'initial_volume' not in data and 'initial_volume_pc' not in data:
-            raise ValueError('Initial volume must be specified in absolute or relative terms.')
-
-        initial_volume = data.pop('initial_volume', 0.0)
-        initial_volume_pc = data.pop('initial_volume_pc', None)
-        max_volume = data.pop('max_volume')
-        min_volume = data.pop('min_volume', 0.0)
-        level = data.pop('level', None)
-        area = data.pop('area', None)
-        cost = data.pop('cost', 0.0)
-
-        data.pop('type', None)
-        # Create the instance
-        node = cls(model=model, name=name, num_inputs=num_inputs, num_outputs=num_outputs, **data)
-
-        # Load the parameters after the instance has been created to prevent circular
-        # loading errors
-
-        # Try to coerce initial volume to float.
-        try:
-            initial_volume = float(initial_volume)
-        except TypeError:
-            initial_volume = load_parameter_values(model, initial_volume)
-        node.initial_volume = initial_volume
-        node.initial_volume_pc = initial_volume_pc
-
-        max_volume = load_parameter(model, max_volume)
-        if max_volume is not None:
-            node.max_volume = max_volume
-
-        min_volume = load_parameter(model, min_volume)
-        if min_volume is not None:
-            node.min_volume = min_volume
-
-        cost = load_parameter(model, cost)
-        if cost is None:
-            cost = 0.0
-        node.cost = cost
-
-        if level is not None:
-            level = load_parameter(model, level)
-        node.level = level
-
-        if area is not None:
-            area = load_parameter(model, area)
-        node.area = area
-
-        return node
+# class PiecewiseReservoir(Storage):
+#     """
+#     Like a storage node, only better
+#     """
+#
+#     def __init__(self, *args, **kwargs):
+#
+#         self.gauge = kwargs.pop("gauge", None)
+#         super(PiecewiseReservoir, self).__init__(*args, **kwargs)
+#
+#     @classmethod
+#     def load(cls, data, model):
+#         name = data.pop('name')
+#         num_inputs = int(data.pop('inputs', 1))
+#         num_outputs = int(data.pop('outputs', 1))
+#
+#         if 'initial_volume' not in data and 'initial_volume_pc' not in data:
+#             raise ValueError('Initial volume must be specified in absolute or relative terms.')
+#
+#         initial_volume = data.pop('initial_volume', 0.0)
+#         initial_volume_pc = data.pop('initial_volume_pc', None)
+#         max_volume = data.pop('max_volume')
+#         min_volume = data.pop('min_volume', 0.0)
+#         level = data.pop('level', None)
+#         area = data.pop('area', None)
+#         cost = data.pop('cost', 0.0)
+#
+#         data.pop('type', None)
+#         # Create the instance
+#         node = cls(model=model, name=name, num_inputs=num_inputs, num_outputs=num_outputs, **data)
+#
+#         # Load the parameters after the instance has been created to prevent circular
+#         # loading errors
+#
+#         # Try to coerce initial volume to float.
+#         try:
+#             initial_volume = float(initial_volume)
+#         except TypeError:
+#             initial_volume = load_parameter_values(model, initial_volume)
+#         node.initial_volume = initial_volume
+#         node.initial_volume_pc = initial_volume_pc
+#
+#         max_volume = load_parameter(model, max_volume)
+#         if max_volume is not None:
+#             node.max_volume = max_volume
+#
+#         min_volume = load_parameter(model, min_volume)
+#         if min_volume is not None:
+#             node.min_volume = min_volume
+#
+#         cost = load_parameter(model, cost)
+#         if cost is None:
+#             cost = 0.0
+#         node.cost = cost
+#
+#         if level is not None:
+#             level = load_parameter(model, level)
+#         node.level = level
+#
+#         if area is not None:
+#             area = load_parameter(model, area)
+#         node.area = area
+#
+#         return node
 
 
 class InstreamFlowRequirement(PiecewiseLink):
@@ -188,49 +188,49 @@ class InstreamFlowRequirement(PiecewiseLink):
 #         return node
 
 
-class PiecewiseHydropower(PiecewiseLink):
-    """
-    A piecewise hydropower plant.
-    """
-
-    _type = 'piecewisehydropower'
-
-    def __init__(self, model, max_flow, **kwargs):
-        """Initialise a new Hydropower instance
-        Parameters
-        ----------
-        """
-
-        if max_flow is None:
-            raise ValueError("Hydropower max_flow must be provided.")
-
-        head = kwargs.pop('head', None)  # Fixed head
-
-        max_flows = kwargs.pop('max_flows', [])
-        costs = kwargs.pop('costs', [])
-
-        # Add an unconstrained block with a default cost of zero
-        max_flows.append(None)
-        if len(costs) < len(max_flows):
-            costs.append(0.0)  # PiecewiseLink will raise an error if not same length
-
-        kwargs['max_flow'] = max_flows
-        kwargs['cost'] = costs
-
-        super(PiecewiseHydropower, self).__init__(model, **kwargs)
-
-        self.output.max_flow = max_flow
-        self.head = head
-
-    @classmethod
-    def load(cls, data, model):
-        max_flows = [load_parameter(model, c) for c in data.pop('max_flows', [])]
-        costs = [load_parameter(model, c) for c in data.pop('costs', [])]
-        max_flow = load_parameter(model, data.pop('max_flow', None))
-        head = data.pop('head', 0.0)
-        del (data["type"])
-        node = cls(model, max_flow, max_flows=max_flows, costs=costs, head=head, **data)
-        return node
+# class PiecewiseHydropower(PiecewiseLink):
+#     """
+#     A piecewise hydropower plant.
+#     """
+#
+#     _type = 'piecewisehydropower'
+#
+#     def __init__(self, model, max_flow, **kwargs):
+#         """Initialise a new Hydropower instance
+#         Parameters
+#         ----------
+#         """
+#
+#         if max_flow is None:
+#             raise ValueError("Hydropower max_flow must be provided.")
+#
+#         head = kwargs.pop('head', None)  # Fixed head
+#
+#         max_flows = kwargs.pop('max_flows', [])
+#         costs = kwargs.pop('costs', [])
+#
+#         # Add an unconstrained block with a default cost of zero
+#         max_flows.append(None)
+#         if len(costs) < len(max_flows):
+#             costs.append(0.0)  # PiecewiseLink will raise an error if not same length
+#
+#         kwargs['max_flow'] = max_flows
+#         kwargs['cost'] = costs
+#
+#         super(PiecewiseHydropower, self).__init__(model, **kwargs)
+#
+#         self.output.max_flow = max_flow
+#         self.head = head
+#
+#     @classmethod
+#     def load(cls, data, model):
+#         max_flows = [load_parameter(model, c) for c in data.pop('max_flows', [])]
+#         costs = [load_parameter(model, c) for c in data.pop('costs', [])]
+#         max_flow = load_parameter(model, data.pop('max_flow', None))
+#         head = data.pop('head', 0.0)
+#         del (data["type"])
+#         node = cls(model, max_flow, max_flows=max_flows, costs=costs, head=head, **data)
+#         return node
 
 
 class Hydropower(PiecewiseLink):
@@ -309,32 +309,32 @@ class Hydropower(PiecewiseLink):
         return node
 
 
-class PiecewiseInstreamFlowRequirement(PiecewiseLink):
-    """
-    A piecewise instream flow requirement, defined with:
-    N costs and N - 1 requirements
-    """
-
-    _type = 'piecewiseinstreamflowrequirement'
-
-    def __init__(self, model, **kwargs):
-        """Initialize
-        Parameters
-        ----------
-        """
-        kwargs['max_flow'] = kwargs.pop('max_flow', [])
-        kwargs['cost'] = kwargs.pop('cost', [])
-        if len(kwargs['cost']) == 0:
-            kwargs['cost'].append(0.0)
-        if len(kwargs['max_flow']) < len(kwargs['cost']):
-            kwargs['max_flow'].append(None)
-        assert (len(kwargs['cost']) == len(kwargs['max_flow']))
-        super(PiecewiseInstreamFlowRequirement, self).__init__(model, **kwargs)
-
-    @classmethod
-    def load(cls, data, model):
-        max_flow = [load_parameter(model, c) for c in data.pop('max_flow', [])]
-        cost = [load_parameter(model, c) for c in data.pop('cost', [0.0])]
-        del (data["type"])
-        node = cls(model, max_flow=max_flow, cost=cost, **data)
-        return node
+# class PiecewiseInstreamFlowRequirement(PiecewiseLink):
+#     """
+#     A piecewise instream flow requirement, defined with:
+#     N costs and N - 1 requirements
+#     """
+#
+#     _type = 'piecewiseinstreamflowrequirement'
+#
+#     def __init__(self, model, **kwargs):
+#         """Initialize
+#         Parameters
+#         ----------
+#         """
+#         kwargs['max_flow'] = kwargs.pop('max_flow', [])
+#         kwargs['cost'] = kwargs.pop('cost', [])
+#         if len(kwargs['cost']) == 0:
+#             kwargs['cost'].append(0.0)
+#         if len(kwargs['max_flow']) < len(kwargs['cost']):
+#             kwargs['max_flow'].append(None)
+#         assert (len(kwargs['cost']) == len(kwargs['max_flow']))
+#         super(PiecewiseInstreamFlowRequirement, self).__init__(model, **kwargs)
+#
+#     @classmethod
+#     def load(cls, data, model):
+#         max_flow = [load_parameter(model, c) for c in data.pop('max_flow', [])]
+#         cost = [load_parameter(model, c) for c in data.pop('cost', [0.0])]
+#         del (data["type"])
+#         node = cls(model, max_flow=max_flow, cost=cost, **data)
+#         return node
