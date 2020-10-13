@@ -2460,6 +2460,11 @@
         ]
     ],
     "tables": {
+        "Bias Correction Factors": {
+            "url": "../data/Tuolumne River/_tables/Bias_Correction_Factors.csv",
+            "index_col": 0,
+            "header": 0
+        },
         "functional flows parameters": {
             "url": "../data/Tuolumne River/_tables/Functional_Flows_parameters.csv",
             "index_col": 0,
