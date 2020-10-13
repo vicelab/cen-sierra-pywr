@@ -3,28 +3,38 @@ import pandas as pd
 
 FLOW_HEADER = 'flow (mcm)'
 
+def get_water_years(dates):
+    return list(map(lambda d: d.year if d.month <= 9 else d.year + 1, dates))
 
-def generate_data_from_sequence(df, basin, sequence_name, basin_dir, sequence_dir):
-    print(basin, sequence_name)
-
-    sequence = df.loc[sequence_name].values
+def generate_data_from_sequence(basin, seq_id, seq_values, basin_dir, sequence_dir, historical_dir):
+    print(basin, seq_id)
 
     if not os.path.exists(sequence_dir):
         os.makedirs(sequence_dir)
     water_years = None
-    for filename in os.listdir(basin_dir):
-        filepath = os.path.join(basin_dir, filename)
-        df = pd.read_csv(filepath, index_col=0, header=0, parse_dates=True, names=[FLOW_HEADER])
 
-        if water_years is None:
-            water_years = list(map(lambda d: d.year if d.month <= 9 else d.year + 1, df.index))
-        df['WY'] = water_years
+    climate_data_lookup = {}
+
+    # loop through subwatersheds
+    for filename in os.listdir(os.path.join(basin_dir, historical_dir)):
+
         df2 = pd.DataFrame()
-        for i, year in enumerate(sequence):
-            try:
-                year = int(year)
-            except:
-                continue
+
+        # loop through sequence values
+        for i, seq_value in enumerate(seq_values):
+            gcm, rcp, year = seq_value.split('_')
+            year = int(year)
+
+            # get source inflow
+            df = climate_data_lookup.get((gcm, rcp))
+            if df is None:
+                climate = '_'.join([gcm, rcp])
+                climate_dir = os.path.join(basin_dir, 'hydrology', 'gcms', climate, 'runoff')
+                filepath = os.path.join(climate_dir, filename)
+                df = pd.read_csv(filepath, index_col=0, header=0, parse_dates=True, names=[FLOW_HEADER])
+                df['WY'] = get_water_years(df.index)
+                climate_data_lookup[(gcm, rcp)] = df
+
             year_df = df[df['WY'] == year][FLOW_HEADER].copy()
             start_year = 2000 + i
             start_date = '{}-10-01'.format(start_year)

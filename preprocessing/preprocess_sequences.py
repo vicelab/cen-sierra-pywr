@@ -98,53 +98,18 @@ def generate_sequence(n_dry, n_wet, n_buffer_years, scenario_number, sequence_nu
     return sequence_df
 
 
-def generate_runoff(n_dry, n_wet, n_dry_years_max, n_wet_years_max, n_buffer_years, n_random_sequences, n_sequences,
-                    seed=1, debug=False):
-    # Seed the random number generator to generate pseudo-random numbers
-    # This is needed for reproducability.
-    random.seed(seed)
+def generate_runoff(outdir, debug=False):
 
-    sequence_dfs = []
-    dry_years_lengths = range(2, n_dry_years_max + 1)
-    wet_years_lengths = [1, 2]
-
-    scenario_number = 0
-
-    # Generate purely psuedo-random sequences from the dry & wet years
-    for i in range(n_random_sequences):
-        scenario_number += 1
-        drought_df = generate_sequence(n_dry, n_wet, n_buffer_years, scenario_number, i + 1, n_years=10)
-        sequence_dfs.append(drought_df)
-
-    # Generate pseudo-random sequences based on DxN:WxM:DxN pattern
-    for d in dry_years_lengths:
-        for w in wet_years_lengths:
-            i = 0
-            for s in range(n_sequences):
-                i += 1
-                scenario_number += 1
-                drought_df = generate_sequence(n_dry, n_wet, n_buffer_years, scenario_number, i,
-                                               n_dry_years=d, n_wet_years=w)
-                sequence_dfs.append(drought_df)
-
-    sequences_df = pd.concat(sequence_dfs, axis=1).T
-    sequences_df.columns = [c + 1 for c in sequences_df.columns]
-    sequences_df.index.name = 'ID'
-    outdir = os.path.join(root_dir, "metadata")
-    if not os.path.exists(outdir):
-        os.makedirs(outdir)
-    sequences_path = os.path.join(outdir, 'drought_sequences.csv')
-    sequences_values_path = os.path.join(outdir, 'drought_sequences_values_mcm.csv')
-    sequences_df.to_csv(sequences_path)
+    sequences_df = pd.read_csv('sequences.csv', index_col=0, header=0)
 
     # sequence values
-    values_df = sequences_df.applymap(lambda x: regional_runoff_df[int(x)] if not pd.isna(x) else None)
-    values_df.to_csv(sequences_values_path)
+    # values_df = sequences_df.applymap(lambda x: regional_runoff_df[int(x)] if not pd.isna(x) else None)
+    # values_df.to_csv(sequences_values_path)
 
     # delete previous sequence folders
     for basin in basins:
         full_basin_name = '{} River'.format(basin.title())
-        basin_dir = os.path.join(root_dir, full_basin_name, LIVNEH_RUNOFF_PATH)
+        # basin_dir = os.path.join(root_dir, full_basin_name, LIVNEH_RUNOFF_PATH)
         sequences_dir = os.path.join(root_dir, full_basin_name, 'hydrology', 'sequences')
         if os.path.exists(sequences_dir):
             shutil.rmtree(sequences_dir)
@@ -153,16 +118,18 @@ def generate_runoff(n_dry, n_wet, n_dry_years_max, n_wet_years_max, n_buffer_yea
     num_cores = mp.cpu_count() - 1
 
     all_args = []
-    for basin, sequence in product(basins, sequences_df.index):
+    for basin, seq_id in product(basins, sequences_df.index):
 
         full_basin_name = '{} River'.format(basin.title())
-        basin_dir = os.path.join(root_dir, full_basin_name, LIVNEH_RUNOFF_PATH)
-        sequence_dir = os.path.join(root_dir, full_basin_name, 'hydrology', 'sequences', sequence, 'runoff')
+        basin_dir = os.path.join(root_dir, full_basin_name)
+        sequence_dir = os.path.join(outdir, full_basin_name, 'hydrology', 'sequences', seq_id, 'runoff')
+        seq_values = [v for v in sequences_df.loc[seq_id].values if not pd.isna(v)]
 
-        args = (sequences_df, basin, sequence, basin_dir, sequence_dir)
-        all_args.append(args)
+        args = (basin, seq_id, seq_values,  basin_dir, sequence_dir, LIVNEH_RUNOFF_PATH)
         if debug:
             generate_data_from_sequence(*args)
+        else:
+            all_args.append(args)
 
     if not debug:
         Parallel(n_jobs=num_cores)(delayed(generate_data_from_sequence)(*args) for args in all_args)
@@ -171,16 +138,9 @@ def generate_runoff(n_dry, n_wet, n_dry_years_max, n_wet_years_max, n_buffer_yea
 
 
 if __name__ == '__main__':
-    n_dry = 20
-    n_wet = 10
-    n_dry_years_max = 5
-    n_wet_years_max = 2
-    n_buffer_years = 1  # tack on to end of sequence
-    n_random_sequences = 10
-    n_sequences = 5
+
     debug = False
-
-    generate_runoff(n_dry, n_wet, n_dry_years_max, n_wet_years_max, n_buffer_years, n_random_sequences, n_sequences,
-                    debug=debug)
-
-    preprocess_hydrology('sequences', basins_to_process=['tuo'], debug=True)
+    # outdir = r'C:\Users\david\Box\CERC-WET\Task7_San_Joaquin_Model\pywr_models\data'
+    outdir = root_dir
+    generate_runoff(outdir, debug=debug)
+    # preprocess_hydrology('sequences', basins_to_process=['tuo'], debug=debug)
