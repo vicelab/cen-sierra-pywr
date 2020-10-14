@@ -24,3 +24,5 @@ results/
 logs/
 
 .env
+
+*.code-workspace
