@@ -193,12 +193,14 @@
             "name": "Crocker-Huffman Diversion Reservoir",
             "type": "Reservoir",
             "initial_volume": 0.0,
+            "initial_volume_pc": 0.0,
             "max_volume": 0.0
         },
         {
             "name": "Lake McClure",
             "type": "Reservoir",
             "initial_volume": 750,
+            "initial_volume_pc": 750,
             "max_volume": "Lake McClure/Storage Capacity",
             "min_volume": "Lake McClure/Inactive Pool",
             "cost": "Lake McClure/Cost",
@@ -219,6 +221,7 @@
             "name": "Lake McSwain",
             "type": "Reservoir",
             "initial_volume": 11,
+            "initial_volume_pc": 11,
             "max_volume": "Lake McSwain/Storage Capacity",
             "min_volume": "Lake McSwain/Inactive Pool",
             "cost": -100,
