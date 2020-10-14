@@ -98,7 +98,7 @@ def generate_sequence(n_dry, n_wet, n_buffer_years, scenario_number, sequence_nu
     return sequence_df
 
 
-def generate_runoff(outdir, debug=False):
+def generate_sequences_runoff(outdir, debug=False):
 
     sequences_df = pd.read_csv('sequences.csv', index_col=0, header=0)
 
@@ -140,7 +140,7 @@ def generate_runoff(outdir, debug=False):
 if __name__ == '__main__':
 
     debug = False
-    # outdir = r'C:\Users\david\Box\CERC-WET\Task7_San_Joaquin_Model\pywr_models\data'
-    outdir = root_dir
-    generate_runoff(outdir, debug=debug)
+    outdir = r'C:\Users\david\pywr_models\SynologyDrive\data'
+    # outdir = root_dir
+    generate_sequences_runoff(outdir, debug=debug)
     # preprocess_hydrology('sequences', basins_to_process=['tuo'], debug=debug)
