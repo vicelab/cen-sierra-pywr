@@ -10,12 +10,7 @@ import shutil
 from itertools import product
 
 
-def create_forecasted_hydrology(scenario_path):
-
-    # In[5]:
-
-    DEFAULT_ALPHA = 0.2
-    YEARS_OF_RECORD = 30
+def create_forecasted_hydrology(scenario_path, dataset=None, default_alpha=0.2, nyears_of_record=30):
 
     alphas = {}  # Note: default is zero
     for m in range(1, 13):
@@ -25,39 +20,63 @@ def create_forecasted_hydrology(scenario_path):
                 alphas[m][m2] = 0.5 if m == 3 else 0.9
 
     # Initial pre-processing
+
     debug = False
     month_columns = ['{:02}'.format(i) for i in range(1, 13)]
 
+    # get source runoff data
     runoff_dir = 'runoff_aggregated'
-    runoff_dir_path = os.path.join(scenario_path, runoff_dir)
+    scenario_runoff_dir_path = os.path.join(scenario_path, runoff_dir)
+    if dataset in ['historical', 'gcms']:
+        src_runoff_dir_path = scenario_runoff_dir_path
+    else:
+        src_runoff_dir_path = os.sep.join(scenario_path.split(os.sep)[:-2] + ['historical', 'Livneh', runoff_dir])
+    src_runoff_filenames = os.listdir(src_runoff_dir_path)
+
+    # create output data folder
+    # runoff_dir_path = os.path.join(scenario_path, runoff_dir)
     #         print(runoff_dir)
-    runoff_dir_monthly = runoff_dir_path.replace(runoff_dir, 'runoff_monthly')
-    runoff_dir_monthly_forecasts = runoff_dir_path.replace(runoff_dir, 'runoff_monthly_forecasts')
+    # runoff_dir_monthly = runoff_dir_path.replace(runoff_dir, 'runoff_monthly')
+    runoff_dir_monthly_forecasts = os.path.join(scenario_path, 'runoff_monthly_forecasts')
     if os.path.exists(runoff_dir_monthly_forecasts):
         shutil.rmtree(runoff_dir_monthly_forecasts, ignore_errors=True)
     os.makedirs(runoff_dir_monthly_forecasts)
-    filenames = os.listdir(runoff_dir_path)
-    #     for filename in tqdm(os.listdir(runoff_dir), desc='{}, {}'.format(basin, scenario), ncols=800):
-    for filename in filenames:
-        if '.csv' not in filename:
+
+    months_to_calculate = None
+
+    for runoff_filename in src_runoff_filenames:
+        if '.csv' not in runoff_filename:
             continue
-        filepath = os.path.join(runoff_dir_path, filename)
-        print(filepath)
-        df = pd.read_csv(filepath, parse_dates=True, index_col=0)
+        src_path = os.path.join(src_runoff_dir_path, runoff_filename)
+        print(src_path)
+        df = pd.read_csv(src_path, parse_dates=True, index_col=0)
         col = df.columns[0]
 
         # Aggregate to monthly
         df2 = df.groupby([lambda x: x.year, lambda x: x.month]).sum()
         df2.index.names = ['year', 'month']
 
-        years = list(set(df2.index.get_level_values('year')))
+        if months_to_calculate is None:
+            if dataset != 'sequences':
+                months_to_calculate = list(df.index)
+                earliest_year = months_to_calculate[0][1]
+            elif dataset == 'sequences':
+                n_years = int(scenario_path.split('_Y')[1][:2])
+                months_to_calculate = []
+                for wy in range(2000, 2000 + n_years + 1):
+                    for m in [10,11,12,1,2,3,4,5,6,7,8,9]:
+                        y = wy - 1 if m >= 10 else wy
+                        months_to_calculate.append((y, m))
+                earliest_year = 2013 - nyears
+            else:
+                raise('Routine not complete for dataset {}'.format(dataset))
 
         vals = []
-        for i, (year, month) in enumerate(df2.index):
+        for i, (year, month) in enumerate(months_to_calculate):
 
             # Monthly median
-            start_year = max(year - YEARS_OF_RECORD, years[0])
-            end_year = start_year + YEARS_OF_RECORD
+            start_year = max(year - nyears_of_record, earliest_year)
+            end_year = start_year + nyears_of_record
             years_of_record = list(range(start_year, end_year + 1))
             index_slice = pd.IndexSlice[years_of_record, :]
             df3 = df2.loc[index_slice]
@@ -74,16 +93,16 @@ def create_forecasted_hydrology(scenario_path):
             # CORE FORECASTING ROUTINE
             next_months_qfcst = []
             for j, m in enumerate(next_months):
-                alpha = alphas[month].get(m, DEFAULT_ALPHA)
+                alpha = alphas[month].get(m, default_alpha)
                 fcst = alpha * q_next[j] + (1 - alpha) * q_next_median[j]
                 next_months_qfcst.append(fcst)
 
             vals.append(next_months_qfcst)
 
-        index = pd.to_datetime(['{}-{}-01'.format(i[0], i[1]) for i in df2.index[:len(vals)]])
+        index = pd.to_datetime(['{}-{}-01'.format(ym[0], ym[1]) for ym in months_to_calculate])
         df_final = pd.DataFrame(index=index, data=vals, columns=month_columns)
         df_final.index.name = 'Date'
-        df_final.to_csv(os.path.join(runoff_dir_monthly_forecasts, filename))
+        df_final.to_csv(os.path.join(runoff_dir_monthly_forecasts, runoff_filename))
 
         if debug:
             #             print(df3.head())

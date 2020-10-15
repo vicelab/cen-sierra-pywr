@@ -74,8 +74,8 @@ def process_basin_climate(tasks, basin, dataset, climate):
         common.aggregate_subwatersheds(climate_path, basin)
 
         # print("Creating forecasted hydrology...")
-        if dataset == 'historical':
-            common.create_forecasted_hydrology(climate_path)
+        # if dataset == 'historical':
+        common.create_forecasted_hydrology(climate_path, dataset=dataset)
 
         # print("Creating full natural flow...")
         src = os.path.join(climate_path, 'runoff_aggregated')
@@ -105,43 +105,54 @@ def preprocess_hydrology(dataset, basins_to_process=None, tasks=None, debug=Fals
 
     climates = {}
 
-    if dataset == 'historical':
-        climates['historical'] = ['Livneh']
+    # if dataset == 'historical':
+    #     climates['historical'] = ['Livneh']
 
-    elif dataset == 'gcms':
-        gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
-        rcps = ['45', '85']
-        gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
-        climates['gcms'] = gcm_rcps
+    # elif dataset == 'gcms':
+    #     # gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
+    #     # rcps = ['45', '85']
+    #     # gcm_rcps = ['_'.join(list(product(gcms, rcps)))]
+    #     gcm_rcps = os.listdir()
+    #     climates['gcms'] = gcm_rcps
 
-    elif dataset == 'sequences':
-        sequences_path = os.path.join(root_dir, 'metadata/drought_sequences.csv')
-        seq_df = pd.read_csv(sequences_path, index_col=0, header=0)
-        climates['sequences'] = seq_df.index[:5] if debug else seq_df.index
+    # elif dataset == 'sequences':
+    #     sequences_path = os.path.join(root_dir, 'metadata/drought_sequences.csv')
+    #     seq_df = pd.read_csv(sequences_path, index_col=0, header=0)
+    #     climates['sequences'] = seq_df.index[:5] if debug else seq_df.index
 
-    else:
-        raise Exception("No dataset defined.")
+    # else:
+    #     raise Exception("No dataset defined.")
 
     all_climates = []
-    for k, values in climates.items():
-        for v in values:
-            all_climates.append((k, v))
+    basin_climates = []
+    for basin in basins_to_process:
+        full_basin_name = basin_lookup[basin]['full name']
+        dataset_dir = os.path.join(root_dir, full_basin_name, 'hydrology', dataset)
+        for climate in os.listdir(dataset_dir):
+            basin_climates.append((basin, climate))
+            # climates[dataset]
+            all_climates.append(climate)
 
-    basin_climates = list(product(basins_to_process, all_climates))
+    # all_climates = []
+    # for k, values in climates.items():
+    #     for v in values:
+    #         all_climates.append((k, v))
+
+    # basin_climates = list(product(basins_to_process, all_climates))
 
     # basin-specific tasks; these can be parallelized
     if debug:
-        for b, (d, c) in basin_climates:
+        for b, climate in basin_climates:
             basin = basin_lookup[b]['name']
-            process_basin_climate(tasks, basin, d, c)
+            process_basin_climate(tasks, basin, dataset, climate)
 
     else:
         print("Starting processing...")
         num_cores = mp.cpu_count() - 1
         all_args = []
-        for b, (d, c) in basin_climates:
+        for b, c in basin_climates:
             basin = basin_lookup[b]['name']
-            args = (tasks, basin, d, c)
+            args = (tasks, basin, dataset, c)
             all_args.append(args)
 
         Parallel(n_jobs=num_cores)(delayed(process_basin_climate)(*args) for args in all_args)
@@ -150,10 +161,10 @@ def preprocess_hydrology(dataset, basins_to_process=None, tasks=None, debug=Fals
     # NOTE: SJVI can only be calculated if all basins are preprocessed first!
     if len(basins_to_process) == 4:
         if debug:
-            for (dataset, climate) in all_climates:
+            for climate in all_climates:
                 common.calculate_sjvi('/'.join([dataset, climate]))
         else:
-            dataset_climates = ['/'.join([dataset, climate]) for dataset, climate in all_climates]
+            dataset_climates = ['/'.join([dataset, climate]) for climate in all_climates]
             Parallel(n_jobs=num_cores)(delayed(common.calculate_sjvi)(dataset_climate) for dataset_climate in dataset_climates)
 
 

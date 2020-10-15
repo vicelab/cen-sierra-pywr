@@ -22,7 +22,7 @@ if not os.path.exists(definition_path):
 
 basins = ['stn']
 
-generate_sequences_runoff(definition_path, outdir, basins_to_process=basins, debug=debug)
+# generate_sequences_runoff(definition_path, outdir, basins_to_process=basins, debug=debug)
 preprocess_hydrology('sequences', basins_to_process=basins, debug=debug)
 
 logger.info('Finished preprocessing!')
