@@ -59,7 +59,8 @@ def create_forecasted_hydrology(scenario_path):
             start_year = max(year - YEARS_OF_RECORD, years[0])
             end_year = start_year + YEARS_OF_RECORD
             years_of_record = list(range(start_year, end_year + 1))
-            df3 = df2.loc[pd.IndexSlice[years_of_record, :]]
+            index_slice = pd.IndexSlice[years_of_record, :]
+            df3 = df2.loc[index_slice]
             df_median = df3.groupby('month').median()
 
             q_next = df2[col].iloc[i:i + 12].values

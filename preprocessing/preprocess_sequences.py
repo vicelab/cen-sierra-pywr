@@ -10,6 +10,8 @@ from itertools import product
 from preprocessing.preprocess_hydrology import preprocess_hydrology
 from preprocessing.utils.sequences import generate_data_from_sequence
 
+from utilities.constants import basin_lookup
+
 RND_SEQ_NAME_TPL = 'S{id:04}_Y{years:02}_RAND_N{number:02}'
 DRY_SEQ_NAME_TPL = 'S{id:04}_Y{years:02}_D{dry:1}W{wet:1}_N{number:02}'
 
@@ -98,29 +100,29 @@ def generate_sequence(n_dry, n_wet, n_buffer_years, scenario_number, sequence_nu
     return sequence_df
 
 
-def generate_sequences_runoff(outdir, debug=False):
+def generate_sequences_runoff(definition_path, outdir, basins_to_process=None, debug=False):
 
-    sequences_df = pd.read_csv('sequences.csv', index_col=0, header=0)
+    sequences_df = pd.read_csv(definition_path, index_col=0, header=0)
 
     # sequence values
     # values_df = sequences_df.applymap(lambda x: regional_runoff_df[int(x)] if not pd.isna(x) else None)
     # values_df.to_csv(sequences_values_path)
 
+    basins = basins_to_process or ['stn', 'tuo', 'mer', 'usj']
+
     # delete previous sequence folders
     for basin in basins:
-        full_basin_name = '{} River'.format(basin.title())
+        full_basin_name = basin_lookup[basin]['full name']
         # basin_dir = os.path.join(root_dir, full_basin_name, LIVNEH_RUNOFF_PATH)
         sequences_dir = os.path.join(root_dir, full_basin_name, 'hydrology', 'sequences')
         if os.path.exists(sequences_dir):
             shutil.rmtree(sequences_dir)
             os.makedirs(sequences_dir)
 
-    num_cores = mp.cpu_count() - 1
-
     all_args = []
     for basin, seq_id in product(basins, sequences_df.index):
 
-        full_basin_name = '{} River'.format(basin.title())
+        full_basin_name = basin_lookup[basin]['full name']
         basin_dir = os.path.join(root_dir, full_basin_name)
         sequence_dir = os.path.join(outdir, full_basin_name, 'hydrology', 'sequences', seq_id, 'runoff')
         seq_values = [v for v in sequences_df.loc[seq_id].values if not pd.isna(v)]
@@ -132,6 +134,7 @@ def generate_sequences_runoff(outdir, debug=False):
             all_args.append(args)
 
     if not debug:
+        num_cores = mp.cpu_count() - 1
         Parallel(n_jobs=num_cores)(delayed(generate_data_from_sequence)(*args) for args in all_args)
 
     return
@@ -139,8 +142,8 @@ def generate_sequences_runoff(outdir, debug=False):
 
 if __name__ == '__main__':
 
-    debug = False
+    debug = True
     outdir = r'C:\Users\david\pywr_models\SynologyDrive\data'
     # outdir = root_dir
     generate_sequences_runoff(outdir, debug=debug)
-    # preprocess_hydrology('sequences', basins_to_process=['tuo'], debug=debug)
+    preprocess_hydrology('sequences', basins_to_process=['stn'], debug=debug)

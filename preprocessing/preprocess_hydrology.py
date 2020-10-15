@@ -1,34 +1,23 @@
 import os
 from itertools import product
+import pandas as pd
+
+import multiprocessing as mp
+
+from joblib import Parallel, delayed
+
 import preprocessing.hydrology.common as common
 import preprocessing.hydrology.stanislaus as stn
 import preprocessing.hydrology.tuolumne as tuo
 import preprocessing.hydrology.merced as mer
 import preprocessing.hydrology.upper_san_joaquin as usj
-import pandas as pd
 
-import multiprocessing as mp
+from utilities.constants import basin_lookup
 
 # import preprocessing.tuolumne as tuo
 
 root_dir = os.environ.get('SIERRA_DATA_PATH', '../data')
 metadata_path = os.path.join(root_dir, 'metadata')
-
-basins = {
-    "stn": {
-        "name": "stanislaus",
-    },
-    "tuo": {
-        "name": "tuolumne",
-    },
-    "mer": {
-        "name": "merced",
-    },
-    "usj": {
-        "name": "upper san joaquin",
-    },
-}
-
 
 def process_basin_climate(tasks, basin, dataset, climate):
     print("Processing {}: {}/{}".format(basin, dataset, climate))
@@ -85,7 +74,8 @@ def process_basin_climate(tasks, basin, dataset, climate):
         common.aggregate_subwatersheds(climate_path, basin)
 
         # print("Creating forecasted hydrology...")
-        common.create_forecasted_hydrology(climate_path)
+        if dataset == 'historical':
+            common.create_forecasted_hydrology(climate_path)
 
         # print("Creating full natural flow...")
         src = os.path.join(climate_path, 'runoff_aggregated')
@@ -127,7 +117,7 @@ def preprocess_hydrology(dataset, basins_to_process=None, tasks=None, debug=Fals
     elif dataset == 'sequences':
         sequences_path = os.path.join(root_dir, 'metadata/drought_sequences.csv')
         seq_df = pd.read_csv(sequences_path, index_col=0, header=0)
-        climates['sequences'] = seq_df.index[:5]
+        climates['sequences'] = seq_df.index[:5] if debug else seq_df.index
 
     else:
         raise Exception("No dataset defined.")
@@ -142,23 +132,29 @@ def preprocess_hydrology(dataset, basins_to_process=None, tasks=None, debug=Fals
     # basin-specific tasks; these can be parallelized
     if debug:
         for b, (d, c) in basin_climates:
-            basin = basins[b]['name']
+            basin = basin_lookup[b]['name']
             process_basin_climate(tasks, basin, d, c)
 
     else:
-        num_cores = mp.cpu_count() - 1
-        pool = mp.Pool(processes=num_cores)
         print("Starting processing...")
+        num_cores = mp.cpu_count() - 1
+        all_args = []
         for b, (d, c) in basin_climates:
-            basin = basins[b]['name']
-            pool.apply_async(process_basin_climate, (tasks, basin, d, c))
+            basin = basin_lookup[b]['name']
+            args = (tasks, basin, d, c)
+            all_args.append(args)
 
-        pool.close()
-        pool.join()
+        Parallel(n_jobs=num_cores)(delayed(process_basin_climate)(*args) for args in all_args)
 
     # common tasks
-    for (dataset, climate) in all_climates:
-        common.calculate_sjvi('/'.join([dataset, climate]))
+    # NOTE: SJVI can only be calculated if all basins are preprocessed first!
+    if len(basins_to_process) == 4:
+        if debug:
+            for (dataset, climate) in all_climates:
+                common.calculate_sjvi('/'.join([dataset, climate]))
+        else:
+            dataset_climates = ['/'.join([dataset, climate]) for dataset, climate in all_climates]
+            Parallel(n_jobs=num_cores)(delayed(common.calculate_sjvi)(dataset_climate) for dataset_climate in dataset_climates)
 
 
 if __name__ == '__main__':

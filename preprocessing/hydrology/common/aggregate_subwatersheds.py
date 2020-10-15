@@ -22,7 +22,7 @@ def aggregate_subwatersheds(scenario_path, basin):
     subwat_groups = {}
 
     # collect subwatersheds
-    model_path = '../{}/pywr_model.json'.format(basin.replace(' ', '_'))
+    model_path = './models/{}/pywr_model.json'.format(basin.replace(' ', '_'))
     with open(model_path) as f:
         full_model = json.load(f)
     model = simplify_network(full_model, scenario_path=scenario_path, delete_gauges=True, delete_observed=True,

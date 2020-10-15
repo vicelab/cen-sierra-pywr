@@ -1,6 +1,12 @@
 import os
-from graphviz import Digraph
 import json
+
+from loguru import logger
+
+try:
+    from graphviz import Digraph
+except:
+    logger.warning('Graphviz not installed.')
 
 fillcolors = {
     'reservoir': 'blue',
