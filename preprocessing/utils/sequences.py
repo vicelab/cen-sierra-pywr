@@ -6,17 +6,16 @@ FLOW_HEADER = 'flow (mcm)'
 def get_water_years(dates):
     return list(map(lambda d: d.year if d.month <= 9 else d.year + 1, dates))
 
-def generate_data_from_sequence(basin, variable, seq_values, basin_dir, sequence_dir):
+def generate_data_from_sequence(basin, variable, seq_values, basin_dir, sequence_dir, debug=False):
 
     if not os.path.exists(sequence_dir):
         os.makedirs(sequence_dir)
-    water_years = None
-
-    climate_data_lookup = {}
 
     # loop through subwatersheds
     filenames = os.listdir(os.path.join(basin_dir, 'hydrology', 'historical', 'Livneh', variable))
     for filename in filenames:
+
+        climate_data_lookup = {}
 
         df2 = pd.DataFrame()
 
