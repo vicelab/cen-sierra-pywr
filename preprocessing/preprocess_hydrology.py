@@ -1,10 +1,10 @@
 import os
 from itertools import product
-import pandas as pd
-
 import multiprocessing as mp
 
 from joblib import Parallel, delayed
+from loguru import logger
+import pandas as pd
 
 import preprocessing.hydrology.common as common
 import preprocessing.hydrology.stanislaus as stn
@@ -66,7 +66,10 @@ def process_basin_climate(tasks, basin, dataset, climate):
             dest_path = precipitation_path
             if not os.path.exists(dest_path):
                 os.makedirs(dest_path)
-            tuo.hh_precip_from_Livneh(metadata_path, sequence_name, source_path, dest_path)
+            try:
+                tuo.hh_precip_from_Livneh(metadata_path, sequence_name, source_path, dest_path)
+            except:
+                logger.warning('Could not process Hetch Hetchy precipitation for {}'.format(dataset))
 
     # preprocess hydrology
     if "common" in tasks:

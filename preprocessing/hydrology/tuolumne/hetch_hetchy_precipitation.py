@@ -4,7 +4,6 @@ import pandas as pd
 from preprocessing.utils.sequences import generate_data_from_sequence
 
 root_dir = os.environ['SIERRA_DATA_PATH']
-LIVNEH_RUNOFF_PATH = 'hydrology/historical/Livneh/runoff'
 
 
 def hh_precip_from_Livneh(metadata_path, sequence_name, source_path, dest_path):
@@ -18,8 +17,12 @@ def hh_precip_from_Livneh(metadata_path, sequence_name, source_path, dest_path):
     source_precip['WY'] = source_precip.index.map(lambda d: d.year if d.month < 10 else d.year + 1)
 
     full_basin_name = 'Tuolumne River'
-    basin_dir = os.path.join(root_dir, full_basin_name, LIVNEH_RUNOFF_PATH)
+    basin_dir = os.path.join(root_dir, full_basin_name)
+
     sequence_dir = dest_path
 
-    args = (sequences_df, 'tuolumne', sequence_name, source_path, sequence_dir)
+    sequence = sequences_df.loc[sequence_name]
+    sequence_values = [s for s in sequence.values if not pd.isna(s)]
+
+    args = ('tuolumne', 'precipitation', sequence_values, basin_dir, sequence_dir)
     generate_data_from_sequence(*args)

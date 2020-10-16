@@ -6,8 +6,7 @@ FLOW_HEADER = 'flow (mcm)'
 def get_water_years(dates):
     return list(map(lambda d: d.year if d.month <= 9 else d.year + 1, dates))
 
-def generate_data_from_sequence(basin, seq_id, seq_values, basin_dir, sequence_dir, historical_dir):
-    print(basin, seq_id)
+def generate_data_from_sequence(basin, variable, seq_values, basin_dir, sequence_dir):
 
     if not os.path.exists(sequence_dir):
         os.makedirs(sequence_dir)
@@ -16,7 +15,8 @@ def generate_data_from_sequence(basin, seq_id, seq_values, basin_dir, sequence_d
     climate_data_lookup = {}
 
     # loop through subwatersheds
-    for filename in os.listdir(os.path.join(basin_dir, historical_dir)):
+    filenames = os.listdir(os.path.join(basin_dir, 'hydrology', 'historical', 'Livneh', variable))
+    for filename in filenames:
 
         df2 = pd.DataFrame()
 
@@ -25,11 +25,11 @@ def generate_data_from_sequence(basin, seq_id, seq_values, basin_dir, sequence_d
             gcm, rcp, year = seq_value.split('_')
             year = int(year)
 
-            # get source inflow
+            # get source data
             df = climate_data_lookup.get((gcm, rcp))
             if df is None:
                 climate = '_'.join([gcm, rcp])
-                climate_dir = os.path.join(basin_dir, 'hydrology', 'gcms', climate, 'runoff')
+                climate_dir = os.path.join(basin_dir, 'hydrology', 'gcms', climate, variable)
                 filepath = os.path.join(climate_dir, filename)
                 df = pd.read_csv(filepath, index_col=0, header=0, parse_dates=True, names=[FLOW_HEADER])
                 df['WY'] = get_water_years(df.index)
