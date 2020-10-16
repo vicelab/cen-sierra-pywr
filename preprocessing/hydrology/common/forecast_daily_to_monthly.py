@@ -67,7 +67,7 @@ def create_forecasted_hydrology(scenario_path, dataset=None, default_alpha=0.2, 
                     for m in [10,11,12,1,2,3,4,5,6,7,8,9]:
                         y = wy - 1 if m >= 10 else wy
                         months_to_calculate.append((y, m))
-                earliest_year = 2013 - nyears
+                earliest_year = 2013 - nyears_of_record
             else:
                 raise('Routine not complete for dataset {}'.format(dataset))
 
