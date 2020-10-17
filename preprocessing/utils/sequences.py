@@ -6,7 +6,9 @@ FLOW_HEADER = 'flow (mcm)'
 def get_water_years(dates):
     return list(map(lambda d: d.year if d.month <= 9 else d.year + 1, dates))
 
-def generate_data_from_sequence(basin, variable, seq_values, basin_dir, sequence_dir, debug=False):
+def generate_data_from_sequence(basin, variable, seq_id, seq_values, basin_dir, sequence_dir, debug=False):
+
+    logger.info('Generating {} {} for sequence {}'.format(basin, variable, seq_id))
 
     if not os.path.exists(sequence_dir):
         os.makedirs(sequence_dir)

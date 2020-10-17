@@ -129,9 +129,9 @@ def generate_sequences_runoff(definition_path, outdir, basins_to_process=None, d
         sequence_dir = os.path.join(outdir, full_basin_name, 'hydrology', 'sequences', seq_id, 'runoff')
         seq_values = [v for v in sequences_df.loc[seq_id].values if not pd.isna(v)]
 
-        args = (basin, 'runoff', seq_values, basin_dir, sequence_dir)
+        args = (basin, 'runoff', seq_id, seq_values, basin_dir, sequence_dir)
+
         if debug:
-            logger.info('Generating {} runoff for sequence {}'.format(basin, seq_id))
             generate_data_from_sequence(*args)
         else:
             all_args.append(args)
