@@ -119,7 +119,8 @@ def generate_sequences_runoff(definition_path, outdir, basins_to_process=None, d
         sequences_dir = os.path.join(root_dir, full_basin_name, 'hydrology', 'sequences')
         if os.path.exists(sequences_dir):
             shutil.rmtree(sequences_dir)
-            os.makedirs(sequences_dir)
+        
+        os.makedirs(sequences_dir)
 
     all_args = []
     for basin, seq_id in product(basins, sequences_df.index):
