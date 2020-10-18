@@ -7,7 +7,7 @@ root_dir = os.environ['SIERRA_DATA_PATH']
 
 
 def hh_precip_from_Livneh(metadata_path, sequence_name, source_path, dest_path):
-    filepath = os.path.join(metadata_path, 'drought_sequences.csv')
+    filepath = os.path.join(metadata_path, 'sequence_definitions.csv')
     sequences_df = pd.read_csv(filepath, index_col=0, header=0)
 
     filename = 'precipitation_Hetch_Hetchy_mm.csv'

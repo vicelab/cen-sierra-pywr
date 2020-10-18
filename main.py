@@ -77,7 +77,7 @@ if args.scenario_set:
             gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
             climate_sets['gcms'] = gcm_rcps
         if 'sequences' in climates:
-            sequences_file = os.path.join(data_path, 'metadata/drought_sequences.csv')
+            sequences_file = os.path.join(data_path, 'metadata/sequence_definitions.csv')
             climate_sets['sequences'] = pd.read_csv(sequences_file, index_col=0, header=0).index
 
 climate_scenarios = []
