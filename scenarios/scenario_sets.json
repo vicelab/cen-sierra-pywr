@@ -53,8 +53,8 @@
         ],
         "scenarios": []
     },
-    "sequences": {
-        "name": "Sequences",
+    "whiplash": {
+        "name": "Whiplash sequences",
         "climates": [
             "sequences"
         ],
