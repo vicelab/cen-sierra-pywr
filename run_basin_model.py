@@ -227,6 +227,8 @@ def _run_model(climate,
                 create_schematic(basin, 'simplified')
             except ExecutableNotFound:
                 logger.warning('Graphviz executable not found. Daily schematic not created.')
+            except FileNotFoundError as err:
+                logger.warning('Could not create schematic from Livneh model.')
 
         model_path = simplified_model_path
 
