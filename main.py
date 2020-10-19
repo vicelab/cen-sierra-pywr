@@ -111,24 +111,17 @@ if not multiprocessing:  # serial processing for debugging
         run_model(*args, **kwargs)
 
 else:
-    try:
-        n_jobs = min(args.num_cores, len(climate_scenarios))
-    except TypeError:
-        print("Error: Number of cores not defined")
-        raise
+    import multiprocessing as mp
+    num_cores = args.num_cores or mp.cpu_count() - 1
 
     run_partial = partial(run_model, **kwargs)
 
     if multiprocessing == 'joblib':
         from joblib import Parallel, delayed
-
+        n_jobs = min(num_cores, len(climate_scenarios))
         output = Parallel(n_jobs=n_jobs)(delayed(run_partial)(*args) for args in model_args)
 
     else:
-        import multiprocessing as mp
-
-        num_cores = mp.cpu_count() - 1
-
         pool = mp.Pool(processes=num_cores)
         for args in model_args:
             pool.apply_async(run_partial, *args)
