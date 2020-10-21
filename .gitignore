@@ -4,6 +4,7 @@ data/
 .*
 
 env/
+venv/
 
 !/.gitignore
 *.pyc
