@@ -3,11 +3,6 @@ import json
 
 from loguru import logger
 
-try:
-    from graphviz import Digraph
-except:
-    logger.warning('Graphviz not installed.')
-
 fillcolors = {
     'reservoir': 'blue',
     'virtualstorage': 'blue',
@@ -33,13 +28,24 @@ fontcolors = {
 # dot = Digraph(comment='System')
 
 def create_schematic(basin, version, format='pdf', view=False):
+    try:
+        from graphviz import Digraph, ExecutableNotFound
+    except:
+        logger.warning('Graphviz python package not installed.')
+        return
+
     filename = 'pywr_model_Livneh'
     if version:
         filename += '_' + version
     filename += '.json'
     with open(os.path.join('models', basin, 'temp', filename)) as f:
         model = json.load(f)
-    _dot = Digraph(name=basin, comment=basin, format=format)
+
+    try:
+        _dot = Digraph(name=basin, comment=basin, format=format)
+    except ExecutableNotFound:
+        logger.warning('Graphviz executable not found. Daily schematic not created.')
+
     for node in model['nodes']:
 
         node_name = node['name']

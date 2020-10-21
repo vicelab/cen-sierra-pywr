@@ -7,6 +7,9 @@ from functools import partial
 import pandas as pd
 from loguru import logger
 
+from dotenv import load_dotenv
+load_dotenv()
+
 parser = argparse.ArgumentParser()
 parser.add_argument("-b", "--basin", help="Basin to run")
 parser.add_argument("-d", "--debug", help="Debug", action='store_true')

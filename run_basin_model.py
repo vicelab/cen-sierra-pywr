@@ -10,9 +10,6 @@ from common.tests import test_planning_model, get_planning_dataframe
 import pandas as pd
 import traceback
 from utilities import simplify_network, prepare_planning_model, save_model_results, create_schematic
-from graphviz.backend import ExecutableNotFound
-from time import sleep
-
 from loguru import logger
 
 SECONDS_IN_DAY = 3600 * 24
@@ -225,8 +222,6 @@ def _run_model(climate,
         if debug:
             try:
                 create_schematic(basin, 'simplified')
-            except ExecutableNotFound:
-                logger.warning('Graphviz executable not found. Daily schematic not created.')
             except FileNotFoundError as err:
                 logger.warning('Could not create schematic from Livneh model.')
 
