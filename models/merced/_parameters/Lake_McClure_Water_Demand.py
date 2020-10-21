@@ -20,7 +20,7 @@ class Lake_McClure_Water_Demand(WaterLPParameter):
                 self.wyt = 'wet'
 
         curves_af = self.model.tables["Lake McClure/Guide Curve"]
-        max_volume_mcm = self.model.nodes[self.res_name].max_volume.get_value(scenario_index)
+        max_volume_mcm = self.model.nodes[self.res_name].max_volume.value(timestep, scenario_index)
         date_str = '1900-{:02}-{:02}'.format(timestep.month, timestep.day)
         target_mcm = float(curves_af.at[date_str, self.wyt] * 1233.5 / 1e6)
         target_fraction = min(target_mcm / max_volume_mcm, 1.0)
