@@ -1,115 +1,103 @@
-# sierra-pywr
+# Central Sierra Nevada Pywr models
 
-Code base for modeling the central Sierra Nevada hydropower systems and implementing said models to optimize performance and 
-make predictions of future scenarios
+This repository includes the code base for modeling the hydropower systems of the primary tributaries of California's San Joaquin river.
 
-## Getting Started
+This readme includes
+* Project setup (software requirements, input data, environment variables, etc.)
+* Installation (software and Python packages)
+* How to run a model
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+## Project setup
 
-## Installation
+This model uses Python and [Pywr](https://github.com/pywr/pywr), a Python package for modeling water systems using linear programming. Pywr depends on either GLPK or LPSolve to solve the LP problem. In this model, GLPK is assumed; LPSolve might work, but has not been tested.
 
-A step by step series of examples that tell you how to get a development env running
+### Software requirements
 
-### Linux:
+General software requirements are as follows:
+1. [GLPK](https://www.gnu.org/software/glpk/) (version 4.65). The location of the 64-bit GLPK executable must be callable as `glpsol`; how this is done varies by operating system.
+2. Python 3.8 (highest; Pywr does not work with version 3.9), 64-bit.
+3. All Python package requirements found in `requirements.txt` in the root folder
 
-Get your environment set up, depending on your Operating System, as well as IDE, install 
-[Pywr](https://pywr.github.io/pywr-docs/master/index.html)
+### Input data
+Input data is not stored within this repository, though the preprocessing scripts needed to create the input data are. The location of the input data is defined as an environment variable.
+
+### Environment variables
+
+Generally, two environment variables are needed, though other modifications to the system environment variables may be needed depending on the installation setup. These include:
+1. `SIERRA_DATA_PATH` - This specifies the location of the input data (see below for notes on input data)
+2. `SIERRA_RESULTS_PATH` - This specifies where to save results (csv files). This is optional. By default, results will be stored in a folder called `results` parallel to `SIERRA_DATA_PATH` or, if run in debug mode, in a project folder called `results`.
+
+## Installation notes
+
+Installation notes are provided for Windows and Linux (Debian-flavor). Installation on MacOS should be similar.
+
+### Python environment setup
+
+#### Virtual environment
+
+It is highly recommended to work within a Python "virtual environment". A Python virtual environment is a copy of an installed Python version. It is beyond the scope of this readme to explain exactly what this means and how to use it, though there are many resources on the Internet about this, such as: [Python Virtual Environments: A Primer](https://realpython.com/python-virtual-environments-a-primer/). 
+
+Exactly how a virtual environment is set up depends on the package management system used, i.e. pip or Conda. If pip is used, the built-in Python virtual environment setup can be used. Alternatively, the `virtualenvwrapper` Python package can be used. If Conda is used, then conda would be used to create/start the virtual environment. A good Integrated Development Environment (see "Development environment" below) will help to create a virtual environment and/or switch to a specific virtual environment.
+
+Although setting up virtual environments can be overwhelming/confusing at first, especially compared with, say, R, they are quite necessary due to the dynamic and rapidly evolving nature of Python and Python packages over time.
+
+#### Development environment
+
+Like programming languages generally, there are multiple ways to set up Python code on a computer to run. This model can be modified using a simple text editor and run only from the command line. Or, it can be run in a full featured integrated development environment (IDE), such as [PyCharm](https://www.jetbrains.com/pycharm/) or [Visual Studio Code](https://code.visualstudio.com/) (both of which are solid options, including the community edition of PyCharm, and are available for Mac, Windows and Linux).
+
+**IDEs and virtual environments** A good IDE can also help with installing a virtual environment, whether the virtual environment is created with Conda or otherwise. How to do so is left to the reader as an exercise.
+
+### GLPK
+
+#### Windows
+
+To install GLPK on Windows:
+1. Download and extract GLPK to a folder of your choice (e.g., `C:\glpk-4.65`)
+2. Add the 64-bit version to the `path` environment variable (e.g., `C:\glpk-4.65\w64`)
+
+#### Linux
+
+To install GLPK on Linux, use:
 
 ```sh
 $ sudo apt-get install libgmp3-dev libglpk-dev glpk
 ```
 
-1. If you choose to use Anaconda environment for OS X or Linux and remove the installation file:
+### Python packages
 
-```sh
-$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-$ bash Miniconda3-latest-Linux-x86_64.sh
+Generally, pip or Conda are used to install/manage Python packages.
 
-$ source ~/.bashrc
-$ rm Miniconda3-latest-Linux-x86_64.sh
-```
-2. Check the version of Conda you have installed
-```sh
-$ conda --version
-$ conda update conda
-```
+#### pip
 
-2. Create and activate new environment
+Once in the project's virtual environment, install the Python packages as follows:
 
-```sh
-$ conda create --name *environment_name*
-$ conda activate *environment_name*
-```
-
-3. Add channels and install packages
-
-```sh
-$ conda config --add channels conda-forge
-$ conda config --add channels pywr
-$ conda install pywr
-```
-4. Once on the repository, install the requirements
 ```sh
 $ pip install -r requirements.txt
 ```
 
-### Windows
+**Linux notes**: Pywr must be installed from source on Linux. Generally, the steps are:
+1. Download the Pywr source code (make sure to download the version found in `requirements.txt`!).
+2. From within the Pywr source code directory, install with `python setup.py install --with-glpk`
 
-You can use either Anaconda or Python PIP. As follows:
+After this the rest of the requirements can be installed with pip as above.
 
-#### Anaconda 
+#### Anaconda
 
-1. Install Anaconda Environment [here](https://www.anaconda.com/distribution/#download-section) and check what version
+1. Install Pywr
 
-```cmd
-conda --version
-conda update conda
+**NOTE**: These instructions will install version 1.8; modify this as needed to match what is in `requirements.txt`. 
+
+```sh
+$ conda config --add channels conda-forge
+$ conda config --add channels pywr
+$ conda install pywr==1.8
 ```
 
-2. Create and activate new environment
+2. Once in the repository (and in the activated Conda virtual environment), install the requirements using pip as above.
 
-```cmd
-conda create --name *environment_name*
-conda activate *environment_name*
-```
+## How to set up and run a model
 
-3. Add channels and install packages
-
-```cmd
-conda config --add channels conda-forge
-conda config --add channels pywr
-conda install pywr
-```
-
-#### Python PIP
-
-0. Install GLPK and add it to your environment path. 
-
-Download v4.65 from: http://ftp.gnu.org/gnu/glpk/
-
-Note that GLPK is in tarzip (.tar.gz) format, so you can use 7-zip to extract.
-
-Save the resulting glpk-4.65 folder in a good place. Copy the full path to glpk-4.65\w64 to your environment path.
-E.g.: add `C:\glpk-4.65\w64` to your global (or local) path.
-
-0. Download/clone this repository
-
-We recommend using PyCharm or Visual Studio Code for integrated VCS and IDE.
-
-0. Download & install Python!
-Version 3.7, 64-bit should work.
-
-0. Create and activate a Python environment
-
-Note that `env` is in .gitignore, so you can save the environment as "env" in sierra-pywr.
-
-0. Install Python packages
-
-From within the Python environment, install all requirements from `requirements.txt`.
-e.g.: `pip install -r requirements.txt` 
-
-## Running the Models
+[TO-BE-COMPLETED]
 
 Running the models involves several steps, depending on the type of run.
 
@@ -125,27 +113,6 @@ As a simple example, the following will run the baseline Merced model:
 
 `python main.py -b merced`
 
-### Data preparation
-For data preparation, see 
-
-### Scenario setup
-
-### Running
-
-```
-conda activate *environment_name*
-```
-
-*Flags*
-
-* "-b", "--basin"
-* "-nk", "--network_key"
-* "-d", "--debug"
-* "-p", "--include_planning"
-* "-n", "--run_name"
-* "-mp", "--multiprocessing"
-
-For only daily models (Merced & Tuolomne):
 
 ```
 python main.py -b *network* -n "development" -d d
@@ -156,18 +123,6 @@ For both daily and monthly models
 python main.py -b *network* -p -n "development" -d dm
 ```
 
-### Postprocessing
-
-## Built With
-
-* [Pywr](https://pywr.github.io/pywr-docs/master/index.html) - The main library used
-* [Python Flask](https://maven.apache.org/) - Dependency Management
-
 ## Authors
 
-* **David Rheinheimer** - [rheinheimer](https://github.com/rheinheimer)
-* **Aditya Sood** - [asood12](https://github.com/asood12)
-* **Dan Tran** - [GateauXD](https://github.com/GateauXD)
-* **Lorenzo Scaturchio** - [gr8monk3ys](https://github.com/gr8monk3ys)
-
-See also the list of [contributors](https://github.com/vicelab/sierra-pywr/contributors) who participated in this project.
+See the list of [contributors](https://github.com/vicelab/sierra-pywr/contributors).
