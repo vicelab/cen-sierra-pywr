@@ -15,6 +15,15 @@
             "energy_prices"
         ]
     },
+    "swrcb_basic": {
+        "name": "SWRCB",
+        "climates": [
+            "historical"
+        ],
+        "scenarios": [
+            "swrcb"
+        ]
+    },
     "functional_flows": {
         "name": "Functional Flows",
         "climates": [

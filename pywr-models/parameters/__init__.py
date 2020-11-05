@@ -146,10 +146,11 @@ class MinFlowParameter(IFRParameter):
     def setup(self, *args, **kwargs):
         super().setup(*args, **kwargs)
 
-        self.current_flow_period = [FlowPeriods.DRY_SEASON] * self.num_scenarios
-
         for s in self.model.scenarios.scenarios:
             if 'Functional Flows' in s.ensemble_names:
+
+                self.current_flow_period = [FlowPeriods.DRY_SEASON] * self.num_scenarios
+
                 self.include_functional_flows = True
                 self.params = self.model.tables['functional flows parameters']
                 self.water_year_type = 'moderate'
@@ -220,6 +221,9 @@ class MinFlowParameter(IFRParameter):
         if scenario_name == 'No IFRs':
             min_flow_mcm = 0.0
 
+        elif scenario_name == 'SWRCB' and self.ifr_type == 'enhanced':
+            min_flow_mcm = self.swrcb_flows_min_flow(timestep, scenario_index)
+
         elif scenario_name == 'Functional Flows' and self.ifr_type == 'enhanced':
             if self.model.mode == 'scheduling':
                 min_flow_mcm = self.functional_flows_min_flow_scheduling(timestep, scenario_index)
@@ -230,6 +234,12 @@ class MinFlowParameter(IFRParameter):
             min_flow_mcm = default(timestep, scenario_index)
 
         return min_flow_mcm
+
+    def swrcb_flows_min_flow(self, timestep, scenario_index):
+        fnf_mcm = self.model.parameters['Full Natural Flow'].get_value(scenario_index)
+        ifr_mcm = fnf_mcm * 0.4
+        ifr_cms = ifr_mcm / 0.0864
+        return ifr_cms
 
     def functional_flows_min_flow_scheduling(self, timestep, scenario_index):
         """

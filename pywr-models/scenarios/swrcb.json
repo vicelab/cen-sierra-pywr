@@ -2,11 +2,10 @@
   "scenarios": [
     {
       "name": "IFRs",
-      "size": 3,
+      "size": 2,
       "ensemble_names": [
         "Baseline",
-        "No IFRs",
-        "Functional Flows"
+        "SWRCB"
       ]
     }
   ]
