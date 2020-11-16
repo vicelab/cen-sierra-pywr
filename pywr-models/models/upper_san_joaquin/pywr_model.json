@@ -638,13 +638,13 @@
             "name": "Below Portal Aqueduct Inflow",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 4.306175990354166
+            "max_flow": 4.30597304814
         },
         {
             "name": "Below Portal Penstock Diverted Inflow",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 3.6702719917785904
+            "max_flow": 4.30597304814
         },
         {
             "name": "Below Portal Penstock Inflow.1",
@@ -2217,8 +2217,8 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 54.864000000000004,
-            "turbine_capacity": 4.23,
-            "flow_capacity": 4.23,
+            "turbine_capacity": 1.77132,
+            "flow_capacity": 1.77132,
             "spinning_flow": 0.15,
             "spinning_cost": -9000,
             "cost": [
