@@ -1,0 +1,29 @@
+INFO [2020-11-19 10:22:01] ffcAPIClient Version 0.9.8.2
+INFO [2020-11-19 10:24:18] Using date format string %Y-%m-%d
+INFO [2020-11-19 10:24:20] COMID 21607271 is of stream class HSR - sending parameters to FFC online for that stream class. This may produce different results than if you run data through the FFC yourself using their default parameters.
+INFO [2020-11-19 10:32:00] ffcAPIClient Version 0.9.8.2
+INFO [2020-11-19 10:32:00] ### Step 1 - Get Functional Flow Results ###
+INFO [2020-11-19 10:32:00] Retrieving results, please wait...
+INFO [2020-11-19 10:32:00] Using date format string %Y-%m-%d
+INFO [2020-11-19 10:32:01] COMID 21607271 is of stream class HSR - sending parameters to FFC online for that stream class. This may produce different results than if you run data through the FFC yourself using their default parameters.
+INFO [2020-11-19 10:32:20] Results ready.
+INFO [2020-11-19 10:32:20] Writing FFC results as CSVs to functional_flows/climate_change/Merced/ACCESS1-0_rcp85/functional_flow_analysis/
+INFO [2020-11-19 10:32:21] Writing observed plots to functional_flows/climate_change/Merced/ACCESS1-0_rcp85/functional_flow_analysis/
+INFO [2020-11-19 10:32:28] Writing functional_flows/climate_change/Merced/ACCESS1-0_rcp85/functional_flow_analysis//21607271_DS__observed_only.png
+INFO [2020-11-19 10:32:40] Writing functional_flows/climate_change/Merced/ACCESS1-0_rcp85/functional_flow_analysis//21607271_FA__observed_only.png
+INFO [2020-11-19 10:32:46] Writing functional_flows/climate_change/Merced/ACCESS1-0_rcp85/functional_flow_analysis//21607271_Wet__observed_only.png
+INFO [2020-11-19 10:32:53] Writing functional_flows/climate_change/Merced/ACCESS1-0_rcp85/functional_flow_analysis//21607271_SP__observed_only.png
+INFO [2020-11-19 10:33:01] Writing functional_flows/climate_change/Merced/ACCESS1-0_rcp85/functional_flow_analysis//21607271_Peak_Tim_observed_only.png
+INFO [2020-11-19 10:33:15] Writing functional_flows/climate_change/Merced/ACCESS1-0_rcp85/functional_flow_analysis//21607271_Peak_Dur_observed_only.png
+INFO [2020-11-19 10:33:24] Writing functional_flows/climate_change/Merced/ACCESS1-0_rcp85/functional_flow_analysis//21607271_Peak_Fre_observed_only.png
+INFO [2020-11-19 10:33:30] Writing functional_flows/climate_change/Merced/ACCESS1-0_rcp85/functional_flow_analysis//21607271_Peak__observed_only.png
+INFO [2020-11-19 10:33:37] Printing Observed/FFC Percentiles. You can also access attributes $ffc_results on this object for the annual values for each metric, $ffc_percentiles for calculated percentile values, and $doh_data for the Dimensionless Observed Hydrograph data.
+INFO [2020-11-19 10:33:37] c(98, 260.3, 32.9039, 55.414, 2, 81.4540171387606, 1.2, 0.0528645608398663, 40, 1334.75366, 197, 104.2, 33.087442, 149.663415, 31.1, 79.6, 65.7, 66.4, 1, 1, 1, 39841.03198, 9911.1115, 24693.79948, 1, 1, 1)
+INFO [2020-11-19 10:33:37] c(119, 270.25, 37.3479, 64.63192, 2, 168.657820194159, 8.5, 0.0623719849189541, 46, 2592.268525, 216.5, 129.75, 57.56858, 651.253025, 44, 90.25, 89.75, 78.25, 1, 1, 1, 39841.03198, 9911.1115, 24693.79948, 1, 1, 1)
+INFO [2020-11-19 10:33:37] c(141, 291.5, 48.95795, 110.2625, 3, 314.077675428663, 17, 0.0691422668333517, 58, 4898.1855, 227.5, 158, 96.649205, 1466.4979, 74.5, 112, 124.25, 103, 1, 2, 1, 39841.03198, 9911.1115, 24693.79948, 1, 2, 1)
+INFO [2020-11-19 10:33:37] c(179, 305.75, 51.4059, 235.506905, 5, 877.375530991941, 25.5, 0.0767360746510456, 68.75, 8059.37075, 247, 176.75, 432.221375, 2084.104775, 99.25, 118.5, 186.375, 117, 1, 6, 2, 39841.03198, 9911.1115, 24693.79948, 1, 3, 1)
+INFO [2020-11-19 10:33:37] c(195, 338, 63.3399, 508.1215, 7, 2185.70683974051, 39.6, 0.0869324181370293, 98.3000000000001, 10559.19106, 257, 198.9, 819.379353, 2789.40992, 125.6, 135.9, 232.8, 146.6, 2, 10.6, 2.4, 39841.03198, 9911.1115, 24693.79948, 1.1, 4, 2.2)
+INFO [2020-11-19 10:33:37] c("DS_Dur_WS", "DS_Tim", "DS_Mag_50", "DS_Mag_90", "FA_Dur", "FA_Mag", "FA_Tim", "SP_ROC", "SP_Dur", "SP_Mag", "SP_Tim", "Wet_BFL_Dur", "Wet_BFL_Mag_10", "Wet_BFL_Mag_50", "Wet_Tim", "Peak_Tim_10", "Peak_Tim_2", "Peak_Tim_5", "Peak_Dur_10", "Peak_Dur_2", "Peak_Dur_5", "Peak_10", "Peak_2", "Peak_5", "Peak_Fre_10", "Peak_Fre_2", "Peak_Fre_5")
+INFO [2020-11-19 10:33:37] c(21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271, 21607271)
+INFO [2020-11-19 10:33:37] c("observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed")
+INFO [2020-11-19 10:33:37] Step 1 complete
