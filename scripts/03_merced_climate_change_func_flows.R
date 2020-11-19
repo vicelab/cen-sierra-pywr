@@ -27,6 +27,8 @@ mer_ccsm4_mcm <- read_csv("functional_flows/climate_change/Merced/CCSM4_rcp85/pr
 
 mer_cesm1_bgc_mcm <- read_csv("functional_flows/climate_change/Merced/CESM1-BGC_rcp85/preprocessed/full_natural_flow_daily_mcm.csv")
 
+mer_cmcc_cms_mcm <- read_csv("functional_flows/climate_change/Merced/CMCC-CMS_rcp85/preprocessed/full_natural_flow_daily_mcm.csv")
+
 # Unit conversion of gmc hydrology ----------------------------------------
 
 # Climate change flow files are currently in mcm (million cubic meters per day) - need to convert to cfs to match the functional flow recommendations.
@@ -91,6 +93,21 @@ mer_cesm1_bgc_cfs <- mer_cesm1_bgc_mcm %>%
 
 mer_cesm1_bgc_cfs$date <- as.character(mer_cesm1_bgc_cfs$date)
 
+#CMCC-CMS gcm
+mer_cmcc_cms_mcm <- mer_cmcc_cms_mcm %>% 
+  rename("flow_mcm" = "flow")
+
+mer_cmcc_cms_mcm$flow_cfs <- mer_cmcc_cms_mcm$flow_mcm/.0864*35.315
+
+# make new df of cfs flows, check columns for NAs
+
+mer_cmcc_cms_cfs <- mer_cmcc_cms_mcm %>% 
+  select(date, flow_cfs) %>% 
+  filter(!is.na(flow_cfs)) %>% 
+  filter(!is.na(date))
+
+mer_cmcc_cms_cfs$date <- as.character(mer_cmcc_cms_cfs$date)
+
 # Observed functional flows ------------------------------------------------
 
 ffc <- FFCProcessor$new()  # make a new object we can use to run the commands
@@ -152,6 +169,17 @@ ffc_cc$step_one_functional_flow_results(timeseries = mer_cesm1_bgc_cfs,
                                         token=Ann_token, 
                                         comid=mer_comid,
                                         output_folder = "functional_flows/climate_change/Merced/CESM1-BGC_rcp85/functional_flow_analysis/")
+
+ffc_cc$step_two_explore_ecological_flow_criteria()
+
+ffc_cc$step_three_assess_alteration()
+
+# CMCC-CMS functional flows ------------------------------------------------
+
+ffc_cc$step_one_functional_flow_results(timeseries = mer_cmcc_cms_cfs, 
+                                        token=Ann_token, 
+                                        comid=mer_comid,
+                                        output_folder = "functional_flows/climate_change/Merced/CMCC-CMS_rcp85/functional_flow_analysis/")
 
 ffc_cc$step_two_explore_ecological_flow_criteria()
 
