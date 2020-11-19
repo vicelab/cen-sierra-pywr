@@ -16,6 +16,8 @@ library(lubridate)
 #climate change hydrology, with gcm indicated as object suffix
 mer_access10_mcm <- read_csv("functional_flows/climate_change/Merced/ACCESS1-0_rcp85/preprocessed/full_natural_flow_daily_mcm.csv")
 
+mer_canesm2_mcm <- read_csv("functional_flows/climate_change/Merced/CanESM2_rcp85/preprocessed/full_natural_flow_daily_mcm.csv")
+
 #comid and gage id to run functional flow calculator
 Ann_token <- "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJBbm4iLCJsYXN0TmFtZSI6IldpbGxpcyIsImVtYWlsIjoiYXdpbGxpc0B1Y2RhdmlzLmVkdSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNjA1NjUxMTc4fQ.MzMJ23D6tRmOD9Sr3OcQoCVLLndsV2w5ZKdzwgDOeOM"
 
@@ -27,6 +29,7 @@ mer_gage_id <- 11270000
 
 # Climate change flow files are currently in mcm (million cubic meters per day) - need to convert to cfs to match the functional flow recommendations.
 
+#Access1-0 gcm
 mer_access10_mcm <- mer_access10_mcm %>% 
   rename("flow_mcm" = "flow")
 
@@ -40,6 +43,21 @@ mer_access10_cfs <- mer_access10_mcm %>%
   filter(!is.na(date))
 
 mer_access10_cfs$date <- as.character(mer_access10_cfs$date)
+
+#CanESM2 gcm
+mer_canesm2_mcm <- mer_canesm2_mcm %>% 
+  rename("flow_mcm" = "flow")
+
+mer_canesm2_mcm$flow_cfs <- mer_canesm2_mcm$flow_mcm/.0864*35.315
+
+# make new df of cfs flows, check columns for NAs
+
+mer_canesm2_cfs <- mer_canesm2_mcm %>% 
+  select(date, flow_cfs) %>% 
+  filter(!is.na(flow_cfs)) %>% 
+  filter(!is.na(date))
+
+mer_canesm2_cfs$date <- as.character(mer_canesm2_cfs$date)
 
 # Observed functional flows ------------------------------------------------
 
@@ -73,3 +91,14 @@ ffc_cc$step_two_explore_ecological_flow_criteria()
 
 ffc_cc$step_three_assess_alteration()
 
+
+# CanESM2 functional flows ------------------------------------------------
+
+ffc_cc$step_one_functional_flow_results(timeseries = mer_access10_cfs, 
+                                        token=Ann_token, 
+                                        comid=mer_comid,
+                                        output_folder = "functional_flows/climate_change/Merced/CanESM2_rcp85/functional_flow_analysis/")
+
+ffc_cc$step_two_explore_ecological_flow_criteria()
+
+ffc_cc$step_three_assess_alteration()
