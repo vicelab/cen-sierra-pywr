@@ -25,6 +25,8 @@ mer_canesm2_mcm <- read_csv("functional_flows/climate_change/Merced/CanESM2_rcp8
 
 mer_ccsm4_mcm <- read_csv("functional_flows/climate_change/Merced/CCSM4_rcp85/preprocessed/full_natural_flow_daily_mcm.csv")
 
+mer_cesm1_bgc_mcm <- read_csv("functional_flows/climate_change/Merced/CESM1-BGC_rcp85/preprocessed/full_natural_flow_daily_mcm.csv")
+
 # Unit conversion of gmc hydrology ----------------------------------------
 
 # Climate change flow files are currently in mcm (million cubic meters per day) - need to convert to cfs to match the functional flow recommendations.
@@ -73,6 +75,21 @@ mer_ccsm4_cfs <- mer_ccsm4_mcm %>%
   filter(!is.na(date))
 
 mer_ccsm4_cfs$date <- as.character(mer_ccsm4_cfs$date)
+
+#CESM1-BGC gcm
+mer_cesm1_bgc_mcm <- mer_cesm1_bgc_mcm %>% 
+  rename("flow_mcm" = "flow")
+
+mer_cesm1_bgc_mcm$flow_cfs <- mer_cesm1_bgc_mcm$flow_mcm/.0864*35.315
+
+# make new df of cfs flows, check columns for NAs
+
+mer_cesm1_bgc_cfs <- mer_cesm1_bgc_mcm %>% 
+  select(date, flow_cfs) %>% 
+  filter(!is.na(flow_cfs)) %>% 
+  filter(!is.na(date))
+
+mer_cesm1_bgc_cfs$date <- as.character(mer_cesm1_bgc_cfs$date)
 
 # Observed functional flows ------------------------------------------------
 
@@ -124,6 +141,17 @@ ffc_cc$step_one_functional_flow_results(timeseries = mer_ccsm4_cfs,
                                         token=Ann_token, 
                                         comid=mer_comid,
                                         output_folder = "functional_flows/climate_change/Merced/CCSM4_rcp85/functional_flow_analysis/")
+
+ffc_cc$step_two_explore_ecological_flow_criteria()
+
+ffc_cc$step_three_assess_alteration()
+
+# CESM1-BGC functional flows ------------------------------------------------
+
+ffc_cc$step_one_functional_flow_results(timeseries = mer_cesm1_bgc_cfs, 
+                                        token=Ann_token, 
+                                        comid=mer_comid,
+                                        output_folder = "functional_flows/climate_change/Merced/CESM1-BGC_rcp85/functional_flow_analysis/")
 
 ffc_cc$step_two_explore_ecological_flow_criteria()
 
