@@ -37,6 +37,8 @@ mer_hadgem2_cc_mcm <- read_csv("functional_flows/climate_change/Merced/HadGEM2-C
 
 mer_hadgem2_es_mcm <- read_csv("functional_flows/climate_change/Merced/HadGEM2-ES_rcp85/preprocessed/full_natural_flow_daily_mcm.csv")
 
+mer_miroc5_mcm <- read_csv("functional_flows/climate_change/Merced/MIROC5_rcp85/preprocessed/full_natural_flow_daily_mcm.csv")
+
 # Unit conversion of gmc hydrology ----------------------------------------
 
 # Climate change flow files are currently in mcm (million cubic meters per day) - need to convert to cfs to match the functional flow recommendations.
@@ -176,6 +178,21 @@ mer_hadgem2_es_cfs <- mer_hadgem2_es_mcm %>%
 
 mer_hadgem2_es_cfs$date <- as.character(mer_hadgem2_es_cfs$date)
 
+#MIROC5 gcm
+mer_miroc5_mcm <- mer_miroc5_mcm %>% 
+  rename("flow_mcm" = "flow")
+
+mer_miroc5_mcm$flow_cfs <- mer_miroc5_mcm$flow_mcm/.0864*35.315
+
+# make new df of cfs flows, check columns for NAs
+
+mer_miroc5_cfs <- mer_miroc5_mcm %>% 
+  select(date, flow_cfs) %>% 
+  filter(!is.na(flow_cfs)) %>% 
+  filter(!is.na(date))
+
+mer_miroc5_cfs$date <- as.character(mer_miroc5_cfs$date)
+
 # Observed functional flows ------------------------------------------------
 
 ffc <- FFCProcessor$new()  # make a new object we can use to run the commands
@@ -291,6 +308,17 @@ ffc_cc$step_one_functional_flow_results(timeseries = mer_hadgem2_es_cfs,
                                         token=Ann_token, 
                                         comid=mer_comid,
                                         output_folder = "functional_flows/climate_change/Merced/HadGEM2-ES_rcp85/functional_flow_analysis/")
+
+ffc_cc$step_two_explore_ecological_flow_criteria()
+
+ffc_cc$step_three_assess_alteration()
+
+# MIROC5 functional flows ------------------------------------------------
+
+ffc_cc$step_one_functional_flow_results(timeseries = mer_miroc5_cfs, 
+                                        token=Ann_token, 
+                                        comid=mer_comid,
+                                        output_folder = "functional_flows/climate_change/Merced/MIROC5_rcp85/functional_flow_analysis/")
 
 ffc_cc$step_two_explore_ecological_flow_criteria()
 
