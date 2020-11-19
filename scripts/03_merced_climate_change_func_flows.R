@@ -10,13 +10,7 @@ library(ffcAPIClient)
 library(tidyverse)
 library(lubridate)
 
-
 # Load data ---------------------------------------------------------------
-
-#climate change hydrology, with gcm indicated as object suffix
-mer_access10_mcm <- read_csv("functional_flows/climate_change/Merced/ACCESS1-0_rcp85/preprocessed/full_natural_flow_daily_mcm.csv")
-
-mer_canesm2_mcm <- read_csv("functional_flows/climate_change/Merced/CanESM2_rcp85/preprocessed/full_natural_flow_daily_mcm.csv")
 
 #comid and gage id to run functional flow calculator
 Ann_token <- "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJBbm4iLCJsYXN0TmFtZSI6IldpbGxpcyIsImVtYWlsIjoiYXdpbGxpc0B1Y2RhdmlzLmVkdSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNjA1NjUxMTc4fQ.MzMJ23D6tRmOD9Sr3OcQoCVLLndsV2w5ZKdzwgDOeOM"
@@ -24,6 +18,12 @@ Ann_token <- "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJBbm4iLCJsY
 mer_comid <- 21607271
 mer_gage_id <- 11270000
 
+#climate change hydrology, with gcm indicated as object suffix
+mer_access10_mcm <- read_csv("functional_flows/climate_change/Merced/ACCESS1-0_rcp85/preprocessed/full_natural_flow_daily_mcm.csv")
+
+mer_canesm2_mcm <- read_csv("functional_flows/climate_change/Merced/CanESM2_rcp85/preprocessed/full_natural_flow_daily_mcm.csv")
+
+mer_ccsm4_mcm <- read_csv("functional_flows/climate_change/Merced/CCSM4_rcp85/preprocessed/full_natural_flow_daily_mcm.csv")
 
 # Unit conversion of gmc hydrology ----------------------------------------
 
@@ -58,6 +58,21 @@ mer_canesm2_cfs <- mer_canesm2_mcm %>%
   filter(!is.na(date))
 
 mer_canesm2_cfs$date <- as.character(mer_canesm2_cfs$date)
+
+#CCSM4 gcm
+mer_ccsm4_mcm <- mer_ccsm4_mcm %>% 
+  rename("flow_mcm" = "flow")
+
+mer_ccsm4_mcm$flow_cfs <- mer_ccsm4_mcm$flow_mcm/.0864*35.315
+
+# make new df of cfs flows, check columns for NAs
+
+mer_ccsm4_cfs <- mer_ccsm4_mcm %>% 
+  select(date, flow_cfs) %>% 
+  filter(!is.na(flow_cfs)) %>% 
+  filter(!is.na(date))
+
+mer_ccsm4_cfs$date <- as.character(mer_ccsm4_cfs$date)
 
 # Observed functional flows ------------------------------------------------
 
@@ -94,10 +109,21 @@ ffc_cc$step_three_assess_alteration()
 
 # CanESM2 functional flows ------------------------------------------------
 
-ffc_cc$step_one_functional_flow_results(timeseries = mer_access10_cfs, 
+ffc_cc$step_one_functional_flow_results(timeseries = mer_canesm2_cfs, 
                                         token=Ann_token, 
                                         comid=mer_comid,
                                         output_folder = "functional_flows/climate_change/Merced/CanESM2_rcp85/functional_flow_analysis/")
+
+ffc_cc$step_two_explore_ecological_flow_criteria()
+
+ffc_cc$step_three_assess_alteration()
+
+# CCSM4 functional flows ------------------------------------------------
+
+ffc_cc$step_one_functional_flow_results(timeseries = mer_ccsm4_cfs, 
+                                        token=Ann_token, 
+                                        comid=mer_comid,
+                                        output_folder = "functional_flows/climate_change/Merced/CCSM4_rcp85/functional_flow_analysis/")
 
 ffc_cc$step_two_explore_ecological_flow_criteria()
 
