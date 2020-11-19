@@ -69,8 +69,7 @@ ffc_cc$step_one_functional_flow_results(timeseries = mer_access10_cfs,
                                         comid=mer_comid,
                                         output_folder = "functional_flows/climate_change/Merced/ACCESS1-0_rcp85/functional_flow_analysis/")
 
-ffc_cc$alteration
+ffc_cc$step_two_explore_ecological_flow_criteria()
 
-ffc_cc$predicted_percentiles
+ffc_cc$step_three_assess_alteration()
 
-ffc_cc$predicted_percentiles_online
