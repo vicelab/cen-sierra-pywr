@@ -37,8 +37,11 @@ ffc$step_one_functional_flow_results(gage_id=11336000,
 # Step 2
 
 ffc$step_two_explore_ecological_flow_criteria()
+ffc$predicted_percentiles
 
 # Step 3
 
 ffc$step_three_assess_alteration()
 
+
+# Everything works! We can now use the calculator to assess functional flows for climate change hydrology in the Central/Southern Sierra tributaries and Upper San Joaquin.
