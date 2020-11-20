@@ -1,0 +1,67 @@
+INFO [2020-11-20 13:49:49] ffcAPIClient Version 0.9.8.2
+INFO [2020-11-20 13:49:49] ### Step 1 - Get Functional Flow Results ###
+INFO [2020-11-20 13:49:49] Retrieving results, please wait...
+INFO [2020-11-20 13:49:49] Using date format string %Y-%m-%d
+INFO [2020-11-20 13:49:50] COMID 2823750 is of stream class HSR - sending parameters to FFC online for that stream class. This may produce different results than if you run data through the FFC yourself using their default parameters.
+INFO [2020-11-20 13:50:08] Results ready.
+INFO [2020-11-20 13:50:08] Writing FFC results as CSVs to functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis/
+INFO [2020-11-20 13:50:08] Writing observed plots to functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis/
+INFO [2020-11-20 13:50:12] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_DS__observed_only.png
+INFO [2020-11-20 13:50:15] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_FA__observed_only.png
+INFO [2020-11-20 13:50:19] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_Wet__observed_only.png
+INFO [2020-11-20 13:50:23] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_SP__observed_only.png
+INFO [2020-11-20 13:50:30] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_Peak_Tim_observed_only.png
+INFO [2020-11-20 13:50:35] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_Peak_Dur_observed_only.png
+INFO [2020-11-20 13:50:39] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_Peak_Fre_observed_only.png
+INFO [2020-11-20 13:50:43] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_Peak__observed_only.png
+INFO [2020-11-20 13:50:46] Printing Observed/FFC Percentiles. You can also access attributes $ffc_results on this object for the annual values for each metric, $ffc_percentiles for calculated percentile values, and $doh_data for the Dimensionless Observed Hydrograph data.
+INFO [2020-11-20 13:50:46] c(57.4, 266.3, 78.67843, 99.670016, 2, 244.812679747617, 2, 0.0322273154994192, 33, 2787.51185, 195.3, 89.6, 79.312486, 259.062685, 15, 56.2, 56, 64, 1, 1, 1, 92920.16462, 19268.1419, 51427.84562, 1, 1, 1)
+INFO [2020-11-20 13:50:46] c(87, 269, 81.6222, 253.05457, 2, 451.77067436264, 7, 0.0485228815672801, 43, 5568.3725, 213, 136.5, 127.5318575, 1121.684775, 32.25, 71.75, 72.5, 69, 1, 1, 1, 92920.16462, 19268.1419, 51427.84562, 1, 1, 1)
+INFO [2020-11-20 13:50:46] c(123, 304, 126.6493, 356.60414, 3, 1146.12156407782, 15, 0.0720681204235712, 59, 9928.46995, 226.5, 163.5, 232.72112, 2797.530875, 57, 100.5, 110.25, 110, 1, 2, 1, 92920.16462, 19268.1419, 51427.84562, 1, 2, 1)
+INFO [2020-11-20 13:50:46] c(158, 340, 216.4178, 689.14917, 5, 2248.65242541886, 25, 0.0885210020475637, 121, 15937.8896, 247, 193.5, 527.7693825, 4079.8778375, 94.5, 118.5, 219.5, 139.5, 1, 10, 2, 92920.16462, 19268.1419, 51427.84562, 1, 3, 1)
+INFO [2020-11-20 13:50:46] c(197.2, 343, 225.19902, 962.650644000001, 7, 4300.09198185813, 37, 0.103713172331274, 146, 24175.65792, 257, 213, 1795.030629, 5390.501945, 120.3, 338.1, 249.45, 238, 1, 15.8, 2.2, 92920.16462, 19268.1419, 51427.84562, 1, 4.3, 2)
+INFO [2020-11-20 13:50:46] c("DS_Dur_WS", "DS_Tim", "DS_Mag_50", "DS_Mag_90", "FA_Dur", "FA_Mag", "FA_Tim", "SP_ROC", "SP_Dur", "SP_Mag", "SP_Tim", "Wet_BFL_Dur", "Wet_BFL_Mag_10", "Wet_BFL_Mag_50", "Wet_Tim", "Peak_Tim_10", "Peak_Tim_2", "Peak_Tim_5", "Peak_Dur_10", "Peak_Dur_2", "Peak_Dur_5", "Peak_10", "Peak_2", "Peak_5", "Peak_Fre_10", "Peak_Fre_2", "Peak_Fre_5")
+INFO [2020-11-20 13:50:46] c(2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750)
+INFO [2020-11-20 13:50:46] c("observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed")
+INFO [2020-11-20 13:50:46] Step 1 complete
+INFO [2020-11-20 13:50:46] ### Step 2 - Explore Ecological Flow Criteria ###
+INFO [2020-11-20 13:50:46] Printing Predicted Percentiles. You can also access attributes $predicted_percentiles on this object for these data.
+INFO [2020-11-20 13:50:46] c(2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750)
+INFO [2020-11-20 13:50:46] c("Peak_Dur_2", "Peak_Dur_5", "Peak_Fre_2", "Peak_Fre_5", "Peak_10", "Peak_2", "Peak_5", "DS_Dur_WS", "DS_Mag_50", "DS_Mag_90", "DS_Tim", "FA_Dur", "FA_Mag", "FA_Tim", "Peak_Dur_10", "Peak_Fre_10", "SP_Dur", "SP_Mag", "SP_ROC", "SP_Tim", "Wet_BFL_Dur", "Wet_BFL_Mag_10", "Wet_BFL_Mag_50", "Wet_Tim")
+INFO [2020-11-20 13:50:46] c(1, 1, 1, 1, 23839.8673639134, 8181.7389388504, 14541.835168517, 108.4825, 190.902959436661, 383.259902447542, 283.196666666666, 2, 425.696018449553, 6.53666666666667, 1, 1, 44.66, 5381.85244085823, 0.0112125536495315, 211.6525, 71.3975, 651.526634048549, 1808.86811566207, 48.375)
+INFO [2020-11-20 13:50:46] c(1, 1.25, 1, 1, 26016.4199440326, 10224.6905942169, 18783.7808937166, 131.0875, 324.666924156315, 580.710948955719, 291.75, 2, 666.027498230796, 15.325, 1, 1, 53.35625, 7048.02738925879, 0.0138458831808586, 227.2, 95.15, 876.989843090423, 2405.29150057477, 75.5)
+INFO [2020-11-20 13:50:46] c(3, 2.5, 2, 1, 29343.8183594279, 13443.5364324463, 22512.1288965749, 160.6, 528.011741684125, 902.716545387821, 302, 3, 1092.91637447955, 27.475, 1, 1, 64, 9277.57014888814, 0.0423051409618574, 238.95, 127.395833333333, 1100.41877324007, 3131.88147579668, 94.7083333333333)
+INFO [2020-11-20 13:50:46] c(8, 3, 3, 2, 45242.3535564778, 18173.0831339806, 26406.2599185715, 187.235416666666, 688.431741888876, 1277.00364979796, 315.397916666666, 4.5, 1837.57427945952, 42.4, 3, 1, 78.56875, 13413.2896963327, 0.0567460317460317, 246, 158.5, 1427.41265043124, 4035.93226699608, 114.5)
+INFO [2020-11-20 13:50:46] c(18.8, 5.7, 5, 3, 53786.0675074063, 23134.4389557787, 34156.2563790037, 214.91, 862.600322296292, 1678.39970310884, 333.6175, 6.5, 3148.50396143597, 51, 3.6, 1, 100.695833333333, 21034.5294827609, 0.0614253234964019, 254.455, 185.275, 1755.01530829008, 5113.44453980462, 136.570833333333)
+INFO [2020-11-20 13:50:46] c("inferred", "inferred", "inferred", "inferred", "model", "model", "model", "model", "model", "model", "model", "obs", "model", "model", "obs", "obs", "model", "model", "obs", "model", "model", "model", "model", "model")
+INFO [2020-11-20 13:50:46] c("predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted")
+INFO [2020-11-20 13:50:46] Writing Predicted Percentiles as CSV to functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis/
+INFO [2020-11-20 13:50:46] Writing predicted metric plots to functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis/
+INFO [2020-11-20 13:50:48] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_DS__predicted_only.png
+INFO [2020-11-20 13:50:52] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_FA__predicted_only.png
+INFO [2020-11-20 13:50:56] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_Wet__predicted_only.png
+INFO [2020-11-20 13:51:00] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_SP__predicted_only.png
+INFO [2020-11-20 13:51:04] Skipping plot for Peak_Tim. No data
+INFO [2020-11-20 13:51:05] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_Peak_Dur_predicted_only.png
+INFO [2020-11-20 13:51:09] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_Peak_Fre_predicted_only.png
+INFO [2020-11-20 13:51:13] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_Peak__predicted_only.png
+INFO [2020-11-20 13:51:16] Step 2 complete
+INFO [2020-11-20 13:51:16] ### Step 3 - Assess Alteration ###
+INFO [2020-11-20 13:51:16] Printing alteration assessment data. You can also access attributes $alteration on this object for these data
+INFO [2020-11-20 13:51:16] c("DS_Dur_WS", "DS_Tim", "DS_Mag_50", "DS_Mag_90", "FA_Dur", "FA_Mag", "FA_Tim", "SP_ROC", "SP_Dur", "SP_Mag", "SP_Tim", "Wet_BFL_Dur", "Wet_BFL_Mag_10", "Wet_BFL_Mag_50", "Wet_Tim", "Peak_Dur_10", "Peak_Dur_2", "Peak_Dur_5", "Peak_10", "Peak_2", "Peak_5", "Peak_Fre_10", "Peak_Fre_2", "Peak_Fre_5")
+INFO [2020-11-20 13:51:16] c(1, 0, -1, -1, 1, 1, 1, -1, 0, 1, 1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1)
+INFO [2020-11-20 13:51:16] c("likely_unaltered", "indeterminate", "likely_altered", "likely_altered", "likely_unaltered", "likely_unaltered", "likely_unaltered", "likely_altered", "indeterminate", "likely_unaltered", "likely_unaltered", "likely_unaltered", "likely_altered", "likely_unaltered", "likely_unaltered", "likely_unaltered", "likely_unaltered", "likely_unaltered", "likely_altered", "likely_unaltered", "likely_altered", "likely_unaltered", "likely_unaltered", "likely_unaltered")
+INFO [2020-11-20 13:51:16] c("none_found", "unknown", "low", "low", "none_found", "none_found", "none_found", "high", "unknown", "none_found", "none_found", "none_found", "low", "none_found", "none_found", "none_found", "none_found", "none_found", "high", "none_found", "high", "none_found", "none_found", "none_found")
+INFO [2020-11-20 13:51:16] c(FALSE, TRUE, FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE)
+INFO [2020-11-20 13:51:16] c(2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750, 2823750)
+INFO [2020-11-20 13:51:16] Writing alteration assessment as CSV to functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis/
+INFO [2020-11-20 13:51:16] Writing comparison plots to functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis/
+INFO [2020-11-20 13:51:18] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_DS_.png
+INFO [2020-11-20 13:51:22] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_FA_.png
+INFO [2020-11-20 13:51:26] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_Wet_.png
+INFO [2020-11-20 13:51:30] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_SP_.png
+INFO [2020-11-20 13:51:34] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_Peak_Tim.png
+INFO [2020-11-20 13:51:38] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_Peak_Dur.png
+INFO [2020-11-20 13:51:42] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_Peak_Fre.png
+INFO [2020-11-20 13:51:46] Writing functional_flows/climate_change/Tuolumne/ACCESS1-0_rcp85/functional_flow_analysis//2823750_Peak_.png
+INFO [2020-11-20 13:51:51] Step 3 complete
