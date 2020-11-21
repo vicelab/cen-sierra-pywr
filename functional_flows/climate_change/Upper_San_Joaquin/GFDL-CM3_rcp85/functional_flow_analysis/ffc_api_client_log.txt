@@ -1,0 +1,67 @@
+INFO [2020-11-20 16:12:42] ffcAPIClient Version 0.9.8.2
+INFO [2020-11-20 16:12:42] ### Step 1 - Get Functional Flow Results ###
+INFO [2020-11-20 16:12:42] Retrieving results, please wait...
+INFO [2020-11-20 16:12:42] Using date format string %Y-%m-%d
+INFO [2020-11-20 16:12:47] COMID 19791955 is of stream class HSR - sending parameters to FFC online for that stream class. This may produce different results than if you run data through the FFC yourself using their default parameters.
+INFO [2020-11-20 16:13:07] Results ready.
+INFO [2020-11-20 16:13:08] Writing FFC results as CSVs to functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis/
+INFO [2020-11-20 16:13:08] Writing observed plots to functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis/
+INFO [2020-11-20 16:13:14] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_DS__observed_only.png
+INFO [2020-11-20 16:13:19] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_FA__observed_only.png
+INFO [2020-11-20 16:13:23] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_Wet__observed_only.png
+INFO [2020-11-20 16:13:29] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_SP__observed_only.png
+INFO [2020-11-20 16:13:34] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_Peak_Tim_observed_only.png
+INFO [2020-11-20 16:13:38] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_Peak_Dur_observed_only.png
+INFO [2020-11-20 16:13:42] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_Peak_Fre_observed_only.png
+INFO [2020-11-20 16:13:46] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_Peak__observed_only.png
+INFO [2020-11-20 16:13:49] Printing Observed/FFC Percentiles. You can also access attributes $ffc_results on this object for the annual values for each metric, $ffc_percentiles for calculated percentile values, and $doh_data for the Dimensionless Observed Hydrograph data.
+INFO [2020-11-20 16:13:49] c(74.6, 262.6, 85.43392, 231.805954, 2, 308.210332438829, 5, 0.0146156961281406, 33.2, 1563.64967, 196.2, 85.8, 84.67835, 409.17162, 36, 62.1, 80.4, 44.6, 1, 1, 1, 86142.05264, 21283.64, 54903.27172, 1, 1, 1)
+INFO [2020-11-20 16:13:49] c(108.75, 280, 120.0658, 293.891565, 2, 562.750766399016, 11, 0.0540285221629595, 40, 4840.6797, 222, 102.25, 126.69497, 1502.559525, 63.5, 81.5, 94.75, 68.5, 1, 1.75, 1, 86142.05264, 21283.64, 54903.27172, 1, 1, 1)
+INFO [2020-11-20 16:13:49] c(162, 299, 177.13905, 476.73948, 3, 1244.45680973659, 21, 0.0837177060996878, 52, 12789.30545, 239, 147.5, 366.31913, 2934.70245, 95, 113, 123.5, 99, 1, 3, 1, 86142.05264, 21283.64, 54903.27172, 1, 2, 1)
+INFO [2020-11-20 16:13:49] c(191.25, 339.75, 191.34585, 912.958620000001, 4, 2945.53525529135, 38, 0.0998021648548408, 97, 19005.675475, 253, 176.75, 967.650355, 5263.5179, 118.5, 114.75, 183.125, 113.5, 1, 6, 1.5, 86142.05264, 21283.64, 54903.27172, 1, 3, 1)
+INFO [2020-11-20 16:13:49] c(217.1, 370.7, 274.06413, 1573.889271, 7, 7617.18449814316, 52, 0.109347262124432, 147.8, 23772.76562, 266.4, 200.4, 2270.066665, 6137.534, 151, 122.4, 235.9, 119.8, 1.1, 10.3, 2, 86142.05264, 21283.64, 54903.27172, 1, 3, 1.2)
+INFO [2020-11-20 16:13:49] c("DS_Dur_WS", "DS_Tim", "DS_Mag_50", "DS_Mag_90", "FA_Dur", "FA_Mag", "FA_Tim", "SP_ROC", "SP_Dur", "SP_Mag", "SP_Tim", "Wet_BFL_Dur", "Wet_BFL_Mag_10", "Wet_BFL_Mag_50", "Wet_Tim", "Peak_Tim_10", "Peak_Tim_2", "Peak_Tim_5", "Peak_Dur_10", "Peak_Dur_2", "Peak_Dur_5", "Peak_10", "Peak_2", "Peak_5", "Peak_Fre_10", "Peak_Fre_2", "Peak_Fre_5")
+INFO [2020-11-20 16:13:49] c(19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955)
+INFO [2020-11-20 16:13:49] c("observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed", "observed")
+INFO [2020-11-20 16:13:49] Step 1 complete
+INFO [2020-11-20 16:13:50] ### Step 2 - Explore Ecological Flow Criteria ###
+INFO [2020-11-20 16:13:50] Printing Predicted Percentiles. You can also access attributes $predicted_percentiles on this object for these data.
+INFO [2020-11-20 16:13:50] c(19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955)
+INFO [2020-11-20 16:13:50] c("Peak_Dur_2", "Peak_Dur_5", "Peak_Fre_2", "Peak_Fre_5", "Peak_10", "Peak_2", "Peak_5", "DS_Dur_WS", "DS_Mag_50", "DS_Mag_90", "DS_Tim", "FA_Dur", "FA_Mag", "FA_Tim", "Peak_Dur_10", "Peak_Fre_10", "SP_Dur", "SP_Mag", "SP_ROC", "SP_Tim", "Wet_BFL_Dur", "Wet_BFL_Mag_10", "Wet_BFL_Mag_50", "Wet_Tim")
+INFO [2020-11-20 16:13:50] c(1, 1, 1, 1, 24585.5644720133, 7689.69526624795, 14613.62, 112.18, 100.378358844818, 368.734894898034, 281.166666666667, 2, 412.052968652493, 8.975, 1, 1, 45.1666666666667, 4441.38385679034, 0.0112125536495315, 225.333333333333, 65.1025, 539.469841681166, 1674.37934758129, 83.36)
+INFO [2020-11-20 16:13:50] c(1, 1.25, 1, 1, 26170, 10204.4122555605, 15860, 145.375, 208.067515062324, 560.308935092892, 292.3125, 2, 617.567033547508, 18.71875, 1, 1, 55, 6318.30741391932, 0.0138458831808586, 234, 82, 781.290993447138, 2111.21821402748, 116.9375)
+INFO [2020-11-20 16:13:50] c(3, 2.5, 2, 1, 27641.6922797164, 10800, 16520.64, 186.1, 356.193318364793, 897.289329248024, 305.8, 3, 994.912608164747, 37.6833333333334, 1, 1, 66, 8215.64396298903, 0.0423051409618574, 244.75, 102.625, 1027.84735931706, 2772.23326768067, 137.775)
+INFO [2020-11-20 16:13:50] c(8, 3, 3, 2, 31857.6720589819, 12231.8657987481, 23502.43, 217.5, 532.338913227156, 1374.04478129896, 319.75, 4.5, 1570.0613841026, 45.425, 3, 1, 80, 11135.1204472929, 0.0567460317460317, 252.666666666667, 133.10625, 1356.98493688483, 3971.15702655826, 155.733333333333)
+INFO [2020-11-20 16:13:50] c(18.8, 5.7, 5, 3, 47027.4272078798, 17530.3855643598, 29374.74, 239.333333333333, 729.833325633886, 1817.79597358685, 334, 6.5, 2483.79082431549, 56, 3.6, 1, 94.1375, 15863.8993659699, 0.0614253234964019, 262.25, 174.64, 1736.76729057531, 5236.03966397117, 166.7375)
+INFO [2020-11-20 16:13:50] c("inferred", "inferred", "inferred", "inferred", "model", "model", "model", "model", "model", "model", "model", "obs", "model", "model", "obs", "obs", "model", "model", "obs", "model", "model", "model", "model", "model")
+INFO [2020-11-20 16:13:50] c("predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted", "predicted")
+INFO [2020-11-20 16:13:50] Writing Predicted Percentiles as CSV to functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis/
+INFO [2020-11-20 16:13:50] Writing predicted metric plots to functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis/
+INFO [2020-11-20 16:13:52] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_DS__predicted_only.png
+INFO [2020-11-20 16:13:56] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_FA__predicted_only.png
+INFO [2020-11-20 16:14:01] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_Wet__predicted_only.png
+INFO [2020-11-20 16:14:07] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_SP__predicted_only.png
+INFO [2020-11-20 16:14:10] Skipping plot for Peak_Tim. No data
+INFO [2020-11-20 16:14:11] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_Peak_Dur_predicted_only.png
+INFO [2020-11-20 16:14:15] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_Peak_Fre_predicted_only.png
+INFO [2020-11-20 16:14:20] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_Peak__predicted_only.png
+INFO [2020-11-20 16:14:23] Step 2 complete
+INFO [2020-11-20 16:14:24] ### Step 3 - Assess Alteration ###
+INFO [2020-11-20 16:14:24] Printing alteration assessment data. You can also access attributes $alteration on this object for these data
+INFO [2020-11-20 16:14:24] c("DS_Dur_WS", "DS_Tim", "DS_Mag_50", "DS_Mag_90", "FA_Dur", "FA_Mag", "FA_Tim", "SP_ROC", "SP_Dur", "SP_Mag", "SP_Tim", "Wet_BFL_Dur", "Wet_BFL_Mag_10", "Wet_BFL_Mag_50", "Wet_Tim", "Peak_Dur_10", "Peak_Dur_2", "Peak_Dur_5", "Peak_10", "Peak_2", "Peak_5", "Peak_Fre_10", "Peak_Fre_2", "Peak_Fre_5")
+INFO [2020-11-20 16:14:24] c(1, 0, 1, 1, 1, 1, 1, -1, 0, 0, 1, 1, -1, 0, 1, 1, 1, 1, -1, -1, -1, 1, 1, 1)
+INFO [2020-11-20 16:14:24] c("likely_unaltered", "indeterminate", "likely_unaltered", "likely_unaltered", "likely_unaltered", "likely_unaltered", "likely_unaltered", "likely_altered", "indeterminate", "indeterminate", "likely_unaltered", "likely_unaltered", "likely_altered", "indeterminate", "likely_unaltered", "likely_unaltered", "likely_unaltered", "likely_unaltered", "likely_altered", "likely_altered", "likely_altered", "likely_unaltered", "likely_unaltered", "likely_unaltered")
+INFO [2020-11-20 16:14:24] c("none_found", "unknown", "none_found", "none_found", "none_found", "none_found", "none_found", "high", "low", "high", "none_found", "none_found", "low", "unknown", "none_found", "none_found", "none_found", "none_found", "high", "high", "high", "none_found", "none_found", "none_found")
+INFO [2020-11-20 16:14:24] c(TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE)
+INFO [2020-11-20 16:14:24] c(19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955, 19791955)
+INFO [2020-11-20 16:14:24] Writing alteration assessment as CSV to functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis/
+INFO [2020-11-20 16:14:24] Writing comparison plots to functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis/
+INFO [2020-11-20 16:14:26] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_DS_.png
+INFO [2020-11-20 16:14:30] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_FA_.png
+INFO [2020-11-20 16:14:35] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_Wet_.png
+INFO [2020-11-20 16:14:40] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_SP_.png
+INFO [2020-11-20 16:14:44] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_Peak_Tim.png
+INFO [2020-11-20 16:14:49] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_Peak_Dur.png
+INFO [2020-11-20 16:14:53] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_Peak_Fre.png
+INFO [2020-11-20 16:14:57] Writing functional_flows/climate_change/Upper_San_Joaquin/GFDL-CM3_rcp85/functional_flow_analysis//19791955_Peak_.png
+INFO [2020-11-20 16:15:01] Step 3 complete
