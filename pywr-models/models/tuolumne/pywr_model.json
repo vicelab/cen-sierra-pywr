@@ -83,7 +83,7 @@
             "name": "Below Hetch Hetchy Aquaduct Diverted Inflow",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 2.2022063950670576
+            "max_flow": 0
         },
         {
             "name": "Below Hetch Hetchy Aquaduct Outflow",
