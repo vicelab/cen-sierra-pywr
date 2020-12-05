@@ -6,6 +6,7 @@ from run_basin_model import run_model
 from functools import partial
 import pandas as pd
 from loguru import logger
+from datetime import date
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -45,6 +46,7 @@ climate_sets = {
     'historical': ['Livneh']
 }
 
+cdateString = str(date.today())
 if debug:
     planning_months = args.planning_months or 3
     start = '{}-10-01'.format(args.start_year or 2000)
@@ -107,6 +109,7 @@ kwargs = dict(
     data_path=data_path,
     scenarios=scenarios,
     show_progress=args.progress_bar,
+    filePrefix =  cdateString
 )
 
 if not multiprocessing:  # serial processing for debugging
