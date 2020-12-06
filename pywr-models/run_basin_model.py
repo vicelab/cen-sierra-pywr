@@ -348,5 +348,5 @@ def _run_model(climate,
     else:
         base_results_path = os.environ.get('SIERRA_RESULTS_PATH', '../results')
 
-    results_path = os.path.join(base_results_path, run_name, basin, filePrefix+'_'+climate)
+    results_path = os.path.join(base_results_path, run_name+'_'+filePrefix, basin,climate)
     save_model_results(model, results_path, filePrefix)
