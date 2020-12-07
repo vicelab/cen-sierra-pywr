@@ -15,8 +15,8 @@
             "energy_prices"
         ]
     },
-    "swrcb_basic": {
-        "name": "SWRCB",
+    "MIDH2O": {
+        "name": "MIDH2O",
         "climates": [
             "historical"
         ],
@@ -24,8 +24,8 @@
             "swrcb"
         ]
     },
-    "functional_flows": {
-        "name": "Functional Flows",
+    "functional_flows_full": {
+        "name": "Functional Flows with Climate Change",
         "climates": [
             "historical",
             "gcms"
@@ -34,13 +34,22 @@
             "functional_flows"
         ]
     },
-    "functional_flows_test": {
-        "name": "Functional Flows test",
+    "functional_flows_basic": {
+        "name": "Functional Flows Historical",
         "climates": [
             "historical"
         ],
         "scenarios": [
-            "functional_flows_test"
+            "functional_flows_basic"
+        ]
+    },
+    "functional_flows_simple": {
+        "name": "Functional Flows Simple",
+        "climates": [
+            "historical"
+        ],
+        "scenarios": [
+            "functional_flows_simple"
         ]
     },
     "basic_ifrs_energy_prices": {
