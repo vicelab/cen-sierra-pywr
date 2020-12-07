@@ -2470,6 +2470,13 @@
             "index_col": 0,
             "header": 0
         },
+        "Annual Full Natural Flow": {
+            "url": "../data/Tuolumne River/hydrology/historical/Livneh/preprocessed/full_natural_flow_annual_mcm.csv",
+            "index_col": 0,
+            "parse_dates": true,
+            "header": 0,
+            "squeeze": true
+        },
         "San Joaquin Valley Index": {
             "url": "../data/common/hydrology/historical/Livneh/SJVI.csv",
             "index_col": 0,

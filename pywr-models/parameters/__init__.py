@@ -154,8 +154,14 @@ class MinFlowParameter(IFRParameter):
                 self.include_functional_flows = True
                 self.params = self.model.tables['functional flows parameters']
                 self.water_year_type = 'moderate'
-
                 self.magnitude_col = 'moderate magnitude'
+
+                self.water_year_types = {
+                    1: 'dry',
+                    2: 'moderate',
+                    3: 'wet'
+                }
+
                 self.dry_season_baseflow_mcm = self.params.at['dry season baseflow', self.magnitude_col] \
                                                / 35.31 * 0.0864
                 self.prev_requirement = [0] * self.num_scenarios
@@ -180,9 +186,19 @@ class MinFlowParameter(IFRParameter):
 
             # TODO: update water_year_type and magnitude_col, starting Jan 1
             if timestep.month == 4 and timestep.day == 1:
+
+                # update water year type
+                wy = self.operational_water_year
+                fnf = self.model.tables['Annual Full Natural Flow']
+                fnf_wy = fnf[wy]
+                terciles = fnf.quantile([0, 0.33, 0.66]).values
+                wyt = sum([1 for q in terciles if fnf_wy >= q])
+                self.water_year_type = self.water_year_types[wyt]
+
+                # update magnitude column based on WYT
                 self.magnitude_col = self.water_year_type + ' magnitude'
-                self.dry_season_baseflow_mcm = self.params.at[
-                                                   'dry season baseflow', self.magnitude_col] / 35.31 * 0.0864
+                self.dry_season_baseflow_mcm = \
+                    self.params.at['dry season baseflow', self.magnitude_col] / 35.31 * 0.0864
 
     def get_down_ramp_ifr(self, timestep, scenario_index, value, initial_value=None, rate=0.25):
         """
