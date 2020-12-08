@@ -1806,9 +1806,9 @@
             "name": "Huntington Lake",
             "type": "Reservoir",
             "comment": "{\"resource_class\": \"node\"}",
-            "initial_volume": 75,
-            "max_volume": 109.94,
-            "min_volume": 37.0,
+            "initial_volume": 0,
+            "max_volume": 110.767,
+            "min_volume": 0,
             "cost": "Huntington Lake/Cost",
             "gauge": "USGS 11236000 HUNTINGTON LK NR BIG CREEK CA"
         },
