@@ -11,10 +11,14 @@ class IFR_bl_Huntington_Lake_Min_Flow(MinFlowParameter):
         # TODO: find out what the actual practice is for this IFR. No IFR in winter doesn't make sense.
 
         # ifr_cfs = 2
-        ifr_cfs = 4.5  # this seems to be practice from observed record
-        if (4, 15) <= (self.datetime.month, self.datetime.day) <= (12, 15):
-            # ifr_cfs = 2
-            pass
+        ifr_cfs = 2  # this seems to be practice from observed record
+        if (10, 1) <= (self.datetime.month, self.datetime.day) <= (3, 31):
+            ifr_cfs = 2
+        elif (4, 1) <= (self.datetime.month, self.datetime.day) <= (6, 30):
+            ifr_cfs = 3
+        else:
+            ifr_cfs = 5
+            
 
         if self.model.mode == "planning":
             ifr_cfs *= self.days_in_month
