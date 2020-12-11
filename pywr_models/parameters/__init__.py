@@ -290,6 +290,11 @@ class MinFlowParameter(IFRParameter):
 
         # Low wet season baseflow
         elif self.dowy <= dowys['median wet baseflow']:
+            # TODO: change logic as follows
+            # 1. Start by releasing all inflow
+            # 2. If a 2-year flood has passed (i.e., look back 7 days), then drop to the 10th percentile base flow
+            # 3. Look forward 2-7 days and release incoming 2, 5, or 10 year event
+
             mbf_start = dowys['low wet baseflow']
             mbf_end = dowys['median wet baseflow']
             mbf_start_cfs = flows['low wet baseflow']
@@ -332,7 +337,12 @@ class MinFlowParameter(IFRParameter):
             elif self.water_year_type == 'wet':
                 flood_starts = {}
                 for interval in [2, 5, 10]:
-                    flood_starts[int(metrics['Peak_Tim_{}'.format(interval)])] = interval
+                    peak_timing = metrics['Peak_Tim_{}'.format(interval)]
+                    flood_starts[peak_timing] = interval
+                    if interval == 2:
+                        # add in additional 2-year floods
+                        for i in range(metrics['Peak_Fre_2']):
+                            flood_starts[peak_timing + 30 * (i-1)] = interval
                 if self.dowy in flood_starts:
                     return_interval = flood_starts[self.dowy]
                     self.flood_duration[sid] = metrics['Peak_Dur_{}'.format(return_interval)]
@@ -371,6 +381,9 @@ class MinFlowParameter(IFRParameter):
 
         ifr_mcm = ifr_mcm or (ifr_cfs / 35.315 * 0.0864)
         ifr_mcm = max(ifr_mcm, winter_flood_mcm)
+
+        fnf_mcm = fnf.dataframe[timestep.datetime]
+        ifr_mcm = min(ifr_mcm, fnf_mcm)
 
         self.prev_requirement[sid] = ifr_mcm
 

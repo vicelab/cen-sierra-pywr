@@ -21,7 +21,7 @@
             "historical"
         ],
         "scenarios": [
-            "swrcb"
+            "ifr_variations"
         ]
     },
     "functional_flows_full": {

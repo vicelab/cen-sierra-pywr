@@ -104,9 +104,9 @@ def create_schematic(basin, version, format='pdf', view=False):
     outpath1 = os.path.join('./schematics', '{}_schematic{}.gv'.format(basin, '' if not version else '_' + version))
     _dot.render(outpath1, view=view)
     # if format == 'png':
-    outpath2 = os.path.join('./dashapp/assets/schematics',
-                            '{}_schematic{}.gv'.format(basin, '' if not version else '_' + version))
-    _dot.render(outpath2, view=False)
+    # outpath2 = os.path.join('./dashapp/assets/schematics',
+    #                         '{}_schematic{}.gv'.format(basin, '' if not version else '_' + version))
+    # _dot.render(outpath2, view=False)
 
 
 if __name__ == '__main__':

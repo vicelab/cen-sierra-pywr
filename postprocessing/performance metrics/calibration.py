@@ -17,6 +17,7 @@ def read_csv(path):
 
 results_path = os.environ['SIERRA_RESULTS_PATH']
 data_path = os.environ['SIERRA_DATA_PATH']
+
 validation_path = os.path.join(data_path, '..', 'validation')
 
 gof_path = os.path.join(validation_path, 'goodness-of-fit')
@@ -151,15 +152,18 @@ def calculate_performance_metrics():
 
         for filename in os.listdir(consolidated_path):
 
-            gof_df = pd.DataFrame(columns=['NSE', 'RMSE', 'PBIAS'])
-            gof_df.index.name = 'resource'
-
             attr, dim, unit = filename.split('.')[0].split('_')
             file_path = os.path.join(consolidated_path, filename)
             df = pd.read_csv(file_path, index_col=[0, 1, 2], header=0)
 
+            gof_df = pd.DataFrame(columns=['NSE', 'RMSE', 'PBIAS'], index=[[],[]])
+            gof_df.index.names = ['basin', 'resource']
+
             for resource, df0 in df.groupby(level=1):
                 logger.info('Processing goodness-of-fit for {} {}'.format(resource, dim))
+
+                basin = df0.index[0][0]
+
                 df1 = df0.droplevel([0, 1], axis=0)
 
                 for date in df1.index:
@@ -171,14 +175,16 @@ def calculate_performance_metrics():
                 nse_val = evaluator(nse, s, o)[0]
                 rmse_val = evaluator(rmse, s, o)[0]
                 pbias_val = evaluator(pbias, s, o)[0]
-                gof_df.at[resource, 'NSE'] = round(nse_val, 2) if not pd.isna(nse_val) else 'nan'
-                gof_df.at[resource, 'RMSE'] = round(rmse_val, 2) if not pd.isna(rmse_val) else 'nan'
-                gof_df.at[resource, 'PBIAS'] = round(pbias_val, 2) if not pd.isna(pbias_val) else 'nan'
+                idx = (basin, resource)
+                gof_df.at[idx, 'NSE'] = round(nse_val, 2) if not pd.isna(nse_val) else 'nan'
+                gof_df.at[idx, 'RMSE'] = round(rmse_val, 2) if not pd.isna(rmse_val) else 'nan'
+                gof_df.at[idx, 'PBIAS'] = round(pbias_val, 2) if not pd.isna(pbias_val) else 'nan'
 
             csv_path = os.path.join(gof_path, '{} {}.csv'.format(attr, dim))
 
             gof_df.to_csv(csv_path)
-            gof_df.to_excel(xlwriter, sheet_name='{} {}'.format(attr, dim))
+            sheet_name = '{} {}'.format(attr, dim)
+            gof_df.reset_index().to_excel(xlwriter, sheet_name=sheet_name, index=False)
 
     return
 

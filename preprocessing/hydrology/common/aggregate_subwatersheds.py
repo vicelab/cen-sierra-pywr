@@ -2,7 +2,7 @@ import json
 import pandas as pd
 import os
 
-from utilities import simplify_network
+from pywr_models.utilities import simplify_network
 
 
 def aggregate_subwatersheds(scenario_path, basin):

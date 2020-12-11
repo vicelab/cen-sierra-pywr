@@ -4,18 +4,19 @@ import multiprocessing as mp
 from joblib import Parallel, delayed
 from loguru import logger
 
-import preprocessing.hydrology.common as common
+import hydrology.common as common
 import preprocessing.hydrology.stanislaus as stn
 import preprocessing.hydrology.tuolumne as tuo
 import preprocessing.hydrology.merced as mer
 import preprocessing.hydrology.upper_san_joaquin as usj
 
-from utilities.constants import basin_lookup
+from pywr_models.utilities.constants import basin_lookup
 
 # import preprocessing.tuolumne as tuo
 
 root_dir = os.environ.get('SIERRA_DATA_PATH', '../data')
 metadata_path = os.path.join(root_dir, 'metadata')
+
 
 def process_basin_climate(tasks, basin, dataset, climate):
     print("Processing {}: {}/{}".format(basin, dataset, climate))
@@ -175,7 +176,9 @@ if __name__ == '__main__':
     # datasets = ['sequences']
     datasets = ['gcms']
     tasks = ["pre", "common", "basins"]
+    # basins = ["merced"]
+    basins = None
     # tasks = ['basins']
 
     for dataset in datasets:
-        preprocess_hydrology(dataset, tasks=tasks, debug=True)
+        preprocess_hydrology(dataset, tasks=tasks, basins_to_process=basins, debug=True)

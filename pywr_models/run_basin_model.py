@@ -21,13 +21,18 @@ def run_model(*args, **kwargs):
     run_name = kwargs['run_name']
 
     logger_name = '{}-{}-{}.log'.format(run_name, basin, climate.replace('/', '_'))
-    logs_dir = '../logs'
+    logs_dir = os.path.join('.', 'logs')
     if not os.path.exists(logs_dir):
         os.makedirs(logs_dir)
     logger_path = os.path.join(logs_dir, logger_name)
     if os.path.exists(logger_path):
-        os.remove(logger_path)
-    logger.add(logger_path)
+        try:
+            os.remove(logger_path)
+            logger.add(logger_path)
+        except:
+            logger.warning('Failed to remove log file {}'.format(logger_path))
+    else:
+        logger.add(logger_path)
 
     try:
         _run_model(*args, **kwargs)

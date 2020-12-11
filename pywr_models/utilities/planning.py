@@ -1,5 +1,5 @@
 import json
-from utilities import simplify_network
+from pywr_models.utilities import simplify_network
 
 RIM_DAMS = {
     'stanislaus': 'New Melones Lake',
