@@ -9,6 +9,7 @@ from loguru import logger
 from datetime import date
 
 from dotenv import load_dotenv
+
 load_dotenv()
 
 parser = argparse.ArgumentParser()
@@ -109,7 +110,7 @@ kwargs = dict(
     data_path=data_path,
     scenarios=scenarios,
     show_progress=args.progress_bar,
-    filePrefix =  cdateString
+    file_prefix=str(date.today())
 )
 
 if not multiprocessing:  # serial processing for debugging
@@ -118,12 +119,14 @@ if not multiprocessing:  # serial processing for debugging
 
 else:
     import multiprocessing as mp
+
     num_cores = args.num_cores or mp.cpu_count() - 1
 
     run_partial = partial(run_model, **kwargs)
 
     if multiprocessing == 'joblib':
         from joblib import Parallel, delayed
+
         n_jobs = min(num_cores, len(climate_scenarios))
         output = Parallel(n_jobs=n_jobs)(delayed(run_partial)(*args) for args in model_args)
 
