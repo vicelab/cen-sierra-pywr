@@ -59,7 +59,7 @@ if args.end_year:
     end = '{}-09-30'.format(args.end_year)
 
 if args.scenario_set:
-    with open("./pywr-models/scenarios/scenario_sets.json") as f:
+    with open("./pywr_models/scenarios/scenario_sets.json") as f:
         scenario_sets = json.load(f)
 
     scenario_set_definition = scenario_sets.get(args.scenario_set)
