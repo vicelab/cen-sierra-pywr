@@ -8,13 +8,13 @@ from preprocessing.preprocess_hydrology import preprocess_hydrology
 # Preprocess sequences
 # NOTE: This does not generate the sequence definitions.
 # For now, the sequence definitions are created in a jupyter notebook found in
-# "/pywr_models/development/scenarios/sequence generation" (not currently part of this repository)
+# "/sierra/development/scenarios/sequence generation" (not currently part of this repository)
 # TODO: move the above to this repo?
 
 debug = True
 datadir = os.environ['SIERRA_DATA_PATH']
 # outdir = datadir
-outdir = r'C:\Users\david\pywr_models\SynologyDrive\data'
+outdir = r'C:\Users\david\sierra\SynologyDrive\data'
 
 def preprocess_sequences():
     definition_path = os.path.join(datadir, 'metadata', 'sequence_definitions.csv')

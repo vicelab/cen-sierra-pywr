@@ -70,7 +70,7 @@ def _run_model(climate,
             logger.warning('{} NaNs found in data files.'.format(total_nan))
 
     # if debug:
-    #     from pywr_models import create_schematic
+    #     from sierra import create_schematic
 
     # Some adjustments
     if basin in ['merced', 'tuolumne']:
