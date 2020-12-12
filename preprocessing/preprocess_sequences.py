@@ -10,7 +10,7 @@ from itertools import product
 from preprocessing.preprocess_hydrology import preprocess_hydrology
 from preprocessing.utils.sequences import generate_data_from_sequence
 
-from utilities.constants import basin_lookup
+from sierra.constants import basin_lookup
 
 RND_SEQ_NAME_TPL = 'S{id:04}_Y{years:02}_RAND_N{number:02}'
 DRY_SEQ_NAME_TPL = 'S{id:04}_Y{years:02}_D{dry:1}W{wet:1}_N{number:02}'
@@ -145,7 +145,7 @@ def generate_sequences_runoff(definition_path, outdir, basins_to_process=None, d
 if __name__ == '__main__':
 
     debug = True
-    outdir = r'C:\Users\david\pywr_models\SynologyDrive\data'
+    outdir = r'C:\Users\david\sierra\SynologyDrive\data'
     # outdir = root_dir
     generate_sequences_runoff(outdir, debug=debug)
     preprocess_hydrology('sequences', basins_to_process=['stn'], debug=debug)
