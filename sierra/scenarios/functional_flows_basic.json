@@ -1,12 +1,33 @@
 {
-  "scenarios": [
-    {
-      "name": "IFRs",
-      "size": 2,
-      "ensemble_names": [
-        "baseline",
-        "Functional Flows"
-      ]
-    }
-  ]
+    "tables": {
+        "functional flows parameters": {
+            "url": "../data/Merced River/_tables/Functional_Flows_parameters.csv",
+            "index_col": 0,
+            "header": [
+                0,
+                1
+            ]
+        },
+        "functional flows metrics": {
+            "url": "../data/Merced River/_tables/Functional_Flows_metrics.csv",
+            "index_col": 0,
+            "header": 0
+        },
+        "functional flows floods": {
+            "url": "../data/Merced River/_tables/Functional_Flows_floods.csv",
+            "index_col": 0,
+            "header": 0,
+            "squeeze": true
+        }
+    },
+    "scenarios": [
+        {
+            "name": "IFRs",
+            "size": 2,
+            "ensemble_names": [
+                "baseline",
+                "Functional Flows"
+            ]
+        }
+    ]
 }
