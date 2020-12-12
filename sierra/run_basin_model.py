@@ -6,7 +6,7 @@ from importlib import import_module
 from tqdm import tqdm
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-from common.tests import get_planning_dataframe
+from sierra.common.tests import get_planning_dataframe
 import pandas as pd
 import traceback
 from sierra.utilities import simplify_network, prepare_planning_model, save_model_results, create_schematic
@@ -176,7 +176,7 @@ def _run_model(climate,
         if '__init__' in filename:
             continue
         policy_name = os.path.splitext(filename)[0]
-        policy_module = 'parameters.{policy_name}'.format(policy_name=policy_name)
+        policy_module = 'sierra.parameters.{policy_name}'.format(policy_name=policy_name)
         import_module(policy_module, policy_folder)
 
     # =========================================
