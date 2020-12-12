@@ -1,6 +1,6 @@
-from parameters import WaterLPParameter
+from pywr_models.base_parameters import WaterLPParameter
 
-from utilities.converter import convert
+from pywr_models.utilities.converter import convert
 
 
 class Upper_Collierville_Tunnel_1_Capacity(WaterLPParameter):

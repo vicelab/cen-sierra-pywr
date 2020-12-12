@@ -1,4 +1,4 @@
-from parameters import WaterLPParameter
+from pywr_models.base_parameters import WaterLPParameter
 
 
 class Lake_Tulloch_Min_Volume(WaterLPParameter):

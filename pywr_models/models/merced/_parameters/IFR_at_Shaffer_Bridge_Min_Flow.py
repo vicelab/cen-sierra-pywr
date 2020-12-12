@@ -1,7 +1,7 @@
-from parameters import MinFlowParameter
 from datetime import date
 import numpy as np
-from utilities.converter import convert
+from pywr_models.base_parameters import MinFlowParameter
+from pywr_models.utilities.converter import convert
 
 
 class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):

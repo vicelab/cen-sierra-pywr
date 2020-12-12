@@ -1,7 +1,7 @@
 import numpy as np
-from parameters import WaterLPParameter
+from pywr_models.base_parameters import WaterLPParameter
 from datetime import datetime
-from utilities.converter import convert
+from pywr_models.utilities.converter import convert
 
 
 class Kirkwood_PH_Demand(WaterLPParameter):

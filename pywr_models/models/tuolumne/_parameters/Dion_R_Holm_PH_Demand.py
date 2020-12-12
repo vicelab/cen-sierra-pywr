@@ -1,9 +1,9 @@
 import pandas as pd
 import numpy as np
 import datetime as dt
-from parameters import WaterLPParameter
+from pywr_models.base_parameters import WaterLPParameter
 
-from utilities.converter import convert
+from pywr_models.utilities.converter import convert
 
 
 class Dion_R_Holm_PH_Demand(WaterLPParameter):

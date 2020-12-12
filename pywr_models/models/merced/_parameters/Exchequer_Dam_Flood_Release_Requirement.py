@@ -1,6 +1,6 @@
-from parameters import WaterLPParameter
+from pywr_models.base_parameters import WaterLPParameter
 from scipy import interpolate
-from utilities.converter import convert
+from pywr_models.utilities.converter import convert
 
 
 class Exchequer_Dam_Flood_Release_Requirement(WaterLPParameter):

@@ -1,7 +1,7 @@
-from parameters import WaterLPParameter
+from pywr_models.base_parameters import WaterLPParameter
 from datetime import datetime, timedelta
 import numpy as np
-from utilities.converter import convert
+from pywr_models.utilities.converter import convert
 import math
 
 

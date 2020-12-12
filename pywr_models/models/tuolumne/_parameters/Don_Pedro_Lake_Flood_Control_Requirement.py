@@ -1,7 +1,7 @@
 from datetime import datetime
-from parameters import WaterLPParameter
+from pywr_models.base_parameters import WaterLPParameter
 
-from utilities.converter import convert
+from pywr_models.utilities.converter import convert
 
 
 class Don_Pedro_Lake_Flood_Control_Requirement(WaterLPParameter):

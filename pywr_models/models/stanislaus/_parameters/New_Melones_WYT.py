@@ -1,5 +1,5 @@
 import numpy as np
-from parameters import WaterLPParameter
+from pywr_models.base_parameters import WaterLPParameter
 
 
 class New_Melones_WYT(WaterLPParameter):

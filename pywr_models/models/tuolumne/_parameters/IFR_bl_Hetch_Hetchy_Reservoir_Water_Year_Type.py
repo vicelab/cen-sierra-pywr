@@ -1,5 +1,5 @@
 import numpy as np
-from parameters import MinFlowParameter
+from pywr_models.base_parameters import MinFlowParameter
 
 
 class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(MinFlowParameter):

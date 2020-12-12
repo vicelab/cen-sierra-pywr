@@ -1,6 +1,6 @@
-from parameters import WaterLPParameter
+from pywr_models.base_parameters import WaterLPParameter
 
-from utilities.converter import convert
+from pywr_models.utilities.converter import convert
 
 
 class Water_Supply_Release_bl_New_Spicer_Meadow_Reservoir(WaterLPParameter):

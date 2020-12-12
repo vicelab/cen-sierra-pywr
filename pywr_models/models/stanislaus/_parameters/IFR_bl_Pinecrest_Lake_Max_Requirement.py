@@ -1,6 +1,6 @@
-from parameters import FlowRangeParameter
+from pywr_models.base_parameters import FlowRangeParameter
 
-from utilities.converter import convert
+from pywr_models.utilities.converter import convert
 
 
 class IFR_bl_Pinecrest_Lake_Max_Requirement(FlowRangeParameter):

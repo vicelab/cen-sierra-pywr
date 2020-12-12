@@ -1,4 +1,4 @@
-from parameters import WaterLPParameter
+from pywr_models.base_parameters import WaterLPParameter
 
 
 class San_Joaquin_Valley_WYT(WaterLPParameter):

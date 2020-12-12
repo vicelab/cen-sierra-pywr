@@ -1,6 +1,6 @@
-from parameters import WaterLPParameter
+from pywr_models.base_parameters import WaterLPParameter
 
-from utilities.converter import convert
+from pywr_models.utilities.converter import convert
 
 
 class Big_Creek_System_IFRs_2000(WaterLPParameter):

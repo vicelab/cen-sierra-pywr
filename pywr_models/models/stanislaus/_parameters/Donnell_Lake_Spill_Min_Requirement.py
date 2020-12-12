@@ -1,6 +1,6 @@
-from parameters import MinFlowParameter
+from pywr_models.base_parameters import MinFlowParameter
 
-from utilities.converter import convert
+from pywr_models.utilities.converter import convert
 
 
 class Donnell_Lake_Spill_Min_Requirement(MinFlowParameter):

@@ -1,6 +1,6 @@
 import pandas as pd
 from datetime import timedelta
-from parameters import WaterLPParameter
+from pywr_models.base_parameters import WaterLPParameter
 
 
 class Lake_Eleanor_Forecasted_Inflow(WaterLPParameter):

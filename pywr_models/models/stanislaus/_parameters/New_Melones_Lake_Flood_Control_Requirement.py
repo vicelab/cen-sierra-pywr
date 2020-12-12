@@ -1,8 +1,8 @@
 import numpy as np
 from datetime import datetime, timedelta
-from parameters import WaterLPParameter
+from pywr_models.base_parameters import WaterLPParameter
 
-from utilities.converter import convert
+from pywr_models.utilities.converter import convert
 
 
 class New_Melones_Lake_Flood_Control_Requirement(WaterLPParameter):

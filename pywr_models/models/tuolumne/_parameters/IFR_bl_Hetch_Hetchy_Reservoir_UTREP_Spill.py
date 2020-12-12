@@ -1,4 +1,4 @@
-from parameters import MinFlowParameter
+from pywr_models.base_parameters import MinFlowParameter
 import pandas as pd
 import numpy as np
 from datetime import datetime

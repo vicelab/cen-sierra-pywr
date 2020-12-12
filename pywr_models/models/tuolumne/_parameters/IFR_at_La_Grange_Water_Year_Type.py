@@ -1,4 +1,4 @@
-from parameters import MinFlowParameter
+from pywr_models.base_parameters import MinFlowParameter
 
 
 class IFR_at_La_Grange_Water_Year_Type(MinFlowParameter):

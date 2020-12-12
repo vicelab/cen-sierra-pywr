@@ -1,6 +1,6 @@
-from parameters import MinFlowParameter
+from pywr_models.base_parameters import MinFlowParameter
 
-from utilities.converter import convert
+from pywr_models.utilities.converter import convert
 
 class IFR_bl_Bolsillo_Creek_Div_Min_Flow(MinFlowParameter):
     """"""

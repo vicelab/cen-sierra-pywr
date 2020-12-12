@@ -1,6 +1,6 @@
-from parameters import MinFlowParameter
+from pywr_models.base_parameters import MinFlowParameter
 
-from utilities.converter import convert
+from pywr_models.utilities.converter import convert
 
 
 class IFR_bl_Hetch_Hetchy_Reservoir_Min_Flow(MinFlowParameter):

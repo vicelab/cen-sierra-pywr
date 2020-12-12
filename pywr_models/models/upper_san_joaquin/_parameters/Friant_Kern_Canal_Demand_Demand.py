@@ -1,6 +1,6 @@
-from parameters import WaterLPParameter
+from pywr_models.base_parameters import WaterLPParameter
 
-from utilities.converter import convert
+from pywr_models.utilities.converter import convert
 
 class Friant_Kern_Canal_Demand_Demand(WaterLPParameter):
     """"""
