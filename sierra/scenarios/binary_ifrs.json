@@ -1,0 +1,12 @@
+{
+  "scenarios": [
+    {
+      "name": "IFRs",
+      "size": 2,
+      "ensemble_names": [
+        "Baseline",
+        "No IFRs"
+      ]
+    }
+  ]
+}

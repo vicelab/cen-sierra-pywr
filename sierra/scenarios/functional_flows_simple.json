@@ -1,0 +1,11 @@
+{
+  "scenarios": [
+    {
+      "name": "IFRs",
+      "size": 1,
+      "ensemble_names": [
+        "Functional Flows"
+      ]
+    }
+  ]
+}

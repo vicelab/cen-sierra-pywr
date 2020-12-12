@@ -1,0 +1,21 @@
+{
+    "scenarios": [
+        {
+            "name": "Price Year",
+            "size": 2,
+            "ensemble_names": [
+                "2009", "2045"
+            ]
+        }
+    ],
+    "parameters": {
+        "Price Year": {
+            "type": "ConstantScenario",
+            "scenario": "Price Year",
+            "values": [
+                2009,
+                2045
+            ]
+        }
+    }
+}

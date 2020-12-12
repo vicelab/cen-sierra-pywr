@@ -1,0 +1,1164 @@
+{
+    "metadata": {
+        "title": "Merced River",
+        "description": "Imported from WEAP Area",
+        "minimum_version": "1.0.0"
+    },
+    "timestepper": {
+        "start": "1980-10-01",
+        "end": "2006-03-05",
+        "timestep": 1
+    },
+    "solver": {
+        "name": "glpk"
+    },
+    "nodes": [
+        {
+            "name": "Below Maxwell Ck Headflow [link]",
+            "type": "River"
+        },
+        {
+            "name": "Below Maxwell Ck Inflow [link]",
+            "type": "River"
+        },
+        {
+            "name": "Below Merced River Headflow [link]",
+            "type": "River"
+        },
+        {
+            "name": "Below MER_01 Headflow [link]",
+            "type": "Link"
+        },
+        {
+            "name": "Below MER_01 Inflow [link]",
+            "type": "River"
+        },
+        {
+            "name": "Below MER_02 Headflow [link]",
+            "type": "Link"
+        },
+        {
+            "name": "Below MER_02 Inflow [link]",
+            "type": "River"
+        },
+        {
+            "name": "Below MER_03 Headflow [link]",
+            "type": "Link"
+        },
+        {
+            "name": "Below MER_03 Inflow [link]",
+            "type": "River"
+        },
+        {
+            "name": "Below MER_04 Headflow [link]",
+            "type": "Link"
+        },
+        {
+            "name": "Below MER_04 Inflow [link]",
+            "type": "River"
+        },
+        {
+            "name": "Below MER_05 Headflow [link]",
+            "type": "Link"
+        },
+        {
+            "name": "Below MER_05 Inflow [link]",
+            "type": "River"
+        },
+        {
+            "name": "Below MER_06 Headflow [link]",
+            "type": "Link"
+        },
+        {
+            "name": "Below MER_06 Inflow [link]",
+            "type": "River"
+        },
+        {
+            "name": "Below South Fork Merced R Headflow [link]",
+            "type": "River"
+        },
+        {
+            "name": "Below South Fork Merced R Inflow [link]",
+            "type": "River"
+        },
+        {
+            "name": "BlwMcClure.1 [link]",
+            "type": "River"
+        },
+        {
+            "name": "BlwMcClure.2.1.1 [link]",
+            "type": "River"
+        },
+        {
+            "name": "BlwMcClure.2.1.2 [link]",
+            "type": "River"
+        },
+        {
+            "name": "BlwMcClure.2.2 [link]",
+            "type": "River"
+        },
+        {
+            "name": "Main Canal [link]",
+            "type": "Link"
+        },
+        {
+            "name": "Merced River [link]",
+            "type": "River"
+        },
+        {
+            "name": "Merced River (1).1.1 [link]",
+            "type": "River"
+        },
+        {
+            "name": "Merced River (1).1.2 [link]",
+            "type": "River"
+        },
+        {
+            "name": "Merced River (2).2.1 [link]",
+            "type": "River"
+        },
+        {
+            "name": "Merced River (2).2.2.1.1 [link]",
+            "type": "River"
+        },
+        {
+            "name": "Merced River (2).2.2.1.2.1 [link]",
+            "type": "River"
+        },
+        {
+            "name": "Merced River (2).2.2.1.2.2.1 [link]",
+            "type": "River"
+        },
+        {
+            "name": "Merced River (2).2.2.1.2.2.2.1.1.1 [link]",
+            "type": "River"
+        },
+        {
+            "name": "Merced River (2).2.2.1.2.2.2.1.1.2 [link]",
+            "type": "River"
+        },
+        {
+            "name": "Merced River (2).2.2.1.2.2.2.2 [link]",
+            "type": "River"
+        },
+        {
+            "name": "Merced River (2).2.2.2.1 [link]",
+            "type": "River"
+        },
+        {
+            "name": "Merced River (2).2.2.2.2.1 [link]",
+            "type": "River"
+        },
+        {
+            "name": "Merced River (2).2.2.2.2.2 [link]",
+            "type": "River"
+        },
+        {
+            "name": "Merced River below Crocker-Huffman [link]",
+            "type": "River"
+        },
+        {
+            "name": "Northside Canal [link]",
+            "type": "Link"
+        },
+        {
+            "name": "Valley_inflow [link]",
+            "type": "Link"
+        },
+        {
+            "name": "Exchequer Dam Flood Release",
+            "type": "PiecewiseLink",
+            "max_flow": [
+                "Exchequer Dam Flood Release/Requirement",
+                null
+            ],
+            "cost": [
+                -1000,
+                1
+            ]
+        },
+        {
+            "name": "USGS 11270900 MERCED R BL MERCED FALLS DAM NR SNELL CA",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "IFR bl New Exchequer Dam",
+            "type": "InstreamFlowRequirement",
+            "min_flow_cost": "IFR bl New Exchequer Dam/Violation Cost",
+            "min_flow": "IFR bl New Exchequer Dam/Min Flow"
+        },
+        {
+            "name": "Crocker-Huffman Diversion Reservoir",
+            "type": "Reservoir",
+            "initial_volume": 0.0,
+            "initial_volume_pc": 0.0,
+            "max_volume": 0.0
+        },
+        {
+            "name": "Lake McClure",
+            "type": "Reservoir",
+            "initial_volume": 750,
+            "initial_volume_pc": 750,
+            "max_volume": "Lake McClure/Storage Capacity",
+            "min_volume": "Lake McClure/Inactive Pool",
+            "cost": "Lake McClure/Cost",
+            "level": "Lake McClure/Elevation",
+            "gauge": "USGS 11269500 LK MCCLURE A EXCHEQUER CA"
+        },
+        {
+            "name": "Lake McClure Spill",
+            "type": "Link"
+        },
+        {
+            "name": "Lake McClure Inflow",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "Lake McSwain",
+            "type": "Reservoir",
+            "initial_volume": 11,
+            "initial_volume_pc": 11,
+            "max_volume": "Lake McSwain/Storage Capacity",
+            "min_volume": "Lake McSwain/Inactive Pool",
+            "cost": -100,
+            "gauge": "USGS 11270600 MCSWAIN RES NR SNELLING CA"
+        },
+        {
+            "name": "Maxwell Ck Headflow",
+            "type": "Catchment"
+        },
+        {
+            "name": "Maxwell Ck Inflow",
+            "type": "River"
+        },
+        {
+            "name": "McSwain PH",
+            "type": "Hydropower",
+            "head": 16.46,
+            "turbine_capacity": 6.606,
+            "cost": [
+                0,
+                "McSwain PH/Excess Value"
+            ]
+        },
+        {
+            "name": "MERCE-N-JUN1",
+            "type": "River"
+        },
+        {
+            "name": "MERCE-N-JUN2",
+            "type": "BreakLink"
+        },
+        {
+            "name": "Merced Falls PH",
+            "type": "Hydropower",
+            "head": 7.925,
+            "turbine_capacity": 4.28,
+            "cost": [
+                "Merced Falls PH/Base Value",
+                "Merced Falls PH/Excess Value"
+            ]
+        },
+        {
+            "name": "Merced Falls Reservoir",
+            "type": "BreakLink"
+        },
+        {
+            "name": "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "IFR at Shaffer Bridge",
+            "type": "InstreamFlowRequirement",
+            "min_flow_cost": "IFR at Shaffer Bridge/Min Flow Cost",
+            "max_flow_cost": "IFR at Shaffer Bridge/Max Flow Cost",
+            "min_flow": "IFR at Shaffer Bridge/Min Flow",
+            "max_flow": "IFR at Shaffer Bridge/Max Flow",
+            "ifr_type": "enhanced"
+        },
+        {
+            "name": "Merced River Headflow",
+            "type": "Catchment"
+        },
+        {
+            "name": "Merced River Outflow",
+            "type": "Output"
+        },
+        {
+            "name": "MER_01 Headflow",
+            "type": "Catchment",
+            "flow": "MER_01 Headflow/Runoff"
+        },
+        {
+            "name": "MER_01 Inflow",
+            "type": "River"
+        },
+        {
+            "name": "MER_02 Headflow",
+            "type": "Catchment",
+            "flow": "MER_02 Headflow/Runoff"
+        },
+        {
+            "name": "MER_02 Inflow",
+            "type": "River"
+        },
+        {
+            "name": "MER_03 Headflow",
+            "type": "Catchment",
+            "flow": "MER_03 Headflow/Runoff"
+        },
+        {
+            "name": "MER_03 Inflow",
+            "type": "River"
+        },
+        {
+            "name": "MER_04 Headflow",
+            "type": "Catchment",
+            "flow": "MER_04 Headflow/Runoff"
+        },
+        {
+            "name": "MER_04 Inflow",
+            "type": "River"
+        },
+        {
+            "name": "MER_05 Headflow",
+            "type": "Catchment",
+            "flow": "MER_05 Headflow/Runoff"
+        },
+        {
+            "name": "MER_05 Inflow",
+            "type": "River"
+        },
+        {
+            "name": "MER_06 Headflow",
+            "type": "Catchment",
+            "flow": "MER_06 Headflow/Runoff"
+        },
+        {
+            "name": "MER_06 Inflow",
+            "type": "River"
+        },
+        {
+            "name": "MID Main",
+            "type": "Output",
+            "max_flow": "MID Main/Demand",
+            "cost": "MID Main/Cost"
+        },
+        {
+            "name": "MID Northside",
+            "type": "Output",
+            "max_flow": "MID Northside/Demand",
+            "cost": "MID Northside/Cost"
+        },
+        {
+            "name": "USGS 11271290 MERCED R A SHAFFER BRIDGE NR CRESSEY CA",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "USGS 11272500 MERCED R NR STEVINSON CA",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "New Exchequer PH",
+            "type": "Hydropower",
+            "turbine_capacity": "New Exchequer PH/Turbine Capacity",
+            "flow_capacity": "New Exchequer PH/Turbine Capacity",
+            "tailwater_elevation": 120,
+            "water_elevation_reservoir": "Lake McClure",
+            "cost": [
+                -1
+            ]
+        },
+        {
+            "name": "South Fork Merced R Headflow",
+            "type": "Catchment"
+        },
+        {
+            "name": "South Fork Merced R Inflow",
+            "type": "River"
+        },
+        {
+            "name": "USGS_11264500 MERCED R A HAPPY ISLES",
+            "type": "RiverGauge",
+            "mrf": 0.0,
+            "mrf_cost": 0.0
+        },
+        {
+            "name": "Valley_Inflow",
+            "type": "Catchment"
+        }
+    ],
+    "edges": [
+        [
+            "Maxwell Ck Headflow",
+            "Below Maxwell Ck Headflow [link]"
+        ],
+        [
+            "Below Maxwell Ck Headflow [link]",
+            "MER_02 Inflow"
+        ],
+        [
+            "South Fork Merced R Inflow",
+            "Below Maxwell Ck Inflow [link]"
+        ],
+        [
+            "Below Maxwell Ck Inflow [link]",
+            "MER_03 Inflow"
+        ],
+        [
+            "Merced River Headflow",
+            "Below Merced River Headflow [link]"
+        ],
+        [
+            "Below Merced River Headflow [link]",
+            "MER_06 Inflow"
+        ],
+        [
+            "MER_01 Headflow",
+            "Below MER_01 Headflow [link]"
+        ],
+        [
+            "Below MER_01 Headflow [link]",
+            "MER_01 Inflow"
+        ],
+        [
+            "MER_03 Inflow",
+            "Below MER_01 Inflow [link]"
+        ],
+        [
+            "Below MER_01 Inflow [link]",
+            "Maxwell Ck Inflow"
+        ],
+        [
+            "MER_02 Headflow",
+            "Below MER_02 Headflow [link]"
+        ],
+        [
+            "Below MER_02 Headflow [link]",
+            "MER_02 Inflow"
+        ],
+        [
+            "MER_02 Inflow",
+            "Below MER_02 Inflow [link]"
+        ],
+        [
+            "Below MER_02 Inflow [link]",
+            "Maxwell Ck Inflow"
+        ],
+        [
+            "MER_03 Headflow",
+            "Below MER_03 Headflow [link]"
+        ],
+        [
+            "Below MER_03 Headflow [link]",
+            "MER_03 Inflow"
+        ],
+        [
+            "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500",
+            "Below MER_03 Inflow [link]"
+        ],
+        [
+            "Below MER_03 Inflow [link]",
+            "South Fork Merced R Inflow"
+        ],
+        [
+            "MER_04 Headflow",
+            "Below MER_04 Headflow [link]"
+        ],
+        [
+            "Below MER_04 Headflow [link]",
+            "MER_04 Inflow"
+        ],
+        [
+            "MER_04 Inflow",
+            "Below MER_04 Inflow [link]"
+        ],
+        [
+            "Below MER_04 Inflow [link]",
+            "South Fork Merced R Inflow"
+        ],
+        [
+            "MER_05 Headflow",
+            "Below MER_05 Headflow [link]"
+        ],
+        [
+            "Below MER_05 Headflow [link]",
+            "MER_05 Inflow"
+        ],
+        [
+            "USGS_11264500 MERCED R A HAPPY ISLES",
+            "Below MER_05 Inflow [link]"
+        ],
+        [
+            "Below MER_05 Inflow [link]",
+            "MER_05 Inflow"
+        ],
+        [
+            "MER_06 Headflow",
+            "Below MER_06 Headflow [link]"
+        ],
+        [
+            "Below MER_06 Headflow [link]",
+            "MER_06 Inflow"
+        ],
+        [
+            "MER_06 Inflow",
+            "Below MER_06 Inflow [link]"
+        ],
+        [
+            "Below MER_06 Inflow [link]",
+            "USGS_11264500 MERCED R A HAPPY ISLES"
+        ],
+        [
+            "South Fork Merced R Headflow",
+            "Below South Fork Merced R Headflow [link]"
+        ],
+        [
+            "Below South Fork Merced R Headflow [link]",
+            "MER_04 Inflow"
+        ],
+        [
+            "MER_05 Inflow",
+            "Below South Fork Merced R Inflow [link]"
+        ],
+        [
+            "Below South Fork Merced R Inflow [link]",
+            "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500"
+        ],
+        [
+            "Lake McClure",
+            "BlwMcClure.1 [link]"
+        ],
+        [
+            "BlwMcClure.1 [link]",
+            "New Exchequer PH"
+        ],
+        [
+            "Lake McClure",
+            "Lake McClure Spill"
+        ],
+        [
+            "New Exchequer PH",
+            "BlwMcClure.2.1.1 [link]"
+        ],
+        [
+            "BlwMcClure.2.1.1 [link]",
+            "Exchequer Dam Flood Release"
+        ],
+        [
+            "Lake McClure Spill",
+            "Exchequer Dam Flood Release"
+        ],
+        [
+            "Exchequer Dam Flood Release",
+            "BlwMcClure.2.1.2 [link]"
+        ],
+        [
+            "BlwMcClure.2.1.2 [link]",
+            "IFR bl New Exchequer Dam"
+        ],
+        [
+            "IFR bl New Exchequer Dam",
+            "BlwMcClure.2.2 [link]"
+        ],
+        [
+            "BlwMcClure.2.2 [link]",
+            "Lake McSwain"
+        ],
+        [
+            "Crocker-Huffman Diversion Reservoir",
+            "Main Canal [link]"
+        ],
+        [
+            "Main Canal [link]",
+            "MID Main"
+        ],
+        [
+            "Maxwell Ck Inflow",
+            "Merced River [link]"
+        ],
+        [
+            "Merced River [link]",
+            "MER_01 Inflow"
+        ],
+        [
+            "MER_01 Inflow",
+            "Merced River (1).1.1 [link]"
+        ],
+        [
+            "Merced River (1).1.1 [link]",
+            "Lake McClure Inflow"
+        ],
+        [
+            "Lake McClure Inflow",
+            "Merced River (1).1.2 [link]"
+        ],
+        [
+            "Merced River (1).1.2 [link]",
+            "Lake McClure"
+        ],
+        [
+            "Lake McSwain",
+            "Merced River (2).2.1 [link]"
+        ],
+        [
+            "Merced River (2).2.1 [link]",
+            "McSwain PH"
+        ],
+        [
+            "McSwain PH",
+            "Merced River (2).2.2.1.1 [link]"
+        ],
+        [
+            "Merced River (2).2.2.1.1 [link]",
+            "Merced Falls Reservoir"
+        ],
+        [
+            "Merced Falls Reservoir",
+            "Merced River (2).2.2.1.2.1 [link]"
+        ],
+        [
+            "Merced River (2).2.2.1.2.1 [link]",
+            "Merced Falls PH"
+        ],
+        [
+            "Merced Falls PH",
+            "Merced River (2).2.2.1.2.2.1 [link]"
+        ],
+        [
+            "Merced River (2).2.2.1.2.2.1 [link]",
+            "USGS 11270900 MERCED R BL MERCED FALLS DAM NR SNELL CA"
+        ],
+        [
+            "USGS 11270900 MERCED R BL MERCED FALLS DAM NR SNELL CA",
+            "Merced River (2).2.2.1.2.2.2.1.1.1 [link]"
+        ],
+        [
+            "Merced River (2).2.2.1.2.2.2.1.1.1 [link]",
+            "Crocker-Huffman Diversion Reservoir"
+        ],
+        [
+            "Crocker-Huffman Diversion Reservoir",
+            "Merced River (2).2.2.1.2.2.2.1.1.2 [link]"
+        ],
+        [
+            "Merced River (2).2.2.1.2.2.2.1.1.2 [link]",
+            "IFR at Shaffer Bridge"
+        ],
+        [
+            "USGS 11271290 MERCED R A SHAFFER BRIDGE NR CRESSEY CA",
+            "Merced River (2).2.2.1.2.2.2.2 [link]"
+        ],
+        [
+            "Merced River (2).2.2.1.2.2.2.2 [link]",
+            "MERCE-N-JUN1"
+        ],
+        [
+            "MERCE-N-JUN1",
+            "Merced River (2).2.2.2.1 [link]"
+        ],
+        [
+            "Merced River (2).2.2.2.1 [link]",
+            "MERCE-N-JUN2"
+        ],
+        [
+            "MERCE-N-JUN2",
+            "Merced River (2).2.2.2.2.1 [link]"
+        ],
+        [
+            "Merced River (2).2.2.2.2.1 [link]",
+            "USGS 11272500 MERCED R NR STEVINSON CA"
+        ],
+        [
+            "USGS 11272500 MERCED R NR STEVINSON CA",
+            "Merced River (2).2.2.2.2.2 [link]"
+        ],
+        [
+            "Merced River (2).2.2.2.2.2 [link]",
+            "Merced River Outflow"
+        ],
+        [
+            "IFR at Shaffer Bridge",
+            "Merced River below Crocker-Huffman [link]"
+        ],
+        [
+            "Merced River below Crocker-Huffman [link]",
+            "USGS 11271290 MERCED R A SHAFFER BRIDGE NR CRESSEY CA"
+        ],
+        [
+            "Merced Falls PH",
+            "Northside Canal [link]"
+        ],
+        [
+            "Northside Canal [link]",
+            "MID Northside"
+        ],
+        [
+            "Valley_Inflow",
+            "Valley_inflow [link]"
+        ],
+        [
+            "Valley_inflow [link]",
+            "MERCE-N-JUN1"
+        ]
+    ],
+    "tables": {
+        "San Joaquin Valley Index": {
+            "url": "../data/common/hydrology/historical/Livneh/SJVI.csv",
+            "index_col": 0,
+            "squeeze": true
+        },
+        "functional flows parameters": {
+            "url": "../data/Merced River/_tables/Functional_Flows_parameters.csv",
+            "index_col": 0,
+            "header": [0,1]
+        },
+        "functional flows metrics": {
+            "url": "../data/Merced River/_tables/Functional_Flows_metrics.csv",
+            "index_col": 0,
+            "header": 0
+        },
+        "functional flows floods": {
+            "url": "../data/Merced River/_tables/Functional_Flows_floods.csv",
+            "index_col": 0,
+            "header": 0,
+            "squeeze": true
+        },
+        "Annual Full Natural Flow": {
+            "url": "../data/Merced River/hydrology/historical/Livneh/preprocessed/full_natural_flow_annual_mcm.csv",
+            "index_col": 0,
+            "header": 0,
+            "squeeze": true
+        },
+        "WYT for IFR Below Exchequer": {
+            "url": "../data/Merced River/hydrology/historical/Livneh/preprocessed/Exchequer_WYT.csv",
+            "index_col": 0,
+            "header": 0,
+            "squeeze": true,
+            "dtype": "int"
+        },
+        "Lake McClure Spill/ESRD": {
+            "url": "../data/Merced River/management/BAU/Flood Control/ESRD_unitsSI.csv",
+            "header": null
+        },
+        "Lake McClure/Guide Curve": {
+            "url": "../data/Merced River/management/BAU/Flood Control/LakeMcLure_FloodControl_Requirements_af.csv",
+            "names": [
+                "dry",
+                "normal",
+                "wet"
+            ],
+            "index_col": 0,
+            "parse_dates": false,
+            "header": 0
+        },
+        "MID Northside Diversions": {
+            "url": "../data/Merced River/management/BAU/Demand/MID_WYT_average_diversion_Northside_cfs.csv",
+            "index_col": 0,
+            "header": 0,
+            "names": [
+                4,
+                3,
+                1,
+                2,
+                5
+            ]
+        },
+        "MID Main Diversions": {
+            "url": "../data/Merced River/management/BAU/Demand/MID_WYT_average_diversion_Main_cfs.csv",
+            "index_col": 0,
+            "header": 0,
+            "names": [
+                4,
+                3,
+                1,
+                2,
+                5
+            ]
+        },
+        "Fish Pulse": {
+            "url": "../data/Merced River/management/BAU/IFRs/fishPulse_Merced_cfs.csv",
+            "index_col": 0,
+            "header": 0,
+            "squeeze": true
+        }
+    },
+    "parameters": {
+        "Full Natural Flow": {
+            "type": "dataframe",
+            "url": "../data/Merced River/hydrology/historical/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
+            "index_col": 0,
+            "header": 0,
+            "parse_dates": true,
+            "squeeze": true
+        },
+        "Exchequer Dam Flood Release/Requirement": {
+            "type": "Exchequer_Dam_Flood_Release_Requirement"
+        },
+        "USGS 11270900 MERCED R BL MERCED FALLS DAM NR SNELL CA/Observed Flow": {
+            "type": "Below_Merced_Falls_Dam_Observed_Flow"
+        },
+        "IFR bl New Exchequer Dam/Violation Cost": {
+            "type": "constant",
+            "value": -5000
+        },
+        "IFR bl New Exchequer Dam/Min Flow": {
+            "type": "IFR_bl_New_Exchequer_Dam_Min_Flow"
+        },
+        "Lake McClure/Storage Demand": {
+            "type": "Lake_McClure_Water_Demand"
+        },
+        "Lake McClure/Storage Capacity": {
+            "type": "constant",
+            "value": 1238.6
+        },
+        "Lake McClure/Inactive Pool": {
+            "type": "constant",
+            "value": 142
+        },
+        "Lake McClure/Observed Storage": {
+            "type": "Lake_McClure_Observed_Storage"
+        },
+        "Lake McClure/Cost": {
+            "type": "constant",
+            "value": -10
+        },
+        "Lake McSwain/Storage Capacity": {
+            "type": "constant",
+            "value": 11.5
+        },
+        "Lake McSwain/Inactive Pool": {
+            "type": "constant",
+            "value": 9.8
+        },
+        "McSwain PH/Fixed Head": {
+            "type": "constant",
+            "value": 137.0
+        },
+        "McSwain PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 7.87
+        },
+        "McSwain PH/Excess Value": {
+            "type": "constant",
+            "value": -1
+        },
+        "McSwain PH/Unconstrained Cost": {
+            "type": "constant",
+            "value": 1
+        },
+        "Merced Falls PH/Fixed Head": {
+            "type": "constant",
+            "value": 103.0
+        },
+        "Merced Falls PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 4.075
+        },
+        "Merced Falls PH/Excess Value": {
+            "type": "constant",
+            "value": -1
+        },
+        "Merced Falls PH/Base Value": {
+            "type": "constant",
+            "value": 0
+        },
+        "Merced Falls PH/Unconstrained Cost": {
+            "type": "constant",
+            "value": 1
+        },
+        "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500/Observed Flow": {
+            "type": "MERCED_R_A_POHONO_BRIDGE_NR_YOSEMITE_CA_11266500_Observed_Flow"
+        },
+        "IFR at Shaffer Bridge/Min Flow Cost": {
+            "type": "constant",
+            "value": -5000
+        },
+        "IFR at Shaffer Bridge/Max Flow Cost": {
+            "type": "constant",
+            "value": 1
+        },
+        "IFR at Shaffer Bridge/Min Flow": {
+            "type": "IFR_at_Shaffer_Bridge_Min_Flow"
+        },
+        "IFR at Shaffer Bridge/Max Flow": {
+            "type": "IFR_at_Shaffer_Bridge_Max_Flow"
+        },
+        "MER_01 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Merced River/scenarios/runoff/Livneh/tot_runoff_sb01_mcm.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "MER_02 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Merced River/scenarios/runoff/Livneh/tot_runoff_sb02_mcm.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "MER_03 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Merced River/scenarios/runoff/Livneh/tot_runoff_sb03_mcm.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "MER_04 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Merced River/scenarios/runoff/Livneh/tot_runoff_sb04_mcm.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "MER_05 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Merced River/scenarios/runoff/Livneh/tot_runoff_sb05_mcm.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "MER_06 Headflow/Runoff": {
+            "type": "dataframe",
+            "url": "../data/Merced River/scenarios/runoff/Livneh/tot_runoff_sb06_mcm.csv",
+            "column": "flw",
+            "index_col": "Date",
+            "parse_dates": true
+        },
+        "MID Main/Demand": {
+            "type": "MID_Main_Demand"
+        },
+        "MID Main/Observed Delivery": {
+            "type": "MID_Main_Observed_Delivery"
+        },
+        "MID Main/Cost": {
+            "type": "constant",
+            "value": -500
+        },
+        "MID Northside/Demand": {
+            "type": "MID_Northside_Demand"
+        },
+        "MID Northside/Observed Delivery": {
+            "type": "MID_Northside_Observed_Delivery"
+        },
+        "MID Northside/Cost": {
+            "type": "constant",
+            "value": -500
+        },
+        "USGS 11271290 MERCED R A SHAFFER BRIDGE NR CRESSEY CA/Observed Flow": {
+            "type": "Near_Shaffer_Bridge_11271290_Observed_Flow"
+        },
+        "USGS 11272500 MERCED R NR STEVINSON CA/Observed Flow": {
+            "type": "Near_Stevinson_11272500_Observed_Flow"
+        },
+        "New Exchequer PH/Fixed Head": {
+            "type": "constant",
+            "value": 264.0
+        },
+        "New Exchequer PH/Turbine Capacity": {
+            "type": "constant",
+            "value": 8.12
+        },
+        "USGS_11264500 MERCED R A HAPPY ISLES/Observed Flow": {
+            "type": "USGS_11264500_MERCED_R_A_HAPPY_ISLES_Observed_Flow"
+        },
+        "Lake McClure/Elevation": {
+            "type": "interpolatedvolume",
+            "node": "Lake McClure",
+            "volumes": [
+                0.0,
+                286.1,
+                348.4,
+                474.0,
+                522.4,
+                574.2,
+                687.4,
+                805.2,
+                832.1,
+                902.4,
+                985.8,
+                1238.6
+            ],
+            "values": [
+                184.3,
+                210.8,
+                216.0,
+                225.6,
+                229.0,
+                232.6,
+                239.8,
+                246.4,
+                247.8,
+                251.3,
+                255.0,
+                263.7
+            ],
+            "kind": "cubic"
+        }
+    },
+    "recorders": {
+        "Exchequer Dam Flood Release/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Exchequer Dam Flood Release"
+        },
+        "Exchequer Dam Flood Release/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Exchequer Dam Flood Release/Requirement"
+        },
+        "USGS 11270900 MERCED R BL MERCED FALLS DAM NR SNELL CA/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "USGS 11270900 MERCED R BL MERCED FALLS DAM NR SNELL CA/Observed Flow"
+        },
+        "USGS 11270900 MERCED R BL MERCED FALLS DAM NR SNELL CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11270900 MERCED R BL MERCED FALLS DAM NR SNELL CA"
+        },
+        "IFR bl New Exchequer Dam/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR bl New Exchequer Dam"
+        },
+        "IFR bl New Exchequer Dam/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR bl New Exchequer Dam/Min Flow"
+        },
+        "Lake McClure/storage": {
+            "type": "NumpyArrayStorageRecorder",
+            "node": "Lake McClure"
+        },
+        "Lake McClure/observed storage": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Lake McClure/Observed Storage"
+        },
+        "Lake McClure/elevation": {
+            "type": "NumpyArrayLevelRecorder",
+            "node": "Lake McClure"
+        },
+        "Lake McClure Inflow/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Lake McClure Inflow"
+        },
+        "Lake McSwain/storage": {
+            "type": "NumpyArrayStorageRecorder",
+            "node": "Lake McSwain"
+        },
+        "Lake McSwain/observed storage": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Lake McSwain/Observed Storage"
+        },
+        "McSwain PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "McSwain PH"
+        },
+        "McSwain PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "McSwain PH"
+        },
+        "Merced Falls PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Merced Falls PH"
+        },
+        "Merced Falls PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "Merced Falls PH"
+        },
+        "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500/Observed Flow"
+        },
+        "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "MERCED R A POHONO BRIDGE NR YOSEMITE CA_11266500"
+        },
+        "New Exchequer PH/energy": {
+            "type": "HydropowerEnergyRecorder",
+            "node": "New Exchequer PH"
+        },
+        "IFR at Shaffer Bridge/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "IFR at Shaffer Bridge"
+        },
+        "IFR at Shaffer Bridge/min flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR at Shaffer Bridge/Min Flow"
+        },
+        "IFR at Shaffer Bridge/max flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "IFR at Shaffer Bridge/Max Flow"
+        },
+        "Merced River Outflow/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Merced River Outflow"
+        },
+        "MID Main/demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "MID Main/Demand"
+        },
+        "MID Main/observed delivery": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "MID Main/Observed Delivery"
+        },
+        "MID Main/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "MID Main"
+        },
+        "MID Main/cost": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "MID Main/Cost"
+        },
+        "MID Northside/demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "MID Northside/Demand"
+        },
+        "MID Northside/observed delivery": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "MID Northside/Observed Delivery"
+        },
+        "MID Northside/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "MID Northside"
+        },
+        "MID Northside/cost": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "MID Northside/Cost"
+        },
+        "USGS 11271290 MERCED R A SHAFFER BRIDGE NR CRESSEY CA/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "USGS 11271290 MERCED R A SHAFFER BRIDGE NR CRESSEY CA/Observed Flow"
+        },
+        "USGS 11271290 MERCED R A SHAFFER BRIDGE NR CRESSEY CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11271290 MERCED R A SHAFFER BRIDGE NR CRESSEY CA"
+        },
+        "USGS 11272500 MERCED R NR STEVINSON CA/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "USGS 11272500 MERCED R NR STEVINSON CA/Observed Flow"
+        },
+        "USGS 11272500 MERCED R NR STEVINSON CA/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS 11272500 MERCED R NR STEVINSON CA"
+        },
+        "New Exchequer PH/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "New Exchequer PH"
+        },
+        "USGS_11264500 MERCED R A HAPPY ISLES/observed flow": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "USGS_11264500 MERCED R A HAPPY ISLES/Observed Flow"
+        },
+        "USGS_11264500 MERCED R A HAPPY ISLES/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "USGS_11264500 MERCED R A HAPPY ISLES"
+        }
+    }
+}

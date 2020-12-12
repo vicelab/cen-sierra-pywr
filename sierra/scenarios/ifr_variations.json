@@ -1,0 +1,13 @@
+{
+  "scenarios": [
+    {
+      "name": "IFRs",
+      "size": 3,
+      "ensemble_names": [
+        "baseline",
+        "SWRCB",
+        "Functional Flows"
+      ]
+    }
+  ]
+}
