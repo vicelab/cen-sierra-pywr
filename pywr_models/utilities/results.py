@@ -2,7 +2,7 @@ import os
 import pandas as pd
 
 
-def save_model_results(model, results_path):
+def save_model_results(model, results_path, file_suffix):
     results_df = model.to_dataframe()
     results_df.index.name = 'Date'
     scenario_names = [s.name for s in model.scenarios.scenarios]
@@ -44,7 +44,7 @@ def save_model_results(model, results_path):
             unit = 'MWh'
         else:
             unit = 'mcm'
-        tab_path = os.path.join(results_path, '{}_{}_{}'.format(_type, attr.title(), unit))
+        tab_path = os.path.join(results_path, '{}_{}_{}-{}'.format(_type, attr.title(), unit, file_suffix))
         df = results_df[cols]
         if has_scenarios:
             new_cols = [tuple([col[0].split('/')[0]] + list(col[1:])) for col in cols]

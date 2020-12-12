@@ -6,8 +6,9 @@ from run_basin_model import run_model
 from functools import partial
 import pandas as pd
 from loguru import logger
-
 from dotenv import load_dotenv
+from datetime import date
+
 load_dotenv()
 
 parser = argparse.ArgumentParser()
@@ -107,6 +108,7 @@ kwargs = dict(
     data_path=data_path,
     scenarios=scenarios,
     show_progress=args.progress_bar,
+    file_suffix=str(date.today())
 )
 
 if not multiprocessing:  # serial processing for debugging
