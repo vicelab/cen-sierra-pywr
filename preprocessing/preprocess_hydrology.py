@@ -4,7 +4,7 @@ import multiprocessing as mp
 from joblib import Parallel, delayed
 from loguru import logger
 
-import hydrology.common as common
+import preprocessing.hydrology.common as common
 import preprocessing.hydrology.stanislaus as stn
 import preprocessing.hydrology.tuolumne as tuo
 import preprocessing.hydrology.merced as mer
