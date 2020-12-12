@@ -7,6 +7,8 @@ from functools import partial
 import pandas as pd
 from loguru import logger
 
+from datetime import date
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -107,6 +109,7 @@ kwargs = dict(
     data_path=data_path,
     scenarios=scenarios,
     show_progress=args.progress_bar,
+    file_suffix=str(date.today())
 )
 
 if not multiprocessing:  # serial processing for debugging
