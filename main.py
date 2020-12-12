@@ -7,6 +7,8 @@ from functools import partial
 import pandas as pd
 from loguru import logger
 
+from datetime import date
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -95,6 +97,8 @@ else:
 
 model_args = list(product(climate_scenarios, basins))
 
+file_suffix = date.today().strftime('%Y-%m-%d')
+
 kwargs = dict(
     run_name=run_name,
     include_planning=include_planning,
@@ -107,6 +111,7 @@ kwargs = dict(
     data_path=data_path,
     scenarios=scenarios,
     show_progress=args.progress_bar,
+    file_suffix=file_suffix
 )
 
 if not multiprocessing:  # serial processing for debugging

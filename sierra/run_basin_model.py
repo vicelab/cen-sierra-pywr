@@ -54,7 +54,8 @@ def _run_model(climate,
                scenarios=None,
                show_progress=False,
                data_path=None,
-               file_suffix=None):
+               file_suffix=None
+               ):
     logger.info("Running \"{}\" scenario for {} basin, {} climate".format(run_name, basin.upper(), climate.upper()))
 
     climate_set, climate_scenario = climate.split('/')
@@ -353,5 +354,6 @@ def _run_model(climate,
     else:
         base_results_path = os.environ.get('SIERRA_RESULTS_PATH', '../results')
 
-    results_path = os.path.join(base_results_path, run_name, basin, climate+file_suffix)
+    run_folder = run_name + ' - {}'.format(file_suffix) if file_suffix else ''
+    results_path = os.path.join(base_results_path, run_folder, basin, climate)
     save_model_results(model, results_path, file_suffix)
