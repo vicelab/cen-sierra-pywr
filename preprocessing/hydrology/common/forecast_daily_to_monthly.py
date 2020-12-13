@@ -21,8 +21,8 @@ def create_forecasted_hydrology(scenario_path, dataset=None, default_alpha=0.2, 
     # Initial pre-processing
 
     debug = False
-    month_columns = ['{:02}'.format(i) for i in range(1, 13)]
-
+    # month_columns = ['{:02}'.format(i) for i in range(1, 13)]
+    month_columns=['10', '11', '12', '01', '02', '03', '04', '05', '06' , '07', '08', '09']
     # get source runoff data
     runoff_dir = 'runoff_aggregated'
     scenario_runoff_dir_path = os.path.join(scenario_path, runoff_dir)
