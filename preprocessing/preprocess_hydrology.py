@@ -1,6 +1,8 @@
 import os
 import multiprocessing as mp
 
+import argparse
+
 from joblib import Parallel, delayed
 from loguru import logger
 
@@ -167,18 +169,27 @@ def preprocess_hydrology(dataset, basins_to_process=None, tasks=None, debug=Fals
                 common.calculate_sjvi('/'.join([dataset, climate]))
         else:
             dataset_climates = ['/'.join([dataset, climate]) for climate in all_climates]
-            Parallel(n_jobs=num_cores)(delayed(common.calculate_sjvi)(dataset_climate) for dataset_climate in dataset_climates)
+            Parallel(n_jobs=num_cores)(
+                delayed(common.calculate_sjvi)(dataset_climate) for dataset_climate in dataset_climates)
 
 
 if __name__ == '__main__':
-    # datasets = ['historical', 'gcms']
-    # datasets = ['historical']
-    # datasets = ['sequences']
-    datasets = ['gcms']
-    tasks = ["pre", "common", "basins"]
-    # basins = ["merced"]
-    basins = None
-    # tasks = ['basins']
 
-    for dataset in datasets:
-        preprocess_hydrology(dataset, tasks=tasks, basins_to_process=basins, debug=True)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-t", "--tasks",
+                        help="Tasks to run. Options include 'pre', 'common', and 'basins'. Default is all.")
+    parser.add_argument("-b", "--basin",
+                        help="Basin to run. Options include 'stn', 'tuo', 'mer', and 'usj'. Default is all.")
+    parser.add_argument("-d", "--dataset",
+                        help="""
+                        Hydrology dataset to preprocess. Options include 'historical', 'gcms', and 'sequences'. Default is None.
+                        """)
+    args = parser.parse_args()
+
+    tasks = args.tasks or ["pre", "common", "basins"]
+    basins = [args.basin] if args.basin else None
+    dataset = args.dataset
+    if not dataset:
+        raise Exception('Dataset must be supplied')
+
+    preprocess_hydrology(dataset, tasks=tasks, basins_to_process=basins, debug=True)
