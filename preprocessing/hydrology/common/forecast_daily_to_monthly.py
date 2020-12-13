@@ -58,8 +58,8 @@ def create_forecasted_hydrology(scenario_path, dataset=None, default_alpha=0.2, 
 
         if months_to_calculate is None:
             if dataset != 'sequences':
-                months_to_calculate = list(df.index)
-                earliest_year = months_to_calculate[0][1]
+                months_to_calculate = list(df2.index)
+                earliest_year = months_to_calculate[0][0]
             elif dataset == 'sequences':
                 n_years = int(scenario_path.split('_Y')[1][:2])
                 months_to_calculate = []
@@ -100,7 +100,7 @@ def create_forecasted_hydrology(scenario_path, dataset=None, default_alpha=0.2, 
             vals.append(next_months_qfcst)
 
         index = pd.to_datetime(['{}-{}-01'.format(ym[0], ym[1]) for ym in months_to_calculate])
-        df_final = pd.DataFrame(index=index, data=vals, columns=month_columns)
+        df_final = pd.DataFrame(index=index[:len(vals)], data=vals, columns=month_columns)
         df_final.index.name = 'Date'
         df_final.to_csv(os.path.join(runoff_dir_monthly_forecasts, runoff_filename))
 
