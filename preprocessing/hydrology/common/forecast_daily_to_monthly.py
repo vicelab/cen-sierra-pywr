@@ -101,8 +101,7 @@ def create_forecasted_hydrology(scenario_path, dataset=None, default_alpha=0.2, 
 
             vals.append(next_months_qfcst)
 
-        # index = pd.to_datetime(['{}-{}-01'.format(months_to_calculate[i].year, months_to_calculate[i].month) for i
-        # in range(len(months_to_calculate))])
+        # index = pd.to_datetime(['{}-{}-01'.format(ym[0].year, ym[1].month) for i in range(len(months_to_calculate))])
         index1 = pd.to_datetime(['{}-{}-01'.format(months_to_calculate[i].year, months_to_calculate[i].month) for i in
                                  range(len(months_to_calculate))])
         index = index1.unique()
