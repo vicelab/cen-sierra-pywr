@@ -1,0 +1,1 @@
+cd .. && python main.py -b merced -sc functional_flows_basic
