@@ -15,13 +15,6 @@
             "energy_prices"
         ]
     },
-    "swrcb_basic": {
-        "name": "SWRCB",
-        "climates": [
-            "historical",
-            "gcms"
-        ]
-    },
     "MIDH2O": {
         "name": "MIDH2O",
         "climates": [

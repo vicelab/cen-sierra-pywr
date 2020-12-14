@@ -22,8 +22,8 @@ def create_forecasted_hydrology(scenario_path, dataset=None, default_alpha=0.2, 
     # Initial pre-processing
 
     debug = False
-    # month_columns = ['{:02}'.format(i) for i in range(1, 13)]
-    month_columns=['10', '11', '12', '01', '02', '03', '04', '05', '06' , '07', '08', '09']
+    month_columns = ['{:02}'.format(i) for i in range(1, 13)]
+
     # get source runoff data
     runoff_dir = 'runoff_aggregated'
     scenario_runoff_dir_path = os.path.join(scenario_path, runoff_dir)
@@ -72,8 +72,7 @@ def create_forecasted_hydrology(scenario_path, dataset=None, default_alpha=0.2, 
                 raise('Routine not complete for dataset {}'.format(dataset))
 
         vals = []
-        #        for i, (year, month) in enumerate(months_to_calculate):
-        for i in range(len(months_to_calculate)):
+        for i, (year, month) in enumerate(months_to_calculate):
 
             # Monthly median
             start_year = max(year - nyears_of_record, earliest_year)
@@ -100,11 +99,7 @@ def create_forecasted_hydrology(scenario_path, dataset=None, default_alpha=0.2, 
 
             vals.append(next_months_qfcst)
 
-        # index = pd.to_datetime(['{}-{}-01'.format(ym[0].year, ym[1].month) for i in range(len(months_to_calculate))])
-        index1 = pd.to_datetime(['{}-{}-01'.format(months_to_calculate[i].year, months_to_calculate[i].month) for i in
-                                 range(len(months_to_calculate))])
-        index = index1.unique()
-        # df_final = pd.DataFrame(index=index, data=vals, columns=month_columns)
+        index = pd.to_datetime(['{}-{}-01'.format(ym[0], ym[1]) for ym in months_to_calculate])
         df_final = pd.DataFrame(index=index[:len(vals)], data=vals, columns=month_columns)
         df_final.index.name = 'Date'
         df_final.to_csv(os.path.join(runoff_dir_monthly_forecasts, runoff_filename))
