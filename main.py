@@ -75,7 +75,8 @@ if args.scenario_set:
         if 'historical' in climates:
             climate_sets['historical'] = ['Livneh']
         if 'gcms' in climates:
-            gcms = ['HadGEM2-ES', 'CNRM-CM5', 'CanESM2', 'MIROC5']
+            gcms = ['ACCESS1-0', 'CanESM2', 'CCSM4', 'CESM1-BGC', 'CMCC-CMS', 'CNRM-CM5', 'GFDL-CM3', 'HadGEM2-CC',
+                    'HadGEM2-ES', 'MIROC5']
             # gcms = ['HadGEM2-ES', 'MIROC5']
             rcps = ['45', '85']
             # rcps = ['85']
