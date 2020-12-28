@@ -27,9 +27,10 @@ fontcolors = {
 
 # dot = Digraph(comment='System')
 
-def create_schematic(basin, version, format='pdf', view=False):
+def create_schematic(basin, version, format='pdf', render=False, view=False):
     try:
         from graphviz import Digraph, ExecutableNotFound
+        from graphviz.backend import CalledProcessError
     except:
         logger.warning('Graphviz python package not installed.')
         return
@@ -101,12 +102,16 @@ def create_schematic(basin, version, format='pdf', view=False):
                     pass
         _dot.edges([edge])
 
-    outpath1 = os.path.join('./schematics', '{}_schematic{}.gv'.format(basin, '' if not version else '_' + version))
-    _dot.render(outpath1, view=view)
-    # if format == 'png':
-    # outpath2 = os.path.join('./dashapp/assets/schematics',
-    #                         '{}_schematic{}.gv'.format(basin, '' if not version else '_' + version))
-    # _dot.render(outpath2, view=False)
+    schematics_dir = './schematics'
+    gv_filename = '{}_schematic{}.gv'.format(basin, '' if not version else '_' + version)
+    if render:
+        outpath = os.path.join(schematics_dir, gv_filename)
+        try:
+            _dot.render(outpath, view=view)
+        except CalledProcessError as err:
+            logger.warning('Could not create {} schematic. {}'.format(format, err))
+    else:
+        _dot.save(gv_filename, schematics_dir)
 
 
 if __name__ == '__main__':
