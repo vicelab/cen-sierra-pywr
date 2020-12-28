@@ -11,6 +11,7 @@ import pandas as pd
 import traceback
 from sierra.utilities import simplify_network, prepare_planning_model, save_model_results, create_schematic
 from loguru import logger
+from graphviz import ExecutableNotFound
 
 SECONDS_IN_DAY = 3600 * 24
 
@@ -231,6 +232,8 @@ def _run_model(climate,
                 create_schematic(basin, 'simplified')
             except FileNotFoundError as err:
                 logger.warning('Could not create schematic from Livneh model.')
+            except ExecutableNotFound:
+                logger.warning('Could not create daily schematic from Livneh model.')
 
         model_path = simplified_model_path
 
