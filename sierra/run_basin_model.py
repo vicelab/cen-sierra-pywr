@@ -82,6 +82,7 @@ def _run_model(climate,
     # Set up dates
 
     if start is None or end is None:
+        # TODO: get start and end years from outside, not hard coded
         if climate_scenario == 'Livneh':
             start_year = 1950
             end_year = 2012
@@ -139,11 +140,14 @@ def _run_model(climate,
                     new_items = {item['name']: item for item in scenario_items}
                     items.update(new_items)
                     base_model[key] = list(items.values())
+        else:
+            raise Exception('Scenario path {} does not exist.'.format(scenario_path))
+
 
     if scenarios is not None:
         for s in scenarios:
             # update from scenarios folder
-            scenario_path = os.path.join(root_dir, '../../scenarios/{}.json'.format(s))
+            scenario_path = os.path.join(data_path, 'metadata', 'scenario_definitions', '{}.json'.format(s))
             update_model(scenario_path)
 
     new_model_parts = {}
