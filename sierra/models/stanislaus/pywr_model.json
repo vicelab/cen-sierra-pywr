@@ -2166,13 +2166,6 @@
         ]
     ],
     "tables": {
-        "Full Natural Flow": {
-            "url": "../data/Stanislaus River/hydrology/historical/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
-            "index_col": 0,
-            "parse_dates": true,
-            "header": 0,
-            "squeeze": true
-        },
         "Full Natural Flow Forecast": {
             "url": "../data/Stanislaus River/hydrology/historical/Livneh/preprocessed/exceedance_forecast_mcm.csv",
             "index_col": [
@@ -2413,6 +2406,14 @@
     },
     "scenarios": [],
     "parameters": {
+        "Full Natural Flow": {
+            "type": "dataframe",
+            "url": "../data/Stanislaus River/hydrology/historical/Livneh/preprocessed/full_natural_flow_daily_mcm.csv",
+            "index_col": 0,
+            "header": 0,
+            "parse_dates": true,
+            "squeeze": true
+        },
         "Blocks": {
             "type": "Constant",
             "value": 4

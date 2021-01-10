@@ -10,6 +10,7 @@ from loguru import logger
 from datetime import date
 
 from dotenv import load_dotenv
+
 load_dotenv()
 
 parser = argparse.ArgumentParser()
@@ -61,7 +62,8 @@ if args.end_year:
     end = '{}-09-30'.format(args.end_year)
 
 if args.scenario_set:
-    with open("./sierra/scenarios/scenario_sets.json") as f:
+    scenario_sets_dir = os.path.join(data_path, 'metadata', 'scenario_sets.json')
+    with open(scenario_sets_dir) as f:
         scenario_sets = json.load(f)
 
     scenario_set_definition = scenario_sets.get(args.scenario_set)
@@ -75,12 +77,14 @@ if args.scenario_set:
         if 'historical' in climates:
             climate_sets['historical'] = ['Livneh']
         if 'gcms' in climates:
-            gcms = ['ACCESS1-0', 'CanESM2', 'CCSM4', 'CESM1-BGC', 'CMCC-CMS', 'CNRM-CM5', 'GFDL-CM3', 'HadGEM2-CC',
-                    'HadGEM2-ES', 'MIROC5']
-            # gcms = ['HadGEM2-ES', 'MIROC5']
-            rcps = ['45', '85']
-            # rcps = ['85']
-            gcm_rcps = ['{}_rcp{}'.format(g, r) for g, r in product(gcms, rcps)]
+            gcm_rcps = scenario_set_definition.get('gcms')
+            if not gcm_rcps:
+                full_basin_name = basin.replace('_', ' ').title() + ' River'
+                basin_gcm_hydrology_path = os.path.join(data_path, full_basin_name, 'hydrology', 'gcms')
+                basin_gcm_rcps = os.listdir(basin_gcm_hydrology_path)
+                gcm_rcps = basin_gcm_rcps
+            if debug:
+                gcm_rcps = gcm_rcps[:2]  # Just do 2 gcm_rcps for debugging
             climate_sets['gcms'] = gcm_rcps
         if 'sequences' in climates:
             sequences_file = os.path.join(data_path, 'metadata/sequence_definitions.csv')
@@ -121,12 +125,14 @@ if not multiprocessing:  # serial processing for debugging
 
 else:
     import multiprocessing as mp
+
     num_cores = args.num_cores or mp.cpu_count() - 1
 
     run_partial = partial(run_model, **kwargs)
 
     if multiprocessing == 'joblib':
         from joblib import Parallel, delayed
+
         n_jobs = min(num_cores, len(climate_scenarios))
         output = Parallel(n_jobs=n_jobs)(delayed(run_partial)(*args) for args in model_args)
 
