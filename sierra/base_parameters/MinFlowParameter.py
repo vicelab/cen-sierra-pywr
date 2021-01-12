@@ -79,7 +79,7 @@ class MinFlowParameter(IFRParameter):
                 terciles = fnf_annual.quantile([0, 0.33, 0.66]).values
                 wyt = sum([1 for q in terciles if fnf_annual[wy] >= q])
                 self.water_year_type = self.water_year_types[wyt]
-                self.close_wet_season_gates = False
+                self.close_wet_season_gates = True
 
     def get_down_ramp_ifr(self, timestep, scenario_index, value, initial_value=None, rate=0.25):
         """
@@ -164,39 +164,26 @@ class MinFlowParameter(IFRParameter):
 
         # Low wet season baseflow
         elif self.dowy < metrics['SP_Tim']:
-            # TODO: change logic as follows
+            # TODO: change logic as follows (FIRST 3 LINES ARE OBSOLETE)
             # 1. Start by releasing all inflow
             # 2. If a 2-year flood has passed (i.e., look back 7 days), then drop to the 10th percentile base flow
             # 3. Look forward 2-7 days and release incoming 2, 5, or 10 year event
 
-            if not self.close_wet_season_gates:
-                # prev_6_days_mcm = fnf[timestep.datetime + relativedelta(days=-6):timestep.datetime].sum()
-                flow_recorder = self.model.recorders[self.res_name + '/flow']
-                node_flow = flow_recorder.to_dataframe()[(scenario_name,)]
-                wet_season_days = int(self.dowy - metrics['Wet_Tim'] + 1)
-                wet_season_start_date = timestep.datetime + relativedelta(days=-wet_season_days)
-                prev_N_days_mcm = node_flow[wet_season_start_date:timestep.datetime].sum()
-                two_year_flood_mcm = metrics['Peak_2'] / 35.315 * 0.0864 * 6
-                if prev_N_days_mcm >= two_year_flood_mcm:
-                    ifr_cfs = metrics['Wet_BFL_Mag_10']
-                    self.close_wet_season_gates = True
+            # 1. Look forward 1 day and release incoming event at a magnitude less than or equal to the next lower
+            # associated frequency
+            # For example, if a 15-year event is seen, release a 10-year peak (Peak_10)
+            # If tomorrow's magnitude is between a 5 & 10 year event, release at the 5-year event level
 
-            if not self.close_wet_season_gates:
-                ifr_mcm = fnf[timestep.datetime]
-            else:
-                ifr_cfs = metrics['Wet_BFL_Mag_10']
-
-            # mbf_start = dowys['low wet baseflow']
-            # mbf_end = dowys['median wet baseflow']
-            # mbf_start_cfs = flows['low wet baseflow']
-            # mbf_end_cfs = flows['median wet baseflow']
-            # daily_increment = (mbf_end_cfs - mbf_start_cfs) / (mbf_end - mbf_start)
-            # days_since_start = self.dowy - mbf_start
-            # ifr_cfs = mbf_start_cfs + daily_increment * days_since_start
+            fnf_cfs = fnf[timestep.datetime] / 0.0864 * 35.315  # fnf mcm -> cfs
+            ifr_cfs = metrics['Wet_BFL_Mag_10']
+            for peak_freq in [10, 5, 2]:
+                peak_cfs = metrics['Peak_{}'.format(peak_freq)]
+                if fnf_cfs >= peak_cfs:
+                    ifr_cfs = peak_cfs
+                    break
 
         # Spring recession
         elif self.dowy == metrics['SP_Tim']:
-            self.close_wet_season_gates = False
             ifr_cfs = metrics['SP_Mag']
 
         # ...ramp down
