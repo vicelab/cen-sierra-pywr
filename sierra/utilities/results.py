@@ -44,7 +44,8 @@ def save_model_results(model, results_path, file_suffix):
             unit = 'MWh'
         else:
             unit = 'mcm'
-        tab_path = os.path.join(results_path, '{}_{}_{}-{}'.format(_type, attr.title(), unit, file_suffix))
+        suffix = '-{}'.format(file_suffix) if file_suffix else ''
+        tab_path = os.path.join(results_path, '{}_{}_{}'.format(_type, attr.title(), unit) + suffix)
         df = results_df[cols]
         if has_scenarios:
             new_cols = [tuple([col[0].split('/')[0]] + list(col[1:])) for col in cols]

@@ -361,6 +361,7 @@ def _run_model(climate,
     else:
         base_results_path = os.environ.get('SIERRA_RESULTS_PATH', '../results')
 
-    run_folder = run_name + ' - {}'.format(file_suffix) if file_suffix else ''
+    suffix = ' - {}'.format(file_suffix) if file_suffix else ''
+    run_folder = run_name + suffix
     results_path = os.path.join(base_results_path, run_folder, basin, climate)
     save_model_results(model, results_path, file_suffix)

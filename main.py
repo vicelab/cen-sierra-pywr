@@ -102,7 +102,7 @@ else:
 
 model_args = list(product(climate_scenarios, basins))
 
-file_suffix = date.today().strftime('%Y-%m-%d')
+file_suffix = None if debug else date.today().strftime('%Y-%m-%d')
 
 kwargs = dict(
     run_name=run_name,
