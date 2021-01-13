@@ -41,6 +41,7 @@ class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):
         ca_flow_req = self.ca_requirement(timestep, scenario_index)
 
         # FISH PULSE REQUIREMENT
+        # TODO: revise table to lookup by month, day rather than 1900 year (this method is slow)
         fish_pulse = self.model.tables["Fish Pulse"]['1900-{:02}-{:02}'.format(timestep.month, timestep.day)] / 35.315
 
         # The required flow is (greater of the Davis-Grunsky and FERC flows)
