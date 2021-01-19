@@ -26,8 +26,9 @@ class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):
     def _value(self, timestep, scenario_index):
         # All flow units are in cubic meters per second (cms) unless otherwise noted
 
-        if timestep.month == 10 and timestep.day <= 10:
-            return self.model.nodes["IFR at Shaffer Bridge"].prev_flow[scenario_index.global_id]
+        if timestep.month == 10 and timestep.day <= 10 and timestep.index:
+            ifr_mcm = self.model.nodes["IFR at Shaffer Bridge"].prev_flow[scenario_index.global_id]
+            return ifr_mcm / 0.0864  # convert to cms
 
         # FERC REQUIREMENT
         WYT = self.model.tables['WYT for IFR Below Exchequer'][self.operational_water_year]
@@ -40,6 +41,7 @@ class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):
         ca_flow_req = self.ca_requirement(timestep, scenario_index)
 
         # FISH PULSE REQUIREMENT
+        # TODO: revise table to lookup by month, day rather than 1900 year (this method is slow)
         fish_pulse = self.model.tables["Fish Pulse"]['1900-{:02}-{:02}'.format(timestep.month, timestep.day)] / 35.315
 
         # The required flow is (greater of the Davis-Grunsky and FERC flows)
