@@ -176,11 +176,13 @@ class MinFlowParameter(IFRParameter):
 
             fnf_cfs = fnf[timestep.datetime] / 0.0864 * 35.315  # fnf mcm -> cfs
             ifr_cfs = metrics['Wet_BFL_Mag_10']
-            for peak_freq in [10, 5, 2]:
-                peak_cfs = metrics['Peak_{}'.format(peak_freq)]
-                if fnf_cfs >= peak_cfs:
-                    ifr_cfs = peak_cfs
-                    break
+            if fnf_cfs >= metrics['Peak_2']:
+                ifr_cfs = fnf_cfs
+            # for peak_freq in [10, 5, 2]:
+            #     peak_cfs = metrics['Peak_{}'.format(peak_freq)]
+            #     if fnf_cfs >= peak_cfs:
+            #         ifr_cfs = peak_cfs
+            #         break
 
         # Spring recession
         elif self.dowy == metrics['SP_Tim']:
