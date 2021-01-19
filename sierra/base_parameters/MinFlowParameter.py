@@ -52,12 +52,12 @@ class MinFlowParameter(IFRParameter):
                 # 2-year flood: 18670 cfs x 7 days = 320 mcm flood total
                 # 5-year flood: 40760 cfs x 2 days = 199 mcm flood total
                 # 10-year flood: 52940 cfs x 2 days = 259 mcm flood total
-                floods = self.model.tables['functional flows floods']
-                self.flood_lengths = flood_lengths = {10: 2, 5: 2, 2: 7}  # these should be from highest to lowest
-                self.flood_volumes_mcm = {}
-                for return_interval in flood_lengths:
-                    self.flood_volumes_mcm[return_interval] \
-                        = floods['{}-year'.format(return_interval)] / 35.315 * 0.0864 * flood_lengths[return_interval]
+                # floods = self.model.tables['functional flows floods']
+                # self.flood_lengths = flood_lengths = {10: 2, 5: 2, 2: 7}  # these should be from highest to lowest
+                # self.flood_volumes_mcm = {}
+                # for return_interval in flood_lengths:
+                #     self.flood_volumes_mcm[return_interval] \
+                #         = floods['{}-year'.format(return_interval)] / 35.315 * 0.0864 * flood_lengths[return_interval]
 
     def before(self):
         super().before()
@@ -195,37 +195,37 @@ class MinFlowParameter(IFRParameter):
             ifr_cfs = max(ifr_cfs, metrics['DS_Mag_50'])
 
         # winter flood season rules
-        winter_flood_mcm = 0
-        winter_flood_cfs = 0
-        winter_flood_season = metrics['Wet_Tim'] <= self.dowy < metrics['SP_Tim']
-
-        if winter_flood_season or self.prev_flood_mcm[sid]:
-
-            if self.flood_days[sid] < self.flood_duration[sid]:
-                winter_flood_mcm = self.prev_flood_mcm[sid]  # TODO: make scenario-safe
-
-            elif self.water_year_type == 'moderate':
-                flood_start = metrics['Peak_Tim_2']
-                if self.dowy == flood_start:
-                    self.flood_duration[sid] = metrics['Peak_Dur_2']
-                    winter_flood_cfs = metrics['Peak_2']
-
-            elif self.water_year_type == 'wet':
-                flood_starts = {}
-                for interval in [2, 5, 10]:
-                    peak_timing = metrics['Peak_Tim_{}'.format(interval)]
-                    flood_starts[peak_timing] = interval
-                    if interval == 2:
-                        # add in additional 2-year floods
-                        for i in range(metrics['Peak_Fre_2']):
-                            flood_starts[peak_timing + 30 * (i - 1)] = interval
-                if self.dowy in flood_starts:
-                    return_interval = flood_starts[self.dowy]
-                    self.flood_duration[sid] = metrics['Peak_Dur_{}'.format(return_interval)]
-                    winter_flood_cfs = metrics['Peak_{}'.format(return_interval)]
-
-            if winter_flood_cfs:
-                winter_flood_mcm = winter_flood_cfs / 35.315 * 0.0864
+        # winter_flood_mcm = 0
+        # winter_flood_cfs = 0
+        # winter_flood_season = metrics['Wet_Tim'] <= self.dowy < metrics['SP_Tim']
+        #
+        # if winter_flood_season or self.prev_flood_mcm[sid]:
+        #
+        #     if self.flood_days[sid] < self.flood_duration[sid]:
+        #         winter_flood_mcm = self.prev_flood_mcm[sid]  # TODO: make scenario-safe
+        #
+        #     elif self.water_year_type == 'moderate':
+        #         flood_start = metrics['Peak_Tim_2']
+        #         if self.dowy == flood_start:
+        #             self.flood_duration[sid] = metrics['Peak_Dur_2']
+        #             winter_flood_cfs = metrics['Peak_2']
+        #
+        #     elif self.water_year_type == 'wet':
+        #         flood_starts = {}
+        #         for interval in [2, 5, 10]:
+        #             peak_timing = metrics['Peak_Tim_{}'.format(interval)]
+        #             flood_starts[peak_timing] = interval
+        #             if interval == 2:
+        #                 # add in additional 2-year floods
+        #                 for i in range(metrics['Peak_Fre_2']):
+        #                     flood_starts[peak_timing + 30 * (i - 1)] = interval
+        #         if self.dowy in flood_starts:
+        #             return_interval = flood_starts[self.dowy]
+        #             self.flood_duration[sid] = metrics['Peak_Dur_{}'.format(return_interval)]
+        #             winter_flood_cfs = metrics['Peak_{}'.format(return_interval)]
+        #
+        #     if winter_flood_cfs:
+        #         winter_flood_mcm = winter_flood_cfs / 35.315 * 0.0864
 
             # Old code for hydrology-triggered floods
             # if self.flood_year[sid] and self.flood_days[sid] < self.flood_lengths[self.flood_year[sid]]:
@@ -244,18 +244,18 @@ class MinFlowParameter(IFRParameter):
             #             self.flood_year[sid] = return_interval
             #             break
 
-            if winter_flood_mcm:
-                self.prev_flood_mcm[sid] = winter_flood_mcm
-                self.flood_days[sid] += 1
-                # self.num_floods[sid] = min(self.num_floods[sid] + 1, 2)
-            else:
-                self.prev_flood_mcm[sid] = 0
-                self.flood_days[sid] = 0
-                self.flood_duration[sid] = 0
-                self.flood_year[sid] = 0
+            # if winter_flood_mcm:
+            #     self.prev_flood_mcm[sid] = winter_flood_mcm
+            #     self.flood_days[sid] += 1
+            #     # self.num_floods[sid] = min(self.num_floods[sid] + 1, 2)
+            # else:
+            #     self.prev_flood_mcm[sid] = 0
+            #     self.flood_days[sid] = 0
+            #     self.flood_duration[sid] = 0
+            #     self.flood_year[sid] = 0
 
         ifr_mcm = ifr_mcm or (ifr_cfs / 35.315 * 0.0864)
-        ifr_mcm = max(ifr_mcm, winter_flood_mcm)
+        # ifr_mcm = max(ifr_mcm, winter_flood_mcm)
 
         fnf_mcm = fnf[timestep.datetime]
         ifr_mcm = min(ifr_mcm, fnf_mcm)

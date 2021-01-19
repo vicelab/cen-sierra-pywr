@@ -44,8 +44,8 @@ def save_model_results(model, results_path, file_suffix):
             unit = 'MWh'
         else:
             unit = 'mcm'
-        suffix = '-{}'.format(file_suffix) if file_suffix else ''
-        tab_path = os.path.join(results_path, '{}_{}_{}'.format(_type, attr.title(), unit) + suffix)
+        # file_path = os.path.join(results_path, '{}_{}_{}_{}'.format(_type, attr.title(), unit, file_suffix))
+        file_path = os.path.join(results_path, '{}_{}_{}'.format(_type, attr.title(), unit))
         df = results_df[cols]
         if has_scenarios:
             new_cols = [tuple([col[0].split('/')[0]] + list(col[1:])) for col in cols]
@@ -53,4 +53,4 @@ def save_model_results(model, results_path, file_suffix):
             df.columns.names = ["node"] + scenario_names
         else:
             df.columns = [c.split('/')[0] for c in df.columns]
-        df.to_csv(tab_path + '.csv')
+        df.to_csv(file_path + '.csv')
