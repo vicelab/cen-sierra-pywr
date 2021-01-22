@@ -1535,6 +1535,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "head": 670.6,
             "turbine_capacity": 1.5293118062599829,
+            "flow_capacity": 1.5293118062599829,
             "spinning_flow": 0.2,
             "spinning_cost": -1000,
             "cost": [
@@ -1606,8 +1607,8 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 208.8,
-            "turbine_capacity": 3.259269321501275,
-            "flow_capacity": 3.259269321501275,
+            "turbine_capacity": 2.81,
+            "flow_capacity": 2.81,
             "cost": [
                 "Big Creek 8 PH/Cost/1",
                 "Big Creek 8 PH/Cost/2",
