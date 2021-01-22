@@ -44,15 +44,28 @@ class WaterLPParameter(Parameter):
 
         if len(name_parts) >= 2:
             self.attr_name = name_parts[1]
+            self.res_attr_name = '/'.join(name_parts[:2])
 
         if self.mode == 'scheduling':
             if len(name_parts) == 3:
+
+                # add the block number
                 self.block = int(name_parts[2])
+
+                # add/update the list of all blocks for the resource/attribute
+                blocks = self.model.blocks.get(self.res_attr_name, []) + [self.block]
+                self.model.blocks[self.res_attr_name] = sorted(blocks)
         else:
             if len(name_parts) >= 2:
                 self.month_offset = int(name_parts[-1]) - 1
             if len(name_parts) == 4:
+
+                # add the block number
                 self.block = int(name_parts[-2])
+
+                # add/update the list of all blocks for the resource/attribute
+                blocks = self.model.blocks.get(self.res_name, []) + [self.block]
+                self.model.blocks[self.res_attr_name] = sorted(blocks)
 
         if self.month_offset is not None:
             self.month_suffix = '/{}'.format(self.month_offset + 1)
