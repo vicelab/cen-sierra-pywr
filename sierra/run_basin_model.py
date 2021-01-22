@@ -273,6 +273,7 @@ def _run_model(climate,
 
         # set model mode to planning
         planning_model.mode = 'planning'
+        planning_model.blocks = {}
 
         # set time steps
         # start = planning_model.timestepper.start
@@ -295,6 +296,7 @@ def _run_model(climate,
         logger.error(err)
         raise
 
+    model.blocks = {}
     model.setup()
 
     # run model

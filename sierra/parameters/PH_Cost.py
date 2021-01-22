@@ -31,6 +31,8 @@ class PH_Cost(WaterLPParameter):
         #
         # pywr_cost = - (abs(price_per_mcm) / 100 + 100) * price_per_mcm / abs(price_per_mcm)
 
+        resource_blocks = self.model.blocks.get(self.res_attr_name)
+
         if self.model.mode == 'planning':
             powerhouse = self.model.nodes[self.res_name + self.month_suffix]
             price_per_kWh = self.model.tables["Energy Price Values"] \
@@ -48,10 +50,13 @@ class PH_Cost(WaterLPParameter):
             if self.block == 1:
                 pywr_cost = min(pywr_cost, powerhouse.spinning_cost)
         else:
-            if self.block == 1:
-                pywr_cost = -100
+            powerhouse = self.model.nodes[self.res_name]
+            if self.block == resource_blocks[-1]:
+                pywr_cost = 1  # costs money to generate in block 3 (negative prices)
+            elif self.block == resource_blocks[0]:
+                pywr_cost = powerhouse.spinning_cost
             else:
-                pywr_cost = 1  # costs money to generate (negative prices)
+                pywr_cost = -100
 
         return pywr_cost
 
