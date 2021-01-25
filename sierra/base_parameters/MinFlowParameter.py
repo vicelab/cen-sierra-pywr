@@ -119,7 +119,8 @@ class MinFlowParameter(IFRParameter):
             min_flow_mcm = 0.0
 
         elif scenario_name == 'SWRCB' and self.ifr_type == 'enhanced':
-            min_flow_mcm = self.swrcb_flows_min_flow(timestep, scenario_index)
+            baseflow_mcm = default(timestep, scenario_index)
+            min_flow_mcm = self.swrcb_flows_min_flow(timestep, scenario_index, baseflow_mcm)
 
         elif scenario_name == 'Functional Flows' and self.ifr_type == 'enhanced':
             if self.model.mode == 'scheduling':
@@ -132,9 +133,13 @@ class MinFlowParameter(IFRParameter):
 
         return min_flow_mcm
 
-    def swrcb_flows_min_flow(self, timestep, scenario_index):
-        fnf_mcm = self.model.parameters['Full Natural Flow'].get_value(scenario_index)
-        ifr_mcm = fnf_mcm * 0.4
+    def swrcb_flows_min_flow(self, timestep, scenario_index, baseflow_mcm):
+        ifr_mcm = baseflow_mcm
+        if 2 <= timestep.month <= 6:
+            # TODO: setup rolling mean as preprocessing step to reduce run time costs here?
+            start_date = timestep.datetime - relativedelta(days=7)
+            ifr_mcm = self.model.parameters['Full Natural Flow'].dataframe[start_date:timestep.datetime].mean() * 0.40
+            ifr_mcm = max(ifr_mcm, baseflow_mcm)
         ifr_cms = ifr_mcm / 0.0864
         return ifr_cms
 
@@ -229,32 +234,32 @@ class MinFlowParameter(IFRParameter):
         #     if winter_flood_cfs:
         #         winter_flood_mcm = winter_flood_cfs / 35.315 * 0.0864
 
-            # Old code for hydrology-triggered floods
-            # if self.flood_year[sid] and self.flood_days[sid] < self.flood_lengths[self.flood_year[sid]]:
-            #     winter_flood_mcm = self.prev_flood_mcm[sid]  # TODO: make scenario-safe
-            #
-            # else:
-            #
-            #     forecast_start = timestep.datetime
-            #
-            #     # loop through return intervals, from highest to lowest
-            #     for return_interval, flood_volume_mcm in self.flood_volumes_mcm.items():
-            #         days = self.flood_lengths[return_interval]
-            #         forecast_mcm = fnf[forecast_start:forecast_start + relativedelta(days=days)].sum()
-            #         if forecast_mcm >= flood_volume_mcm:
-            #             winter_flood_mcm = flood_volume_mcm / days
-            #             self.flood_year[sid] = return_interval
-            #             break
+        # Old code for hydrology-triggered floods
+        # if self.flood_year[sid] and self.flood_days[sid] < self.flood_lengths[self.flood_year[sid]]:
+        #     winter_flood_mcm = self.prev_flood_mcm[sid]  # TODO: make scenario-safe
+        #
+        # else:
+        #
+        #     forecast_start = timestep.datetime
+        #
+        #     # loop through return intervals, from highest to lowest
+        #     for return_interval, flood_volume_mcm in self.flood_volumes_mcm.items():
+        #         days = self.flood_lengths[return_interval]
+        #         forecast_mcm = fnf[forecast_start:forecast_start + relativedelta(days=days)].sum()
+        #         if forecast_mcm >= flood_volume_mcm:
+        #             winter_flood_mcm = flood_volume_mcm / days
+        #             self.flood_year[sid] = return_interval
+        #             break
 
-            # if winter_flood_mcm:
-            #     self.prev_flood_mcm[sid] = winter_flood_mcm
-            #     self.flood_days[sid] += 1
-            #     # self.num_floods[sid] = min(self.num_floods[sid] + 1, 2)
-            # else:
-            #     self.prev_flood_mcm[sid] = 0
-            #     self.flood_days[sid] = 0
-            #     self.flood_duration[sid] = 0
-            #     self.flood_year[sid] = 0
+        # if winter_flood_mcm:
+        #     self.prev_flood_mcm[sid] = winter_flood_mcm
+        #     self.flood_days[sid] += 1
+        #     # self.num_floods[sid] = min(self.num_floods[sid] + 1, 2)
+        # else:
+        #     self.prev_flood_mcm[sid] = 0
+        #     self.flood_days[sid] = 0
+        #     self.flood_duration[sid] = 0
+        #     self.flood_year[sid] = 0
 
         ifr_mcm = ifr_mcm or (ifr_cfs / 35.315 * 0.0864)
         # ifr_mcm = max(ifr_mcm, winter_flood_mcm)
