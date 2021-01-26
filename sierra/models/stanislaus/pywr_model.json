@@ -2177,6 +2177,11 @@
                 1
             ]
         },
+        "functional flows metrics": {
+            "url": "../data/Stanislaus River/_tables/Functional_Flows_metrics.csv",
+            "index_col": 0,
+            "header": 0
+        },
         "Peak Donnells Runoff": {
             "url": "../data/Stanislaus River/hydrology/historical/Livneh/preprocessed/Donnells_Reservoir_Peak_MAM_Runoff_date.csv",
             "index_col": 0,
