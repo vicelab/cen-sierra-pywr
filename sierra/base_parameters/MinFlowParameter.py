@@ -119,7 +119,10 @@ class MinFlowParameter(IFRParameter):
             min_flow_mcm = 0.0
 
         elif scenario_name == 'SWRCB' and self.ifr_type == 'enhanced':
+            # STEP 1: Calculate base IFR (double check units!!)
             baseflow_mcm = default(timestep, scenario_index)
+
+            # STEP 2: Calculate 40% rule
             min_flow_mcm = self.swrcb_flows_min_flow(timestep, scenario_index, baseflow_mcm)
 
         elif scenario_name == 'Functional Flows' and self.ifr_type == 'enhanced':
