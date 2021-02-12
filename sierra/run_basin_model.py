@@ -20,26 +20,41 @@ def run_model(*args, **kwargs):
     climate = args[0]
     basin = args[1]
     run_name = kwargs['run_name']
+    study_name = kwargs.pop('study_name', None)
+    debug = kwargs.get('debug')
+    data_path = kwargs.get('data_path')
+    file_suffix = kwargs.get('file_suffix')
 
-    logger_name = '{}-{}-{}.log'.format(run_name, basin, climate.replace('/', '_'))
-    logs_dir = os.path.join('.', 'logs')
-    if not os.path.exists(logs_dir):
-        os.makedirs(logs_dir)
-    logger_path = os.path.join(logs_dir, logger_name)
-    if os.path.exists(logger_path):
-        try:
-            os.remove(logger_path)
-            logger.add(logger_path)
-        except:
-            logger.warning('Failed to remove log file {}'.format(logger_path))
+    # ==================================================================================================================
+    # SET UP RESULTS FOLDER
+    # Log file will go here as well
+    # results_path = os.path.join('./results', run_name, basin, climate)
+    if debug:
+        base_results_path = '../results'
     else:
-        logger.add(logger_path)
+        default_results_path = os.path.join(data_path, '../results')
+        base_results_path = os.environ.get('SIERRA_RESULTS_PATH', default_results_path)
+
+    suffix = ' - {}'.format(file_suffix) if file_suffix else ''
+    run_folder = run_name + suffix
+    if study_name:
+        results_path = os.path.join(base_results_path, study_name, run_folder, basin, climate)
+    else:
+        results_path = os.path.join(base_results_path, run_folder, basin, climate)
+    if not os.path.exists(results_path):
+        os.makedirs(results_path)
+
+    logger_path = os.path.join(results_path, 'log.txt')
+    logger_id = logger.add(logger_path)
+    # ==================================================================================================================
 
     try:
-        _run_model(*args, **kwargs)
+        _run_model(*args, results_path=results_path, **kwargs)
     except Exception as err:
         logger.exception(err)
         logger.error("Failed")
+    finally:
+        logger.remove(logger_id)
 
 
 def _run_model(climate,
@@ -52,11 +67,14 @@ def _run_model(climate,
                use_multiprocessing=False,
                debug=False,
                planning_months=12,
+               n_blocks=8,
                scenarios=None,
                show_progress=False,
                data_path=None,
-               file_suffix=None
+               file_suffix=None,
+               results_path=None
                ):
+
     logger.info("Running \"{}\" scenario for {} basin, {} climate".format(run_name, basin.upper(), climate.upper()))
 
     climate_set, climate_scenario = climate.split('/')
@@ -142,7 +160,6 @@ def _run_model(climate,
                     base_model[key] = list(items.values())
         else:
             raise Exception('Scenario path {} does not exist.'.format(scenario_path))
-
 
     if scenarios is not None:
         for s in scenarios:
@@ -254,7 +271,8 @@ def _run_model(climate,
         monthly_filename = model_filename_base + '_monthly.json'
         planning_model_path = os.path.join(temp_dir, monthly_filename)
 
-        prepare_planning_model(model_json, basin, climate, planning_model_path, steps=planning_months, debug=debug,
+        prepare_planning_model(model_json, basin, climate, planning_model_path, steps=planning_months,
+                               n_blocks=n_blocks, debug=debug,
                                remove_rim_dams=True)
 
         if debug:
@@ -297,6 +315,7 @@ def _run_model(climate,
         raise
 
     model.blocks = {}
+    logger.info('Setting up model')
     model.setup()
 
     # run model
@@ -321,10 +340,11 @@ def _run_model(climate,
 
     disable_progress_bar = not debug and not show_progress
     n_timesteps = len(model.timestepper.datetime_index)
+    logger.info('Running model')
+    last_date = model.timestepper.datetime_index[-1]
+
     for date in tqdm(model.timestepper.datetime_index, ncols=60, disable=disable_progress_bar):
         step += 1
-        if disable_progress_bar and date.month == 9 and date.day == 30:
-            logger.info('{}% complete (finsished year {})'.format(round(step / n_timesteps * 100), date.year))
         try:
 
             # Step 1: run planning model
@@ -345,25 +365,18 @@ def _run_model(climate,
 
             # Step 2: run daily model
             model.step()
+
+            # report progress
+            if disable_progress_bar and date.month == 9 and date.day == 30 or date == last_date:
+                logger.info('{}% complete (finished year {})'.format(round(step / n_timesteps * 100), date.year))
+
         except Exception as err:
             traceback.print_exc()
             logger.error('Failed at step {}'.format(date))
             raise
 
-    if debug:
-        total_seconds = (datetime.now() - now).total_seconds()
-        logger.debug('Total run: {} seconds'.format(total_seconds))
-        monthly_pct = monthly_seconds / total_seconds * 100
-        logger.debug('Monthly overhead: {} seconds ({:02}% of total)'.format(monthly_seconds, monthly_pct))
+    total_seconds = (datetime.now() - now).total_seconds()
+    logger.info('Total runtime: {} seconds'.format(total_seconds))
 
     # save results to CSV
-    # results_path = os.path.join('./results', run_name, basin, climate)
-    if debug:
-        base_results_path = '../results'
-    else:
-        base_results_path = os.environ.get('SIERRA_RESULTS_PATH', '../results')
-
-    suffix = ' - {}'.format(file_suffix) if file_suffix else ''
-    run_folder = run_name + suffix
-    results_path = os.path.join(base_results_path, run_folder, basin, climate)
     save_model_results(model, results_path, file_suffix)
