@@ -26,6 +26,7 @@ parser.add_argument("-e", "--end_year", help="End year", type=int)
 parser.add_argument("-y", "--years", help="Years to run (useful for debugging)", type=int)
 parser.add_argument("-n", "--run_name", help="Run name")
 parser.add_argument("-pb", "--progress_bar", help="Show progress bar", action='store_true')
+parser.add_argument("-nb", "--n_blocks", help="Number of piecewise linearization segments (blocks)", type=int, default=5)
 args = parser.parse_args()
 
 basin = args.basin
@@ -54,7 +55,7 @@ if debug:
     end = '{}-09-30'.format(args.end_year or 2002)
     run_name = 'development'
 else:
-    planning_months = args.planning_months or 12
+    planning_months = args.planning_months or 8
 
 if args.start_year:
     start = '{}-10-01'.format(args.start_year)
@@ -100,6 +101,8 @@ if basin == 'all':
 else:
     basins = [basin]
 
+# some preprocessing
+
 model_args = list(product(climate_scenarios, basins))
 
 file_suffix = None if debug else date.today().strftime('%Y-%m-%d')
@@ -109,6 +112,7 @@ kwargs = dict(
     include_planning=include_planning,
     debug=debug,
     planning_months=planning_months,
+    n_blocks=args.n_blocks,
     use_multiprocessing=multiprocessing is not None,
     start=start,
     end=end,
