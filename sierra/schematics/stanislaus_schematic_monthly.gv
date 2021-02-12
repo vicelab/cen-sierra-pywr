@@ -24,6 +24,7 @@ digraph stanislaus {
 	"Beardsley Reservoir [link]/1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Beardsley Reservoir/1" [fillcolor=blue fontcolor=white shape=oval style="filled,dashed"]
 	"Beardsley Reservoir [link]/1" -> "Beardsley Reservoir/1" [style=dashed]
+	"Beardsley Reservoir [original]/2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Beardsley PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"Beaver Creek Diversion/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Collierville PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
@@ -33,6 +34,7 @@ digraph stanislaus {
 	"Donnells Reservoir [link]/1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Donnells Reservoir/1" [fillcolor=blue fontcolor=white shape=oval style="filled,dashed"]
 	"Donnells Reservoir [link]/1" -> "Donnells Reservoir/1" [style=dashed]
+	"Donnells Reservoir [original]/2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Donnell Lake Low Flow Release/1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"IFR bl Angels Div/1" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"IFR bl Collierville PH discharge/1" [fillcolor=green fontcolor=black shape=oval style=filled]
@@ -57,11 +59,13 @@ digraph stanislaus {
 	"Hunter Reservoir [link]/1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Hunter Reservoir/1" [fillcolor=blue fontcolor=white shape=oval style="filled,dashed"]
 	"Hunter Reservoir [link]/1" -> "Hunter Reservoir/1" [style=dashed]
+	"Hunter Reservoir [original]/2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Lyons Reservoir [original]/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Lyons Reservoir [input]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Lyons Reservoir [link]/1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Lyons Reservoir/1" [fillcolor=blue fontcolor=white shape=oval style="filled,dashed"]
 	"Lyons Reservoir [link]/1" -> "Lyons Reservoir/1" [style=dashed]
+	"Lyons Reservoir [original]/2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"McKays Point Diversion/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Murphys PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"New Melones Lake/1" [fillcolor=black fontcolor=white shape=oval style=filled]
@@ -70,6 +74,7 @@ digraph stanislaus {
 	"New Spicer Meadow Reservoir [link]/1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"New Spicer Meadow Reservoir/1" [fillcolor=blue fontcolor=white shape=oval style="filled,dashed"]
 	"New Spicer Meadow Reservoir [link]/1" -> "New Spicer Meadow Reservoir/1" [style=dashed]
+	"New Spicer Meadow Reservoir [original]/2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"New Spicer Meadow PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"Philadelphia Aquaduct Outflow/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Phoenix Canal Outflow/1" [fillcolor=black fontcolor=white shape=oval style=filled]
@@ -79,11 +84,13 @@ digraph stanislaus {
 	"Pinecrest Reservoir [link]/1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Pinecrest Reservoir/1" [fillcolor=blue fontcolor=white shape=oval style="filled,dashed"]
 	"Pinecrest Reservoir [link]/1" -> "Pinecrest Reservoir/1" [style=dashed]
+	"Pinecrest Reservoir [original]/2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Relief Reservoir [original]/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Relief Reservoir [input]" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Relief Reservoir [link]/1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Relief Reservoir/1" [fillcolor=blue fontcolor=white shape=oval style="filled,dashed"]
 	"Relief Reservoir [link]/1" -> "Relief Reservoir/1" [style=dashed]
+	"Relief Reservoir [original]/2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Sand Bar PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"Beardsley Afterbay/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Spring Gap PH/1" [fillcolor=red fontcolor=white shape=oval style=filled]
@@ -96,6 +103,7 @@ digraph stanislaus {
 	"Union-Utica Reservoir [link]/1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Union-Utica Reservoir/1" [fillcolor=blue fontcolor=white shape=oval style="filled,dashed"]
 	"Union-Utica Reservoir [link]/1" -> "Union-Utica Reservoir/1" [style=dashed]
+	"Union-Utica Reservoir [original]/2" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"UPA Tunnel Tap/1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"UPA Tunnel Tap Outflow/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"Upper Collierville Tunnel Outflow/1" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
@@ -103,20 +111,28 @@ digraph stanislaus {
 	"STN_below_Melons.2.1/1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Beardsley Reservoir [input]" -> "Beardsley Reservoir [original]/1"
 	"Beardsley Reservoir [original]/1" -> "Beardsley Reservoir [link]/1"
+	"Beardsley Reservoir [link]/1" -> "Beardsley Reservoir [original]/2"
 	"Donnells Reservoir [input]" -> "Donnells Reservoir [original]/1"
 	"Donnells Reservoir [original]/1" -> "Donnells Reservoir [link]/1"
+	"Donnells Reservoir [link]/1" -> "Donnells Reservoir [original]/2"
 	"Hunter Reservoir [input]" -> "Hunter Reservoir [original]/1"
 	"Hunter Reservoir [original]/1" -> "Hunter Reservoir [link]/1"
+	"Hunter Reservoir [link]/1" -> "Hunter Reservoir [original]/2"
 	"Lyons Reservoir [input]" -> "Lyons Reservoir [original]/1"
 	"Lyons Reservoir [original]/1" -> "Lyons Reservoir [link]/1"
+	"Lyons Reservoir [link]/1" -> "Lyons Reservoir [original]/2"
 	"New Spicer Meadow Reservoir [input]" -> "New Spicer Meadow Reservoir [original]/1"
 	"New Spicer Meadow Reservoir [original]/1" -> "New Spicer Meadow Reservoir [link]/1"
+	"New Spicer Meadow Reservoir [link]/1" -> "New Spicer Meadow Reservoir [original]/2"
 	"Pinecrest Reservoir [input]" -> "Pinecrest Reservoir [original]/1"
 	"Pinecrest Reservoir [original]/1" -> "Pinecrest Reservoir [link]/1"
+	"Pinecrest Reservoir [link]/1" -> "Pinecrest Reservoir [original]/2"
 	"Relief Reservoir [input]" -> "Relief Reservoir [original]/1"
 	"Relief Reservoir [original]/1" -> "Relief Reservoir [link]/1"
+	"Relief Reservoir [link]/1" -> "Relief Reservoir [original]/2"
 	"Union-Utica Reservoir [input]" -> "Union-Utica Reservoir [original]/1"
 	"Union-Utica Reservoir [original]/1" -> "Union-Utica Reservoir [link]/1"
+	"Union-Utica Reservoir [link]/1" -> "Union-Utica Reservoir [original]/2"
 	"Angels Canal Outflow/1" -> "Angels PH/1"
 	"Angels Canal Outflow/1" -> "IFR bl Angels Div/1"
 	"Donnells Reservoir [original]/1" -> "Donnells PH/1"
