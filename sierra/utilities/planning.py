@@ -24,14 +24,14 @@ PARAMETERS_TO_REMOVE = {
 }
 
 
-def prepare_planning_model(m, basin, climate, outpath, steps=12, blocks=8, parameters_to_expand=None, debug=False,
+def prepare_planning_model(m, basin, climate, outpath, steps=12, n_blocks=5, parameters_to_expand=None, debug=False,
                            remove_rim_dams=False):
     """
     Convert the daily scheduling model to a planning model.
     :param m:
     :param outpath:
     :param steps:
-    :param blocks:
+    :param n_blocks:
     :param parameters_to_expand:
     :param debug:
     :param include_rim_dams: Not used.
@@ -267,7 +267,7 @@ def prepare_planning_model(m, basin, climate, outpath, steps=12, blocks=8, param
                                     parameters_to_expand.append(v)
                                 parts = v.split('/')
                                 if j == 0 or len(parts) == 2:
-                                    for b in range(blocks):
+                                    for b in range(n_blocks):
                                         if len(parts) == 2:
                                             # no block-specific value, but still need to expand to number of blocks
                                             new_values.append(v + month)
@@ -372,7 +372,7 @@ def prepare_planning_model(m, basin, climate, outpath, steps=12, blocks=8, param
                             new_param['control_curves'].append(control_curve)
 
                 if block:
-                    for b in range(blocks):
+                    for b in range(n_blocks):
                         new_param_name = '/'.join([res_name, attribute, str(b + 1), str(t)])
                         new_parameters[new_param_name] = new_param
                 else:
