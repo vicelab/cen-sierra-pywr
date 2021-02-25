@@ -7,7 +7,7 @@ from sierra.utilities.converter import convert
 class Don_Pedro_Lake_Flood_Control_Requirement(WaterLPParameter):
     """"""
 
-    def _value(self, timestep, scenario_index):
+    cdef  _value(self, timestep, scenario_index):
 
         if self.model.mode == 'planning':
             return 0
@@ -83,7 +83,7 @@ class Don_Pedro_Lake_Flood_Control_Requirement(WaterLPParameter):
 
         return release_mcm / 0.0864
 
-    def value(self, timestep, scenario_index):
+    cdef  value(self, timestep, scenario_index):
         try:
             return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1,
                            scale_out=1000000.0)
@@ -94,7 +94,7 @@ class Don_Pedro_Lake_Flood_Control_Requirement(WaterLPParameter):
             raise
 
     @classmethod
-    def load(cls, model, data):
+    cdef  load(cls, model, data):
         try:
             return cls(model, **data)
         except Exception as err:

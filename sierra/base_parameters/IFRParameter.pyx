@@ -6,7 +6,7 @@ class IFRParameter(WaterLPParameter):
     ifr_names = None
     ifr_type = 'basic'
 
-    def setup(self):
+    cpdef setup(self):
         super().setup()
 
         self.ifr_type = self.model.nodes[self.res_name + self.month_suffix].ifr_type

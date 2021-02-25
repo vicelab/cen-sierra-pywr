@@ -15,15 +15,15 @@ class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):
     nov_dec_mean = 0
     ifr_names = None
 
-    def __init__(self, *args, **kwargs):
+    cpdef void __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    def setup(self):
+    cpdef void setup(self):
         super().setup()
         self.nov_dec_mean = np.zeros(self.num_scenarios)
         self.cowell_day_cnt = np.zeros(self.num_scenarios)
 
-    def _value(self, timestep, scenario_index):
+    cpdef int _value(self, timestep, scenario_index):
         # All flow units are in cubic meters per second (cms) unless otherwise noted
 
         if timestep.month == 10 and timestep.day <= 10 and timestep.index:
@@ -53,11 +53,11 @@ class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):
         # requirement_mcm = max(requirement_mcm, swrcb_reqt_mcm)
         return requirement_cms
 
-    def value(self, timestep, scenario_index):
-        val = self.requirement(timestep, scenario_index, default=self._value)
+    cpdef int value(self, timestep, scenario_index):
+        val = self.requirement(timestep, scenario_index, cpdef ault=self._value)
         return convert(val, "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
 
-    def ferc_req(self, timestep, scenario_index, wyt):
+    cpdef int ferc_req(self, timestep, scenario_index, wyt):
         sid = scenario_index.global_id
         month = timestep.month
         day = timestep.day
@@ -109,7 +109,7 @@ class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):
 
         return ferc_lic_flow
 
-    def dga_requirement(self, timestep):
+    cpdef int dga_requirement(self, timestep):
         # Davis-Grunsky Agreement
         # Flow required from Nov to March - 180 to 220 cfs. Using average value of 200 cfs(5.66 cms)
         if timestep.year <= 2017:  # The agreement expired in 2017
@@ -122,7 +122,7 @@ class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):
 
         return davis_grunsky_flow
 
-    def ca_requirement(self, timestep, scenario_index):
+    cpdef int ca_requirement(self, timestep, scenario_index):
         # Cowell Agreement
         month = timestep.month
         day = timestep.day
@@ -184,7 +184,7 @@ class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):
         return cowell_flow
 
     @classmethod
-    def load(cls, model, data):
+    cpdef int[][] load(cls, model, data):
         return cls(model, **data)
 
 

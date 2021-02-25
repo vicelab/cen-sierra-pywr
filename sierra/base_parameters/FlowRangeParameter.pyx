@@ -3,7 +3,7 @@ from sierra.utilities.converter import convert
 
 
 class FlowRangeParameter(IFRParameter):
-    def requirement(self, timestep, scenario_index, default=None):
+    cpdef requirement(self, timestep, scenario_index, default=None):
         """
         Calculate a custom IFR other than the baseline IFR
         :param timestep:
@@ -30,11 +30,11 @@ class FlowRangeParameter(IFRParameter):
 
         return flow_range_mcm
 
-    def functional_flows_range(self, timestep, scenario_index):
+    cpdef functional_flows_range(self, timestep, scenario_index):
         FNF = self.model.parameters['Full Natural Flow'].value(timestep, scenario_index)
         return FNF * 0.4 / 0.0864
 
-    def get_ifr_range(self, timestep, scenario_index, **kwargs):
+    cpdef get_ifr_range(self, timestep, scenario_index, **kwargs):
         param_name = self.res_name + '/Min Flow' + self.month_suffix
         # min_ifr = self.model.parameters[param_name].get_value(scenario_index) / 0.0864  # convert to cms
         min_ifr = self.model.parameters[param_name].value(timestep, scenario_index) / 0.0864  # convert to cms
@@ -44,7 +44,7 @@ class FlowRangeParameter(IFRParameter):
 
         return ifr_range
 
-    def get_up_ramp_ifr(self, timestep, scenario_index, initial_value=None, rate=0.25, max_flow=None):
+    cpdef get_up_ramp_ifr(self, timestep, scenario_index, initial_value=None, rate=0.25, max_flow=None):
 
         if self.model.mode == 'scheduling':
             if initial_value is None:

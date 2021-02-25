@@ -12,7 +12,7 @@ class Requirement_Merced_R_below_Merced_Falls_PH(WaterLPParameter):
     cowell_day_cnt = 0
     nov_dec_mean = 0
 
-    def __init__(self, *args, **kwargs):
+    cdef  __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         # load the water year types
@@ -22,7 +22,7 @@ class Requirement_Merced_R_below_Merced_Falls_PH(WaterLPParameter):
         self.wyts = self.read_csv('hydrology/historical/Livneh/preprocessed/Exchequer_WYT.csv', index_col=0, header=None, parse_dates=False,
                                   squeeze=True)
 
-    def value(self, timestep, scenario_index):
+    cdef  value(self, timestep, scenario_index):
         # All flow units are in cubic meters per second (cms)
 
         # FERC REQUIREMENT
@@ -39,7 +39,7 @@ class Requirement_Merced_R_below_Merced_Falls_PH(WaterLPParameter):
         # The required flow is (greater of the Davis-Grunsky and FERC flows) + the Cowell Agreement entitlement
         return max(ferc_flow_req, dga_flow_req) + ca_flow_req
 
-    def ferc_req(self, timestep, wyt):
+    cdef  ferc_req(self, timestep, wyt):
         mth = timestep.month
         dy = timestep.day
         yr = timestep.year
@@ -86,7 +86,7 @@ class Requirement_Merced_R_below_Merced_Falls_PH(WaterLPParameter):
 
         return ferc_lic_flow
 
-    def dga_requirement(self, timestep):
+    cdef  dga_requirement(self, timestep):
         # Davis-Grunsky Agreement
         # Flow required from Nov to March - 180 to 220 cfs. Using average value of 200 cfs(5.66 cms)
         if timestep.month in (11, 12, 1, 2, 3):
@@ -96,7 +96,7 @@ class Requirement_Merced_R_below_Merced_Falls_PH(WaterLPParameter):
 
         return davis_grunsky_flow
 
-    def ca_requirement(self, timestep, scenario_index):
+    cdef  ca_requirement(self, timestep, scenario_index):
         # Cowell Agreement
         mth = timestep.month
 
@@ -164,7 +164,7 @@ class Requirement_Merced_R_below_Merced_Falls_PH(WaterLPParameter):
         return cowell_flow
 
     @classmethod
-    def load(cls, model, data):
+    cdef  load(cls, model, data):
         return cls(model, **data)
 
 
