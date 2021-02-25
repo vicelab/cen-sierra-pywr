@@ -12,6 +12,7 @@ import traceback
 from sierra.utilities import simplify_network, prepare_planning_model, save_model_results, create_schematic
 from loguru import logger
 from graphviz import ExecutableNotFound
+import pyximport; pyximport.install()
 
 SECONDS_IN_DAY = 3600 * 24
 

@@ -6,6 +6,7 @@ from sierra.run_basin_model import run_model
 from functools import partial
 import pandas as pd
 from loguru import logger
+import pyximport; pyximport.install()
 
 from datetime import date
 
