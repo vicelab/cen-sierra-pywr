@@ -77,7 +77,7 @@ class MinFlowParameter(IFRParameter):
                 wy = timestep.year + 1
                 fnf_annual = self.model.tables['Annual Full Natural Flow']
                 terciles = fnf_annual.quantile([0, 0.33, 0.66]).values
-                wyt = sum([1 for q in terciles if fnf_annual[wy] >= q])
+                wyt = sum([1 for q in terciles if fnf_annual[datetime.strptime(str(wy), '%Y')] >= q])
                 self.water_year_type = self.water_year_types[wyt]
                 self.close_wet_season_gates = True
 
@@ -118,26 +118,32 @@ class MinFlowParameter(IFRParameter):
         if scenario_name == 'No IFRs':
             min_flow_mcm = 0.0
 
-        elif scenario_name == 'SWRCB' and self.ifr_type == 'enhanced':
-            min_flow_mcm = self.swrcb_flows_min_flow(timestep, scenario_index)
-
         elif scenario_name == 'Functional Flows' and self.ifr_type == 'enhanced':
             if self.model.mode == 'scheduling':
                 min_flow_mcm = self.functional_flows_min_flow_scheduling(timestep, scenario_index, scenario_name)
             else:
                 min_flow_mcm = self.functional_flows_min_flow_planning(timestep, scenario_index, scenario_name)
+                
+        elif scenario_name == 'SWRCB' and self.ifr_type == 'enhanced':
+            baseflow_mcm = default(timestep, scenario_index)
+
+            min_flow_mcm = self.swrcb_flows_min_flow(timestep, scenario_index, baseflow_mcm)
 
         elif default:
             min_flow_mcm = default(timestep, scenario_index)
 
         return min_flow_mcm
 
-    def swrcb_flows_min_flow(self, timestep, scenario_index):
-        fnf_mcm = self.model.parameters['Full Natural Flow'].get_value(scenario_index)
-        ifr_mcm = fnf_mcm * 0.4
-        ifr_cms = ifr_mcm / 0.0864
+    def swrcb_flows_min_flow(self, timestep, scenario_index, baseflow_mcm):
+        ifr_mcm = baseflow_mcm*0.0864
+        if 2 <= timestep.month <= 6:
+            start_date = timestep.datetime - relativedelta(days=7)
+            ifr_swrcb = self.model.parameters['Full Natural Flow'].dataframe[start_date:timestep.datetime].mean()*0.4
+            ifr_mcm = max(ifr_swrcb, ifr_mcm)
+        ifr_cms = ifr_mcm/0.0864
+        
         return ifr_cms
-
+    
     def functional_flows_min_flow_scheduling(self, timestep, scenario_index, scenario_name=None):
         """
         Calculate the minimum functional flow
