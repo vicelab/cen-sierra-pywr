@@ -80,7 +80,7 @@ class New_Melones_Lake_Flood_Control_Requirement(WaterLPParameter):
             forecasted_target_storage_mcm = flood_curves.at[end_month_day, 'rainflood']
 
             # Get expected FNF inflow
-            forecasted_inflow_mcm = self.model.tables["Full Natural Flow"][self.datetime:forecast_date].sum()
+            forecasted_inflow_mcm = self.model.parameters["Full Natural Flow"].dataframe[self.datetime:forecast_date].sum()
 
             # Forecasted release volume
             release_mcm \
