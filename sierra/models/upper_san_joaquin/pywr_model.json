@@ -5314,6 +5314,11 @@
             "index_col": 0,
             "squeeze": true
         },
+        "functional flows metrics": {
+            "url": "../data/Upper San Joaquin River/_tables/Functional_Flows_metrics.csv",
+            "index_col": 0,
+            "header": 0
+        },
         "Initial Storage": {
             "url": "../data/Upper San Joaquin River/gauges/storage_mcm.csv",
             "index_col": 0,
