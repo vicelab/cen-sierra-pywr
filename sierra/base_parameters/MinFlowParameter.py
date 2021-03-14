@@ -1,6 +1,6 @@
 import random
 from dateutil.relativedelta import relativedelta
-
+from datetime import datetime
 from sierra.base_parameters import IFRParameter
 
 
@@ -77,7 +77,7 @@ class MinFlowParameter(IFRParameter):
                 wy = timestep.year + 1
                 fnf_annual = self.model.tables['Annual Full Natural Flow']
                 terciles = fnf_annual.quantile([0, 0.33, 0.66]).values
-                wyt = sum([1 for q in terciles if fnf_annual[wy] >= q])
+                wyt = sum([1 for q in terciles if fnf_annual[datetime.strptime(str(wy), '%Y')] >= q]) 
                 self.water_year_type = self.water_year_types[wyt]
                 self.close_wet_season_gates = True
 
