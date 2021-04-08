@@ -1,6 +1,7 @@
 from sierra.base_parameters import IFRParameter
 from sierra.utilities.converter import convert
-
+from numba import njit, vectorize
+from numba.experimental import jitclass
 
 class FlowRangeParameter(IFRParameter):
     def requirement(self, timestep, scenario_index, default=None):
@@ -30,6 +31,7 @@ class FlowRangeParameter(IFRParameter):
 
         return flow_range_mcm
 
+    @vectorize
     def functional_flows_range(self, timestep, scenario_index):
         FNF = self.model.parameters['Full Natural Flow'].value(timestep, scenario_index)
         return FNF * 0.4 / 0.0864

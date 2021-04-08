@@ -2,7 +2,8 @@ import random
 from dateutil.relativedelta import relativedelta
 from datetime import datetime
 from sierra.base_parameters import IFRParameter
-
+from numba import njit, vectorize
+from numba.experimental import jitclass
 
 class FlowPeriods(object):
     DRY_SEASON = 'dry season'

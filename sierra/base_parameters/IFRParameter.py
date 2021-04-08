@@ -1,5 +1,6 @@
 from sierra.base_parameters import WaterLPParameter
-
+from numba import njit, vectorize
+from numba.experimental import jitclass
 
 class IFRParameter(WaterLPParameter):
     ifrs_idx = None
