@@ -1,7 +1,8 @@
 from sierra.base_parameters import WaterLPParameter
 from scipy import interpolate
 from sierra.utilities.converter import convert
-
+from numba import jit, njit, vectorize
+from numba.experimental import jitclass
 
 class Exchequer_Dam_Flood_Release_Requirement(WaterLPParameter):
     """
@@ -45,6 +46,7 @@ class Exchequer_Dam_Flood_Release_Requirement(WaterLPParameter):
             else:
                 self.wyt = 'wet'
 
+    @jit
     def _value(self, timestep, scenario_index):
 
         elevation = self.model.parameters["Lake McClure/Elevation"].value(timestep, scenario_index)
