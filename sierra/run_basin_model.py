@@ -12,9 +12,9 @@ import traceback
 from sierra.utilities import simplify_network, prepare_planning_model, save_model_results, create_schematic
 from loguru import logger
 from graphviz import ExecutableNotFound
+from numba import jit, njit, vectorize
 
 SECONDS_IN_DAY = 3600 * 24
-
 
 def run_model(*args, **kwargs):
     climate = args[0]
@@ -40,7 +40,6 @@ def run_model(*args, **kwargs):
     except Exception as err:
         logger.exception(err)
         logger.error("Failed")
-
 
 def _run_model(climate,
                basin,
@@ -125,6 +124,7 @@ def _run_model(climate,
         base_model = json.load(f)
 
     # update model with scenarios, if any
+    @vectorize
     def update_model(scenario_path):
         if os.path.exists(scenario_path):
             with open(scenario_path) as f:
@@ -366,4 +366,4 @@ def _run_model(climate,
     suffix = ' - {}'.format(file_suffix) if file_suffix else ''
     run_folder = run_name + suffix
     results_path = os.path.join(base_results_path, run_folder, basin, climate)
-    save_model_results(model, results_path, file_suffix, debug=debug)
+    save_model_results(model, results_path, file_suffix)
