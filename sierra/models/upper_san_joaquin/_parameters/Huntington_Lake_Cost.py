@@ -1,9 +1,11 @@
 from sierra.base_parameters import WaterLPParameter
-
+from numba import jit, njit, vectorize
+from numba.experimental import jitclass
 
 class Huntington_Lake_Cost(WaterLPParameter):
     """"""
-
+    
+    @jit
     def _value(self, timestep, scenario_index):
         # return 0.0
         if self.model.mode == 'scheduling':

@@ -1,11 +1,12 @@
 from sierra.base_parameters import WaterLPParameter
-
 from sierra.utilities.converter import convert
-
+from numba import jit, njit, vectorize
+from numba.experimental import jitclass
 
 class CVP_Madera_Canal_Demand(WaterLPParameter):
     """"""
 
+    @jit
     def _value(self, timestep, scenario_index):
 
         today = (self.datetime.month, self.datetime.day)

@@ -1,11 +1,13 @@
 from sierra.base_parameters import WaterLPParameter
-
 from sierra.utilities.converter import convert
+from numba import jit, njit, vectorize
+from numba.experimental import jitclass
 
 
 class Big_Creek_System_IFRs_2000(WaterLPParameter):
     """"""
 
+    @jit
     def _value(self, timestep, scenario_index):
 
         month = self.datetime.month

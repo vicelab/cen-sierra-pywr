@@ -1,11 +1,12 @@
 from sierra.base_parameters import MinFlowParameter
-
 from sierra.utilities.converter import convert
-
+from numba import jit, njit, vectorize
+from numba.experimental import jitclass
 
 class IFR_bl_San_Joaquin_R_and_Willow_Cr_confluence_Min_Flow(MinFlowParameter):
     """"""
 
+    @jit
     def _value(self, timestep, scenario_index):
 
         ifr_cfs = 20

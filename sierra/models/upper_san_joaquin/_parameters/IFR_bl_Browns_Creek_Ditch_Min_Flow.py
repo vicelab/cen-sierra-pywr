@@ -1,10 +1,12 @@
 from sierra.base_parameters import MinFlowParameter
-
 from sierra.utilities.converter import convert
+from numba import jit, njit, vectorize
+from numba.experimental import jitclass
 
 class IFR_bl_Browns_Creek_Ditch_Min_Flow(MinFlowParameter):
     """"""
 
+    @jit
     def _value(self, timestep, scenario_index):
         
         # Get Year Type
