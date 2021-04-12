@@ -257,7 +257,7 @@
             "name": "Merced Falls PH",
             "type": "Hydropower",
             "head": 7.925,
-            "turbine_capacity": 4.28,
+            "turbine_capacity": 3,
             "cost": [
                 "Merced Falls PH/Base Value",
                 "Merced Falls PH/Excess Value"
@@ -933,7 +933,7 @@
         },
         "MID Main/Cost": {
             "type": "constant",
-            "value": -500
+            "value": -2000
         },
         "MID Northside/Demand": {
             "type": "MID_Northside_Demand"
@@ -943,7 +943,7 @@
         },
         "MID Northside/Cost": {
             "type": "constant",
-            "value": -500
+            "value": -2000
         },
         "USGS 11271290 MERCED R A SHAFFER BRIDGE NR CRESSEY CA/Observed Flow": {
             "type": "Near_Shaffer_Bridge_11271290_Observed_Flow"
