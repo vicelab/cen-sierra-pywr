@@ -7,11 +7,13 @@ class Turlock_Irrigation_District_Demand(WaterLPParameter):
     """"""
 
     WYT_names = ["Critical", "Dry", "Below", "Above", "Wet"]
+     
+    TID_bias_factor = 1.14 
 
     def _value(self, timestep, scenario_index):
         SJV_WYT = self.model.parameters["San Joaquin Valley WYT"].get_value(scenario_index)
         demand_fraction = self.model.tables["Turlock Irrigation District/Demand Table"]\
-            .at[(timestep.month, timestep.day), self.WYT_names[int(SJV_WYT) - 1]]
+            .at[(timestep.month, timestep.day), self.WYT_names[int(SJV_WYT) - 1]]*self.TID_bias_factor 
 
         # Assume TID annual demand is 550,000 AF = 678.4 mcm
         TID_annual_demand_mcm = 678.4
