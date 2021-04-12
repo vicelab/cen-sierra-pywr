@@ -58,7 +58,7 @@ class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):
         return convert(val, "m^3 s^-1", "m^3 day^-1", scale_in=1, scale_out=1000000.0)
 
     def ferc_req(self, timestep, scenario_index, wyt):
-        sid = scenario_index.global_id
+        #sid = scenario_index.global_id
         month = timestep.month
         day = timestep.day
         year = timestep.year
@@ -100,7 +100,7 @@ class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):
             gauge_Shafer_ts = self.model.recorders['IFR at Shaffer Bridge/flow'].to_dataframe()
 
             # TODO: find a more efficient lookup method than iloc
-            self.nov_dec_mean[sid] = gauge_Shafer_ts[st_date:end_date].mean()[scenario_index.global_id]
+            self.nov_dec_mean[scenario_index.global_id] = gauge_Shafer_ts[st_date:end_date].mean().values[0]
 
         if month in (1, 2, 3):
             # If mean flow greater than eaual to 150 cfs, then at least 100 cfs flow

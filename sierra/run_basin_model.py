@@ -366,4 +366,4 @@ def _run_model(climate,
     suffix = ' - {}'.format(file_suffix) if file_suffix else ''
     run_folder = run_name + suffix
     results_path = os.path.join(base_results_path, run_folder, basin, climate)
-    save_model_results(model, results_path, file_suffix)
+    save_model_results(model, results_path, file_suffix, debug=debug)
