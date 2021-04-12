@@ -572,6 +572,7 @@
         {
             "name": "Moccasin Aquaduct.1.1",
             "type": "Link",
+            "max_flow": 0.039,
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
@@ -733,7 +734,7 @@
             "turbine_capacity": 2.447,
             "flow_capacity": 2.447,
             "cost": [
-                -100,
+                -500000000,
                 -1
             ],
             "max_flow": [
@@ -755,12 +756,12 @@
             "name": "Don Pedro PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
-            "turbine_capacity": 10.0,
-            "flow_capacity": 10.0,
+            "turbine_capacity": 6.5,
+            "flow_capacity": 6.5,
             "water_elevation_reservoir": "Don Pedro Reservoir",
             "tailwater_elevation": 88.4,
             "cost": [
-                -1
+                1
             ],
             "max_flow": []
         },
@@ -790,14 +791,14 @@
             "type": "Link",
             "comment": "{\"resource_class\": \"node\"}",
             "max_flow": "Eleanor-Cherry Pumping/Requirement",
-            "cost": -500
+            "cost": -10000
         },
         {
             "name": "Eleanor-Cherry Gravity",
             "type": "Link",
             "comment": "{\"resource_class\": \"node\"}",
             "max_flow": "Eleanor-Cherry Gravity/Requirement",
-            "cost": -500
+            "cost": -10000
         },
         {
             "name": "Gauge Dion R Holm PH",
@@ -841,9 +842,9 @@
             "name": "IFR bl Cherry Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "max_flow_cost": 10000,
+            "max_flow_cost": 10000000000,
             "min_flow": "IFR bl Cherry Lake/Min Flow",
-            "min_flow_cost": -10000
+            "min_flow_cost": -10000000000
         },
         {
             "name": "IFR at La Grange",
@@ -858,22 +859,22 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Hetch Hetchy Reservoir/Min Flow",
-            "min_flow_cost": -10000,
-            "max_flow_cost": 10000
+            "min_flow_cost": -1000000,
+            "max_flow_cost": 100000000000
         },
         {
             "name": "IFR bl Lake Eleanor",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Lake Eleanor/Min Flow",
-            "min_flow_cost": -10000,
-            "max_flow_cost": 10000
+            "min_flow_cost": -10000000000,
+            "max_flow_cost": 10000000
         },
         {
             "name": "Moccasin Fish Hatchery",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
-            "min_flow": 0.03915038224025556,
+            "min_flow": 0.039,
             "min_flow_cost": -10000
         },
         {
@@ -881,10 +882,10 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 335.3,
-            "turbine_capacity": 3.303,
-            "flow_capacity": 3.303,
+            "turbine_capacity": 3.4256584537,
+            "flow_capacity": 3.4256584537,
             "cost": [
-                -500,
+                -2350000, 
                 1000
             ],
             "max_flow": [
@@ -937,10 +938,10 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 377.952,
-            "turbine_capacity": 1.6,
-            "flow_capacity": 1.6,
+            "turbine_capacity": 1.63942225998, 
+            "flow_capacity": 1.63942225998,
             "cost": [
-                -1
+                -2350
             ],
             "max_flow": []
         },
@@ -954,7 +955,7 @@
             "type": "Output",
             "comment": "{\"resource_class\": \"node\"}",
             "max_flow": "Modesto Irrigation District/Demand",
-            "cost": -500
+            "cost": -10000000000
         },
         {
             "name": "North Fk Toul R Headflow",
@@ -1288,7 +1289,7 @@
             "type": "Output",
             "comment": "{\"resource_class\": \"node\"}",
             "max_flow": "Turlock Irrigation District/Demand",
-            "cost": -500
+            "cost": -10000000000
         },
         {
             "name": "Upper Hetch Hetchy Tunnel Inflow",
@@ -2460,11 +2461,6 @@
         ]
     ],
     "tables": {
-        "Bias Correction Factors": {
-            "url": "../data/Tuolumne River/_tables/Bias_Correction_Factors.csv",
-            "index_col": 0,
-            "header": 0
-        },
         "functional flows metrics": {
             "url": "../data/Tuolumne River/_tables/Functional_Flows_metrics.csv",
             "index_col": 0,
@@ -2577,7 +2573,7 @@
         },
         "Cherry Lake/Cost": {
             "type": "constant",
-            "value": -100
+            "value": -400000000
         },
         "Cherry Lake/Elevation": {
             "type": "interpolatedvolume",
@@ -2706,7 +2702,7 @@
         },
         "Hetch Hetchy Reservoir/Cost": {
             "type": "constant",
-            "value": -100
+            "value": -1500
         },
         "Hetch Hetchy Reservoir/Precipitation": {
             "type": "dataframe",
@@ -2803,7 +2799,7 @@
         },
         "Lake Eleanor/Cost": {
             "type": "constant",
-            "value": -55
+            "value": 0
         },
         "Lake Eleanor/Elevation": {
             "type": "interpolatedvolume",
