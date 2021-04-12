@@ -5,12 +5,12 @@ from sierra.utilities.converter import convert
 
 class MID_Main_Demand(WaterLPParameter):
     """"""
+    MID_bias_factor = 1.14
 
     def _value(self, timestep, scenario_index):
         WYT = self.model.tables['WYT for IFR Below Exchequer'][self.operational_water_year]
         ts = "{}/{}/1900".format(timestep.month, timestep.day)
-        demand_cms = self.model.tables["MID Main Diversions"].at[ts, WYT] / 35.31
-
+        demand_cms = self.model.tables["MID Main Diversions"].at[ts, WYT]*self.MID_bias_factor / 35.31
         return demand_cms
 
     def value(self, timestep, scenario_index):
