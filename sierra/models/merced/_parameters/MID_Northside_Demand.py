@@ -7,10 +7,10 @@ class MID_Northside_Demand(WaterLPParameter):
     """"""
 
     reductions = [0, 0]
+    
+    MID_North_bias_factor = 1.06
 
     def _value(self, timestep, scenario_index):
-
-        MID_North_bias_factor = 1.06
 
         WYT = self.model.tables['WYT for IFR Below Exchequer'][self.operational_water_year]
         ts = "{}/{}/1900".format(timestep.month, timestep.day)
