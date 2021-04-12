@@ -42,7 +42,8 @@
             "name": "Bear Diversion Tunnel",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 1.1007359975343514
+            "max_flow": 1.1007359975343514,
+            "cost": 100
         },
         {
             "name": "Below Balsam Creek Headflow",
@@ -78,7 +79,8 @@
             "name": "Below Balsam Meadows Tunnel Outflow",
             "type": "Link",
             "max_flow": 0.012,
-            "comment": "{\"resource_class\": \"link\"}"
+            "comment": "{\"resource_class\": \"link\"}",
+            "cost": -15000
         },
         {
             "name": "Below Bass Lake",
@@ -120,7 +122,8 @@
             "name": "Below Big Creek 2 Tunnel Diverted Inflow",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 1.5171839966015077
+            "max_flow": 1.5171839966015077,
+            "cost": -1000000000
         },
         {
             "name": "Below Big Creek 2 Tunnel Inflow",
@@ -214,13 +217,13 @@
             "name": "Below Bolsillo Cr. Div. Diverted Inflow",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 4.306175990354166
+            "max_flow": 4.31
         },
         {
             "name": "Below Bolsillo Cr. Div. Inflow",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 4.306175990354166
+            "max_flow": 4.31
         },
         {
             "name": "Below Bolsillo Cr. Div. Outflow",
@@ -261,13 +264,13 @@
             "name": "Below Camp 62 Cr. Div. Diverted Inflow",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 4.306175990354166
+            "max_flow": 4.31
         },
         {
             "name": "Below Camp 62 Cr. Div. Inflow",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 4.306175990354166
+            "max_flow": 4.31
         },
         {
             "name": "Below Camp 62 Cr. Div. Outflow",
@@ -288,13 +291,13 @@
             "name": "Below Chinquapin Cr. Div. Diverted Inflow",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 4.306175990354166
+            "max_flow": 4.31
         },
         {
             "name": "Below Chinquapin Cr. Div. Inflow",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 4.306175990354166
+            "max_flow": 4.31
         },
         {
             "name": "Below Chinquapin Cr. Div. Outflow",
@@ -480,6 +483,7 @@
         {
             "name": "Below Kerckhoff 1 Tunnel Inflow",
             "type": "River",
+            "cost": 800,
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
@@ -496,6 +500,7 @@
         {
             "name": "Below Kerckhoff 2 Tunnel Inflow",
             "type": "River",
+            "cost": 150,
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
@@ -568,7 +573,8 @@
             "name": "Below No. 1 Conduit Diverted Inflow",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 0.5140799988484608
+            "max_flow": 0.5140799988484608,
+            "cost": -2000
         },
         {
             "name": "Below No. 2 Conduit Diverted Inflow",
@@ -580,7 +586,8 @@
             "name": "Below No. 2 Conduit Inflow",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 0.5140799988484608
+            "max_flow": 0.5140799988484608,
+            "cost": 30
         },
         {
             "name": "Below No. 2 Conduit Outflow",
@@ -591,7 +598,8 @@
             "name": "Below No. 3 Conduit Diverted Inflow",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 0.39139199912328193
+            "max_flow": 0.39139199912328193,
+            "cost": 800
         },
         {
             "name": "Below No. 3 Conduit Inflow",
@@ -617,7 +625,8 @@
             "name": "Below PH 2A Aqueduct Diverted Inflow",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 1.5292799965744128
+            "max_flow": 1.5292799965744128,
+            "cost": -1000000000
         },
         {
             "name": "Below Pitman Cr Div Outflow",
@@ -638,7 +647,7 @@
             "name": "Below Portal Aqueduct Inflow",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 4.306175990354166
+            "max_flow": 4.31
         },
         {
             "name": "Below Portal Penstock Diverted Inflow",
@@ -1128,7 +1137,7 @@
             "name": "Below Ward Tunnel Diverted Inflow",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 4.306175990354166
+            "max_flow": 4.31
         },
         {
             "name": "Below Willow Creek Headflow",
@@ -1153,12 +1162,14 @@
         {
             "name": "Big Creek 2 Tunnel",
             "type": "Link",
+            "cost": -1000000000,
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
             "name": "Big Creek 3 Aqueduct",
             "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
+            "comment": "{\"resource_class\": \"link\"}",
+            "cost": 1000000000
         },
         {
             "name": "Big Creek 4 Aqueduct",
@@ -1179,13 +1190,14 @@
         {
             "name": "Eastwood Tunnel.1",
             "type": "Link",
+            "cost": 1,
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
             "name": "Friant-Kern Canal Demand",
             "type": "Link",
             "max_flow": "Friant-Kern Canal Demand/Demand",
-            "cost": -120
+            "cost": -510
         },
         {
             "name": "Friant-Kern Canal.1",
@@ -1205,11 +1217,13 @@
         {
             "name": "Kerckhoff 1 Tunnel",
             "type": "Link",
+            "cost": 800,
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
             "name": "Kerckhoff 2 Tunnel",
             "type": "Link",
+            "cost": 800,
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
@@ -1226,7 +1240,8 @@
         {
             "name": "Mammoth Pool Tunnel",
             "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
+            "comment": "{\"resource_class\": \"link\"}",
+            "cost": 1000000000
         },
         {
             "name": "Mono Creek.1",
@@ -1242,7 +1257,8 @@
             "name": "Mono Tunnel",
             "type": "Link",
             "comment": "{\"resource_class\": \"link\"}",
-            "max_flow": 1.5906239964370021
+            "max_flow": 1.5906239964370021,
+            "cost": -285
         },
         {
             "name": "N Fk Willow Creek",
@@ -1287,12 +1303,14 @@
         {
             "name": "PH 2A Aqueduct",
             "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
+            "comment": "{\"resource_class\": \"link\"}",
+            "cost": -1000000000
         },
         {
             "name": "Pitman - Tunnel No. 7 Tunnel",
             "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
+            "comment": "{\"resource_class\": \"link\"}",
+            "cost": 1000
         },
         {
             "name": "Pitman Creek.1",
@@ -1307,7 +1325,8 @@
         {
             "name": "Portal Penstock",
             "type": "Link",
-            "comment": "{\"resource_class\": \"link\"}"
+            "comment": "{\"resource_class\": \"link\"}",
+            "cost": -1000000000
         },
         {
             "name": "San Joaquin 1A Div",
@@ -1347,6 +1366,7 @@
         {
             "name": "SAN-L-CON4",
             "type": "Link",
+            "cost":-1000000000,
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
@@ -1393,12 +1413,14 @@
             "name": "Tunnel No. 7.1",
             "type": "Link",
             "max_flow": 5.2,
+            "cost": 5,
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
             "name": "Tunnel No. 7.2",
             "type": "Link",
             "max_flow": 5.2,
+            "cost": 5,
             "comment": "{\"resource_class\": \"link\"}"
         },
         {
@@ -1463,7 +1485,7 @@
             },
             "max_volume": 55.61,
             "min_volume": 27.0,
-            "cost": -95,
+            "cost": -140,
             "gauge": "USGS 11243400 BASS LK NR BASS LAKE CA"
         },
         {
@@ -1486,10 +1508,10 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 586.0,
-            "turbine_capacity": 1.42,
-            "flow_capacity": 1.42,
+            "turbine_capacity": 1.69,
+            "flow_capacity": 1.69,
             "spinning_flow": 0.2,
-            "spinning_cost": -1500,
+            "spinning_cost": -10000000000,
             "cost": [
                 "Big Creek 1 PH/Cost/1",
                 "Big Creek 1 PH/Cost/2",
@@ -1505,10 +1527,10 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 499.4,
-            "turbine_capacity": 1.4852676262396953,
-            "flow_capacity": 1.4852676262396953,
+            "turbine_capacity": 2.5,
+            "flow_capacity": 2.5,
             "spinning_flow": 0.2,
-            "spinning_cost": -1500,
+            "spinning_cost": -10000000000,
             "cost": [
                 "Big Creek 2 PH/Cost/1",
                 "Big Creek 2 PH/Cost/2",
@@ -1534,10 +1556,10 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 670.6,
-            "turbine_capacity": 1.5293118062599829,
-            "flow_capacity": 1.5293118062599829,
+            "turbine_capacity": 1.5708,
+            "flow_capacity": 1.7,
             "spinning_flow": 0.2,
-            "spinning_cost": -1000,
+            "spinning_cost": -1000000000,
             "cost": [
                 "Big Creek 2A PH/Cost/1",
                 "Big Creek 2A PH/Cost/2",
@@ -1563,8 +1585,10 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 232.9,
-            "turbine_capacity": 7.830076448051113,
-            "flow_capacity": 7.830076448051113,
+            "turbine_capacity": 7.83,
+            "flow_capacity": 7.83,
+            "spinning_cost": 20000,
+            "spinning_flow": 0.2,
             "cost": [
                 "Big Creek 3 PH/Cost/1",
                 "Big Creek 3 PH/Cost/2",
@@ -1585,8 +1609,10 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 118.2,
-            "turbine_capacity": 9.0535258930591,
-            "flow_capacity": 9.0535258930591,
+            "turbine_capacity": 8.9,
+            "flow_capacity": 8.9,
+            "spinning_cost": 2000,
+            "spinning_flow": 0.2,
             "cost": [
                 "Big Creek 4 PH/Cost/1",
                 "Big Creek 4 PH/Cost/2",
@@ -1600,15 +1626,18 @@
         {
             "name": "Big Creek 8 Penstock Outflow",
             "type": "BreakLink",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "cost": 200
         },
         {
             "name": "Big Creek 8 PH",
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 208.8,
-            "turbine_capacity": 2.81,
-            "flow_capacity": 2.81,
+            "turbine_capacity": 3.38895497026,
+            "flow_capacity": 3.38895497026,
+            "spinning_cost": -1,
+            "spinning_flow": 0.15,
             "cost": [
                 "Big Creek 8 PH/Cost/1",
                 "Big Creek 8 PH/Cost/2",
@@ -1712,12 +1741,13 @@
         {
             "name": "CVP Friant-Kern Canal",
             "type": "Output",
+            "cost": -1000,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "CVP Madera Canal",
             "type": "Output",
-            "cost": 1,
+            "cost": -11,
             "max_flow": 3.132
         },
         {
@@ -1729,7 +1759,7 @@
                 1000
             ],
             "cost": [
-                -120,
+                -330,
                 1
             ]
         },
@@ -1738,10 +1768,10 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 400.0,
-            "turbine_capacity": 5.618079851476674,
-            "flow_capacity": 5.618079851476674,
+            "turbine_capacity": 2.51,
+            "flow_capacity": 3.93,
             "spinning_flow": 0.15,
-            "spinning_cost": -2500,
+            "spinning_cost": -150,
             "cost": [
                 "Eastwood PH/Cost/1",
                 "Eastwood PH/Cost/2",
@@ -1759,7 +1789,7 @@
             "initial_volume": 2,
             "max_volume": 79.41,
             "min_volume": 1.25,
-            "cost": -83,
+            "cost": -130,
             "gauge": "USGS 11229600 FLORENCE LK NR BIG C CA"
         },
         {
@@ -1819,39 +1849,39 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR above Shakeflat Creek/Min Flow",
             "max_flow_cost": 5000,
-            "min_flow_cost": -10000
+            "min_flow_cost": 1
         },
         {
             "name": "IFR bl Balsam Forebay",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Balsam Forebay/Min Flow",
-            "max_flow_cost": 2000,
-            "min_flow_cost": -10500
+            "max_flow_cost": 750000,
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR bl Bass Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Bass Lake/Min Flow",
-            "max_flow_cost": 2000,
-            "min_flow_cost": -10000
+            "max_flow_cost": 10,
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR bl Bear Div",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Bear Div/Min Flow",
-            "max_flow_cost": 2000,
-            "min_flow_cost": -10000
+            "max_flow_cost": 1800,
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR bl Big Creek 5 Div",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Big Creek 5 Div/Min Flow",
-            "max_flow_cost": 1000,
-            "min_flow_cost": -10000
+            "max_flow_cost": 1,
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR bl Big Creek 6 Div",
@@ -1859,7 +1889,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Big Creek 6 Div/Min Flow",
             "max_flow_cost": 1000,
-            "min_flow_cost": -10000
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR bl Bolsillo Creek Div",
@@ -1867,7 +1897,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Bolsillo Creek Div/Min Flow",
             "max_flow_cost": 2000,
-            "min_flow_cost": -10000
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR bl Browns Creek Ditch",
@@ -1875,7 +1905,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Browns Creek Ditch/Min Flow",
             "max_flow_cost": 2000,
-            "min_flow_cost": -10000
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR bl Camp 62 Creek Div",
@@ -1883,7 +1913,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Camp 62 Creek Div/Min Flow",
             "max_flow_cost": 2000,
-            "min_flow_cost": -10000
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR bl Chinquapin Creek Div",
@@ -1891,7 +1921,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Chinquapin Creek Div/Min Flow",
             "max_flow_cost": 2000,
-            "min_flow_cost": -10000
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR bl Hooper Creek",
@@ -1899,31 +1929,31 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Hooper Creek/Min Flow",
             "max_flow_cost": 2000,
-            "min_flow_cost": -10000
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR bl Huntington Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Huntington Lake/Min Flow",
-            "max_flow_cost": 100,
-            "min_flow_cost": -50000
+            "max_flow_cost": 10000000,
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR bl Kerckhoff Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Kerckhoff Lake/Min Flow",
-            "max_flow_cost": 2000,
-            "min_flow_cost": -10000
+            "max_flow_cost": 12000,
+            "min_flow_cost": -50000
         },
         {
             "name": "IFR bl Lake Thomas A Edison",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Lake Thomas A Edison/Min Flow",
-            "max_flow_cost": 1,
-            "min_flow_cost": -10000
+            "max_flow_cost": 2000,
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR bl Manzanita Div",
@@ -1931,15 +1961,15 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Manzanita Div/Min Flow",
             "max_flow_cost": 2000,
-            "min_flow_cost": -10000
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR bl Millerton Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Millerton Lake/Min Flow",
-            "max_flow_cost": 5,
-            "min_flow_cost": -250,
+            "max_flow_cost": 500,
+            "min_flow_cost": -1550,
             "ifr_type": "enhanced"
         },
         {
@@ -1947,24 +1977,24 @@
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Mono Creek Div/Min Flow",
-            "max_flow_cost": 2000,
-            "min_flow_cost": -10000
+            "max_flow_cost": 2400,
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR bl Pitman Creek Div",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Pitman Creek Div/Min Flow",
-            "max_flow_cost": 2000,
-            "min_flow_cost": -40000
+            "max_flow_cost": 900,
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR bl Redinger Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Redinger Lake/Min Flow",
-            "max_flow_cost": 2000,
-            "min_flow_cost": -10000
+            "max_flow_cost": 200000,
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR bl San Joaquin 1 Div",
@@ -1972,7 +2002,7 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl San Joaquin 1 Div/Min Flow",
             "max_flow_cost": 2000,
-            "min_flow_cost": -10000
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR bl San Joaquin R and Willow Cr confluence",
@@ -1980,23 +2010,23 @@
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl San Joaquin R and Willow Cr confluence/Min Flow",
             "max_flow_cost": 2000,
-            "min_flow_cost": -10000
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR bl Shaver Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR bl Shaver Lake/Min Flow",
-            "max_flow_cost": 2000,
-            "min_flow_cost": -10000
+            "max_flow_cost": 3000,
+            "min_flow_cost": -1000000000
         },
         {
             "name": "IFR No. Fk. Stevenson Creek above Shaver Lake",
             "type": "InstreamFlowRequirement",
             "comment": "{\"resource_class\": \"node\"}",
             "min_flow": "IFR No. Fk. Stevenson Creek above Shaver Lake/Min Flow",
-            "max_flow_cost": 2000,
-            "min_flow_cost": -11000
+            "max_flow_cost": 1,
+            "min_flow_cost": -1000000000
         },
         {
             "name": "Jose Cr Headflow",
@@ -2013,8 +2043,10 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 106.7,
-            "turbine_capacity": 4.245369574177712,
-            "flow_capacity": 4.245369574177712,
+            "turbine_capacity": 2.961,
+            "flow_capacity": 4,
+            "spinning_cost": -1,
+            "spinning_flow": 0.15,
             "cost": [
                 "Kerckhoff 1 PH/Cost/1",
                 "Kerckhoff 1 PH/Cost/2",
@@ -2028,6 +2060,7 @@
         {
             "name": "Kerckhoff 1 Tunnel Inflow",
             "type": "River",
+            "cost": 60,
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -2035,8 +2068,10 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 128.3,
-            "turbine_capacity": 12.47918433908146,
-            "flow_capacity": 12.47918433908146,
+            "turbine_capacity": 10.032,
+            "flow_capacity": 12,
+            "spinning_cost": 800000,
+            "spinning_flow": 0.2,
             "cost": [
                 "Kerckhoff 2 PH/Cost/1",
                 "Kerckhoff 2 PH/Cost/2",
@@ -2060,7 +2095,7 @@
             "level": "Kerckhoff Lake/Volume Elevation Curve",
             "max_volume": 4.8,
             "min_volume": 4.2,
-            "cost": -50,
+            "cost": -110,
             "gauge": "USGS 11246650 KERCKHOFF RES NR AUBERRY CA"
         },
         {
@@ -2070,7 +2105,7 @@
             "initial_volume": 75,
             "max_volume": 154.17,
             "min_volume": 10,
-            "cost": -84,
+            "cost": -50,
             "gauge": "USGS 11231000 LK THOMAS A. EDISON NR BIG C CA"
         },
         {
@@ -2078,10 +2113,10 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 306.0,
-            "turbine_capacity": 5.4,
-            "flow_capacity": 5.4,
+            "turbine_capacity": 4.278,
+            "flow_capacity": 4.806,
             "spinning_flow": 0.1,
-            "spinning_cost": -1000,
+            "spinning_cost": 1000000000,
             "cost": [
                 "Mammoth Pool PH/Cost/1",
                 "Mammoth Pool PH/Cost/2",
@@ -2218,8 +2253,8 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 54.864000000000004,
-            "turbine_capacity": 4.23,
-            "flow_capacity": 4.23,
+            "turbine_capacity": 1.334,
+            "flow_capacity": 4.31,
             "spinning_flow": 0.15,
             "spinning_cost": -9000,
             "cost": [
@@ -2239,7 +2274,7 @@
             "initial_volume": 30.8,
             "max_volume": 30.8,
             "min_volume": 5.28,
-            "cost": -150,
+            "cost": -280,
             "gauge": "USGS 11241950 REDINGER LK NR AUBERRY CA"
         },
         {
@@ -2292,8 +2327,10 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 397.8,
-            "turbine_capacity": 0.3670348335023959,
-            "flow_capacity": 0.3670348335023959,
+            "turbine_capacity": 0.383,
+            "flow_capacity": 0.5,
+            "spinning_cost": -1000000000,
+            "spinning_flow": 0.15,
             "cost": [
                 "San Joaquin 1 PH/Cost/1",
                 "San Joaquin 1 PH/Cost/2",
@@ -2307,7 +2344,8 @@
         {
             "name": "San Joaquin 1A Div Inflow",
             "type": "River",
-            "comment": "{\"resource_class\": \"node\"}"
+            "comment": "{\"resource_class\": \"node\"}",
+            "cost": 180
         },
         {
             "name": "San Joaquin 1A Div Outflow",
@@ -2319,8 +2357,10 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 12.2,
-            "turbine_capacity": 0.4086321146326674,
-            "flow_capacity": 0.4086321146326674,
+            "turbine_capacity": 0.385,
+            "flow_capacity": 1,
+            "spinning_cost": -1,
+            "spinning_flow": 0.15,
             "cost": [
                 "San Joaquin 1A PH/Cost/1",
                 "San Joaquin 1A PH/Cost/2",
@@ -2336,8 +2376,10 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 89.0,
-            "turbine_capacity": 0.34256584460223616,
-            "flow_capacity": 0.34256584460223616,
+            "turbine_capacity": 0.38,
+            "flow_capacity": 0.38,
+            "spinning_cost": -12000,
+            "spinning_flow": 0.15,
             "cost": [
                 "San Joaquin 2 PH/Cost/1",
                 "San Joaquin 2 PH/Cost/2",
@@ -2353,8 +2395,10 @@
             "type": "Hydropower",
             "comment": "{\"resource_class\": \"node\"}",
             "head": 115.2,
-            "turbine_capacity": 0.3058623612519966,
-            "flow_capacity": 0.3058623612519966,
+            "turbine_capacity": 0.30,
+            "flow_capacity": 0.37,
+            "spinning_cost": -10000,
+            "spinning_flow": 0.15,
             "cost": [
                 "San Joaquin 3 PH/Cost/1",
                 "San Joaquin 3 PH/Cost/2",
