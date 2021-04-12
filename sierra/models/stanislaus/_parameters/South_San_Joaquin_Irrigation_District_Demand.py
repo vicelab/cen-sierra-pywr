@@ -3,12 +3,13 @@ from dateutil.relativedelta import relativedelta
 
 
 class South_San_Joaquin_Irrigation_District_Demand(WaterLPParameter):
+    
+    SSJID_bias_factor = 1.07
+    
     def _value(self, timestep, scenario_index):
 
         if not 3 <= self.datetime.month <= 10:
             return 0  # Only deliver Mar-Oct based on observed data
-
-        SSJID_bias_factor = 1.07
 
         WYT = self.get('San Joaquin Valley WYT' + self.month_suffix, timestep, scenario_index)
         demand_mcm_df = self.model.tables["South San Joaquin Irrigation District Demand"][WYT]*self.SSJID_bias_factor
