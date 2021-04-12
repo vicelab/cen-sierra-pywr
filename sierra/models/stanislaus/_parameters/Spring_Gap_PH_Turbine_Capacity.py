@@ -6,7 +6,7 @@ from sierra.utilities.converter import convert
 class Spring_Gap_PH_Turbine_Capacity(WaterLPParameter):
 
     def _value(self, timestep, scenario_index):
-        capacity_cms = 57 / 35.31  # cfs to cms
+        capacity_cms = 62 / 35.31  # cfs to cms
         if self.model.mode == 'scheduling':
             if (7, 1) <= (timestep.month, timestep.day) <= (8, 31):
                 capacity_cms = 12.5 / 35.31
