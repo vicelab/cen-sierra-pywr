@@ -2,7 +2,8 @@ from datetime import date
 import numpy as np
 from sierra.base_parameters import MinFlowParameter
 from sierra.utilities.converter import convert
-
+from numba import jit, njit, vectorize
+from numba.experimental import jitclass
 
 class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):
     """
@@ -23,6 +24,7 @@ class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):
         self.nov_dec_mean = np.zeros(self.num_scenarios)
         self.cowell_day_cnt = np.zeros(self.num_scenarios)
 
+    @jit(fastmath=True)
     def _value(self, timestep, scenario_index):
         # All flow units are in cubic meters per second (cms) unless otherwise noted
 

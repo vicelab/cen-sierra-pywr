@@ -46,7 +46,7 @@ class Exchequer_Dam_Flood_Release_Requirement(WaterLPParameter):
             else:
                 self.wyt = 'wet'
 
-    @jit
+    @jit(fastmath=True)
     def _value(self, timestep, scenario_index):
 
         elevation = self.model.parameters["Lake McClure/Elevation"].value(timestep, scenario_index)

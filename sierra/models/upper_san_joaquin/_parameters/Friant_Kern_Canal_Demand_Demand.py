@@ -6,7 +6,7 @@ from numba.experimental import jitclass
 class Friant_Kern_Canal_Demand_Demand(WaterLPParameter):
     """"""
 
-    @jit
+    @jit(fastmath=True)
     def _value(self, timestep, scenario_index):
         
         WYT = self.get('San Joaquin Valley WYT' + self.month_suffix, timestep, scenario_index)

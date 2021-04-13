@@ -6,7 +6,7 @@ from numba.experimental import jitclass
 class IFR_bl_Chinquapin_Creek_Div_Min_Flow(MinFlowParameter):
     """"""
 
-    @jit
+    @jit(fastmath=True)
     def _value(self, timestep, scenario_index):
         
         if 5 <= self.datetime.month <= 9:

@@ -1,11 +1,12 @@
 from sierra.base_parameters import WaterLPParameter
-
 from scipy import interpolate
-
+from numba import jit, njit, vectorize
+from numba.experimental import jitclass
 
 class Lake_McClure_Spill_Max_Flow(WaterLPParameter):
     """"""
 
+    @jit(fastmath=True)
     def _value(self, timestep, scenario_index):
         if timestep.index == 0:
             table = self.model.tables["Lake McClure Spill/ESRD"]

@@ -1,12 +1,14 @@
 from sierra.base_parameters import FlowRangeParameter
 from sierra.utilities.converter import convert
-
+from numba import jit, njit, vectorize
+from numba.experimental import jitclass
 
 class IFR_at_Shaffer_Bridge_Max_Flow(FlowRangeParameter):
     """
     This policy calculates instream flow requirements in the Merced River below the Merced Falls powerhouse.
     """
 
+    @jit(fastmath=True)
     def _value(self, timestep, scenario_index):
 
         ifr_val = 250 / 35.31  # cfs to cms (16.5 cfs)

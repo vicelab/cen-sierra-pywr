@@ -6,7 +6,7 @@ from numba.experimental import jitclass
 class CVP_Madera_Canal_Demand(WaterLPParameter):
     """"""
 
-    @jit
+    @jit(fastmath=True)
     def _value(self, timestep, scenario_index):
 
         today = (self.datetime.month, self.datetime.day)

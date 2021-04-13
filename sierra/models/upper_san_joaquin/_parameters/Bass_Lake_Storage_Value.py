@@ -6,7 +6,7 @@ from numba.experimental import jitclass
 class Bass_Lake_Storage_Value(WaterLPParameter):
     """"""
 
-    @jit
+    @jit(fastmath=True)
     def _value(self, timestep, scenario_index):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
         x = self.model.tables['San Joaquin Valley Index'][self.operational_water_year]

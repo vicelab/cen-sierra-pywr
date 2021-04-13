@@ -7,7 +7,7 @@ from numba.experimental import jitclass
 class Big_Creek_System_IFRs_2000(WaterLPParameter):
     """"""
 
-    @jit
+    @jit(fastmath=True)
     def _value(self, timestep, scenario_index):
 
         month = self.datetime.month

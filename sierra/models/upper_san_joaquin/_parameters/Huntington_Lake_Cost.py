@@ -5,7 +5,7 @@ from numba.experimental import jitclass
 class Huntington_Lake_Cost(WaterLPParameter):
     """"""
     
-    @jit
+    @jit(fastmath=True)
     def _value(self, timestep, scenario_index):
         # return 0.0
         if self.model.mode == 'scheduling':

@@ -6,7 +6,7 @@ from numba.experimental import jitclass
 class IFR_bl_Lake_Thomas_A_Edison_Min_Flow(MinFlowParameter):
     """"""
 
-    @jit
+    @jit(fastmath=True)
     def _value(self, timestep, scenario_index):
 
         ifr_cfs = 10 * 2  # double based on observations

@@ -1,9 +1,11 @@
 from sierra.base_parameters import WaterLPParameter
-
+from numba import jit, njit, vectorize
+from numba.experimental import jitclass
 
 class Lake_McClure_Water_Demand(WaterLPParameter):
     """"""
 
+    @jit(fastmath=True)
     def _value(self, timestep, scenario_index):
 
         if (timestep.month, timestep.day) == (10, 1):

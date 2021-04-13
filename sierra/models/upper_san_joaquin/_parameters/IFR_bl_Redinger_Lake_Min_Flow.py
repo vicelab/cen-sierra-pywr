@@ -6,7 +6,7 @@ from numba.experimental import jitclass
 class IFR_bl_Redinger_Lake_Min_Flow(MinFlowParameter):
     """"""
 
-    @jit
+    @jit(fastmath=True)
     def _value(self, timestep, scenario_index):
 
         year_type = self.model.parameters["San Joaquin Valley WYT" + self.month_suffix].value(timestep, scenario_index)

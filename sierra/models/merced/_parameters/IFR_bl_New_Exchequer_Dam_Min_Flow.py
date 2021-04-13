@@ -1,12 +1,14 @@
 from sierra.base_parameters import MinFlowParameter
 from sierra.utilities.converter import convert
-
+from numba import jit, njit, vectorize
+from numba.experimental import jitclass
 
 class IFR_bl_New_Exchequer_Dam_Min_Flow(MinFlowParameter):
     """
     This policy calculates instream flow requirements in the Merced River below the Merced Falls powerhouse.
     """
 
+    @jit(fastmath=True)
     def _value(self, timestep, scenario_index):
         ifr_cms = 0.061164 / 0.0864
 

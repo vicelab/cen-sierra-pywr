@@ -6,7 +6,7 @@ from numba.experimental import jitclass
 class IFR_bl_Pitman_Creek_Div_Min_Flow(MinFlowParameter):
     """"""
 
-    @jit
+    @jit(fastmath=True)
     def _value(self, timestep, scenario_index):
         
         ifr_cfs = 0.5  # actual ifr is 0.3 cfs

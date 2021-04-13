@@ -6,7 +6,7 @@ from numba.experimental import jitclass
 class IFR_bl_Shaver_Lake_Min_Flow(MinFlowParameter):
     """"""
 
-    @jit
+    @jit(fastmath=True)
     def _value(self, timestep, scenario_index):
 
         ifr_cfs = 0

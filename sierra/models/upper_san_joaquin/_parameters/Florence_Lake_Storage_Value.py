@@ -5,7 +5,7 @@ from numba.experimental import jitclass
 class Florence_Lake_Storage_Value(WaterLPParameter):
     """"""
 
-    @jit
+    @jit(fastmath=True)
     def _value(self, timestep, scenario_index):
         kwargs = dict(timestep=timestep, scenario_index=scenario_index)
         return -85

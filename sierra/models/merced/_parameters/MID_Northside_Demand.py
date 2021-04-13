@@ -1,13 +1,14 @@
 from sierra.base_parameters import WaterLPParameter
-
 from sierra.utilities.converter import convert
-
+from numba import jit, njit, vectorize
+from numba.experimental import jitclass
 
 class MID_Northside_Demand(WaterLPParameter):
     """"""
 
     reductions = [0, 0]
 
+    @jit(fastmath=True)
     def _value(self, timestep, scenario_index):
 
         WYT = self.model.tables['WYT for IFR Below Exchequer'][self.operational_water_year]
