@@ -1,10 +1,10 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra_cython.base_parameters import WaterLPParameter
 
 
 class Lake_McClure_Water_Demand(WaterLPParameter):
     """"""
 
-    cpdef  _value(self, timestep, scenario_index):
+    def _value(self, timestep, scenario_index):
 
         if (timestep.month, timestep.day) == (10, 1):
             SJVI = self.model.tables["San Joaquin Valley Index"][timestep.year + 1]
@@ -24,11 +24,11 @@ class Lake_McClure_Water_Demand(WaterLPParameter):
         target_fraction = min(target_mcm / max_volume_mcm, 1.0)
         return target_fraction
 
-    cpdef  value(self, timestep, scenario_index):
+    def value(self, timestep, scenario_index):
         return self._value(timestep, scenario_index)
 
     @classmethod
-    cpdef  load(cls, model, data):
+    def load(cls, model, data):
         return cls(model, **data)
 
 
