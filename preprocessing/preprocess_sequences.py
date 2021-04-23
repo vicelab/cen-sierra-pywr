@@ -10,7 +10,7 @@ from itertools import product
 from preprocessing.preprocess_hydrology import preprocess_hydrology
 from preprocessing.utils.sequences import generate_data_from_sequence
 
-from sierra.constants import basin_lookup
+from sierra_cython.constants import basin_lookup
 
 RND_SEQ_NAME_TPL = 'S{id:04}_Y{years:02}_RAND_N{number:02}'
 DRY_SEQ_NAME_TPL = 'S{id:04}_Y{years:02}_D{dry:1}W{wet:1}_N{number:02}'

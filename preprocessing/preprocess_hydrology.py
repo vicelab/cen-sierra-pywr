@@ -12,7 +12,7 @@ import preprocessing.hydrology.tuolumne as tuo
 import preprocessing.hydrology.merced as mer
 import preprocessing.hydrology.upper_san_joaquin as usj
 
-from sierra.utilities.constants import basin_lookup
+from sierra_cython.utilities.constants import basin_lookup
 
 # import preprocessing.tuolumne as tuo
 
