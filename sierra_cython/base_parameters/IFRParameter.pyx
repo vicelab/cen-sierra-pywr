@@ -1,4 +1,4 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra_cython.base_parameters import WaterLPParameter
 
 
 class IFRParameter(WaterLPParameter):
@@ -6,7 +6,7 @@ class IFRParameter(WaterLPParameter):
     ifr_names = None
     ifr_type = 'basic'
 
-    cpdef setup(self):
+    def setup(self):
         super().setup()
 
         self.ifr_type = self.model.nodes[self.res_name + self.month_suffix].ifr_type

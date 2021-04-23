@@ -1,7 +1,7 @@
 import random
 from dateutil.relativedelta import relativedelta
 
-from sierra.base_parameters import IFRParameter
+from sierra_cython.base_parameters import IFRParameter
 
 
 class FlowPeriods(object):
@@ -25,7 +25,7 @@ class MinFlowParameter(IFRParameter):
     spring_recession_start = 250
     flood_lengths = {2: 7, 5: 2, 10: 2}
 
-    cpdef setup(self, *args, **kwargs):
+    def setup(self, *args, **kwargs):
         super().setup(*args, **kwargs)
 
         for s in self.model.scenarios.scenarios:
@@ -59,7 +59,7 @@ class MinFlowParameter(IFRParameter):
                 #     self.flood_volumes_mcm[return_interval] \
                 #         = floods['{}-year'.format(return_interval)] / 35.315 * 0.0864 * flood_lengths[return_interval]
 
-    cpdef before(self):
+    def before(self):
         super().before()
 
         timestep = self.model.timestep
@@ -81,7 +81,7 @@ class MinFlowParameter(IFRParameter):
                 self.water_year_type = self.water_year_types[wyt]
                 self.close_wet_season_gates = True
 
-    cpdef get_down_ramp_ifr(self, timestep, scenario_index, value, initial_value=None, rate=0.25):
+    def get_down_ramp_ifr(self, timestep, scenario_index, value, initial_value=None, rate=0.25):
         """
 
         :param timestep:
@@ -100,7 +100,7 @@ class MinFlowParameter(IFRParameter):
             Qp = self.model.nodes[self.res_name].prev_flow[scenario_index.global_id] / 0.0864  # convert to cms
         return max(value, Qp * (1 - rate))
 
-    cpdef requirement(self, timestep, scenario_index, default=None):
+    def requirement(self, timestep, scenario_index, default=None):
         """
         Calculate a custom IFR other than the baseline IFR
         :param timestep:
@@ -132,13 +132,13 @@ class MinFlowParameter(IFRParameter):
 
         return min_flow_mcm
 
-    cpdef swrcb_flows_min_flow(self, timestep, scenario_index):
+    def swrcb_flows_min_flow(self, timestep, scenario_index):
         fnf_mcm = self.model.parameters['Full Natural Flow'].get_value(scenario_index)
         ifr_mcm = fnf_mcm * 0.4
         ifr_cms = ifr_mcm / 0.0864
         return ifr_cms
 
-    cpdef functional_flows_min_flow_scheduling(self, timestep, scenario_index, scenario_name=None):
+    def functional_flows_min_flow_scheduling(self, timestep, scenario_index, scenario_name=None):
         """
         Calculate the minimum functional flow
         :param timestep:
@@ -268,7 +268,7 @@ class MinFlowParameter(IFRParameter):
 
         return ifr_cms
 
-    cpdef functional_flows_min_flow_planning(self, timestep, scenario_index, scenario_name=None):
+    def functional_flows_min_flow_planning(self, timestep, scenario_index, scenario_name=None):
         """
         Calculate the minimum functional flow
         :param timestep:

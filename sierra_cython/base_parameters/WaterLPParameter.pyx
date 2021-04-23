@@ -1,8 +1,8 @@
-from dateutil.relativedelta cimport relativedelta
-from calendar cimport monthrange
+from dateutil.relativedelta import relativedelta
+from calendar import monthrange
 
-cimport pandas as pd
-from pywr.parameters cimport Parameter
+import pandas as pd
+from pywr.parameters import Parameter
 
 
 class Timestep(object):
@@ -13,10 +13,10 @@ class Timestep(object):
 
 
 class WaterLPParameter(Parameter):
-    cpdef double cfs_to_cms = 1 / 35.315
+    cfs_to_cms = 1 / 35.315
 
-    cdef char* mode = 'scheduling'
-    cdef char* res_class = 'network'
+    mode = 'scheduling'
+    res_class = 'network'
     res_name = None
     res_name_full = None
     attr_name = None
@@ -28,11 +28,11 @@ class WaterLPParameter(Parameter):
     month_suffix = ''
     demand_constant_param = ''
     elevation_param = ''
-    cdef int num_scenarios = 0
+    num_scenarios = 0
 
     timestep = Timestep()
 
-    cpdef void setup(self):
+    def setup(self):
         super().setup()
 
         self.num_scenarios = len(self.model.scenarios.combinations)
@@ -78,7 +78,7 @@ class WaterLPParameter(Parameter):
         if node and 'level' in node.component_attrs or self.attr_name == 'Storage Value':
             self.elevation_param = '{}/Elevation'.format(self.res_name) + self.month_suffix
 
-    cpdef void before(self):
+    def before(self):
         super(WaterLPParameter, self).before()
         self.datetime = self.model.timestepper.current.datetime
 
@@ -97,17 +97,17 @@ class WaterLPParameter(Parameter):
         if self.datetime.day == 1:
             self.days_in_month = monthrange(self.datetime.year, self.datetime.month)[1]
 
-    cpdef int get(self, param, timestep, scenario_index):
+    def get(self, param, timestep, scenario_index):
         return self.model.parameters[param].value(timestep, scenario_index)
 
-    cpdef int[] get_days_in_month(self, year=None, month=None):
+    def get_days_in_month(self, year=None, month=None):
         if year is None:
             year = self.year
         if month is None:
             month = self.month
         return monthrange(year, month)[1]
 
-    cpdef int[] get_dates_in_month(self, year=None, month=None):
+    def get_dates_in_month(self, year=None, month=None):
         if year is None:
             year = self.year
         if month is None:
