@@ -1,8 +1,8 @@
-from dateutil.relativedelta import relativedelta
-from calendar import monthrange
+from dateutil.relativedelta cimport relativedelta
+from calendar cimport monthrange
 
-import pandas as pd
-from pywr.parameters import Parameter
+cimport pandas as pd
+from pywr.parameters cimport Parameter
 
 
 class Timestep(object):
@@ -13,7 +13,7 @@ class Timestep(object):
 
 
 class WaterLPParameter(Parameter):
-    cdef int cfs_to_cms = 1 / 35.315
+    cpdef double cfs_to_cms = 1 / 35.315
 
     cdef char* mode = 'scheduling'
     cdef char* res_class = 'network'
