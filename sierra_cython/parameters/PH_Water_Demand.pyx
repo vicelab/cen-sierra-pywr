@@ -1,4 +1,4 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra_cython.base_parameters import WaterLPParameter
 from dateutil.relativedelta import relativedelta
 from calendar import isleap
 import random
