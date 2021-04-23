@@ -2,7 +2,7 @@ import os
 import json
 import argparse
 from itertools import product
-from sierra.run_basin_model import run_model
+from sierra_cython.run_basin_model import run_model
 from functools import partial
 import pandas as pd
 from loguru import logger
