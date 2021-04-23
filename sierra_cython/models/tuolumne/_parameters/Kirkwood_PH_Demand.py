@@ -1,7 +1,7 @@
 import numpy as np
-from sierra.base_parameters import WaterLPParameter
+from sierra_cython.base_parameters import WaterLPParameter
 from datetime import datetime
-from sierra.utilities.converter import convert
+from sierra_cython.utilities.converter import convert
 
 
 class Kirkwood_PH_Demand(WaterLPParameter):

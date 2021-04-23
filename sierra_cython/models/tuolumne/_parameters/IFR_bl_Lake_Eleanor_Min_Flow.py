@@ -1,6 +1,6 @@
-from sierra.base_parameters import MinFlowParameter
+from sierra_cython.base_parameters import MinFlowParameter
 
-from sierra.utilities.converter import convert
+from sierra_cython.utilities.converter import convert
 
 
 class IFR_bl_Lake_Eleanor_Min_Flow(MinFlowParameter):

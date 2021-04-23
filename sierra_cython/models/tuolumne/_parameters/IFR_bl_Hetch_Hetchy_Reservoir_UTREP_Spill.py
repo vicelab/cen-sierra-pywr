@@ -1,4 +1,4 @@
-from sierra.base_parameters import MinFlowParameter
+from sierra_cython.base_parameters import MinFlowParameter
 import pandas as pd
 import numpy as np
 from datetime import datetime

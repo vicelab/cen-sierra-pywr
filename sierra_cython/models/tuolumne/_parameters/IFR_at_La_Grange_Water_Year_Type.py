@@ -1,4 +1,4 @@
-from sierra.base_parameters import MinFlowParameter
+from sierra_cython.base_parameters import MinFlowParameter
 
 
 class IFR_at_La_Grange_Water_Year_Type(MinFlowParameter):

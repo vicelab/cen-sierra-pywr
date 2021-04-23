@@ -1,9 +1,9 @@
 import pandas as pd
 import numpy as np
 import datetime as dt
-from sierra.base_parameters import WaterLPParameter
+from sierra_cython.base_parameters import WaterLPParameter
 
-from sierra.utilities.converter import convert
+from sierra_cython.utilities.converter import convert
 
 
 class Dion_R_Holm_PH_Demand(WaterLPParameter):
@@ -11,7 +11,7 @@ class Dion_R_Holm_PH_Demand(WaterLPParameter):
 
     max_release_cms = 27.47
 
-    cdef  _value(self, timestep, scenario_index):
+    def  _value(self, timestep, scenario_index):
 
         sid = scenario_index.global_id
 
@@ -71,7 +71,7 @@ class Dion_R_Holm_PH_Demand(WaterLPParameter):
 
         return release_cms
 
-    cdef  value(self, timestep, scenario_index):
+    def  value(self, timestep, scenario_index):
         try:
             return convert(self._value(timestep, scenario_index), "m^3 s^-1", "m^3 day^-1", scale_in=1,
                            scale_out=1000000.0)
@@ -82,7 +82,7 @@ class Dion_R_Holm_PH_Demand(WaterLPParameter):
             raise
 
     @classmethod
-    cdef  load(cls, model, data):
+    def  load(cls, model, data):
         try:
             return cls(model, **data)
         except Exception as err:

@@ -1,5 +1,5 @@
 import numpy as np
-from sierra.base_parameters import WaterLPParameter
+from sierra_cython.base_parameters import WaterLPParameter
 
 
 class Water_Bank(WaterLPParameter):

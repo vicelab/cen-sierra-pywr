@@ -1,6 +1,6 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra_cython.base_parameters import WaterLPParameter
 
-from sierra.utilities.converter import convert
+from sierra_cython.utilities.converter import convert
 
 
 class Lower_Cherry_Aqueduct_1_Flow_Requirement(WaterLPParameter):

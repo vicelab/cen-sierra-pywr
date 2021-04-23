@@ -1,9 +1,9 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra_cython.base_parameters import WaterLPParameter
 
 
 class Districts_Entitlements(WaterLPParameter):
 
-    cdef  _value(self, timestep, scenario_index):
+    def  _value(self, timestep, scenario_index):
 
         # Districts Entitlements is the lesser of full natural flow at La Grange and a maximum value:
         # Jun 15-Apr 14: 4792.1 AF/day = 5.911 mcm
@@ -18,7 +18,7 @@ class Districts_Entitlements(WaterLPParameter):
 
         return min(fnf_mcm, max_entitlement_mcm)
 
-    cdef  value(self, timestep, scenario_index):
+    def  value(self, timestep, scenario_index):
         try:
             return self._value(timestep, scenario_index)
         except Exception as err:
@@ -28,7 +28,7 @@ class Districts_Entitlements(WaterLPParameter):
             raise
 
     @classmethod
-    cdef  load(cls, model, data):
+    def  load(cls, model, data):
         try:
             return cls(model, **data)
         except Exception as err:

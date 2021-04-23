@@ -1,7 +1,7 @@
 import numpy as np
-from sierra.base_parameters import MinFlowParameter
+from sierra_cython.base_parameters import MinFlowParameter
 
-from sierra.utilities.converter import convert
+from sierra_cython.utilities.converter import convert
 
 
 class IFR_at_La_Grange_Min_Flow(MinFlowParameter):
