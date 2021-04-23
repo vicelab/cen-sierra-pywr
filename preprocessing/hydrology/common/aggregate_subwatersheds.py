@@ -2,7 +2,7 @@ import json
 import pandas as pd
 import os
 
-from sierra.utilities import simplify_network
+from sierra_cython.utilities import simplify_network
 
 
 def aggregate_subwatersheds(scenario_path, basin):

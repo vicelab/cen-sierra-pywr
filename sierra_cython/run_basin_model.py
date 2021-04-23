@@ -6,13 +6,14 @@ from importlib import import_module
 from tqdm import tqdm
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-from sierra.common.tests import get_planning_dataframe
+from sierra_cython.common.tests import get_planning_dataframe
 import pandas as pd
 import traceback
-from sierra.utilities import simplify_network, prepare_planning_model, save_model_results, create_schematic
+from sierra_cython.utilities import simplify_network, prepare_planning_model, save_model_results, create_schematic
 from loguru import logger
 from graphviz import ExecutableNotFound
-import pyximport; pyximport.install()
+import pyximport; 
+pyximport.install()
 
 SECONDS_IN_DAY = 3600 * 24
 
@@ -63,7 +64,7 @@ def _run_model(climate,
     climate_set, climate_scenario = climate.split('/')
 
     if debug:
-        from sierra.utilities import check_nan
+        from sierra_cython.utilities import check_nan
         basin_path = os.path.join(data_path, basin.replace('_', ' ').title() + ' River')
         total_nan = check_nan(basin_path, climate)
 
@@ -183,7 +184,7 @@ def _run_model(climate,
         if '__init__' in filename:
             continue
         policy_name = os.path.splitext(filename)[0]
-        policy_module = 'sierra.parameters.{policy_name}'.format(policy_name=policy_name)
+        policy_module = 'sierra_cython.parameters.{policy_name}'.format(policy_name=policy_name)
         import_module(policy_module, policy_folder)
 
     # =========================================
