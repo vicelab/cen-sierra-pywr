@@ -31,7 +31,7 @@ class FlowRangeParameter(IFRParameter):
         return flow_range_mcm
 
     def functional_flows_range(self, timestep, scenario_index):
-        cpdef double FNF = self.model.parameters['Full Natural Flow'].value(timestep, scenario_index)
+        FNF = self.model.parameters['Full Natural Flow'].value(timestep, scenario_index)
         return FNF * 0.4 / 0.0864
 
     def get_ifr_range(self, timestep, scenario_index, **kwargs):
