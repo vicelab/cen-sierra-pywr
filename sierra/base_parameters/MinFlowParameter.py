@@ -1,5 +1,6 @@
 import random
 from dateutil.relativedelta import relativedelta
+from math import log
 from datetime import datetime
 from sierra.base_parameters import IFRParameter
 
@@ -21,6 +22,8 @@ class MinFlowParameter(IFRParameter):
 
     # Functional flows parameters
     magnitude_col = None
+    high_wet_season_baseflow = False
+    spring_ramp_up_days = 0.0
     dry_season_baseflow_mcm = None
     include_functional_flows = False
     wet_baseflow_start = 100
@@ -83,6 +86,8 @@ class MinFlowParameter(IFRParameter):
                 self.close_wet_season_gates = True
                 self.ramp_rate = None
                 self.spring_recession = False
+                self.high_wet_season_baseflow = False
+                self.spring_ramp_up_days = 0.0
 
     def get_down_ramp_ifr(self, timestep, scenario_index, value, initial_value=None, rate=0.25):
         """
@@ -141,6 +146,11 @@ class MinFlowParameter(IFRParameter):
         ifr_cms = ifr_mcm / 0.0864
         return ifr_cms
 
+    def calc_spring_ramp_up_days(self, Qf, Q0):
+        # t = log(Qsp/Q0)/log(1+r)
+        t = int(log(Qf / Q0) / log(1 + 0.13))
+        return t
+
     def functional_flows_min_flow_scheduling(self, timestep, scenario_index, scenario_name=None):
         """
         Calculate the minimum functional flow
@@ -157,7 +167,7 @@ class MinFlowParameter(IFRParameter):
         fnf = self.model.parameters['Full Natural Flow'].dataframe
 
         # Dry season baseflow
-        if self.dowy < metrics['Wet_Tim']:
+        if self.dowy < int(metrics['Wet_Tim']):
 
             if metrics['FA_Tim'] <= self.dowy <= metrics['FA_Tim'] + metrics['FA_Dur'] - 1:
                 ifr_cfs = metrics['FA_Mag']
@@ -168,16 +178,26 @@ class MinFlowParameter(IFRParameter):
         # Low wet season baseflow
         elif self.dowy < metrics['SP_Tim']:
 
-            ramp_up_cfs = 0.0  # set default pre-spring ramp up
-
+            if self.dowy == int(metrics['Wet_Tim']):
+                # Calculate spring ramp up start
+                self.spring_ramp_up_days = self.calc_spring_ramp_up_days(metrics['SP_Mag'],
+                                                                             metrics['Wet_BFL_Mag_10'])
             # Look forward 1 day and release anything between 2-year and 10-year flood peak
             fnf_cfs = fnf[timestep.datetime] / 0.0864 * 35.315  # fnf mcm -> cfs
 
-            # TODO: update based on Ann's estimation; might have an early & late wet season baseflow
-            ifr_cfs = metrics['Wet_BFL_Mag_10']
+            if self.high_wet_season_baseflow:
+                ifr_base_cfs = metrics['Wet_BFL_Mag_50']
+            else:
+                ifr_base_cfs = metrics['Wet_BFL_Mag_10']
+            ifr_cfs = ifr_base_cfs
 
             if fnf_cfs >= metrics['Peak_2']:
                 ifr_cfs = min(fnf_cfs, metrics['Peak_10'])
+
+                if timestep.month >= 2:
+                    self.high_wet_season_baseflow = True
+                    self.spring_ramp_up_days = \
+                        self.calc_spring_ramp_up_days(metrics['SP_Mag'], metrics['Wet_BFL_Mag_50'])
 
             # Check and see if we should start the spring recession
             if (4, 1) >= (timestep.month, timestep.day) >= (5, 10) and ifr_cfs >= metrics['SP_Mag'] and not self.spring_recession:
@@ -185,9 +205,11 @@ class MinFlowParameter(IFRParameter):
 
             else:
                 # Calculate pre-spring ramp up
-                ramp_up_lead_time = 30
-                ramp_up_rate = (metrics['SP_Tim'] - self.dowy) / ramp_up_lead_time
-                ramp_up_cfs = metrics['SP_Mag'] * (1 - ramp_up_rate)
+                # ramp_up_cfs = Yt = Y0(1+r)t
+                t = self.dowy - (metrics['SP_Tim'] - self.spring_ramp_up_days)
+                ramp_up_cfs = ifr_base_cfs * (1 + 0.13) ** t
+                # prev_flow_mcm = self.model.nodes[self.res_name].prev_flow[sid]
+                # ramp_up_cfs = prev_flow_mcm * 1.13 / 0.0864 * 35.315  # convert mcm to cfs; 1.13 = ramp up rate
                 ifr_cfs = max(ifr_cfs, ramp_up_cfs)
 
         elif self.dowy == metrics['SP_Tim'] and not self.spring_recession:
