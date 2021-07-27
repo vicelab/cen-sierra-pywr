@@ -2,7 +2,7 @@ import os
 import pandas as pd
 
 
-def save_model_results(model, results_path, file_suffix):
+def save_model_results(model, results_path, file_suffix, debug=False):
     results_df = model.to_dataframe()
     results_df.index.name = 'Date'
     scenario_names = [s.name for s in model.scenarios.scenarios]
