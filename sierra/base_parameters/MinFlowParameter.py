@@ -180,7 +180,7 @@ class MinFlowParameter(IFRParameter):
                 ifr_cfs = min(fnf_cfs, metrics['Peak_10'])
 
             # Check and see if we should start the spring recession
-            if (timestep.month, timestep.day) >= (5, 10) and ifr_cfs >= metrics['SP_Mag'] and not self.spring_recession:
+            if (4, 1) >= (timestep.month, timestep.day) >= (5, 10) and ifr_cfs >= metrics['SP_Mag'] and not self.spring_recession:
                 self.spring_recession = True
 
             else:
