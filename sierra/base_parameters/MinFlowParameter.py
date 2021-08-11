@@ -165,6 +165,7 @@ class MinFlowParameter(IFRParameter):
         ifr_mcm = 0.0
         ifr_cfs = 0.0
         fnf = self.model.parameters['Full Natural Flow'].dataframe
+        fnf_cfs = fnf[timestep.datetime] / 0.0864 * 35.315  # fnf mcm -> cfs
 
         # Dry season baseflow
         if self.dowy < int(metrics['Wet_Tim']):
@@ -183,7 +184,6 @@ class MinFlowParameter(IFRParameter):
                 self.spring_ramp_up_days = self.calc_spring_ramp_up_days(metrics['SP_Mag'],
                                                                              metrics['Wet_BFL_Mag_10'])
             # Look forward 1 day and release anything between 2-year and 10-year flood peak
-            fnf_cfs = fnf[timestep.datetime] / 0.0864 * 35.315  # fnf mcm -> cfs
 
             if self.high_wet_season_baseflow:
                 ifr_base_cfs = metrics['Wet_BFL_Mag_50']
@@ -232,13 +232,14 @@ class MinFlowParameter(IFRParameter):
                 # Non-spring recession ramp down
                 ifr_cfs = max(ifr_ramp_down_cfs, ifr_cfs)
 
-        ifr_mcm = ifr_mcm or (ifr_cfs / 35.315 * 0.0864)
+            # This releases the minimum of functional flows and full natural flow (with min of Wet_BFL_Mag_10)
+            ifr_cfs = min(ifr_cfs, max(fnf_cfs, metrics['Wet_BFL_Mag_10']))
 
-        # This releases the minimum of functional flows and full natural flow
-        # Commented out because probably not needed, but retained for posterity (and to show we explicitly
-        # commented this out)
-        # fnf_mcm = fnf[timestep.datetime]
-        # ifr_mcm = min(ifr_mcm, fnf_mcm)
+        else:
+            # This releases the minimum of functional flows and full natural flow
+            ifr_cfs = min(ifr_cfs, fnf_cfs)
+
+        ifr_mcm = ifr_cfs / 35.315 * 0.0864
 
         self.prev_requirement[sid] = ifr_mcm
 
