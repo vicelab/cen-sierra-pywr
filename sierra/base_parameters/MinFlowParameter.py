@@ -1,3 +1,4 @@
+import math
 import random
 from dateutil.relativedelta import relativedelta
 from math import log
@@ -40,6 +41,7 @@ class MinFlowParameter(IFRParameter):
                 self.metrics = self.model.tables['functional flows metrics']
                 self.water_year_type = 'moderate'
                 self.close_wet_season_gates = False
+                self.ramp_up_rate = 0.13
 
                 self.water_year_types = {
                     1: 'dry',
@@ -150,9 +152,10 @@ class MinFlowParameter(IFRParameter):
         ifr_cms = ifr_mcm / 0.0864
         return ifr_cms
 
-    def calc_spring_ramp_up_days(self, Qf, Q0):
+    def calc_spring_ramp_up_days(self, Qf, Q0, r):
         # t = log(Qsp/Q0)/log(1+r)
-        t = int(log(Qf / Q0) / log(1 + 0.13))
+        # Qf = (1+r)^t * Q0
+        t = math.ceil(log(Qf / Q0, 1 + r))
         return t
 
     def functional_flows_min_flow_scheduling(self, timestep, scenario_index, scenario_name=None):
@@ -203,7 +206,8 @@ class MinFlowParameter(IFRParameter):
 
             if self.dowy == int(metrics['Wet_Tim']):
                 # Calculate spring ramp up start
-                self.spring_ramp_up_days = self.calc_spring_ramp_up_days(metrics['SP_Mag'], metrics['Wet_BFL_Mag_10'])
+                self.spring_ramp_up_days \
+                    = self.calc_spring_ramp_up_days(metrics['SP_Mag'], metrics['Wet_BFL_Mag_10'], self.ramp_up_rate)
 
             # Pass any flow greater than the 2-year flood (but no more than the 10-year flood)
             high_flow = False
@@ -219,7 +223,7 @@ class MinFlowParameter(IFRParameter):
 
             if self.high_wet_season_baseflow:
                 self.spring_ramp_up_days = \
-                    self.calc_spring_ramp_up_days(metrics['SP_Mag'], metrics['Wet_BFL_Mag_50'])
+                    self.calc_spring_ramp_up_days(metrics['SP_Mag'], metrics['Wet_BFL_Mag_50'], self.ramp_up_rate)
 
             # Check and see if we should start the spring recession
             if (4, 1) >= (timestep.month, timestep.day) >= (5, 10) \
@@ -229,12 +233,10 @@ class MinFlowParameter(IFRParameter):
 
             elif not high_flow:
                 # Calculate pre-spring ramp up
-                # ramp_up_cfs = Yt = Y0(1+r)t
-                t = self.dowy - (metrics['SP_Tim'] - self.spring_ramp_up_days)
-                ramp_up_cfs = ifr_cfs * (1 + 0.13) ** t
-                # prev_flow_mcm = self.model.nodes[self.res_name].prev_flow[sid]
-                # ramp_up_cfs = prev_flow_mcm * 1.13 / 0.0864 * 35.315  # convert mcm to cfs; 1.13 = ramp up rate
-                ifr_cfs = max(ifr_cfs, ramp_up_cfs)
+                # Qt = Q0 * (1 + r) ^ t
+                time_to_spring_peak = self.dowy - (metrics['SP_Tim'] - self.spring_ramp_up_days) + 1
+                if time_to_spring_peak >= 0:
+                    ifr_cfs = ifr_cfs * (1 + self.ramp_up_rate) ** time_to_spring_peak
 
         elif self.dowy == metrics['SP_Tim'] and not self.spring_recession:
             ifr_cfs = metrics['SP_Mag']
