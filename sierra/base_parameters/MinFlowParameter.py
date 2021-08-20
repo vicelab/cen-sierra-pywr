@@ -1,7 +1,7 @@
 import random
 from dateutil.relativedelta import relativedelta
 from math import log
-from datetime import datetime
+from datetime import datetime, timedelta
 from sierra.base_parameters import IFRParameter
 
 
@@ -78,14 +78,18 @@ class MinFlowParameter(IFRParameter):
 
             if timestep.month == 10 and timestep.day == 1:
                 # update water year type, assuming perfect foresight
-                wy = timestep.year + 1
+                self.water_year = timestep.year + 1
                 fnf_annual = self.model.tables['Annual Full Natural Flow']
                 terciles = fnf_annual.quantile([0, 0.33, 0.66]).values
-                wyt = sum([1 for q in terciles if fnf_annual[wy] >= q])
+                wyt = sum([1 for q in terciles if fnf_annual[self.water_year] >= q])
+                self.prev_water_year_type = self.water_year_type
                 self.water_year_type = self.water_year_types[wyt]
+                self.fall_pulse_released = False
+                self.cancel_fall_pulse = False
                 self.close_wet_season_gates = True
                 self.ramp_rate = None
                 self.spring_recession = False
+                self.low_wet_season_baseflow = False
                 self.high_wet_season_baseflow = False
                 self.spring_ramp_up_days = 0.0
 
@@ -170,44 +174,64 @@ class MinFlowParameter(IFRParameter):
         # Dry season baseflow
         if self.dowy < int(metrics['Wet_Tim']):
 
-            if metrics['FA_Tim'] <= self.dowy <= metrics['FA_Tim'] + metrics['FA_Dur'] - 1:
-                ifr_cfs = metrics['FA_Mag']
+            # Pass any flow greater than the 2-year flood (but no more than the 10-year flood)
+            if fnf_cfs >= metrics['Peak_2']:
+                ifr_cfs = min(fnf_cfs, metrics['Peak_10'])
+                self.low_wet_season_baseflow = True
 
+            elif self.low_wet_season_baseflow:
+                ifr_cfs = metrics['Wet_BFL_Mag_10']
             else:
-                ifr_cfs = metrics['DS_Mag_50']
+                # if metrics['FA_Tim'] <= self.dowy <= metrics['FA_Tim'] + metrics['FA_Dur'] - 1:
+                #     ifr_cfs = metrics['FA_Mag']
+                yesterday = timestep.datetime - timedelta(days=1)
+                tomorrow = timestep.datetime + timedelta(days=1)
+                fnf_forecast_mcm = fnf[yesterday:tomorrow].max()
+                fa_mag_mcm = metrics['FA_Mag'] / 35.315 * 0.0864
+                if fnf_forecast_mcm >= fa_mag_mcm and not self.cancel_fall_pulse:
+                    ifr_cfs = fnf_cfs
+                    self.fall_pulse_released = True
+
+                else:
+                    # use DS_Mag_50 from previous water year
+                    ifr_cfs = self.metrics[self.prev_water_year_type]['DS_Mag_50']
+                    if self.fall_pulse_released:
+                        self.cancel_fall_pulse = True
 
         # Low wet season baseflow
         elif self.dowy < metrics['SP_Tim']:
 
             if self.dowy == int(metrics['Wet_Tim']):
                 # Calculate spring ramp up start
-                self.spring_ramp_up_days = self.calc_spring_ramp_up_days(metrics['SP_Mag'],
-                                                                             metrics['Wet_BFL_Mag_10'])
-            # Look forward 1 day and release anything between 2-year and 10-year flood peak
+                self.spring_ramp_up_days = self.calc_spring_ramp_up_days(metrics['SP_Mag'], metrics['Wet_BFL_Mag_10'])
 
-            if self.high_wet_season_baseflow:
-                ifr_base_cfs = metrics['Wet_BFL_Mag_50']
-            else:
-                ifr_base_cfs = metrics['Wet_BFL_Mag_10']
-            ifr_cfs = ifr_base_cfs
-
+            # Pass any flow greater than the 2-year flood (but no more than the 10-year flood)
+            high_flow = False
             if fnf_cfs >= metrics['Peak_2']:
                 ifr_cfs = min(fnf_cfs, metrics['Peak_10'])
+                self.high_wet_season_baseflow = True
+                high_flow = True
 
-                if timestep.month >= 2:
-                    self.high_wet_season_baseflow = True
-                    self.spring_ramp_up_days = \
-                        self.calc_spring_ramp_up_days(metrics['SP_Mag'], metrics['Wet_BFL_Mag_50'])
+            elif self.high_wet_season_baseflow:
+                ifr_cfs = metrics['Wet_BFL_Mag_50']
+            else:
+                ifr_cfs = metrics['Wet_BFL_Mag_10']
+
+            if self.high_wet_season_baseflow:
+                self.spring_ramp_up_days = \
+                    self.calc_spring_ramp_up_days(metrics['SP_Mag'], metrics['Wet_BFL_Mag_50'])
 
             # Check and see if we should start the spring recession
-            if (4, 1) >= (timestep.month, timestep.day) >= (5, 10) and ifr_cfs >= metrics['SP_Mag'] and not self.spring_recession:
+            if (4, 1) >= (timestep.month, timestep.day) >= (5, 10) \
+                    and ifr_cfs >= metrics['SP_Mag'] \
+                    and not self.spring_recession:
                 self.spring_recession = True
 
-            else:
+            elif not high_flow:
                 # Calculate pre-spring ramp up
                 # ramp_up_cfs = Yt = Y0(1+r)t
                 t = self.dowy - (metrics['SP_Tim'] - self.spring_ramp_up_days)
-                ramp_up_cfs = ifr_base_cfs * (1 + 0.13) ** t
+                ramp_up_cfs = ifr_cfs * (1 + 0.13) ** t
                 # prev_flow_mcm = self.model.nodes[self.res_name].prev_flow[sid]
                 # ramp_up_cfs = prev_flow_mcm * 1.13 / 0.0864 * 35.315  # convert mcm to cfs; 1.13 = ramp up rate
                 ifr_cfs = max(ifr_cfs, ramp_up_cfs)
