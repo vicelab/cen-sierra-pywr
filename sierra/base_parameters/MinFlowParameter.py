@@ -232,20 +232,18 @@ class MinFlowParameter(IFRParameter):
                 ifr_cfs = min(fnf_cfs, metrics['Peak_10'])
                 self.high_wet_season_baseflow = True
                 high_flow = True
+                self.spring_ramp_up_start \
+                    = self.calc_spring_ramp_up_start(metrics['Wet_BFL_Mag_50'], metrics['SP_Mag'], metrics['SP_Tim'])
 
             elif self.high_wet_season_baseflow:
                 ifr_cfs = metrics['Wet_BFL_Mag_50']
             else:
                 ifr_cfs = metrics['Wet_BFL_Mag_10']
 
-            if self.high_wet_season_baseflow:
-                self.spring_ramp_up_start \
-                    = self.calc_spring_ramp_up_start(metrics['Wet_BFL_Mag_50'], metrics['SP_Mag'], metrics['SP_Tim'])
-
             # Should we ramp up to the spring snowmelt peak?
             if not high_flow and self.dowy >= self.spring_ramp_up_start and not self.spring_recession:
                 # Calculate pre-spring ramp up: Qt = Q0 * (1 + r) ^ t
-                spring_ramp_up_days = self.dowy - self.spring_ramp_up_start + 1
+                spring_ramp_up_days = self.dowy - self.spring_ramp_up_start
                 ifr_cfs = ifr_cfs * (1 + self.ramp_up_rate) ** spring_ramp_up_days
 
             # Check and see if we should start the spring recession
