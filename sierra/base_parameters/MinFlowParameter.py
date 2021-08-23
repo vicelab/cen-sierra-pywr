@@ -1,9 +1,11 @@
 import math
-import random
-from dateutil.relativedelta import relativedelta
 from math import log
 from datetime import datetime, timedelta
 from sierra.base_parameters import IFRParameter
+
+DRY = 'dry'
+WET = 'wet'
+RECESSION = 'recession'
 
 
 class FlowPeriods(object):
@@ -42,6 +44,7 @@ class MinFlowParameter(IFRParameter):
                 self.water_year_type = 'moderate'
                 self.close_wet_season_gates = False
                 self.ramp_up_rate = 0.13
+                self.ramp_down_rate = 0.07
 
                 self.water_year_types = {
                     1: 'dry',
@@ -90,12 +93,13 @@ class MinFlowParameter(IFRParameter):
                 self.cancel_fall_pulse = False
                 self.close_wet_season_gates = True
                 self.ramp_rate = None
-                self.spring_recession = False
-                self.spring_ramp_up_start = False
-                self.low_wet_season_baseflow = False
-                self.high_wet_season_baseflow = False
-                self.dry_season = False
+                self.season = DRY
                 self.spring_ramp_up_days = 0.0
+
+                metrics = self.metrics[self.water_year_type]
+                self.wet_season_baseflow = metrics['Wet_BFL_Mag_10']
+                self.spring_ramp_up_start \
+                    = self.calc_spring_ramp_up_start(metrics['Wet_BFL_Mag_10'], metrics['SP_Mag'], metrics['SP_Tim'])
 
     def get_down_ramp_ifr(self, timestep, scenario_index, value, initial_value=None, rate=0.25):
         """
@@ -166,15 +170,11 @@ class MinFlowParameter(IFRParameter):
         spring_ramp_up_start = Tf - spring_ramp_up_days_total
         return spring_ramp_up_start
 
-    def set_spring_recession(self, on=True):
-        if on:
-            self.spring_recession = True
-            self.low_wet_season_baseflow = False
-            self.high_wet_season_baseflow = False
-        else:
-            self.spring_recession = False
-            self.low_wet_season_baseflow = False
-            self.high_wet_season_baseflow = False
+    def calc_ramp_down_cfs(self, ifr_cfs, sid):
+        prev_flow_mcm = self.model.nodes[self.res_name].prev_flow[sid]
+        ifr_ramp_down_cfs = prev_flow_mcm * (1 - self.ramp_down_rate) / 0.0864 * 35.315
+        ifr_cfs = max(ifr_ramp_down_cfs, ifr_cfs)
+        return ifr_cfs
 
     def functional_flows_min_flow_scheduling(self, timestep, scenario_index, scenario_name=None):
         """
@@ -187,21 +187,17 @@ class MinFlowParameter(IFRParameter):
 
         metrics = self.metrics[self.water_year_type]
 
-        ifr_mcm = 0.0
         ifr_cfs = 0.0
         fnf = self.model.parameters['Full Natural Flow'].dataframe
         fnf_cfs = fnf[timestep.datetime] / 0.0864 * 35.315  # fnf mcm -> cfs
 
         # Dry season baseflow
-        if self.dowy < int(metrics['Wet_Tim']):
+        if self.dowy < int(metrics['Wet_Tim']) and not self.season == WET:
 
             # Pass any flow greater than the 2-year flood (but no more than the 10-year flood)
             if fnf_cfs >= metrics['Peak_2']:
                 ifr_cfs = min(fnf_cfs, metrics['Peak_10'])
-                self.low_wet_season_baseflow = True
-
-            elif self.low_wet_season_baseflow:
-                ifr_cfs = metrics['Wet_BFL_Mag_10']
+                self.season = WET
             else:
                 # if metrics['FA_Tim'] <= self.dowy <= metrics['FA_Tim'] + metrics['FA_Dur'] - 1:
                 #     ifr_cfs = metrics['FA_Mag']
@@ -220,72 +216,50 @@ class MinFlowParameter(IFRParameter):
                         self.cancel_fall_pulse = True
 
         # Low wet season baseflow
-        elif self.dowy < metrics['SP_Tim']:
-
-            if self.dowy == int(metrics['Wet_Tim']):
-                self.spring_ramp_up_start \
-                    = self.calc_spring_ramp_up_start(metrics['Wet_BFL_Mag_10'], metrics['SP_Mag'], metrics['SP_Tim'])
-
-            # Pass any flow greater than the 2-year flood (but no more than the 10-year flood)
-            high_flow = False
-            if fnf_cfs >= metrics['Peak_2']:
-                ifr_cfs = min(fnf_cfs, metrics['Peak_10'])
-                self.high_wet_season_baseflow = True
-                high_flow = True
-                self.spring_ramp_up_start \
-                    = self.calc_spring_ramp_up_start(metrics['Wet_BFL_Mag_50'], metrics['SP_Mag'], metrics['SP_Tim'])
-
-            elif self.high_wet_season_baseflow:
-                ifr_cfs = metrics['Wet_BFL_Mag_50']
-            else:
-                ifr_cfs = metrics['Wet_BFL_Mag_10']
-
-            # Should we ramp up to the spring snowmelt peak?
-            if not high_flow and self.dowy >= self.spring_ramp_up_start and not self.spring_recession:
+        elif self.dowy < metrics['SP_Tim'] and self.season != RECESSION:
+            self.season = WET
+            if self.dowy >= self.spring_ramp_up_start:
                 # Calculate pre-spring ramp up: Qt = Q0 * (1 + r) ^ t
                 spring_ramp_up_days = self.dowy - self.spring_ramp_up_start
-                ifr_cfs = ifr_cfs * (1 + self.ramp_up_rate) ** spring_ramp_up_days
+                ifr_cfs = self.wet_season_baseflow * (1 + self.ramp_up_rate) ** spring_ramp_up_days
+
+            # Pass any flow greater than the 2-year flood (but no more than the 10-year flood)
+            # high_flow = False
+            elif fnf_cfs >= metrics['Peak_2']:
+                ifr_cfs = min(fnf_cfs, metrics['Peak_10'])
+                if self.dowy >= metrics['Wet_Tim']:
+                    self.wet_season_baseflow = metrics['Wet_BFL_Mag_50']
+                # high_flow = True
+                self.spring_ramp_up_start \
+                    = self.calc_spring_ramp_up_start(self.wet_season_baseflow, metrics['SP_Mag'], metrics['SP_Tim'])
+
+            elif fnf_cfs >= metrics['SP_Mag']:
+                ifr_cfs = fnf_cfs
+
+            else:
+                ifr_cfs = self.wet_season_baseflow
+                ifr_min = max(fnf_cfs, metrics['Wet_BFL_Mag_10'])
+                ifr_cfs = min(ifr_cfs, ifr_min)
+                if 4 <= timestep.month <= 9:
+                    ifr_cfs = self.calc_ramp_down_cfs(ifr_cfs, sid)
 
             # Check and see if we should start the spring recession
-            if (4, 1) <= (timestep.month, timestep.day) \
+            if 4 <= timestep.month <= 9 \
                     and ifr_cfs >= metrics['SP_Mag'] \
-                    and self.dowy < self.spring_ramp_up_start \
-                    and not self.spring_recession:
-                self.set_spring_recession(True)
+                    and self.dowy < self.spring_ramp_up_start:
+                self.season = RECESSION
 
-        elif self.dowy == metrics['SP_Tim'] and not self.spring_recession:
-            ifr_cfs = metrics['SP_Mag']
-            self.set_spring_recession(True)
+        elif self.season != DRY:
+            if self.dowy == metrics['SP_Tim'] and not self.season == RECESSION:
+                ifr_cfs = metrics['SP_Mag']
 
-        if 4 <= timestep.month <= 9:
-
-            # ...ramp down rate
-            ramp_down_rate = 0.07
-
-            prev_flow_mcm = self.model.nodes[self.res_name].prev_flow[sid]
-            ifr_ramp_down_cfs = prev_flow_mcm * (1 - ramp_down_rate) / 0.0864 * 35.315
-
-            if self.spring_recession:
-                # Spring recession ramp down
-                ifr_cfs = max(ifr_ramp_down_cfs, ifr_cfs, metrics['DS_Mag_50'])
-                if ifr_cfs == metrics['DS_Mag_50']:
-                    self.set_spring_recession(False)
-                    self.dry_season = True
-            elif self.dowy <= metrics['SP_Tim']:
-                ifr_cfs = max(ifr_ramp_down_cfs, ifr_cfs, metrics['Wet_BFL_Mag_10'])
-            elif self.dry_season:
-                ifr_cfs = metrics['DS_Mag_50']
-
-        # This releases the minimum of functional flows and full natural flow (with min of Wet_BFL_Mag_10)
-        # ...but not during spring ramp up or down
-        snowmelt_season = self.spring_ramp_up_start and self.spring_ramp_up_start <= self.dowy <= metrics['SP_Tim'] \
-                          or self.spring_recession
-        if not snowmelt_season:
-            if self.high_wet_season_baseflow:
-                ifr_cfs = min(ifr_cfs, max(fnf_cfs, metrics['Wet_BFL_Mag_10']))
             else:
-                # This releases the minimum of functional flows and full natural flow
-                ifr_cfs = min(ifr_cfs, fnf_cfs)
+                ifr_cfs = self.calc_ramp_down_cfs(ifr_cfs, sid)
+                ifr_cfs = max(ifr_cfs, metrics['DS_Mag_50'])
+                if ifr_cfs == metrics['DS_Mag_50']:
+                    self.season = DRY
+        else:
+            ifr_cfs = min(metrics['DS_Mag_50'], fnf_cfs)
 
         ifr_mcm = ifr_cfs / 35.315 * 0.0864
 
