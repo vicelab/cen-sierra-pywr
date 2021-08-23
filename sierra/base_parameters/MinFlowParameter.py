@@ -242,8 +242,9 @@ class MinFlowParameter(IFRParameter):
                 ifr_cfs = self.wet_season_baseflow
                 ifr_min = max(fnf_cfs, metrics['Wet_BFL_Mag_10'])
                 ifr_cfs = min(ifr_cfs, ifr_min)
-                if 4 <= timestep.month <= 9:
-                    ifr_cfs = self.calc_ramp_down_cfs(ifr_cfs, sid)
+
+            if 4 <= timestep.month:
+                ifr_cfs = self.calc_ramp_down_cfs(ifr_cfs, sid)
 
             # Check and see if we should start the spring recession
             if 4 <= timestep.month <= 9 \
