@@ -223,7 +223,10 @@ class MinFlowParameter(IFRParameter):
             if self.dowy >= self.spring_ramp_up_start:
                 # Calculate pre-spring ramp up: Qt = Q0 * (1 + r) ^ t
                 spring_ramp_up_days = self.dowy - self.spring_ramp_up_start
-                ifr_cfs = self.wet_season_baseflow * (1 + self.ramp_up_rate) ** spring_ramp_up_days
+                ifr_cfs = min(self.wet_season_baseflow * (1 + self.ramp_up_rate) ** spring_ramp_up_days,
+                              metrics['SP_Mag'])
+                if ifr_cfs >= metrics['SP_Mag']:
+                    self.season = RECESSION
 
             # Pass any flow greater than the 2-year flood (but no more than the 10-year flood)
             # high_flow = False
@@ -243,14 +246,14 @@ class MinFlowParameter(IFRParameter):
                 ifr_min = max(fnf_cfs, metrics['Wet_BFL_Mag_10'])
                 ifr_cfs = min(ifr_cfs, ifr_min)
 
-            if 4 <= timestep.month:
+            if 4 <= timestep.month <= 9:
                 ifr_cfs = self.calc_ramp_down_cfs(ifr_cfs, sid)
 
-            # Check and see if we should start the spring recession
-            if 4 <= timestep.month <= 9 \
-                    and ifr_cfs >= metrics['SP_Mag'] \
-                    and self.dowy < self.spring_ramp_up_start:
-                self.season = RECESSION
+                # Check and see if we should start the spring recession
+                if ifr_cfs >= metrics['SP_Mag'] and self.dowy < self.spring_ramp_up_start:
+                    ifr_cfs = self.wet_season_baseflow
+                    self.spring_ramp_up_start = self.dowy
+                    # self.season = RECESSION
 
         elif self.season != DRY:
             if self.dowy == metrics['SP_Tim'] and not self.season == RECESSION:
