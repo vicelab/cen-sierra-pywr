@@ -205,15 +205,17 @@ class MinFlowParameter(IFRParameter):
                 tomorrow = timestep.datetime + timedelta(days=1)
                 fnf_forecast_mcm = fnf[yesterday:tomorrow].max()
                 fa_mag_mcm = metrics['FA_Mag'] / 35.315 * 0.0864
+
                 if fnf_forecast_mcm >= fa_mag_mcm and not self.cancel_fall_pulse:
                     ifr_cfs = fnf_cfs
-                    self.fall_pulse_released = True
+                    if fnf_forecast_mcm == fnf[yesterday]:
+                        self.cancel_fall_pulse = True
 
                 else:
                     # use DS_Mag_50 from previous water year
                     ifr_cfs = self.metrics[self.prev_water_year_type]['DS_Mag_50']
-                    if self.fall_pulse_released:
-                        self.cancel_fall_pulse = True
+                    # if self.fall_pulse_released:
+                    #     self.cancel_fall_pulse = True
 
         # Low wet season baseflow
         elif self.dowy < metrics['SP_Tim'] and self.season != RECESSION:
