@@ -251,7 +251,7 @@ class MinFlowParameter(IFRParameter):
 
                 # Check and see if we should start the spring recession
                 if ifr_cfs >= metrics['SP_Mag'] and self.dowy < self.spring_ramp_up_start:
-                    ifr_cfs = self.wet_season_baseflow
+                    ifr_cfs = max(ifr_cfs, self.wet_season_baseflow)
                     self.spring_ramp_up_start = self.dowy
                     # self.season = RECESSION
 
