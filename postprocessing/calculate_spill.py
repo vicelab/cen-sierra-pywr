@@ -57,7 +57,9 @@ def calculate_uncontrolled_spill(dataset_dir):
 
 
 # set up paths
-root_dir = '.\\results'
+sierra_pywr_dir = os.environ.get('SIERRA_DATA_PATH')
+# root_dir = '.\\results'
+root_dir = os.path.join(sierra_pywr_dir, '../results')
 run_name = 'All IFR scenarios - 2021-08-29'
 # run_name = 'All IFR scenarios'
 run_dir = os.path.join(root_dir, run_name)
