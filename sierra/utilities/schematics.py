@@ -102,8 +102,8 @@ def create_schematic(basin, version, format='pdf', render=False, view=False):
                     pass
         _dot.edges([edge])
 
-    schematics_dir = './schematics'
-    gv_filename = '{}_schematic{}.gv'.format(basin, '' if not version else '_' + version)
+    schematics_dir = './models/{}'.format(basin)
+    gv_filename = 'graphviz_schematic{}.gv'.format('' if not version else '_' + version)
     if render:
         outpath = os.path.join(schematics_dir, gv_filename)
         try:
