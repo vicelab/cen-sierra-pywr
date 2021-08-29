@@ -45,7 +45,7 @@ def create_schematic(basin, version, format='pdf', render=False, view=False):
     try:
         _dot = Digraph(name=basin, comment=basin, format=format)
     except ExecutableNotFound:
-        logger.warning('Graphviz executable not found. Daily schematic not created.')
+        logger.warning('Graphviz executable not found. Schematic not created.')
 
     for node in model['nodes']:
 
