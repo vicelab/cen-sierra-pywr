@@ -5,13 +5,14 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 
 flood_controls = {
+    'stanislaus': 'New Melones Lake Flood Control',
     'tuolumne': 'Don Pedro Lake Flood Control',
     'merced': 'Exchequer Dam Flood Release',
     'upper_san_joaquin': 'Millerton Lake Flood Release'
 }
 
 ifrs = {
-    # 'stanislaus': 'IFR bl Goodwin Reservoir',
+    'stanislaus': 'IFR bl Goodwin Reservoir',
     'tuolumne': 'IFR at La Grange',
     'merced': 'IFR at Shaffer Bridge',
     'upper_san_joaquin': 'IFR bl Millerton Lake',
