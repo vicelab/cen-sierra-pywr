@@ -57,7 +57,7 @@ def calculate_uncontrolled_spill(dataset_dir):
 
 # set up paths
 root_dir = '.\\results'
-run_name = 'All IFR scenarios - 2021-08-23'
+run_name = 'All IFR scenarios - 2021-08-29'
 # run_name = 'All IFR scenarios'
 run_dir = os.path.join(root_dir, run_name)
 
