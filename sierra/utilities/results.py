@@ -1,8 +1,10 @@
 import os
+from itertools import product
+
 import pandas as pd
 
 
-def save_model_results(model, results_path, file_suffix, debug=False):
+def save_model_results(model, results_path, file_suffix, disaggregate=False, debug=False):
     results_df = model.to_dataframe()
     results_df.index.name = 'Date'
     scenario_names = [s.name for s in model.scenarios.scenarios]
@@ -45,12 +47,34 @@ def save_model_results(model, results_path, file_suffix, debug=False):
         else:
             unit = 'mcm'
         # file_path = os.path.join(results_path, '{}_{}_{}_{}'.format(_type, attr.title(), unit, file_suffix))
-        file_path = os.path.join(results_path, '{}_{}_{}'.format(_type, attr.title(), unit))
+        file_name = '{}_{}_{}.csv'.format(_type, attr.title(), unit)
+        file_path = os.path.join(results_path, file_name)
         df = results_df[cols]
         if has_scenarios:
-            new_cols = [tuple([col[0].split('/')[0]] + list(col[1:])) for col in cols]
-            df.columns = pd.MultiIndex.from_tuples(new_cols)
-            df.columns.names = ["node"] + scenario_names
+            if disaggregate:
+                scenario_set_names = []
+                for scenario_idx, scenario_set in enumerate(scenario_names):
+                    scenario_set_names.append(list(set(df.columns.get_level_values(scenario_idx + 1))))
+                scenario_combos = list(product(*scenario_set_names))
+                for scenario_combo in scenario_combos:
+                    scenario_name = '__'.join(scenario_combo)
+                    scenario_path = os.path.join(results_path, scenario_name)
+                    if not os.path.exists(scenario_path):
+                        os.makedirs(scenario_path)
+
+                    _df = df.copy()
+                    for idx, scenario_set in enumerate(scenario_names):
+                        _df = _df.xs(scenario_combo[idx], axis=1, level=scenario_set, drop_level=True)
+                    file_path = os.path.join(scenario_path, file_name)
+                    _df.columns = [c.split('/')[0] for c in _df.columns]
+                    _df.to_csv(file_path)
+
+            else:
+                new_cols = [tuple([col[0].split('/')[0]] + list(col[1:])) for col in cols]
+                df.columns = pd.MultiIndex.from_tuples(new_cols)
+                df.columns.names = ["node"] + scenario_names
+                df.to_csv(file_path)
+
         else:
             df.columns = [c.split('/')[0] for c in df.columns]
-        df.to_csv(file_path + '.csv')
+            df.to_csv(file_path)
