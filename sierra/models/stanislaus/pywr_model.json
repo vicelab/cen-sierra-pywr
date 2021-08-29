@@ -1270,9 +1270,10 @@
         },
         {
             "name": "New Melones Lake Flood Control",
-            "type": "InstreamFlowRequirement",
+            "type": "PiecewiseLink",
             "max_flow": [
-                "New Melones Lake Flood Control/Requirement"
+                "New Melones Lake Flood Control/Requirement",
+                null
             ],
             "cost": [
                 -50,
