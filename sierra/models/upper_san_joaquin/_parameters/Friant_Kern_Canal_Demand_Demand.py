@@ -4,11 +4,12 @@ from sierra.utilities.converter import convert
 
 class Friant_Kern_Canal_Demand_Demand(WaterLPParameter):
     """"""
-
+    FKCD_bias_factor = 1.23
+    
     def _value(self, timestep, scenario_index):
         
         WYT = self.get('San Joaquin Valley WYT' + self.month_suffix, timestep, scenario_index)
-        df = self.model.tables["CVP Friant-Kern Canal demand"]
+        df = self.model.tables["CVP Friant-Kern Canal demand"]*self.FKCD_bias_factor
         col = df.columns[WYT - 1]
         demand_cfs = df[col]  # data is currently in cfs
         
