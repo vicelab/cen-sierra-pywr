@@ -7,12 +7,14 @@ class MID_Northside_Demand(WaterLPParameter):
     """"""
 
     reductions = [0, 0]
+    
+    MID_North_bias_factor = 1.06
 
     def _value(self, timestep, scenario_index):
 
         WYT = self.model.tables['WYT for IFR Below Exchequer'][self.operational_water_year]
         ts = "{}/{}/1900".format(timestep.month, timestep.day)
-        demand_cms = self.model.tables["MID Northside Diversions"].at[ts, WYT] / 35.31
+        demand_cms = self.model.tables["MID Northside Diversions"].at[ts, WYT]*self.MID_North_bias_factor / 35.31
 
         return demand_cms
 
