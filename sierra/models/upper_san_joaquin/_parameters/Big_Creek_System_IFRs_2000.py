@@ -10,7 +10,7 @@ class Big_Creek_System_IFRs_2000(WaterLPParameter):
 
         month = self.datetime.month
 
-        Friant_Apr_Jul_runoff_af = self.model.tables['Seasonal Inflow at Friant'][self.operational_water_year]
+        Friant_Apr_Jul_runoff_af = self.model.tables['Seasonal Inflow at Friant'][int(self.operational_water_year)]
         if Friant_Apr_Jul_runoff_af <= 900000:
             ifr_table = self.model.tables['Big Creek System IFRs 2000 dry']
         else:
