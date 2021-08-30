@@ -45,7 +45,7 @@ def create_schematic(basin, version, format='pdf', render=False, view=False):
     try:
         _dot = Digraph(name=basin, comment=basin, format=format)
     except ExecutableNotFound:
-        logger.warning('Graphviz executable not found. Daily schematic not created.')
+        logger.warning('Graphviz executable not found. Schematic not created.')
 
     for node in model['nodes']:
 
@@ -102,8 +102,8 @@ def create_schematic(basin, version, format='pdf', render=False, view=False):
                     pass
         _dot.edges([edge])
 
-    schematics_dir = './schematics'
-    gv_filename = '{}_schematic{}.gv'.format(basin, '' if not version else '_' + version)
+    schematics_dir = './models/{}'.format(basin)
+    gv_filename = 'graphviz_schematic{}.gv'.format('' if not version else '_' + version)
     if render:
         outpath = os.path.join(schematics_dir, gv_filename)
         try:

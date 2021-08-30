@@ -1270,9 +1270,10 @@
         },
         {
             "name": "New Melones Lake Flood Control",
-            "type": "InstreamFlowRequirement",
+            "type": "PiecewiseLink",
             "max_flow": [
-                "New Melones Lake Flood Control/Requirement"
+                "New Melones Lake Flood Control/Requirement",
+                null
             ],
             "cost": [
                 -50,
@@ -3888,6 +3889,10 @@
         "Union-Utica Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Union-Utica Reservoir"
+        },
+        "New Melones Lake/elevation": {
+            "type": "NumpyArrayLevelRecorder",
+            "node": "New Melones Lake"
         },
         "New Melones Lake/observed storage": {
             "type": "NumpyArrayParameterRecorder",

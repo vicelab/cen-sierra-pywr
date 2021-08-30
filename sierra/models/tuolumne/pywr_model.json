@@ -3129,6 +3129,10 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Don Pedro Lake Flood Control"
         },
+        "Don Pedro Lake Flood Control/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Don Pedro Lake Flood Control/Requirement"
+        },
         "Don Pedro Reservoir/elevation": {
             "type": "NumpyArrayLevelRecorder",
             "node": "Don Pedro Reservoir"
