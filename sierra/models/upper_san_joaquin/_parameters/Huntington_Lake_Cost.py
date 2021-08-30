@@ -1,20 +1,18 @@
 from sierra.base_parameters import WaterLPParameter
 
 
+cost = 0
 class Huntington_Lake_Cost(WaterLPParameter):
     """"""
-
     def _value(self, timestep, scenario_index):
         # return 0.0
+        global cost
         if self.model.mode == 'scheduling':
             # cost = -85
             if self.datetime.month in [6, 7, 8]:
-                cost = -1000
+                cost = -800
             else:
-                cost = -85
-        else:
-            # cost = -85
-            cost = 0.0
+                cost = -95
         return cost
 
     def value(self, timestep, scenario_index):
