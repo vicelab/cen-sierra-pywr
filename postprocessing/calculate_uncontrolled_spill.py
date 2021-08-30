@@ -52,7 +52,7 @@ def calculate_uncontrolled_spill(dataset_dir):
     df.plot(figsize=(12, 7))
     plt.show()
 
-    filepath = os.path.join(dataset_dir, 'UncontrolledRelease_Flow_mcm.csv')
+    filepath = os.path.join(dataset_dir, 'UncontrolledSpill_Flow_mcm.csv')
     df.to_csv(filepath)
 
 
