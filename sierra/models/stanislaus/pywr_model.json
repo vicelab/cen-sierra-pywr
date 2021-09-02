@@ -316,7 +316,7 @@
             "type": "InstreamFlowRequirement",
             "min_flow_cost": -1000000,
             "max_flow_cost": 1000000,
-            "min_flow": "IFR at Murphys Park/Requirement",
+            "min_flow": "IFR at Murphys Park/Min Flow",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -332,14 +332,14 @@
             "name": "IFR bl Hunter Reservoir",
             "type": "InstreamFlowRequirement",
             "min_flow_cost": "IFR bl Hunter Reservoir/Violation Cost",
-            "min_flow": "IFR bl Hunter Reservoir/Requirement",
+            "min_flow": "IFR bl Hunter Reservoir/Min Flow",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
             "name": "IFR bl Lyons Res",
             "type": "InstreamFlowRequirement",
             "min_flow_cost": "IFR bl Lyons Res/Violation Cost",
-            "min_flow": "IFR bl Lyons Res/Requirement",
+            "min_flow": "IFR bl Lyons Res/Min Flow",
             "comment": "{\"resource_class\": \"node\"}"
         },
         {
@@ -449,7 +449,7 @@
             "name": "IFR bl confluence of NF Stanislaus and Beaver Creek",
             "type": "InstreamFlowRequirement",
             "min_flow_cost": "IFR bl confluence of NF Stanislaus and Beaver Creek/Violation Cost",
-            "min_flow": "IFR bl confluence of NF Stanislaus and Beaver Creek/Requirement",
+            "min_flow": "IFR bl confluence of NF Stanislaus and Beaver Creek/Min Flow",
             "max_flow_cost": 1000000,
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -457,7 +457,7 @@
             "name": "IFR bl Goodwin Reservoir",
             "type": "InstreamFlowRequirement",
             "min_flow_cost": "IFR bl Goodwin Reservoir/Violation Cost",
-            "min_flow": "IFR bl Goodwin Reservoir/Requirement",
+            "min_flow": "IFR bl Goodwin Reservoir/Min Flow",
             "ifr_type": "enhanced",
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -479,7 +479,7 @@
             "name": "IFR bl Utica Reservoir",
             "type": "InstreamFlowRequirement",
             "min_flow_cost": "IFR bl Utica Reservoir/Violation Cost",
-            "min_flow": "IFR bl Utica Reservoir/Requirement",
+            "min_flow": "IFR bl Utica Reservoir/Min Flow",
             "max_flow_cost": 1000000,
             "comment": "{\"resource_class\": \"node\"}"
         },
@@ -2689,7 +2689,7 @@
             "type": "constant",
             "value": -1000000
         },
-        "IFR at Murphys Park/Requirement": {
+        "IFR at Murphys Park/Min Flow": {
             "type": "IFR_at_Murphys_Park_Requirement"
         },
         "IFR bl Donnell Lake/Violation Cost": {
@@ -2706,14 +2706,14 @@
             "type": "constant",
             "value": -1000000
         },
-        "IFR bl Hunter Reservoir/Requirement": {
+        "IFR bl Hunter Reservoir/Min Flow": {
             "type": "IFR_bl_Hunter_Reservoir_Requirement"
         },
         "IFR bl Lyons Res/Violation Cost": {
             "type": "constant",
             "value": -1000000
         },
-        "IFR bl Lyons Res/Requirement": {
+        "IFR bl Lyons Res/Min Flow": {
             "type": "IFR_bl_Lyons_Res_Requirement"
         },
         "IFR bl McKays Point Div/Violation Cost": {
@@ -2786,7 +2786,7 @@
             "type": "constant",
             "value": -1000000
         },
-        "IFR bl confluence of NF Stanislaus and Beaver Creek/Requirement": {
+        "IFR bl confluence of NF Stanislaus and Beaver Creek/Min Flow": {
             "type": "IFR_bl_confluence_of_NF_Stanislaus_and_Beaver_Creek_Requirement"
         },
         "IFR bl New Melones Res/Violation Cost": {
@@ -2797,7 +2797,7 @@
             "type": "constant",
             "value": -1000000
         },
-        "IFR bl Goodwin Reservoir/Requirement": {
+        "IFR bl Goodwin Reservoir/Min Flow": {
             "type": "IFR_bl_Goodwin_Reservoir_Requirement"
         },
         "IFR bl Pinecrest Lake/Violation Cost": {
@@ -2814,7 +2814,7 @@
             "type": "constant",
             "value": -1000000
         },
-        "IFR bl Utica Reservoir/Requirement": {
+        "IFR bl Utica Reservoir/Min Flow": {
             "type": "IFR_bl_Utica_Reservoir_Requirement"
         },
         "IFR bl Beardsley Afterbay/Violation Cost": {
@@ -3711,17 +3711,17 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Hunter Reservoir"
         },
-        "IFR bl Hunter Reservoir/requirement": {
+        "IFR bl Hunter Reservoir/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Hunter Reservoir/Requirement"
+            "parameter": "IFR bl Hunter Reservoir/Min Flow"
         },
         "IFR bl Lyons Res/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Lyons Res"
         },
-        "IFR bl Lyons Res/requirement": {
+        "IFR bl Lyons Res/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Lyons Res/Requirement"
+            "parameter": "IFR bl Lyons Res/Min Flow"
         },
         "IFR bl McKays Point Div/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -3799,9 +3799,9 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Goodwin Reservoir"
         },
-        "IFR bl Goodwin Reservoir/requirement": {
+        "IFR bl Goodwin Reservoir/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Goodwin Reservoir/Requirement"
+            "parameter": "IFR bl Goodwin Reservoir/Min Flow"
         },
         "IFR bl Beardsley Afterbay/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -3831,9 +3831,9 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl confluence of NF Stanislaus and Beaver Creek"
         },
-        "IFR bl confluence of NF Stanislaus and Beaver Creek/requirement": {
+        "IFR bl confluence of NF Stanislaus and Beaver Creek/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl confluence of NF Stanislaus and Beaver Creek/Requirement"
+            "parameter": "IFR bl confluence of NF Stanislaus and Beaver Creek/Min Flow"
         },
         "IFR bl Pinecrest Lake/flow": {
             "type": "NumpyArrayNodeRecorder",
@@ -3851,9 +3851,9 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR bl Utica Reservoir"
         },
-        "IFR bl Utica Reservoir/requirement": {
+        "IFR bl Utica Reservoir/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR bl Utica Reservoir/Requirement"
+            "parameter": "IFR bl Utica Reservoir/Min Flow"
         },
         "USGS 11292860 JW SOUTHERN PP A SND BAR DIV DAM NR LNG BRN CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
@@ -3931,7 +3931,7 @@
             "type": "NumpyArrayParameterRecorder",
             "parameter": "New Melones Lake/Water Year Type"
         },
-        "New Melones Lake Flood Control/flow": {
+        "New Melones Lake Flood Control/requirement": {
             "type": "NumpyArrayNodeRecorder",
             "node": "New Melones Lake Flood Control"
         },
@@ -4119,9 +4119,9 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "IFR at Murphys Park"
         },
-        "IFR at Murphys Park/requirement": {
+        "IFR at Murphys Park/min flow": {
             "type": "NumpyArrayParameterRecorder",
-            "parameter": "IFR at Murphys Park/Requirement"
+            "parameter": "IFR at Murphys Park/Min Flow"
         },
         "Upper Collierville Tunnel 1/flow": {
             "type": "NumpyArrayNodeRecorder",
