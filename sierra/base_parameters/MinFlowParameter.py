@@ -73,12 +73,6 @@ class MinFlowParameter(IFRParameter):
 
         timestep = self.model.timestep
 
-        if timestep.month >= 10:
-            dowy = timestep.dayofyear - 275 + 1
-        else:
-            dowy = timestep.dayofyear + 92 - 1
-        self.dowy = dowy
-
         if self.include_functional_flows:
 
             if timestep.month == 10 and timestep.day == 1:

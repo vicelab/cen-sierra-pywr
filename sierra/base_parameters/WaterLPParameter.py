@@ -89,6 +89,12 @@ class WaterLPParameter(Parameter):
             self.year = self.datetime.year
             self.month = self.datetime.month
 
+        if self.datetime.month >= 10:
+            self.dowy = self.datetime.dayofyear - 275 + 1
+        else:
+            self.dowy = self.datetime.dayofyear + 92 - 1
+
+
         if 4 <= self.datetime.month <= 12:
             self.operational_water_year = self.datetime.year
         else:
