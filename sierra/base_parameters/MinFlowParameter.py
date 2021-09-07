@@ -18,33 +18,19 @@ class FlowPeriods(object):
 
 
 class MinFlowParameter(IFRParameter):
-    current_flow_period = None
     water_year_type = None
     params = None
-    dowy = None
-    ramp_rate = None
-    spring_recession = False
-
-    # Functional flows parameters
-    magnitude_col = None
-    high_wet_season_baseflow = False
-    spring_ramp_up_days = 0.0
-    dry_season_baseflow_mcm = None
     include_functional_flows = False
-    wet_baseflow_start = 100
-    flood_lengths = {2: 7, 5: 2, 10: 2}
 
     def setup(self, *args, **kwargs):
         super().setup(*args, **kwargs)
 
         for s in self.model.scenarios.scenarios:
             if 'Functional Flows' in s.ensemble_names:
-                self.current_flow_period = [FlowPeriods.DRY_SEASON] * self.num_scenarios
 
                 self.include_functional_flows = True
                 self.metrics = self.model.tables['functional flows metrics']
                 self.water_year_type = 'moderate'
-                self.close_wet_season_gates = False
                 self.ramp_up_rate = 0.13
                 self.ramp_down_rate = 0.07
 
@@ -55,31 +41,11 @@ class MinFlowParameter(IFRParameter):
                 }
 
                 self.prev_requirement = [0] * self.num_scenarios
-                self.flood_days = [0] * self.num_scenarios
-                self.flood_duration = [0] * self.num_scenarios
-                self.prev_flood_mcm = [0] * self.num_scenarios
-                self.flood_year = [0] * self.num_scenarios
-
-                # 2-year flood: 18670 cfs x 7 days = 320 mcm flood total
-                # 5-year flood: 40760 cfs x 2 days = 199 mcm flood total
-                # 10-year flood: 52940 cfs x 2 days = 259 mcm flood total
-                # floods = self.model.tables['functional flows floods']
-                # self.flood_lengths = flood_lengths = {10: 2, 5: 2, 2: 7}  # these should be from highest to lowest
-                # self.flood_volumes_mcm = {}
-                # for return_interval in flood_lengths:
-                #     self.flood_volumes_mcm[return_interval] \
-                #         = floods['{}-year'.format(return_interval)] / 35.315 * 0.0864 * flood_lengths[return_interval]
 
     def before(self):
         super().before()
 
         timestep = self.model.timestep
-
-        if timestep.month >= 10:
-            dowy = timestep.dayofyear - 275 + 1
-        else:
-            dowy = timestep.dayofyear + 92 - 1
-        self.dowy = dowy
 
         if self.include_functional_flows:
 
@@ -93,10 +59,7 @@ class MinFlowParameter(IFRParameter):
                 self.water_year_type = self.water_year_types[wyt]
                 self.fall_pulse_released = False
                 self.cancel_fall_pulse = False
-                self.close_wet_season_gates = True
-                self.ramp_rate = None
                 self.season = DRY
-                self.spring_ramp_up_days = 0.0
 
                 metrics = self.metrics[self.water_year_type]
                 self.wet_season_baseflow = metrics['Wet_BFL_Mag_10']
