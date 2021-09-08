@@ -1,0 +1,9 @@
+cff-version: 1.1.0
+message: Please, use this citation to refer to this repository.
+authors:
+  - family-names: "Rheinheimer"
+    given-names: "David Emmanuel"
+title: "CenSierraPywr"
+version: 1.1.0
+date-released: 2021-09-08
+url: "https://github.com/vicelab/sierra-pywr"
