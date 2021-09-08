@@ -33,7 +33,7 @@ class Lake_Tulloch_Flood_Control_Requirement(WaterLPParameter):
         release_mcm = 0.0
 
         ag_demand_mcm = SSJID_df[start_tuple] + OID_df[start_tuple]
-        IFR_below_Goodwin_Dam_mcm = self.get("IFR bl Goodwin Reservoir/Requirement", timestep, scenario_index)
+        IFR_below_Goodwin_Dam_mcm = self.get("IFR bl Goodwin Reservoir/Min Flow", timestep, scenario_index)
 
         # start by assuming release is simply a passthrough
         release_mcm = self.get("New Melones Lake Flood Control/Requirement", timestep, scenario_index)

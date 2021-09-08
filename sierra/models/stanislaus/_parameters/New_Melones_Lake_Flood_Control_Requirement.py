@@ -60,7 +60,7 @@ class New_Melones_Lake_Flood_Control_Requirement(WaterLPParameter):
         conditional_curve_mcm = flood_curves.at[month_day, 'conditional']
 
         ag_demand_mcm = SSJID_df[start_tuple] + OID_df[start_tuple]
-        IFR_below_Goodwin_Dam_mcm = self.get("IFR bl Goodwin Reservoir/Requirement", timestep, scenario_index)
+        IFR_below_Goodwin_Dam_mcm = self.get("IFR bl Goodwin Reservoir/Min Flow", timestep, scenario_index)
         # release_mcm = IFR_below_Goodwin_Dam_mcm + ag_demand_mcm
 
         release_mcm = 0.0
