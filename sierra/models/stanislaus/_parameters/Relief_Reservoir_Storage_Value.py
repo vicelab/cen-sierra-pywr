@@ -1,8 +1,8 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 from math import exp
 
 
-class Relief_Reservoir_Storage_Value(WaterLPParameter):
+class Relief_Reservoir_Storage_Value(BaseParameter):
 
     def _value(self, timestep, scenario_index):
         base_cost = -60

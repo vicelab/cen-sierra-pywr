@@ -1,11 +1,11 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 from datetime import datetime, timedelta
 import numpy as np
 from sierra.utilities.converter import convert
 import math
 
 
-class Millerton_Lake_Flood_Release_Requirement(WaterLPParameter):
+class Millerton_Lake_Flood_Release_Requirement(BaseParameter):
 
     should_drawdown = None
 

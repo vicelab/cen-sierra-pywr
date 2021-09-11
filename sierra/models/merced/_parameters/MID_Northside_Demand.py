@@ -1,9 +1,9 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 from sierra.utilities.converter import convert
 
 
-class MID_Northside_Demand(WaterLPParameter):
+class MID_Northside_Demand(BaseParameter):
     """"""
 
     reductions = [0, 0]

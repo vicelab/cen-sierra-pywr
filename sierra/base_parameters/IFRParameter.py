@@ -1,7 +1,7 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 
-class IFRParameter(WaterLPParameter):
+class IFRParameter(BaseParameter):
     ifrs_idx = None
     ifr_names = None
     ifr_type = 'basic'

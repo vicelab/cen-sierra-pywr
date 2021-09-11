@@ -1,9 +1,9 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 from sierra.utilities.converter import convert
 
 
-class Upper_Collierville_Tunnel_1_Capacity(WaterLPParameter):
+class Upper_Collierville_Tunnel_1_Capacity(BaseParameter):
 
     def _value(self, timestep, scenario_index):
         capacity_cms = 800 / 35.31  # cfs to cms

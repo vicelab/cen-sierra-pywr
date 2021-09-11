@@ -1,7 +1,7 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 
-class San_Joaquin_Valley_WYT(WaterLPParameter):
+class San_Joaquin_Valley_WYT(BaseParameter):
     """"""
 
     def _value(self, timestep, scenario_index):

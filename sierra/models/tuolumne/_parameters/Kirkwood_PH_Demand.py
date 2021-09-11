@@ -1,10 +1,10 @@
 import numpy as np
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 from datetime import datetime
 from sierra.utilities.converter import convert
 
 
-class Kirkwood_PH_Demand(WaterLPParameter):
+class Kirkwood_PH_Demand(BaseParameter):
     """"""
 
     prev_release_cms = None

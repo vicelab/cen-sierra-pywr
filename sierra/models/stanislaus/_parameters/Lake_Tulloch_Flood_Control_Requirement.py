@@ -1,9 +1,9 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 from sierra.utilities.converter import convert
 
 
-class Lake_Tulloch_Flood_Control_Requirement(WaterLPParameter):
+class Lake_Tulloch_Flood_Control_Requirement(BaseParameter):
     """"""
 
     def _value(self, timestep, scenario_index):

@@ -1,7 +1,7 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 
-class Eleanor_Cherry_Pumping_Requirement(WaterLPParameter):
+class Eleanor_Cherry_Pumping_Requirement(BaseParameter):
 
     def _value(self, timestep, scenario_index):
 

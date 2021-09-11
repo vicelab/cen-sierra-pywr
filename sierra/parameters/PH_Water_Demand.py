@@ -1,11 +1,11 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 from dateutil.relativedelta import relativedelta
 from calendar import isleap
 import random
 import numpy as np
 
 
-class PH_Water_Demand(WaterLPParameter):
+class PH_Water_Demand(BaseParameter):
     """"""
 
     price_threshold = None

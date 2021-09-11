@@ -1,7 +1,7 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 
-class Lake_McClure_Water_Demand(WaterLPParameter):
+class Lake_McClure_Water_Demand(BaseParameter):
     """"""
 
     def _value(self, timestep, scenario_index):

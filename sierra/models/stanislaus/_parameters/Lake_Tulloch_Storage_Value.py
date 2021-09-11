@@ -1,7 +1,7 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 
-class Lake_Tulloch_Storage_Value(WaterLPParameter):
+class Lake_Tulloch_Storage_Value(BaseParameter):
 
     def _value(self, timestep, scenario_index):
         if (4, 1) <= (self.datetime.month, self.datetime.day) <= (9, 15):

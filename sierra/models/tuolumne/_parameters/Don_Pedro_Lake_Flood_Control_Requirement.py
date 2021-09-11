@@ -1,10 +1,10 @@
 from datetime import datetime
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 from sierra.utilities.converter import convert
 
 
-class Don_Pedro_Lake_Flood_Control_Requirement(WaterLPParameter):
+class Don_Pedro_Lake_Flood_Control_Requirement(BaseParameter):
     """"""
 
     def _value(self, timestep, scenario_index):

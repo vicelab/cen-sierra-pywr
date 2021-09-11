@@ -1,8 +1,8 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 from dateutil.relativedelta import relativedelta
 
 
-class South_San_Joaquin_Irrigation_District_Demand(WaterLPParameter):
+class South_San_Joaquin_Irrigation_District_Demand(BaseParameter):
     
     SSJID_bias_factor = 1.07
     

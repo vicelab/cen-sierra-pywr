@@ -1,7 +1,7 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 
-class USBR_Big_Creek_WYT(WaterLPParameter):
+class USBR_Big_Creek_WYT(BaseParameter):
     """"""
 
     wyt = 1  # assume a normal year

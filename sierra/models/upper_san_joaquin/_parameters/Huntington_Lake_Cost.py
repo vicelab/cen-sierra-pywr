@@ -1,8 +1,8 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 
 cost = 0
-class Huntington_Lake_Cost(WaterLPParameter):
+class Huntington_Lake_Cost(BaseParameter):
     """"""
     def _value(self, timestep, scenario_index):
         # return 0.0

@@ -1,9 +1,9 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 from sierra.utilities.converter import convert
 
 
-class Spring_Gap_PH_Turbine_Capacity(WaterLPParameter):
+class Spring_Gap_PH_Turbine_Capacity(BaseParameter):
 
     def _value(self, timestep, scenario_index):
         capacity_cms = 62 / 35.31  # cfs to cms

@@ -1,9 +1,9 @@
 import pandas as pd
 from datetime import timedelta
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 
-class Lake_Eleanor_Forecasted_Inflow(WaterLPParameter):
+class Lake_Eleanor_Forecasted_Inflow(BaseParameter):
 
     def _value(self, timestep, scenario_index):
 

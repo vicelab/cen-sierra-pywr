@@ -1,11 +1,11 @@
 import numpy as np
 from datetime import datetime, timedelta
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 from sierra.utilities.converter import convert
 
 
-class New_Melones_Lake_Flood_Control_Requirement(WaterLPParameter):
+class New_Melones_Lake_Flood_Control_Requirement(BaseParameter):
     """"""
 
     def setup(self):

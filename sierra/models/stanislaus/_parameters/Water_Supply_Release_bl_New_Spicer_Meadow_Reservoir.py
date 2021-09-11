@@ -1,9 +1,9 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 from sierra.utilities.converter import convert
 
 
-class Water_Supply_Release_bl_New_Spicer_Meadow_Reservoir(WaterLPParameter):
+class Water_Supply_Release_bl_New_Spicer_Meadow_Reservoir(BaseParameter):
     """"""
 
     def _value(self, timestep, scenario_index):

@@ -1,7 +1,7 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 
-class Florence_Lake_Storage_Value(WaterLPParameter):
+class Florence_Lake_Storage_Value(BaseParameter):
     """"""
 
     def _value(self, timestep, scenario_index):

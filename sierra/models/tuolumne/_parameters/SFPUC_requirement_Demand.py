@@ -1,9 +1,9 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 from sierra.utilities.converter import convert
 
 
-class SFPUC_requirement_Demand(WaterLPParameter):
+class SFPUC_requirement_Demand(BaseParameter):
     """"""
 
     def _value(self, timestep, scenario_index):

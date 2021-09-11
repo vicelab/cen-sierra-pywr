@@ -1,7 +1,7 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 
-class San_Joaquin_Valley_WYI(WaterLPParameter):
+class San_Joaquin_Valley_WYI(BaseParameter):
     """
     San Joaquin Valley Water Year Index = 0.6 * Current Apr-Jul Runoff Forecast (in maf)
    + 0.2 * Current Oct-Mar Runoff in (maf) + 0.2 * Previous Water Year's Index
