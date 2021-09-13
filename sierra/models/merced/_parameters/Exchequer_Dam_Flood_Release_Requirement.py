@@ -1,9 +1,9 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 from scipy import interpolate
 from sierra.utilities.converter import convert
 
 
-class Exchequer_Dam_Flood_Release_Requirement(WaterLPParameter):
+class Exchequer_Dam_Flood_Release_Requirement(BaseParameter):
     """
     This policy calculates release from Exchequer Dam.
     """

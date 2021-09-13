@@ -1,9 +1,9 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 from sierra.utilities.converter import convert
 
 
-class Lower_Cherry_Aqueduct_1_Flow_Requirement(WaterLPParameter):
+class Lower_Cherry_Aqueduct_1_Flow_Requirement(BaseParameter):
     """"""
 
     def _value(self, timestep, scenario_index):

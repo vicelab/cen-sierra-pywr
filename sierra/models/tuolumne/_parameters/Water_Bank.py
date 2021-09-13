@@ -1,8 +1,8 @@
 import numpy as np
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 
-class Water_Bank(WaterLPParameter):
+class Water_Bank(BaseParameter):
     initial_storage = None
 
     def setup(self):

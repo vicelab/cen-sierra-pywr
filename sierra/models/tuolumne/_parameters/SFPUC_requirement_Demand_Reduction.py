@@ -1,8 +1,8 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 import numpy as np
 
 
-class SFPUC_requirement_Demand_Reduction(WaterLPParameter):
+class SFPUC_requirement_Demand_Reduction(BaseParameter):
     """"""
 
     def setup(self):

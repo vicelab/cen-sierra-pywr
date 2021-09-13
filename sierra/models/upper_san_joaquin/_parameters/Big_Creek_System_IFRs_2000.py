@@ -1,9 +1,9 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 from sierra.utilities.converter import convert
 
 
-class Big_Creek_System_IFRs_2000(WaterLPParameter):
+class Big_Creek_System_IFRs_2000(BaseParameter):
     """"""
 
     def _value(self, timestep, scenario_index):

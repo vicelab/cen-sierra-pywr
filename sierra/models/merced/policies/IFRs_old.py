@@ -1,8 +1,8 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 from datetime import date
 
 
-class Requirement_Merced_R_below_Merced_Falls_PH(WaterLPParameter):
+class Requirement_Merced_R_below_Merced_Falls_PH(BaseParameter):
     """
     This policy calculates instream flow requirements in the Merced River below the Merced Falls powerhouse.
     """

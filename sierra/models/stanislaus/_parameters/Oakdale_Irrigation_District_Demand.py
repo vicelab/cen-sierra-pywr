@@ -1,8 +1,8 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 from dateutil.relativedelta import relativedelta
 
 
-class Oakdale_Irrigation_District_Demand(WaterLPParameter):
+class Oakdale_Irrigation_District_Demand(BaseParameter):
 
     OID_bias_factor = 1.02
     

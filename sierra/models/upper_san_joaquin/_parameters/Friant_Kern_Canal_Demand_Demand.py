@@ -1,8 +1,8 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 from sierra.utilities.converter import convert
 
-class Friant_Kern_Canal_Demand_Demand(WaterLPParameter):
+class Friant_Kern_Canal_Demand_Demand(BaseParameter):
     """"""
     FKCD_bias_factor = 1.23
     

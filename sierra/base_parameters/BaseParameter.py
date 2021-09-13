@@ -12,7 +12,7 @@ class Timestep(object):
     month = None
 
 
-class WaterLPParameter(Parameter):
+class BaseParameter(Parameter):
     cfs_to_cms = 1 / 35.315
 
     mode = 'scheduling'
@@ -79,7 +79,7 @@ class WaterLPParameter(Parameter):
             self.elevation_param = '{}/Elevation'.format(self.res_name) + self.month_suffix
 
     def before(self):
-        super(WaterLPParameter, self).before()
+        super(BaseParameter, self).before()
         self.datetime = self.model.timestepper.current.datetime
 
         if self.model.mode == 'planning':

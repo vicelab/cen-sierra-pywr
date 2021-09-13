@@ -1,7 +1,7 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 
-class Districts_Entitlements(WaterLPParameter):
+class Districts_Entitlements(BaseParameter):
 
     def _value(self, timestep, scenario_index):
 

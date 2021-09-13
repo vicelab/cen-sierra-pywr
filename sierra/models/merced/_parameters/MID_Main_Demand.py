@@ -1,9 +1,9 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 from sierra.utilities.converter import convert
 
 
-class MID_Main_Demand(WaterLPParameter):
+class MID_Main_Demand(BaseParameter):
     """"""
     MID_bias_factor = 1.14
 

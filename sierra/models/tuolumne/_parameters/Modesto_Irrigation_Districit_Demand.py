@@ -1,9 +1,9 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 from sierra.utilities.converter import convert
 
 
-class Modesto_Irrigation_District_Demand(WaterLPParameter):
+class Modesto_Irrigation_District_Demand(BaseParameter):
     """"""
     WYT_names = ["Critical", "Dry", "Below", "Above", "Wet"]
 

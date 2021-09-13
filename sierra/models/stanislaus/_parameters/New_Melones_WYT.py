@@ -1,8 +1,8 @@
 import numpy as np
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 
-class New_Melones_WYT(WaterLPParameter):
+class New_Melones_WYT(BaseParameter):
     """"""
 
     def setup(self):

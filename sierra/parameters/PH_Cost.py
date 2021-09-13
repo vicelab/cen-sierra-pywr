@@ -1,8 +1,8 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 from calendar import isleap
 
 
-class PH_Cost(WaterLPParameter):
+class PH_Cost(BaseParameter):
     """"""
 
     # path = "s3_imports/energy_netDemand.csv"

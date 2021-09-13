@@ -1,9 +1,9 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 from scipy import interpolate
 
 
-class Lake_McClure_Spill_Max_Flow(WaterLPParameter):
+class Lake_McClure_Spill_Max_Flow(BaseParameter):
     """"""
 
     def _value(self, timestep, scenario_index):

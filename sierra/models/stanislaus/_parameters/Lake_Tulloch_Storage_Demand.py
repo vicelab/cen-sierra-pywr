@@ -1,7 +1,7 @@
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 
-class Lake_Tulloch_Storage_Demand(WaterLPParameter):
+class Lake_Tulloch_Storage_Demand(BaseParameter):
 
     def _value(self, timestep, scenario_index):
         flood_control_req = self.model.tables["Lake Tulloch Flood Control"]

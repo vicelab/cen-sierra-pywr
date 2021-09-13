@@ -1,12 +1,12 @@
 import pandas as pd
 import numpy as np
 import datetime as dt
-from sierra.base_parameters import WaterLPParameter
+from sierra.base_parameters import BaseParameter
 
 from sierra.utilities.converter import convert
 
 
-class Dion_R_Holm_PH_Demand(WaterLPParameter):
+class Dion_R_Holm_PH_Demand(BaseParameter):
     """"""
 
     max_release_cms = 27.47
