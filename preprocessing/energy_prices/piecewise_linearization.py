@@ -9,10 +9,6 @@ from tqdm import tqdm
 from loguru import logger
 
 
-def calculate_rmse(predictions, targets):
-    return np.sqrt(((predictions - targets) ** 2).mean())
-
-
 def linearize_values(values, n_pieces, method='fit'):
     y = np.array(values)
     x = range(1, len(y) + 1)
