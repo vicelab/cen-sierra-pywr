@@ -5,7 +5,7 @@ import random
 import numpy as np
 
 
-class PH_Water_Demand(BaseParameter):
+class HydropowerDemand(BaseParameter):
     """"""
 
     price_threshold = None
@@ -122,4 +122,4 @@ class PH_Water_Demand(BaseParameter):
         return cls(model, node, block, **data)
 
 
-PH_Water_Demand.register()
+HydropowerDemand.register()

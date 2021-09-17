@@ -5532,123 +5532,123 @@
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Big Creek 1 PH/Cost/1": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Big Creek 1 PH/Cost/2": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Big Creek 1 PH/Cost/3": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Big Creek 1 PH/Water Demand/1": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Big Creek 1 PH/Water Demand/2": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Big Creek 2 PH/Cost/1": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Big Creek 2 PH/Cost/2": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Big Creek 2 PH/Cost/3": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Big Creek 2 PH/Water Demand/1": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Big Creek 2 PH/Water Demand/2": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Big Creek 2A PH/Cost/1": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Big Creek 2A PH/Cost/2": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Big Creek 2A PH/Cost/3": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Big Creek 2A PH/Water Demand/1": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Big Creek 2A PH/Water Demand/2": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Big Creek 3 PH/Cost/1": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Big Creek 3 PH/Cost/2": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Big Creek 3 PH/Cost/3": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Big Creek 3 PH/Water Demand/1": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Big Creek 3 PH/Water Demand/2": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Big Creek 4 PH/Cost/1": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Big Creek 4 PH/Cost/2": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Big Creek 4 PH/Cost/3": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Big Creek 4 PH/Water Demand/1": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Big Creek 4 PH/Water Demand/2": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Big Creek 8 PH/Cost/1": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Big Creek 8 PH/Cost/2": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Big Creek 8 PH/Cost/3": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Big Creek 8 PH/Water Demand/1": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Big Creek 8 PH/Water Demand/2": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Friant-Kern Canal Demand/Demand": {
@@ -5660,23 +5660,23 @@
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Eastwood PH/Cost/1": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Eastwood PH/Cost/2": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Eastwood PH/Cost/3": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Eastwood PH/Water Demand/1": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Eastwood PH/Water Demand/2": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Florence Lake/Maximum Outflow": {
@@ -5874,43 +5874,43 @@
             "type": "Big_Creek_System_IFRs_2000"
         },
         "Kerckhoff 1 PH/Cost/1": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Kerckhoff 1 PH/Cost/2": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Kerckhoff 1 PH/Cost/3": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Kerckhoff 1 PH/Water Demand/1": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Kerckhoff 1 PH/Water Demand/2": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Kerckhoff 2 PH/Cost/1": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Kerckhoff 2 PH/Cost/2": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Kerckhoff 2 PH/Cost/3": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Kerckhoff 2 PH/Water Demand/1": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Kerckhoff 2 PH/Water Demand/2": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Kerckhoff Lake/Volume Elevation Curve": {
@@ -5996,23 +5996,23 @@
             "value": -45
         },
         "Mammoth Pool PH/Cost/1": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Mammoth Pool PH/Cost/2": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Mammoth Pool PH/Cost/3": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Mammoth Pool PH/Water Demand/1": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Mammoth Pool PH/Water Demand/2": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Mammoth Pool Reservoir/Volume Elevation Curve": {
@@ -6135,23 +6135,23 @@
             "comment": "{\"dim\": \"Length\", \"scale\": 1, \"unit\": \"m\"}"
         },
         "Portal PH/Cost/1": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Portal PH/Cost/2": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Portal PH/Cost/3": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "Portal PH/Water Demand/1": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Portal PH/Water Demand/2": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Redinger Lake/Volume Elevation Curve": {
@@ -6192,83 +6192,83 @@
             "comment": "{\"dim\": \"dimensionless\", \"scale\": 1, \"unit\": \"-\"}"
         },
         "San Joaquin 1 PH/Cost/1": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "San Joaquin 1 PH/Cost/2": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "San Joaquin 1 PH/Cost/3": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "San Joaquin 1 PH/Water Demand/1": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "San Joaquin 1 PH/Water Demand/2": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "San Joaquin 1A PH/Cost/1": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "San Joaquin 1A PH/Cost/2": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "San Joaquin 1A PH/Cost/3": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "San Joaquin 1A PH/Water Demand/1": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "San Joaquin 1A PH/Water Demand/2": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "San Joaquin 2 PH/Cost/1": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "San Joaquin 2 PH/Cost/2": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "San Joaquin 2 PH/Cost/3": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "San Joaquin 2 PH/Water Demand/1": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "San Joaquin 2 PH/Water Demand/2": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "San Joaquin 3 PH/Cost/1": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "San Joaquin 3 PH/Cost/2": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "San Joaquin 3 PH/Cost/3": {
-            "type": "PH_Cost",
+            "type": "HydropowerCost",
             "comment": "{\"dim\": \"Unit price (volume)\", \"scale\": 1, \"unit\": \"USD m^-3\"}"
         },
         "San Joaquin 3 PH/Water Demand/1": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "San Joaquin 3 PH/Water Demand/2": {
-            "type": "PH_Water_Demand",
+            "type": "HydropowerDemand",
             "comment": "{\"dim\": \"Volumetric flow rate\", \"scale\": 1, \"unit\": \"m^3 s^-1\"}"
         },
         "Shaver Lake/Volume Elevation Curve": {

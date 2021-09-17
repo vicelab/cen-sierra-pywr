@@ -2464,19 +2464,19 @@
             "value": 0.0976
         },
         "Angels PH/Water Demand/1": {
-            "type": "PH_Water_Demand"
+            "type": "HydropowerDemand"
         },
         "Angels PH/Water Demand/2": {
-            "type": "PH_Water_Demand"
+            "type": "HydropowerDemand"
         },
         "Angels PH/Cost/1": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "Angels PH/Cost/2": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "Angels PH/Cost/3": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "USGS 11294500 NF STANISLAUS R NR AVERY CA/Observed Flow": {
             "type": "dataframe",
@@ -2575,19 +2575,19 @@
             "value": 3.425
         },
         "Collierville PH/Water Demand/1": {
-            "type": "PH_Water_Demand"
+            "type": "HydropowerDemand"
         },
         "Collierville PH/Water Demand/2": {
-            "type": "PH_Water_Demand"
+            "type": "HydropowerDemand"
         },
         "Collierville PH/Cost/1": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "Collierville PH/Cost/2": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "Collierville PH/Cost/3": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "Donnell Lake Spill/Min Flow": {
             "type": "Donnell_Lake_Spill_Min_Requirement"
@@ -2600,19 +2600,19 @@
             "type": "Donnells_PH_Turbine_Capacity"
         },
         "Donnells PH/Water Demand/1": {
-            "type": "PH_Water_Demand"
+            "type": "HydropowerDemand"
         },
         "Donnells PH/Water Demand/2": {
-            "type": "PH_Water_Demand"
+            "type": "HydropowerDemand"
         },
         "Donnells PH/Cost/1": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "Donnells PH/Cost/2": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "Donnells PH/Cost/3": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "Donnells Reservoir/Observed Storage": {
             "type": "dataframe",
@@ -3053,19 +3053,19 @@
             "value": 0.0612
         },
         "Phoenix PH/Water Demand/1": {
-            "type": "PH_Water_Demand"
+            "type": "HydropowerDemand"
         },
         "Phoenix PH/Water Demand/2": {
-            "type": "PH_Water_Demand"
+            "type": "HydropowerDemand"
         },
         "Phoenix PH/Cost/1": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "Phoenix PH/Cost/2": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "Phoenix PH/Cost/3": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "Pinecrest Reservoir/Observed Storage": {
             "type": "dataframe",
@@ -3163,19 +3163,19 @@
             "value": 1.50
         },
         "Sand Bar PH/Water Demand/1": {
-            "type": "PH_Water_Demand"
+            "type": "HydropowerDemand"
         },
         "Sand Bar PH/Water Demand/2": {
-            "type": "PH_Water_Demand"
+            "type": "HydropowerDemand"
         },
         "Sand Bar PH/Cost/1": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "Sand Bar PH/Cost/2": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "Sand Bar PH/Cost/3": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "USGS 11296500 SF STANISLAUS R A STRAWBERRY CA/Observed Flow": {
             "type": "dataframe",
@@ -3200,19 +3200,19 @@
             "type": "Spring_Gap_PH_Turbine_Capacity"
         },
         "Spring Gap PH/Water Demand/1": {
-            "type": "PH_Water_Demand"
+            "type": "HydropowerDemand"
         },
         "Spring Gap PH/Water Demand/2": {
-            "type": "PH_Water_Demand"
+            "type": "HydropowerDemand"
         },
         "Spring Gap PH/Cost/1": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "Spring Gap PH/Cost/2": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "Spring Gap PH/Cost/3": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "Stanislaus PH/Fixed Head": {
             "type": "constant",
@@ -3233,19 +3233,19 @@
             "value": 1.30
         },
         "Stanislaus PH/Water Demand/1": {
-            "type": "PH_Water_Demand"
+            "type": "HydropowerDemand"
         },
         "Stanislaus PH/Water Demand/2": {
-            "type": "PH_Water_Demand"
+            "type": "HydropowerDemand"
         },
         "Stanislaus PH/Cost/1": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "Stanislaus PH/Cost/2": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "Stanislaus PH/Cost/3": {
-            "type": "PH_Cost"
+            "type": "HydropowerCost"
         },
         "STN_01 Headflow/Runoff": {
             "type": "dataframe",

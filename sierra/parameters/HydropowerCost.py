@@ -2,7 +2,7 @@ from sierra.base_parameters import BaseParameter
 from calendar import isleap
 
 
-class PH_Cost(BaseParameter):
+class HydropowerCost(BaseParameter):
     """"""
 
     # path = "s3_imports/energy_netDemand.csv"
@@ -73,4 +73,4 @@ class PH_Cost(BaseParameter):
         return cls(model, **data)
 
 
-PH_Cost.register()
+HydropowerCost.register()
