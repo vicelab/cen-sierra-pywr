@@ -3911,10 +3911,6 @@
             "type": "NumpyArrayStorageRecorder",
             "node": "New Melones Lake"
         },
-        "New Melones Lake/elevation": {
-            "type": "NumpyArrayLevelRecorder",
-            "node": "Beardsley Reservoir"
-        },    
         "Union-Utica Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Union-Utica Reservoir"
