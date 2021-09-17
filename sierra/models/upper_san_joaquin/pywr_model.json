@@ -7095,6 +7095,10 @@
             "type": "NumpyArrayParameterRecorder",
             "parameter": "Mammoth Pool Reservoir/Observed Storage"
         },
+        "Millerton Lake Flood Release/flow": {
+            "type": "NumpyArrayNodeRecorder",
+            "node": "Millerton Lake Flood Release"
+        },
         "Millerton Lake Flood Release/requirement": {
             "type": "NumpyArrayParameterRecorder",
             "parameter": "Millerton Lake Flood Release/Requirement"
