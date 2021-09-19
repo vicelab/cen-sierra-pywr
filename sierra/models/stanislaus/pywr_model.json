@@ -3911,10 +3911,6 @@
             "type": "NumpyArrayStorageRecorder",
             "node": "New Melones Lake"
         },
-        "New Melones Lake/elevation": {
-            "type": "NumpyArrayLevelRecorder",
-            "node": "Beardsley Reservoir"
-        },    
         "Union-Utica Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
             "node": "Union-Utica Reservoir"
@@ -3931,9 +3927,13 @@
             "type": "NumpyArrayParameterRecorder",
             "parameter": "New Melones Lake/Water Year Type"
         },
-        "New Melones Lake Flood Control/requirement": {
+        "New Melones Lake Flood Control/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "New Melones Lake Flood Control"
+        },
+        "New Melones Lake Flood Control/requirement": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "New Melones Lake Flood Control/Requirement"
         },
         "New Spicer Meadow Reservoir/storage": {
             "type": "NumpyArrayStorageRecorder",
