@@ -213,7 +213,10 @@ class MinFlowParameter(IFRParameter):
 
             else:
                 ifr_cfs = self.wet_season_baseflow
-                ifr_min = max(fnf_cfs, metrics['Wet_BFL_Mag_10'])
+                if self.wet_season_baseflow == metrics['Wet_BFL_Mag_10']:
+                    ifr_min = fnf_cfs
+                else:
+                    ifr_min = max(fnf_cfs, metrics['Wet_BFL_Mag_10'])
                 ifr_cfs = min(ifr_cfs, ifr_min)
 
             if 4 <= timestep.month <= 9:
