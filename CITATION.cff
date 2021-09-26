@@ -1,6 +1,7 @@
 cff-version: 1.1.0
 message: Please, use this citation to refer to this repository.
 authors:
+  - affiliation: "University of California, Merced"
   - family-names: "Rheinheimer"
     given-names: "David Emmanuel"
   - family-names: "Facincani Dourado"
