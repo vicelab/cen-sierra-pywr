@@ -1,17 +1,26 @@
 cff-version: 1.1.0
 message: Please, use this citation to refer to this repository.
 authors:
-  - affiliation: "University of California, Merced"
-  - family-names: "Rheinheimer"
+  - affiliation: "Tecnológico de Monterrey"
+    family-names: "Rheinheimer"
     given-names: "David Emmanuel"
-  - family-names: "Facincani Dourado"
+  - affiliation: "University of California, Merced"
+    family-names: "Facincani Dourado"
     given-names: "Gustavo"
-  - family-names: "Sood"
+  - affiliation: "The Freshwater Trust"
+    family-names: "Sood"
     given-names: "Aditya"
-  - family-names: "Tran"
+  - affiliation: "Capital One"
+    family-names: "Tran"
     given-names: "Dan"
+    affiliation: "University of California, Merced"
   - family-names: "Scartuchio"
     given-names: "Lorenzo"
+    affiliation: "University of California, Merced"
 title: "CenSierraPywr"
-date-released: 2021-09-08
-url: "https://github.com/vicelab/sierra-pywr"
+date-released: 2021-09-26
+url: "https://github.com/vicelab/cen-sierra-pywr"
+institution:
+- name: "University of California, Merced"
+city: Merced
+country: USA
