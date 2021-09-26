@@ -1,4 +1,4 @@
-# Central Sierra Nevada Pywr models
+# CenSierraPywr models
 
 This repository includes the code base for modeling the hydropower systems of the primary tributaries of California's San Joaquin river.
 
@@ -125,4 +125,4 @@ python main.py -b *network* -p -n "development" -d dm
 
 ## Authors
 
-See the list of [contributors](https://github.com/vicelab/sierra-pywr/contributors).
+See the list of [contributors](https://github.com/vicelab/cen-sierra-pywr/contributors).
