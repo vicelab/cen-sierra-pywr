@@ -32,8 +32,6 @@ def linearize_prices(step, n_pieces, method='fit', years=None, data=None, input_
     logger.info('Processing step={}, n_pieces={}, method={}'.format(step, n_pieces, method))
 
     if not data:
-        if not input_dir:
-            input_dir = path.split(path.realpath(__file__))[0]
         historical_path = join(input_dir, 'Historical Net Load and Electricity Price.csv')
         future_path = join(input_dir, 'NetLoad_for_UCM_2030_2060.csv')
         df_2009 = pd.read_csv(historical_path, index_col=0, header=0, usecols=[0, 2], names=['Date', '2009'])
@@ -106,7 +104,8 @@ if __name__ == '__main__':
     method = 'fitfast'
     step = 'monthly'
     for n_pieces in range(2, 11):
+        input_dir = '../../data/electricity_prices'
         output_dir = join('./output/method={} step={} blocks={}'.format(method, step, n_pieces))
         linearize_prices(step, n_pieces, method=method)
 
-    linearize_prices('daily', 4)
+    # linearize_prices('daily', 4)
