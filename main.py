@@ -20,6 +20,7 @@ parser.add_argument("-mp", "--multiprocessing", help="Multiprocessing protocol (
 parser.add_argument("-c", "--num_cores", help="Number of cores to use in joblib multiprocessing", type=int)
 parser.add_argument("-p", "--include_planning", help="Include planning model", action='store_true')
 parser.add_argument("-m", "--planning_months", help="Planning months", type=int)
+parser.add_argument("-bl", "--blocks", help="Number of piecewise blocks", type=int, default=5)
 parser.add_argument("-sc", "--scenario_set", help="Scenario set")
 parser.add_argument("-s", "--start_year", help="Start year", type=int)
 parser.add_argument("-e", "--end_year", help="End year", type=int)
@@ -108,6 +109,7 @@ kwargs = dict(
     run_name=run_name,
     include_planning=include_planning,
     debug=debug,
+    blocks=blocks,
     planning_months=planning_months,
     use_multiprocessing=multiprocessing is not None,
     start=start,

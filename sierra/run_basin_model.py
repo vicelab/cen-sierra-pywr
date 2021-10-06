@@ -51,6 +51,7 @@ def _run_model(climate,
                simplify=True,
                use_multiprocessing=False,
                debug=False,
+               blocks=8,
                planning_months=12,
                scenarios=None,
                show_progress=False,
@@ -142,7 +143,6 @@ def _run_model(climate,
                     base_model[key] = list(items.values())
         else:
             raise Exception('Scenario path {} does not exist.'.format(scenario_path))
-
 
     if scenarios is not None:
         for s in scenarios:
@@ -254,8 +254,8 @@ def _run_model(climate,
         monthly_filename = model_filename_base + '_monthly.json'
         planning_model_path = os.path.join(temp_dir, monthly_filename)
 
-        prepare_planning_model(model_json, basin, climate, planning_model_path, steps=planning_months, debug=debug,
-                               remove_rim_dams=True)
+        prepare_planning_model(model_json, basin, climate, planning_model_path,
+                               steps=planning_months, blocks=blocks, debug=debug, remove_rim_dams=True)
 
         if debug:
             try:
