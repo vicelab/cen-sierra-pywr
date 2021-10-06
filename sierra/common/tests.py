@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 from dateutil.relativedelta import relativedelta
 
+
 def test_planning_model(model, save_results=True, months=12):
     start = model.timestepper.start
     end = model.timestepper.end
