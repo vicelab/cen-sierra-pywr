@@ -333,7 +333,7 @@ def _run_model(climate,
                 # update planning model
                 model.planning.reset(start=date.to_timestamp())
 
-                # run planning model (intial conditions are set within the model step)
+                # run planning model (initial conditions are set within the model step)
                 model.planning.step()
 
                 if debug and save_results:
