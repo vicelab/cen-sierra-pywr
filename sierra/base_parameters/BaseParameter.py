@@ -54,7 +54,7 @@ class BaseParameter(Parameter):
 
                 # add/update the list of all blocks for the resource/attribute
                 blocks = self.model.blocks.get(self.res_attr_name, []) + [self.block]
-                self.model.blocks[self.res_attr_name] = sorted(blocks)
+                self.model.blocks[self.res_attr_name] = sorted(list(set(blocks)))
         else:
             if len(name_parts) >= 2:
                 self.month_offset = int(name_parts[-1]) - 1
