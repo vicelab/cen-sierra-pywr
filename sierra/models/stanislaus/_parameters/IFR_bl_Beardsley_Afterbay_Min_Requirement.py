@@ -7,16 +7,17 @@ class IFR_bl_Beardsley_Afterbay_Min_Requirement(MinFlowParameter):
 
     def _value(self, timestep, scenario_index):
         WYT = self.get("San Joaquin Valley WYT" + self.month_suffix, timestep, scenario_index)
-        if WYT in [1, 2]:  # Critical or Dry years
-            ifr_val = 50  # cfs
+        if WYT in [1, 2]:  # Critical (1) or Dry (2) years
+            ifr_cfs = 50  # cfs
         else:
-            ifr_val = 135
-        ifr_val += 5  # 5 cfs safety buffer based on observations
+            ifr_cfs = 135
+        ifr_cfs += 5  # 5 cfs safety buffer based on observations
+        ifr_cms = ifr_cfs / 35.315  # convert to cms
         if self.model.mode == 'scheduling':
-            ifr_val = self.get_down_ramp_ifr(timestep, scenario_index, ifr_val, initial_value=140/35.31, rate=0.25)
+            ifr_cms = self.get_down_ramp_ifr(timestep, scenario_index, ifr_cms, initial_value=140 / 35.31, rate=0.25)
         else:
-            ifr_val *= self.days_in_month
-        return ifr_val / 35.31  # convert to cms
+            ifr_cms *= self.days_in_month
+        return ifr_cms
 
     def value(self, timestep, scenario_index):
         val = self.requirement(timestep, scenario_index, default=self._value)
