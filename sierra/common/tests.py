@@ -29,11 +29,7 @@ def test_planning_model(model, save_results=True, months=12):
 def get_planning_dataframe(model):
     date = model.timestepper.current.datetime
     df = model.to_dataframe()
-    # df.columns = df.columns.droplevel(1)
     series = df.loc[date]
-
-    node_names = []
-    months = []
 
     col_tuples = []
     for c in df.columns:
@@ -50,9 +46,7 @@ def get_planning_dataframe(model):
         col_tuples.append(tuple([var_name, month]) + c[1:])
     df = pd.DataFrame(data=[series], index=[date])
     df.columns = pd.MultiIndex.from_tuples(col_tuples)
-    # df0 = df_filtered.stack(level=0)
     df1 = df.stack(level=1)
     df1.index.names = ['Date', 'Planning Date']
-    # df0.index.names = ['Start month', 'Resource']
 
     return df1
