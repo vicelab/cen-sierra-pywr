@@ -3,6 +3,7 @@ digraph upper_san_joaquin {
 	"No. 1A Conduit Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Manzanita Diversion Dam Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Millerton Lake Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
+	"Below Kerckhoff 2 Tunnel Inflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Kerckhoff Lake Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Browns Creek Outflow Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
 	"Bass Lake Inflow" [fillcolor=lightblue fontcolor=black shape=oval style=filled]
@@ -35,14 +36,18 @@ digraph upper_san_joaquin {
 	"Below Camp 62 Cr. Div. Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Below Chinquapin Cr. Div. Diverted Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Below Chinquapin Cr. Div. Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below Kerckhoff 1 Tunnel Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below Kerckhoff 2 Tunnel Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Below No. 1 Conduit Diverted Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Below No. 2 Conduit Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Below Portal Aqueduct Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Below San Joaquin 1A Div Outflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Below Ward Tunnel Diverted Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Browns Creek Ditch" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Friant-Kern Canal Demand" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Madera Canal.1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Mono Tunnel" [fillcolor=white fontcolor=black shape=oval style=filled]
+	"Pitman - Tunnel No. 7 Tunnel" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Tunnel No. 7.1" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Tunnel No. 7.2" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Balsam Forebay" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
@@ -95,6 +100,7 @@ digraph upper_san_joaquin {
 	"IFR bl Shaver Lake" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"IFR No. Fk. Stevenson Creek above Shaver Lake" [fillcolor=green fontcolor=black shape=oval style=filled]
 	"Kerckhoff 1 PH" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"Kerckhoff 1 Tunnel Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"Kerckhoff 2 PH" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"Kerckhoff Lake" [fillcolor=blue fontcolor=white shape=rect style=filled]
 	"Lake Thomas A Edison" [fillcolor=blue fontcolor=white shape=rect style=filled]
@@ -110,6 +116,7 @@ digraph upper_san_joaquin {
 	"Portal PH" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"Redinger Lake" [fillcolor=blue fontcolor=white shape=rect style=filled]
 	"San Joaquin 1 PH" [fillcolor=red fontcolor=white shape=oval style=filled]
+	"San Joaquin 1A Div Inflow" [fillcolor=white fontcolor=black shape=oval style=filled]
 	"San Joaquin 1A Div Outflow" [fillcolor=lightgrey fontcolor=black shape=oval style=filled]
 	"San Joaquin 1A PH" [fillcolor=red fontcolor=white shape=oval style=filled]
 	"San Joaquin 2 PH" [fillcolor=red fontcolor=white shape=oval style=filled]
@@ -122,11 +129,17 @@ digraph upper_san_joaquin {
 	"Chinquapin Cr. Div. Outflow" -> "Below Chinquapin Cr. Div. Diverted Inflow"
 	"No. 1A Conduit Outflow Inflow" -> "No. 1A Conduit Outflow"
 	"Manzanita Diversion Dam Inflow" -> "Manzanita Diversion Dam"
+	"Kerckhoff Lake" -> "Below Kerckhoff 1 Tunnel Inflow"
+	"Below Kerckhoff 1 Tunnel Inflow" -> "IFR bl Kerckhoff Lake"
+	"Below Kerckhoff 2 Tunnel Inflow" -> "Kerckhoff 1 Tunnel Inflow"
 	"No. 1A Conduit Outflow" -> "Below No. 1 Conduit Diverted Inflow"
 	"Below No. 2 Conduit Inflow" -> "San Joaquin 1A Div Outflow"
+	"San Joaquin 1A Div Outflow" -> "Below San Joaquin 1A Div Outflow"
+	"Below San Joaquin 1A Div Outflow" -> "San Joaquin 1A Div Inflow"
 	"Florence Lake" -> "Below Ward Tunnel Diverted Inflow"
 	"Millerton Lake" -> "Madera Canal.1"
 	"Madera Canal.1" -> "CVP Madera Canal Demand"
+	"Pitman Creek Diversion Dam" -> "Pitman - Tunnel No. 7 Tunnel"
 	"Huntington Lake" -> "Tunnel No. 7.1"
 	"Tunnel No. 7.2" -> "Balsam Meadows Tunnel Outflow"
 	"Balsam Meadows Tunnel Outflow" -> "Balsam Forebay"
@@ -146,7 +159,6 @@ digraph upper_san_joaquin {
 	"Mono Diversion Reservoir" -> "IFR bl Mono Creek Div"
 	"Pitman Creek Diversion Dam" -> "IFR bl Pitman Creek Div"
 	"Kerckhoff Lake" -> "Kerckhoff 1 PH"
-	"Kerckhoff Lake" -> "IFR bl Kerckhoff Lake"
 	"Kerckhoff Lake" -> "Kerckhoff 2 PH"
 	"Lake Thomas A Edison" -> "IFR bl Lake Thomas A Edison"
 	"Mammoth Pool Reservoir" -> "Mammoth Pool PH"
@@ -156,6 +168,7 @@ digraph upper_san_joaquin {
 	"Shaver Lake" -> "Big Creek 2A PH"
 	"Portal Forebay" -> "Portal PH"
 	"San Joaquin 1A Div Outflow" -> "San Joaquin 1A PH"
+	"San Joaquin 1A Div Inflow" -> "San Joaquin 1 PH"
 	"Shaver Lake" -> "IFR bl Shaver Lake"
 	"Big Creek 3 Conduit Outflow" -> "IFR bl Big Creek 6 Div"
 	"Redinger Lake" -> "IFR bl Redinger Lake"
@@ -182,9 +195,10 @@ digraph upper_san_joaquin {
 	"Friant PH" -> "Millerton Lake Flood Release"
 	"Friant Dam Spillway" -> "Millerton Lake Flood Release"
 	"Millerton Lake" -> "Millerton Lake Flood Release"
+	"Pitman - Tunnel No. 7 Tunnel" -> "Tunnel No. 7.2"
 	"Tunnel No. 7.1" -> "Tunnel No. 7.2"
-	"Pitman Creek Diversion Dam" -> "Tunnel No. 7.2"
-	"San Joaquin 1A Div Outflow" -> "San Joaquin 1 PH"
+	"Kerckhoff 1 Tunnel Inflow" -> "Millerton Lake"
+	"Below Kerckhoff 2 Tunnel Inflow Inflow" -> "Below Kerckhoff 2 Tunnel Inflow"
 	"Kerckhoff Lake Inflow" -> "Kerckhoff Lake"
 	"Browns Creek Outflow Inflow" -> "Browns Creek Outflow"
 	"Bass Lake Inflow" -> "Bass Lake"
@@ -244,9 +258,9 @@ digraph upper_san_joaquin {
 	"IFR bl Bass Lake" -> "Manzanita Diversion Dam"
 	"San Joaquin 3 PH" -> "Manzanita Diversion Dam"
 	"San Joaquin 2 PH" -> "Below No. 2 Conduit Inflow"
-	"San Joaquin 1A PH" -> "San Joaquin 1 PH"
-	"IFR bl Kerckhoff Lake" -> "Millerton Lake"
-	"Kerckhoff 1 PH" -> "Millerton Lake"
+	"San Joaquin 1A PH" -> "San Joaquin 1A Div Inflow"
+	"IFR bl Kerckhoff Lake" -> "Below Kerckhoff 2 Tunnel Inflow"
+	"Kerckhoff 1 PH" -> "Kerckhoff 1 Tunnel Inflow"
 	"Kerckhoff 2 PH" -> "Millerton Lake"
 	"CVP Madera Canal Demand" -> "CVP Madera Canal"
 	"Friant-Kern Canal Demand" -> "CVP Friant-Kern Canal"
