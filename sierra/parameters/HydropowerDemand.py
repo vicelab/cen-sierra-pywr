@@ -22,8 +22,6 @@ class HydropowerDemand(BaseParameter):
 
     def _value(self, timestep, scenario_index):
 
-        all_energy_prices = self.model.tables['All Energy Price Values']
-
         powerhouse = self.model.nodes[self.res_name + self.month_suffix]  # powerhouse
         turbine_capacity_mcm = powerhouse.turbine_capacity
         if type(turbine_capacity_mcm) not in [float, int]:
@@ -50,6 +48,8 @@ class HydropowerDemand(BaseParameter):
             # TODO: move as much of this as possible to a single parameter
 
             sid = scenario_index.global_id
+
+            all_energy_prices = self.model.tables['All Energy Price Values']
 
             if timestep.day == 1:
                 end = timestep.datetime + relativedelta(months=+1) - relativedelta(days=+1)
