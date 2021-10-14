@@ -35,11 +35,10 @@ class HydropowerCost(BaseParameter):
 
         if self.model.mode == 'planning':
             powerhouse = self.model.nodes[self.res_name + self.month_suffix]
-            price_per_kWh = self.model.tables["Energy Price Values"] \
-                .at[price_date, str(self.block)]
+            price_per_MWh = self.model.tables["Energy Price Values"].at[price_date, str(self.block)]
             eta = 0.9  # generation efficiency
             gamma = 9807  # specific weight of water = rho*g
-            price_per_mcm = price_per_kWh * gamma * powerhouse.head * eta * 24 / 1e6
+            price_per_mcm = price_per_MWh * gamma * powerhouse.head * eta * 24 / 1e6
 
             # We can add some conversion function here to go from price to Pywr cost
             # For now, divide by 100, which results in costs of about -5 to -170
