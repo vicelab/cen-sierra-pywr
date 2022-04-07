@@ -20,7 +20,7 @@ class Hydropower(PiecewiseLink):
 
     _type = 'hydropower'
 
-    def __init__(self, model, turbine_capacity=None, flow_capacity=None, spinning_flow=0.0, spinning_cost=0.0,
+    def __init__(self, model, turbine_capacity=None, flow_capacity=None, residual_flow=0.0, residual_cost=0.0,
                  **kwargs):
         """Initialise a new Hydropower instance
         Parameters
@@ -46,8 +46,8 @@ class Hydropower(PiecewiseLink):
         self.water_elevation_reservoir = kwargs.pop('water_elevation_reservoir', None)
         self.water_elevation_parameter = kwargs.pop('water_elevation_parameter', None)
         self.turbine_capacity = turbine_capacity
-        self.spinning_flow = spinning_flow
-        self.spinning_cost = spinning_cost
+        self.residual_flow = residual_flow
+        self.residual_cost = residual_cost
 
         super(Hydropower, self).__init__(model, **kwargs)
 
@@ -73,11 +73,11 @@ class Hydropower(PiecewiseLink):
         data['head'] = load_parameter(model, data.pop('head', None))
         data['efficiency'] = load_parameter(model, data.pop('efficiency', 0.9))
         data['tailwater_elevation'] = load_parameter(model, data.pop('tailwater_elevation', 0.0))
-        spinning_flow = data.pop('spinning_flow', 0.0)
-        spinning_cost = data.pop('spinning_cost', 0.0)
+        residual_flow = data.pop('residual_flow', 0.0)
+        residual_cost = data.pop('residual_cost', 0.0)
         param_type = data.pop('type')
         try:
-            node = cls(model, turbine_capacity, flow_capacity, spinning_flow, spinning_cost, max_flows=max_flows,
+            node = cls(model, turbine_capacity, flow_capacity, residual_flow, residual_cost, max_flows=max_flows,
                        costs=costs, **data)
         except:
             logger.error('{} {} failed to load'.format(param_type, data['name']))
