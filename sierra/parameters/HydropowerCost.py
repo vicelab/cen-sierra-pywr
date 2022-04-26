@@ -48,13 +48,13 @@ class HydropowerCost(BaseParameter):
             # if pywr_cost > 0 and self.res_name == 'Collierville PH':
             #     pywr_cost *= 1000
             if self.block == 1:
-                pywr_cost = min(pywr_cost, powerhouse.spinning_cost)
+                pywr_cost = min(pywr_cost, powerhouse.residual_cost)
         else:
             powerhouse = self.model.nodes[self.res_name]
             if self.block == resource_blocks[-1]:
                 pywr_cost = 1  # costs money to generate in block 3 (negative prices)
             elif self.block == resource_blocks[0]:
-                pywr_cost = powerhouse.spinning_cost
+                pywr_cost = powerhouse.residual_cost
             else:
                 pywr_cost = -100
 

@@ -40,8 +40,8 @@ class HydropowerDemand(BaseParameter):
         if self.model.mode == 'planning':
             block = self.model.tables["Energy Price Blocks"].at[price_date, str(self.block)]
             if self.block == 1:
-                spinning_flow_fraction = powerhouse.spinning_flow
-                block = max(spinning_flow_fraction, block)
+                residual_flow_fraction = powerhouse.residual_flow
+                block = max(residual_flow_fraction, block)
 
             # turbine_capacity *= self.days_in_month
 
