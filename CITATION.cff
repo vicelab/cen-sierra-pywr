@@ -1,16 +1,16 @@
 cff-version: 1.1.0
 message: Please, use this citation to refer to this repository.
 authors:
-  - affiliation: "Tecnológico de Monterrey"
+  - affiliation: "University of California, Merced"
     family-names: "Rheinheimer"
     given-names: "David Emmanuel"
   - affiliation: "University of California, Merced"
     family-names: "Facincani Dourado"
     given-names: "Gustavo"
-  - affiliation: "The Freshwater Trust"
+  - affiliation: "University of California, Merced"
     family-names: "Sood"
     given-names: "Aditya"
-  - affiliation: "Capital One"
+  - affiliation: "University of California, Merced"
     family-names: "Tran"
     given-names: "Dan"
     affiliation: "University of California, Merced"
