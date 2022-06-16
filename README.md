@@ -14,9 +14,11 @@ This model uses Python and [Pywr](https://github.com/pywr/pywr), a Python packag
 ### Software requirements
 
 General software requirements are as follows:
-1. [GLPK](https://www.gnu.org/software/glpk/) (version 4.65). The location of the 64-bit GLPK executable must be callable as `glpsol`; how this is done varies by operating system.
-2. Python 3.8 (highest; Pywr does not work with version 3.9), 64-bit.
-3. All Python package requirements found in `requirements.txt` in the root folder
+1. [GLPK](https://www.gnu.org/software/glpk/) (version 4.65). The location of the 64-bit GLPK executable must be callable as `glpsol`.
+2. Python 3.8.x, 64-bit. For Windows, this can be found at https://www.python.org/downloads/windows/.
+3. All Python package requirements found in `requirements.txt` in the root folder.
+
+See installation notes below for more detailed installation guidance.
 
 ### Input data
 Input data is not stored within this repository, though the preprocessing scripts needed to create the input data are. The location of the input data is defined as an environment variable.
@@ -74,6 +76,8 @@ Once in the project's virtual environment, install the Python packages as follow
 ```sh
 $ pip install -r requirements.txt
 ```
+
+**Windows notes**: Installing the required Pywr version (Pywr) may require compilation via a C++ compiler. On Windows this can be with [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
 
 **Linux notes**: Pywr must be installed from source on Linux. Generally, the steps are:
 1. Download the Pywr source code (make sure to download the version found in `requirements.txt`!).
