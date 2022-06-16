@@ -366,6 +366,8 @@ def _run_model(climate,
     suffix = ' - {}'.format(file_suffix) if file_suffix else ''
     run_folder = run_name + suffix
     results_path = os.path.join(base_results_path, run_folder, basin, climate)
+    if not os.path.exists(results_path):
+        os.makedirs(results_path)
 
     if debug and save_results and df_planning is not None:
         df_planning_path = os.path.join(results_path, 'planning_model_results.csv')
