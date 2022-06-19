@@ -99,34 +99,77 @@ $ conda install pywr==1.8
 
 2. Once in the repository (and in the activated Conda virtual environment), install the requirements using pip as above.
 
-## How to set up and run a model
+## Preparation of data
 
-[TO-BE-COMPLETED]
+## Running a model
 
-Running the models involves several steps, depending on the type of run.
+A model is typically run from the command line, calling `main.py` along with relevant arguments. The full list of arguments can be found in `main.py` or by calling `python main.py --help`.
 
-All model runs will require three general steps.
+Two basic arguments are particularly important: `-b [basin]` specifies which basin to run, while `-p` specifies whether to include the planning model. 
 
-1. Copy/sync data folder to the local computer.
+Here are some examples to work from:
 
-2. Specify the data folder as an environment variable `SIERRA_PYWR_DATA`
+* `python main.py -b stanislaus`: Run the Stanislaus model *without* planning for hydropower optimization
+* `python main.py -b stanislaus -p`: Run the Stanislaus model *with* planning for hydropower optimization
+* `python main.py -b stanislaus -p -d`: Run the Stanislaus model with planning, in debug mode.
+* `python main.py -b stanislaus -p -d -m 8 -s 1985 -e 1996`: Run the Stanislaus model with planning, in debug mode, with 8 planning months starting in 1985 and ending in 1996, inclusive.
 
-3. Run the model from the command line.
+## Postprocessing
 
-As a simple example, the following will run the baseline Merced model:
+# Reproducibility
 
-`python main.py -b merced`
+The following steps present a specific implementation of the code in this repository to facilitate reproducibility of the peer-reviewed publication of this work (in review). The objectives of this section are to reproduce the main results figures in the publication, with electricity price data and inflow hydrology as model input. Reference figures (e.g., the area map and electricity price boxplots) are not described. The general steps are as follows, described in detail below:
 
+1. Install relevant software
+2. Set-up environment variables
+3. Install relevant data
+4. Pre-process data
+5. Run the models
+6. Generate figures
 
-```
-python main.py -b *network* -n "development" -d d
-```
-For both daily and monthly models
+It is assumed that this is performed on a PC with a 64-bit version of Windows 10+. For non-Windows computers, see the notes above for general guidance. Some of these steps may be skipped or modified as needed based on the experience of the modeler.
 
-``` 
-python main.py -b *network* -p -n "development" -d dm
-```
+## 1. Install relevant software
 
-## Authors
+* **C++ compiler**:
+  * If you don't already have Visual Studio installed, try [Visual Studio 2022](https://visualstudio.microsoft.com/vs/community/), making sure to select the "Desktop development with C++" installation option.
+* **GLPK**:
+  * Download GLPK from https://ftp.gnu.org/gnu/glpk/glpk-4.65.tar.gz and extract to `C:\glpk-4.65`
+  * Add `C:\glpk-4.65\w64` to your `PATH` environment variable.
+* **Python 3.8**:
+  * Download Python 3.8.10, 64-bit from https://www.python.org/ftp/python/3.8.10/python-3.8.10-amd64.exe and install.
+* **CenSierraPywr** (this repository):
+  * Download version `v2022.06.17` of this repository from: https://github.com/vicelab/cen-sierra-pywr/releases/tag/v2022.01.27, and extract to a location of your choice.
+
+## 2. Set-up environment variables
+
+## 3. Install input data
+
+* Inflow hydrology
+* Electricity prices
+
+## 4. Pre-process input data
+
+* Inflow hydrology
+* Electricity prices
+
+## 5. Run the models
+
+* Stanislaus basin with planning, debug mode
+* Stanislaus basin with planning
+* San Joaquin basin without planning
+* San Joaquin basin with planning
+
+## 6. Generate figures
+
+Figures are generated using Jupyter Notebook. Specific manuscript figures are created from Jupyter Notebook files as follows:
+
+* Figure 10
+* Figure 11
+* Figure 12
+* Figure 13
+* etc.
+
+# Authors
 
 See the list of [contributors](https://github.com/vicelab/cen-sierra-pywr/contributors).
