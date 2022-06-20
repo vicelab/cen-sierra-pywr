@@ -152,19 +152,9 @@ IMPORTANT: This is only for reproducing the single manuscript noted above. It is
 * Data structure: Add an output directory. For example, `C:\data`.
 * Create a new environment variable called `SIERRA_DATA_PATH` with the above directory. 
 
-## 3. Install & preprocess input data
+## 3. Install input data
 
-Some preprocessing is required.
-
-Activate the project Python environment and navigate to `cen-sierra-pywr/preprocessing` in the Windows terminal before running any of the following preprocessing scripts.
-
-### Electricity prices
-* Note that this code repository already includes the original price dataset needed, though it still needs to be processed for use in the model, as follows.
-* Run `python preprocess_electricity_prices.py -y 2009` (Note the year, which is important for reproducibility).
-
-### Inflow hydrology
-* Download the **April 25, 2022** version of the [bias-corrected runoff dataset](https://datadryad.org/stash/dataset/doi:10.6071/M3609B) and extract to the main data folder as follows: `[SIERRA_DATA_PATH]\original\hydrology\historical\Livneh\runoff\[all extracted files]` (e.g., to `C:\data\original\...`)
-* Run `python preprocess_hydrology.py -d historical`
+Download all input data for the date **June 20, 2022** from ______________ and install to the `SIERRA_DATA_PATH` above.
 
 ## 4. Run the models
 
