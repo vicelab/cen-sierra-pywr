@@ -7,7 +7,7 @@
 import os
 import pandas as pd
 import shutil
-from itertools import product
+from loguru import logger
 
 
 def create_forecasted_hydrology(scenario_path, dataset=None, default_alpha=0.2, nyears_of_record=30):
@@ -48,7 +48,7 @@ def create_forecasted_hydrology(scenario_path, dataset=None, default_alpha=0.2, 
         if '.csv' not in runoff_filename:
             continue
         src_path = os.path.join(src_runoff_dir_path, runoff_filename)
-        print(src_path)
+        logger.info('Processing ' + src_path)
         df = pd.read_csv(src_path, parse_dates=True, index_col=0)
         col = df.columns[0]
 

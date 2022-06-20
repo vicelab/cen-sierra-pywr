@@ -1,5 +1,4 @@
 import os
-from os import path
 from os.path import join
 import datetime as dt
 import pwlf

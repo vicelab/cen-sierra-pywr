@@ -1,7 +1,6 @@
 import os
 import argparse
-from preprocessing.energy_prices import linearize_prices
-from preprocessing.energy_prices import pivot_prices
+from energy_prices import linearize_prices, pivot_prices
 
 
 def preprocess_prices(years):
@@ -12,11 +11,11 @@ def preprocess_prices(years):
     # Linearize energy prices for planning model
     n_pieces = 5
     method = 'fit'  # options are 'fit' and 'fitfast' (see pwlf documentation)
-    linearize_prices('monthly', n_pieces, method=method, years=years, output_dir=outdir, input_dir=input_dir)
-    # linearize_prices('daily', 4, method=method, years=years, output_dir=outdir, input_dir=input_dir)
+    for step in ['daily', 'monthly']:
+        linearize_prices(step, n_pieces, method=method, years=years, output_dir=outdir, input_dir=input_dir)
 
     # Pivot energy prices for scheduling model
-    pivot_prices(outdir)
+    pivot_prices(input_dir, outdir, years)
 
 
 if __name__ == '__main__':

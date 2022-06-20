@@ -1,7 +1,8 @@
 import os
 import multiprocessing as mp
-
 import argparse
+import shutil
+from pathlib import Path
 
 from joblib import Parallel, delayed
 from loguru import logger
@@ -14,14 +15,27 @@ import preprocessing.hydrology.upper_san_joaquin as usj
 
 from sierra.utilities.constants import basin_lookup
 
-# import preprocessing.tuolumne as tuo
-
 root_dir = os.environ.get('SIERRA_DATA_PATH', '../data')
 metadata_path = os.path.join(root_dir, 'metadata')
 
 
 def process_basin_climate(tasks, basin, dataset, climate):
-    print("Processing {}: {}/{}".format(basin, dataset, climate))
+    logger.info("Processing {}: {}/{}".format(basin, dataset, climate))
+
+    # Copy from Dryad-organized data to CenSierraPywr-organized data
+
+    runoff_path_in = Path(root_dir, 'original', 'hydrology', dataset, climate, 'runoff')
+    runoff_path_out = Path(root_dir, basin.replace('_', ' ').title() + ' River', 'hydrology', dataset, climate, 'runoff')
+    if not os.path.exists(runoff_path_out):
+        os.makedirs(runoff_path_out)
+
+    _basin = basin.replace(' ', '_')
+    for filename in os.listdir(runoff_path_in):
+        if _basin not in filename or '.csv' not in filename:
+            continue
+        path_in = Path(runoff_path_in, filename)
+        path_out = Path(runoff_path_out, filename.replace(_basin + '_', ''))
+        shutil.copy(path_in, path_out)
 
     basin_path = os.path.join(root_dir, '{} River'.format(basin.title()))
     hydrology_path = os.path.join(basin_path, 'hydrology')
@@ -58,7 +72,7 @@ def process_basin_climate(tasks, basin, dataset, climate):
         #         common.extract_precipitation_at(src, dst, lat, lon, start, end)
 
         if basin == 'upper san joaquin':
-            # print("Disaggregating SJN_09 subwatershed...")
+            logger.info("Disaggregating SJN_09 subwatershed...")
             usj.disaggregate_SJN_09_subwatershed(climate_path)
 
         if basin == 'tuolumne' and dataset == 'sequences':
@@ -74,19 +88,21 @@ def process_basin_climate(tasks, basin, dataset, climate):
 
     # preprocess hydrology
     if "common" in tasks:
-        # print("Aggregating subwatersheds...")
+        logger.info("Aggregating subwatersheds...")
         common.aggregate_subwatersheds(climate_path, basin)
 
-        # print("Creating forecasted hydrology...")
+        logger.info("Creating forecasted hydrology...")
         # if dataset == 'historical':
         common.create_forecasted_hydrology(climate_path, dataset=dataset)
 
-        # print("Creating full natural flow...")
+        logger.info("Creating full natural flow...")
         src = os.path.join(climate_path, 'runoff_aggregated')
         dst = preprocessed_path
         common.create_full_natural_flow(src, dst)
 
     if "basins" in tasks:
+
+        logger.info(f'Performing {basin}-specific tasks')
 
         if basin == 'stanislaus':
             stn.calculate_WYT_P2005_P2130(climate_path)
@@ -129,13 +145,20 @@ def preprocess_hydrology(dataset, basins_to_process=None, tasks=None, debug=Fals
 
     all_climates = []
     basin_climates = []
-    for basin in basins_to_process:
-        full_basin_name = basin_lookup[basin]['full name']
-        dataset_dir = os.path.join(root_dir, full_basin_name, 'hydrology', dataset)
-        for climate in os.listdir(dataset_dir):
-            basin_climates.append((basin, climate))
-            # climates[dataset]
-            all_climates.append(climate)
+
+    if dataset == 'historical':
+        for basin in basins_to_process:
+            basin_climates.append((basin, 'Livneh'))
+            all_climates.append('Livneh')
+
+    elif dataset == 'gcms':
+        for basin in basins_to_process:
+            full_basin_name = basin_lookup[basin]['full name']
+            dataset_dir = os.path.join(root_dir, full_basin_name, 'hydrology', dataset)
+            for climate in os.listdir(dataset_dir):
+                basin_climates.append((basin, climate))
+                # climates[dataset]
+                all_climates.append(climate)
 
     # all_climates = []
     # for k, values in climates.items():
@@ -151,7 +174,7 @@ def preprocess_hydrology(dataset, basins_to_process=None, tasks=None, debug=Fals
             process_basin_climate(tasks, basin, dataset, climate)
 
     else:
-        print("Starting processing...")
+        logger.info("Starting processing...")
         num_cores = mp.cpu_count() - 1
         all_args = []
         for b, c in basin_climates:
