@@ -19,7 +19,7 @@ parser.add_argument("-d", "--debug", help="Debug", action='store_true')
 parser.add_argument("-mp", "--multiprocessing", help="Multiprocessing protocol (omit for none)")
 parser.add_argument("-c", "--num_cores", help="Number of cores to use in joblib multiprocessing", type=int)
 parser.add_argument("-p", "--include_planning", help="Include planning model", action='store_true')
-parser.add_argument("-m", "--planning_months", help="Planning months", type=int)
+parser.add_argument("-m", "--planning_months", help="Planning months", type=int, default=8)
 parser.add_argument("-bl", "--blocks", help="Number of piecewise blocks", type=int, default=5)
 parser.add_argument("-sc", "--scenario_set", help="Scenario set")
 parser.add_argument("-s", "--start_year", help="Start year", type=int)
@@ -49,13 +49,14 @@ climate_sets = {
     'historical': ['Livneh']
 }
 
+planning_months = args.planning_months
+
 if debug:
-    planning_months = args.planning_months or 3
     start = '{}-10-01'.format(args.start_year or 2000)
     end = '{}-09-30'.format(args.end_year or 2002)
-    run_name = 'development'
-else:
-    planning_months = args.planning_months or 8
+
+    if not args.run_name:
+        run_name = 'development'
 
 if args.start_year:
     start = '{}-10-01'.format(args.start_year)
