@@ -170,21 +170,18 @@ Activate the project Python environment and navigate to `cen-sierra-pywr/preproc
 
 All models are run from the root project folder (i.e., from `cen-sierra-pywr`), within the same Python environment as preprocessing. Run commands for each scenario are as follows:
 
-**IMPORTANT: PLEASE READ THE RUN NOTES THAT FOLLOW.**
-
-| Basin and variation                       | Command                                                                    |
-|-------------------------------------------|----------------------------------------------------------------------------|
-| Stanislaus w/ planning, debug mode [1]    | `python main.py -b stanislaus -p -d -n "stanislaus - no planning"`         |
-| Stanislaus w/ planning, w/ ramp rate      | `python main.py -b stanislaus -p -n "stanislaus - rr"`                     |
-| Stanislaus w/ planning, w/o ramp rate [2] | `python main.py -b stanislaus -p -n "stanislaus - no rr"`                  |
-| Upper San Joaquin w/o planning            | `python main.py -b upper_san_joaquin -n "upper_san_joaquin - no planning"` |
-| Upper San Joaquin w/ planning             | `python main.py -b upper_san_joaquin -p -n "upper_san_joaquin - planning"` |
-
-Run notes:
-
-[1] "debug mode", as in the first scenario, outputs more detailed information, including all future planning months when planning is enabled.
-
-[2] This scenario requires a manual, one-time change to the model. In the file `./sierra/base_parameters/FlowRangeParameter.py`, on line 48, directly under `get_up_ramp_ifr` (i.e., one level in from `def`), add `rate = 1e6`. This will set the ramping rate to one million, effectively turning off the restriction. **IMPORTANT: Don't forget to undo this change!**
+* Stanislaus w/ planning, debug mode
+  * `python main.py -b stanislaus -p -d -n "stanislaus - planning method"`
+  * Note: "debug mode" outputs more detailed information, including all future planning months when planning is enabled.
+* Stanislaus w/ planning, w/ ramp rate
+  * `python main.py -b stanislaus -p -n "stanislaus - rr"`
+* Stanislaus w/ planning, w/o ramp rate
+  * This scenario requires a manual, one-time change to the model. In the file `./sierra/base_parameters/FlowRangeParameter.py`, on line 48, directly under `get_up_ramp_ifr` (i.e., one level in from `def`), add `rate = 1e6`. This will set the ramping rate to one million, effectively turning off the restriction. **IMPORTANT: Don't forget to undo this change!**
+  * `python main.py -b stanislaus -p -n "stanislaus - no rr"`
+* Upper San Joaquin w/o planning
+  * `python main.py -b upper_san_joaquin -n "usj - no planning"`
+* Upper San Joaquin w/ planning
+  * `python main.py -b upper_san_joaquin -p -n "usj - planning"`
 
 ## 5. Generate figures
 
