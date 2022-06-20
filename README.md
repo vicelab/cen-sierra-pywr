@@ -122,45 +122,64 @@ The following steps present a specific implementation of the code in this reposi
 
 1. Install relevant software
 2. Set-up environment variables
-3. Install relevant data
-4. Pre-process data
-5. Run the models
-6. Generate figures
+3. Install & preprocess input data
+4. Run the models
+5. Generate figures
 
 It is assumed that this is performed on a PC with a 64-bit version of Windows 10+. For non-Windows computers, see the notes above for general guidance. Some of these steps may be skipped or modified as needed based on the experience of the modeler.
 
+IMPORTANT: This is only for reproducing the single manuscript noted above. It is insufficient, for example, for using the model with other included basins, even though other basin data must be included in the preprocessing described.
+
 ## 1. Install relevant software
 
-* **C++ compiler**:
-  * If you don't already have Visual Studio installed, try [Visual Studio 2022](https://visualstudio.microsoft.com/vs/community/), making sure to select the "Desktop development with C++" installation option.
-* **GLPK**:
-  * Download GLPK from https://ftp.gnu.org/gnu/glpk/glpk-4.65.tar.gz and extract to `C:\glpk-4.65`
-  * Add `C:\glpk-4.65\w64` to your `PATH` environment variable.
-* **Python 3.8**:
-  * Download Python 3.8.10, 64-bit from https://www.python.org/ftp/python/3.8.10/python-3.8.10-amd64.exe and install.
-* **CenSierraPywr** (this repository):
-  * Download version `v2022.06.17` of this repository from: https://github.com/vicelab/cen-sierra-pywr/releases/tag/v2022.01.27, and extract to a location of your choice.
+### C++ compiler
+* If you don't already have Visual Studio installed, try [Visual Studio 2022](https://visualstudio.microsoft.com/vs/community/), making sure to select the "Desktop development with C++" installation option. 
+ 
+### GLPK
+* Download GLPK from https://ftp.gnu.org/gnu/glpk/glpk-4.65.tar.gz and extract to `C:\glpk-4.65`
+* Add `C:\glpk-4.65\w64` to your `PATH` environment variable.
+  
+### Python 3.8
+* Download Python 3.8.10, 64-bit from https://www.python.org/ftp/python/3.8.10/python-3.8.10-amd64.exe and install.
+* Create and activate a new Python environment using Python 3.8 (It is assumed that the modeler is able to create and work with Python environments; see above for more info). 
+* 
+### CenSierraPywr (this repository)
+* Download version `v2022.06.20` of this repository from: https://github.com/vicelab/cen-sierra-pywr/releases/tag/v2022.06.20, and extract to a location of your choice.
+* From within the activated Python environment, install required Python packages found in `requirements.txt` using pip: `pip install -r requirements.txt` (The proficient Python modeler may choose their own preferred method to work with environments and install packages)
 
-## 2. Set-up environment variables
+## 2. Set-up data structure and environment variables
 
-## 3. Install input data
+* Data structure: Add an output directory. For example, `C:\data`.
+* Create a new environment variable called `SIERRA_DATA_PATH` with the above directory. 
 
-* Inflow hydrology
-* Electricity prices
+## 3. Install & preprocess input data
 
-## 4. Pre-process input data
+Some preprocessing is required.
 
-* Inflow hydrology
-* Electricity prices
+Activate the project Python environment and navigate to `cen-sierra-pywr/preprocessing` in the Windows terminal before running any of the following preprocessing scripts.
 
-## 5. Run the models
+### Electricity prices
+* Note that this code repository already includes the original price dataset needed, though it still needs to be processed for use in the model, as follows.
+* Run `python preprocess_electricity_prices.py -y 2009` (Note the year, which is important for reproducibility).
 
-* Stanislaus basin with planning, debug mode
-* Stanislaus basin with planning
-* San Joaquin basin without planning
-* San Joaquin basin with planning
+### Inflow hydrology
+* Download the **April 25, 2022** version of the [bias-corrected runoff dataset](https://datadryad.org/stash/dataset/doi:10.6071/M3609B) and extract to the main data folder as follows: `[SIERRA_DATA_PATH]\original\hydrology\historical\Livneh\runoff\[all extracted files]` (e.g., to `C:\data\original\...`)
+* Run `python preprocess_hydrology.py -d historical`
 
-## 6. Generate figures
+## 4. Run the models
+
+All models are run from the root project folder (i.e., from `cen-sierra-pywr`), within the same Python environment as preprocessing. Run commands for each scenario are as follows:
+
+| Basin             | Variation               | Command                                  |
+|-------------------|-------------------------|------------------------------------------|
+| Stanislaus        | w/ planning, debug mode | `python main.py -b stanislaus -p -d`     |
+| Stanislaus        | w/ planning             | `python main.py -b stanislaus -p`        |
+| Upper San Joaquin | w/o planning            | `python main.py -b upper_san_joaquin`    |
+| Upper San Joaquin | w/ planning             | `python main.py -b upper_san_joaquin -p` |
+
+NOTE: "debug mode", as in the first scenario, outputs more detailed information, including all future planning months when planning is enabled.
+
+## 5. Generate figures
 
 Figures are generated using Jupyter Notebook. Specific manuscript figures are created from Jupyter Notebook files as follows:
 
