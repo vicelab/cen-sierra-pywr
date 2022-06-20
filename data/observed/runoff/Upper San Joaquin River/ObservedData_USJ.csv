@@ -1,0 +1,19 @@
+Start,End,Name (Observed),Name (Model),Type,Comment
+1/1/1980,12/1/2018,Big Creek 1,Big Creek 1 PH,Powerhouse,Complete
+1/1/1980,12/2/2018,Big Creek 2,Big Creek 2 PH,Powerhouse,Complete
+1/1/1980,12/3/2018,Big Creek 2A,Big Creek 2A PH,Powerhouse,Complete
+1/1/1980,12/4/2018,Big Creek 3,Big Creek 3 PH,Powerhouse,Complete
+1/1/1980,12/5/2018,Big Creek 4,Big Creek 4 PH,Powerhouse,Complete
+1/1/1980,12/6/2018,Big Creek 8,Big Creek 8 PH,Powerhouse,Complete
+1/1/1980,12/5/2018,Kerckhoff,Kerckhoff 1 PH,Powerhouse,"Complete, with just a few periods of 0 generation"
+1/1/1980,12/5/2018,Mammoth,Mammoth Pool PH,Powerhouse,Complete
+1/1/1980,12/5/2018,Portal,Portal PH,Powerhouse,Complete
+1/1/1980,12/2/2018,A G Wishon,San Joaquin 1 PH,Powerhouse,Complete
+1/1/1980,12/6/2018,San Joaquin 2,San Joaquin 2 PH,Powerhouse,"Complete, with some periods of 0 generation"
+1/1/1980,12/6/2018,San Joaquin 3,San Joaquin 3 PH,Powerhouse,"Complete, with some periods of 0 generation"
+10/1/1965,9/30/2019,USGS 11241950 REDINGER LK NR AUBERRY CA,Redinger Lake,Reservoir,Complete
+10/1/1950,10/1/2019,USGS 11239500 SHAVER LK NR BIG C CA,Shaver Lake,Reservoir,Complete
+10/12/1954,10/4/2019,USGS 11231000 LK THOMAS A. EDISON NR BIG C CA,Lake Thomas A Edison,Reservoir,Complete
+10/1/1950,10/5/2019,USGS 11236000 HUNTINGTON LK NR BIG CREEK CA,Huntington Lake,Reservoir,Complete
+10/1/1950,10/6/2019,USGS 11229600 FLORENCE LK NR BIG C CA,Florence Lake,Reservoir,Complete
+10/17/1959,10/8/2019,USGS 11234700 MAMMOTH POOL RE NR BIG CREEK CA,Mammoth Pool Reservoir,Reservoir,Complete
