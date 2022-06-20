@@ -55,7 +55,7 @@ if debug:
     end = '{}-09-30'.format(args.end_year or 2002)
     run_name = 'development'
 else:
-    planning_months = args.planning_months or 12
+    planning_months = args.planning_months or 8
 
 if args.start_year:
     start = '{}-10-01'.format(args.start_year)
