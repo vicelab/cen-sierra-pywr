@@ -12,21 +12,22 @@ from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+from datetime import date
 
 # In[2]:
 
-
-results_dir = '../results'
-no_opt_path = Path(results_dir, 'no optimization')
-opt_path = Path(results_dir, 'optimization')
+file_suffix = date.today().strftime('%Y-%m-%d')
+suffix = ' - {}'.format(file_suffix) if file_suffix else ''
+results_dir = os.environ['SIERRA_RESULTS_PATH']
+no_opt_path = Path(results_dir, 'usj - no planning')
+opt_path = Path(results_dir, 'usj - planning')
 scenario_names = ['observed', 'w/o planning', 'w/ planning']
 
 
 # In[3]:
 
-
-facilities_list = pd.read_csv('../../data/observed/runoff/Upper San Joaquin River/ObservedData_USJ.csv', dtype=str)
+data_path_obs = './data/'
+facilities_list = pd.read_csv(Path(data_path_obs, './observed/runoff/Upper San Joaquin River/ObservedData_USJ.csv', dtype=str))
 modeled_names = [str(s) for s in facilities_list['Name (Model)']]
 observed_names = [str(s) for s in facilities_list['Name (Observed)']]
 print(observed_names)
@@ -37,15 +38,16 @@ print(modeled_names)
 
 
 # Energy data
-scenarios = ['observed', 'no optimization', 'optimization']
+scenarios = ['observed', 'usj - no planning', 'usj - planning']
 dfs = []
 for i, scenario in enumerate(scenarios):
     if scenario == 'observed':
-        fp = r'..\..\data\observed\energy\monthly_hydro_1980_2018_MWh.csv'
+        fp = Path(data_path_obs, r'..\data\observed\energy\monthly_hydro_1980_2018_MWh.csv')
         df = pd.read_csv(fp, index_col=0, header=0, parse_dates=True).dropna(axis=1)
         df = df[[c for c in df if c in observed_names]]
     else:
-        fp = Path(results_dir, scenario, 'upper_san_joaquin/historical/Livneh/Hydropower_Energy_MWh.csv')
+        run_nome = scenario + suffix
+        fp = Path(results_dir, run_nome, 'upper_san_joaquin/historical/Livneh/Hydropower_Energy_MWh.csv')
         df = pd.read_csv(fp, index_col=0, header=0, parse_dates=True)
         df = df[[c for c in df if c in modeled_names]]
         
@@ -74,17 +76,18 @@ df_energy.head()
 # Storage data
 # read in simulated storage
 
-results_dir = '../results'
-no_opt_path = Path(results_dir, 'no optimization')
-opt_path = Path(results_dir, 'optimization')
+results_dir = os.environ['SIERRA_RESULTS_PATH']
+no_opt_path = Path(results_dir, 'usj - no planning' + suffix)
+opt_path = Path(results_dir, 'usj - planning' + suffix)
 
-scenarios = ['no optimization', 'optimization']
+scenarios = ['usj - no planning', 'usj - planning']
 dfs = []
 for i, scenario in enumerate(['observed'] + scenarios):
+    run_nome = scenario + suffix
     if scenario == 'observed':
-        fp = Path(r'..\..\data\observed\runoff\Upper San Joaquin River\storage_mcm.csv')
+        fp = Path(data_path_obs, r'..\data\observed\runoff\Upper San Joaquin River\storage_mcm.csv', dtype=str)
     else:
-        fp = Path(results_dir, scenario, 'upper_san_joaquin/historical/Livneh/Reservoir_Storage_mcm.csv')
+        fp = Path(results_dir, run_nome, 'upper_san_joaquin/historical/Livneh/Reservoir_Storage_mcm.csv')
     df = pd.read_csv(fp, index_col=0, header=0, parse_dates=True)
 #     df_millerton = df[[c for c in df if 'millerton' in c.lower()]].sum(axis=1)
     df = df[[c for c in df if 'millerton' not in c.lower()]].sum(axis=1).to_frame()
