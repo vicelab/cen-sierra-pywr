@@ -9,7 +9,7 @@ from pathlib import Path
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-
+from datetime import date
 
 # In[18]:
 
@@ -26,7 +26,9 @@ basin = 'stanislaus'
 # node = 'IFR bl Goodwin Reservoir'
 node = 'IFR bl Beardsley Afterbay'
 
-base_path = '../../results'
+file_suffix = date.today().strftime('%Y-%m-%d')
+suffix = ' - {}'.format(file_suffix) if file_suffix else ''
+base_path = os.environ['SIERRA_RESULTS_PATH']
 
 climate_scenario = 'historical/Livneh'
 
@@ -41,7 +43,8 @@ df_obs = pd.read_csv(obs_path, index_col=0, parse_dates=True)
 df_obs = df_obs['USGS 11292900 MF STANISLAUS R BL BEARDSLEY DAM CA'][start:end] / 35.315
 
 def get_df(scenario, var, label=None):
-    csv_path = Path(base_path, f'{basin} - {scenario}', climate_scenario)
+    #basin_path = os.path.join(results_path, run_name, basin, r'historical\Livneh')
+    csv_path = Path(base_path, f'{basin} - {scenario}' + suffix, basin, climate_scenario)
     path = Path(csv_path, f'InstreamFlowRequirement_{var}_mcm.csv')
     _df = pd.read_csv(path, index_col=0, parse_dates=True, header=0)[node][start:end].to_frame()
     _df = _df * 1e6 / 24 / 60 / 60
