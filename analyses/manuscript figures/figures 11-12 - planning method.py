@@ -10,14 +10,15 @@ from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+from datetime import date
 
 # # Setup
 
 # In[15]:
 
-
-results_path = '../../results'
+file_suffix = date.today().strftime('%Y-%m-%d')
+suffix = ' - {}'.format(file_suffix) if file_suffix else ''
+results_path = './results' 
 # results_path = r'baseline - 2021-11-22'
 basin = 'stanislaus'
 hydrology_scenario = 'historical/Livneh'
@@ -71,7 +72,8 @@ fontsize=12
 
 
 def get_planning_df():
-    basin_path = os.path.join(results_path, 'development', basin, r'historical\Livneh')
+    run_name = 'stanislaus - planning method' + suffix
+    basin_path = os.path.join(results_path, run_name, basin, r'historical\Livneh')
     file_path = os.path.join(basin_path, 'planning_model_results.csv')
     df = pd.read_csv(file_path, index_col=[0, 1], parse_dates=True, header=[0], skiprows=[1,2])
     df.index.names = ['month', 'planning month']
@@ -153,9 +155,9 @@ def plot_simulated(resolution='daily'):
     scheduling_dates = pd.date_range(start=start, end=end)
     
     for i, var in enumerate(['storage', 'flow']):
-
+        data_path = os.environ['SIERRA_DATA_PATH']
         # observed flows
-        path = r'C:\Users\david\Box\CERC-WET\Task7_San_Joaquin_Model\pywr_models\data\Stanislaus River\gauges\streamflow_cfs.csv'
+        path = Path(data_path, 'Stanislaus River/gauges/streamflow_cfs.csv')
         gauges = {
             'Stanislaus PH': 'USGS 11295505 STANISLAUS PP NR HATHAWAY PINES CA',
             'Donnells PH': 'USGS 11292610 DONNELL PH NR STRAWBERRY CA',
@@ -182,8 +184,9 @@ def plot_simulated(resolution='daily'):
 
         # scheduling results
         def read_results(scenario, source):
-            var_filename = 'Hydropower_Flow_MCM.csv' if var == 'flow' else 'Reservoir_Storage_MCM.csv'
-            file_path = os.path.join(results_path, scenario, basin, hydrology_scenario, var_filename)
+            run_nome = scenario + suffix
+            var_filename = 'Hydropower_Flow_mcm.csv' if var == 'flow' else 'Reservoir_Storage_mcm.csv'
+            file_path = os.path.join(results_path, run_nome, basin, hydrology_scenario, var_filename)
             _df = pd.read_csv(file_path, index_col=0, parse_dates=True, header=0)[facilities].sum(axis=1).to_frame()
             _df.columns = [var]
             if resolution == 'monthly':
@@ -195,10 +198,12 @@ def plot_simulated(resolution='daily'):
             return _df
         
         # optimized results
-        df_sch = read_results('development', 'Scheduled w/ planning')
+        df_sch = read_results('stanislaus - planning method', 'Scheduled w/ planning')
         
         # non-optimized results
-        df_np = read_results('development - no planning', 'Scheduled w/o planning')
+        run_names = 'development' 
+       # basin_path = os.path.join(results_path, run_name, basin, r'historical\Livneh')
+        df_np = read_results(run_names, 'Scheduled w/o planning')
 
         df_plt = pd.concat([df_pl, df_np, df_sch], axis=0)
         df_plt = df_plt.reset_index()
@@ -222,7 +227,3 @@ plot_simulated('monthly')
 
 
 # In[ ]:
-
-
-
-
