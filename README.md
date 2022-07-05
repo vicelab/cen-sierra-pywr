@@ -140,21 +140,21 @@ IMPORTANT: This is only for reproducing the single manuscript noted above. It is
 * Add `C:\glpk-4.65\w64` to your `PATH` environment variable.
   
 ### Python 3.8
-* Download Python 3.8.10, 64-bit from https://www.python.org/ftp/python/3.8.10/python-3.8.10-amd64.exe and install.
-* Create and activate a new Python environment using Python 3.8 (It is assumed that the modeler is able to create and work with Python environments; see above for more info). 
+* Download and install [Python 3.8.10](https://www.python.org/ftp/python/3.8.10/python-3.8.10-amd64.exe).
+* Create and activate a new Python environment using Python 3.8 that you just installed. It is assumed that the modeler is able to create and work with Python environments; see above for more info.
  
 ### CenSierraPywr (this repository)
-* Download version `v2022.06.20` of this repository from: https://github.com/vicelab/cen-sierra-pywr/releases/tag/v2022.06.20, and extract to a location of your choice.
-* From within the activated Python environment, install required Python packages found in `requirements.txt` using pip: `pip install -r requirements.txt` (The proficient Python modeler may choose their own preferred method to work with environments and install packages)
+* Download [this repository, v2022.06.20](https://github.com/vicelab/cen-sierra-pywr/releases/tag/v2022.06.20) and extract to a location of your choice.
+* From within the activated Python environment, install required Python packages found in `requirements.txt` using pip: `pip install -r requirements.txt`.
 
 ## 2. Set-up data structure and environment variables
 
-* Data structure: Add an output directory. For example, `C:\data`.
-* Create a new environment variable called `SIERRA_DATA_PATH` with the above directory. 
+* Add a directory to store input data, such as `C:\data`.
+* Create a new environment variable called `SIERRA_DATA_PATH` with the above directory as the variable value. 
 
 ## 3. Install input data
 
-Download all input data for the date **June 20, 2022** from ______________ and install to the `SIERRA_DATA_PATH` above.
+Download all [input data](https://doi.org/10.5061/dryad.x0k6djhn8) and install to the input directory (`SIERRA_DATA_PATH`) defined above.
 
 ## 4. Run the models
 
