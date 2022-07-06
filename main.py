@@ -58,10 +58,9 @@ if debug:
     if not args.run_name:
         run_name = 'development'
 
-if args.start_year:
-    start = '{}-10-01'.format(args.start_year)
-if args.end_year:
-    end = '{}-09-30'.format(args.end_year)
+else:
+    start = '{}-10-01'.format(args.start_year or 2051)
+    end = '{}-09-30'.format(args.end_year or 2012)
 
 if args.scenario_set:
     scenario_sets_dir = os.path.join(data_path, 'metadata', 'scenario_sets.json')
