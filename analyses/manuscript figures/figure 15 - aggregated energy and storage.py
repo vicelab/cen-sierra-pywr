@@ -1,11 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
-# get_ipython().run_line_magic('matplotlib', 'inline')
-
 import os
 import datetime as dt
 from pathlib import Path
@@ -13,39 +5,31 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+input_dir = os.environ['SIERRA_DATA_PATH']
+local_obs_dir = '../../data/observed'
+output_dir = '../../results'
 
-# In[2]:
-
-
-results_dir = '../results'
-no_opt_path = Path(results_dir, 'no optimization')
-opt_path = Path(results_dir, 'optimization')
+no_opt_path = Path(output_dir, 'usj - no planning')
+opt_path = Path(output_dir, 'usj - planning')
 scenario_names = ['observed', 'w/o planning', 'w/ planning']
 
-
-# In[3]:
-
-
-facilities_list = pd.read_csv('../../data/observed/runoff/Upper San Joaquin River/ObservedData_USJ.csv', dtype=str)
+facilities_path = Path(local_obs_dir, 'runoff/Upper San Joaquin River/ObservedData_USJ.csv')
+facilities_list = pd.read_csv(facilities_path, dtype=str)
 modeled_names = [str(s) for s in facilities_list['Name (Model)']]
 observed_names = [str(s) for s in facilities_list['Name (Observed)']]
 print(observed_names)
 print(modeled_names)
 
-
-# In[4]:
-
-
 # Energy data
-scenarios = ['observed', 'no optimization', 'optimization']
+scenarios = ['observed', 'usj - no planning', 'usj - planning']
 dfs = []
 for i, scenario in enumerate(scenarios):
     if scenario == 'observed':
-        fp = r'..\..\data\observed\energy\monthly_hydro_1980_2018_MWh.csv'
+        fp = Path(local_obs_dir, r'energy\monthly_hydro_1980_2018_MWh.csv')
         df = pd.read_csv(fp, index_col=0, header=0, parse_dates=True).dropna(axis=1)
         df = df[[c for c in df if c in observed_names]]
     else:
-        fp = Path(results_dir, scenario, 'upper_san_joaquin/historical/Livneh/Hydropower_Energy_MWh.csv')
+        fp = Path(output_dir, scenario, 'upper_san_joaquin/historical/Livneh/Hydropower_Energy_MWh.csv')
         df = pd.read_csv(fp, index_col=0, header=0, parse_dates=True)
         df = df[[c for c in df if c in modeled_names]]
         
@@ -74,17 +58,17 @@ df_energy.head()
 # Storage data
 # read in simulated storage
 
-results_dir = '../results'
-no_opt_path = Path(results_dir, 'no optimization')
-opt_path = Path(results_dir, 'optimization')
+output_dir = '../results'
+no_opt_path = Path(output_dir, 'no optimization')
+opt_path = Path(output_dir, 'optimization')
 
 scenarios = ['no optimization', 'optimization']
 dfs = []
 for i, scenario in enumerate(['observed'] + scenarios):
     if scenario == 'observed':
-        fp = Path(r'..\..\data\observed\runoff\Upper San Joaquin River\storage_mcm.csv')
+        fp = Path(input_dir, r'Upper San Joaquin River\observed\runoff\storage_mcm.csv')
     else:
-        fp = Path(results_dir, scenario, 'upper_san_joaquin/historical/Livneh/Reservoir_Storage_mcm.csv')
+        fp = Path(output_dir, scenario, 'upper_san_joaquin/historical/Livneh/Reservoir_Storage_mcm.csv')
     df = pd.read_csv(fp, index_col=0, header=0, parse_dates=True)
 #     df_millerton = df[[c for c in df if 'millerton' in c.lower()]].sum(axis=1)
     df = df[[c for c in df if 'millerton' not in c.lower()]].sum(axis=1).to_frame()

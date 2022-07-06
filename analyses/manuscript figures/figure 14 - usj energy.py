@@ -64,16 +64,16 @@ ax0.set_xlim(prices.index[0], prices.index[-1])
 
 # bottom
 ax1 = axes[1]
-ax1.plot(fnf, color='blue', label='Full natural flow')
+ax1.plot(hp_no_planning, color='orange', label='Energy w/o planning')
+ax1.plot(hp_planning, color='green', label='Energy w/ planning')
 ax1.set_ylim(0, 60)
-ax1.set_ylabel('Flow (million m$^3$/day)')
-ax1.set_xlim(fnf.index[0], fnf.index[-1])
+ax1.set_ylabel('Energy (GWh/day)')
 
 ax2 = ax1.twinx()
-ax2.plot(hp_no_planning, color='orange', label='Energy w/o planning')
-ax2.plot(hp_planning, color='red', label='Energy w/ planning')
+ax2.plot(fnf, color='blue', label='Full natural flow')
 ax2.set_ylim(0, 60)
-ax2.set_ylabel('Energy (GWh/day)')
+ax2.set_ylabel('Flow (million m$^3$/day)')
+ax2.set_xlim(fnf.index[0], fnf.index[-1])
 
 for ax in [ax1, ax2]:
     ax.xaxis.set_major_formatter(DateFormatter('%b'))
