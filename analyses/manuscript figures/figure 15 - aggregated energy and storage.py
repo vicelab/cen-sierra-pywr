@@ -1,5 +1,4 @@
 import os
-import datetime as dt
 from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -17,10 +16,8 @@ facilities_path = Path(local_obs_dir, 'runoff/Upper San Joaquin River/ObservedDa
 facilities_list = pd.read_csv(facilities_path, dtype=str)
 modeled_names = [str(s) for s in facilities_list['Name (Model)']]
 observed_names = [str(s) for s in facilities_list['Name (Observed)']]
-print(observed_names)
-print(modeled_names)
 
-# Energy data
+# storage data
 scenarios = ['observed', 'usj - no planning', 'usj - planning']
 dfs = []
 for i, scenario in enumerate(scenarios):
@@ -32,10 +29,10 @@ for i, scenario in enumerate(scenarios):
         fp = Path(output_dir, scenario, 'upper_san_joaquin/historical/Livneh/Hydropower_Energy_MWh.csv')
         df = pd.read_csv(fp, index_col=0, header=0, parse_dates=True)
         df = df[[c for c in df if c in modeled_names]]
-        
+
     df = df.loc['1980-10-01':'2012-09-30']
-#     print(scenario)
-#     print(df.head())
+    #     print(scenario)
+    #     print(df.head())
     df = df.sum(axis=1).to_frame()
     df.columns = ['Total']
     df = df.resample('M').sum() / 1e3
@@ -47,33 +44,22 @@ for i, scenario in enumerate(scenarios):
     del df['Date']
     df = df.set_index(['scenario', 'year', 'month'])
     dfs.extend([df])
-    
+
 df_energy = pd.concat(dfs, axis=0).reset_index()
 df_energy.head()
 
-
-# In[5]:
-
-
-# Storage data
-# read in simulated storage
-
-output_dir = '../results'
-no_opt_path = Path(output_dir, 'no optimization')
-opt_path = Path(output_dir, 'optimization')
-
-scenarios = ['no optimization', 'optimization']
+# storage data
 dfs = []
-for i, scenario in enumerate(['observed'] + scenarios):
+for i, scenario in enumerate(scenarios):
     if scenario == 'observed':
-        fp = Path(input_dir, r'Upper San Joaquin River\observed\runoff\storage_mcm.csv')
+        fp = Path(input_dir, r'Upper San Joaquin River\gauges\storage_mcm.csv')
     else:
         fp = Path(output_dir, scenario, 'upper_san_joaquin/historical/Livneh/Reservoir_Storage_mcm.csv')
     df = pd.read_csv(fp, index_col=0, header=0, parse_dates=True)
-#     df_millerton = df[[c for c in df if 'millerton' in c.lower()]].sum(axis=1)
+    #     df_millerton = df[[c for c in df if 'millerton' in c.lower()]].sum(axis=1)
     df = df[[c for c in df if 'millerton' not in c.lower()]].sum(axis=1).to_frame()
-#     df = pd.concat([df_upper_basin, df_millerton], axis=1)
-#     df.columns = ['Millerton Lake', 'Upper Basin']
+    #     df = pd.concat([df_upper_basin, df_millerton], axis=1)
+    #     df.columns = ['Millerton Lake', 'Upper Basin']
     df.columns = ['Total']
     df = df.loc['1965-10-01':'2012-09-30']
     df = df.resample('M').mean()
@@ -88,16 +74,12 @@ for i, scenario in enumerate(['observed'] + scenarios):
 df_storage = pd.concat(dfs, axis=0).reset_index()
 df_storage.head()
 
-
-# In[14]:
-
-
 # plot data
-fig, axes = plt.subplots(2,1,figsize=(9,5))
+fig, axes = plt.subplots(2, 1, figsize=(9, 5))
 
-ylabel_energy = 'Energy ($GWh$)'
-ylabel_storage = 'Storage ($million\ m^3$)'
-month_labels = ['Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep']
+ylabel_energy = 'Energy (GWh)'
+ylabel_storage = 'Storage (million m$^3$)'
+month_labels = ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
 
 # Subplot: Energy
 ax = axes[0]
@@ -118,12 +100,4 @@ ax.set_xticklabels(month_labels)
 ax.legend(loc='upper left')
 
 fig.tight_layout()
-fig.savefig('figure - hydropower and storage.png', dpi=600)
-plt.show()
-
-
-# In[ ]:
-
-
-
-
+fig.savefig('figure 15 - usj aggregated energy and storage.png', dpi=600)
