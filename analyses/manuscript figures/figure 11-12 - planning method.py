@@ -17,8 +17,7 @@ import seaborn as sns
 # In[15]:
 
 
-results_path = '../../results'
-# results_path = r'baseline - 2021-11-22'
+output_dir = '../../results'
 basin = 'stanislaus'
 hydrology_scenario = 'historical/Livneh'
 
@@ -71,7 +70,7 @@ fontsize=12
 
 
 def get_planning_df():
-    basin_path = os.path.join(results_path, 'development', basin, r'historical\Livneh')
+    basin_path = os.path.join(output_dir, 'development', basin, r'historical\Livneh')
     file_path = os.path.join(basin_path, 'planning_model_results.csv')
     df = pd.read_csv(file_path, index_col=[0, 1], parse_dates=True, header=[0], skiprows=[1,2])
     df.index.names = ['month', 'planning month']
@@ -183,7 +182,7 @@ def plot_simulated(resolution='daily'):
         # scheduling results
         def read_results(scenario, source):
             var_filename = 'Hydropower_Flow_MCM.csv' if var == 'flow' else 'Reservoir_Storage_MCM.csv'
-            file_path = os.path.join(results_path, scenario, basin, hydrology_scenario, var_filename)
+            file_path = os.path.join(output_dir, scenario, basin, hydrology_scenario, var_filename)
             _df = pd.read_csv(file_path, index_col=0, parse_dates=True, header=0)[facilities].sum(axis=1).to_frame()
             _df.columns = [var]
             if resolution == 'monthly':

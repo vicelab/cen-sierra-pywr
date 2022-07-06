@@ -26,7 +26,7 @@ basin = 'stanislaus'
 # node = 'IFR bl Goodwin Reservoir'
 node = 'IFR bl Beardsley Afterbay'
 
-base_path = '../../results'
+output_dir = '../../results'
 
 climate_scenario = 'historical/Livneh'
 
@@ -41,7 +41,7 @@ df_obs = pd.read_csv(obs_path, index_col=0, parse_dates=True)
 df_obs = df_obs['USGS 11292900 MF STANISLAUS R BL BEARDSLEY DAM CA'][start:end] / 35.315
 
 def get_df(scenario, var, label=None):
-    csv_path = Path(base_path, f'{basin} - {scenario}', climate_scenario)
+    csv_path = Path(output_dir, f'{basin} - {scenario}', climate_scenario)
     path = Path(csv_path, f'InstreamFlowRequirement_{var}_mcm.csv')
     _df = pd.read_csv(path, index_col=0, parse_dates=True, header=0)[node][start:end].to_frame()
     _df = _df * 1e6 / 24 / 60 / 60
