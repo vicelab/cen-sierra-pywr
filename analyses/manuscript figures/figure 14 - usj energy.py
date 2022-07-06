@@ -4,10 +4,11 @@ from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-import matplotlib.dates as mdates
+from matplotlib.dates import DateFormatter
 
 input_dir = os.environ['SIERRA_DATA_PATH']
-# output_dir = os.environ['SIERRA_RESULTS_PATH']
+
+output_dir = '../../results'
 
 # prices
 prices_path = Path(input_dir, r'common\energy prices\prices_pivoted_select_years.csv')
@@ -29,7 +30,6 @@ def read_csv(path):
     start = '2004-10-01'
     end = '2005-09-30'
     df = pd.read_csv(path, index_col=0, header=0, parse_dates=True)[start:end]
-    df.index = prices.index
     return df
 
 
@@ -40,7 +40,7 @@ fnf = read_csv(fnf_path)
 
 
 def get_energy_df(study):
-    path = Path('../../results', study, 'upper_san_joaquin/historical/Livneh', 'Hydropower_Energy_MWh.csv')
+    path = Path(output_dir, study, 'upper_san_joaquin/historical/Livneh', 'Hydropower_Energy_MWh.csv')
     df = read_csv(path)
     df = df.sum(axis=1) / 1000
     return df
@@ -50,31 +50,36 @@ def get_energy_df(study):
 hp_no_planning = get_energy_df('usj - no planning')
 hp_planning = get_energy_df('usj - planning')
 
+# prices.index = hp_planning.index
+
 # figure
-fig, axes = plt.subplots(2, 1, gridspec_kw={'height_ratios': [1, 2]}, figsize=(8, 5))
+fig, axes = plt.subplots(2, 1, gridspec_kw={'height_ratios': [1, 2]}, figsize=(9, 5))
 
 # top
 ax0 = axes[0]
 ax0.plot(prices, color='black')
 ax0.set_ylabel('Price ($/MWh)')
+ax0.xaxis.set_major_formatter(DateFormatter('%b'))
+ax0.set_xlim(prices.index[0], prices.index[-1])
 
 # bottom
 ax1 = axes[1]
-ax1.plot(hp_no_planning)
-ax1.plot(hp_planning)
+ax1.plot(fnf, color='blue', label='Full natural flow')
 ax1.set_ylim(0, 60)
-ax1.set_ylabel('Generation (GWh/day)')
+ax1.set_ylabel('Flow (million m$^3$/day)')
+ax1.set_xlim(fnf.index[0], fnf.index[-1])
 
 ax2 = ax1.twinx()
-ax2.plot(fnf)
+ax2.plot(hp_no_planning, color='orange', label='Energy w/o planning')
+ax2.plot(hp_planning, color='red', label='Energy w/ planning')
 ax2.set_ylim(0, 60)
-ax2.set_ylabel('Flow (mcm/day)')
+ax2.set_ylabel('Energy (GWh/day)')
 
-ax0.xaxis.set_major_formatter(mdates.DateFormatter('%b'))
 for ax in [ax1, ax2]:
-    ax.xaxis.set_major_formatter(mdates.DateFormatter('%b, %Y'))
+    ax.xaxis.set_major_formatter(DateFormatter('%b'))
 
-# rotate and align the tick labels so they look better
-fig.autofmt_xdate()
+fig.tight_layout()
+fig.legend(loc='lower center', ncol=3, frameon=False, borderaxespad=.2)
+plt.subplots_adjust(bottom=0.12)
 
-plt.show()
+fig.savefig('figure 14 - usj energy.png', dpi=600)
