@@ -9,6 +9,8 @@ from pathlib import Path
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import datetime as dt
+from datetime import date
 
 # In[18]:
 
@@ -25,7 +27,9 @@ basin = 'stanislaus'
 # node = 'IFR bl Goodwin Reservoir'
 node = 'IFR bl Beardsley Afterbay'
 
-output_dir = '../../results'
+file_suffix = date.today().strftime('%Y-%m-%d')
+suffix = ' - {}'.format(file_suffix) if file_suffix else ''
+output_dir = os.environ['SIERRA_RESULTS_PATH']
 
 climate_scenario = 'historical/Livneh'
 
@@ -41,7 +45,7 @@ df_obs = df_obs['USGS 11292900 MF STANISLAUS R BL BEARDSLEY DAM CA'][start:end] 
 
 
 def get_df(scenario, var, label=None):
-    csv_path = Path(output_dir, scenario, basin, climate_scenario)
+    csv_path = Path(output_dir, f'{basin} - {scenario}' + suffix, basin, climate_scenario)
     path = Path(csv_path, f'InstreamFlowRequirement_{var}_mcm.csv')
     _df = pd.read_csv(path, index_col=0, parse_dates=True, header=0)[node][start:end].to_frame()
     _df = _df * 1e6 / 24 / 60 / 60
@@ -50,14 +54,14 @@ def get_df(scenario, var, label=None):
     return _df
 
 
-scen = 'planning'
+scen = 'rr'
 df_flow = get_df(scen, 'Flow')
 df_min = get_df(scen, 'Min Flow')
 df_range = get_df(scen, 'Max Flow')
 df_max = df_min + df_range
 df_max['Variable'] = 'Max Flow'
 
-df_flow_no_rr = get_df('planning - no rr', 'Flow', label='No RR')
+df_flow_no_rr = get_df('no rr', 'Flow', label='No RR')
 
 ax.plot(df_min.index, df_min[node].values, color='red', linewidth=4, alpha=0.75, linestyle='--',
         label='Min. flow req\'t w/ ramping limit')
