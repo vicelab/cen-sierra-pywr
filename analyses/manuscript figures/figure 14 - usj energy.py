@@ -8,7 +8,10 @@ from matplotlib.dates import DateFormatter
 
 input_dir = os.environ['SIERRA_DATA_PATH']
 
-output_dir = '../../results'
+output_dir = os.environ['SIERRA_RESULTS_PATH']
+
+file_suffix = date.today().strftime('%Y-%m-%d')
+suffix = ' - {}'.format(file_suffix) if file_suffix else ''
 
 # prices
 prices_path = Path(input_dir, r'common\energy prices\prices_pivoted_select_years.csv')
@@ -47,8 +50,8 @@ def get_energy_df(study):
 
 
 # hydropower
-hp_no_planning = get_energy_df('usj - no planning')
-hp_planning = get_energy_df('usj - planning')
+hp_no_planning = get_energy_df('no planning' + suffix)
+hp_planning = get_energy_df('planning' + suffix)
 
 # prices.index = hp_planning.index
 
