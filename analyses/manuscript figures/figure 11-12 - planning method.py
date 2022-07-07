@@ -66,7 +66,7 @@ fontsize=12
 # In[16]:
 
 def get_planning_df():
-    run_name = 'stanislaus - planning'
+    run_name = 'planning method'
     basin_path = os.path.join(output_dir, run_name, basin, r'historical\Livneh')
     file_path = os.path.join(basin_path, 'planning_model_results.csv')
     df = pd.read_csv(file_path, index_col=[0, 1], parse_dates=True, header=[0], skiprows=[1,2])
@@ -188,10 +188,10 @@ def plot_simulated(resolution='daily'):
             return _df
         
         # optimized results
-        df_sch = read_results('stanislaus - planning', 'Scheduled w/ planning')
+        df_sch = read_results('planning method', 'Scheduled w/ planning')
         
         # non-optimized results
-        run_names = 'stanislaus - no planning' 
+        run_names = 'no planning method' 
        # basin_path = os.path.join(results_path, run_name, basin, r'historical\Livneh')
         df_np = read_results(run_names, 'Scheduled w/o planning')
 
