@@ -3,13 +3,18 @@ from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import datetime as dt
+from datetime import date
+
+file_suffix = date.today().strftime('%Y-%m-%d')
+suffix = ' - {}'.format(file_suffix) if file_suffix else ''
 
 input_dir = os.environ['SIERRA_DATA_PATH']
-local_obs_dir = '../../data/observed'
-output_dir = '../../results'
+local_obs_dir = './data/observed'
+output_dir = os.environ['SIERRA_RESULTS_PATH']
 
-no_opt_path = Path(output_dir, 'usj - no planning')
-opt_path = Path(output_dir, 'usj - planning')
+no_opt_path = Path(output_dir, 'usj - no planning' + suffix)
+opt_path = Path(output_dir, 'usj - planning' + suffix)
 scenario_names = ['observed', 'w/o planning', 'w/ planning']
 
 facilities_path = Path(local_obs_dir, 'runoff/Upper San Joaquin River/ObservedData_USJ.csv')
@@ -21,12 +26,13 @@ observed_names = [str(s) for s in facilities_list['Name (Observed)']]
 scenarios = ['observed', 'usj - no planning', 'usj - planning']
 dfs = []
 for i, scenario in enumerate(scenarios):
+    run_name = scenario + suffix
     if scenario == 'observed':
         fp = Path(local_obs_dir, r'energy\monthly_hydro_1980_2018_MWh.csv')
         df = pd.read_csv(fp, index_col=0, header=0, parse_dates=True).dropna(axis=1)
         df = df[[c for c in df if c in observed_names]]
     else:
-        fp = Path(output_dir, scenario, 'upper_san_joaquin/historical/Livneh/Hydropower_Energy_MWh.csv')
+        fp = Path(output_dir, run_name, 'upper_san_joaquin/historical/Livneh/Hydropower_Energy_MWh.csv')
         df = pd.read_csv(fp, index_col=0, header=0, parse_dates=True)
         df = df[[c for c in df if c in modeled_names]]
 
@@ -54,7 +60,7 @@ for i, scenario in enumerate(scenarios):
     if scenario == 'observed':
         fp = Path(input_dir, r'Upper San Joaquin River\gauges\storage_mcm.csv')
     else:
-        fp = Path(output_dir, scenario, 'upper_san_joaquin/historical/Livneh/Reservoir_Storage_mcm.csv')
+        fp = Path(output_dir, run_name, 'upper_san_joaquin/historical/Livneh/Reservoir_Storage_mcm.csv')
     df = pd.read_csv(fp, index_col=0, header=0, parse_dates=True)
     #     df_millerton = df[[c for c in df if 'millerton' in c.lower()]].sum(axis=1)
     df = df[[c for c in df if 'millerton' not in c.lower()]].sum(axis=1).to_frame()
