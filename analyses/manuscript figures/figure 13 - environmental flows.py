@@ -10,7 +10,6 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-
 # In[18]:
 
 
@@ -30,7 +29,7 @@ output_dir = '../../results'
 
 climate_scenario = 'historical/Livneh'
 
-fig, ax = plt.subplots(1,1,figsize=(12,4))
+fig, ax = plt.subplots(1, 1, figsize=(12, 4))
 
 start = '1992-10-01'
 end = '1994-09-03'
@@ -40,8 +39,9 @@ obs_path = Path(data_path, 'Stanislaus River/gauges/streamflow_cfs.csv')
 df_obs = pd.read_csv(obs_path, index_col=0, parse_dates=True)
 df_obs = df_obs['USGS 11292900 MF STANISLAUS R BL BEARDSLEY DAM CA'][start:end] / 35.315
 
+
 def get_df(scenario, var, label=None):
-    csv_path = Path(output_dir, f'{basin} - {scenario}', climate_scenario)
+    csv_path = Path(output_dir, scenario, basin, climate_scenario)
     path = Path(csv_path, f'InstreamFlowRequirement_{var}_mcm.csv')
     _df = pd.read_csv(path, index_col=0, parse_dates=True, header=0)[node][start:end].to_frame()
     _df = _df * 1e6 / 24 / 60 / 60
@@ -49,17 +49,18 @@ def get_df(scenario, var, label=None):
     _df['Variable'] = label or var
     return _df
 
-scen = 'rr'
+
+scen = 'planning'
 df_flow = get_df(scen, 'Flow')
 df_min = get_df(scen, 'Min Flow')
 df_range = get_df(scen, 'Max Flow')
 df_max = df_min + df_range
 df_max['Variable'] = 'Max Flow'
 
-df_flow_no_rr = get_df('no rr', 'Flow', label='No RR')
+df_flow_no_rr = get_df('planning - no rr', 'Flow', label='No RR')
 
-
-ax.plot(df_min.index, df_min[node].values, color='red', linewidth=4, alpha=0.75, linestyle='--', label='Min. flow req\'t w/ ramping limit')
+ax.plot(df_min.index, df_min[node].values, color='red', linewidth=4, alpha=0.75, linestyle='--',
+        label='Min. flow req\'t w/ ramping limit')
 ax.plot(df_obs.index, df_obs.values, color='black', linewidth=3.5, alpha=0.75, label='Observed flow')
 ax.plot(df_flow.index, df_flow_no_rr[node].values, color='orange', label='Sim. flow w/o ramping limit')
 # ax.fill_between(df_min.index, df_min[node].values, df_max[node].values, alpha=0.2, label='Maximum flow (range)')
@@ -73,9 +74,4 @@ fig.savefig('figure - flow below Beardsley Afterbay.png', dpi=600, bbox_inches='
 
 plt.show()
 
-
 # In[ ]:
-
-
-
-
