@@ -13,8 +13,8 @@ input_dir = os.environ['SIERRA_DATA_PATH']
 local_obs_dir = './data/observed'
 output_dir = os.environ['SIERRA_RESULTS_PATH']
 
-no_opt_path = Path(output_dir, 'usj - no planning' + suffix)
-opt_path = Path(output_dir, 'usj - planning' + suffix)
+no_opt_path = Path(output_dir, 'no planning' + suffix)
+opt_path = Path(output_dir, 'planning' + suffix)
 scenario_names = ['observed', 'w/o planning', 'w/ planning']
 
 facilities_path = Path(local_obs_dir, 'runoff/Upper San Joaquin River/ObservedData_USJ.csv')
@@ -23,7 +23,7 @@ modeled_names = [str(s) for s in facilities_list['Name (Model)']]
 observed_names = [str(s) for s in facilities_list['Name (Observed)']]
 
 # storage data
-scenarios = ['observed', 'usj - no planning', 'usj - planning']
+scenarios = ['observed', 'no planning', 'planning']
 dfs = []
 for i, scenario in enumerate(scenarios):
     run_name = scenario + suffix
