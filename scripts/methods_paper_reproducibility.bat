@@ -1,6 +1,8 @@
 cd ..
-python main.py -b stanislaus -p -d -n "stanislaus - planning method
-python main.py -b stanislaus -p -n "stanislaus - rr"
-python main.py -b stanislaus -p -n "stanislaus - no rr"
-python main.py -b upper_san_joaquin -n "usj - no planning"
-python main.py -b upper_san_joaquin -p -n "usj - planning"
+python main.py -b stanislaus -p -d -n "planning method" -s 1990 -e 1885
+python main.py -b stanislaus -d -n "no planning method" -s 1995 -e 1995
+python main.py -b stanislaus -n "no planning" -s 1990 -e 1995
+python main.py -b stanislaus -p -n "planning" -s 1990 -e 1995
+python main.py -b stanislaus -p -n "planning - no rr" -s 1990 -e 1995
+python main.py -b upper_san_joaquin -n "no planning" -s 1980
+python main.py -b upper_san_joaquin -p -n "planning" -s 1980
