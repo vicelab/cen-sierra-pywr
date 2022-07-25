@@ -27,6 +27,7 @@ parser.add_argument("-e", "--end_year", help="End year", type=int)
 parser.add_argument("-y", "--years", help="Years to run (useful for debugging)", type=int)
 parser.add_argument("-n", "--run_name", help="Run name")
 parser.add_argument("-pb", "--progress_bar", help="Show progress bar", action='store_true')
+parser.add_argument("-ns", "--no_suffix", help="Suppress file date suffix in output", action='store_true')
 args = parser.parse_args()
 
 basin = args.basin
@@ -103,8 +104,6 @@ else:
 
 model_args = list(product(climate_scenarios, basins))
 
-file_suffix = None if debug else date.today().strftime('%Y-%m-%d')
-
 kwargs = dict(
     run_name=run_name,
     include_planning=include_planning,
@@ -118,7 +117,7 @@ kwargs = dict(
     data_path=data_path,
     scenarios=scenarios,
     show_progress=args.progress_bar,
-    file_suffix=file_suffix
+    file_suffix=None if debug or args.no_suffix else date.today().strftime('%Y-%m-%d')
 )
 
 if not multiprocessing:  # serial processing for debugging
