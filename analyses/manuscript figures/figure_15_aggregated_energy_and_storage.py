@@ -3,15 +3,14 @@ from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import datetime as dt
-from datetime import date
 
-file_suffix = date.today().strftime('%Y-%m-%d')
-suffix = ' - {}'.format(file_suffix) if file_suffix else ''
+# file_suffix = date.today().strftime('%Y-%m-%d')
+# suffix = ' - {}'.format(file_suffix) if file_suffix else ''
+suffix = ''
 
 input_dir = os.environ['SIERRA_DATA_PATH']
-local_obs_dir = './data/observed'
-output_dir = os.environ['SIERRA_RESULTS_PATH']
+local_obs_dir = '../../data/observed'
+output_dir = os.environ.get('SIERRA_RESULTS_PATH', '../../results')
 
 no_opt_path = Path(output_dir, 'no planning' + suffix)
 opt_path = Path(output_dir, 'planning' + suffix)
@@ -107,3 +106,5 @@ ax.legend(loc='upper left')
 
 fig.tight_layout()
 fig.savefig('figure 15 - usj aggregated energy and storage.png', dpi=600)
+
+plt.show()
