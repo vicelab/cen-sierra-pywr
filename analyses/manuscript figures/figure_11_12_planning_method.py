@@ -176,7 +176,7 @@ def plot_simulated(resolution='daily'):
         df_sch = read_results('planning method', 'Scheduled w/ planning')
 
         # non-optimized results
-        run_names = 'no planning'
+        run_names = 'no planning method'
         # basin_path = os.path.join(results_path, run_name, basin, r'historical\Livneh')
         df_np = read_results(run_names, 'Scheduled w/o planning')
 
