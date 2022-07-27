@@ -1,59 +1,43 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
-# get_ipython().run_line_magic('matplotlib', 'inline')
-
 import os
-import datetime as dt
 from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from datetime import date
 
-# In[2]:
+# file_suffix = date.today().strftime('%Y-%m-%d')
+# suffix = ' - {}'.format(file_suffix) if file_suffix else ''
+suffix = ''
 
-file_suffix = date.today().strftime('%Y-%m-%d')
-suffix = ' - {}'.format(file_suffix) if file_suffix else ''
-results_dir = os.environ['SIERRA_RESULTS_PATH']
-no_opt_path = Path(results_dir, 'usj - no planning')
-opt_path = Path(results_dir, 'usj - planning')
+input_dir = os.environ['SIERRA_DATA_PATH']
+local_obs_dir = '.data/observed'
+output_dir = os.environ.get('SIERRA_RESULTS_PATH', '../../results')
+
+no_opt_path = Path(output_dir, 'no planning' + suffix)
+opt_path = Path(output_dir, 'planning' + suffix)
 scenario_names = ['observed', 'w/o planning', 'w/ planning']
 
-
-# In[3]:
-
-data_path_obs = './data/'
-facilities_list = pd.read_csv(Path(data_path_obs, './observed/runoff/Upper San Joaquin River/ObservedData_USJ.csv', dtype=str))
+facilities_path = Path(local_obs_dir, 'runoff/Upper San Joaquin River/ObservedData_USJ.csv')
+facilities_list = pd.read_csv(facilities_path, dtype=str)
 modeled_names = [str(s) for s in facilities_list['Name (Model)']]
 observed_names = [str(s) for s in facilities_list['Name (Observed)']]
-print(observed_names)
-print(modeled_names)
 
-
-# In[4]:
-
-
-# Energy data
-scenarios = ['observed', 'usj - no planning', 'usj - planning']
+# storage data
+scenarios = ['observed', 'no planning', 'planning']
 dfs = []
 for i, scenario in enumerate(scenarios):
+    run_name = scenario + suffix
     if scenario == 'observed':
-        fp = Path(data_path_obs, r'..\data\observed\energy\monthly_hydro_1980_2018_MWh.csv')
+        fp = Path(local_obs_dir, r'energy\monthly_hydro_1980_2018_MWh.csv')
         df = pd.read_csv(fp, index_col=0, header=0, parse_dates=True).dropna(axis=1)
         df = df[[c for c in df if c in observed_names]]
     else:
-        run_nome = scenario + suffix
-        fp = Path(results_dir, run_nome, 'upper_san_joaquin/historical/Livneh/Hydropower_Energy_MWh.csv')
+        fp = Path(output_dir, run_name, 'upper_san_joaquin/historical/Livneh/Hydropower_Energy_MWh.csv')
         df = pd.read_csv(fp, index_col=0, header=0, parse_dates=True)
         df = df[[c for c in df if c in modeled_names]]
-        
+
     df = df.loc['1980-10-01':'2012-09-30']
-#     print(scenario)
-#     print(df.head())
+    #     print(scenario)
+    #     print(df.head())
     df = df.sum(axis=1).to_frame()
     df.columns = ['Total']
     df = df.resample('M').sum() / 1e3
@@ -65,34 +49,22 @@ for i, scenario in enumerate(scenarios):
     del df['Date']
     df = df.set_index(['scenario', 'year', 'month'])
     dfs.extend([df])
-    
+
 df_energy = pd.concat(dfs, axis=0).reset_index()
 df_energy.head()
 
-
-# In[5]:
-
-
-# Storage data
-# read in simulated storage
-
-results_dir = os.environ['SIERRA_RESULTS_PATH']
-no_opt_path = Path(results_dir, 'usj - no planning' + suffix)
-opt_path = Path(results_dir, 'usj - planning' + suffix)
-
-scenarios = ['usj - no planning', 'usj - planning']
+# storage data
 dfs = []
-for i, scenario in enumerate(['observed'] + scenarios):
-    run_nome = scenario + suffix
+for i, scenario in enumerate(scenarios):
     if scenario == 'observed':
-        fp = Path(data_path_obs, r'..\data\observed\runoff\Upper San Joaquin River\storage_mcm.csv', dtype=str)
+        fp = Path(input_dir, r'Upper San Joaquin River\gauges\storage_mcm.csv')
     else:
-        fp = Path(results_dir, run_nome, 'upper_san_joaquin/historical/Livneh/Reservoir_Storage_mcm.csv')
+        fp = Path(output_dir, run_name, 'upper_san_joaquin/historical/Livneh/Reservoir_Storage_mcm.csv')
     df = pd.read_csv(fp, index_col=0, header=0, parse_dates=True)
-#     df_millerton = df[[c for c in df if 'millerton' in c.lower()]].sum(axis=1)
+    #     df_millerton = df[[c for c in df if 'millerton' in c.lower()]].sum(axis=1)
     df = df[[c for c in df if 'millerton' not in c.lower()]].sum(axis=1).to_frame()
-#     df = pd.concat([df_upper_basin, df_millerton], axis=1)
-#     df.columns = ['Millerton Lake', 'Upper Basin']
+    #     df = pd.concat([df_upper_basin, df_millerton], axis=1)
+    #     df.columns = ['Millerton Lake', 'Upper Basin']
     df.columns = ['Total']
     df = df.loc['1965-10-01':'2012-09-30']
     df = df.resample('M').mean()
@@ -107,16 +79,12 @@ for i, scenario in enumerate(['observed'] + scenarios):
 df_storage = pd.concat(dfs, axis=0).reset_index()
 df_storage.head()
 
-
-# In[14]:
-
-
 # plot data
-fig, axes = plt.subplots(2,1,figsize=(9,5))
+fig, axes = plt.subplots(2, 1, figsize=(9, 5))
 
-ylabel_energy = 'Energy ($GWh$)'
-ylabel_storage = 'Storage ($million\ m^3$)'
-month_labels = ['Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep']
+ylabel_energy = 'Energy (GWh)'
+ylabel_storage = 'Storage (million m$^3$)'
+month_labels = ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
 
 # Subplot: Energy
 ax = axes[0]
@@ -137,12 +105,6 @@ ax.set_xticklabels(month_labels)
 ax.legend(loc='upper left')
 
 fig.tight_layout()
-fig.savefig('figure - hydropower and storage.png', dpi=600)
+fig.savefig('figure 15 - usj aggregated energy and storage.png', dpi=600)
+
 plt.show()
-
-
-# In[ ]:
-
-
-
-
