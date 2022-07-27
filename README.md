@@ -144,7 +144,7 @@ IMPORTANT: This is only for reproducing the single manuscript noted above. It is
 * Create and activate a new Python environment using Python 3.8 that you just installed. It is assumed that the modeler is able to create and work with Python environments; see above for more info.
  
 ### CenSierraPywr (this repository)
-* Download [this repository, v2022.06.20](https://github.com/vicelab/cen-sierra-pywr/releases/tag/v2022.06.20) and extract to a location of your choice.
+* Download [this repository, v2022.07.26](https://github.com/vicelab/cen-sierra-pywr/releases/tag/v2022.07.26) and extract to a location of your choice.
 * From within the activated Python environment, install required Python packages found in `requirements.txt` using pip: `pip install -r requirements.txt`.
 
 ## 2. Set-up data structure and environment variables
