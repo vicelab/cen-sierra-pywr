@@ -9,7 +9,7 @@ import seaborn as sns
 suffix = ''
 
 input_dir = os.environ['SIERRA_DATA_PATH']
-local_obs_dir = '../../data/observed'
+local_obs_dir = '.data/observed'
 output_dir = os.environ.get('SIERRA_RESULTS_PATH', '../../results')
 
 no_opt_path = Path(output_dir, 'no planning' + suffix)
