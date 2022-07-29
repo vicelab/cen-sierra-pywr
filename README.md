@@ -158,7 +158,7 @@ Download all [input data](https://doi.org/10.5061/dryad.x0k6djhn8) and install t
 
 ## 4. Run the models
 
-All models are run from the root project folder (i.e., from `cen-sierra-pywr`), within the same Python environment as preprocessing. Run commands for each scenario are as follows:
+All models are run from the root project folder (i.e., from `cen-sierra-pywr`), within the same Python environment as preprocessing. Run commands for each scenario are as follows. For convenience, these are aggregated into a single batch script file that may be used, found in `scripts/methods_paper_reproducibility.bat`.
 
 ### Stanislaus basin
 
