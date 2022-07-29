@@ -158,19 +158,17 @@ Download all [input data](https://doi.org/10.5061/dryad.x0k6djhn8) and install t
 
 ## 4. Run the models
 
-All models are run from the root project folder (i.e., from `cen-sierra-pywr`), within the same Python environment as preprocessing. Run commands for each scenario are as follows:
+All models are run from the root project folder (i.e., from `cen-sierra-pywr`), within the same Python environment as preprocessing. Run commands for each scenario are as follows. For convenience, these are aggregated into a single batch script file that may be used, found in `scripts/methods_paper_reproducibility.bat`.
 
 ### Stanislaus basin
 
-* Stanislaus w/o planning, debug mode
-  * `python main.py -b stanislaus -d -n "planning method" -ns`
+* Stanislaus w/ planning, w/ ramp rate (baseline)
+  * `python main.py -b stanislaus -p -n "planning" -ns`
 * Stanislaus w/ planning, debug mode
   * `python main.py -b stanislaus -p -d -n "planning method" -ns`
   * Note: "debug mode" outputs more detailed information, including all future planning months when planning is enabled.
 * Stanislaus w/o planning, w/ ramp rate
   * `python main.py -b stanislaus -n "no planning" -ns`
-* Stanislaus w/ planning, w/ ramp rate
-  * `python main.py -b stanislaus -p -n "planning" -ns`
 * Stanislaus w/ planning, w/o ramp rate
   * This scenario requires a manual, one-time change to the model. In the file `./sierra/base_parameters/FlowRangeParameter.py`, on line 48, directly under `get_up_ramp_ifr` (i.e., one level in from `def`), add `rate = 1e6`. This will set the ramping rate to one million, effectively turning off the restriction. **IMPORTANT: Don't forget to undo this change!**
   * `python main.py -b stanislaus -p -n "planning - no rr" -ns`

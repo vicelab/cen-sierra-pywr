@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Setup
-os.environ.get('SIERRA_RESULTS_PATH', '../../results')
+output_dir = os.environ.get('SIERRA_RESULTS_PATH', '../../results')
 basin = 'stanislaus'
 hydrology_scenario = 'historical/Livneh'
 
@@ -176,7 +176,7 @@ def plot_simulated(resolution='daily'):
         df_sch = read_results('planning method', 'Scheduled w/ planning')
 
         # non-optimized results
-        run_names = 'no planning method'
+        run_names = 'no planning'
         # basin_path = os.path.join(results_path, run_name, basin, r'historical\Livneh')
         df_np = read_results(run_names, 'Scheduled w/o planning')
 
