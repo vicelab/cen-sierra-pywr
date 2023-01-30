@@ -4039,6 +4039,14 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "Oakdale Irrigation District"
         },
+        "South San Joaquin Irrigation District/demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "South San Joaquin Irrigation District/Demand"
+        },
+        "Oakdale Irrigation District/demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Oakdale Irrigation District/Demand"
+        }, 
         "Stanislaus River Outflow/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Stanislaus River Outflow"
