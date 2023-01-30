@@ -3249,6 +3249,14 @@
             "type": "NumpyArrayNodeRecorder",
             "node": "SFPUC"
         },
+        "Modesto Irrigation District/demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Modesto Irrigation District/Demand"
+        },
+        "SFPUC requirement/demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "SFPUC requirement/Demand"
+        },
         "Tuolumne River Outflow/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Tuolumne River Outflow"
@@ -3408,6 +3416,10 @@
         "Turlock Irrigation District/flow": {
             "type": "NumpyArrayNodeRecorder",
             "node": "Turlock Irrigation District"
+        },
+        "Turlock Irrigation District/demand": {
+            "type": "NumpyArrayParameterRecorder",
+            "parameter": "Turlock Irrigation District/Demand"
         },
         "USGS 11276500 TUOLUMNE R NR HETCH HETCHY CA/observed flow": {
             "type": "NumpyArrayParameterRecorder",
