@@ -55,10 +55,10 @@ def calculate_uncontrolled_spill(dataset_dir):
     df2 = ifr_flow_df - ifr_reqt_df 
     df2[df2 < 1e-3] = 0
 
-    filepath = os.path.join(dataset_dir, 'TotalSpill_Flow_mcm.csv')
+    filepath = os.path.join(dataset_dir, 'UncontrolledSpill_Flow_mcm.csv')
     df.to_csv(filepath)
 
-    filepath2 = os.path.join(dataset_dir, 'UncontrolledSpill_Flow_mcm.csv')
+    filepath2 = os.path.join(dataset_dir, 'TotalSpill_Flow_mcm.csv')
     df2.to_csv(filepath2)
 
 
