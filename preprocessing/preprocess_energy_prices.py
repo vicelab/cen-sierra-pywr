@@ -1,6 +1,7 @@
 import os
 import argparse
-from energy_prices import linearize_prices, pivot_prices
+from preprocessing.energy_prices.piecewise_linearization import linearize_prices
+from preprocessing.energy_prices.pivot_prices import pivot_prices
 
 
 def preprocess_prices(years):
