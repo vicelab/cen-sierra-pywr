@@ -3,7 +3,7 @@ import multiprocessing as mp
 import argparse
 import shutil
 from pathlib import Path
-
+import pandas as pd
 from joblib import Parallel, delayed
 from loguru import logger
 
@@ -159,7 +159,20 @@ def preprocess_hydrology(dataset, basins_to_process=None, tasks=None, debug=Fals
                 basin_climates.append((basin, climate))
                 # climates[dataset]
                 all_climates.append(climate)
+                
+    elif dataset == 'sequences':
+        for basin in basins_to_process:
+#            sequences_path = os.path.join(root_dir, 'metadata/sequence_definitions.csv')
+ #           seq_df = pd.read_csv(sequences_path, index_col=0, header=0)
+  #          climates['sequences'] = seq_df.index[:5] if debug else seq_df.index
 
+            full_basin_name = basin_lookup[basin]['full name']
+            dataset_dir = os.path.join(root_dir, full_basin_name, 'hydrology', dataset)
+            for climate in os.listdir(dataset_dir):
+                basin_climates.append((basin, climate))
+                # climates[dataset]
+                all_climates.append(climate)
+                
     # all_climates = []
     # for k, values in climates.items():
     #     for v in values:
