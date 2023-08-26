@@ -1,7 +1,7 @@
 astroid==2.4.2
 asttokens==2.0.5
 backcall==0.2.0
-certifi==2022.12.7
+certifi==2023.7.22
 colorama==0.4.4
 cycler==0.10.0
 decorator==4.4.2
