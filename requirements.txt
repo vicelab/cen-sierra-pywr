@@ -40,7 +40,7 @@ python-dateutil==2.8.1
 python-dotenv==0.14.0
 pytz==2020.1
 pywr==1.8.0
-scipy==1.5.2
+scipy==1.10.0
 six==1.15.0
 stack-data==0.3.0
 tables==3.6.1
