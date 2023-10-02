@@ -63,7 +63,7 @@ def create_forecasted_hydrology(scenario_path, dataset=None, default_alpha=0.2, 
             elif dataset == 'sequences':
                 n_years = int(scenario_path.split('_Y')[1][:2])
                 months_to_calculate = []
-                for wy in range(2000, 2000 + n_years + 1):
+                for wy in range(1999, 1999 + n_years + 1):
                     for m in [10,11,12,1,2,3,4,5,6,7,8,9]:
                         y = wy - 1 if m >= 10 else wy
                         months_to_calculate.append((y, m))
