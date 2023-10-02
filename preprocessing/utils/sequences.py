@@ -38,7 +38,7 @@ def generate_data_from_sequence(basin, variable, seq_id, seq_values, basin_dir, 
                 climate_data_lookup[(gcm, rcp)] = df
 
             year_df = df[df['WY'] == year][FLOW_HEADER].copy()
-            start_year = 2000 + i
+            start_year = 1999 + i
             start_date = '{}-10-01'.format(start_year)
             end_date = '{}-09-30'.format(start_year + 1)
             idx = pd.date_range(start_date, end_date)
