@@ -1,25 +1,18 @@
 import numpy as np
 from sierra.base_parameters import MinFlowParameter
 
-
 class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(MinFlowParameter):
-    """"""
-
-    WYT = None
-
     def setup(self):
         super().setup()
-        # allocate an array to hold the previous storage; will be overwritten each timestep
+        # Allocate an array to hold the previous storage; will be overwritten each timestep
         num_scenarios = len(self.model.scenarios.combinations)
         self.WYT = np.empty(num_scenarios, np.float64)
 
     def _value(self, timestep, scenario_index):
-
         sid = scenario_index.global_id
-
-        # initial IFR
+        # Initial IFR
         if timestep.index == 0:
-            self.WYT[sid] = 2  # default
+            self.WYT[sid] = 2  # Default
 
         date = self.datetime
 
@@ -41,33 +34,32 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(MinFlowParameter):
 
             if date.month <= 6:
                 precip = self.model.parameters["Hetch Hetchy Reservoir/Precipitation"].dataframe
-                total_precip = precip[oct_1:date].sum() / 25.4  # sum & convert mm to inches
-                if total_precip >= criteria[0]:
-                    WYT = 3
-                elif total_precip >= criteria[1]:
+                total_precip = precip[oct_1:date].sum() / 25.4  # Sum & convert mm to inches
+                if total_precip < 6.1:
+                    WYT = 1
+                elif 6.1 <= total_precip < 8.8:
                     WYT = 2
                 else:
-                    WYT = 1
+                    WYT = 3
 
             # July-Aug:
             else:
                 runoff = self.model.parameters["Hetch Hetchy Reservoir Inflow/Runoff"].dataframe
                 cumulative_runoff = runoff[oct_1:date].sum()
-                cumulative_runoff *= 810.7 / 1000  # convert mcm to taf
-                if cumulative_runoff >= criteria[0]:
-                    WYT = 3
-                elif cumulative_runoff >= criteria[1]:
+                cumulative_runoff *= 810.7 / 1000  # Convert mcm to taf
+                if cumulative_runoff < 390:
+                    WYT = 1
+                elif 390 <= cumulative_runoff < 575:
                     WYT = 2
                 else:
-                    WYT = 1
+                    WYT = 3
 
         self.WYT[sid] = WYT
 
         return WYT
 
     def value(self, *args, **kwargs):
-        val = self._value(*args, **kwargs)
-        return val
+        return self._value(*args, **kwargs)
 
     @classmethod
     def load(cls, model, data):
@@ -77,6 +69,5 @@ class IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type(MinFlowParameter):
             print('File where error occurred: {}'.format(__file__))
             print(err)
             raise
-
 
 IFR_bl_Hetch_Hetchy_Reservoir_Water_Year_Type.register()
